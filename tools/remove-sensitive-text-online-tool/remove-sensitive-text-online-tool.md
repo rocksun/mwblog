@@ -6,19 +6,19 @@
 
 假设我们有这样一个 PDF 文档，其中有以下内容：
 
-![原始文件](./src.png)
+![原始文件](./images/src.png)
 
 我们希望去掉具体的金额，我们可以来到[敏感词去除网站](http://roweb.yylives.cc/)，在 keywords 字段输入 “人民币”，然后点击"Files"选择该 PDF 文档，然后点击“SUBMIT”，很快你就会得到一个文档，相应的内容变成了：
 
-![结果文件](./target.png)
+![结果文件](./images/target.png)
 
 另外，我们也支持表格中的处理，例如表格中以下内容：
 
-![原始文件](./table-src.png)
+![原始文件](./images/table-src.png)
 
 在 Keywords 中输入“金额”，处理该文档后，该列所有的金额都会被删除，结果如下：
 
-![结果文件](./table-target.png)
+![结果文件](./images/table-target.png)
 
 
 Keywords 中可以输入多个关键字，使用空格隔开即可。清除的内容目前只有阿拉伯数字和大写数字。
