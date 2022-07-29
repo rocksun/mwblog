@@ -8,7 +8,7 @@
 
 ![原始文件](https://yylives.cc/images/src.png)
 
-我们希望去掉具体的金额，我们可以来到[敏感词去除网站](http://roweb.yylives.cc/)，在 keywords 字段输入 “人民币”，然后点击"Files"选择该 PDF 文档，然后点击“SUBMIT”，很快你就会得到一个文档，相应的内容变成了：
+我们希望去掉具体的金额，我们可以来到[敏感词去除网站](https://roweb.yylives.cc/)，在 keywords 字段输入 “人民币”，然后点击"Files"选择该 PDF 文档，然后点击“SUBMIT”，很快你就会得到一个文档，相应的内容变成了：
 
 ![结果文件](https://yylives.cc/images/target.png)
 
