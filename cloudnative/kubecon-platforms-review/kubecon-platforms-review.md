@@ -1,6 +1,6 @@
 # Kubecon 2022 中关于平台的内容
 
-*本文翻译自[Josh Gavant]个人博客。关于 CNCF 平台的白皮书，目前可以看这个 [v1alpha1](https://github.com/cncf/tag-app-delivery/blob/platforms-v1alpha1/platforms-whitepaper/v1alpha1/paper.md) 版本。*
+*本文翻译自 [Josh Gavant](https://blog.joshgav.com/) 个人博客。关于 CNCF 平台的白皮书，目前可以看这个 [v1alpha1](https://github.com/cncf/tag-app-delivery/blob/platforms-v1alpha1/platforms-whitepaper/v1alpha1/paper.md) 版本。*
 
 10 月 25 日的 Kubecon 是一个很好的机会，可以与人们会面并讨论使云计算对从业者和企业更容易和更高效的新兴想法。云平台和平台工程是一个热门的讨论项目，似乎有望最终为企业提供一条最大限度地提高开发/运营合作和效率的途径。作为 CNCF 平台工作组 (WG) 的负责人，为了更好地理解此类平台的要求，我花时间与领导者和项目维护人员交谈，为他们开发构建模块。工作组计划在 2022 年底之前提供有关典型平台的功能和要求的指南。
 
