@@ -14,7 +14,7 @@
 
 ## 工具和蓝图的知识共享
 
-平台组织可以使用大约 [2000 种](https://landscape.cncf.io/)云原生环境中的工具，弄清楚需要什么样的工具组合是一项艰巨的任务。到 2023 年，我认为我们会看到更多的标准和参考实现与社区共享并获得关注。避免采用不符合组织需求的技术仍然是一个挑战，因此组织仍然需要进行用户研究并定期征求反馈。组织应将其平台产品视为满足其开发人员独特需求滴地方。
+平台组织可以使用大约 [2000 种](https://landscape.cncf.io/)云原生环境中的工具，弄清楚需要什么样的工具组合是一项艰巨的任务。到 2023 年，我认为我们会看到更多的标准和参考实现与社区共享并获得关注。避免采用不符合组织需求的技术仍然是一个挑战，因此组织仍然需要进行用户研究并定期征求反馈。组织应将其平台产品视为满足其开发人员独特需求的地方。
 
 ![Platform tooling landscape](https://assets.website-files.com/5c73bbfe3312822f153dd310/63bd77fd98f7595075546699_platform-tooling-landscape.jpg)
 
@@ -37,6 +37,6 @@ DevOps 工程技能的需求量仍然很大，但与它们相关的职位名称�
 ![](https://assets.website-files.com/5c73bbfe3312822f153dd310/63b6f193aa64bf88fe6972f9_Timeline%20Platform%20Engineering.png)
 
 
-你觉得我的列表怎么样？我错过了什么吗？在 Twitter @luca_cloud 上让我知道。而且，如果您正在寻找更多平台工程资源，请查看有史以来第一份平台工程状况报告。它包含任何平台工程师都不应错过的关键统计数据和见解。同样可以订阅 [https://yylives.cc/](https://yylives.cc/)] 和公众号：
+你觉得我的列表怎么样？我错过了什么吗？在 Twitter @luca_cloud 上让我知道。而且，如果您正在寻找更多平台工程资源，请查看有史以来第一份平台工程状况报告。它包含任何平台工程师都不应错过的关键统计数据和见解。同样可以订阅 [https://yylives.cc/](https://yylives.cc/) 和公众号：
 
 ![云云众生s](https://yylives.cc/wp-content/uploads/2023/01/qrcode_for_gh_b09686c176f4_344.jpg)
