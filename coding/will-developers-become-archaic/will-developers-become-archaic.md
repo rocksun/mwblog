@@ -1,5 +1,7 @@
 # 开发人员会变得过时吗？分析师对 2023 年的预测
 
+翻译自 TechTarget 的[文章](https://www.techtarget.com/searchitoperations/opinion/Will-developers-become-archaic-Analyst-predictions)。
+
 组织必须继续创新和优化才能跟上——但这些进步可能会使开发人员走向灭绝。探索行业分析师对 2023 年的预测。
 
 业务压力不断：全球通货膨胀、地缘政治危机和供应链挑战只是推动组织压力以更少的资源做更多的事情并变得更加敏捷的几个因素。
