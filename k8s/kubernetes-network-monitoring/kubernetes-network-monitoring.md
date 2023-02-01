@@ -1,5 +1,7 @@
 # Kubernetes 网络监控：它是什么，为什么需要它？
 
+本文翻译自 [Kubernetes network monitoring: What is it, and why do you need it?](https://www.tigera.io/blog/kubernetes-network-monitoring-what-is-it-and-why-do-you-need-it/) 。
+
 在本文中，我们将深入探讨 [Kubernetes 网络监控](https://www.tigera.io/blog/kubernetes-network-monitoring-what-is-it-and-why-do-you-need-it/)和指标，详细研究这些概念，并探索如何将应用程序中的指标转化为有形的、人类可读的报告。本文还将包含有关如何启用 Calico 与 Prometheus 集成的分步教程，Prometheus 是为监控云而创建的免费开源 CNCF 项目。到本文结束时，您将能够根据 Calico 发布的指标创建自定义报告和图形仪表板，以更好地了解集群及其各种组件的内部运作。此外，您还将了解这些碎片如何组合在一起为所有环境建立 Kubernetes 网络监控的基础知识。
 
 ## 背景
