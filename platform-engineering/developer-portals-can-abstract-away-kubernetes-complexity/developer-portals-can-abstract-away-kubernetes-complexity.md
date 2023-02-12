@@ -1,5 +1,7 @@
 # 开发者门户可以抽象掉 Kubernetes 的复杂性
 
+翻译自 [Developer Portals Can Abstract away Kubernetes Complexity](https://thenewstack.io/developer-portals-can-abstract-away-kubernetes-complexity/) 。
+
 软件目录中的 Kubernetes 数据可以“列入白名单”，仅仅是开发人员需要，但可以为其他类型的用户编译更多数据。
 
 ![](https://cdn.thenewstack.io/media/2023/02/0fd8d8c7-city-2-1024x576.jpg)
