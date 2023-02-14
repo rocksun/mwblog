@@ -36,8 +36,7 @@
 
 平台团队是黄金途径的建设者，她解释说，这条途径灵活且可发展，但主要是确保有秩序。她建议，在边界内促进自由，提前制定基本规则。这可以是单一云与多云设置，或者仅提供对标准堆栈的支持，而平台团队不提供对平台轨道之外的最新闪亮实验的支持。
 
-“By doing that you give people freedom to choose but you don’t give a free-for-all which can lead to challenges later,” Watt said. Choices are limited within ecosystems.
-瓦特说：“通过这样做，你可以让人们自由选择，但你不会让所有人自由竞争，这可能会在以后导致挑战。”选择仅限于生态系统。
+Watt 说：“通过这样做，你可以让人们自由选择，但你不会让所有人自由竞争，这可能会在以后导致挑战。”选择仅限于生态系统。
 
 ## API 成为您与内部开发人员的合同
 
