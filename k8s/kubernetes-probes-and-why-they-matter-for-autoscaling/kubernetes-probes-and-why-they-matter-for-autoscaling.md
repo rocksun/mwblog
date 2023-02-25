@@ -93,7 +93,6 @@ initialDelaySeconds 意味着在容器启动成功后，在发出信号之前所
 
 successThreshold 反映了用于确保容器处于成功状态所需的正面探测信号的数量。默认数字是一，这意味着探针必须至少有一个正面信号才能将容器状态指定为成功状态。如果我们不想仅依靠探针的一个脉冲来确认容器的健康状态，我们可以将这个值更改为更高的数字。
 
-The Value of Probe Experimentation
 ### 探针实验的价值
 
 伴随着容器管理和运行 Kubernetes 的复杂性，要确定上述参数的“绝对正确”值可能很困难。我们必须了解应用程序启动速度以及在负载下的行为，以便决定各种探测设置应该是什么，以满足 [SLA 或 SLO](https://thenewstack.io/sre-fundamentals-differences-between-sli-vs-slo-vs-sla/) 。必须考虑各种参数和设置的组合及它们彼此之间的作用，这意味着探针调优不是一门精准科学。
