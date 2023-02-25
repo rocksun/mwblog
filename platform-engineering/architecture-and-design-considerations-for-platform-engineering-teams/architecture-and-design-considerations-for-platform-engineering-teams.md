@@ -1,5 +1,7 @@
 # 平台工程团队的架构和设计注意事项
 
+本文翻译自 [Architecture and Design Considerations for Platform Engineering Teams](https://thenewstack.io/architecture-and-design-considerations-for-platform-engineering-teams/) 。
+
 究竟什么是平台？它是内部开发人员平台、开发人员自助服务门户还是仅仅是开发人员入职工具？
 
 ![](https://cdn.thenewstack.io/media/2023/02/2b71d258-fish2-1024x678.jpg)
