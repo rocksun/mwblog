@@ -1,5 +1,7 @@
 # 将 ChatGPT 用于 DevOps
 
+本文翻译自 [Using ChatGPT for DevOps](https://blog.devgenius.io/using-chatgpt-for-devops-7daa7c1783e9) 。
+
 在 ChatGPT 惊天动地地首次亮相时，我已经在 DevOps 和 SRE 领域工作了大约 5 年，它真正彻底改变了我的工作流程，但我稍后会深入探讨。
 
 与我们中的许多人一样，我听说过 ChatGPT 能够从头开始编写完整应用程序的传闻，并且认为“它不可能真的那么好”决定亲自测试一下。
