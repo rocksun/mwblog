@@ -69,4 +69,4 @@ Armon 回忆说， DevOps 运动向软件行业提出了一个大胆的愿景：
 
 令人惊讶的是，自我们作为一个行业开始 DevOps 之旅以来，在数据库 schema 变更管理方面几乎没有发生任何变化或创新。在 Ariga，我们正在构建 [Atlas](https://atlasgo.io/)（开源）和 [Atlas Cloud](https://atlasgo.cloud/) ，以提供上述问题的解决方案。
 
-如果您是平台工程团队的成员，并且想了解更多关于如何帮助我们，请在 [Discord 服务器] (https://discord.gg/zZ6sWVg6NT)上联系我（或我的联合创始人 [Ariel](https://github.com/a8m) ）。
+如果您是平台工程团队的成员，并且想了解更多关于如何帮助我们，请在 [Discord 服务器](https://discord.gg/zZ6sWVg6NT) 上联系我（或我的联合创始人 [Ariel](https://github.com/a8m) ）。
