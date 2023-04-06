@@ -1,6 +1,6 @@
 # 下一个 Kubernetes 管理前沿：自动化
 
-The Next Kubernetes Management Frontier: Automation
+翻译自 [The Next Kubernetes Management Frontier: Automation](https://thenewstack.io/the-next-kubernetes-management-frontier-automation/) 。
 
 投资于 GitOps 就绪的中央控制平面将为组织指明下一个 Kubernetes 管理前沿的正确方向。
 
