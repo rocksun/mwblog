@@ -1,6 +1,7 @@
 # 如何自动化你的浪费过程
 
 翻译自 [How to Automate Your Wasteful Processes](https://thenewstack.io/how-to-automate-your-wasteful-processes/) 。
+译者深有体会，太多人陷入了惯性思维之中，不知道可以改进。
 
 一旦您在组织中确定了浪费的流程，您应该如何解决并减少团队的负担？
 
