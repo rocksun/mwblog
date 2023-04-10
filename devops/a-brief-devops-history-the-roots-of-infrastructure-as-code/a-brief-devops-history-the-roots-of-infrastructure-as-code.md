@@ -1,6 +1,6 @@
 # DevOps 简史：基础设施即代码的根源
 
-翻译自 [A Brief DevOps History: The Roots of Infrastructure as Code](https://thenewstack.io/a-brief-devops-history-the-roots-of-infrastructure-as-code/) 。
+翻译自 [A Brief DevOps History: The Roots of Infrastructure as Code](https://thenewstack.io/a-brief-devops-history-the-roots-of-infrastructure-as-code/) 。译者不知受到什么启发，几年前编写过符合 IaC 风格的 WebLogic 和 WebSphere 自动化脚本库：[https://github.com/rocksun/ucmd](https://github.com/rocksun/ucmd) 。
 
 如果您回顾一下计算的历史，就会发现配置管理工具自 1970 年代就出现了。我们是如何从 make 文件到 Terraform 配置的？
 
