@@ -9,7 +9,6 @@
 
 *这篇文章是 [KubeCon + CloudNativeCon Europe 2023](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) 预览系列的一部分，该活动将于 4 月 18 日至 21 日在阿姆斯特丹举行。加入我们，了解更多关于云原生应用程序和开源软件的变革性质。*
 
-Over the past few years, container adoption has revolutionized everything. Containers became the de facto standard of software deployments, providing a wide range of advantages such as:
 在过去的几年里，容器的采用彻底改变了一切。容器成为软件部署的事实标准，提供了广泛的优势，例如：
 
 * 快速部署
