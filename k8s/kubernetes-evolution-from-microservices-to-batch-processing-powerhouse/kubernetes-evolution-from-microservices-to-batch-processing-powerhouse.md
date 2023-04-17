@@ -1,4 +1,4 @@
-# Kubernetes演进：从微服务到批处理强大的引擎
+# Kubernetes演进：从微服务到批处理的强大引擎
 
 翻译自 [Kubernetes Evolution: From Microservices to Batch Processing Powerhouse](https://thenewstack.io/kubernetes-evolution-from-microservices-to-batch-processing-powerhouse/) 。
 
