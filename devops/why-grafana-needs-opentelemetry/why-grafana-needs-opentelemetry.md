@@ -21,7 +21,6 @@ OpenTelemetry 使组织能够了解其服务和基础架构的交互方式以及
 OpenTelemetry 使得这种深度可观测性更加强大和可用于开发人员、DevOps 人员以及创建和运行软件的组织。McLean表示：
 
 * 简化可观测性——OpenTelemetry 使采用可观测性工具和最佳实践变得容易，到目前为止，很少有人能够完全实现这些工具和最佳实践，因为从现有服务和基础设施中提取形状正确的遥测信号非常困难。
-Improving accessibility — By using OpenTelemetry’s huge and continually-maintained cohort of instrumentation, organizations and DevOps teams can capture essential data like spans, metrics, logs, metadata and more from almost any piece of infrastructure or any service.
 * 提高可访问性——通过使用 OpenTelemetry 庞大且持续维护的仪器套件，组织和 DevOps 团队可以从几乎任何基础设施或任何服务中捕获基本数据，如 span, metric, 日志、元数据等。
 * 创建更高的一致性和标准化—— OpenTelemetry 为所有数据类型提供了一组一致的语义约定，这意味着来自不同来源的不同信号可以相互关联。例如，缓慢的请求性能可以追溯到特定服务及其底层基础设施，而无需任何猜测或间接。
 * 培养数据所有权——OpenTelemetry 可以预处理数据并将其路由到多个目的地，因此组织不会被锁定在单一供应商。此外，开发人员可以使用每种语言的本机 SDK 轻松创建特定于其业务的数据或注释，并且 OpenTelemetry 可以在大多数 metric, trace, 日志和其他遥测数据源之间接收和转换数据。总的来说，这为创建数据的人员和组织释放了数据。
