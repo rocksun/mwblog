@@ -24,7 +24,6 @@
 
 基础设施从何而来？随着需求的发展，我们如何改变它？我们如何随着需求的增长扩展它，无论是增加我们工作负载可用的计算和内存，扩展到许多新实例，增加我们的可用性并通过部署到全球新区域和环境来减少延迟......或者，通常情况下，所有这些的组合？
 
-How do we ensure our infrastructure practices are repeatable in the event something fails or a mistake is made? How do we capture and reuse best practices? Do the answers to these questions differ across clouds? How do we ensure collaboration can take place safely and our deployments aren’t flaky and prone to colliding? And how do we secure all of it and ensure best practices and policies are enforced at all times?
 如果出现故障或出现错误，我们如何确保我们的基础设施实践是可重复的？我们如何捕捉和重用最佳实践？这些问题的答案是否因云而异？我们如何确保协作可以安全进行，并且我们的部署不会不稳定且容易发生冲突？我们如何保护所有这些并确保始终执行最佳实践和政策？
 
 这些都是基础设施即代码解决的事情，它从代码开始。
