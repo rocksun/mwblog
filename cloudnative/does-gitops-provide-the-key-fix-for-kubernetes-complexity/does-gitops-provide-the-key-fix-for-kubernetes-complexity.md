@@ -37,7 +37,7 @@ GitOps 使得 Kubernetes 的采用能够扩展——参与发布过程的开发�
 
 通过使用 GitOps 将脚本化的应用程序发布替换为声明式的发布方式，最终结果是将应用程序栈的期望状态交给了持续交付平台的控制器来建立和保护， Volk 表示。 Volk 说：“这种方法实现了最终程度的一致性，因为部署、运行和管理应用程序所需的所有内容都安全地存储在一个通用的代码仓库中。”“新的应用程序将重用此代码的所有通用部分，并且可以在整个组织中接收相同的补丁、更新和配置更改。”
 
-对于开发人员来说，关键的好处是很清晰的：当使用 GitOps 框架工作时，开发人员不一定需要掌握 YAML 文件和 Jenkhttps://thenewstack.io/4-power-tips-to-get-jenkins-enterprise-ready/ins 的工作原理，也不需要理解 Kubernetes 的所有不同操作基础设施和复杂工作方式，无论是节点结构、命名空间等等。在最理想的情况下，开发人员使用 GitOps 以 [Argo CD](https://thenewstack.io/why-argo-cd-is-the-lifeline-of-gitops/) 和 [Flux](https://thenewstack.io/flux-overview-react-state-management-ecosystem/) 等开源替代方案可以创建应用程序并将它们加载到 Git 上，而无需深入理解 Kubernetes 。
+对于开发人员来说，关键的好处是很清晰的：当使用 GitOps 框架工作时，开发人员不一定需要掌握 YAML 文件和 [Jenkins](https://thenewstack.io/4-power-tips-to-get-jenkins-enterprise-ready/) 的工作原理，也不需要理解 Kubernetes 的所有不同操作基础设施和复杂工作方式，无论是节点结构、命名空间等等。在最理想的情况下，开发人员使用 GitOps 以 [Argo CD](https://thenewstack.io/why-argo-cd-is-the-lifeline-of-gitops/) 和 [Flux](https://thenewstack.io/flux-overview-react-state-management-ecosystem/) 等开源替代方案可以创建应用程序并将它们加载到 Git 上，而无需深入理解 Kubernetes 。
 
 对于运营团队来说，GitOps 可以解决 Kubernetes 存在的许多安全问题。通过这种推拉模型和结构， GitOps 可以减轻运维团队的工作负担，因为他们几乎普遍认为 Kubernetes 的管理和安全性至少是一个挑战。
 
