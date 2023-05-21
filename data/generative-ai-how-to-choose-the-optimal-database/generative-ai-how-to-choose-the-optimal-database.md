@@ -84,7 +84,6 @@ GPT-4 等 LLM 的训练数据基于截至 2021 年 9 月的数据。如果没有
 
 支持 AI 工作负载的数据库必须与更大的生态系统集成。其中包括：
 
-Notebooks or integrated development environments (IDEs) to write code that will enable the AI value chain steps described earlier in this article.
 * Notebooks 或集成开发环境 （IDE），用于编写将启用本文前面所述的 AI 价值链步骤的代码。
 * 来自云提供商（如AWS，Azure和Google Cloud）以及独立供应商的现有 MLOps 能力。此外，对 LLMOps 的支持也开始出现。
 * 用于生成嵌入的库，例如 OpenAI 和 HuggingFace 。这是一个快速扩展的空间，拥有许多开源和商业库。
