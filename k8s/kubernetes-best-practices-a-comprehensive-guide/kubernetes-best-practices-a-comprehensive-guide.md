@@ -6,7 +6,6 @@
 
 Kubernetes 是一个功能强大的容器编排平台，可自动部署、扩展和管理容器化应用程序。随着组织越来越多地将 Kubernetes 用于其容器化工作负载，了解和实施最佳实践对于高效和安全的运营至关重要。本综合指南涵盖了一系列 Kubernetes 最佳实践，从设计和配置应用程序到监控和保护集群。
 
-Designing Applications for Kubernetes
 ## 为 Kubernetes 设计应用程序
 
 ### 可扩展性设计
