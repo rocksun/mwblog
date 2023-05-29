@@ -25,7 +25,6 @@ Kubernetes 是一个功能强大的容器编排平台，可自动部署、扩展
 
 要了解有关使用 Kubernetes 实现 12 factor 应用原则的更多信息，请遵循[本文](https://faizanbashir.me/implementing-12-factor-app-principles-with-kubernetes)。
 
-
 ## 配置管理和版本控制
 
 ### 使用声明式配置
