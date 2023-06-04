@@ -46,7 +46,6 @@ Vicuna 项目源于大型模型系统组织，该组织是加州大学伯克利�
 
 长期以来，公司被迫做相反的事情：将他们的数据带到人工智能上。在分析关键见解之前，他们必须投入大量资源、时间和预算将数据从数据仓库和数据湖迁移到专用机器学习平台。
 
-This results in significant data transfer costs, and the required time to migrate, analyze and migrate affects how quickly organizations can learn new patterns and take action with customers in the moment.
 这会导致巨大的数据传输成本，并且迁移、分析和迁移所需的时间会影响组织了解新模式并立即与客户采取行动的速度。
 
 将 AI 带给数据是我们 DataStax 通过实时 AI 工作非常关注的事情，因为它是基于 ML/AI 采取行动，取悦客户并增加收入的最快方式。将人工智能带到数据中心，而不仅仅是云，是使转型人工智能技术成为所有公司都可以参与其中的另一重要步骤。
