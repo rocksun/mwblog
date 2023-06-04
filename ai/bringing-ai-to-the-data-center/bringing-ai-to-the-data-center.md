@@ -2,7 +2,6 @@
 
 翻译自 [Bringing AI to the Data Center](https://thenewstack.io/bringing-ai-to-the-data-center/)  。
 
-Like it or not, many companies’ most important data lives in data centers. Soon that will no longer be an impediment to delivering AI.
 不管你喜不喜欢，许多公司最重要的数据都存在于数据中心。很快，这将不再是交付 AI 的障碍。
 
 尽管我们对企业数据和云技术的进步做出了所有假设，但有一个显而易见的事实经常被忽视：大多数最重要的企业数据仍然在企业数据中心。
