@@ -12,7 +12,7 @@ Adobe 的 Chris Featherstone 和 Shubhanshu Surana 在[北美开源峰会](https
 
 
 ![Adobe’s Chris Featherstone and Shubhanshu Surana](https://cdn.thenewstack.io/media/2023/06/a5f933a8-adobe5-300x290.jpg)
-*Adobe的 Chris Featherstone 和 Shubhanshu Surana*
+*Adobe 的 Chris Featherstone 和 Shubhanshu Surana*
 
 软件开发高级经理 Featherstone 解释说，并非所有这些数据都流经他的团队或 OTel collector ，但“这是一个相当不错的部分”。
 分布式跟踪将他的团队带到了 OpenTelemetry 。他解释说， Adobe 主要由收购组成，随着每家新公司的引入，人们对最好的云、这个工具、那个文本编辑器等都有自己的看法。
