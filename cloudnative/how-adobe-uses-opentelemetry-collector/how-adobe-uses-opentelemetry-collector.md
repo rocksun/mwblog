@@ -10,7 +10,6 @@ Adobe 的 Chris Featherstone 和 Shubhanshu Surana 在[北美开源峰会](https
 
 他们继续解释如何使用它来跟踪公司收集的大量可观测性数据，包括指标，每天 3.3 亿个独特的 series ；每天 3.6 TB 的 span 数据；每天超过 1 PB 的日志数据。
 
-
 ![Adobe’s Chris Featherstone and Shubhanshu Surana](https://cdn.thenewstack.io/media/2023/06/a5f933a8-adobe5-300x290.jpg)
 *Adobe 的 Chris Featherstone 和 Shubhanshu Surana*
 
