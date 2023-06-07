@@ -48,7 +48,7 @@
 
 倡导团队遵循的常见（可能是必需的）做法之一是每季度举行一次内部会议。这些是实际的面对面会议，通常在不同的地区和办公地点轮流进行在线会议。在这些会议上，您的平台团队和执行发起人会稍微谈论一下平台，但您主要让您的客户（开发人员团队）展示和谈论他们所从事的项目。这有两个功能：培训和营销。
 
-The marketing you’re taking advantage of at internal conferences is the most coveted of all marketing treasures: word of mouth. Having developers tell other developers that your platform is good, great even, will be the best way to get developers to use your platform, and use it well.
+
 您在内部会议上利用的营销是所有营销宝藏中最令人垂涎的：口碑。让开发人员告诉其他开发人员您的平台很好，甚至很棒，这将是让开发人员使用您的平台并很好地使用它的最佳方式。
 
 ## 从第一天就开始平台营销
