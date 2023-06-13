@@ -74,7 +74,6 @@ Stephenson 承认，从传统的 IaC 转移一开始可能会对团队造成一�
 
 Stephenson 从其他公司听到了类似的故事。“你最终会遇到可能会反击的人，但归根结底，有很多人表现出色，成为下一个摇滚明星，因为做出了这样的转变。
 
-To learn more about Infrastructure as Code (and see presentations by Stephenson, Sauvé and other experts), register for June 15’s virtual event, PulumiUP.
 要了解有关基础设施即代码的更多信息（并查看 Stephenson、Sauvé 和其他专家的演讲），请[注册参加 6 月 15 日的虚拟活动 PulumiUP](https://www.pulumi.com/pulumi-up/)。
 
 ![](https://cdn.thenewstack.io/media/2023/06/7f0f48a8-pulumiup-copy.png)
