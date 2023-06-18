@@ -18,16 +18,17 @@
 
 首先，注册一个免费的 SingleStoreDB Cloud 账户。登录后，在左侧导航栏中选择 **CLOUD > Create new workspace group** 。接下来，选择 **Create Workspace** 并按照向导进行操作。以下是本示例的推荐设置：
 
-**Create Workspace Group**
-**Workspace Group Name**: LangChain Demo Group
-**Cloud Provider**: AWS
-**Region**: US East 1 (N. Virginia)
+* **Create Workspace Group**
+* **Workspace Group Name**: LangChain Demo Group
+* **Cloud Provider**: AWS
+* **Region**: US East 1 (N. Virginia)
+
 
 点击 **Next** ：
 
-**Create Workspace**
-**Workspace Name**: langchain-demo
-**Size**: S-00
+* **Create Workspace**
+* **Workspace Name**: langchain-demo
+* **Size**: S-00
 
 点击 **Create Workspace** 。
 
