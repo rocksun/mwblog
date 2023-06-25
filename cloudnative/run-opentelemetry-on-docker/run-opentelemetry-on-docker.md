@@ -4,6 +4,8 @@
 
 OpenTelemetry 项目已创建了演示服务，以帮助云原生社区成员更好地理解云原生开发实践。
 
+![](https://cdn.thenewstack.io/media/2023/06/5f6064fb-ace78b80-opentelemetry-e1686938622608-1024x536-copy.png)
+
 [OpenTelemetry](https://opentelemetry.io/) 项目提供了供应商中立的集成点，帮助组织获取现代可观测性工具所需的原始材料——"遥测(telemetry)"，并在集成时最小化投入。
 
 但对于那些使用他们喜爱的可观测性工具但并不完全了解它如何帮助他们的人来说，OpenTelemetry 意味着什么？ OpenTelemetry 对于那些对 Kubernetes （过去几年大多数 KubeCon 与会者）和刚开始使用可观测性的人来说可能有什么相关性？
