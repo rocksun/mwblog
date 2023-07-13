@@ -24,7 +24,7 @@ Legal-tech 初创公司 [Relativity](https://www.relativity.com/) 通过[一个�
 
 ## 开发者门户：平台的简洁层
 
-在面向对象编程中，[facade 模式](https://en.wikipedia.org/wiki/Facade_pattern#:~:text=The%20facade%20pattern%20(also%20spelled,complex%20underlying%20or%20structural%20code)用于将复杂的结构抽象在一个公开有限和范围功能的类后面。在某种程度上，开发人员和 [DevOps](https://thenewstack.io/devops/) 使用的工单系统就是 facade 模式的一个例子：平台的复杂性被掩盖在一个委婉的聊天背后。
+在面向对象编程中，[facade](https://en.wikipedia.org/wiki/Facade_pattern) 模式用于将复杂的结构抽象在一个公开有限和范围功能的类后面。在某种程度上，开发人员和 [DevOps](https://thenewstack.io/devops/) 使用的工单系统就是 facade 模式的一个例子：平台的复杂性被掩盖在一个委婉的聊天背后。
 
 相反，可以使用基于 Backstage 的开发者门户作为平台的 facade 。开发者门户可以提供多种好处，但我只想专注于自助服务的动力：软件模板。
 
