@@ -2,6 +2,8 @@
 
 竞争对手对红帽提议的新许可条款感到愤怒，根据这些条款，RHEL 的源代码只对付费客户开放。
 
+翻译自 [Oracle, SUSE Tussle with Red Hat over the Business of Open Source](https://thenewstack.io/oracle-suse-tussle-with-red-hat-over-the-business-of-open-source/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/07/6a128ac3-logosa3b3d963-glen-carrie-n0zoovlpeja-unsplash-1024x589-1.png)
 *图片来自 Unsplash 的 Glen Carrie 。*
 
