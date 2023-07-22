@@ -1,8 +1,8 @@
-# 顶尖 5 大代码补全服务
+# 五大代码补全服务
 
 这五种代码补全服务提供无缝的编码体验，缩短调试时间，并提高您的编程生产力。
 
-翻译自 [Top 5 Code Completion Services](https://thenewstack.io/top-5-code-completion-services/) 。
+翻译自 [Top 5 Code Completion Services](https://thenewstack.io/top-5-code-completion-services/) 。译者自己还在用 Cursor 和 Bito 。
 
 ![](https://cdn.thenewstack.io/media/2023/07/c358b2ce-joshua-aragon-eab4ml7c7fe-unsplash-1024x517.jpg)
 *来自 Unsplash 的图片*
