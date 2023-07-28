@@ -1,6 +1,6 @@
 # RISC-V 在快速发展的处理器生态系统中找到立足之地
 
-然而，在 RISC-V 开源处理器架构能够在数据中心与 x86 和 ARM 架构一较高下之前，它需要从软件开发社区获得更多支持。本文对在巴塞罗那举行的 RISC-V 峰会进行了总结。
+在 RISC-V 开源处理器架构能够在数据中心与 x86 和 ARM 架构一较高下之前，它需要从软件开发社区获得更多支持。本文对在巴塞罗那举行的 RISC-V 峰会进行了总结。
 
 翻译自 [RISC-V Finds Its Foothold in a Rapidly Evolving Processor Ecosystem](https://thenewstack.io/risc-v-finds-its-foothold-in-a-rapidly-evolving-processor-ecosystem/) 。
 
@@ -65,7 +65,7 @@ Himelstein 表示：“这种贡献文化意味着在 RISC-V 和其他开源和�
 
 此外，RISC-V 并没有硬件和软件共同设计的结构，这使得开发人员更容易使用 x86 和 ARM 系统。RISC-V 首先开发硬件规范，而 Linux 兼容性则稍后出现。这与英特尔截然不同，后者在芯片发布前就将 Linux 驱动程序上游化，以确保硬件与最新版本的操作系统兼容。
 
-## 中国方面，
+## 中国方面
 
 RISC-V 的软件努力也缺乏像 Linus Torvalds 那样能够凭借意志力推动项目前进的强大力量。RISC-V 也没有足够的主流地位来吸引大量开发者。
 
