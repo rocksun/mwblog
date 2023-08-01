@@ -1,6 +1,6 @@
 # Terraform Provider 与 IaC 的崛起
 
-那些已经广泛使用基础设施即服务（Infrastructure-as-a-Service）来管理云资源的工程组织，现在正在寻求通过 Terraform 和其他基础设施即代码（Infrastructure as Code，简称 IaaC ）平台来管理内部部署。
+那些已经广泛使用基础设施即服务（Infrastructure-as-a-Service）来管理云资源的工程组织，现在正在寻求通过 Terraform 和 IaaC 平台来管理内部部署。
 
 翻译自 [Terraform Providers and the Rise of Infrastructure as a Service](https://thenewstack.io/terraform-providers-and-the-rise-of-infrastructure-as-a-service/) 。
 
