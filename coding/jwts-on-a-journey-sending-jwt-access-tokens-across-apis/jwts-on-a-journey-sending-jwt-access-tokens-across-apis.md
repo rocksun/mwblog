@@ -1,4 +1,4 @@
-# JWT 的旅程 — 在API之间发送 JWT 访问令牌
+# JWT 的旅程 — 在 API 之间发送 JWT 访问令牌
 
 在设计 JSON Web Tokens 时，必须彻底考虑令牌的最佳生命周期和所需数据。
 
