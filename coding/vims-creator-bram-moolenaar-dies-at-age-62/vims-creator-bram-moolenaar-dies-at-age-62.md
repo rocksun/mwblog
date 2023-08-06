@@ -1,6 +1,6 @@
 # Vim 的作者 Bram Moolenaar 去世，享年 62 岁
 
-> 虽然我的主要编辑器不是 VIM ，但是 VIM 绝对是程序员必备的技能，有几个人知道 VIM 是一款慈善软件。
+> 虽然我的主要编辑器不是 VIM ，但是 VIM 绝对是程序员必备的技能。
 > 
 > 还是太多人并不知道，这个世界的变好，靠的不是某个大人物的雄才伟略，也不是哪个种族的天赋异禀，而是许许多多理想主义者的默默付出。本文翻译自 [Vim's Creator Bram Moolenaar Dies at Age 62](https://news.slashdot.org/story/23/08/05/1632219/vims-creator-bram-moolenaar-dies-at-age-62)，查看原文能看到一些相关的链接。
 
