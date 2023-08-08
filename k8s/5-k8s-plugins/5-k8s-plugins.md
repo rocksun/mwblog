@@ -2,6 +2,8 @@
 
 我已经使用 Kubernetes 五年了，但直到最近才开始使用插件来增强我的 kubectl 命令。我将向您展示五个插件，这些插件帮助我避免重复的任务，使集群管理更简单，应对事故响应更轻松。本文介绍的所有插件都可以使用 Krew 进行安装。
 
+翻译自 [5 kubectl plugins to make your life easier](https://alicegg.tech/2023/08/08/k8s-plugins) 。
+
 ![](https://alicegg.tech/assets/2023-08-08-k8s-plugins/lego.jpg)
 *[Photo by Iker Urteaga](https://unsplash.com/@iurte?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)*
 
