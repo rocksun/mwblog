@@ -2,6 +2,8 @@
 
 除了基础的基础设施即代码知识外，你可能希望更深入地了解某些方面。本节涵盖了其中许多内容。
 
+翻译自 [Going Beyond with Advanced Infrastructure as Code Use Cases](https://thenewstack.io/going-beyond-with-advanced-infrastructure-as-code-use-cases/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/08/96788441-infrastructure-1024x683.jpg)
 *图片来自 Shutterstock 的 Danny*
 
