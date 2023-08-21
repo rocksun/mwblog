@@ -1,4 +1,4 @@
-# 如何组织的基础设施即代码
+# 如何组织基础设施即代码
 
 翻译自 [Structuring your Infrastructure as Code](https://leebriggs.co.uk/blog/2023/08/17/structuring-iac) 。
 
