@@ -7,7 +7,7 @@
 
 [Kelly Shortridge](https://github.com/swagitda/) 倡导提高 IT 系统的弹性。作为《Security Chaos Engineering: Sustaining Resilience in Software and Systems and a senior principal engineer》一书的作者，以及 [Fastly](https://www.fastly.com/) 公司 CTO 办公室的高级首席工程师，她在今年的 Black Hat 大会上发表了演讲。她解释了为什么攻击者更具韧性，以及 IT 组织可以采取哪些措施来提高自身的韧性和响应能力。
 
-最近，《The New Stack》回[顾了 Shortridge 关于利用基础设施即代码和持续集成/持续开发流水线来改进并增强韧性的建议](https://thenewstack.io/lessons-it-can-steal-from-hackers/)。在这篇后续文章中，我们将看看 IT 可以从攻击者那里学到的最后几个教训，以改善其安全姿态：
+最近，《The New Stack》回[顾了 Shortridge 关于利用基础设施即代码和持续集成/持续开发流水线来改进并增强韧性的建议](https://yylives.cc/2023/09/02/lessons-it-can-steal-from-hackers/)。在这篇后续文章中，我们将看看 IT 可以从攻击者那里学到的最后几个教训，以改善其安全姿态：
 
 - 基于设计的防御
 - 系统思考
