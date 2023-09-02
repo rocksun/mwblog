@@ -2,6 +2,8 @@
 
 为团队提供专为云原生环境定制的现代可观测性工具将使他们能够快速检测和纠正问题。
 
+翻译自 [Top 4 Factors for Cloud Native Observability Tool Selection](https://thenewstack.io/top-4-factors-for-cloud-native-observability-tool-selection/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/08/7d3bcd6e-observing-1024x683.jpg)
 *图片来自 Shutterstock 的 PanyaStudio*
 
