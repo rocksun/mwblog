@@ -2,6 +2,8 @@
 
 基于设计的防御系统和可观察性堆栈是窃取攻击者的韧性策略的关键。
 
+翻译自 [More Lessons from Hackers: How IT Can Do Better](https://thenewstack.io/more-lessons-from-hackers-how-it-can-do-better/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/08/4249c1c6-fly-d-ccupniok-b0-unsplash-1024x683.jpg)
 *图片来自 UnSplash 的 FLY:D*
 
