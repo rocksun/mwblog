@@ -2,7 +2,7 @@
 
 一个好的工具不在于它的炒作或流行度，而在于它能多好地解决你的问题并融入你的生态系统。
 
-对于准备进入 kubernetes 生态的你，可以参考一下是否已经准备好了。本文译自 [Kubernetes Isn’t Always the Right Choice](https://thenewstack.io/kubernetes-isnt-always-the-right-choice/) 。
+对于没有进入 kubernetes 生态的你，可以参考一下是否已经准备好了。本文译自 [Kubernetes Isn’t Always the Right Choice](https://thenewstack.io/kubernetes-isnt-always-the-right-choice/) 。
 
 ![](https://cdn.thenewstack.io/media/2023/08/3b89fa85-bike-crash-1024x646.jpg)
 
