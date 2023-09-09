@@ -2,6 +2,8 @@
 
 一个好的工具不在于它的炒作或流行度，而在于它能多好地解决你的问题并融入你的生态系统。
 
+对于准备进入 kubernetes 生态的你，可以参考一下是否已经准备好了。本文译自 [Kubernetes Isn’t Always the Right Choice](https://thenewstack.io/kubernetes-isnt-always-the-right-choice/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/08/3b89fa85-bike-crash-1024x646.jpg)
 
 如今，几乎所有的应用程序都可以被封装在容器中执行。容器解决了很多问题，但也带来了新的编排挑战。由于大量团队需要容器编排来构建云原生应用程序，Kubernetes 作为一个强大的工具解决了这个挑战，因此获得了广泛的普及。
