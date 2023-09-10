@@ -2,6 +2,8 @@
 
 是时候专注于互动式地塑造和执行您组织使用既定 Kubernetes 策略来产生影响的方式了。
 
+本文论述了如何一步步实现完善的安全策略。翻译自 [7 Steps to Highly Effective Kubernetes Policies](https://thenewstack.io/7-steps-to-highly-effective-kubernetes-policies/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/09/3f1ada7c-policies-1024x683.jpg)
 *图片来自 Shutterstock 的 Net Vector*
 
