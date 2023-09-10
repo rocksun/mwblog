@@ -2,6 +2,8 @@
 
 平台团队应该铺就从第 2 天到第 50 天都能优化流程的黄金路径，而不仅仅是第1天。这里有一些例子。
 
+译自 [How to Pave Golden Paths That Actually Go Somewhere](https://thenewstack.io/how-to-pave-golden-paths-that-actually-go-somewhere/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/09/2ec0b6e7-golden-path-1024x732.jpg)
 *图片来自 Shutterstock 的 Ironika*
 
