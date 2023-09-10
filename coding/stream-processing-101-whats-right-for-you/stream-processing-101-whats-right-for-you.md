@@ -2,6 +2,8 @@
 
 流数据本身不足以最大限度地发挥实时数据的价值。为此，您需要流处理。
 
+译自 [Stream Processing 101: What’s Right for You? ](https://thenewstack.io/stream-processing-101-whats-right-for-you/)。
+
 ![](https://cdn.thenewstack.io/media/2023/09/6d4a1a94-data-streams-1024x671.jpg)
 *图片来自 Shutterstock 的 Sashkin*
 
