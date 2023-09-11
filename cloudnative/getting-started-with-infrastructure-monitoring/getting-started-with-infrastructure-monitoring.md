@@ -2,6 +2,8 @@
 
 通过利用监控数据，公司可以确保他们的基础设施在以最佳状态运行的同时降低成本。
 
+译自 [Getting Started with Infrastructure Monitoring](https://thenewstack.io/getting-started-with-infrastructure-monitoring/) 。
+
 ![](https://cdn.thenewstack.io/media/2023/09/31a6901d-monitoring-1024x683.jpg)
 *图片来自 Shutterstock 的 GaudiLab*
 
