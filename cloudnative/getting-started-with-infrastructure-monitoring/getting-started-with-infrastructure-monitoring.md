@@ -96,7 +96,7 @@ Jaeger 是一个开源的端到端分布式跟踪系统，可帮助用户监控�
 - **AWS Cloudwatch 输入** - AWS CloudWatch 插件可以轻松地从 AWS 收集所有所需的云基础设施指标。
 - **[InfluxDB V2 输出](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2)** - InfluxDB 输出插件将发送所有这些收集的指标到指定的 InfluxDB 实例。
 
-下面是一个针对此设置的 Telegraf 配置 [TOML 文件](https://docs.fileformat.com/programming/toml/#:~:text=TOML%20(Tom's%20Obvious%20Minimal%20Language,parse%20to%20different%20data%20structures.)的示例：
+下面是一个针对此设置的 Telegraf 配置 TOML 文件的示例：
 
 ```TOML
 [global_tags]
