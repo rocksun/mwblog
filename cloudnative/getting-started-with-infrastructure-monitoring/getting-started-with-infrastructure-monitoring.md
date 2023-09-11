@@ -152,7 +152,7 @@ Jaeger 是一个开源的端到端分布式跟踪系统，可帮助用户监控�
   report_active = false
   
 [[inputs.disk]]
-  ignore_fs = ["tmpfs"， "devtmpfs"， "devfs"， "iso9660"， "overlay"， "aufs"， "squashfs"]
+  ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
   
 [[inputs.diskio]]
 [[inputs.mem]]  
@@ -194,7 +194,7 @@ service_address = "0.0.0.0:4317"
   ## tag is not set the 'bucket' option is used as the default.
   # bucket_tag = ""
 
-  ## If true， the bucket tag will not be added to the metric.
+  ## If true, the bucket tag will not be added to the metric.
   # exclude_bucket_tag = false
 
   ## Timeout for HTTP messages.
@@ -203,8 +203,8 @@ service_address = "0.0.0.0:4317"
   ## Additional HTTP headers
   # http_headers = {"X-Special-Header" = "Special-Value"}
 
-  ## HTTP Proxy override， if unset values the standard proxy environment
-  ## variables are consulted to determine which proxy， if any， should be used. 
+  ## HTTP Proxy override, if unset values the standard proxy environment
+  ## variables are consulted to determine which proxy, if any, should be used. 
   # http_proxy = "http://corporate.proxy:3128"
 
 ```
