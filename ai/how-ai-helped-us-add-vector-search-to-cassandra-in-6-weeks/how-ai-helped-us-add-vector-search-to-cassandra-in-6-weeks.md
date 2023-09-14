@@ -6,6 +6,8 @@ Image from Thapana_Studio on Shutterstock.jpg
 
 DataStax 必须迅速行动，添加这个基础的 AI 赋能功能。以下是 ChatGPT、Copilot 和其他 AI 工具如何帮助我们构建代码的情况。
 
+译自 [How AI Helped Us Add Vector Search to Cassandra in 6 Weeks](https://thenewstack.io/how-ai-helped-us-add-vector-search-to-cassandra-in-6-weeks/) 。
+
 DataStax 面临着巨大的[需求](https://hackernoon.com/how-llms-and-vector-search-have-revolutionized-building-ai-applications)，需要添加[向量搜索](https://www.datastax.com/guides/what-is-vector-search?utm_source=thenewstack&utm_medium=byline&utm_campaign=vector-search&utm_term=all-plays&utm_content=how-we-built-vector)功能来支持生成式 AI 应用程序。我们为 Cassandra 和基于 Cassandra 构建的托管服务 Astra DB 添加这一功能制定了一个非常雄心勃勃的目标。
 
 早在 4 月份，当我问我们的产品负责人首席副总裁谁会去构建它时，他说：“为什么你不做呢？”
