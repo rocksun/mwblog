@@ -4,6 +4,8 @@ Image from [CC7](https://www.shutterstock.com/g/chartphoto3965336) on Shuttersto
 
 应用程序迁移、可移植性和移动性是相似但不同的概念。以下是它们之间的区别。
 
+译自 [Unleashing the Power of Kubernetes Application Mobility](https://thenewstack.io/unleashing-the-power-of-kubernetes-application-mobility/) 。
+
 在我之前为 The New Stack 撰写的[一篇文章](https://thenewstack.io/realizing-the-dream-of-cloud-native-application-portability/)中，我讨论了云原生应用程序可移植性的挑战和益处。
 
 可移植的应用程序对于热备份、多云负载均衡、将应用程序部署到新的环境以及出于商业原因从一个云切换到另一个云都很有好处。
