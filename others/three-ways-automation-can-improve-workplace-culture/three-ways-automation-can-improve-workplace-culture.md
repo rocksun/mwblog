@@ -5,6 +5,8 @@ Image from 3DJustincase on Shutterstock -->
 
 有才华的团队应该从事有价值的工程工作，这些工作应该是有创意和策略性的，而不是手工和重复性的。那么，他们该如何实现这一目标呢？
 
+译自 [Three Ways Automation Can Improve Workplace Culture](https://thenewstack.io/three-ways-automation-can-improve-workplace-culture/) 。
+
 人才对 IT 运营的成功至关重要。但在专业知识日益稀缺的世界里，雇主必须更加努力才能留住最优秀的人才。不幸的是，许多组织中的工作满意度仍然很低，事件响应人员感到过度劳累和压力过大。在许多情况下，导致这一问题的元凶是苦差事：手工的、重复性的、没有持久价值的战术工作。如果任由其发展，它将破坏许多开发人员和工程师渴望加入的那种高产、创新性的工作环境。
 
 自动化可以是应对这一挑战的答案。然而，考虑到过去取得的成效参差不齐，要实现这一目标并不容易。
