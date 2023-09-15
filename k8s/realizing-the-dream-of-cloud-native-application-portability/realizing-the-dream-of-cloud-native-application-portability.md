@@ -8,6 +8,8 @@ Image via Unsplash.
 
 组织希望从云原生应用程序的可移植性中获得什么？为什么它如此困难？最重要的是，如何正确实现它？
 
+译自 [Realizing the Dream of Cloud Native Application Portability](https://thenewstack.io/realizing-the-dream-of-cloud-native-application-portability/) 。
+
 将应用程序从一个地方迁移到另一个地方看起来很简单：将其压缩打包，传送过去，然后解压缩。这有什么难的？
 
 这种简单化的思维可能描述了虚拟机(VM)时代的应用程序可移植性，当时镜像整个卷可以捕获迁移应用程序所需的一切。
