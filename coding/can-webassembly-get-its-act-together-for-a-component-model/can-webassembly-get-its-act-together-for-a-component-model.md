@@ -7,6 +7,8 @@ https://cdn.thenewstack.io/media/2023/09/07a11450-adi-goldstein-eusvweosble-unsp
 
 随着新的 componentize-py 项目，Python 可以跻身顶级 WebAssembly 语言之列。
 
+译自 [Can WebAssembly Get Its Act Together for a Component Model?](https://thenewstack.io/can-webassembly-get-its-act-together-for-a-component-model/) 。
+
 WebAssembly 的最后一公里仍在进展中，Wasm 社区争先恐后地确定一个共同的标准。在其他事项中，它正等待组件接口 [Wasi](https://wasi.dev/) 的标准化，这是确保在部署 Wasm 应用程序的不同设备和服务器之间的端点兼容性所需的层。随着在无需配置的众多不同端点之间进行的应用程序开发取得进展，WebAssembly 作为一种广泛采用的工具的生存仍有赖于这样一个标准的完成。但是，社区正积极寻求最终确定组件模块，这在上周由 Linux 基金会赞助的首届 [WasmCon 2023](https://events.linuxfoundation.org/wasmcon/program/schedule/) 期间进行的许多演讲中变得非常明显。
 
 [Fermyon Technologies](https://thenewstack.io/webassembly-5-predictions-for-2023/) 联合创始人兼首席执行官 [Matt Butcher](https://www.linkedin.com/in/mattbutcher/) 对 The New Stack 表示："WebAssembly 在其他运行时技术方面具有少数小优势。组件模型是最大的不同。这开辟了以前从未存在过的开发途径。公平地说，这对WebAssembly 是一个重要的存在时刻。"
