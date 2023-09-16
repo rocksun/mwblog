@@ -7,7 +7,7 @@ https://thenewstack.io/entrepreneurship-for-engineers-selling-open-source-softwa
 
 对于开源创业公司的创始人(以及他们最终聘请的销售团队)来说，当公司同时提供免费的替代方案时，销售有哪些独特之处？
 
-译自 [Entrepreneurship for Engineers: Selling Open Source Software](https://thenewstack.io/entrepreneurship-for-engineers-selling-open-source-software/) 。
+译者也算是销售开源软件，我现在也是抱着本文所说的这种心态，先提供帮助，不必一定有销售。译自 [Entrepreneurship for Engineers: Selling Open Source Software](https://thenewstack.io/entrepreneurship-for-engineers-selling-open-source-software/) 。
 
 *面向工程师的创业是一个由 New Stack 的长期贡献者 [Emily Omier](https://thenewstack.io/author/emily-omier/) 撰写的[月度专栏](https://thenewstack.io/entrepreneurship-for-engineers-how-to-grow-into-leadership/)，它探讨了希望为其他开发人员构建工具并围绕其创新建立业务的开发人员的关注点。我们欢迎您的反馈和未来专栏的想法。*
 
