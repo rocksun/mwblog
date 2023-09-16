@@ -9,6 +9,8 @@ Feature image by Daniel Büscher from Pixabay.
 
 美国政府已将在联邦机构中采用开源软件(OSS)作为优先事项。值得更深入地研究这一政策，以考虑如何解决 OSS 的支持性问题。
 
+译自 [A Guide to Navigating Open Source Support Requirements in the US Government](https://thenewstack.io/a-guide-to-navigating-open-source-support-requirements-in-the-u-s-government/) 。
+
 如果说软件正在吞噬世界，那么开源软件正在吞噬软件。Linux 已经成为主流的操作系统，越来越多的企业应用程序中包含了高比例的开源代码。作为回应，美国政府已将在联邦机构中采用[开源软件(OSS)](https://www.nginx.com/resources/glossary/open-source-software-oss/)作为优先事项。国家安全和国防机构中的团队长期以来一直将 OSS 用于网络安全和快速响应的软件导向问题解决。也就是说，许多机构的 IT 管理者在遵守政府法规的同时，仍对如何使用 OSS 感到困惑。尤其是支持需求方面存在疑惑。
 
 与美国政府关于软件供应链安全的 [Executive Order 14028](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/) 等政策类似，国防部(DoD)对 OSS 支持需求也提供了[具体指导](https://dodcio.defense.gov/Open-Source-Software-FAQ/lang/en/#q-am-i-required-to-have-commercial-support-for-oss)。简要总结一下，DoD 开发和实施 OSS 的 IT 团队必须具有“支持计划”。DoD 设置的趋势通常会被其他部门效仿，因此所有美国政府的 IT 员工都应该注意这一政策。
