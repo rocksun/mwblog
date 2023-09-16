@@ -2,12 +2,12 @@
 <!-- 
 # 利用 ChatGPT 提高安全运营中心的生产力
 
-通过捕获对话，从基础设施中获取相关数据并观察其活动，我们可以比以往获得更多洞察。
-
 https://thenewstack.io/use-chatgpt-to-boost-security-operations-center-productivity/
 https://cdn.thenewstack.io/media/2023/08/5563d721-hacker2-1024x711.jpg
 Image by NoName_13 from Pixabay
  -->
+
+通过捕获对话，从基础设施中获取相关数据并观察其活动，我们可以比以往获得更多洞察。
 
 译自 [Use ChatGPT to Boost Security Operations Center Productivity](https://thenewstack.io/use-chatgpt-to-boost-security-operations-center-productivity/) 。
 
