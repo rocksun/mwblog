@@ -9,9 +9,7 @@ Feature Photo by Christopher Gower on Unsplash.
 
 译自 [AI for Developers: How Can Programmers Use Artificial Intelligence?](https://thenewstack.io/ai-for-developers/) 。
 
-这里是翻译:
-
-**_不，人工智能不会抢走你的工作。_**
+**不，人工智能不会抢走你的工作。**
 
 人工智能(AI)、机器学习(ML)和自然语言处理(NLP)正在改变我们做每一件事的格局。问题就在这里：人工智能会对你的工作产生负面影响吗？如果头条新闻预示着未来的趋势，作为一名软件开发人员的你，可能会感到紧张。但是，让我们暂停一下，因为这个话题并非非黑即白。在适当的环境下，开发者可以利用人工智能，这可能是一个好事，不，是一个**伟大**的事情。
 
