@@ -40,4 +40,4 @@ Sharon Li
 
 还有更多！今年的榜单上充满了激励人心的人和想法，涉及机器人技术、计算、生物技术、气候和能源等领域的下一个大事物。[在这里可以读到今年年轻创新者的全榜单](https://www.technologyreview.com/innovators-under-35/2023/?truid=&utm_source=the_algorithm&utm_medium=email&utm_campaign=the_algorithm.unpaid.engagement&utm_content=09-18-2023)。
 
-最后，如果您从事 AI 工作，认为自己有一些激动人心的尖端内容要分享，melissa.heikkila@technologyreview.com！我们一直对有趣工作的人感兴趣。
+最后，如果您从事 AI 工作，认为自己有一些激动人心的尖端内容要分享，[联系我们](melissa.heikkila@technologyreview.com)！我们一直对有趣工作的人感兴趣。
