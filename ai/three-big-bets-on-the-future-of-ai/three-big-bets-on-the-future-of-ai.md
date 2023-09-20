@@ -5,7 +5,7 @@ Feature image via SingleStore
 -->
 
 
-SingleStore 即将举办 Now 大会，开发者将参与如何构建和扩展引人注目的企业级通用 AI 应用的动手实践课程。、、
+SingleStore 即将举办 Now 大会，开发者将参与如何构建和扩展引人注目的企业级通用 AI 应用的动手实践课程。
 
 译自 [Three Big Bets on the Future of AI](https://thenewstack.io/three-big-bets-on-the-future-of-ai/) 。
 
