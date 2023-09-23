@@ -6,6 +6,8 @@ Image via Unsplash
 
 当你的产品模型定义良好，并非紧密地缠绕在某些技术中时，有经验的开发者就可以正常工作。
 
+译自 [The Unity Lesson: How Developers Can Avoid Technology Lock-In](https://thenewstack.io/the-unity-lesson-how-developers-can-avoid-technology-lock-in/) 。
+
 ## 团结的教训: 开发人员如何避免技术锁定
 
 虽然我之前在[先前的帖子](https://thenewstack.io/how-to-start-unity-development-even-if-youre-not-a-gamer/)中提到了 [Unity](https://unity.com/) 平台，因为它为面向大多数设备的基于 UI 的应用提供了可靠的解决方案，但它仍然是专门为游戏行业设计的。然而，最近的新闻和正在进行的故事已经进入主流媒体，[因为游戏开发社区的反应](https://www.bloomberg.com/news/newsletters/2023-09-15/unity-technologies-rolls-out-new-fees-destroys-its-goodwill-with-developers)。在使用 Unreal 或自己的引擎制作“AAA”游戏的大型工作室之外，Unity 在独立开发者和小团队中非常流行。该平台在大学里很受欢迎，这导致许多学生的首次开发经验都是 C#。Unity 也是移动开发的一个流行平台，这可能[会给苹果](https://appleinsider.com/articles/23/09/20/unitys-self-sabotage-with-pricing-will-be-a-long-term-problem-for-apple)带来问题。
