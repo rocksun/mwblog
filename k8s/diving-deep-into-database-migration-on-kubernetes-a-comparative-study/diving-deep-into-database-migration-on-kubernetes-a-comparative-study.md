@@ -7,6 +7,8 @@ https://medium.com/cloud-native-daily/diving-deep-into-database-migration-on-kub
 
 利用 Init 容器、持续部署流水线、带 Kubernetes Job 的独立 Helm Chart 和自定义开发的 SQL 脚本执行器进行数据库迁移。
 
+译自 [Diving Deep into Database Migration on Kubernetes: A Comparative Study](https://medium.com/cloud-native-daily/diving-deep-into-database-migration-on-kubernetes-a-comparative-study-777ca66c1034) 。
+
 ## 介绍
 
 在 Kubernetes 集群上部署应用程序时，数据库迁移是非常关键的一个方面。它可以确保数据库模式和数据与应用程序不断发展的需求保持同步。
