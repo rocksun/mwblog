@@ -23,7 +23,6 @@ Image from fizkes on Shutterstock.
 - 被迅速采用
 - 适用于大多数数字互动场景
 
-这里是翻译:
 
 ## 技术变革，原则恒定
 
