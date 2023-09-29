@@ -1,5 +1,5 @@
 <!--
-# Dapr 作为微服务架构的终极模式框架
+# Dapr 作为微服务的终极模式框架
 https://cdn.sanity.io/images/n7sx3lxl/production/cb794330826ed4082110b978ebb8d92f212a12f5-4793x2045.png
 
  -->
