@@ -5,6 +5,8 @@
 
 为平台团队提供构建编排功能的工作流程和检查表。
 
+译自 [The Pillars of Platform Engineering: Part 5 — Orchestration](https://thenewstack.io/the-pillars-of-platform-engineering-part-5-orchestration/) 。
+
 本指南概述了平台工程中六大技术领域中的开发者体验工作流程和检查表步骤。该系列分六部分发布，第一部分介绍了该系列，并着重于安全性。第五部分讨论编排。完整的 PDF 版本包含[平台工程的六大大支柱](https://www.hashicorp.com/on-demand/the-six-pillars-of-platform-engineering?utm_source=partner&utm_medium=email&utm_campaign=24Q3_WW_SIXPILLARSOFPLATFORMENGINEERING_WP&utm_content=&utm_offer=whitepaper)的完整指导方针. 大纲和检查表，可供下载:
 
 1. [安全性(包括简介)](https://yylives.cc/2023/09/24/the-6-pillars-of-platform-engineering-part-1-security/)
