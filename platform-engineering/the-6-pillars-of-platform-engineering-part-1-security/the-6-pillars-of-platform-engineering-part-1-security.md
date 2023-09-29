@@ -26,12 +26,12 @@ Feature image by Dimitris Vetsikas from Pixabay
 
 平台战略的具体构建块是什么？在与各行各业的客户合作中，HashiCorp 的解决方案工程师和架构师确定了组成大多数平台的六个基础支柱，每个支柱将在单独的文章中解决:
 
-1. 安全性
-2. 流水线(版本控制系统、持续集成/持续交付)
-3. 预配
+1. [安全性(包括简介)](https://yylives.cc/2023/09/24/the-6-pillars-of-platform-engineering-part-1-security/)
+2. 流水线(VCS、CI/CD) 
+3. Provisioning
 4. 连接性
 5. 编排
-6. 可观察性
+6. 可观测性(包括总结和下一步)
 
 ## 平台支柱之一：安全性
 
