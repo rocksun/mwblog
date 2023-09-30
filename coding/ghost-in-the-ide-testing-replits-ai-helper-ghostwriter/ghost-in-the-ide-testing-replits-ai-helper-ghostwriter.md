@@ -12,7 +12,7 @@ https://cdn.thenewstack.io/media/2023/09/d1afb4cf-syarafina-yusof-oy7ucwu-rlq-un
 
 [Replit](https://replit.com/) 是一个已经非常流行的在线 IDE，您的项目托管在"Repls"(REPL 或 read-eval-print loop 一词是其名称的由来)上。 Replit 是一个托管的解决方案，因此协作已经内置在其中。最近，该公司推出了其 LLM 服务 [Ghostwriter](https://replit.com/site/ghostwriter)。
 
-与 OpenAI 的通用能力不同，《经济学人》注意到，Replit 更倾向于使用 LLM 模型来[专注于开发](https://www.economist.com/business/2023/09/18/could-openai-be-the-next-tech-giant)。他们使用了 Nvidia 高度投入的 [Databricks](https://www.databricks.com/) AI 平台。
+与 OpenAI 的通用能力不同，经济学家注意到，Replit 更倾向于使用 LLM 模型来[专注于开发](https://www.economist.com/business/2023/09/18/could-openai-be-the-next-tech-giant)。他们使用了 Nvidia 高度投入的 [Databricks](https://www.databricks.com/) AI 平台。
 
 我无需安装任何东西，就直接用 Google 账号创建了一个 Replit 账号。当然，我也可以使用 GitHub 作为身份验证。有趣的是，Replit 不仅询问您的预期用途(个人、协作等)，还询问您完成了多少开发工作。我在仪表板上首先看到的是一个悬赏任务墙，这超出了我的预期。这充分体现了 Replit 不仅是一个工具，更是一个社区 - 因此它内置了方便的内部市场。
 
