@@ -6,8 +6,7 @@
 
 译自 [If I were a CTO， I’d approach platform engineering like this](https：//www.eficode.com/blog/if-i-were-a-cto-id-approach-platform-engineering-like-this) 。
 
-
-## 第一部分
+# 第一部分
 
 平台工程已经在科技界讨论一段时间了，但它到底是什么？
 
@@ -15,17 +14,17 @@
 
 但是作为 CTO ，如何应对其广泛的复杂性？作为一名 DevOps 顾问，我将通过这个七部分博客系列，从 CTO 的角度探讨这个问题。
 
-Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
+Dan Grøndahl Glavind 用 CTO 的视角，写了一系列七篇博客来讲述平台工程。
 
-第一部分：假如我是 CTO ，我会这样推动平台工程
-第二部分：建立平台工程组织
-第三部分：平台团队如何实现远大目标
-第四部分：平台团队成功的秘诀
-第五部分：引导平台团队产品思维
-第六部分：用非数字方式衡量平台团队成果
-第七部分：传达平台团队的成就和挑战
+- [第一部分：假如我是 CTO ，我会这样推动平台工程](https://yylives.cc/2023/09/29/if-i-were-a-cto-id-approach-platform-engineering-like-this/)
+- [第二部分：建立平台工程组织](https://yylives.cc/2023/10/01/establishing-a-platform-engineering-organization/)
+- [第三部分：平台团队如何实现远大目标](https://yylives.cc/2023/10/01/how-platform-teams-can-achieve-ambitious-goals/)
+- [第四部分：平台团队成功的箴言](https://yylives.cc/2023/10/01/a-mantra-for-platform-teams-to-succeed/)
+- [第五部分：引导平台团队树立产品思维](https://yylives.cc/2023/10/01/navigating-the-product-mindset-in-platform-teams/)
+- [第六部分：超越数字，衡量平台团队的成功](https://yylives.cc/2023/10/01/measuring-success-beyond-numbers-in-platform-teams/)
+- [第七部分：平台团队的沟通、成就和挑战](https://yylives.cc/2023/10/01/communicating-achievements-and-challenges-in-platform-teams/)
 
-### 获得高层支持至关重要
+## 获得高层支持至关重要
 
 采用[平台工程](https://www.eficode.com/events/embrace-platform-engineering-to-deliver-business-value)不仅是技术转变，更是范式转变。对 CTO 来说，不仅要考虑“如何做”，更要思考“为何要做”。为推动这样重大的转型，首先要思考：
 
@@ -35,7 +34,7 @@ Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
 
 回答这些问题可以制定一个与目标一致的行动计划。以下是行业的一些常见目标。
 
-### 软件开发中的反馈
+## 软件开发中的反馈
 
 在软件开发中，“实现价值时间”经常被优先考虑，这关注从提出想法到获得实际效益之间的时间差。但是重点不仅是快速交付软件，还包括理解新软件对业务和用户的整体影响。
 
@@ -47,7 +46,7 @@ Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
 
 想象一位大厨在装备先进的厨房里工作。有了正确的工具和环境，他可以专注烹饪令人垂涎的菜肴，而不用担心设备故障或原料短缺。在软件开发中，平台就是厨房，开发人员就是大厨。他们开发出取悦用户的解决方案，推动企业成功。
 
-### 平台工程的成本
+## 平台工程的成本
 
 在现代 IT 格局中，IT 领导者倾向关注降低成本。这类似于拔掉服务器插头节省电费，可能节省资金，但从实用性来看行不通。
 
@@ -57,7 +56,7 @@ Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
 
 最终，这培养价值创造和成本控制并重的文化。IT 投资与创造价值一样重要。
 
-### 开发者体验(DevX)的重要性
+## 开发者体验(DevX)的重要性
 
 在技术圈，各公司争抢人才，顶尖开发者就像黄金标准。那么如何使公司成为开发者梦寐以求的地方？
 
@@ -69,7 +68,7 @@ Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
 
 那么平台工程在其中起什么作用？精简。顶级组织缩短交付时间并非碰巧，而是战略投资平台以统一和加速软件交付。平台不是仅仅工具，而是改变游戏规则者。
 
-### 软件合规
+## 软件合规
 
 适应合规要求，感觉像回到软件被称为“程序”，更新被称为“季节性事件”的日子。今天，业已大不相同。
 
@@ -93,4 +92,3 @@ Dan Grøndahl Glavind 的七部分博客系列 - CTO 眼中的平台工程中
 平台工程的本质不仅是技术，还涉及商业愿景、团队动力和技术能力。
 
 那么，我们如何建立平台工程组织呢?请阅读我的博客系列第二部分。
-

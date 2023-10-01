@@ -11,13 +11,13 @@ https://www.eficode.com/blog/measuring-success-beyond-numbers-in-platform-teams
 
 Dan Grøndahl Glavind 用 CTO 的视角，写了一系列七篇博客来讲述平台工程。
 
-第一部分：假如我是 CTO ，我会这样推动平台工程
-第二部分：建立平台工程组织
-第三部分：平台团队如何实现远大目标
-第四部分：平台团队成功的秘诀
-第五部分：引导平台团队产品思维
-第六部分：用非数字方式衡量平台团队成果
-第七部分：传达平台团队的成就和挑战
+- [第一部分：假如我是 CTO ，我会这样推动平台工程](https://yylives.cc/2023/09/29/if-i-were-a-cto-id-approach-platform-engineering-like-this/)
+- [第二部分：建立平台工程组织](https://yylives.cc/2023/10/01/establishing-a-platform-engineering-organization/)
+- [第三部分：平台团队如何实现远大目标](https://yylives.cc/2023/10/01/how-platform-teams-can-achieve-ambitious-goals/)
+- [第四部分：平台团队成功的箴言](https://yylives.cc/2023/10/01/a-mantra-for-platform-teams-to-succeed/)
+- [第五部分：引导平台团队树立产品思维](https://yylives.cc/2023/10/01/navigating-the-product-mindset-in-platform-teams/)
+- [第六部分：超越数字，衡量平台团队的成功](https://yylives.cc/2023/10/01/measuring-success-beyond-numbers-in-platform-teams/)
+- [第七部分：平台团队的沟通、成就和挑战](https://yylives.cc/2023/10/01/communicating-achievements-and-challenges-in-platform-teams/)
 
 ## 传统指标的局限
 
