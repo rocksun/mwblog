@@ -8,7 +8,7 @@ https://www.eficode.com/hs-fs/hubfs/How%20platform%20teams%20can%20achieve%20amb
 
 艰巨的目标不仅给我们提供努力的方向，也能激发我们的潜力。虽然目标应该充满雄心，但我们需要确保它们既务实又可实现。
 
-译自 [HOW PLATFORM TEAMS CAN ACHIEVE AMBITIOUS GOALS](https://www.eficode.com/blog/how-platform-teams-can-achieve-ambitious-goals?_gl=1*jzzi9v*_up*MQ..*_ga*MTMwMzYyNTQ3My4xNjk1OTA5MDcx*_ga_H7FVZKYH8C*MTY5NTkwOTA3MC4xLjEuMTY5NTkwOTE1NC4wLjAuMA..) 。
+译自 [HOW PLATFORM TEAMS CAN ACHIEVE AMBITIOUS GOALS](https://www.eficode.com/blog/how-platform-teams-can-achieve-ambitious-goals) 。
 
 Dan Grøndahl Glavind 用 CTO 的视角，写了一系列七篇博客来讲述平台工程。
 
