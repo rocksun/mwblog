@@ -1,7 +1,9 @@
 <!-- 
 # 平台团队成功的箴言
+https://www.eficode.com/hs-fs/hubfs/A%20mantra%20for%20platform%20teams.png?width=640&name=A%20mantra%20for%20platform%20teams.png
  -->
 
+译自 [A MANTRA FOR PLATFORM TEAMS TO SUCCEED](https://www.eficode.com/blog/a-mantra-for-platform-teams-to-succeed) 。
 
 # 第四部分
 
