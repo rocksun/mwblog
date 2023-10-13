@@ -1,5 +1,5 @@
 <!-- 
-# 如何利用 LLMs 动态生成文档
+# 如何利用 LLM 动态生成文档
 
 https://cdn.thenewstack.io/media/2023/10/cf4e813d-sigmund-vvrjjtbuuai-unsplash-1024x683.jpg
 Featued image for: How to Use LLMs for Dynamic Documentation
