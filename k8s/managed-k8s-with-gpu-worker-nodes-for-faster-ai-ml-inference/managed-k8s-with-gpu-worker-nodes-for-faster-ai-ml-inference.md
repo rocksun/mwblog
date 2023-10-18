@@ -1,6 +1,7 @@
-
+<!-- 
 # 具有 GPU 工作节点的托管 K8s 可加速 AI/ML 推理
-
+https://cdn.thenewstack.io/media/2023/10/fde8d6af-image2-1024x569.png
+ -->
 
 拥有 GPU 工作节点对于提高 AI/ML 工作负载的效率至关重要。同时，采用托管的 Kubernetes 方式也会给 GPU 加速带来独特的好处。
 
