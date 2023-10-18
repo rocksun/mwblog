@@ -1,5 +1,5 @@
 <!--
-# 在企业环境中应用大规模语言模型的机遇与限制
+# 在企业环境中应用大语言模型的机遇与限制
 https://cdn.thenewstack.io/media/2023/10/17ae17a7-brain-8258274_1280-1024x766.jpg
 Image by Pete Linforth from Pixabay.
  -->
