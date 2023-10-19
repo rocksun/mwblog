@@ -1,5 +1,5 @@
 <!--
-# 利用检索增强生成（RAG）的评估：TruLens + Milvus
+# 评估检索增强生成（RAG）：TruLens + Milvus
 https://cdn.thenewstack.io/media/2023/10/1fffda46-image5-1024x536.jpg
  -->
 
