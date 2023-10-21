@@ -1,5 +1,5 @@
 <!-- 
-# CI/CD中SBOM的实用方法 第一部分 — CycloneDX
+# CI/CD中SBOM的实用方法第一部分 — CycloneDX
 
  -->
 
@@ -138,18 +138,18 @@ SBOM被生成并存储在`cyclonedx.json`文件中。需要注意，输出文件
 
 ```json
     "component": {
-      "type": "library"，  
-      "bom-ref": "pkg:pypi/fastapi@0.103.1"，
-      "name": "fastapi"，
-      "version": "0.103.1"，
-      "description": "FastAPI is a modern， fast (high-performance)， web framework for building APIs with Python 3.7+ based on standard Python type hints."，
+      "type": "library",
+      "bom-ref": "pkg:pypi/fastapi@0.103.1",
+      "name": "fastapi",
+      "version": "0.103.1",
+      "description": "FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.",
       "licenses": [
         {
           "license": {
             "id": "MIT"
           }
         }
-      ]，
+      ],
 ```
 
 
