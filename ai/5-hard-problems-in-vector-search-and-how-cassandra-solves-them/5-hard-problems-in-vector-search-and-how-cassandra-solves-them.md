@@ -4,7 +4,7 @@ https://cdn.thenewstack.io/media/2023/09/674da981-globalisation-3390877_1280-102
 Feature image by Pete Linforth from Pixabay.
  -->
 
-向量搜索引擎是数据库一个重要的新增功能，它面临着扩展性、垃圾回收、并发性、磁盘利用效率和组合能力等多方面的架构挑战。本文将介绍DataStax如何在Astra DB和Apache Cassandra中添加这些功能。s
+向量搜索引擎是数据库一个重要的新增功能，它面临着扩展性、垃圾回收、并发性、磁盘利用效率和组合能力等多方面的架构挑战。本文将介绍DataStax如何在Astra DB和Apache Cassandra中添加这些功能。
 
 译自 [5 Hard Problems in Vector Search， and How Cassandra Solves Them](https://thenewstack.io/5-hard-problems-in-vector-search-and-how-cassandra-solves-them/) 。
 
