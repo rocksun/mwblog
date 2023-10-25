@@ -61,7 +61,7 @@ HashiCorp 在这个问题上的立场已经非常明确。[2022年10月](https:/
 
 “但这个前提被打破了，”Hytry继续说道，“在我看来，这对更广泛的生态系统意味着，如果前提被打破，总会有开源的替代方案出现。”
 
-“我认为这可能是一个真正的转折点，”Brigham Young大学法学院Hugh W. Colton教授[Clark Asay](https://law.byu.edu/directory/faculty/clark-d-asay/)评论道，
+“我认为这可能是一个真正的转折点，”Brigham Young大学法学院Hugh W. Colton教授[Clark Asay](https://law.byu.edu/directory/faculty/clark-d-asay/)评论道。
 
 “显然，多年来开源软件运动已经在很大程度上商业化......志愿者社区与领导项目的组织之间的关系，或收购项目的组织，或指导项目的组织之间出现了相当大的负面动态。这类事件可能会推动软件开发向与过去20至30年完全不同的方向发展。”
 
