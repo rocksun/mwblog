@@ -16,7 +16,7 @@ eBPF允许组织在不更改内核源代码或需要内核模块的情况下向L
 
 专门针对安全性，eBPF提供了监控的非常详细的方式，并提供了监控不同潜在可疑系统活动和代码的跟踪。所有这些都适用于其通道中的就地处理或处理速度。
 
-一个关键方面是安全[提供商正在利用 eBPF 的可观测性](https://thenewstack.io/cilium-cncf-graduation-could-mean-better-observability-security-with-ebpf/)来预防攻击，检测和修复高优先级漏洞(并区分严重和不那么严重的漏洞)，检测可疑活动等。当然，这种扩展还包括分析事件、发出和接收有关漏洞和事件的警报，以及分析或发现潜在的危险漏洞和攻击向量。 正是可观测性方面的[利用 eBPF 来监控和检测](https://thenewstack.io/what-ebpf-means-for-container-threat-detection/)可疑活动，并帮助确定哪些漏洞有可能被利用。
+一个关键方面是安全[提供商正在利用 eBPF 的可观测性](https://thenewstack.io/cilium-cncf-graduation-could-mean-better-observability-security-with-ebpf/)来预防攻击，检测和修复高优先级漏洞(并区分严重和不那么严重的漏洞)，检测可疑活动等。当然，这种扩展还包括分析事件、发出和接收有关漏洞和事件的警报，以及分析或发现潜在的危险漏洞和攻击轨道。 正是可观测性方面的[利用 eBPF 来监控和检测](https://thenewstack.io/what-ebpf-means-for-container-threat-detection/)可疑活动，并帮助确定哪些漏洞有可能被利用。
 
 ## 内核时间
 
