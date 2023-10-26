@@ -125,6 +125,6 @@ deploy
 
 ## 惊喜
 
-整理完文章后，我发现原来 Capistrano 就在我身边，原来 vagrant 用了它：
+整理完文章后，我发现原来 Capistrano 就在我身边，vagrant 用了它：
 
 ![](https://yylives.cc/wp-content/uploads/2023/10/Snipaste_2023-10-26_20-43-03.jpg)
