@@ -1,5 +1,5 @@
 <!-- 
-# 人工智能如何改变可观测性
+# 人工智能如何增强可观测性
 https://cdn.thenewstack.io/media/2023/10/0d5d3fb2-smash-5515411_1280-1024x682.jpg
  -->
 
