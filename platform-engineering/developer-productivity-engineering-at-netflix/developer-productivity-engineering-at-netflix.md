@@ -1,5 +1,7 @@
-
+<!-- 
 # Netflix的开发者生产力工程
+https://cdn.thenewstack.io/media/2023/10/0439525e-netflix-1024x601.png
+ -->
 
 并非所有的团队都能达到Netflix的高度，但了解他们如何进行开发者生产力工程仍可能对你的团队有所帮助。
 
