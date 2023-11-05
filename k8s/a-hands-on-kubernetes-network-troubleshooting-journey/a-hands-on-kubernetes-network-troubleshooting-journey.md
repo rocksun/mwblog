@@ -3,9 +3,9 @@
 
  -->
 
-译自 [A Hands-on Kubernetes Network Troubleshooting Journey](https://itnext.io/a-hands-on-kubernetes-network-troubleshooting-journey-c2b051ce6761) 。
-
 在开发Kata/remote-hypervisor(也称为peer-pods)方案时，我遇到了一个问题，即Kubernetes pod IP在工作节点上无法访问。在本博客中，我将描述Kubernetes网络故障排查过程，希望对读者有帮助。
+
+译自 [A Hands-on Kubernetes Network Troubleshooting Journey](https://itnext.io/a-hands-on-kubernetes-network-troubleshooting-journey-c2b051ce6761) 。
 
 Kata远程管理程序(peer-pods)方案通过在AWS或Microsoft Azure等基础设施环境中使用本机基础设施管理API(如在AWS上创建Kata VM时使用AWS API，在Azure上创建时使用Microsoft Azure API)，实现在任何基础设施环境中创建Kata VM。CNCF保密容器项目的cloud-api-adaptor子项目实现了Kata远程管理程序。
 
