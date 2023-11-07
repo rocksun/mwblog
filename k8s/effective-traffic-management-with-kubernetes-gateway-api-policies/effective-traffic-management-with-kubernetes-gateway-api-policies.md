@@ -1,6 +1,6 @@
 <!-- 
 # 基于Kubernetes网关API策略的流量管理
-
+https://cdn.thenewstack.io/media/2023/11/b8f92e8d-stop-634941_1280-1024x683.jpg
  -->
 
 Kubernetes网关API通过抽象复杂性并提供声明式的方法来定义路由和流量策略，简化了配置流程。
