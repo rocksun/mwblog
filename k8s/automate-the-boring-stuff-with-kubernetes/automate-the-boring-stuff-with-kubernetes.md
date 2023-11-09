@@ -1,6 +1,6 @@
 <!-- 
 # 使用Kubernetes自动化枯燥的工作
-
+https://cdn.thenewstack.io/media/2023/11/89737a14-containers3-1024x456.jpg
  -->
 
 你可以用Kubernetes来自动化工厂。你可以用它来运行城市灌溉系统。你可以依靠它。它一点也不枯燥。
