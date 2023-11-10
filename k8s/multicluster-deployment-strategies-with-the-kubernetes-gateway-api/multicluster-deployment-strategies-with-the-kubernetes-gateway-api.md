@@ -3,6 +3,8 @@
 https://cdn.thenewstack.io/media/2023/11/7e2803ae-graffiti-10917_1280-1024x682.jpg
  -->
 
+Kubernetes Gateway API 为多集群部署奠定了基础
+
 译自 [Multicluster Deployment Strategies with the Kubernetes Gateway API](https://thenewstack.io/multicluster-deployment-strategies-with-the-kubernetes-gateway-api/) 。
 
 在当今动态的应用环境中，掌握复杂的多集群部署的专业知识已经变得非常重要。这些部署对于保证当今分布式和全球化用户群体所需的可扩展性、弹性和高可用性是关键。在这项工作的核心是 Kubernetes Gateway API，这是一种强大的工具，擅长协调和监控跨多个 Kubernetes 集群的工作负载。
