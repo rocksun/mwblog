@@ -2,6 +2,8 @@
 # Kubernetes的安全性不能仅仅依赖于eBPF
 https://cdn.thenewstack.io/media/2023/11/db2978cb-growtika-gsieeohcntq-unsplash-e1699539849298-1024x576.jpg
  -->
+ 
+不建议在没有适当的服务提供商和第三方工具的情况下使用eBPF。
 
 译自 [Don’t Rely on eBPF Alone for Kubernetes](https://thenewstack.io/dont-rely-on-ebpf-alone-for-kubernetes/) 。
 
