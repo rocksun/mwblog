@@ -3,7 +3,7 @@
 https://cdn.thenewstack.io/media/2023/11/7e2803ae-graffiti-10917_1280-1024x682.jpg
  -->
 
-Kubernetes Gateway API 为多集群部署奠定了基础
+Kubernetes Gateway API 为多集群部署奠定了基础。
 
 译自 [Multicluster Deployment Strategies with the Kubernetes Gateway API](https://thenewstack.io/multicluster-deployment-strategies-with-the-kubernetes-gateway-api/) 。
 
