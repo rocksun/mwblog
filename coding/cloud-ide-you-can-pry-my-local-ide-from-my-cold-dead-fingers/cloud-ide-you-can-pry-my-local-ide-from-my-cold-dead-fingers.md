@@ -1,5 +1,5 @@
 <!--
-# 用云替代我的本地IDE？除非你先干掉我
+# 用云替代我的本地IDE？除非你先杀了我
 https://cdn.thenewstack.io/media/2023/11/e017d708-rb19-1024x521.jpg
  -->
 
