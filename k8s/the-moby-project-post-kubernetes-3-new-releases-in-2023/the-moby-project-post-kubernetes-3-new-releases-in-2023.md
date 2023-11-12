@@ -6,7 +6,7 @@ https://cdn.thenewstack.io/media/2023/10/d2c35253-mobyprojectphoto-1024x591.png
 
 *Docker工程师Sebastiaan van Stijn(左)和Bjorn Neergaard就Moby项目进行演讲。图片来源:Loraine Lawson。*
 
-译自 [The Moby Project Post-Kubernetes: 3 New Releases in 2023](https://thenewstack.io/the-moby-project-post-kubernetes-3-new-releases-in-2023/) 。
+译自 [The Moby Project Post-Kubernetes: 3 New Releases in 2023](https://thenewstack.io/the-moby-project-post-kubernetes-3-new-releases-in-2023/) 。Moby 项目继承了 Docker 的运行时部分，也在不断的进步。
 
 开源Moby项目的最后一个主要版本发布于2020年，但根据两名Moby项目贡献者透露，今年将会有3个主要版本发布。
 
