@@ -6,6 +6,9 @@
 
 [站点可靠性工程(SRE)](https://www.dynatrace.com/news/blog/what-is-site-reliability-engineering/)对于希望跟上数字化转型快速步伐的组织越来越重要。现在，客户比以往任何时候都更期待高质量、可靠的数字化服务，能够提供无缝的用户体验。SRE可以在整个数字环境中确保可依赖性和一致性，为组织持续地向客户交付这些理想的体验提供了框架。
 
+> 译自 Dynatrace 博客 [Header background
+The state of site reliability engineering: SRE challenges and best practices in 2023](https://www.dynatrace.com/news/blog/state-of-sre-in-2023/)。
+
 Dynatrace产品营销总监Saif Gunja主持了[2023年SRE状态网络研讨会](https://info.dynatrace.com/noram-all-wc-the-state-of-sre-in-2023-22177-registration.html?_ga=2.82758929.660837410.1700024224-2020414341.1697607615&_gl=1*rzap37*_ga*MjAyMDQxNDM0MS4xNjk3NjA3NjE1*_ga_1MEMV02JXV*MTcwMDAyNDIyMy4yLjEuMTcwMDAyNDI1MC4wLjAuMA..)。与Gunja一起参加网络研讨会的有几位SRE，分别是来自Kyndryl的Danne Aguiar、红帽的Hilliary Lipsig和SquaredUp的Stephen Townshend。他们讨论了最佳实践、新兴趋势、建立[服务级目标(SLO)](https://www.dynatrace.com/news/blog/what-are-slos/)的有效思维方式等。主持人和小组成员一起提供了他们对组织如何增强SRE工作的见解。
 
 ## 有效的站点可靠性工程需要企业范围的转型
