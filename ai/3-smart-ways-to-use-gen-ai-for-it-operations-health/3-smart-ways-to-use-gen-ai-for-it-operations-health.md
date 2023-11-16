@@ -5,7 +5,7 @@ https://cdn.thenewstack.io/media/2023/11/a95b57e4-genai-operations-1024x684.jpg
 
 生成式人工智能可以帮助IT团队在节省成本的同时提高工作效率和产出，但要成功运用这项技术，可能需要改变组织的文化、技能、流程和安全体系。
 
-译自 [3 Smart Ways to Use Gen AI for IT Operations Health](https://thenewstack.io/3-smart-ways-to-use-gen-ai-for-it-operations-health/) 。
+> 作者Debora Cambe是PagerDuty的产品营销经理,支持该公司的事件响应上市举措。她作为营销专业人员的10多年经验包括在PlayStation担任自有媒体经理,以及为沃达丰拥有的电信品牌Yorn担任社交媒体顾问。译自 [3 Smart Ways to Use Gen AI for IT Operations Health](https://thenewstack.io/3-smart-ways-to-use-gen-ai-for-it-operations-health/) 。
 
 最近，生成式人工智能似乎成了大家关注的焦点，而这确实也有充分的理由。在当前宏观经济环境不佳的大背景下，人工智能可以帮助资源有限的组织实现扩张规模和提高效率的目标。根据[麦肯锡](https://www.mckinsey.com/~/media/mckinsey/business%20functions/mckinsey%20digital/our%20insights/the%20economic%20potential%20of%20generative%20ai%20the%20next%20productivity%20frontier/the-economic-potential-of-generative-ai-the-next-productivity-frontier-vf.pdf)的研究，生成式人工智能可能为全球经济增加数万亿美元的价值，影响范围广泛。
 
