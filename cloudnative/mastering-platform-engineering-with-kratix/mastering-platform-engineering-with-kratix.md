@@ -3,9 +3,10 @@ title: 通过Kratix掌握平台工程
 cover: https://www.infracloud.io/assets/img/Blog/mastering-platform-engineering-with-kratix/how-does-kratix-work.png
 -->
 
-> 译自 [Mastering Platform Engineering with Kratix](https://www.infracloud.io/blogs/mastering-platform-engineering-with-kratix/)。作者
-
 [DevOps向平台工程的演变](https://www.infracloud.io/blogs/devops-to-platform-engineering-how-we-got-here/)，是当前技术领域一个有趣的转型。[平台工程](https://www.infracloud.io/blogs/platform-engineering-101/)包括创建创新工程解决方案，帮助开发者减少基础设施部署等非开发活动的时间投入，使他们可以专注于应用程序开发和交付。
+
+> 译自 [Mastering Platform Engineering with Kratix](https://www.infracloud.io/blogs/mastering-platform-engineering-with-kratix/)。作者 
+Nitin Naidu 。
 
 各种工程解决方案的采用，例如内部开发平台(IDP)- 比如Backstage，都支持平台工程的采用。这些工具中一些致力于为开发者创建一个中心控制台，而一些则帮助平台工程师构建平台即服务，这可能与通过运行单个命令来帮助设置开发环境一样简单。
 
