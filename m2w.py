@@ -4,6 +4,31 @@ import os
 import base64
 import json
 
+def get_image_name(img_url):
+    last_slash_idx = img_url.rfind('/')
+    if last_slash_idx == -1:
+        return img_url
+    filename_with_ext = img_url[last_slash_idx+1:]
+    return filename_with_ext
+
+def download_image(url, path):
+    # 创建图片的保存目录
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    # 下载图片
+    response = requests.get(url)
+
+    # 保存图片
+    targetImage = os.path.join(path, get_image_name(url))
+    with open(targetImage, "wb") as f:
+        f.write(response.content)
+        
+    return targetImage
+
+
+
+
 username = 'rocksun'
 password = os.environ.get("WP_PASSWORD")
 creds = username + ':' + password
@@ -15,6 +40,14 @@ header = {
     }
 
 baseSrc = 'https://github.com/rocksun/mwblog/blob/master'
+baseEndPoint = 'https://yylives.cc/wp-json/wp/v2/'
+
+def upload_image(image_path):
+    files = {'file': open(image_path, 'rb')}
+    r = requests.post(baseEndPoint + 'media', headers=header, files=files, verify=False)
+    return r.json()['id']
+
+
 
 if len(sys.argv) != 2:
     print("please provide a markdown file")
@@ -23,6 +56,7 @@ if len(sys.argv) != 2:
 file_name = sys.argv[1]
 slug = os.path.basename(file_name).replace(".md","")
 abs_file_path = os.path.abspath(file_name)
+directory = os.path.dirname(abs_file_path)
 
 relative_file_path = abs_file_path.split('mwblog')[1].replace("\\","/")
 target_path = baseSrc + relative_file_path
@@ -57,9 +91,18 @@ data = {
 
 print(data)
 
-endpoint = 'https://yylives.cc/wp-json/wp/v2/posts'
+print("download cover images")
+targetImage = download_image(meta_data['cover'], directory)
+print("upload cover images")
+imageID = upload_image(targetImage)
+print("Media ID: ", imageID)
+
+data['featured_media'] = imageID
+
+
+endpoint = baseEndPoint+'posts'
 
 response = requests.post(endpoint, headers=header, json=data, verify=False)
 
 print(response.status_code)
-print(response.text)
+# print(response.text)
