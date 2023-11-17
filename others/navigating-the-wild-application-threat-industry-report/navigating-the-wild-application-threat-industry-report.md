@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2023/11/bc285b8b-wild-1024x683.jpg
 
 现有的大多数安全工具都没有监测或报告客户端应用程序面临的威胁，这一未解决的问题引起了广泛关注。
 
-> 译自 [Navigating the Wild: Application Threat Industry Report](https://thenewstack.io/navigating-the-wild-application-threat-industry-report/)。作者
+> 译自 [Navigating the Wild: Application Threat Industry Report](https://thenewstack.io/navigating-the-wild-application-threat-industry-report/)。作者Daniel Shugrue在安全和通信技术领域有超过20年的工作经验。在加入Digital.ai之前,Daniel在微软从事保密计算工作,在CyberX从事物联网安全工作,在Akamai从事Web应用防火墙安全工作,并在RSA从事认证工作。
 
 应用程序已经走出封闭环境，进入创造者无法完全控制的“野外”。虽然局域网内的应用已经存在几十年，但智能手机的大量使用开启了移动应用新时代，无数苹果和谷歌等平台带动的应用现在已经超出这些受控网络。这一转变对理解应用程序面临的威胁至关重要，因为这些应用最容易被威胁者获取，仅2021年移动应用下载量就高达惊人的1000亿次，突显了这个现实。
 
