@@ -3,6 +3,7 @@ import sys
 import os
 import base64
 import json
+import webbrowser 
 
 def get_image_name(img_url):
     last_slash_idx = img_url.rfind('/')
@@ -105,4 +106,8 @@ endpoint = baseEndPoint+'posts'
 response = requests.post(endpoint, headers=header, json=data, verify=False)
 
 print(response.status_code)
-print(response.text)
+
+if response.status_code == 201:
+    post_id = response.json()["id"]
+    url = "https://yylives.cc/wp-admin/post.php?post=%s&action=edit" % post_id
+    webbrowser.open(url)
