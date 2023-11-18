@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2023/11/800f5433-multicloud-architecture
 
 多云不仅仅是一个流行词语，它为IT架构带来了显著的好处。以下是我的愿望清单。
 
-> 译自 [Multicloud Architecture: What I Want to See](https://thenewstack.io/multicloud-architecture-what-i-want-to-see/)。作者Robert Sonders已经在戴尔技术公司工作了12多年。在此期间,他一直专注于微软工作负载,无论是本地还是现在的多云,特别是SQL Server生态系统和软件定义存储。在这段旅程中,罗伯特以技术顾问架构师、预售解决方案主管和戴尔的全球微软工作负载专家的身份带领项目团队
+> 译自 [Multicloud Architecture: What I Want to See](https://thenewstack.io/multicloud-architecture-what-i-want-to-see/)。作者Robert Sonders已经在戴尔技术公司工作了12多年。在此期间,他一直专注于微软工作负载,无论是本地还是现在的多云,特别是SQL Server生态系统和软件定义存储。在这段旅程中,罗伯特以技术顾问架构师、预售解决方案主管和戴尔的全球微软工作负载专家的身份带领项目团队。
 
 
 “多云”这个词到底是什么意思呢？它是一个目的地吗？一个操作吗？要怎么才能“做多云”呢？

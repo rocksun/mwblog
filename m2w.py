@@ -12,18 +12,18 @@ def get_image_name(img_url):
     return filename_with_ext
 
 def download_image(url, path):
-    # 创建图片的保存目录
     if not os.path.exists(path):
         os.makedirs(path)
 
-    # 下载图片
-    response = requests.get(url)
-
-    # 保存图片
     targetImage = os.path.join(path, get_image_name(url))
-    with open(targetImage, "wb") as f:
-        f.write(response.content)
-        
+
+    if not os.path.exists(targetImage):
+        with open(targetImage, "wb") as f:
+            response = requests.get(url)
+            f.write(response.content)
+    else:
+        print("file already downloaded")
+
     return targetImage
 
 
@@ -105,4 +105,4 @@ endpoint = baseEndPoint+'posts'
 response = requests.post(endpoint, headers=header, json=data, verify=False)
 
 print(response.status_code)
-# print(response.text)
+print(response.text)
