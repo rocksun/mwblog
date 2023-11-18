@@ -57,6 +57,9 @@ cover: https://cdn.thenewstack.io/media/2023/11/800f5433-multicloud-architecture
 
 点击 Save 并 Confirm，然后退出来直接执行这个 Command，就是我希望的结果了。
 
+## 总结
+
+通过 HARPA ，大家可以简单的体验下 AI Agent 编程了。提示词工程和编程能力都需要。
 
 ## 资源
 
