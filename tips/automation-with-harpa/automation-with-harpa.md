@@ -45,7 +45,7 @@ cover: https://cdn.thenewstack.io/media/2023/11/800f5433-multicloud-architecture
 
 ![](https://yylives.cc/wp-content/uploads/2023/11/gpt-step.jpg)
 
-在返回结果格式的控制方面，Claude 不如 ChatGPT 听话，所以上面的提示词有一些啰嗦。结果存放到了 gpt 变量中。然后需要一个 RUN JS step 处理数据：
+在返回结果格式的控制方面，Claude 不如 ChatGPT 听话，所以上面的提示词有一些啰嗦。结果存放到了 gpt 变量中。然后需要一个 RUN JS step 处理 gpt 这个返回结果：
 
 ![](https://yylives.cc/wp-content/uploads/2023/11/run-js-step.jpg)
 
