@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2023/11/645fdba9-developer-portal-produc
 
 用产品经理的思维创建开发者喜爱的门户网站。
 
-译自 [A Portal as a Product Approach for Internal Developer Portals](https://thenewstack.io/a-portal-as-a-product-approach-for-internal-developer-portals/)。作者 Zohar Einy 是 Port 的 CEO，这是他与 Yonatan Boguslavski 共同创立的用于内部开发者门户网站的无代码平台。Zohar 的职业生涯始于以色列国防军的 8200 部队，担任平台工程师，在那里他和 Yonatan 开始了合作......
+> 译自 [A Portal as a Product Approach for Internal Developer Portals](https://thenewstack.io/a-portal-as-a-product-approach-for-internal-developer-portals/)。作者 Zohar Einy 是 Port 的 CEO，这是他与 Yonatan Boguslavski 共同创立的用于内部开发者门户网站的无代码平台。Zohar 的职业生涯始于以色列国防军的 8200 部队，担任平台工程师，在那里他和 Yonatan 开始了合作......
 
 对于许多企业来说，建立一个内部开发者门户网站是实现平台化、减轻开发者负担、达到标准化和提高工作效率的关键所在。但是，[创建内部开发者门户网站](https://www.getport.io/guide)并不意味着它就能自动成功，开发者必须真正地从中受益，才会积极地使用它。为此，在定义门户网站内容时，企业需要关注产品管理实践，而不仅仅是工程实现。
 
