@@ -79,7 +79,7 @@ for line in lines:
             meta_data[keyvalues[0].strip()] = keyvalues[1].strip()
 
 title = meta_data['title']
-content = '[git-github-markdown url="'+target_path+'" cache_ttl="30"]'
+content = '[git-github-markdown url="'+target_path+'" cache_ttl="3600"]'
 
 data = {
   'title': title,
