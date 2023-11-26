@@ -1,5 +1,5 @@
 <!--
-title：向量数据库:机器学习赋能几何计算
+title：向量数据库：几何遇见机器学习
 cover: https://cdn.thenewstack.io/media/2023/11/9e3997ff-artem-maltsev-3n7ddlkmfeg-unsplash-1024x684.jpg
 -->
 
