@@ -1,5 +1,5 @@
 <!--
-title:假演讲者“炸毁”程序员大会
+title: 假演讲者“摧毁”程序员大会
 cover: https://cdn.thenewstack.io/media/2023/11/f6124411-anna_boyko_devternity-1-1024x576.jpg
 -->
 
