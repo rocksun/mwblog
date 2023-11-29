@@ -1,6 +1,6 @@
 <!--
 title: Kubernetes并非无状态，您需要备份工具
-cover: https://miro.medium.com/v2/resize:fit:828/format:webp/1*QsQYoYStFkM1s_lgN30SEA.jpeg
+cover: https://miro.medium.com/v2/resize:fit:828/format:webp/1QsQYoYStFkM1s_lgN30SEA.png
  -->
 
 现在一切都变成了“Gitops”，所有的工作负载都变成了“无状态”，我还需要 Kubernetes 备份工具吗？我想向您展示，这是一个初学者经常会犯的严重误解......
