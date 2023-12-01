@@ -1,5 +1,5 @@
 <!--
-title: WebAssembly助控制面可扩展
+title: WebAssembly助力控制平面可扩展
 cover: https://cdn.thenewstack.io/media/2023/11/63c8e7ca-control-plane-1-1024x576.jpg
 -->
 
