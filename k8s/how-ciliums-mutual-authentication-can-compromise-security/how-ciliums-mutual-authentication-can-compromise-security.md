@@ -29,7 +29,7 @@ Cilium 使用“无 TLS 的互认”(或 mTLess)来认证一个服务。我称�
 
 期望的是，足够快的后台认证 Pod A 调用 Pod B 的机制，最初被丢弃的数据包将被重试，而不会造成太大的延迟。后台使用的机制是运行在不同节点上代表两个特定服务身份的 cilium-agent 之间的“无 TLS”连接(用 Go 编写)。所有这些都不会发生在 eBPF 数据平面上，而是在用户空间 Cilium 代理中。
 
-![](https://cdn.thenewstack.io/media/2023/11/62c230c4-initial-connection-dropped_1.png)
+![](https://cdn.thenewstack.io/media/2023/11/de3d68bb-authenticated-flow_2.png)
 
 *图 2:如果 cilium-agent 之间成功建立了表示两个特定服务身份的 mTLS 连接，则流量被认为是经过认证的。*
 
