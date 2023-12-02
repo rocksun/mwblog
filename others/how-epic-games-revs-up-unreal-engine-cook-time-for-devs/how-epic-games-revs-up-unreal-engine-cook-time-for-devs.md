@@ -62,8 +62,8 @@ DDC 中缓存的对象使用一种称为紧凑二进制的自描述二进制格�
 
 ```json
 {
- “name”: “largeFile”，
- “size” : 2480，
+ “name”: “largeFile”,
+ “size” : 2480,
  “attachment”: 9fffabc5e0a...1f084f8c5e
 }
 ```
