@@ -1,6 +1,6 @@
 <!--
 title: 内部开发者平台小抄本
-Cover: http://some/idp-cheatsheet.png
+cover: http://www.test.com/idp-cheatsheet.png
 -->
 
 
