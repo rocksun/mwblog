@@ -51,6 +51,10 @@ FaaS和CaaS之间的这些差异，在事件流应用程序的背景下尤其相
 > “89%的受访者表示，数据流投资很重要，其中44%将其列为首要的战略优先事项。”
 > — 数据流报告，Confluent，2023
 
+Confluent的报告显示，采用数据流技术会带来积极的业务成果，如提高效率和盈利能力，改善响应速度，提升客户体验以及更快的运营决策。
+
+希望拥抱数据流的组织有很多选择。由于其经过验证的可靠性、可伸缩性、高性能和丰富的生态系统，Apache Kafka通常是人们首先想到的选择。但这并不是唯一的选择。其他值得注意的事件流平台包括Amazon Kinesis、Google Cloud Pub/Sub、Apache Pulsar和Azure Event Hubs。如果你对Kafka与其中一些替代方案的比较感兴趣，可以查看我们对[Kafka与Pulsar](https://quix.io/blog/kafka-vs-pulsar-comparison)、[Kafka与Redpanda](https://quix.io/blog/redpanda-vs-kafka-comparison)以及[Kafka与Kinesis](https://quix.io/blog/kafka-kinesis-comparison)的比较。
+
 除了事件流平台，还有各种流处理技术作为补充，如Apache Flink、Apache Storm、Apache Samza、Apache Beam、Kafka Streams、ksqlDB和Faust，每种技术都有自己的优势。例如，Beam提供了一个统一的API来处理批处理和流数据，而ksqlDB通过只依赖SQL查询来简化流应用程序的开发。
 
 毫无疑问，事件流正在持续存在并继续增长其重要性。也就是说，[流数据可能难以处理](https://quix.io/blog/why-is-streaming-data-so-hard-to-handle)。当今可用的大多数流技术都难以使用，自主管理流架构既不容易，也不便宜。例如，我在之前的一篇文章中谈到了[托管和管理Kafka的许多挑战](https://thenewstack.io/decoding-kafka-why-its-worth-the-complexity/)；读一读这篇文章，可以了解所涉及的内容。
@@ -61,7 +65,7 @@ FaaS和CaaS之间的这些差异，在事件流应用程序的背景下尤其相
 
 快进到2023年。由于最近的技术进步，无服务器和事件流之间有了更好、更紧密的协同效应，这远远超出了FaaS。以下是一些将无服务器计算(FaaS以外)与事件流相结合的新兴工具和趋势。
 
-## 无服务器流处理
+### 无服务器流处理
 
 传统的流处理通常涉及一个架构，其中许多移动部件管理分布式基础设施并使用复杂的流处理引擎。例如，Apache Spark 是最受欢迎的处理引擎之一，但众所周知，部署、管理、调优和调试都很困难(阅读有关使用Spark的优势、劣势和丑陋的更多信息)。根据用例，实现可靠、可扩展的流处理功能可能需要几天到几周的时间。除此之外，您还需要处理连续的监控、维护和优化。您甚至可能需要一个专门的团队来处理这种开销。总而言之，传统的流处理具有挑战性、昂贵且耗时。
 
@@ -85,7 +89,7 @@ FaaS和CaaS之间的这些差异，在事件流应用程序的背景下尤其相
 
 如果您好奇可以使用Quix构建的其他类型的无服务器事件流应用程序，可以看看这些[交互式模板](https://quix.io/templates)。
 
-## 无服务器消息代理
+### 无服务器消息代理
 
 在超越无服务器流处理的同时，无服务器消息代理正在崭露头角。一个例子是[Amazon MSK Serverless](https://aws.amazon.com/msk/features/msk-serverless/)，这是Amazon MSK的一种新的集群类型。虽然常规的MSK需要手动设置和管理Kafka集群，并根据提供的容量收费（无论使用情况如何），但MSK Serverless会根据需求自动管理和扩展Kafka基础设施，并根据实际使用情况收费。
 
