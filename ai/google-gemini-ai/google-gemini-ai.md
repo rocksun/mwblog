@@ -1,6 +1,6 @@
 <!-- 
 title: Gemini：我们最大最强的AI模型
-cover: https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_keyword_header.width-1200.format-webp.png
+cover: https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_keyword_header.width-1200.png
  -->
 
 谷歌和 Alphabet 首席执行官桑达尔·皮查伊的说明:
