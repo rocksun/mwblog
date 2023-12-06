@@ -3,7 +3,7 @@ title: Gemini：我们最大最强的AI模型
 cover: https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_keyword_header.width-1200.png
  -->
 
-> 转自谷歌博客 [Introducing Gemini: our largest and most capable AI model](https://blog.google/technology/ai/google-gemini-ai/) 。
+> 译自谷歌博客 [Introducing Gemini: our largest and most capable AI model](https://blog.google/technology/ai/google-gemini-ai/) 。
 
 谷歌和 Alphabet 首席执行官桑达尔·皮查伊的说明:
 
