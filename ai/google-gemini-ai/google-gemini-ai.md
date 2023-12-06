@@ -3,6 +3,8 @@ title: Gemini：我们最大最强的AI模型
 cover: https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_keyword_header.width-1200.png
  -->
 
+> 转自谷歌博客 [Introducing Gemini: our largest and most capable AI model](https://blog.google/technology/ai/google-gemini-ai/) 。
+
 谷歌和 Alphabet 首席执行官桑达尔·皮查伊的说明:
 
 每一次技术变革都提供了推进科学发现、加速人类进步和改善生活的机会。我相信我们现在看到的 AI 转型将是我们有生之年中最深远的一次，其影响远远超过之前的移动转型或网络转型。AI 有可能为全球各地的人们创造各种机会，从日常生活到非凡发现。
