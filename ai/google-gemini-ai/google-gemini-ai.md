@@ -19,8 +19,9 @@ cover: https://storage.googleapis.com/gweb-uniblog-publish-prod/images/final_key
 
 现在，随着Gemini的推出，我们的 AI 之旅迈出了下一步。Gemini是我们迄今为止最强大、最通用的模型，在许多领先基准测试中都达到了最先进的性能。我们的首个版本Gemini 1.0 根据不同大小进行了优化：Ultra， Pro 和 Nano。这些是Gemini时代的第一批模型，也是我们今年初组建 Google DeepMind 时的愿景首次实现。这批新模型代表了我们作为一家公司进行的最大规模科学和工程努力之一。我真的对未来感到兴奋，也对Gemini为全球各地的人们解锁的机会充满期待。
 
-- 桑达尔
-- 
+-- 桑达尔
+
+
 ## 引入Gemini
 
 *作者:Google DeepMind 首席执行官兼联合创始人戴米斯·哈萨比斯，代表Gemini团队*
