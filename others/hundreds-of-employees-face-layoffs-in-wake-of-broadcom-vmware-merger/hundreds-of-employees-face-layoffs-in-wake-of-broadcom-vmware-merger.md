@@ -1,5 +1,5 @@
 <!--
-title: 博通并购VMware致数百员工裁员
+title: 博通并购VMware致数百裁员
 cover: https://cdn.thenewstack.io/media/2023/11/b0946e0d-54278c97-kelly-sikkema-fzirmwarm0e-unsplash-scaled-e1701224585753-1024x755.jpg
 -->
 
