@@ -1,5 +1,5 @@
 <!--
-title:  开发者视角:如何优化what3words地理定位应用
+title:  开发者如何优化what3words地理定位应用
 cover: https://cdn.thenewstack.io/media/2023/12/8f773fb2-what3words-1024x495.jpg
 -->
 
@@ -46,13 +46,13 @@ Eden 在 2019 年对 what3words 的最初[批评](https://shkspr.mobi/blog/2019/
 暂时回到真正的what3words；他们当然有一个API可以在单词和数字纬度、经度GPS坐标之间转换：
 
 ```
-https://api.what3words.com/v3/convert-to-coordinates？ words=filled.count.soap&key=[API-KEY]
+https://api.what3words.com/v3/convert-to-coordinates?words=filled.count.soap&key=[API-KEY]
 ```
 
 和
 
 ```
-https://api.what3words.com/v3/convert-to-3wa？ coordinates=51.521251%2C-0.203586&key=[API-KEY]
+https://api.what3words.com/v3/convert-to-3wa?coordinates=51.521251%2C-0.203586&key=[API-KEY]
 ```
 
 请注意，任何通过蛮力逆向工程后端的企图都很麻烦，而且可以轻松检测到。
