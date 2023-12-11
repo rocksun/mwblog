@@ -1,5 +1,5 @@
 <!--
-title: AI灭世主义：不只是智能
+title: 面对AI灭世主义：智能并非全部
 cover: https://cdn.thenewstack.io/media/2023/12/26cf79a9-oxides-bryan-cantrill-speaking-at-monktoberfest-2023-intelligence-is-not-enough-1024x581.png
 -->
 
