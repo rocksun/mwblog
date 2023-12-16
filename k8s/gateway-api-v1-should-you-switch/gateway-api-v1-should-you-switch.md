@@ -1,6 +1,6 @@
 <!--
 title: Kubernetes Gateway API v1.0: 您应该切换吗？
-cover: https://static.apiseven.com/uploads/2023/12/08/XllJX2YG_apisix-ingress.png?imageMogr2/format/webp
+cover: https://yylives.cc/wp-content/uploads/2023/12/XllJX2YG_apisix-ingress.png
 -->
 
 > 译自 [Kubernetes Gateway API v1.0: Should You Switch?](https://static.apiseven.com/uploads/2023/12/08/winePDii_gateway-api.png?imageMogr2/format/webp)。作者 Navendu Pottekkat 。
