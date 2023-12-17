@@ -1,6 +1,6 @@
 <!--
 title: 从RSS到WSS：深入Kubernetes内存指标
-cover: https://miro.medium.com/v2/resize:fit:720/format:webp/1*qkh8lDc8TgQlyl_ojF-94A.png
+cover: https://example/1qkh8lDc8TgQlyl_ojF-94A.png
 -->
 
 超越基础知识，在 Kubernetes 内存指标方面深入探讨。
