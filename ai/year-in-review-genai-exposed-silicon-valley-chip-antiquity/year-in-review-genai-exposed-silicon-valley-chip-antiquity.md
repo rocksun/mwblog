@@ -1,5 +1,5 @@
 <!--
-title: GenAI揭示硅谷芯片的古迹
+title: GenAI揭示硅谷芯片古董
 cover: https://cdn.thenewstack.io/media/2023/12/88ad96d3-year-wrapup-1-1024x576.png
 -->
 
