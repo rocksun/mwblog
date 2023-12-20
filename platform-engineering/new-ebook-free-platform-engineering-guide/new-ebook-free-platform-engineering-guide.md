@@ -2,7 +2,7 @@
 
 由 VMware Tanzu 赞助的 The New Stac k最新电子书为您的平台工程策略奠定基础，帮助您实现 DevOps 承诺的更快生产力。
 
-本文翻译自 [New Ebook: Get Our Free Platform Engineering Guide](https://thenewstack.io/new-ebook-free-platform-engineering-guide/) 。本人也翻译整理了这本《平台工程: 您现在需要知道的》，可以在[这里](https://github.com/rocksun/mwblog/blob/master/platform-engineering/new-ebook-free-platform-engineering-guide/new-ebook-free-platform-engineering-guide.md)下载。
+本文翻译自 [New Ebook: Get Our Free Platform Engineering Guide](https://thenewstack.io/new-ebook-free-platform-engineering-guide/) 。本人也翻译整理了这本《平台工程: 您现在需要知道的》，可以在[这里](https://yylives.cc/wp-content/uploads/2023/09/平台工程-您现在需要知道的.pdf)下载。
 
 ![](https://cdn.thenewstack.io/media/2023/08/edbcbce1-heroimage-3.png)
 
@@ -45,4 +45,4 @@ DevOps 要求组织试图打破壁垒，但壁垒通常存在合理的原因 - �
 
 这本平台工程电子书适用于各种规模的组织，它们希望以真正理解和满足开发者需求的方式创建或扩展他们的平台战略，从而提高开发者的生产力和快乐。
 
-但不要只听我的话。立即[下载它吧](https://thenewstack.io/ebooks/platform-engineering/platform-engineering-what-you-need-to-know-now/)！
+但不要只听我的话。立即[下载它吧](https://yylives.cc/wp-content/uploads/2023/09/平台工程-您现在需要知道的.pdf)！
