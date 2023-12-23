@@ -1,5 +1,5 @@
 <!--
-title: 通过IaC自动化实现第1天的GitOps
+title: 通过IaC自动化实现第一天的GitOps
 cover: https://cdn.thenewstack.io/media/2023/12/1c30410c-gears-1024x683.jpg
 -->
 
