@@ -1,5 +1,5 @@
 <!--
-tilte: 三位一体：云原生、DevOps和平台工程
+title: 三位一体：云原生、DevOps和平台工程
 cover: ./cover.png
 
  -->
