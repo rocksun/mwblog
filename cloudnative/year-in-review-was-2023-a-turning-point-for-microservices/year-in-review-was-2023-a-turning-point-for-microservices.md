@@ -72,7 +72,7 @@ cover: https://cdn.thenewstack.io/media/2023/12/88ad96d3-year-wrapup-1-1024x576.
 
 ![Zoom](https://cdn.thenewstack.io/media/2023/05/cb5d618e-prime-02.webp)
 
-“这绝对不是一个从微服务到单体架构的故事，” 亚马逊云计算部门前副总裁、[现任 Nubank 顾问](https://building.nubank.com.br/interview-meet-adrian-cockcroft-nubanks-new-tech-advisor/)的 [Adrian Cockcroft](https://www.linkedin.com/in/adriancockcroft/) 在接受 The New Stack 的采访https://thenewstack.io/amazon-prime-videos-microservices-move-doesnt-lead-to-a-monolith-after-all/时说道，“这是一个从 Step Functions 到微服务的故事。我认为问题之一是错误的标签。”
+“这绝对不是一个从微服务到单体架构的故事，” 亚马逊云计算部门前副总裁、[现任 Nubank 顾问](https://building.nubank.com.br/interview-meet-adrian-cockcroft-nubanks-new-tech-advisor/)的 [Adrian Cockcroft](https://www.linkedin.com/in/adriancockcroft/) 在接受 The New Stack 的[采访](https://thenewstack.io/amazon-prime-videos-microservices-move-doesnt-lead-to-a-monolith-after-all/)时说道，“这是一个从 Step Functions 到微服务的故事。我认为问题之一是错误的标签。”
 
 他指出，在许多应用程序中，特别是内部应用程序，开发成本超过了运行时成本。在这些情况下，Step Functions 在节省开发时间方面具有很大意义，但在处理大量工作负载时可能会带来成本。
 
