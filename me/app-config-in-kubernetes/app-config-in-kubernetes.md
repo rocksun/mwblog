@@ -9,15 +9,15 @@ cover: ./cover.png
 
 ## 配置文件的方法论
 
-[12 Factor](https://12factor.net/zh_cn/) 指的是部署到 PAAS 的应用应该具备的要素，其中有几条是关于配置文件相关的。
+[12 Factor](https://12factor.net/zh_cn/) 指的是部署到 PAAS 的应用应该具备的 12 个要素，最早由 PAAS 的先驱 Heroku 推出，现在已经被奉为云原生应用的经典。如果应用符合这 12 factor 的要求，可以起到非常好的效果。其中有几条是配置文件相关的。
 
 ### 配置
 
 将配置保存到“环境”中，而不是代码、属性文件、构建或应用服务器。
 
-笔者确实遇到了以上几种情况。用代码保存配置显然不合适，不能每次配置变化时都去修改代码吧？确实有人将配置存放到 Jenkins 上，这样做的隐含意思就是如果要更改配置，需要重新构建应用，感觉不合适；许多 Spring 应用将不同环境的配置保存在不同的配置文件中，姑且不说添加环境可能也需要重新编译，让开发知道生产的配置也不是一个好的实践；将配置存放在应用服务器确实是以前常见的做法，但我的自动化运维经验告诉我，这样并不直观，也不利于自动化。
+笔者确实遇到了以上几种情况。用代码保存配置显然不合适，不能每次配置变化时都去修改代码吧？确实有人将配置存放到 Jenkins 上，这样做的隐含意思就是如果要更改配置，需要重新构建应用，也不合适；许多 Spring 应用将不同环境的配置保存在不同的配置文件中，姑且不说添加环境可能也需要重新编译，让开发知道生产的配置也不是一个好的实践；将配置存放在应用服务器确实是以前常见的做法，但我的自动化运维经验告诉我，这样并不直观，也不利于自动化。
 
-12 factor 中的环境特指“环境变量”，这在 PAAS 时代是最简单的方式。而在 Kubernetes 中，推荐使用 [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) 来管理配置，此时”环境“就是指的 Kubernetes ，更具体的就是 ConfigMap 。然后 Kubernetes 能够将 ConfigMap 的内容注入到应用的容器中。如果注入的内容比较简单，可以以环境变量的方式注入，如果注入的参数较多，可以将 ConfigMap 的内容变成文件，在应用运行时由 Kubernetes 注入到容器中文件系统中，应用可以按照读普通文件的方式读取，下面是一个 ConfigMap 的例子，我们首先定义一个 ConfigMap:
+12 factor 中的环境特指“环境变量”，这在 PAAS 时代是最简单的方式。而在 Kubernetes 中，推荐使用 [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) 来管理配置，此时”环境“就是指的 Kubernetes ，更具体的就是 ConfigMap 。然后 Kubernetes 能够将 ConfigMap 的内容注入到应用的容器中。如果注入的内容比较简单，可以以环境变量的方式注入；如果注入的参数较多，可以将 ConfigMap 的内容变成文件，在应用运行时由 Kubernetes 注入到容器中文件系统中，应用可以按照读普通文件的方式读取，下面是一个 ConfigMap 的例子，我们首先定义一个 ConfigMap:
 
 ```yaml
 apiVersion: v1
@@ -35,7 +35,7 @@ data:
         driver-class-name: com.mysql.jdbc.Driver  #数据库链接驱动
 ```
 
-可以看到我们定义了一个名为 myconfigmap 的 ConfigMap，其中有一个 key 为 application.yml 的元素，其内容就是一个 Spring Boot 的配置文件。然后，我们可以在 Pod 中引用：
+可以看到我们定义了一个名为 `myconfigmap` 的 ConfigMap，其中有一个 key 为 application.yml 的元素，其内容就是一个 Spring Boot 的配置文件。然后，我们可以在 Pod 中引用：
 
 ```yaml
 apiVersion: v1
@@ -60,7 +60,7 @@ spec:
 
 ### 区分构建、发布和运行三个阶段
 
-这是 12 factor 中另一项非常重要的因素，含义是基准代码 转化为一份部署需要以下三个阶段：
+这是 12 factor 中另一项非常重要的因素，含义是基准代码转化为一份部署需要以下三个阶段：
 
 - **构建( Build )阶段** 是指将代码仓库转化为可执行包的过程。构建时会使用指定版本的代码，获取和打包 依赖项，编译成二进制文件和资源文件。
 - **发布( Release )阶段** 会将构建的结果和当前部署所需配置相结合，并能够立刻在运行环境中投入使用。
@@ -104,7 +104,7 @@ Helm Chart 和 ArgoCD 的篇幅太长，以后有机会再单独拿出来分享�
 
 ## 配置文件处理案例
 
-又到了开发和运维部门调解时间。前面的探针功能强烈依赖开发，如果开发提供的探针接口不对，会让探测效果大打折扣。不过配置文件相对好一点，即使缺乏开发的配合，运维也能通过一些手段实现许多目标。
+又到了开发和运维部门调解时间。前面的[探针功能](https://yylives.cc/2023/12/26/from-probe-to-devops/)强烈依赖开发的支持，如果开发提供的探针接口不对，会让探测效果大打折扣。不过配置文件相对好一点，即使缺乏开发的配合，运维也能通过一些手段实现许多目标。
 
 在我带过的传统架构转 Kubernetes 的项目中，大多数开发部门的应用还是比较规范的，往往微服务或应用都使用标准的配置文件。而且开发团队的领导也能从整体上分析问题，尝试从框架上做一些统一的调整，所以在 Kubernetes 层面，我们只需要做一些常规的配置即可。
 
@@ -170,7 +170,7 @@ spec:
 
 ### 通过 Tomcat ClassPath 读取配置
 
-我们遇到的一个部署在 Tomcat 中的应用，它需要从 ClassPath 中读取一些配置，所以我们尝试通过 ConfigMap 中包含一份修改后的 Tomcat 的配置文件，使之能在指定的路径加载我们的应用配置文件，这个应用配置文件也是通过 ConfigMap 注入的。首先，我们看看准备一个修改的 `catalina.properties` 配置文件，其中修改的行为：
+我们遇到的一个部署在 Tomcat 中的应用，它需要从 ClassPath 中读取一些配置，所以我们尝试通过 ConfigMap 中包含一份修改后的 Tomcat 的配置文件，使之能在指定的路径加载我们的应用配置文件，这个应用配置文件也是通过 ConfigMap 注入的。首先，我们需要准备一个修改过的 `catalina.properties` 配置文件，其中修改的行是：
 
 ```properties
 ···
@@ -199,7 +199,7 @@ data:
 
 ```
 
-需要注意的是，上面的 ConfigMap 是用 Helm Chart 模板的语法，通过 `.Files.Get` 方法，我们可以加载文件系统里的 `catalina.properties` 文件，使之成为 ConfigMap 的一部分，然后通过 Helm 发布到 Kubernetes 里。
+需要注意的是，上面的 ConfigMap 是用 Helm Chart 模板的语法。 通过 `.Files.Get` 方法，我们可以加载文件系统里的 `catalina.properties` 文件，使之成为 ConfigMap 的一部分，然后通过 Helm 发布到 Kubernetes 里。
 
 然后，我们在 Pod 模板的定义里，加载这些文件：
 
