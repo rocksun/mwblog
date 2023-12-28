@@ -1,5 +1,5 @@
 <!--
-title: 以人为本构建运营弹性
+title: 为什么运营弹性必须以人为本？
 cover: https://cdn.thenewstack.io/media/2023/12/7ef58ceb-operational-resilience-heart-2-1024x576.jpg
 -->
 
