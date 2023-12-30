@@ -26,6 +26,6 @@ cover: https://cdn.thenewstack.io/media/2023/12/4aef2fab-map-1024x364.jpg
 - **AI开发服务**: 使用可靠并有良好记录的开发服务。
 - **训练和评估**: 定期训练和评估AI模型，以确保它们是最新和准确的。它们是否一致地产生您想要的结果?错误出现的频率如何以及这些错误的性质是什么?
 - **部署和可扩展性**: 确保AI模型可以有效和可持续地部署和扩展。收集有关可持续性和建模以及AI使用的环境影响的指标，这将帮助您对其使用做出更好的决定。
-- **伦理和隐私考量**: 确保AI模型是道德的并尊重用户隐私。虽然这很模糊，但如果您的组织为AI伦理建立原则来指导您的实践会有所帮助。
+- **伦理和隐私考量**: 确保AI模型是道德的并尊重用户隐私。虽然这很模糊，但如果您的组织为[AI伦理](https://www.dell.com/content/dam/documents-and-videos/dv1/en/solutions/business-solutions/briefs-summaries/principles-for-ethical-ai.pdf)建立原则来指导您的实践会有所帮助。
 
 AI来势汹汹，我们有责任以一种安全、道德和可持续的方式将其融入我们的世界。
