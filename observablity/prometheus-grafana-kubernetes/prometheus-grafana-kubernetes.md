@@ -1,5 +1,5 @@
 <!--
-title: Prometheus和Grafana监控Kubernetes和未来
+title: Prometheus和Grafana监控Kubernetes以及未来
 cover: ./cover.png
 -->
 
@@ -34,7 +34,7 @@ Prometheus 需要越来越多的磁盘空间来接收和存储所有这些数据
 
 该系统的架构很简单、直接:
 
-！[](https://assets-global.website-files.com/626a25d633b1b99aa0e1afa7/631ee4a5341fb58f0ea05eee_LGXtXjiQd_38rFSshFioTzL4JBXZL2ZTWHCspWLPsWnjfpg3h9E6WrHxZz10t29T6mumzdQKn14c8t1YVjooJh6AMEG0omwhliuLo2jisYdYt7dTptfR3-vV8BRU-Ja7PSfP-DyWhvG2nTH1MAH9ttVPgH2aIF9-otF9uFLOimwUaFN4VLyGWOiY_XlnzH1oWnA.png)
+![](https://assets-global.website-files.com/626a25d633b1b99aa0e1afa7/631ee4a5341fb58f0ea05eee_LGXtXjiQd_38rFSshFioTzL4JBXZL2ZTWHCspWLPsWnjfpg3h9E6WrHxZz10t29T6mumzdQKn14c8t1YVjooJh6AMEG0omwhliuLo2jisYdYt7dTptfR3-vV8BRU-Ja7PSfP-DyWhvG2nTH1MAH9ttVPgH2aIF9-otF9uFLOimwUaFN4VLyGWOiY_XlnzH1oWnA.png)
 
 (来源: https://prometheus.io/docs/introduction/overview/)
 
@@ -48,7 +48,7 @@ Prometheus **服务器**负责从组织计算环境中的基础设施和应用�
 
 Grafana 是一种非常流行的开源时间序列数据可视化工具。 Grafana Labs 是 Grafana 的制造商，在广泛的企业中拥有 2，000 多家客户，截至 2022 年 7 月，Grafana 产品本身在全球范围内拥有 90 多万 active 安装。
 
-！[](https://assets-global.website-files.com/626a25d633b1b99aa0e1afa7/631ee4a686678e1080d0f592_RcaRWtKXHLtoxzH1TyVFEV-TrfIBpQG3r2yVwTF8ggxwA-JjXNArSxUkpptgjo0MNX1fRjh7uq0YR16m5fOHPspGNfAj7LmuB67RZA281hBP50sxmN1Jn1NLz2qC_hTipGzaBGKKqfeLsON50lPFAW9F-oNqURrgZWqmFxCC1nKH_YVuPYKZL_x30akf_Fc564k.png)
+![](https://assets-global.website-files.com/626a25d633b1b99aa0e1afa7/631ee4a686678e1080d0f592_RcaRWtKXHLtoxzH1TyVFEV-TrfIBpQG3r2yVwTF8ggxwA-JjXNArSxUkpptgjo0MNX1fRjh7uq0YR16m5fOHPspGNfAj7LmuB67RZA281hBP50sxmN1Jn1NLz2qC_hTipGzaBGKKqfeLsON50lPFAW9F-oNqURrgZWqmFxCC1nKH_YVuPYKZL_x30akf_Fc564k.png)
 
 (来源: https://prometheus.io)
 
