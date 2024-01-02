@@ -1,5 +1,5 @@
 <!--
-title: 抢在客户之前在Kubernetes上检测慢SQL查询
+title: 抢在客户之前在Kubernetes上发现SQL慢查询
 cover: https://ddosify.com/assets/images/00-650cc040be72b7856c859d65ad1b5fdc.jpg
 -->
 
