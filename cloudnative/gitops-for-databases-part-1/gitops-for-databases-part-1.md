@@ -1,5 +1,5 @@
 <!--
-title: 数据库的GitOps - 1. CI/CD
+title: 数据库的GitOps第一部分 - CI/CD
 cover: https://atlasgo.io/uploads/ci-cd-guide/database-ci-cd-workflow.png
 -->
 
