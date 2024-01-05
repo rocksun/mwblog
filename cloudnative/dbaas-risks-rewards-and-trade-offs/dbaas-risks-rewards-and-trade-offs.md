@@ -1,5 +1,5 @@
 <!--
-title: DBaaS的风险、回报与权衡
+title: DBaaS的风险、奖励与权衡
 cover: https://cdn.thenewstack.io/media/2024/01/f2e80f8a-ship12-1024x740.jpg
 -->
 
