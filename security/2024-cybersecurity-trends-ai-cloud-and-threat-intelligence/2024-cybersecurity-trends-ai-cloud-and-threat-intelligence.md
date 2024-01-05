@@ -1,6 +1,6 @@
 <!--
 title: 2024年网络安全趋势: 人工智能、云计算和威胁情报
-cover: https://1665891.fs1.hubspotusercontent-na1.net/hub/1665891/hubfs/Blog-mian-image-predictions-nautilus--1.jpg?width=870&name=Blog-mian-image-predictions-nautilus--1.jpg
+cover: ./cover.png
 -->
 
 随着新年的到来，我们看到网络安全领域正迎来人工智能驱动攻击的激增，推动该行业进入快速创新周期。防御方正全力开发先进的基于人工智能的安全措施，不仅要实时检测和应对威胁，还要预测和制止威胁在成型之前。在我们看来，2024年可能成为人工智能在网络安全中扮演关键角色的决定性时刻。我们Aqua Nautilus研究团队成员阐述他们的看法，以及我们可能会看到的其他趋势。
