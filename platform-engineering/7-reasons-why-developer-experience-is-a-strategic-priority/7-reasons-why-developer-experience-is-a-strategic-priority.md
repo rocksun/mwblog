@@ -1,5 +1,5 @@
 <!--
-title: 为什么开发者体验企业发展的战略重点？
+title: 为什么开发者体验是企业发展的战略重点？
 cover: https://cdn.thenewstack.io/media/2024/01/e4b75796-e20d946e-devex-strategic-priority-1024x683-1.jpg
 -->
 
