@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2024/01/042ce8e5-stone-1024x768.jpg
 
 公司内部和外部环境都在变化。在内部，公司需求、产品和员工都在不断调整。在外部，技术环境也在持续快速变迁。
 
-> 译自 [The Joys and Pains of DevOps](https://thenewstack.io/the-joys-and-pains-of-devops/)，作者 Joanna Wyganowska 是Octopus Deploy的营销副总裁。在她的角色中，她有幸与DevOps从业者讨论与持续交付相关的最佳实践，以及从他们的DevOps之旅中吸取的教训。乔安娜是一个精益大师，并且...
+> 译自 [The Joys and Pains of DevOps](https://thenewstack.io/the-joys-and-pains-of-devops/)，作者 Joanna Wyganowska 是Octopus Deploy的营销副总裁。在她的角色中，她有幸与DevOps从业者讨论与持续交付相关的最佳实践，以及从他们的DevOps之旅中吸取的教训。Joanna 是一个精益大师，并且...
 
 “没有痛苦就没有收获”非常适用于DevOps。虽然从亚马逊首席技术官 Werner Vogels 提出的“你开发它，你运维它”的概念中获得了许多回报，但DevOps从业者也需要面对许多挑战。
 
