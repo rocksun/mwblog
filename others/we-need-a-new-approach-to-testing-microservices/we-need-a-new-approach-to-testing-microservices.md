@@ -1,5 +1,5 @@
 <!--
-title: 微服务需要新的测试策略
+title: 需要微服务测试的新方法
 cover: https://cdn.thenewstack.io/media/2024/01/0c80d025-traffic-microservice-testing-1024x683.jpg
 -->
 
