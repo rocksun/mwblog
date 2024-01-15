@@ -38,7 +38,7 @@ echo '<!doctype html><title>页面标题</title><p>你好</p>' > index.html
 这是第一个例子，是纯 HTML，就现在而言，不需要进一步处理。
 
 ```bash
-echo '# 页面标题' > README.md
+echo '# Page header' > README.md
 ```
 
 这是 Markdown。现在让我们执行 Eleventy 看它的处理：
@@ -78,7 +78,7 @@ npx @11ty/eleventy --serve
 
 ```liquid
 {% if username %}
-你好 <b>—</b>！
+Hello <b>{{ username }}</b>!
 {% endif %}
 ```
 
@@ -88,10 +88,10 @@ npx @11ty/eleventy --serve
 
 ```html
 <!doctype html>
-<title>页面标题</title>
+<title>Page title</title>
 {% assign username = "David"%}
 {% if username %}
-你好 <b>—</b>！
+Hello <b>{{ username }}</b>!
 {% endif %}
 ```
 
