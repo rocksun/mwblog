@@ -32,7 +32,8 @@ added 214 packages, and audited 215 packages in 18s
 太好了。现在我们将创建两种不同类型的内容文件（或模板），并观察 Eleventy 处理它们的方式。按照指示，我在命令行上生成了这些内容。
 
 ```bash
-echo '<!doctype html><title>页面标题</title><p>你好</p>' > index.html
+	
+echo '<!doctype html><title>Page title</title><p>Hi</p>' > index.html
 ```
 
 这是第一个例子，是纯 HTML，就现在而言，不需要进一步处理。
