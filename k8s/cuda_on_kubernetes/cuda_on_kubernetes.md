@@ -175,7 +175,7 @@ kubectl get node -o 'jsonpath={.items[*].status.capacity}' | jq
 ```json
 {
   ...
-  "nvidia.com/gpu": "10"，
+  "nvidia.com/gpu": "10",
   ...
 }
 ```
