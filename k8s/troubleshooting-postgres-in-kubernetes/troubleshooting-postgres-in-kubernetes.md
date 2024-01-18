@@ -1,13 +1,11 @@
 <!--
-title: Kubernetes中解决PostgreSQL故障
+title: Kubernetes中PostgreSQL的故障诊断
 cover: ./cover.png
 -->
 
-
+在 Crunchy Data 担任解决方案架构师的角色中，我帮助客户使用 [Crunchy Postgres for Kubernetes](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes)（CPK）快速上手。在 Kubernetes 中安装和管理 Postgres 集群从未如此简单。然而，有时事情不会按计划进行，我注意到一些 Kubernetes 安装可能出现问题的主要领域。今天，我想逐步介绍一些人们在尝试在 Kubernetes 中运行 Postgres 时经常遇到的常见问题，并提供一些基本的故障排除思路以便入门。当然，您的问题可能不在这里，但如果您只是想诊断安装失败或群集故障，这是我首选的入门故障排除清单。
 
 > 译自 [Kubernetes Troubleshooting Postgres in Kubernetes](https://www.crunchydata.com/blog/troubleshooting-postgres-in-kubernetes)。作者 Bob Pacheco 。
-
-在 Crunchy Data 担任解决方案架构师的角色中，我帮助客户使用 [Crunchy Postgres for Kubernetes](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes)（CPK）快速上手。在 Kubernetes 中安装和管理 Postgres 集群从未如此简单。然而，有时事情不会按计划进行，我注意到一些 Kubernetes 安装可能出现问题的主要领域。今天，我想逐步介绍一些人们在尝试在 Kubernetes 中运行 Postgres 时经常遇到的常见问题，并提供一些基本的故障排除思路以便入门。当然，您的问题可能不在这里，但如果您只是想诊断安装失败或群集故障，这是我首选的入门故障排除清单。
 
 ## 事物的顺序：CRD、Operator、Cluster、Pod
 
