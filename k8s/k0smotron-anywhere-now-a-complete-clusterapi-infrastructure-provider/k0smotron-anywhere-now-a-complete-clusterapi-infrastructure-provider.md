@@ -1,5 +1,5 @@
 <!--
-title: k0smotron Anywhere: 成为ClusterAPI基础设施Provider
+title: k0smotron Anywhere: 成为完整的ClusterAPI基础设施Provider
 cover: ./cover.png
 -->
 
