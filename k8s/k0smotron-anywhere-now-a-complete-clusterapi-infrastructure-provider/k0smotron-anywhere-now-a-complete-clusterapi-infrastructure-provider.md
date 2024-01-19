@@ -1,6 +1,6 @@
 <!--
 title: k0smotron Anywhere: 成为ClusterAPI基础设施Provider
-cover: https://miro.medium.com/v2/resize:fit:1100/format:webp/1*vcrBwi7h0qvxhRaDNPeTVg.png
+cover: ./cover.png
 -->
 
 管理多个 Kubernetes 集群，甚至可能跨越多个基础设施，绝对不容易。Cluster API 可以通过引入一种声明性的方式来管理基础设施和集群设置。但是，如果您想在本地、裸金属或其他类似环境中使用，而现有的 Cluster API provider 并没有真正涵盖，也不用担心，我们有您的后盾。现在，有了 [k0smotron](https://k0smotron.io/) Anywhere，您可以在任何基础设施上使用 Cluster API，甚至是裸金属，而无需给您的基础设施添加任何复杂性。
