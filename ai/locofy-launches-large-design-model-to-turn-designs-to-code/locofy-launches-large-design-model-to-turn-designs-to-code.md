@@ -1,5 +1,5 @@
 <!--
-title: Locofy发布设计转代码的“大设计模型”，
+title: Locofy发布设计转代码的“大设计模型”
 cover: https://cdn.thenewstack.io/media/2024/01/0288569c-arthur-mazi-fexeynymo2y-unsplash-1024x683.jpg
 -->
 
