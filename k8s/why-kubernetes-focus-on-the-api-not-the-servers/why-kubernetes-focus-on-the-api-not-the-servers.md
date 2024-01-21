@@ -1,4 +1,4 @@
-<！--
+<!--
 title: 为什么要使用 Kubernetes？聚焦API，而非服务器
 cover: https://www.fullstaq.com/hubfs/shutterstock_2007276881.png
 -->
@@ -25,7 +25,7 @@ _声明: 出现一些供应商的名称或标志。我不为任何厂商效力�
 
 Kubernetes无所不在: 它可以促进各种工作负载在各种环境中运行:
 
-！[](https://miro.medium.com/v2/resize:fit:828/format:webp/1*Pz6uB3gcT42VePLJ_iy60Q.png)
+![](https://miro.medium.com/v2/resize:fit:828/format:webp/1*Pz6uB3gcT42VePLJ_iy60Q.png)
 
 *Kubernetes无所不在*
 
@@ -60,7 +60,7 @@ Kubernetes 可以为其用户提供标准化的工作方式(大致是:将 YAML �
 
 采用 Kubernetes 的过程中，在 Kubernetes 开始产生价值之前，需要设置很多东西。我们正在建造一个平台。让我们用物理世界建筑的类比来说明:
 
-！[](https://miro.medium.com/v2/resize:fit:828/format:webp/1*HbZJybLf4yoNJv_cmDYUxg.png)
+![](https://miro.medium.com/v2/resize:fit:828/format:webp/1*HbZJybLf4yoNJv_cmDYUxg.png)
 
 *建立平台*
 
