@@ -5,7 +5,7 @@ cover: https://www.fullstaq.com/hubfs/shutterstock_2007276881.png
 
 在这篇博客中，我将讨论如何通过专注于 Kubernetes 的 API 来释放其潜力，同时尽量避免可能遇到的复杂性。了解如何以及是否可以让 Kubernetes 为您发挥作用。
 
-> 译自 [Why Kubernetes？ Focus on the API， not the servers](https://itnext.io/why-kubernetes-focus-on-the-api-not-the-servers-57217668c1bd)。作者 Tibo Beijen 。
+> 译自 [Why Kubernetes? Focus on the API， not the servers](https://itnext.io/why-kubernetes-focus-on-the-api-not-the-servers-57217668c1bd)。作者 Tibo Beijen 。
 
 随着我们从 2023 年进入 2024 年，现在是进行反思的好时机。无可争议，去年最大的话题之一是 AI 的兴起。但是离我的日常工作更近一些，有一些事件特别引人注目:
 
