@@ -126,7 +126,7 @@ Kubernetes 可以为其用户提供标准化的工作方式(大致是:将 YAML �
 
 **挑战**: 一些团队注意到他们需要比基于 CPU 的工作负载缩放更“智能”的东西。
 
-[改进](https://www.fullstaq.com/knowledge-hub/blogs/why-you-should-split-ci-from-cd): 平台团队设置 KEDA。由于已经有了一个策略引擎，所以很容易为 KEDA 缩放器配置设置一些防护栏。
+**改进**: 平台团队设置 KEDA。由于已经有了一个策略引擎，所以很容易为 KEDA 缩放器配置设置一些防护栏。
 
 **新状态，就像以前一样**: 团队将 YAML 放入 git。GitOps 将 YAML 放入集群。集群机制使事情发生。
 
@@ -138,7 +138,7 @@ Kubernetes 可以为其用户提供标准化的工作方式(大致是:将 YAML �
 
 **挑战**: 平台团队注意到跟踪组件更新需要越来越多的努力。
 
-**改进**: 在 POC 之后，他们设置了 Renovate。现在，平台团队不再需要检查平台中运行的每个组件的发布页面。
+**改进**: 在 POC 之后，他们设置了 [Renovate](https://github.com/renovatebot/renovate)。现在，平台团队不再需要检查平台中运行的每个组件的发布页面。
 
 **新状态，与以前非常相似**: Renovate 将 YAML 放入 git。GitOps 将 YAML 放入集群。集群机制使事情发生。
 
