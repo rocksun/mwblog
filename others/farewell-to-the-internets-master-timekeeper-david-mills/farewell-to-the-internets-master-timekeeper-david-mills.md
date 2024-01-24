@@ -9,6 +9,8 @@ cover: https://cdn.thenewstack.io/media/2024/01/43020ac2-pocket-watch-2036304_12
 
 全球时间同步协议(NTP)的设计者（戴维·L·米尔斯）David L. Mills博士于2024年1月17日去世，享年85岁。该协议使数十亿台设备实现全球时间同步。
 
+![](https://cdn.thenewstack.io/media/2024/01/e976ffaa-dl_mills-2_cropped-300x271.jpg)
+
 芝加哥的一首歌里唱道: “[是否有人真正知道现在是什么时间](https://www.youtube.com/watch?v=xoJpyYu_NMk)？是否有人真正在意？”对互联网来说，戴维·L·米尔斯博士回答了这两个问题。
 
 虽然米尔斯博士不及互联网协议发明者Jon Postel和TCP/IP共同创造者[Vint Cerf](https://thenewstack.io/vint-cerfs-mission-to-bring-the-internet-to-outer-space/)那样出名，但他在[网络时间协议(NTP)](https://www.geeksforgeeks.org/network-time-protocol-ntp/)方面的工作对于运行互联网至关重要，从过去到现在都是如此。正如Cerf在宣布米尔斯博士逝世消息时所写的那样: “他是[早期互联网的标志性人物](https://elists.isoc.org/pipermail/internet-history/2024-January/009265.html)。网络时间协议、早期 NSFNET 的 Fuzzball 路由器、INARG任务小组带头人、COMSAT实验室、特拉华大学，等等。”
