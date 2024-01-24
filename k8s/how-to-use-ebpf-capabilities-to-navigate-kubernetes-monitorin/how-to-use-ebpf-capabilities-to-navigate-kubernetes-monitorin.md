@@ -1,6 +1,6 @@
 <!--
 title: 如何利用eBPF程序监控Kubernetes
-cover: https://miro.medium.com/v2/resize:fit:828/format:webp/0*cdziSYyTc91NhwrA
+cover: ./cover.png
 -->
 
 对 Kubernetes 集群进行监控对于确保容器化应用程序的健康、性能和可靠性至关重要。Kubernetes 提供了强大的监控工具套件和集成，但是当您需要深入内核和网络级别的复杂性时，eBPF(扩展的伯克利包过滤器)就成为了无价的资源。在本文中，我们将探索惊人的 eBPF 功能，以及如何利用它提升 Kubernetes 监控策略。
