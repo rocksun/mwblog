@@ -3,7 +3,7 @@ title: 需避免的7个Java编码错误
 cover: https://cdn.thenewstack.io/media/2024/01/d4bf99ca-java-1024x576.jpg
 -->
 
-[深入探讨Java项目中最常见的错误，这些错误来自涵盖该语言的600多条规则，同时考虑了质量和安全性。
+深入探讨Java项目中最常见的错误，这些错误来自涵盖该语言的600多条规则，同时考虑了质量和安全性。
 
 > 译自 [7 Java Mistakes to Conquer](https://thenewstack.io/seven-java-mistakes-to-conquer/)，作者 Jonathan Vila 是 Sonar 的开发者倡导者。他是 Java 大师和西班牙 JBCNConf 和 DevBcn 会议的共同创始人，巴塞罗那 Java 用户组 (JUG) 的组织者，以及 BarcelonaJUG 的成员。
 
