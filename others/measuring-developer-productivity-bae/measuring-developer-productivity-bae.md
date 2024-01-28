@@ -39,7 +39,7 @@ cover: ./cover.png
 
 为了弄清楚这一点，我联系了17家领先的科技公司，询问他们的开发者生产力功能或团队使用哪些指标。下面是各个公司在出版时使用的开发者生产力指标概述。以下是他们共享的内容:
 
-![](https://substackcdn.com/image/fetch/f_auto，q_auto:good，fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62daa1a3-af3b-4f36-a157-b361a7fdd6bb_1168x1570.png)
+![](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F62daa1a3-af3b-4f36-a157-b361a7fdd6bb_1168x1570.png)
 
 *用于测量各种科技公司开发者生产力的指标*
 
