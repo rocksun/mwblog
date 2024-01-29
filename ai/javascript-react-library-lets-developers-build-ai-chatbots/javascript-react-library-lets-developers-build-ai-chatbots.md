@@ -1,6 +1,6 @@
 <!--
 title:  JavaScript/React库让开发者构建AI聊天机器人
-cover: https://cdn.thenewstack.io/media/2024/01/4a43f022-ai-generated-7783344_1280-1024x585.jpg
+cover: ./cover.jpg
 -->
 
 NLUX是一个前端库，它自带ChatGPT和Hugging Face大型语言模型的适配器，也支持对聊天机器人进行个性化定制。
