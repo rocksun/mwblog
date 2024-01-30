@@ -68,8 +68,6 @@ const SimpleReactComponent = () => {
 export default SimpleReactComponent;
 ```
 
-导出默认 SimpleReactComponent;
-
 这是 Qwik 版本。
 
 ### Qwik 简单组件
