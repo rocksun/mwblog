@@ -1,5 +1,5 @@
 <!--
-title: 与 DevOps 类比说说 TestOps
+title: 与 DevOps 并行说说 TestOps
 cover: https://cdn.thenewstack.io/media/2024/01/09326907-thumbs-1024x576.jpg
 -->
 
