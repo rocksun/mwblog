@@ -126,27 +126,36 @@ OpenTelemetry 定义了[日志数据模型](https://opentelemetry.io/docs/specs/
 **步骤1**：我们进行 zap 日志记录器的初始设置。
 
 ```go
-func SetupLog() {
-    encoderCfg := zap.NewProductionEncoderConfig()
-    encoderCfg.TimeKey = "time"
-    encoderCfg.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02T15:04:05")
-    encoderCfg.MessageKey = "message"
-    encoderCfg.CallerKey = zapcore.OmitKey
-    
-    fileEncoder := zapcore.NewJSONEncoder(encoderCfg)
-    consoleEncoder := zapcore.NewConsoleEncoder(encoderCfg)
-    
-    logFile, _ := os.OpenFile("application.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-    writer := zapcore.AddSync(logFile)
-    
-    defaultLogLevel := zapcore.DebugLevel
-    
-    core := zapcore.NewTee(
-        zapcore.NewCore(fileEncoder, writer, defaultLogLevel),
-        zapcore.NewCore(consoleEncoder, zapcore.AddSync(os.Stdout), defaultLogLevel),
-    )
-    
-    logger = zap.New(core, zap.AddCaller(), zap.AddStacktrace(zapcore.ErrorLevel))
+type LoggerWithCtx struct {
+    *zap.Logger
+    context *context.Context
+}
+
+func Ctx(ctx context.Context) *LoggerWithCtx {
+    return &LoggerWithCtx{
+        Logger:  logger,
+        context: &ctx,
+    }
+}
+
+func (l *LoggerWithCtx) logFields(
+    ctx context.Context, fields []zap.Field,
+) []zap.Field {
+    span := trace.SpanFromContext(ctx)
+    if span.IsRecording() {
+        context := span.SpanContext()
+        spanField := zap.String("span_id", context.SpanID().String())
+        traceField := zap.String("trace_id", context.TraceID().String())
+        traceFlags := zap.Int("trace_flags", int(context.TraceFlags()))
+        fields = append(fields, []zap.Field{spanField, traceField, traceFlags}...)
+    }
+
+    return fields
+}
+
+func (log *LoggerWithCtx) Info(msg string, fields ...zap.Field) {
+    fieldsWithTraceCtx := log.logFields(*log.context, fields)
+    log.Logger.Info(msg, fieldsWithTraceCtx...)
 }
 ```
 
