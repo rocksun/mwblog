@@ -41,13 +41,14 @@ UMass Amherst的Baldur方法能够自动生成用于验证代码、防范漏洞�
 
 马萨诸塞大学阿默斯特分校的研究人员将目光投向LLM，作为自动生成证明的可能解决方案。然而，即使这也带来了挑战，最大的挑战之一是这些模型并不总是正确的。与其崩溃——从而让开发人员知道有些事情出错了——它们会“悄悄失败”，生成一个错误的答案但将其呈现为正确的。悄悄失败通常是最糟糕的事情，布伦说。
 
-Enter [Baldur](https://spectrum.ieee.org/ai-debug-software)，这是马萨诸塞大学阿默斯特分校团队创建的一种新的基于人工智能的证明方法。研究人员使用了Google的[Minerva LLM](https://blog.research.google/2022/06/minerva-solving-quantitative-reasoning.html)，该模型经过大量自然语言文本的训练。然后，它进一步在118GB的数学科学论文和包含数学表达式的网页上进行训练，然后在Isabell/HOL上进行了更多的训练，这是一种用于编写数学证明的语言。
+
+进入 [Baldur](https://spectrum.ieee.org/ai-debug-software)，这是马萨诸塞大学阿默斯特分校团队创建的一种新的基于人工智能的证明方法。研究人员使用了Google的[Minerva LLM](https://blog.research.google/2022/06/minerva-solving-quantitative-reasoning.html)，该模型经过大量自然语言文本的训练。然后，它进一步在118GB的数学科学论文和包含数学表达式的网页上进行训练，然后在Isabell/HOL上进行了更多的训练，这是一种用于编写数学证明的语言。
 
 然后，Baldur生成了整个证明，使用[Isabelle](https://isabelle.in.tum.de/)，一个定理证明器，对整个世界进行检查。如果检查器发现错误，有关错误的信息会反馈到LLM中，以便让它从错误中学习，然后生成另一个证明，减少或者——希望是没有错误。
 
 这样做给了Baldur“一些上下文信息，以说，‘关于状态，关于你正在回答我的问题的问题，这里有更多的信息，’”布伦说。“当我们给它额外的信息时，它能够更好地回答问题。我们只修复了一次，但你可以想象多次修复，对于这些一次只能预测一个步骤的模型来说，即使它们使用大型语言模型逐步预测，这也更加低效。”
 
-## Enter Thor
+## 进入 Thor
 
 布伦及其团队（当时还包括在Google工作的[Markus Rabe](https://www.linkedin.com/in/markusnrabe/)和伊利诺伊大学厄巴纳-香槟分校的助理教授[Talia Ringer](https://dependenttyp.es/)）研究了Thor，一个用于集成语言模型和自动定理证明器的框架。独立运行时，Thor能够在57%的情况下生成证明，他说。
 
