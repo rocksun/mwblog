@@ -1,11 +1,11 @@
 <!--
-title: 微服务成本的隐秘之门
+title: 微服务隐含成本的星际之门
 cover: https://cdn.thenewstack.io/media/2024/01/480b03c7-stargate123-1024x576.jpg
 -->
 
 微服务在大规模协调和协作方面可能简化工作，但将所有辛勤努力转化为成本，最终却成了他人获利的渠道。
 
-> 译自 [Falling into the Star Gate of Hidden Microservices Costs](https://thenewstack.io/falling-into-the-star-gate-of-hidden-microservices-costs/)，作者 Sarah Morgan 是 Scout APM 的高级产品经理。她在软件行业拥有超过 18 年的经验，主要在波士顿的初创公司工作。她还是 Product School 的特邀演讲嘉宾和产品战略顾问...
+> 作者似乎指出微服务是云服务商的一场阴谋。译自 [Falling into the Star Gate of Hidden Microservices Costs](https://thenewstack.io/falling-into-the-star-gate-of-hidden-microservices-costs/)，作者 Sarah Morgan 是 Scout APM 的高级产品经理。她在软件行业拥有超过 18 年的经验，主要在波士顿的初创公司工作。她还是 Product School 的特邀演讲嘉宾和产品战略顾问...
 
 这篇文章是系列文章的第二部分。请[阅读第一部分](https://thenewstack.io/monoliths-a-space-odyssey-to-better-developer-experience/)。
 
