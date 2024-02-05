@@ -1,5 +1,5 @@
 <!--
-title: OWASP Dependency Track —— Kubernetes上的组件分析平台
+title: OWASP Dependency Track — Kubernetes上的组件分析平台
 cover: ./cover.png
 -->
 
