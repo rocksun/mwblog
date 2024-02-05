@@ -7,7 +7,7 @@ cover: https://cdn.thenewstack.io/media/2024/01/480b03c7-stargate123-1024x576.jp
 
 > 作者似乎指出微服务是云服务商的一场阴谋。译自 [Falling into the Star Gate of Hidden Microservices Costs](https://thenewstack.io/falling-into-the-star-gate-of-hidden-microservices-costs/)，作者 Sarah Morgan 是 Scout APM 的高级产品经理。她在软件行业拥有超过 18 年的经验，主要在波士顿的初创公司工作。她还是 Product School 的特邀演讲嘉宾和产品战略顾问...
 
-这篇文章是系列文章的第二部分。请[阅读第一部分](https://thenewstack.io/monoliths-a-space-odyssey-to-better-developer-experience/)。
+这篇文章是系列文章的第二部分。请[阅读第一部分](https://yylives.cc/2024/02/05/monoliths-a-space-odyssey-to-better-developer-experience/)。
 
 微服务的支持者声称它能提供更高的开发速度和可靠性；在容器编排器的帮助下进行更全面的测试以及纵向或横向的扩展；以及在工具选择方面拥有更多的灵活性。他们并没有错：当你使用微服务架构构建时，你很可能会在软件开发生命周期（SDLC）的早期阶段看到成本的改善，主要是由于服务的解耦。
 
