@@ -1,6 +1,6 @@
 <!--
 title: 在Kubernetes上运行Airflow两年后的收获
-cover: https://miro.medium.com/v2/resize:fit:828/format:webp/0*JTTieAmia-NxICig.jpg
+cover: ./cover.png
 -->
 
 通过这篇文章，我想分享我们部署的重要方面，这些方面帮助我们实现了一个可伸缩、可靠的环境。我希望如果你现在开始在生产环境中使用 Airflow，或者想评估一些不同的想法并将它们融入你的用例中，这会对你有所帮助。
