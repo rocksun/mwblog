@@ -46,6 +46,7 @@ baseEndPoint = 'https://yylives.cc/wp-json/wp/v2/'
 def upload_image(image_path):
     files = {'file': open(image_path, 'rb')}
     r = requests.post(baseEndPoint + 'media', headers=header, files=files, verify=False)
+    print(r)
     return r.json()['id']
 
 
