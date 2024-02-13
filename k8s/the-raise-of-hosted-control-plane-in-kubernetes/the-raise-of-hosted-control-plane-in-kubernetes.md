@@ -1,6 +1,6 @@
 <!--
 title: 托管Kubernetes控制平面的崛起
-cover: [./cover.png](https://images.ctfassets.net/mpfwqtgg3vhh/5hTWzrfR1clr34m0omgcE9/2d73c64e9ad59f6a13e6b7dd448ca74b/HCP.png)
+cover: https://images.ctfassets.net/mpfwqtgg3vhh/5hTWzrfR1clr34m0omgcE9/2d73c64e9ad59f6a13e6b7dd448ca74b/HCP.png
 -->
 
 在 Kubernetes 采用的早期阶段，单集群部署是常态，为管理应用程序和服务提供了简单直接的方法。随着 Kubernetes 的采用扩大，单集群模型的局限性显现出来。对 Kubernetes 集群的需求不断增加，需要转向多集群部署，并采用创新的托管控制平面架构。
