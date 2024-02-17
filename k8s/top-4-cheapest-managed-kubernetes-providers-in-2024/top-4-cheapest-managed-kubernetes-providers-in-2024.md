@@ -1,6 +1,6 @@
 <!-- 
-# 2024年4大最便宜的托管Kubernetes提供商排名
-https://cdn.thenewstack.io/media/2023/11/86e09c28-kubecon-hockin-03.png
+title: 2024年4大最便宜的托管Kubernetes提供商排名
+cover: ./cover.png
  -->
 
 价格和比较更新至2024年2月10日。
