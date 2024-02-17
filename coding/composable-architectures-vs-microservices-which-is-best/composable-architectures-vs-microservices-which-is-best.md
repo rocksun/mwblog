@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2024/02/fb188674-microservices-vs-compos
 
 两种软件开发架构都有各自的优缺点。下面是如何决定可组合架构还是微服务架构哪种更适合你的方法。
 
-> 译自 [Composable Architectures vs. Microservices: Which Is Best?](https://thenewstack.io/composable-architectures-vs-microservices-which-is-best/)，作者 Michel Murabito。
+> 译自 [Composable Architectures vs. Microservices: Which Is Best?](https://thenewstack.io/composable-architectures-vs-microservices-which-is-best/)，作者 Michel Murabito 是Mia-Platform的开发者倡导者，拥有超过18年的软件开发经验。
 
 [单体架构](https://mia-platform.eu/blog/monolith-to-microservices/)几十年来一直是软件开发的基石。尽管其简单易开发的特点，但随着应用程序复杂度的增加，传统架构往往会遇到性能瓶颈和可扩展性挑战。[微服务](https://mia-platform.eu/blog/microservices/)很快成为一种解决方案，通过提供性能优化、灵活性和容错性来应对这些挑战。从行业巨头如 [Atlassian](https://www.atlassian.com/software-development/practices/microservices) 和 [Netflix](https://thenewstack.io/how-culture-impacts-technology-choice-a-review-of-netflixs-use-of-microservices/) 成功从单体技术迁移的经验中我们可以学到的一课是，速度、敏捷性和可扩展性在当今市场上获胜。
 
@@ -79,6 +79,3 @@ cover: https://cdn.thenewstack.io/media/2024/02/fb188674-microservices-vs-compos
 同样地，微服务方法将复杂系统分解为更小、更专业的服务，代表着不同的业务功能。它为软件开发生命周期带来了更快的创新、高度的可伸缩性、改善的弹性、持续交付和故障隔离。
 
 要更深入地了解可组合架构以及如何将您的业务转变为可组合企业，请深入阅读我们的可组合企业白皮书。
-
-Mia-Platform的开发者倡导者，拥有超过18年的软件开发经验。我喜欢分享我的知识，因此，在2021年和2022年之间，我作为演讲嘉宾在许多意大利和国际活动中发表了演讲。我管理一个YouTube...
-更多来自Michel Murabito的信息，请阅读原文。
