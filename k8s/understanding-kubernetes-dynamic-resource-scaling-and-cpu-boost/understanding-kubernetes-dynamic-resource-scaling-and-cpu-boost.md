@@ -5,7 +5,8 @@ cover: ./cover.png
 
 当应用程序的资源需求发生变化时，在 Kubernetes 1.27 中，通过 in-place 资源调整可以调整 Pod 资源而无需重新启动容器。
 
-> 译自 [](https://cloud.google.com/blog/products/containers-kubernetes/understanding-kubernetes-dynamic-resource-scaling-and-cpu-boost)，作者 。
+> 译自 [Containers & Kubernetes
+Faster startup times for Kubernetes workloads with Kube Startup CPU Boost](https://cloud.google.com/blog/products/containers-kubernetes/understanding-kubernetes-dynamic-resource-scaling-and-cpu-boost)，作者 Mikołaj Stefaniak 和 Abdelfettah Sghiouar 。
 
 尽管 Kubernetes 具有许多自动化功能，但运行容器化应用程序仍然面临一些挑战。其中之一是需要定义应用程序所需的资源。这些通常是 CPU 和内存，但也可能包括本地存储。Kubernetes 提供了一种在 [Pod 模板](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates)中为应用程序配置资源的方式。
 
