@@ -1,5 +1,5 @@
 <!--
-title: 更快的Kubernetes工作负载启动时间与Kube Startup CPU Boost
+title: 使用Kube Startup CPU Boost加速Kubernetes工作负载启动时间
 cover: ./cover.png
 -->
 
