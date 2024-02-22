@@ -1,5 +1,5 @@
 <!--
-title: Pulumi推出GenAI堆栈模板:首批支持Pinecone和LangChain
+title: Pulumi推出GenAI堆栈模板: 首批支持Pinecone和LangChain
 cover: https://cdn.thenewstack.io/media/2024/02/1a6e838f-pulumi-1024x578.jpg
 -->
 
