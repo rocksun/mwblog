@@ -1,5 +1,5 @@
 <!--
-title: Kubernetes预测失误
+title: 关于Kubernetes的预测已经错了
 cover: https://cdn.thenewstack.io/media/2024/02/db012df2-predictions-1024x576.jpg
 -->
 
