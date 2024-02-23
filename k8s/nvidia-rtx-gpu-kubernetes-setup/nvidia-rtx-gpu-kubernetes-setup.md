@@ -5,7 +5,7 @@ cover: ./cover.png
 
 设置裸金属 Kubernetes 上的 NVIDIA RTX GPU，涵盖 Ubuntu 22.04 上的驱动程序安装、配置和故障排除。
 
-> 译自 [](https://www.jimangel.io/posts/nvidia-rtx-gpu-kubernetes-setup/)，作者 。
+> 译自 [A Practical Guide to Running NVIDIA GPUs on Kubernetes](https://www.jimangel.io/posts/nvidia-rtx-gpu-kubernetes-setup/)，作者  Jim Angel。
 
 目标受众：Kubernetes运维人员、机器学习工程师、GPU爱好者
 
