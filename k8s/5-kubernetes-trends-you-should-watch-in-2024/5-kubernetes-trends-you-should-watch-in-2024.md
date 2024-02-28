@@ -1,6 +1,6 @@
 <!--
 title: 2024年你应该关注的5个Kubernetes趋势
-cover: https://miro.medium.com/v2/resize:fit:720/format:webp/1*zEs3cf1G4JQVtgPQmp6VYg.png
+cover: ./cover.png
 -->
 
 随着 Kubernetes 的不断演进，2024 年出现了一些趋势，Kubernetes 工程师应该密切关注。这些趋势反映了技术、实践和整体生态系统的重大变化，提供了未来发展的见解。
