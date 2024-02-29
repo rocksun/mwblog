@@ -5,7 +5,7 @@ cover: https://cdn.thenewstack.io/media/2024/02/63fe1fb6-address-kubernetes-risk
 
 Kubernetes 威胁和风险的主因：配置错误与容器镜像漏洞。
 
-> 译自 [How to Address Kubernetes Risks and Vulnerabilities Head-on](https://thenewstack.io/how-to-address-kubernetes-risks-and-vulnerabilities-head-on/)，作者 Giri Radhakrishnan 是 Tigera 公司的技术产品营销经理。他负责 Calico 安全解决方案的市场推广活动、产品定位和信息传递，重点关注零信任和容器安全。
+> 译自 [How to Address Kubernetes Risks and Vulnerabilities Head-on](https://thenewstack.io/how-to-address-kubernetes-risks-and-vulnerabilities-head-on/)，作者 Giri Radhakrishnan 是 Tigera 公司的技术产品营销经理。他负责 Calico 安全解决方案的市场推广活动、产品定位和信息传递，重点关注零信任和容器安全。****
 
 根据 [Gartner](https://www.gartner.com/en/documents/3988026) 的数据，到 2027 年，全球组织中超过 90% 将在生产环境中运行容器化应用程序。这一比例较 2021 年的不到 40% 有了显著增长。随着容器的广泛采用，[Kubernetes](https://thenewstack.io/kubernetes/) 仍然是主导的容器编排平台。
 
