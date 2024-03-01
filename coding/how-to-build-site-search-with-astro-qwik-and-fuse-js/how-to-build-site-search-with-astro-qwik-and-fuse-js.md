@@ -46,9 +46,10 @@ export const collections = {
 
 为了更加保险，这里是我一篇博客文章的前置元数据（但所有博客文章将使用相同的模式）。
 
+```markdown
 // src/content/posts/2024/02/the-qwik-astro-audiofeed-experiment.mdx
 
----markdown
+---
 base: posts
 title: 中 Qwik, Astro, Audiofeed 实验
 tags: [Qwik, Astro, Audiofeed, AI]
@@ -56,6 +57,7 @@ date: 2024-02-06
 author: Paul Scanlon
 featuredImage: https://res.cloudinary.com/www-paulie-dev/image/upload/v1707261626/paulie.dev/2024/02/get-started-with-qwik-astro_qtxmyq.jpg
 ---
+```
 
 你可以在存储库中查看源代码：[the-qwik-astro-audiofeed-experiment.mdx](https://github.com/PaulieScanlon/tns-astro-site-search/blob/main/src/content/posts/2024/02/the-qwik-astro-audiofeed-experiment.mdx)。
 
@@ -141,6 +143,7 @@ import Layout from '../layouts/layout.astro';
 
 以下是布局组件，它向端点发出服务器端请求。
 
+```jsx
 // src/layouts/layout.astro
 
 ---
@@ -161,6 +164,7 @@ const { search } = await content.json();
       </main>
   </body>
 </html>
+```
 
 这里需要指出的一件事是 fetch 中使用的 URL。如果站点已部署且 PROD 为 true，则静态端点的 URL 将为 [https://tns-astro-site-search.netlify.app/all-content.json](https://tns-astro-site-search.netlify.app/all-content.json)，而在开发中则使用本地主机 URL。
 
