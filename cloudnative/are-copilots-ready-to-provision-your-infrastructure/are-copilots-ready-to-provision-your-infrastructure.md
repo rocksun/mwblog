@@ -115,7 +115,7 @@ schedule("pizzaTimeNotification").every("2 hours", async (ctx) => {
 
 下面[是一个应用程序基础设施的实时图像](https://nitric.io/blog/v1-release#visualize-your-app-s-architecture)，当开发人员添加或移除资源时，它会自动更新。
 
-![Zoom]([image.png](https://cdn.thenewstack.io/media/2024/02/8666aade-architecture-dashboard-4-scaled.jpg))
+![Zoom](https://cdn.thenewstack.io/media/2024/02/8666aade-architecture-dashboard-4-scaled.jpg)
 
 ## 拥抱软件开发的未来
 
