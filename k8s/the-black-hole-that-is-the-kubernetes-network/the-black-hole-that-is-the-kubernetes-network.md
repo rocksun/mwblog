@@ -8,11 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/02/bde635cc-black-hole.png
 
 > 译自 [The Black Hole That Is the Kubernetes Network](https://thenewstack.io/the-black-hole-that-is-the-kubernetes-network/)，作者 Mitch Connors。
 
-
-# Kubernetes 网络这个黑洞
-
-![Kubernetes 网络这个黑洞的特色图片](https://cdn.thenewstack.io/media/2024/02/bde635cc-black-hole-1024x576.png)
-
 在过去的一个世纪左右，物理学中一直存在两种理论之间的紧张关系。两种理论都被证明对于预测宇宙的行为以及推进技术工程都很有价值，但它们似乎对现实的本质做出了完全不兼容的主张。
 
 我当然指的是广义相对论和量子理论。通常，这两种理论解决的是关于宇宙的非常不同的问题——一个在最大尺度上，另一个在最小尺度上——但两种理论都汇聚在对黑洞的研究中，黑洞是信息无法逃逸的空间点。
