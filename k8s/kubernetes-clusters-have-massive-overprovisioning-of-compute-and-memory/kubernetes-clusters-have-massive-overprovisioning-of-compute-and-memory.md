@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes 集群存在大量的计算和内存过度配置
-cover: http://www.nextplatform.com/wp-content/uploads/2020/02/ab_container-port-scaled.jpg
+cover: ./cover.jpg
 -->
 
 自 Google 向开源社区发布 Kubernetes 的十年以来，它已成为编排和管理的领先平台
