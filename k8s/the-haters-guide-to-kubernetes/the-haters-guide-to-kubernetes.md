@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes憎恨者指南
-cover: https://r.moxy.social/ykZcSLKZUq/paulbutler/fb.png?date=March+3%2C+2024&title=The+hater%E2%80%99s+guide+to+Kubernetes
+cover: ./cover.png
 -->
 
 在某些技术领域，Kubernetes 被认为是一个不必要的复杂时间浪费，初创公司应该避免使用。使用 Kubernetes 和一个小团队被视为过度工程的标志。
