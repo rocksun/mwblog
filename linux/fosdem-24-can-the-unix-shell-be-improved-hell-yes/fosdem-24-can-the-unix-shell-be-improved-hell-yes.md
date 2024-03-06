@@ -1,6 +1,6 @@
 
 <!--
-title: Unix Shell 能否得到改进？当然可以！（FOSDEM 24）
+title: Unix Shell能否得到改进？当然可以！
 cover: https://cdn.thenewstack.io/media/2024/03/a270fc6f-liquid_prompt.png
 -->
 
