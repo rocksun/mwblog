@@ -6,14 +6,9 @@ cover: https://cdn.thenewstack.io/media/2024/03/9e8a1544-beyond-basics.jpg
 
 一旦你开始写一篇文章或博客文章，如何润色它才能让读者渴望阅读它？在我们的系列文章的第二部分中获得一些提示。
 
-> 译自 [Writing for Software Engineers: Beyond the Basics](https://thenewstack.io/writing-for-software-engineers-beyond-the-basics/)，作者 Charles Humble。
+> 译自 [Writing for Software Engineers: Beyond the Basics](https://yylives.cc/2024/03/06/writing-for-software-engineers-read-me-first/)，作者 Charles Humble。非常棒的写作教材，之前另一篇是[陈皓老师翻译](https://twitter.com/haoel)的《[Google 技术写作](https://docs.google.com/document/d/16aoMrMGHPIR1i_eUNRvksdDdwcDG6KiOJN6Vfh-n8-s/edit?pli=1)》，也在这里缅怀一下陈皓老师。
 
-
-# 为软件工程师写作：超越基础
-
-![为软件工程师写作：超越基础的特色图片](https://cdn.thenewstack.io/media/2024/03/9e8a1544-beyond-basics-1024x576.jpg)
-
-[在此处找到第一部分。](https://thenewstack.io/writing-for-software-engineers-read-me-first)
+[在此处找到第一部分。](https://yylives.cc/2024/03/06/writing-for-software-engineers-read-me-first/)
 
 如果你为互联网写作，大多数人在决定是否点击并阅读你的文章之前唯一会阅读的内容就是标题。一位优秀的编辑可以帮助你解决这个问题，我坚信这是他们的责任，但如果你尝试自己想出标题，一个好的测试方法是问自己，“在没有上下文的情况下，我会阅读这个标题吗？”
 
@@ -38,7 +33,7 @@ cover: https://cdn.thenewstack.io/media/2024/03/9e8a1544-beyond-basics.jpg
 
 ### 保持简单
 
-[威廉·津瑟](https://www.williamzinsserwriter.com/) 写了我最喜欢的关于这个主题的书，“[写作技巧](https://www.harpercollins.com/products/on-writing-well-william-zinsser)”，它真的帮助我理清了如何清晰简洁地写作的思路。我深深感谢他，我将在本节中分享他的信息。
+[William Zinsser](https://www.williamzinsserwriter.com/) 写了我最喜欢的关于这个主题的书，“[写作技巧](https://www.harpercollins.com/products/on-writing-well-william-zinsser)”，它真的帮助我理清了如何清晰简洁地写作的思路。我深深感谢他，我将在本节中分享他的信息。
 
 他使用的一句话让我印象深刻，“写得好文章的秘诀是将每个句子分解成最简洁的成分。”
 
@@ -53,6 +48,14 @@ cover: https://cdn.thenewstack.io/media/2024/03/9e8a1544-beyond-basics.jpg
 对于非虚构写作，你的目标不应该是炫耀你的词汇量有多丰富，而是尽可能清晰地传达含义。这是一项艰苦的工作；一个清晰的句子不是偶然的。欣赏好文章的人会理解创作它的工作。
 
 我特别喜欢过度使用限定词。去掉它们。与其说“有些人认为 Kubernetes 在某些情况下可能被认为过于复杂”，不如说“Kubernetes 很复杂”。正如津瑟所说，“好的写作精炼而自信。”
+
+删掉小词。我发现它“有一点”让人困惑；我“有点”生气。困惑吧，生气吧。避免使用“轻而易举”——如果轻而易举，那就是毫不费力的，那就用“毫不费力”。
+
+修剪形容词——大部分都是不必要的。你不需要告诉我水仙是黄色的或者土壤是棕色的；我能猜到。当然，如果土壤是蓝色的，那会更值得注意。
+
+如果某事值得一提，那就让它读起来有趣——不要告诉我它有趣；向我展示它有趣。
+
+
 ### 让你的文字读起来有吸引力
 
 写作是一种视觉媒介，在进入大脑之前就会吸引眼球。短段落使你所写的内容看起来有吸引力，而一大块文字可能会令人反感。
@@ -69,42 +72,20 @@ cover: https://cdn.thenewstack.io/media/2024/03/9e8a1544-beyond-basics.jpg
 
 ## 使用可用工具
 
-在第一部分，我提到了我的软件工具链（Mac Pages—> Google Docs—> Docs to Markdown）。我通常在文本编辑器中编辑 HTML 和 Markdown，但有时会使用 Dreamweaver 或 Caret。我不做很多图像工作，但我使用 Pixelmator Pro 进行插图。
+在第一部分，我提到了我的软件工具链（Mac Pages—> Google Docs—> Docs to Markdown）。我通常在文本编辑器中编辑 HTML 和 Markdown，但有时会使用 [Dreamweaver](https://www.adobe.com/uk/products/dreamweaver.html) 或 [Caret](https://caret.io/)。我不做很多图像工作，但我使用 [Pixelmator Pro](https://www.pixelmator.com/pro/) 进行插图。
 
-我通常在 Zoom 上远程进行采访。通过使用其内置的音频录制功能，我不需要依赖我糟糕的速记。对于面对面的采访，例如在会议上，我随身携带 Zoom H4N Pro，我已经用了很多年了；这是一款很棒的产品，但你可能只需要在手机上使用一个应用程序。
+我通常在 Zoom 上远程进行采访。通过使用其内置的音频录制功能，我不需要依赖我糟糕的速记。对于面对面的采访，例如在会议上，我随身携带 [Zoom H4N Pro](https://zoomcorp.com/en/gb/handheld-recorders/handheld-recorders/h4n-pro/)，我已经用了很多年了；这是一款很棒的产品，但你可能只需要在手机上使用一个应用程序。
 
-由于技术可能会出现故障，我还在手机上运行备份录音。我仍然手动转录采访中的引语，但许多作家使用语音转文本转录服务，例如 Otter 或人工支持的 Rev 来完成繁琐的工作。
+由于技术可能会出现故障，我还在手机上运行备份录音。我仍然手动转录采访中的引语，但许多作家使用语音转文本转录服务，例如 [Otter](https://otter.ai/) 或人工支持的 [Rev](https://www.rev.com/) 来完成繁琐的工作。
 
-我认为当今大多数作家都在关注大型语言模型 (LLM)，并想知道它们是否可能有用。我曾对它们进行过试验，但没有发现它们有帮助，因为它们产生的文本过于通用且容易出错——相当于 Muzak 的写作，或者正如顾问 Mark Hurst 所说，Polyfilla/spackle。
+我认为当今大多数作家都在关注大型语言模型 (LLM)，并想知道它们是否可能有用。我曾对它们进行过试验，但没有发现它们有帮助，因为它们产生的文本过于通用且容易出错——相当于 [Muzak](https://dictionary.cambridge.org/dictionary/english/muzak#) 的写作，或者正如顾问 [Mark Hurst](https://twitter.com/markhurst) 所说，[Polyfilla/spackle](https://creativegood.com/blog/23/ai-is-spackle.html)。
 
-鉴于它们的道德基础不稳、环境成本以及幻觉和抄袭的危险，我认为 LLM 目前带来的风险大于其价值，并且不会在写作中使用它们。The New Stack 不使用人工智能 (AI) 生成的文章，并已就此发布了其政策，值得一读。
+鉴于它们的[道德基础不稳](https://www.youtube.com/watch?v=EOzenhj5KLY)、[环境成本](https://thenewstack.io/meeting-the-operational-challenges-of-training-llms/)以及[幻觉](https://thenewstack.io/how-to-reduce-the-hallucinations-from-large-language-models/)和抄袭的危险，我认为 LLM 目前带来的风险大于其价值，并且不会在写作中使用它们。The New Stack 不使用人工智能 (AI) 生成的文章，并已就此[发布了其政策](https://thenewstack.io/why-the-new-stack-wont-give-you-ai-written-articles/)，值得一读。
 
-除了软件之外，任何作家的主要工具都是一本好词典和一本同义词典，你可能会发现语法指南很有帮助。除了 Zinsser 之外，我还推荐阅读 Jon Franklin 的“Writing for Story”和 Lynne Truss 的“Eats, Shoots & Leaves”。在第一次新冠封锁期间，我和我最大的孩子（一个有抱负的小说家）一起参加了 Neil Gaiman 的大师班学习讲故事的艺术，我们都非常享受。
-**修正后的 Markdown 文档：**
+除了软件之外，任何作家的主要工具都是一本好词典和一本同义词典，你可能会发现语法指南很有帮助。除了 Zinsser 之外，我还推荐阅读 [Jon Franklin](https://niemanstoryboard.org/stories/jon-franklin-obituary-narrative-nonficction-pulitzer-prizes/) 的“[Writing for Story](https://www.penguinrandomhouse.com/books/326811/writing-for-story-by-jonathan-franklin/)”和 [Lynne Truss](https://www.lynnetruss.com/) 的“[Eats, Shoots & Leaves](https://www.penguinrandomhouse.com/books/294386/eats-shoots-and-leaves-by-lynne-truss/)”。在第一次新冠封锁期间，我和我最大的孩子（一个有抱负的小说家）一起参加了 [Neil Gaiman 的大师班](https://www.masterclass.com/classes/neil-gaiman-teaches-the-art-of-storytelling)学习讲故事的艺术，我们都非常享受。
 
-**SEO 资源**
+我这里没时间深入探讨 SEO 方面的问题，但是，如果你对该主题感兴趣，我发现“[Google 时代的营销](https://www.wiley.com/en-us/Marketing+in+the+Age+of+Google:+Your+Online+Strategy+IS+Your+Business+Strategy,+Revised+and+Updated-p-9781118343005)”很有帮助；它现在有点过时了，但核心建议是可靠的。权威的 SEO 指南是 [Eric Enge](https://www.linkedin.com/in/ericenge/)、[Stephan Spencer](https://www.linkedin.com/in/stephanspencer/) 和 [Jessie Stricchiola](https://www.linkedin.com/in/stricchiola/) 的“[SEO 艺术](https://www.artofseo.com/)”。
 
-我没有时间深入探讨 SEO 问题，但如果你对这个主题感兴趣，我发现以下资源很有帮助：
+我强烈建议，如果你找到了一个你钦佩其作品的作家，那么看看你是否能够模仿他们的风格；你会从玩弄其他作家的技巧中学到很多东西。
 
-* **书籍：**
-    * [谷歌时代的营销](https://www.wiley.com/en-us/Marketing+in+the+Age+of+Google:+Your+Online+Strategy+IS+Your+Business+Strategy,+Revised+and+Updated-p-9781118343005)
-    * [SEO 的艺术](https://www.artofseo.com/)
-
-* **作者：**
-    * [Eric Enge](https://www.linkedin.com/in/ericenge/)
-    * [Stephan Spencer](https://www.linkedin.com/in/stephanspencer/)
-    * [Jessie Stricchiola](https://www.linkedin.com/in/stricchiola/)
-
-**写作技巧**
-
-我强烈建议，如果你找到一位你钦佩其作品的作家，看看你是否可以模仿他们的风格。你会从玩弄其他作家的技巧中学到很多东西。
-
-**写作与编码**
-
-最终，写作就像编码一样，是一种解决问题的方式。挑战可能是获取事实、组织材料或语气或风格。一些模式和结构可以提供帮助，但与编程一样，你会在实践中变得更好。
-
-**订阅我们的 YouTube 频道**
-
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube 频道以流式传输我们所有的播客、访谈、演示等。
+最终，写作就像编码一样，是一种解决问题的方式。挑战可能是获取事实、组织材料或语调或风格。一些模式和结构可能有帮助，但是，与编程一样，你也会随着实践变得更好。
