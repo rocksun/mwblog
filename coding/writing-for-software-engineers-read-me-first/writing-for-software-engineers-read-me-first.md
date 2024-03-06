@@ -8,10 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/03/668f8a46-blogging-for-engineers-
 
 > 译自 [Writing for Software Engineers: Read Me First](https://thenewstack.io/writing-for-software-engineers-read-me-first/)，作者 Charles Humble。非常棒的写作教材，之前另一篇是[陈皓老师翻译](https://twitter.com/haoel)的《[Google 技术写作](https://docs.google.com/document/d/16aoMrMGHPIR1i_eUNRvksdDdwcDG6KiOJN6Vfh-n8-s/edit?pli=1)》，也在这里缅怀一下陈皓老师。
 
-# 为软件工程师写作：首先阅读
-
-![软件工程师写作：首先阅读的特色图片](https://cdn.thenewstack.io/media/2024/03/668f8a46-blogging-for-engineers-2-1024x576.jpg)
-
 [在此处查找第二部分](https://thenewstack.io/writing-for-software-engineers-beyond-the-basics)。
 
 我们许多工程师都患有常见的疾病：害怕写作。这通常始于学校，在那里我们被告知我们没有“语言天赋”。这是无稽之谈。写作是一门手艺，它的原则是可以学习的。
