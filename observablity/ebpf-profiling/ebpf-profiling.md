@@ -1,7 +1,7 @@
 
 <!--
 title: eBPF分析：深入了解系统状况的关键
-cover: https://assets-global.website-files.com/6268eda2c1a363801996822a/650c2232053505ea929f3047_groundcover.jpg
+cover: ./cover.png
 -->
 
 当您学会使用 eBPF 性能分析解锁详细洞察时，不可靠的数据将成为过去。了解如何细粒度且高效地监控 CPU、内存和网络数据。
