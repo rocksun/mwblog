@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v22.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>There are only 12 binaries in Talos Linux - Sidero Labs</title>
+	<meta name="description" content="Talos is a single purpose Linux distribution for Kubernetes. We only include binaries you need. Here&#039;s a list of all the binaries and what they do." />
+	<link rel="canonical" href="https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="There are only 12 binaries in Talos Linux - Sidero Labs" />
+	<meta property="og:description" content="Talos is a single purpose Linux distribution for Kubernetes. We only include binaries you need. Here&#039;s a list of all the binaries and what they do." />
+	<meta property="og:url" content="https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/" />
+	<meta property="og:site_name" content="Sidero Labs" />
+	<meta property="article:published_time" content="2024-03-04T18:43:50+00:00" />
+	<meta property="article:modified_time" content="2024-03-04T19:11:15+00:00" />
+	<meta property="og:image" content="https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Justin Garrison" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@siderolabs" />
+	<meta name="twitter:site" content="@siderolabs" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Justin Garrison" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="5 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#article","isPartOf":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/"},"author":{"name":"Justin Garrison","@id":"https://www.siderolabs.com/#/schema/person/dbf7e9ff980523c7422f18c065d677e6"},"headline":"There are only 12 binaries in Talos Linux","datePublished":"2024-03-04T18:43:50+00:00","dateModified":"2024-03-04T19:11:15+00:00","mainEntityOfPage":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/"},"wordCount":998,"commentCount":0,"publisher":{"@id":"https://www.siderolabs.com/#organization"},"image":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#primaryimage"},"thumbnailUrl":"https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png","articleSection":["Talos OS"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#respond"]}]},{"@type":"WebPage","@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/","url":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/","name":"There are only 12 binaries in Talos Linux - Sidero Labs","isPartOf":{"@id":"https://www.siderolabs.com/#website"},"primaryImageOfPage":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#primaryimage"},"image":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#primaryimage"},"thumbnailUrl":"https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png","datePublished":"2024-03-04T18:43:50+00:00","dateModified":"2024-03-04T19:11:15+00:00","description":"Talos is a single purpose Linux distribution for Kubernetes. We only include binaries you need. Here's a list of all the binaries and what they do.","breadcrumb":{"@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#primaryimage","url":"https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png","contentUrl":"https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png","width":1200,"height":630},{"@type":"BreadcrumbList","@id":"https://www.siderolabs.com/blog/there-are-only-12-binaries-in-talos-linux/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.siderolabs.com/"},{"@type":"ListItem","position":2,"name":"There are only 12 binaries in Talos Linux"}]},{"@type":"WebSite","@id":"https://www.siderolabs.com/#website","url":"https://www.siderolabs.com/","name":"Sidero Labs","description":"The minimal, secure-by-default platform for Kubernetes","publisher":{"@id":"https://www.siderolabs.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.siderolabs.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.siderolabs.com/#organization","name":"Sidero Labs","url":"https://www.siderolabs.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.siderolabs.com/#/schema/logo/image/","url":"https://mlxz2ksifyzh.i.optimole.com/w:auto/h:auto/q:mauto/ig:avif/f:best/https://www.siderolabs.com/wp-content/uploads/2022/01/Sidero_horizontal_lightbkgd_RGB.png","contentUrl":"https://mlxz2ksifyzh.i.optimole.com/w:auto/h:auto/q:mauto/ig:avif/f:best/https://www.siderolabs.com/wp-content/uploads/2022/01/Sidero_horizontal_lightbkgd_RGB.png","width":1244,"height":455,"caption":"Sidero Labs"},"image":{"@id":"https://www.siderolabs.com/#/schema/logo/image/"},"sameAs":["https://twitter.com/siderolabs","https://www.linkedin.com/company/sidero-labs/","https://www.youtube.com/c/siderolabs"]},{"@type":"Person","@id":"https://www.siderolabs.com/#/schema/person/dbf7e9ff980523c7422f18c065d677e6","name":"Justin Garrison","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.siderolabs.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/60cb63ae743e2f3adc28d30c41fa0948?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/60cb63ae743e2f3adc28d30c41fa0948?s=96&d=mm&r=g","caption":"Justin Garrison"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//js.hs-scripts.com' />
+<link rel='dns-prefetch' href='//fonts.gstatic.com' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.siderolabs.com/wp-includes/css/dist/block-library/style.min.css?ver=6.4.3' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='mkaz-code-syntax-prism-css-css' href='https://www.siderolabs.com/wp-content/plugins/code-syntax-block/assets/prism-a11y-dark.css?ver=1657129133' media='all' />
+<link rel='stylesheet' id='orbisius_ct_hello_elementor_child_theme_parent_style-css' href='https://www.siderolabs.com/wp-content/themes/hello-elementor/style.css?ver=3.0.1' media='all' />
+<link rel='stylesheet' id='orbisius_ct_hello_elementor_child_theme_parent_style_child_style-css' href='https://www.siderolabs.com/wp-content/themes/hello-elementor-child-theme/style.css?ver=2.4.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-css' href='https://www.siderolabs.com/wp-content/themes/hello-elementor/style.min.css?ver=3.0.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://www.siderolabs.com/wp-content/themes/hello-elementor/theme.min.css?ver=3.0.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-header-footer-css' href='https://www.siderolabs.com/wp-content/themes/hello-elementor/header-footer.min.css?ver=3.0.1' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.19.4' media='all' />
+<link rel='stylesheet' id='elementor-post-5-css' href='https://www.siderolabs.com/wp-content/uploads/elementor/css/post-5.css?ver=1709612738' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.29.0' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/swiper/css/swiper.min.css?ver=5.3.6' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/css/frontend-lite.min.css?ver=3.19.3' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='https://www.siderolabs.com/wp-content/uploads/elementor/css/global.css?ver=1709612738' media='all' />
+<link rel='stylesheet' id='elementor-post-9-css' href='https://www.siderolabs.com/wp-content/uploads/elementor/css/post-9.css?ver=1709612738' media='all' />
+<link rel='stylesheet' id='elementor-post-39-css' href='https://www.siderolabs.com/wp-content/uploads/elementor/css/post-39.css?ver=1709612738' media='all' />
+<link rel='stylesheet' id='elementor-post-1224-css' href='https://www.siderolabs.com/wp-content/uploads/elementor/css/post-1224.css?ver=1709769282' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Fira+Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=auto&#038;ver=6.4.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.15.3' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>			<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v11.0.8-->
+			<script class="hsq-set-content-id" data-content-id="blog-post">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "blog-post"]);
+			</script>
+			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
+					<script type="text/javascript">
+				(function(c,l,a,r,i,t,y){
+					c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;
+					t.src="https://www.clarity.ms/tag/"+i+"?ref=wordpress";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+				})(window, document, "clarity", "script", "krlhv4wua7");
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-84XPSTJQ9C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-84XPSTJQ9C');
+  gtag('config', 'AW-564928157');
+</script>
+<!-- Microsoft ads tracking -->
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"211037670", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><meta name="description" content="Comparing Talos Linux with other popular Linux distros. Showing what every binary in Talos does.">
+<meta name="generator" content="Elementor 3.19.4; features: e_optimized_css_loading, additional_custom_breakpoints, block_editor_assets_optimize, e_image_loading_optimization; settings: css_print_method-external, google_font-enabled, font_display-auto">
+<link rel="icon" href="https://www.siderolabs.com/wp-content/uploads/2021/12/elementor/thumbs/SideroFacvicon-phygjiqtx7mydfvua1lljzjefaryz0jy5boo1wc4bs.png" sizes="32x32" />
+<link rel="icon" href="https://www.siderolabs.com/wp-content/uploads/2021/12/SideroFacvicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.siderolabs.com/wp-content/uploads/2021/12/SideroFacvicon.png" />
+<meta name="msapplication-TileImage" content="https://www.siderolabs.com/wp-content/uploads/2021/12/SideroFacvicon.png" />
+		<style id="wp-custom-css">
+			/* Contact Form */
+.contact-form input,
+.contact-form textarea{
+    box-shadow: 10px 10px 40px 0px rgba(229, 229, 246, 1);
+}
+.contact-form button.elementor-button.elementor-size-sm {
+    box-shadow: 10px 10px 25px 0px rgb(71 71 72);
+    margin-top: 30px;
+}
+@media screen and (max-width: 767px){
+	.contact-form button{
+		width: 100% !important;
+	}
+}		</style>
+		</head>
+<body class="post-template-default single single-post postid-7467 single-format-standard wp-custom-logo elementor-default elementor-template-full-width elementor-kit-5 elementor-page elementor-page-7467 elementor-page-1224">
+
+		<div data-elementor-type="header" data-elementor-id="9" class="elementor elementor-9 elementor-location-header" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-7ec47ed header-section elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="7ec47ed" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;sticky&quot;:&quot;top&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-3ed3d45" data-id="3ed3d45" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-997cbac elementor-widget__width-auto elementor-widget elementor-widget-theme-site-logo elementor-widget-image" data-id="997cbac" data-element_type="widget" data-widget_type="theme-site-logo.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.19.0 - 28-02-2024 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>						<a href="https://www.siderolabs.com">
+			<img width="1864" height="455" src="https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK.png" class="attachment-full size-full wp-image-7126" alt="" srcset="https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK.png 1864w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-300x73.png 300w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-1024x250.png 1024w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-768x187.png 768w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-1536x375.png 1536w" sizes="(max-width: 1864px) 100vw, 1864px" />				</a>
+									</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-e17a54a" data-id="e17a54a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-0759d1d elementor-nav-menu__align-center elementor-widget__width-initial elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="0759d1d" data-element_type="widget" data-settings="{&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;i class=\&quot;fas fa-angle-down\&quot;&gt;&lt;\/i&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;layout&quot;:&quot;horizontal&quot;,&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+			<link rel="stylesheet" href="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/css/widget-nav-menu.min.css">			<nav class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
+				<ul id="menu-1-0759d1d" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1218"><a class="elementor-item">Platform</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-632"><a href="https://www.siderolabs.com/platform/talos-os-for-kubernetes/" class="elementor-sub-item">Talos Linux for Kubernetes</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-908"><a href="https://www.siderolabs.com/platform/bare-metal-kubernetes-sidero/" class="elementor-sub-item">Sidero Metal</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5769"><a href="https://www.siderolabs.com/platform/saas-for-kubernetes/" class="elementor-sub-item">Omni: SaaS for Kubernetes deployments</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4851"><a class="elementor-item">Use Cases</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4907"><a href="https://www.siderolabs.com/use_cases/internal-kubernetes-platforms/" class="elementor-sub-item">Internal Kubernetes Platforms</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1694"><a href="https://www.siderolabs.com/use_cases/kubernetes-on-the-edge/" class="elementor-sub-item">Kubernetes at the Edge</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5230"><a href="https://www.siderolabs.com/use_cases/kubernetes-for-regulated-environments/" class="elementor-sub-item">Kubernetes for Regulated Environments</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5023"><a href="https://www.siderolabs.com/use_cases/portable-kubernetes-clusters/" class="elementor-sub-item">Portable Kubernetes Clusters</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-907"><a href="https://www.siderolabs.com/use_cases/hybrid_kubernetes/" class="elementor-sub-item">Hybrid Kubernetes</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://www.siderolabs.com/pricing/" class="elementor-item">Pricing</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4482"><a class="elementor-item">Resource Hub</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="https://www.siderolabs.com/resource-hub/blog/" class="elementor-sub-item">Blog</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7602"><a href="https://www.talos.dev/latest/" class="elementor-sub-item">Talos docs</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7603"><a href="https://omni.siderolabs.com/docs/" class="elementor-sub-item">Omni docs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6657"><a href="https://www.siderolabs.com/case-studies/" class="elementor-sub-item">Case Studies</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4485"><a href="https://www.siderolabs.com/resource-hub/partners/" class="elementor-sub-item">Partners</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4484"><a href="https://www.siderolabs.com/resource-hub/resources/" class="elementor-sub-item">Learning Resources</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4483"><a href="https://www.siderolabs.com/support/" class="elementor-sub-item">Support</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="https://www.siderolabs.com/about-us/" class="elementor-item">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1751"><a href="https://www.siderolabs.com/contact/" class="elementor-item">Contact</a></li>
+</ul>			</nav>
+					<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open eicon-menu-bar"></i><i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close eicon-close"></i>			<span class="elementor-screen-only">Menu</span>
+		</div>
+					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
+				<ul id="menu-2-0759d1d" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1218"><a class="elementor-item" tabindex="-1">Platform</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-632"><a href="https://www.siderolabs.com/platform/talos-os-for-kubernetes/" class="elementor-sub-item" tabindex="-1">Talos Linux for Kubernetes</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-908"><a href="https://www.siderolabs.com/platform/bare-metal-kubernetes-sidero/" class="elementor-sub-item" tabindex="-1">Sidero Metal</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5769"><a href="https://www.siderolabs.com/platform/saas-for-kubernetes/" class="elementor-sub-item" tabindex="-1">Omni: SaaS for Kubernetes deployments</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4851"><a class="elementor-item" tabindex="-1">Use Cases</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4907"><a href="https://www.siderolabs.com/use_cases/internal-kubernetes-platforms/" class="elementor-sub-item" tabindex="-1">Internal Kubernetes Platforms</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1694"><a href="https://www.siderolabs.com/use_cases/kubernetes-on-the-edge/" class="elementor-sub-item" tabindex="-1">Kubernetes at the Edge</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5230"><a href="https://www.siderolabs.com/use_cases/kubernetes-for-regulated-environments/" class="elementor-sub-item" tabindex="-1">Kubernetes for Regulated Environments</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5023"><a href="https://www.siderolabs.com/use_cases/portable-kubernetes-clusters/" class="elementor-sub-item" tabindex="-1">Portable Kubernetes Clusters</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-907"><a href="https://www.siderolabs.com/use_cases/hybrid_kubernetes/" class="elementor-sub-item" tabindex="-1">Hybrid Kubernetes</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://www.siderolabs.com/pricing/" class="elementor-item" tabindex="-1">Pricing</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4482"><a class="elementor-item" tabindex="-1">Resource Hub</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="https://www.siderolabs.com/resource-hub/blog/" class="elementor-sub-item" tabindex="-1">Blog</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7602"><a href="https://www.talos.dev/latest/" class="elementor-sub-item" tabindex="-1">Talos docs</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7603"><a href="https://omni.siderolabs.com/docs/" class="elementor-sub-item" tabindex="-1">Omni docs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6657"><a href="https://www.siderolabs.com/case-studies/" class="elementor-sub-item" tabindex="-1">Case Studies</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4485"><a href="https://www.siderolabs.com/resource-hub/partners/" class="elementor-sub-item" tabindex="-1">Partners</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4484"><a href="https://www.siderolabs.com/resource-hub/resources/" class="elementor-sub-item" tabindex="-1">Learning Resources</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4483"><a href="https://www.siderolabs.com/support/" class="elementor-sub-item" tabindex="-1">Support</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="https://www.siderolabs.com/about-us/" class="elementor-item" tabindex="-1">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1751"><a href="https://www.siderolabs.com/contact/" class="elementor-item" tabindex="-1">Contact</a></li>
+</ul>			</nav>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-128a5e5" data-id="128a5e5" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-bae7ce4 elementor-align-left elementor-widget__width-auto elementor-widget elementor-widget-button" data-id="bae7ce4" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-xs" href="https://signup.siderolabs.io/">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Try Omni</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+				<div data-elementor-type="single-post" data-elementor-id="1224" class="elementor elementor-1224 elementor-location-single post-7467 post type-post status-publish format-standard has-post-thumbnail hentry category-talos-os" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-c4dc7bf elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c4dc7bf" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-97fb00c" data-id="97fb00c" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-890214f elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget-mobile__width-inherit elementor-search-form--skin-classic elementor-search-form--button-type-icon elementor-search-form--icon-search elementor-widget elementor-widget-search-form" data-id="890214f" data-element_type="widget" data-settings="{&quot;skin&quot;:&quot;classic&quot;}" data-widget_type="search-form.default">
+				<div class="elementor-widget-container">
+			<link rel="stylesheet" href="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/css/widget-theme-elements.min.css">		<search role="search">
+			<form class="elementor-search-form" action="https://www.siderolabs.com/search/" method="get">
+												<div class="elementor-search-form__container">
+					<label class="elementor-screen-only" for="elementor-search-form-890214f">Search</label>
+
+					
+					<input id="elementor-search-form-890214f" placeholder="Search..." class="elementor-search-form__input" type="search" name="q" value="">
+					
+											<button class="elementor-search-form__submit" type="submit" aria-label="Search">
+															<i aria-hidden="true" class="fas fa-search"></i>								<span class="elementor-screen-only">Search</span>
+													</button>
+					
+									</div>
+			</form>
+		</search>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1ad0629 elementor-widget elementor-widget-theme-post-title elementor-page-title elementor-widget-heading" data-id="1ad0629" data-element_type="widget" data-widget_type="theme-post-title.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.19.0 - 28-02-2024 */
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h1 class="elementor-heading-title elementor-size-default">There are only 12 binaries in Talos Linux</h1>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-8c6c497 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="8c6c497" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-c55ee50" data-id="c55ee50" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-7ac4fa9 elementor-widget__width-initial elementor-mobile-align-center elementor-widget-mobile__width-inherit elementor-widget elementor-widget-post-info" data-id="7ac4fa9" data-element_type="widget" data-widget_type="post-info.default">
+				<div class="elementor-widget-container">
+			<link rel="stylesheet" href="https://www.siderolabs.com/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css">		<ul class="elementor-inline-items elementor-icon-list-items elementor-post-info">
+								<li class="elementor-icon-list-item elementor-repeater-item-1daf6d7 elementor-inline-item" itemprop="author">
+													<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-author">
+										Justin Garrison					</span>
+								</li>
+				<li class="elementor-icon-list-item elementor-repeater-item-c6d7ad4 elementor-inline-item" itemprop="datePublished">
+													<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date">
+										March 4, 2024					</span>
+								</li>
+				</ul>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-28807ed elementor-share-buttons--view-icon elementor-share-buttons--align-right elementor-share-buttons--color-custom elementor-widget__width-initial elementor-share-buttons-mobile--align-center elementor-widget-mobile__width-inherit elementor-share-buttons--skin-gradient elementor-share-buttons--shape-square elementor-grid-0 elementor-widget elementor-widget-share-buttons" data-id="28807ed" data-element_type="widget" data-widget_type="share-buttons.default">
+				<div class="elementor-widget-container">
+			<link rel="stylesheet" href="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/css/widget-share-buttons.min.css">		<div class="elementor-grid">
+								<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_email"
+							role="button"
+							tabindex="0"
+							aria-label="Share on email"
+						>
+															<span class="elementor-share-btn__icon">
+								<i class="fas fa-envelope" aria-hidden="true"></i>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_twitter"
+							role="button"
+							tabindex="0"
+							aria-label="Share on twitter"
+						>
+															<span class="elementor-share-btn__icon">
+								<i class="fab fa-twitter" aria-hidden="true"></i>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_linkedin"
+							role="button"
+							tabindex="0"
+							aria-label="Share on linkedin"
+						>
+															<span class="elementor-share-btn__icon">
+								<i class="fab fa-linkedin" aria-hidden="true"></i>							</span>
+																				</div>
+					</div>
+						</div>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<div class="elementor-element elementor-element-60b29bb elementor-widget elementor-widget-theme-post-content" data-id="60b29bb" data-element_type="widget" data-widget_type="theme-post-content.default">
+				<div class="elementor-widget-container">
+			
+<figure class="wp-block-image size-large"><img fetchpriority="high" fetchpriority="high" decoding="async" width="1024" height="538" src="https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1-1024x538.png" alt="" class="wp-image-7597" srcset="https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1-1024x538.png 1024w, https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1-300x158.png 300w, https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1-768x403.png 768w, https://www.siderolabs.com/wp-content/uploads/2024/03/12-binaries-banner-1.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Linux is a core component of your Kubernetes cluster. The distribution you choose will have a big impact on how quickly you can create a cluster, the stability of your workloads, and how much maintenance you&#8217;ll need to perform.</p>
+
+
+
+<p>When creating a version of Linux for containers or Kubernetes, for many companies and distributions the common practice is to start with a general-purpose Linux and strip away things you don&#8217;t need. This results in a smaller footprint variation of the main distribution—e.g. <a href="https://wiki.ubuntu.com/Minimal">Ubuntu minimal</a>—but it always starts from a big, general purpose Linux and tries to make it smaller.</p>
+
+
+
+<p>Talos Linux takes the opposite approach. What if the distribution only had to run Kubernetes? What is the minimal set of tooling and executables needed?</p>
+
+
+
+<p>There are <strong>12 unique binaries</strong> in /bin and /sbin in Talos 1.7.0. This greatly reduces the size of installation, the maintenance needed for the operating system, and the possible security vulnerabilities of the system.</p>
+
+
+
+<p>For reference here are some other popular distributions and how many binaries they include by default. This also counts executables that are symlinked or hard linked to another file (e.g. <code>lvm</code> is often symlinked multiple times for <code>lvs</code> and <code>vgs</code>).</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td>Talos Linux</td><td>29</td></tr><tr><td>Ubuntu Server 22.04</td><td>2780</td></tr><tr><td>Amazon Linux 2</td><td>1382</td></tr><tr><td>Flatcar Container Linux</td><td>2391</td></tr></tbody></table></figure>
+
+
+
+<p>All distros were set up with default installation options. No additional packages were installed and binaries were counted with:</p>
+
+
+
+<pre class="wp-block-code"><code class="">ls -1 $(echo $PATH | tr ':' '\n') | wc -l</code></pre>
+
+
+
+<p>Talos doesn&#8217;t provide a shell, <code>ls</code>, <code>tr</code>, or <code>wc</code>. Files were counted via the API and we didn&#8217;t count directories:</p>
+
+
+
+<pre class="wp-block-code"><code class="">talosctl list -n $NODE_IP /sbin | wc -l
+talosctl list -n $NODE_IP /bin | wc -l</code></pre>
+
+
+
+<p>With only 12 unique files on the system we can tell you what each one does.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/init</h2>
+
+
+
+<p>The init binary is one of the biggest strengths of Talos Linux. Talos doesn&#8217;t ship with a general purpose init system like systemd. Talos&#8217; init system is purpose built for running the Kubelet and a container runtime. The init system exposes a declarative API which is how the system is configured and maintained.</p>
+
+
+
+<p>The init binary is <a href="https://github.com/siderolabs/talos/blob/main/internal/app/machined/main.go">called machined</a> and is written in go. It&#8217;s less than 400 lines of code and can be understood by a go developer in less than a day. As <a href="https://github.com/systemd/systemd/blob/main/src/core/main.c">opposed to systemd</a> which is over 3000 lines of C code I&#8217;ll never comprehend.</p>
+
+
+
+<p>The <code>/sbin/init</code> binary is hard linked to <code>/sbin/dashboard</code>, <code>/sbin/poweroff</code>, <code>/sbin/shutdown</code>, and <code>/sbin/wrapperd</code>. While this technically is 5 files, it&#8217;s a single file hard linked 4 times to provide convenience commands.</p>
+
+
+
+<p>The dashboard is used for providing local and remote information about the node. You can see an overview of how it works on YouTube.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Talos dashboard overview" width="800" height="450" src="https://www.youtube.com/embed/52Wmkb0H-98?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>The binaries <code>poweroff</code> and <code>shutdown</code> are commands to cleanly shut down the node. These are used by the kernel and external tools, but Talos uses the system API to shutdown.</p>
+
+
+
+<p>The <a href="https://github.com/siderolabs/talos/blob/main/internal/app/wrapperd/main.go">wrapperd</a> binary is used during init to fork processes with reduced privledges. Because a child process will inherit a lot from the parent process wrapperd is used to remove kernel capabilities like CAP_SYSADMIN.</p>
+
+
+
+<p>All of the other binaries on the system are included from other packages we build from source. You can see how they get built <a href="https://github.com/siderolabs/pkgs">from GitHub</a> and we will review each binary below.</p>
+
+
+
+<h2 class="wp-block-heading">/bin/containerd*</h2>
+
+
+
+<p>This is the container runtime that ships with Talos. It is commonly used with Kubernetes clusters and is the default container runtime option for the majority of providers.</p>
+
+
+
+<p>This also includes <code>/bin/containerd-shim-runc-v2</code> and <code>/bin/containerd-shim</code>. Both of these shims provide the same function (executing a container under <code>runc</code>) but <code>containerd-shim</code> was originally used with docker and <code>containerd-shim-runc-v2</code> is used from containerd.</p>
+
+
+
+<h2 class="wp-block-heading">/bin/runc</h2>
+
+
+
+<p>This is the true <a href="https://github.com/opencontainers/runc">parent process of your containers</a>. It is daemonless so the containerd service can restart if needed without stopping all your containers.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/modprobe</h2>
+
+
+
+<p>The command <a contenteditable="false" style="cursor: pointer;" href="https://linux.die.net/man/8/modprobe">modprobe</a> is for managing kernel modules to add or remove functionality from your kernel. This is often for adding support for special hardware (e.g. GPUs) but is also used for additional kernel tooling.</p>
+
+
+
+<p>Talos doesn&#8217;t use modprob directly but some modules require the binary to load other modules. You can add kernel modules to Talos via <a href="https://www.talos.dev/latest/talos-guides/configuration/system-extensions/">system extensions</a> and use pre-built extensions from the <a href="https://www.talos.dev/latest/learn-more/image-factory/">Image Factory</a>.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/lvm</h2>
+
+
+
+<p>The <code>lvm</code> binary is used for managing logical volumes in Linux. This is provided for services that run in Kubernetes that may need or expect a logical volume to be present on the host (e.g. <a href="https://rook.io/docs/rook/latest-release/Getting-Started/Prerequisites/prerequisites/#lvm-package">rook</a>).</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/dmsetup</h2>
+
+
+
+<p>This is used for managing logical volumes that use the device-mapper driver. It&#8217;s similar to <code>lvs</code> commands but a separate binary for more complex disk configuration.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/udevd</h2>
+
+
+
+<p>The udevd daemon takes kernel messages and passes the messages to other systems to read the messages. It can be configured as part of the <a href="https://www.talos.dev/latest/reference/configuration/v1alpha1/config/#Config.machine.udev">Talos machine config</a>.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/mkfs.xfs</h2>
+
+
+
+<p>This will create an <a href="https://en.wikipedia.org/wiki/XFS">XFS file system</a> on a disk or logical volume.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/xfs_repair</h2>
+
+
+
+<p>This is used to repair an XFS file system if it becomes corrupted.</p>
+
+
+
+<h2 class="wp-block-heading">/sbin/xtables-legacy-multi</h2>
+
+
+
+<p>This binary is symlinked by <code>iptables*</code> and <code>ip6tables*</code> to configure IP tables on the host. Container network interface (CNI) providers often mount directories from the host and expect these commands to exist because they cannot easily be run from within a container.</p>
+
+
+
+<p>These symlinks account for 12 total files in the system but they all perform common iptables commands.</p>
+
+
+
+<h2 class="wp-block-heading">Conclusion</h2>
+
+
+
+<p>It may seem impossible but that&#8217;s the entire system. Every binary is required to bootstrap a Kubernetes cluster or run a node as part of the cluster. This is why we call Talos Linux the <a href="https://www.siderolabs.com/platform/talos-os-for-kubernetes/">Kubernetes Operating System</a>.</p>
+
+
+
+<p>There are more executable files in /lib and /usr but those are Shared Object (.so) files and Kernel modules (.ko). These are necessary to run the system for drivers and various programs but are not called directly.</p>
+
+
+
+<p>If you would like to download and install Talos on your system of choice you can get started at <a href="https://talos.dev" target="_blank" rel="noreferrer noopener">https://talos.dev</a>.</p>
+
+
+
+<p>To get an even easier interface to managing Kubernetes clusters on-prem or in a cloud provider check out Omni at <a href="https://www.siderolabs.com/platform/saas-for-kubernetes/" target="_blank" rel="noreferrer noopener">https://www.siderolabs.com/platform/saas-for-kubernetes/</a>.</p>
+
+
+
+<p>If you have questions or want to get started come join the <a href="https://slack.dev.talos-systems.io/">Talos community Slack</a>.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Welcome to Omni" width="800" height="450" src="https://www.youtube.com/embed/0gPF0_fLins?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div></figure>
+		</div>
+				</div>
+				<div class="elementor-element elementor-element-0268efc elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget-mobile__width-inherit elementor-widget elementor-widget-post-navigation" data-id="0268efc" data-element_type="widget" data-widget_type="post-navigation.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-post-navigation">
+			<div class="elementor-post-navigation__prev elementor-post-navigation__link">
+				<a href="https://www.siderolabs.com/blog/omni-source-code-now-available/" rel="prev"><span class="post-navigation__arrow-wrapper post-navigation__arrow-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i><span class="elementor-screen-only">Prev</span></span><span class="elementor-post-navigation__link__prev"><span class="post-navigation__prev--label">previous</span></span></a>			</div>
+						<div class="elementor-post-navigation__next elementor-post-navigation__link">
+				<a href="https://www.siderolabs.com/blog/omni-hobby-tier-is-now-10/" rel="next"><span class="elementor-post-navigation__link__next"><span class="post-navigation__next--label">next</span></span><span class="post-navigation__arrow-wrapper post-navigation__arrow-next"><i class="fa fa-arrow-right" aria-hidden="true"></i><span class="elementor-screen-only">Next</span></span></a>			</div>
+		</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-a2a153c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="a2a153c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-1acb849" data-id="1acb849" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-0026365 elementor-widget elementor-widget-heading" data-id="0026365" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Subscribe!</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1c1b884 elementor-widget elementor-widget-text-editor" data-id="1c1b884" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.19.0 - 28-02-2024 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#69727d;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#69727d;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>				<p>Occasional Updates On Sidero Labs, Kubernetes And More!</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-40e6b6c elementor-widget elementor-widget-shortcode" data-id="40e6b6c" data-element_type="widget" data-widget_type="shortcode.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-shortcode">
+					<script>
+						window.hsFormsOnReady = window.hsFormsOnReady || [];
+						window.hsFormsOnReady.push(()=>{
+							hbspt.forms.create({
+								portalId: 5706104,
+								formId: "23f14085-c278-4526-b4cb-7089a1e0a7e3",
+								target: "#hbspt-form-1709843457000-3124405555",
+								region: "na1",
+								
+						})});
+					</script>
+					<div class="hbspt-form" id="hbspt-form-1709843457000-3124405555"></div></div>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+				<div data-elementor-type="footer" data-elementor-id="39" class="elementor elementor-39 elementor-location-footer" data-elementor-post-type="elementor_library">
+					<section class="elementor-section elementor-top-section elementor-element elementor-element-79b0762 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="79b0762" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5eabf1d" data-id="5eabf1d" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-5c0ba4f elementor-widget elementor-widget-theme-site-logo elementor-widget-image" data-id="5c0ba4f" data-element_type="widget" data-widget_type="theme-site-logo.default">
+				<div class="elementor-widget-container">
+									<a href="https://www.siderolabs.com">
+			<img width="1864" height="455" src="https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK.png" class="attachment-full size-full wp-image-7126" alt="" srcset="https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK.png 1864w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-300x73.png 300w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-1024x250.png 1024w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-768x187.png 768w, https://www.siderolabs.com/wp-content/uploads/2021/11/SideroLabs_horizontal_darkbkgd_CMYK-1536x375.png 1536w" sizes="(max-width: 1864px) 100vw, 1864px" />				</a>
+									</div>
+				</div>
+				<div class="elementor-element elementor-element-5642a93 elementor-widget__width-auto elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="5642a93" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="tel:(888)%20488-2567">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-phone-alt"></i>						</span>
+										<span class="elementor-icon-list-text">(888) 488-2567</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="mailto:info@SideroLabs.com">
+
+												<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-mail-bulk"></i>						</span>
+										<span class="elementor-icon-list-text">info@SideroLabs.com</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<i aria-hidden="true" class="fas fa-location-arrow"></i>						</span>
+										<span class="elementor-icon-list-text">5662 CALLE REAL #471 GOLETA CA 93117</span>
+									</li>
+						</ul>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c42c39c elementor-widget__width-auto elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="c42c39c" data-element_type="widget" data-settings="{&quot;layout&quot;:&quot;vertical&quot;,&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;i class=\&quot;fas fa-caret-down\&quot;&gt;&lt;\/i&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-vertical e--pointer-text e--animation-none">
+				<ul id="menu-1-c42c39c" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://www.siderolabs.com/resource-hub/blog/" class="elementor-item">Blog</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4075"><a href="https://www.siderolabs.com/support/" class="elementor-item">Support</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-4092"><a rel="privacy-policy" href="https://www.siderolabs.com/privacy-policy/" class="elementor-item">Privacy Policy</a></li>
+</ul>			</nav>
+					<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open eicon-menu-bar"></i><i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close eicon-close"></i>			<span class="elementor-screen-only">Menu</span>
+		</div>
+					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
+				<ul id="menu-2-c42c39c" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://www.siderolabs.com/resource-hub/blog/" class="elementor-item" tabindex="-1">Blog</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4075"><a href="https://www.siderolabs.com/support/" class="elementor-item" tabindex="-1">Support</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-4092"><a rel="privacy-policy" href="https://www.siderolabs.com/privacy-policy/" class="elementor-item" tabindex="-1">Privacy Policy</a></li>
+</ul>			</nav>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7cfb8bc elementor-widget__width-auto elementor-nav-menu--dropdown-tablet elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="7cfb8bc" data-element_type="widget" data-settings="{&quot;layout&quot;:&quot;vertical&quot;,&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;i class=\&quot;fas fa-caret-down\&quot;&gt;&lt;\/i&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-vertical e--pointer-text e--animation-none">
+				<ul id="menu-1-7cfb8bc" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51"><a href="https://www.siderolabs.com/about-us/" class="elementor-item">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="https://www.siderolabs.com/careers/" class="elementor-item">Careers</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4254"><a href="https://www.siderolabs.com/contact/" class="elementor-item">Contact</a></li>
+</ul>			</nav>
+					<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open eicon-menu-bar"></i><i aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close eicon-close"></i>			<span class="elementor-screen-only">Menu</span>
+		</div>
+					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
+				<ul id="menu-2-7cfb8bc" class="elementor-nav-menu sm-vertical"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51"><a href="https://www.siderolabs.com/about-us/" class="elementor-item" tabindex="-1">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="https://www.siderolabs.com/careers/" class="elementor-item" tabindex="-1">Careers</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4254"><a href="https://www.siderolabs.com/contact/" class="elementor-item" tabindex="-1">Contact</a></li>
+</ul>			</nav>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f73d637 elementor-shape-rounded elementor-grid-0 e-grid-align-center elementor-widget elementor-widget-social-icons" data-id="f73d637" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.19.0 - 28-02-2024 */
+.elementor-widget-social-icons.elementor-grid-0 .elementor-widget-container,.elementor-widget-social-icons.elementor-grid-mobile-0 .elementor-widget-container,.elementor-widget-social-icons.elementor-grid-tablet-0 .elementor-widget-container{line-height:1;font-size:0}.elementor-widget-social-icons:not(.elementor-grid-0):not(.elementor-grid-tablet-0):not(.elementor-grid-mobile-0) .elementor-grid{display:inline-grid}.elementor-widget-social-icons .elementor-grid{grid-column-gap:var(--grid-column-gap,5px);grid-row-gap:var(--grid-row-gap,5px);grid-template-columns:var(--grid-template-columns);justify-content:var(--justify-content,center);justify-items:var(--justify-content,center)}.elementor-icon.elementor-social-icon{font-size:var(--icon-size,25px);line-height:var(--icon-size,25px);width:calc(var(--icon-size, 25px) + 2 * var(--icon-padding, .5em));height:calc(var(--icon-size, 25px) + 2 * var(--icon-padding, .5em))}.elementor-social-icon{--e-social-icon-icon-color:#fff;display:inline-flex;background-color:#69727d;align-items:center;justify-content:center;text-align:center;cursor:pointer}.elementor-social-icon i{color:var(--e-social-icon-icon-color)}.elementor-social-icon svg{fill:var(--e-social-icon-icon-color)}.elementor-social-icon:last-child{margin:0}.elementor-social-icon:hover{opacity:.9;color:#fff}.elementor-social-icon-android{background-color:#a4c639}.elementor-social-icon-apple{background-color:#999}.elementor-social-icon-behance{background-color:#1769ff}.elementor-social-icon-bitbucket{background-color:#205081}.elementor-social-icon-codepen{background-color:#000}.elementor-social-icon-delicious{background-color:#39f}.elementor-social-icon-deviantart{background-color:#05cc47}.elementor-social-icon-digg{background-color:#005be2}.elementor-social-icon-dribbble{background-color:#ea4c89}.elementor-social-icon-elementor{background-color:#d30c5c}.elementor-social-icon-envelope{background-color:#ea4335}.elementor-social-icon-facebook,.elementor-social-icon-facebook-f{background-color:#3b5998}.elementor-social-icon-flickr{background-color:#0063dc}.elementor-social-icon-foursquare{background-color:#2d5be3}.elementor-social-icon-free-code-camp,.elementor-social-icon-freecodecamp{background-color:#006400}.elementor-social-icon-github{background-color:#333}.elementor-social-icon-gitlab{background-color:#e24329}.elementor-social-icon-globe{background-color:#69727d}.elementor-social-icon-google-plus,.elementor-social-icon-google-plus-g{background-color:#dd4b39}.elementor-social-icon-houzz{background-color:#7ac142}.elementor-social-icon-instagram{background-color:#262626}.elementor-social-icon-jsfiddle{background-color:#487aa2}.elementor-social-icon-link{background-color:#818a91}.elementor-social-icon-linkedin,.elementor-social-icon-linkedin-in{background-color:#0077b5}.elementor-social-icon-medium{background-color:#00ab6b}.elementor-social-icon-meetup{background-color:#ec1c40}.elementor-social-icon-mixcloud{background-color:#273a4b}.elementor-social-icon-odnoklassniki{background-color:#f4731c}.elementor-social-icon-pinterest{background-color:#bd081c}.elementor-social-icon-product-hunt{background-color:#da552f}.elementor-social-icon-reddit{background-color:#ff4500}.elementor-social-icon-rss{background-color:#f26522}.elementor-social-icon-shopping-cart{background-color:#4caf50}.elementor-social-icon-skype{background-color:#00aff0}.elementor-social-icon-slideshare{background-color:#0077b5}.elementor-social-icon-snapchat{background-color:#fffc00}.elementor-social-icon-soundcloud{background-color:#f80}.elementor-social-icon-spotify{background-color:#2ebd59}.elementor-social-icon-stack-overflow{background-color:#fe7a15}.elementor-social-icon-steam{background-color:#00adee}.elementor-social-icon-stumbleupon{background-color:#eb4924}.elementor-social-icon-telegram{background-color:#2ca5e0}.elementor-social-icon-thumb-tack{background-color:#1aa1d8}.elementor-social-icon-tripadvisor{background-color:#589442}.elementor-social-icon-tumblr{background-color:#35465c}.elementor-social-icon-twitch{background-color:#6441a5}.elementor-social-icon-twitter{background-color:#1da1f2}.elementor-social-icon-viber{background-color:#665cac}.elementor-social-icon-vimeo{background-color:#1ab7ea}.elementor-social-icon-vk{background-color:#45668e}.elementor-social-icon-weibo{background-color:#dd2430}.elementor-social-icon-weixin{background-color:#31a918}.elementor-social-icon-whatsapp{background-color:#25d366}.elementor-social-icon-wordpress{background-color:#21759b}.elementor-social-icon-xing{background-color:#026466}.elementor-social-icon-yelp{background-color:#af0606}.elementor-social-icon-youtube{background-color:#cd201f}.elementor-social-icon-500px{background-color:#0099e5}.elementor-shape-rounded .elementor-icon.elementor-social-icon{border-radius:10%}.elementor-shape-circle .elementor-icon.elementor-social-icon{border-radius:50%}</style>		<div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-repeater-item-0927e8a" href="https://twitter.com/siderolabs" target="_blank">
+						<span class="elementor-screen-only">Twitter</span>
+						<i class="fab fa-twitter"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-repeater-item-ae2db19" href="https://www.linkedin.com/company/sidero-labs/" target="_blank">
+						<span class="elementor-screen-only">Linkedin</span>
+						<i class="fab fa-linkedin"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-repeater-item-445f1bc" href="https://www.youtube.com/c/SideroLabs" target="_blank">
+						<span class="elementor-screen-only">Youtube</span>
+						<i class="fab fa-youtube"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-github elementor-repeater-item-c685b57" href="https://github.com/siderolabs" target="_blank">
+						<span class="elementor-screen-only">Github</span>
+						<i class="fab fa-github"></i>					</a>
+				</span>
+					</div>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		
+<script type="text/javascript">
+_linkedin_partner_id = "4605276";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4605276&fmt=gif" />
+</noscript><link rel='stylesheet' id='elementor-icons-fa-regular-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/regular.min.css?ver=5.15.3' media='all' />
+<link rel='stylesheet' id='e-animations-css' href='https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.19.4' media='all' />
+<script id="mkaz-code-syntax-prism-js-js-extra">
+var prism_settings = {"pluginUrl":"https:\/\/www.siderolabs.com\/wp-content\/plugins\/code-syntax-block\/"};
+</script>
+<script src="https://www.siderolabs.com/wp-content/plugins/code-syntax-block/assets/prism/prism.js?ver=1657129133" id="mkaz-code-syntax-prism-js-js" defer></script>
+<script id="leadin-script-loader-js-js-extra">
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"11.0.8"};
+</script>
+<script src="https://js.hs-scripts.com/5706104.js?integration=WordPress&amp;ver=11.0.8" id="leadin-script-loader-js-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.0.1" id="hello-theme-frontend-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.2.1" id="smartmenus-js" defer></script>
+<script defer src="https://js.hsforms.net/forms/embed/v2.js?ver=11.0.8" id="leadin-forms-v2-js"></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.19.3" id="elementor-pro-webpack-runtime-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.19.4" id="elementor-webpack-runtime-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.19.4" id="elementor-frontend-modules-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2" id="wp-polyfill-inert-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.14.0" id="regenerator-runtime-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script src="https://www.siderolabs.com/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1" id="wp-hooks-js"></script>
+<script src="https://www.siderolabs.com/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/www.siderolabs.com\/wp-admin\/admin-ajax.php","nonce":"33ebe31c10","urls":{"assets":"https:\/\/www.siderolabs.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/www.siderolabs.com\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/www.siderolabs.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.19.3" id="elementor-pro-frontend-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2" id="elementor-waypoints-js" defer></script>
+<script src="https://www.siderolabs.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2" id="jquery-ui-core-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js?ver=5.3.6" id="swiper-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js?ver=3.19.4" id="share-link-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.9.0" id="elementor-dialog-js" defer></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.19.4","is_static":false,"experimentalFeatures":{"e_optimized_css_loading":true,"additional_custom_breakpoints":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"block_editor_assets_optimize":true,"ai-layout":true,"landing-pages":true,"e_image_loading_optimization":true,"e_global_styleguide":true,"page-transitions":true,"notes":true,"form-submissions":true,"e_scroll_snap":true},"urls":{"assets":"https:\/\/www.siderolabs.com\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper-container","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":7467,"title":"There%20are%20only%2012%20binaries%20in%20Talos%20Linux%20-%20Sidero%20Labs","excerpt":"Comparing Talos Linux with other popular Linux distros. Showing what every binary in Talos does.","featuredImage":"https:\/\/www.siderolabs.com\/wp-content\/uploads\/2024\/03\/12-binaries-banner-1-1024x538.png"}};
+</script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.19.4" id="elementor-frontend-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/js/preloaded-elements-handlers.min.js?ver=3.19.3" id="pro-preloaded-elements-handlers-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor/assets/js/preloaded-modules.min.js?ver=3.19.4" id="preloaded-modules-js" defer></script>
+<script src="https://www.siderolabs.com/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=3.19.3" id="e-sticky-js" defer></script>
+
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
