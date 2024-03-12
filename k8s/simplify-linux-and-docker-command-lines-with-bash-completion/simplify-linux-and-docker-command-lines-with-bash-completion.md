@@ -1,6 +1,6 @@
 
 <!--
-title: 使用 Bash 补全简化 Linux 和 Docker 命令行
+title: 使用Bash补全简化Linux和Docker命令行
 cover: https://cdn.thenewstack.io/media/2024/03/e3ec3d33-wings.png
 -->
 
