@@ -1,6 +1,6 @@
 
 <!--
-title: 如何使用开发者门户构建新应用程序
+title: 如何使用开发者门户构建新应用
 cover: https://cdn.thenewstack.io/media/2024/03/16d01e0a-scaffold-new-application-portal.jpg
 -->
 
