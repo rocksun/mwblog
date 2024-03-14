@@ -1,6 +1,6 @@
 
 <!--
-title: 开源的发布、商业化和未来
+title: 开源的分发、商业化和未来
 cover: https://cdn.thenewstack.io/media/2024/02/7b4a4264-dandelion-6253416_1280.jpg
 -->
 
