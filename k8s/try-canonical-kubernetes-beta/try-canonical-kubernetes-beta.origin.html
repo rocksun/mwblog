@@ -1,0 +1,1592 @@
+
+<!doctype html>
+
+<html prefix="og: http://ogp.me/ns#" class="" lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How should a great K8s distro feel? Try the new Canonical Kubernetes, now in beta | Ubuntu</title>
+
+  <link rel="preconnect" href="https://res.cloudinary.com">
+
+  
+  <script src="https://assets.ubuntu.com/v1/703e23c9-lazysizes+noscript+native-loading.5.1.2.min.js" defer></script>
+
+  <script src="/static/js/src/navigation.js?v=6bb1d55" defer></script>
+  <script src="/static/js/dist/main.js?v=590d37b" defer></script>
+  <script src="/static/js/src/infer-preferred-language.js?v=b69e09e"></script>
+  
+  <link rel="stylesheet" type="text/css" media="screen" href="/static/css/styles.css?v=9b80765">
+  <link rel="stylesheet" type="text/css" media="print" href="/static/css/print.css?v=5cd0cda">
+  <script>performance.mark("Stylesheets finished")</script>
+
+  <link rel="canonical" href="https://ubuntu.com/blog/try-canonical-kubernetes-beta">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://assets.ubuntu.com/v1/f38b9c7e-COF%20apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://assets.ubuntu.com/v1/be7e4cc6-COF-favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://assets.ubuntu.com/v1/16c27f81-COF%20favicon-16x16.png">
+  <link rel="manifest" href="/static/files/site.webmanifest?v=fbabd71">
+  <!-- Serving favicon for search engines locally -->
+  <link rel="icon" type="image/png" sizes="48x48" href="/static/favicons/COF-favicon-48x48.png?v=fa3c63f">
+
+  
+
+  <link rel="preload" as="font" type="font/woff2" href="https://assets.ubuntu.com/v1/46ed6870-Ubuntu-L-subset.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://assets.ubuntu.com/v1/3baab91b-Ubuntu-Th-subset.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://assets.ubuntu.com/v1/6113b69a-Ubuntu-LI-subset.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://assets.ubuntu.com/v1/0c7b8dc0-Ubuntu-R-subset.woff2" crossorigin>
+
+  <meta name="description" content="Try the new Canonical Kubernetes beta, our new distribution that combines ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations […]">
+
+  <meta name="facebook-domain-verification" content="zxp9j79g1gy2xenbu9ll964pttk5hu">
+  <meta name="twitter:account_id" content="4503599627481511">
+  <meta name="twitter:site" content="@ubuntu">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ubuntu.com/blog/try-canonical-kubernetes-beta">
+  <meta property="og:site_name" content="Ubuntu">
+  <meta name="copydoc" content="https://drive.google.com/drive/folders/0B4s80tIYQW4BMjNiMGFmNzQtNDkxZC00YmQ0LWJiZWUtNTk2YThlY2MzZmJh">
+  <meta name="google-site-verification" content="ddh2iq7ZuKf1LpkL_gtM_T7DkKDVD7ibq6Ceue4a_3M">
+
+  
+  <meta name="twitter:title" content="How should a great K8s distro feel? Try the new Canonical Kubernetes, now in beta | Ubuntu">
+  <meta property="og:title" content="How should a great K8s distro feel? Try the new Canonical Kubernetes, now in beta | Ubuntu">
+  
+  
+  <meta name="twitter:description" content="Try the new Canonical Kubernetes beta, our new distribution that combines ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations […]">
+  <meta property="og:description" content="Try the new Canonical Kubernetes beta, our new distribution that combines ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations […]">
+  
+
+  
+  <!-- Meta image: https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png -->
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png">
+  <meta property="og:image" content="https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png">
+  
+
+  
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@id": "https://ubuntu.com/#article",
+    "@type": "Article",
+    "name": "",
+    "headline": "Try the new Canonical Kubernetes beta, our new distribution that combines ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations […]",
+    "author": {
+       "@type": "Person",
+       "name": "Marcin &#34;Perk&#34; Stożek"
+    },
+    "datePublished": "2024-03-14T13:06:16",
+    
+      "image": "https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png",
+    
+    "url": "https://ubuntu.com/blog/try-canonical-kubernetes-beta",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Ubuntu"
+    }
+  }
+  </script>
+
+
+          <!-- Google Analytics and Google Optimize -->
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-1018242-59', 'auto', {'allowLinker': true});
+        ga('require', 'GTM-N2MDH37');
+        ga('require', 'linker');
+        ga('linker:autoLink', ['conjure-up.io', 'login.ubuntu.com', 'www.ubuntu.com',
+        'ubuntu.com', 'insights.ubuntu.com', 'developer.ubuntu.com', 'cn.ubuntu.com',
+        'design.ubuntu.com', 'maas.io', 'canonical.com', 'landscape.canonical.com',
+        'pages.ubuntu.com', '/tutorials', 'docs.ubuntu.com']);
+        </script>
+        <!-- End Google Analytics and Google Optimize -->
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-K92JCQ');</script>
+        <!-- End Google Tag Manager -->
+
+        <style>#rememberMe {display: none;}</style>
+
+  <!-- Start VWO Async SmartCode -->
+<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+<script type='text/javascript' id='vwoCode'>
+  window._vwo_code || (function () {
+    var account_id = 786976,
+      version = 2.0,
+      settings_tolerance = 2000,
+      hide_element = 'body',
+      hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+      /* DO NOT EDIT BELOW THIS LINE */
+      f = false, w = window, d = document, v = d.querySelector('#vwoCode'), cK = 'vwo' + account_id + '_settings', cc = {}; try { var c = JSON.parse(localStorage.getItem('vwo' + account_id + '_config')); cc = c && typeof c === 'object' ? c : {} } catch (e) { } var stT = cc.stT === 'session' ? w.sessionStorage : w.localStorage; code = { use_existing_jquery: function () { return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined }, library_tolerance: function () { return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined }, settings_tolerance: function () { return cc.sT || settings_tolerance }, hide_element_style: function () { return '{' + (cc.hES || hide_element_style) + '}' }, hide_element: function () { return typeof cc.hE === 'string' ? cc.hE : hide_element }, getVersion: function () { return version }, finish: function () { if (!f) { f = true; var e = d.getElementById('_vis_opt_path_hides'); if (e) e.parentNode.removeChild(e) } }, finished: function () { return f }, load: function (e) { var t = this.getSettings(), n = d.createElement('script'), i = this; if (t) { n.textContent = t; d.getElementsByTagName('head')[0].appendChild(n); if (!w.VWO || VWO.caE) { stT.removeItem(cK); i.load(e) } } else { n.fetchPriority = 'high'; n.src = e; n.type = 'text/javascript'; n.onerror = function () { _vwo_code.finish() }; d.getElementsByTagName('head')[0].appendChild(n) } }, getSettings: function () { try { var e = stT.getItem(cK); if (!e) { return } e = JSON.parse(e); if (Date.now() > e.e) { stT.removeItem(cK); return } return e.s } catch (e) { return } }, init: function () { if (d.URL.indexOf('vwo_disable') > -1) return; var e = this.settings_tolerance(); w._vwo_settings_timer = setTimeout(function () { _vwo_code.finish(); stT.removeItem(cK) }, e); var t = d.currentScript, n = d.createElement('style'), i = this.hide_element(), r = t && !t.async && i ? i + this.hide_element_style() : '', c = d.getElementsByTagName('head')[0]; n.setAttribute('id', '_vis_opt_path_hides'); v && n.setAttribute('nonce', v.nonce); n.setAttribute('type', 'text/css'); if (n.styleSheet) n.styleSheet.cssText = r; else n.appendChild(d.createTextNode(r)); c.appendChild(n); this.load('https://dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&vn=' + version) } }; w._vwo_code = code; code.init();
+  })();
+</script>
+<!-- End VWO Async SmartCode -->
+</head>
+
+<body class="blog-article">
+  <!-- google tag manager -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K92JCQ" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
+  <!-- end google tag manager -->
+
+  <noscript>
+    <style>
+      body {
+        transform: translateY(0) !important;
+      }
+    </style>
+  </noscript>
+
+  
+    
+<header id="navigation" class="p-navigation--sliding is-dark is-reduced ">
+  
+  <div class="p-navigation__row--25-75">
+    <div class="p-navigation__banner">
+      <div class="p-navigation__tagged-logo">
+        <a class="p-navigation__link" href="/">
+          
+          Canonical Ubuntu
+          
+        </a>
+      </div>
+      <ul class="p-navigation__items">
+        <li class="p-navigation__item">
+          <a href="/search" class="js-search-button p-navigation__link--search-toggle" aria-label="Search">
+          </a>
+        </li>
+        <li class="p-navigation__item">
+          <a href="/navigation" class="js-menu-button p-navigation__link">Menu</a>
+        </li>
+      </ul>
+    </div>
+    <nav class="p-navigation__nav js-show-nav" aria-label="Categories">
+      <ul class="p-navigation__items">
+        <li class="p-navigation__item--dropdown-toggle" role="menuitem" id="products" onmouseenter="fetchDropdown('/templates/meganav/products', 'products', event); this.onmouseenter = null;">
+          <a class="p-navigation__link" href="/navigation#products-navigation" aria-controls="products-content" tabindex="0" onfocus="fetchDropdown('/templates/meganav/products', 'products');">Products</a>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle" role="menuitem" id="use-case" onmouseenter="fetchDropdown('/templates/meganav/use-case', 'use-case', event); this.onmouseenter = null;">
+          <a class="p-navigation__link" href="/navigation#use-case-navigation" aria-controls="use-case-content" tabindex="0" onfocus="fetchDropdown('/templates/meganav/use-case', 'use-case');">Use cases</a>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle" role="menuitem" id="support" onmouseenter="fetchDropdown('/templates/meganav/support', 'support', event); this.onmouseenter = null;">
+          <a class="p-navigation__link" href="/navigation#support-navigation" aria-controls="support-content" tabindex="0" onfocus="fetchDropdown('/templates/meganav/support', 'support');">Support</a>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle" role="menuitem" id="community" onmouseenter="fetchDropdown('/templates/meganav/community', 'community', event); this.onmouseenter = null;">
+          <a class="p-navigation__link" href="/navigation#community-navigation" aria-controls="community-content" tabindex="0" onfocus="fetchDropdown('/templates/meganav/community', 'community');">Community</a>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle" role="menuitem" id="get-ubuntu" onmouseenter="fetchDropdown('/templates/meganav/get-ubuntu', 'get-ubuntu', event); this.onmouseenter = null;">
+          <a class="p-navigation__link" href="/navigation#get-ubuntu-navigation" aria-controls="#get-ubuntu-content" tabindex="0" onfocus="fetchDropdown('/templates/meganav/get-ubuntu', 'get-ubuntu');">Get Ubuntu</a>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle global-nav-mobile global-nav" role="menuitem" id="all-canonical"></li>
+        <li class="p-navigation__item--dropdown-toggle js-account" role="menuitem" id="canonical-login"></li>
+        <li class="p-navigation__item">
+          <a href="/search" class="js-search-button p-navigation__link--search-toggle"></a>
+        </li>
+      </ul>
+      <div class="p-navigation__search">
+        <form action="/search" class="p-search-box">
+          <input type="search" class="p-search-box__input" name="q" placeholder="Search our sites" required="" aria-label="Search our sites">
+          <button type="reset" class="p-search-box__reset"><i class="p-icon--close"></i></button>
+          <button type="submit" class="p-search-box__button"><i class="p-icon--search"></i></button>
+        </form>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="p-navigation__search-overlay"></div>
+  <div id="control-height"></div>
+</header>
+<div class="dropdown-window-overlay fade-animation"></div>
+<div class="dropdown-window slide-animation is-reduced ">
+  <div class="u-hide dropdown-content-desktop" id="products-content"></div>
+  <div class="u-hide dropdown-content-desktop" id="use-case-content"></div>
+  <div class="u-hide dropdown-content-desktop" id="support-content"></div>
+  <div class="u-hide dropdown-content-desktop" id="community-content"></div>
+  <div class="u-hide dropdown-content-desktop" id="get-ubuntu-content"></div>
+  <div class="u-hide dropdown-content-desktop global-nav-desktop" id="all-canonical-content"></div>
+</div>
+
+
+<div id="secondary-navigation" class="p-navigation is-secondary is-dark">
+  <div class="p-navigation__row--25-75">
+    <div class="p-navigation__banner">
+      <div class="p-navigation__tagged-logo">
+        <a class="p-navigation__link" href="/blog">
+          <div class="p-navigation__logo-tag">
+            <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
+          </div>
+          <span class="p-navigation__logo-title">Blog</span>
+        </a>
+      </div>
+      
+        
+         <a href="#" class="p-navigation__toggle--open" title="Toggle navigation"><i class="p-icon--chevron-down is-light"></i></a>
+        
+      
+    </div>
+
+    <nav class="p-navigation__nav" aria-label="Blog navigation">
+      
+      <ul class="p-navigation__items">
+        
+          
+        
+          
+            
+            <li class="p-navigation__item ">
+              <a class="p-navigation__link" href="/blog/internet-of-things" >Internet of Things</a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="p-navigation__item ">
+              <a class="p-navigation__link" href="/blog/desktop" >Desktop</a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="p-navigation__item ">
+              <a class="p-navigation__link" href="/blog/cloud-and-server" >Cloud and Server</a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="p-navigation__item ">
+              <a class="p-navigation__link" href="/blog/topics/design" >Web and Design</a>
+            </li>
+            
+          
+        
+          
+            
+            <li class="p-navigation__item ">
+              <a class="p-navigation__link" href="/blog/people-and-culture" >People and culture</a>
+            </li>
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+      
+    </nav>
+  </div>
+</div>
+
+
+  
+
+  <div class="wrapper u-no-margin--top">
+    <div id="success" class="p-strip u-no-padding--top">
+      <div class="u-fixed-width">
+        <div class="p-notification--positive u-no-margin--bottom">
+          <div class="p-notification__content">
+            <p class="p-notification__message">Your submission was sent successfully! <a href="#" onclick="location.href = document.referrer; return false;"><i class="p-notification__close">Close</i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="unsubscribed" class="p-strip u-no-padding--top">
+      <div class="u-fixed-width">
+        <div class="p-notification--positive u-no-margin--bottom">
+          <div class="p-notification__content">
+            <p class="p-notification__message">You have successfully unsubscribed! <a href="#" onclick="location.href = ''; return false;"><i class="p-notification__close">Close</i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="newsletter-signup" class="p-strip u-no-padding--top">
+      <div class="u-fixed-width">
+        <div class="p-notification--positive u-no-margin--bottom">
+          <div class="p-notification__content">
+            <p class="p-notification__message">Thank you for signing up for our newsletter!<br/>In these regular emails you will find the latest updates about Ubuntu and upcoming events where you can meet our team.<a href="#" onclick="location.href = document.referrer; return false;"><i class="p-notification__close">Close</i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main id="main-content" class="inner-wrapper">
+      
+      
+      
+    
+<article>
+  <header class="p-strip--image is-shallow" style="background-image: url(https://assets.ubuntu.com/v1/f8a323a7-image-background-paper.png);">
+    <div class="row">
+      <div class="col-8">
+        <h1>How should a great K8s distro feel? Try the new Canonical Kubernetes, now in beta</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="p-media-object">
+          
+            <img src="https://secure.gravatar.com/avatar/6e0f27ce8889940f8e54ae538dfda517?s=96&amp;d=mm&amp;r=g" class="p-media-object__image is-round" alt="">
+          
+
+          <div class="p-media-object__details">
+            
+              <h3 class="p-media-object__title">
+                <a href="/blog/author/perk" title="More about Marcin &#34;Perk&#34; Stożek">Marcin &#34;Perk&#34; Stożek</a>
+              </h3>
+            
+            <p class="p-media-object__content">on 14 March 2024</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <ul class="p-inline-list-icons u-no-padding--left u-no-margin--left">
+          <li class="p-inline-list__item">
+            Share on:
+          </li>
+
+          <li class="p-inline-list__item">
+            <a class="p-icon--facebook" title="Share on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.ubuntu.com/blog/try-canonical-kubernetes-beta">
+              Facebook
+            </a>
+          </li>
+
+          <li class="p-inline-list__item">
+            <a class="p-icon--twitter" title="Share on Twitter" href="https://twitter.com/share?text=How%20should%20a%20great%20K8s%20distro%20feel%3F%20Try%20the%20new%20Canonical%20Kubernetes%2C%20now%20in%20beta&amp;url=https://www.ubuntu.com/blog/try-canonical-kubernetes-beta&amp;hashtags=ubuntu">
+              Twitter
+            </a>
+          </li>
+
+          <li class="p-inline-list__item">
+            <a class="p-icon--linkedin" title="Share on LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.ubuntu.com/blog/try-canonical-kubernetes-beta&amp;title=How%20should%20a%20great%20K8s%20distro%20feel%3F%20Try%20the%20new%20Canonical%20Kubernetes%2C%20now%20in%20beta">
+            LinkedIn
+          </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+      <div class="row">
+        <div class="col-10">
+          <p>
+            <strong>Tags:</strong>
+            
+              <a href="/blog/tag/charmed-kubernetes">
+                Charmed Kubernetes
+              </a>, 
+            
+              <a href="/blog/tag/k8s">
+                k8s
+              </a>, 
+            
+              <a href="/blog/tag/kubernetes">
+                kubernetes
+              </a>, 
+            
+              <a href="/blog/tag/microk8s">
+                MicroK8s
+              </a>
+            
+          </p>
+        </div>
+      </div>
+    
+  </header>
+
+  <section class="p-strip is-shallow" style="overflow-x: initial;">
+    <div class="row u-equal-height">
+      <div class="col-8">
+        
+        <div class="p-post__content">
+          
+<figure class="wp-block-image size-full">
+<div class="lazyload" data-noscript="">
+<noscript>
+<img alt="" height="627" loading="lazy" src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_1200,h_627/https://ubuntu.com/wp-content/uploads/e0c0/infrastructure-maintenance.png" srcset="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_2400,h_1254/https://ubuntu.com/wp-content/uploads/e0c0/infrastructure-maintenance.png 2x" width="1200"/>
+</noscript>
+</div>
+</figure>
+<p>Kubernetes revolutionised container orchestration, allowing faster and more reliable application deployment and management. But even though it transformed the world of DevOps, it introduced new challenges around security maintenance, networking and application lifecycle management. </p>
+<p>Canonical has a long history of providing production-grade Kubernetes distributions, which gave us great insights into Kubernetes’ challenges and the unique experience of delivering K8s that match the expectations of both developers and operations teams. Unsurprisingly, there is a world of difference between them. Developers need a quick and reproducible way to set up an application environment on their workstations. Operations teams with clusters powering the edge need lightweight high-availability setups with reliable upgrades. Cloud installations need intelligent cluster lifecycle automation to ensure applications can be integrated with each other and the underlying infrastructure.</p>
+<p>We provide two distributions, Charmed Kubernetes and MicroK8s, to meet those different expectations. <a href="https://ubuntu.com/kubernetes/charmed-k8s">Charmed Kubernetes</a> wraps upstream K8s with software operators to provide lifecycle management and automation for large and complex environments. It is also the best choice if the Kubernetes cluster has to integrate with custom storage, networking or GPU components. <a href="http://microk8s.io">Microk8s</a> has a thriving community of users; it is a production-grade, ZeroOps solution that powers laptops and edge environments. It is the simplest way to get Kubernetes anywhere and focus on software product development instead of working with infrastructure routines and operations.</p>
+<p>After providing Kubernetes distributions for over seven years, we decided to consolidate our experience into a new distribution that combines the best of both worlds: ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations.</p>
+<p>Canonical Kubernetes will be our third distribution and an excellent foundation for future MicroK8s and Charmed Kubernetes releases. You can find its beta in our Snap Store under the simple name <a href="https://snapcraft.io/k8s"><em>k8s</em></a>. We based it on the latest upstream Kubernetes 1.30 beta, which officially came out on 12 March. It will be a CNCF conformant distribution with an enhanced security posture and best-in-class open source components for the most demanding user needs: network, DNS, metrics server, local storage, ingress, gateway, and load balancer.</p>
+<h2 class="wp-block-heading">ZeroOps with the most essential features built-in</h2>
+<p>Canonical Kubernetes is easy to install and easy to maintain. Like MicroK8s, Canonical Kubernetes is installed as a snap, giving developers a great installation experience and advanced security features such as automated patch upgrades. Adding new nodes to your cluster comes with minimum hassle. It also provides a quick way to set up high availability.</p>
+<p>You need two commands to get a single node cluster, one for installation and another for cluster bootstrap. You can try it out now on your console by installing the <a href="https://snapcraft.io/k8s"><em>k8s</em> snap</a> from the beta channel:</p>
+<pre class="wp-block-code"><code><code>sudo snap install k8s --channel=1.30-classic/beta --classic
+sudo k8s bootstrap</code></code></pre>
+<p>If you look at the status of your cluster just after bootstrap – with the help of the <em>k8s status</em> command – you might immediately spot that the <em>network</em>, <em>dns</em>, and <em>metrics-server</em> are already running. In addition to those three, Canonical Kubernetes also provides <em>local-storage</em>, <em>ingress</em>, <em>gateway</em>, and <em>load-balancer,</em> which you can easily enable. Under the hood, these are powered by Cilium, CoreDNS, OpenEBS, and Metrics Server. We bundle these as built-in features to ensure tight integration and a seamless experience. We want to emphasise standard Kubernetes APIs and abstractions to minimise disruption during upgrades while enabling the platform to evolve.</p>
+<p>All our built-in features come with default configurations that make sense for the most popular use cases, but you can easily change them to suit your needs.</p>
+<h2 class="wp-block-heading">Same Kubernetes for developer workstations, edge, cloud and data centres</h2>
+<p>Typical application development flows start with the developer workstation and go through CI/CD pipelines to end up in the production environment. These software delivery stages, spanning various environments, should be closely aligned to enhance developer experience and avoid infrastructure configuration surprises as your software progresses through the pipeline. When done right, you can deploy applications faster. You also get better security assurance as everyone can use the same K8s binary offered by the same vendor across the entire infrastructure software stack.</p>
+<p>When you scale up from the workstation to a production environment, you will inevitably be exposed to a different class of problems inherent to large-scale infrastructure. For instance, managing and upgrading cluster nodes becomes complicated and time-consuming as the number of nodes and applications grows. To provide the smooth automation administrators need, we offer Kubernetes lifecycle management through <a href="https://charmhub.io/k8s">Juju</a>, Canonical’s open source orchestration engine for software operators.  </p>
+<p>If you have Juju installed on your machine already, a Canonical Kubernetes cluster is only a single command away:</p>
+<pre class="wp-block-code"><code>juju deploy k8s --channel edge</code></pre>
+<p>By letting <a href="https://charmhub.io/k8s">Juju Charm</a> automate your lifecycle management, you can benefit from its rich integration ecosystem, including the Canonical Observability Stack.</p>
+<h2 class="wp-block-heading">Enhanced security posture</h2>
+<p>Security is critical to any Kubernetes cluster, and we have addressed it from the beginning. Canonical Kubernetes 1.30 installs as a snap with a classic confinement level, enabling automatic patch upgrades to protect your infrastructure against known vulnerabilities. Canonical Kubernetes will be shipped as a strict snap in the future, which means it will run in complete isolation with minimal access to the underlying system’s resources. Additionally, Canonical Kubernetes will comply with security standards like FIPS, CIS and DISA-STIG.</p>
+<p>Critical functionalities we have built into Canonical Kubernetes, such as <em>networking</em> or <em>dns</em>, are shipped as secure container images maintained by our team. Those images are built with Ubuntu as their base OS and benefit from the same security commitments we make on the distribution.</p>
+<p>While it is necessary to contain core Kubernetes processes, we must also ensure that the user or operator-provided workloads running on top get a secure, adequately controlled environment. Future versions of Canonical Kubernetes will provide AppArmor profiles for the containers that do not inherit the enhanced features of the underlying container runtime. We will also work on creating an allowlist for kernel modules that can be loaded using the Kubernetes Daemonsets. It will contain a default list of the most popular modules, such as GPU modules needed by AI workloads. Operators will be able to edit the allowlist to suit their needs.</p>
+<h2 class="wp-block-heading">Try out Canonical Kubernetes 1.30 beta</h2>
+<p>We would love for you to try all the latest features in upstream Kubernetes through our beta. Get started by visiting <a href="http://documentation.ubuntu.com/canonical-kubernetes">http://documentation.ubuntu.com/canonical-kubernetes</a></p>
+<p>Besides getting a taste of the features I outlined above, you’ll be able to try <a href="https://github.com/orgs/kubernetes/projects/175/views/1?filterQuery=status%3A%22Tracked+for+Code+Freeze%22&amp;sortedBy%5Bdirection%5D=desc&amp;sortedBy%5BcolumnId%5D=71335256">exciting changes</a> that will soon be included in the upcoming upstream GA release on 17 April 2024. Among others, <em>CEL for admission controls</em> will become stable, and the <em>drop-in directory for Kubelet configuration files</em> will go to the beta stage. Additionally, <em>Contextual logging</em> and <em>CRDValidationRatcheting</em> will graduate to beta and be enabled by default. There are also new metrics, such as <em>image_pull_duration_seconds,</em> which can tell you how much time the node spent waiting for the image.</p>
+<p>We want Canonical Kubernetes to be a great K8s for everyone, from developers to large-scale cluster administrators.</p>
+<p>Try it out and let us know what you think. We would love your feedback! You can find contact information on <a href="https://documentation.ubuntu.com/canonical-kubernetes/latest/reference/community">our community page</a>.</p>
+<p>We’ll also be available at <a href="https://ubuntu.com/blog/meet-canonical-at-kubecon-eu">KubeCon in Paris, at booth E25</a> – if you are there, come and say hi.</p>
+<p></p>
+
+        </div>
+      </div>
+      
+        <div class="col-4">
+            <div id="product-card">
+    
+  
+  <div class="p-card js-product-card u-hide">
+  <img class="p-card__thumbnail" src="https://assets.ubuntu.com/v1/dba11aee-kubernetes.svg" alt="kubernetes logo">
+  <hr class="u-sv1">
+  <h3>
+    <a href="/kubernetes/what-is-kubernetes">What is Kubernetes?</a>
+  </h3>
+  <p>Kubernetes, or K8s for short, is an open source platform pioneered by Google, which started as a simple container
+    orchestration tool but has grown into a platform for deploying, monitoring and managing apps and services across
+    clouds.</p>
+  <p><a href="/kubernetes/what-is-kubernetes">Learn more about Kubernetes&nbsp;&rsaquo;</a></p>
+</div>
+
+  
+  
+</div>
+
+<script>
+  // Get all loaded cards
+  var cards = document.getElementsByClassName('js-product-card');
+  if (cards) {
+    // Roll a dice
+    var selectedIndex = Math.floor(Math.random() * cards.length);
+    // Display card
+    cards[selectedIndex].classList.remove("u-hide")
+  }
+</script>
+          <div>
+            <div class="blog-p-card--muted">
+  <header class="blog-p-card__header">
+    <h5 class="p-muted-heading u-no-margin--bottom">Newsletter signup</h5>
+  </header>
+
+  <div class="blog-p-card__content">
+    <form action="/marketo/submit" method="post" id="mktoForm_4960" onsubmit="ga('send', 'Newsletter', 'Signup', 'New homepage newsletter signup');">
+      <p>Get the latest Ubuntu news and updates in your inbox.</p>
+      <div>
+        <label for="email" class="u-no-margin--top u-no-margin--bottom is-required">Work email:</span>
+        <input required id="email" name="email" maxlength="255" type="email" pattern="^[^ ]+@[^ ]+\.[a-z]{2,26}$" />
+    </div>
+    
+      <div>
+        <div class="p-section--shallow">
+          <label class="p-checkbox">
+            <input required class="p-checkbox__input" value="yes" aria-labelledby="canonicalUpdatesOptIn"
+              name="canonicalUpdatesOptIn" type="checkbox">
+            <span class="p-checkbox__label" id="canonicalUpdatesOptIn">&ast;I agree to receive information about Canonical's
+              products and services.</span>
+          </label>
+          <p>By submitting this form, I confirm that I have read and agree to <a
+              href="https://www.ubuntu.com/legal/dataprivacy" target="_blank">Canonical's Privacy Policy</a>.</p>
+        </div>
+    
+        <div>
+          <span class="p-card--content">
+            <button type="submit" class="u-no-margin--bottom">Sign up</button>
+          </span>
+    
+          <input value="4960" name="formid" type="hidden">
+          <input type="hidden" name="Consent_to_Processing__c" value="yes" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="returnURL" value="/blog#newsletter-signup" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_campaign" id="utm_campaign"
+            value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_medium" id="utm_medium" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_source" id="utm_source" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_content" id="utm_content" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_term" id="utm_term" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="GCLID__c" id="GCLID__c" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" name="Facebook_Click_ID__c"
+            id="Facebook_Click_ID__c" value="" />
+          <input type="hidden" aria-hidden="true" aria-label="hidden field" id="preferredLanguage" name="preferredLanguage"
+            maxlength="255" value="" />
+          <input type="hidden" name="thankyoumessage"
+            value="Thank you for signing up for our newsletter!<br/>In these regular emails you will find the latest updates from Ubuntu and upcoming events where you can meet our team.">
+        </div>
+    </form>
+  </div>
+</div>
+          </div>
+        </div>
+      
+    </div>
+  </section>
+</article>
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+<section class="p-strip--light is-shallow">
+  <div class="row">
+    <div class="col-8">
+      <h3>Related posts</h3>
+    </div>
+  </div>
+
+  <div class="row p-divider">
+    
+    <div class="col-4 p-divider__block">
+      <h4>
+        <a href="/blog/canonical-kubernetes-1-29-is-now-generally-available">
+          Canonical Kubernetes 1.29 is now generally available
+        </a>
+      </h4>
+      <p>A new upstream Kubernetes release, 1.29, is generally available, with significant new features and bugfixes. Canonical closely follows upstream development,...</p>
+    </div>
+    
+    <div class="col-4 p-divider__block">
+      <h4>
+        <a href="/blog/harnessing-the-potential-of-5g-with-kubernetes">
+          Harnessing the potential of 5G with Kubernetes
+        </a>
+      </h4>
+      <p>Harnessing the potential of 5G with Kubernetes 5G is the fifth generation of wireless technology which is transforming the way we connect and communicate....</p>
+    </div>
+    
+    <div class="col-4 p-divider__block">
+      <h4>
+        <a href="/blog/microk8s-addon-microcks">
+          Turbocharge your API and microservice delivery on MicroK8s with Microcks
+        </a>
+      </h4>
+      <p>Give Microcks on MicroK8s a try and experience the benefits of accelerated development cycles and robust testing. </p>
+    </div>
+    
+  </div>
+</section>
+
+
+
+      
+    </main><!-- /.inner-wrapper -->
+  </div><!-- /.wrapper -->
+
+  <!-- footer content goes here -->
+  
+    
+
+
+
+<footer class="p-footer p-strip u-clearfix">
+  <div class="u-fixed-width p-footer__container">
+    <p class="u-hide--medium u-hide--large link-to-top"><a href="#"><small>Back to top</small></a></p>
+    <nav aria-label="Footer navigation" id="main-navigation" class="p-footer__nav u-clearfix row u-no-padding--left u-no-padding--right">
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/openstack">Canonical OpenStack</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/openstack-footer-nav">Canonical OpenStack</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/openstack-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/openstack/what-is-openstack">What is OpenStack</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/openstack/features">Features</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/openstack/managed">Managed</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/openstack/consulting">Consulting</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/openstack/install">Install</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/openstack/support">Support</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/ceph">Canonical Ceph</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/ceph-footer-nav">Canonical Ceph</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/ceph-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/ceph/what-is-ceph">What is Ceph</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ceph/managed">Managed</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ceph/consulting">Consulting</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ceph/docs">Docs</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ceph/install">Install</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/managed">Managed</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/managed-footer-nav">Managed</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/managed-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/openstack/managed">OpenStack</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/managed">Kubernetes</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ceph/managed">Ceph</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/managed/apps">Apps</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/observability/managed">Observability</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+        </ul>
+      </div>
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/kubernetes">Canonical Kubernetes</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/kubernetes-footer-nav">Canonical Kubernetes</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/kubernetes-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/kubernetes/what-is-kubernetes">What is Kubernetes</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/charmed-k8s">Charmed Kubernetes</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/managed">Managed</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/install">Install</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/docs">Docs</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/kubernetes/resources">Resources</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/ai">AI / ML</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/ai-footer-nav">AI / ML</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/ai-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/ai/mlops">MLOps</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ai/what-is-kubeflow">Kubeflow</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ai/mlflow">MLflow</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/ai/consulting">Consulting</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/robotics">Robotics</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/robotics-footer-nav">Robotics</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/robotics-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/robotics/ros-esm">ROS ESM</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/robotics/what-is-ros">What is ROS</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/robotics/community">Community</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/robotics/docs">Docs</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/cloud">Cloud</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/cloud-footer-nav">Cloud</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/cloud-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/cloud/cloud-computing">What is cloud computing</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/cloud/private-cloud">What is private cloud</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/cloud/hybrid-cloud">What is hybrid cloud</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/cloud/multi-cloud">What is multi-cloud</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/cloud/public-cloud">Public cloud</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+        </ul>
+      </div>
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/internet-of-things">IoT</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/internet-of-things-footer-nav">IoT</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/internet-of-things-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/internet-of-things/appstore">App store</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/embedded">Embedded Linux</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/internet-of-things/management">Management</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/raspberry-pi">Raspberry Pi</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/raspberry-pi-footer-nav">Raspberry Pi</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/raspberry-pi-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/raspberry-pi/desktop">Desktop</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/raspberry-pi/server">Server</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/core">Ubuntu Core</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/core-footer-nav">Ubuntu Core</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/core-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/core/services">Consulting</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/core/stories">Success stories</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/core/features">Features</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/tutorials?q=core">Tutorials</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/core/docs">Docs</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+        </ul>
+      </div>
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/desktop">Ubuntu Desktop</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/desktop-footer-nav">Ubuntu Desktop</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/desktop-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/desktop/features">Features</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/desktop/organisations">Organisations</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/desktop/developers">Developers</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/desktop/flavours">Flavours</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/desktop/wsl">WSL</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/server">Ubuntu Server</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/server-footer-nav">Ubuntu Server</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/server-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/server/hyperscale">Hyperscale</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/server/docs">Docs</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/security">Security</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/security-footer-nav">Security</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/security-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/security/esm">ESM</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/security/livepatch">Livepatch</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/security/certifications">Certifications &amp; Hardening</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/security/cves">CVEs</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/security/notices">Notices</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/security/docker-images">Docker Images</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+        </ul>
+      </div>
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/download">Downloads</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/download-footer-nav">Downloads</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/download-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/download/desktop">Desktop</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/download/server">Server</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/download/iot">IoT</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/download/cloud">Cloud</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/observability">Observability</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/observability-footer-nav">Observability</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/observability-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/observability/what-is-observability">What is observability</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/observability/managed">Managed</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/appliance">Appliance</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/appliance-footer-nav">Appliance</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/appliance-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/appliance/about">About</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/appliance/portfolio">Portfolio</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/appliance/community">Community</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/appliance/hardware">Hardware</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/appliance/vm">Virtual machines</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+        </ul>
+      </div>
+      <div class="p-footer__nav-col col-2 col-medium-2 u-no-margin--bottom last-col">
+        <ul class="p-footer__links">
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/support">Support</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/support-footer-nav">Support</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/support-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/pro/dashboard">Your subscriptions</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/pro/users">Account users</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/pricing/pro">Pricing</a></li>
+      
+      
+    
+      
+      
+        <li><a href="https://discourse.ubuntu.com/c/ubuntu-pro">Discourse</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          
+          <li class="p-footer__item">
+  <h2 class="p-footer__title">
+    <a class="p-link--soft u-hide--small" href="/pricing">Pricing</a>
+    <a class="p-link--soft u-hide--medium u-hide--large js-footer-accordion-cta" href="#" aria-controls="/pricing-footer-nav">Pricing</a>
+  </h2>
+
+  <ul class="second-level-nav" id="/pricing-footer-nav">
+    
+      
+    
+      
+      
+        <li><a href="/pricing/consulting">Consulting</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/pricing/desktop">Desktops</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/pricing/devices">Devices</a></li>
+      
+      
+    
+  </ul>
+</li>
+          
+          <li class="p-footer__item p-footer__item--spaced">
+            <h2 class="p-footer__title p-footer__title-text">
+              <span class="js-footer-accordion-cta" aria-controls="sectors-footer-nav">Sectors</span>
+            </h2>
+            <ul class="second-level-nav" id="sectors-footer-nav">
+              <li><a href="/automotive">Automotive</a></li>
+              <li><a href="/industrial">Industrial</a></li>
+              <li><a href="/gov">Government</a></li>
+              <li><a href="/telco">Telco</a></li>
+              <li><a href="/financial-services">Finance</a></li>
+            </ul>
+          </li>
+          <li>
+            <ul class="second-level-nav second-level-nav-small">
+              
+              
+<li class="p-footer-list-single-child">
+  <a class="p-link--soft" href="/containers">Containers</a>
+</li>
+              
+              
+              
+<li class="p-footer-list-single-child">
+  <a class="p-link--soft" href="/tutorials">Tutorials</a>
+</li>
+              
+              
+              
+<li class="p-footer-list-single-child">
+  <a class="p-link--soft" href="/16-04">16-04</a>
+</li>
+              
+              <li class="p-footer-list-single-child">
+                <a href="/software-partnerships">Software partnerships</a>
+              </li>
+              
+              
+<li class="p-footer-list-single-child">
+  <a class="p-link--soft" href="/landscape">Landscape</a>
+</li>
+              
+              <li class="p-footer-list-single-child">
+                <a href="/embedding">Canonical Embedding Programme</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <hr class="p-footer__divider" />
+    <div class="p-footer--secondary row">
+      <div class="col-7">
+        <nav aria-label="Resources navigation">
+          <ul class="p-inline-list">
+            <li class="u-hide--small p-inline-list__item">
+              <a class="p-button" href="/contact-us"><small class="u-no-padding--top">Contact us</small></a>
+            </li>
+            <li class="u-hide--medium u-hide--large p-inline-list__item">
+              <a class="p-link--soft" href="/contact-us"><small>Contact us</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="/about"><small>About us</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="/community"><small>Community</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="https://www.canonical.com/careers"><small>Careers</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="/blog"><small>Blog</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="/engage"><small>Resources</small></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-link--soft" href="/blog/press-centre"><small>Press centre</small></a>
+            </li>
+          </ul>
+        </nav>
+
+        <p class="p-footer--secondary__content"><small>&copy; 2024 Canonical Ltd. Ubuntu and Canonical are
+    registered trademarks of Canonical Ltd.</small></p>
+<nav class="p-footer--secondary__nav">
+  <ul class="p-inline-list--middot u-no-margin--bottom">
+    <li class="p-inline-list__item">
+      <a class="p-link--soft" accesskey="8" href="/legal"><small>Legal information</small></a>
+    </li>
+    <li class="p-inline-list__item">
+      <a class="p-link--soft" accesskey="9" href="/legal/data-privacy"><small>Data privacy</small></a>
+    </li>
+    <li class="p-inline-list__item">
+      <a href="" class="p-link--soft js-revoke-cookie-manager"><small>Manage your tracker settings</small></a>
+    </li>
+    <li class="p-inline-list__item">
+      <a class="p-link--soft" href="https://github.com/canonical/ubuntu.com/issues/new" id="report-a-bug">
+        <small>Report a bug on this site</small>
+      </a>
+    </li>
+  </ul>
+</nav>
+        </div>
+        <div class="p-footer__nav-col col-5">
+          <ul class="p-inline-list-icons">
+            <li class="p-inline-list__item">
+              <a class="p-inline-list__link--twitter" title="Follow Ubuntu on Twitter" href="https://twitter.com/ubuntu"><svg
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 374.9999">
+                <defs>
+                  <style>
+                    .twitter-icon {
+                      fill: #666666;
+                    }
+                    .cls-2{
+                      fill: #e5e5e5;
+                    }
+                    
+                  </style>
+                </defs>
+                <g>
+                  <path class="twitter-icon" d="M 187.46875 7.09375 C 87.851562 7.09375 7.09375 87.851562 7.09375 187.46875 C 7.09375 287.085938 87.851562 367.84375 187.46875 367.84375 C 287.085938 367.84375 367.84375 287.085938 367.84375 187.46875 C 367.84375 87.851562 287.085938 7.09375 187.46875 7.09375 "></path>
+                </g>
+                <g class="cls-2" transform="translate(85, 75)"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" x="-32" y="-30" height="280" width="280" viewBox="0 0 50 50">
+                    <path d="M 6.9199219 6 L 21.136719 26.726562 L 6.2285156 44 L 9.40625 44 L 22.544922 28.777344 L 32.986328 44 L 43 44 L 28.123047 22.3125 L 42.203125 6 L 39.027344 6 L 26.716797 20.261719 L 16.933594 6 L 6.9199219 6 z"></path>
+                  </svg>
+                </g>
+              </svg></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-inline-list__link--facebook" title="Follow Ubuntu on Facebook" href="https://www.facebook.com/ubuntulinux/"><svg
+                xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32">
+                <defs>
+                  <style>
+                    .facebook-icon {
+                      fill: #666666;
+                    }
+
+                    .cls-2 {
+                      fill: #fff;
+                    }
+                  </style>
+                </defs>
+                <g>
+                  <path class="facebook-icon" d="M15.947 0C7.14 0 0 7.143 0 15.95 0 24.76 7.142 31.9 15.95 31.9s15.948-7.14 15.948-15.95c0-4.23-1.68-8.286-4.672-11.277C24.234 1.68 20.176 0 15.946 0z" />
+                </g>
+                <path class="cls-2" d="M18.632 5.102c-2.91 0-4.904 1.776-4.904 5.04v2.55h-3.293v3.814h3.293V26.87c1.353-.18 2.678-.53 3.942-1.045v-9.31h3.285l.492-3.812h-3.784v-2.18c0-1.104.357-2.238 1.894-1.855h2.02V5.252c-.978-.103-1.96-.154-2.943-.15h-.002z" />
+              </svg></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-inline-list__link--linkedin" title="Find Canonical on LinkedIn" href="https://www.linkedin.com/company/234280"><svg
+                xmlns="http://www.w3.org/2000/svg" viewbox="0 0 33 33">
+                <defs>
+                  <style>
+                    .linkedin-icon {
+                      fill: #666666;
+                    }
+
+                    .cls-2 {
+                      fill: #fff;
+                    }
+                  </style>
+                </defs>
+                <g>
+                  <path class="linkedin-icon" d="M16.26 0C7.28 0 0 7.28 0 16.26s7.28 16.262 16.26 16.262 16.262-7.28 16.262-16.26C32.522 7.28 25.242 0 16.262 0z" />
+                </g>
+                <path class="cls-2" d="M7 8.512v16.38c0 .758.63 1.37 1.404 1.37h16.192c.775 0 1.404-.612 1.404-1.37V8.512c0-.755-.63-1.37-1.404-1.37H8.404C7.63 7.143 7 7.757 7 8.513zm5.76 14.636H9.89v-8.634h2.87v8.634zm-1.435-9.812h-.02c-.962 0-1.585-.663-1.585-1.492 0-.847.642-1.492 1.624-1.492s1.586.645 1.604 1.492c0 .83-.623 1.492-1.623 1.492zm3.022 9.812s.038-7.824 0-8.634h2.87v1.252h-.02c.38-.59 1.058-1.454 2.607-1.454 1.888 0 3.303 1.234 3.303 3.885v4.95h-2.87V18.53c0-1.162-.415-1.953-1.453-1.953-.793 0-1.265.534-1.472 1.05-.076.184-.095.44-.095.7v4.82h-2.87z" />
+              </svg></a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-inline-list__link--instagram" title="Follow Ubuntu on Instagram" href="https://www.instagram.com/ubuntu_os/">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 375">
+                  <defs>
+                    <style>
+                      .instagram-icon {
+                        fill: #666666;
+                      }
+                      .cls-2 {
+                        fill: #fff;
+                      }
+                    </style>
+                  </defs>
+                  <g clip-path="url(#clip0_11_324)">
+                    <path class="instagram-icon" d="M187.469 7.09375C87.8516 7.09375 7.09375 87.8516 7.09375 187.469C7.09375 287.086 87.8516 367.844 187.469 367.844C287.086 367.844 367.844 287.086 367.844 187.469C367.844 87.8516 287.086 7.09375 187.469 7.09375Z"/>
+                    <path class="cls-2" d="M140.78 73.6689C128.777 74.2352 120.581 76.1507 113.415 78.9663C105.999 81.8564 99.7139 85.7347 93.4599 92.0113C87.2059 98.2878 83.3547 104.578 80.4849 112.005C77.7076 119.186 75.826 127.39 75.2958 139.399C74.7656 151.408 74.6483 155.269 74.7069 185.902C74.7656 216.536 74.9009 220.376 75.483 232.41C76.0561 244.411 77.9648 252.605 80.7804 259.773C83.675 267.189 87.5488 273.472 93.8276 279.728C100.106 285.984 106.392 289.827 113.837 292.701C121.012 295.474 129.217 297.364 141.224 297.89C153.232 298.416 157.096 298.538 187.721 298.479C218.346 298.42 222.201 298.285 234.233 297.714C246.265 297.143 254.417 295.221 261.587 292.419C269.003 289.518 275.29 285.651 281.542 279.369C287.794 273.088 291.643 266.794 294.51 259.362C297.29 252.188 299.178 243.982 299.7 231.984C300.225 219.943 300.349 216.099 300.291 185.469C300.232 154.84 300.094 151 299.524 138.97C298.953 126.941 297.042 118.771 294.228 111.599C291.329 104.183 287.46 97.9043 281.184 91.6435C274.907 85.3828 268.608 81.5361 261.178 78.6753C253.999 75.898 245.798 74.0051 233.791 73.4862C221.784 72.9673 217.919 72.8342 187.283 72.8928C156.647 72.9515 152.812 73.0824 140.78 73.6689ZM142.098 277.596C131.099 277.118 125.127 275.29 121.147 273.761C115.877 271.73 112.123 269.276 108.156 265.348C104.19 261.42 101.753 257.652 99.6958 252.393C98.1504 248.413 96.2891 242.448 95.7747 231.449C95.2151 219.562 95.0978 215.992 95.0324 185.875C94.967 155.758 95.082 152.194 95.6032 140.302C96.0725 129.312 97.9112 123.333 99.4386 119.356C101.469 114.079 103.915 110.331 107.852 106.367C111.789 102.403 115.545 99.9619 120.809 97.9043C124.784 96.3521 130.749 94.5066 141.743 93.9832C153.64 93.4191 157.205 93.3063 187.317 93.2409C217.43 93.1755 221.003 93.2883 232.905 93.8117C243.894 94.29 249.875 96.1107 253.848 97.6471C259.121 99.6776 262.873 102.117 266.837 106.06C270.801 110.004 273.244 113.747 275.302 119.022C276.856 122.986 278.702 128.949 279.221 139.95C279.787 151.846 279.916 155.413 279.97 185.523C280.024 215.634 279.918 219.21 279.397 231.097C278.916 242.096 277.093 248.07 275.561 252.054C273.531 257.323 271.083 261.079 267.144 265.041C263.204 269.003 259.452 271.444 254.187 273.501C250.216 275.051 244.244 276.901 233.259 277.425C221.362 277.984 217.798 278.101 187.674 278.167C157.55 278.232 153.996 278.111 142.1 277.596M234.06 125.395C234.064 128.073 234.863 130.689 236.354 132.913C237.845 135.136 239.963 136.868 242.438 137.888C244.914 138.908 247.636 139.172 250.261 138.645C252.886 138.118 255.296 136.824 257.186 134.927C259.076 133.03 260.361 130.616 260.878 127.989C261.396 125.362 261.122 122.64 260.093 120.168C259.064 117.697 257.324 115.586 255.095 114.103C252.866 112.619 250.247 111.831 247.569 111.836C243.98 111.843 240.54 113.276 238.007 115.818C235.474 118.361 234.054 121.806 234.06 125.395ZM129.578 185.799C129.641 217.791 155.623 243.666 187.608 243.605C219.593 243.544 245.487 217.565 245.426 185.573C245.365 153.581 219.377 127.699 187.387 127.762C155.397 127.825 129.517 153.811 129.578 185.799ZM149.897 185.758C149.882 178.321 152.073 171.046 156.193 164.854C160.313 158.663 166.176 153.831 173.041 150.972C179.906 148.112 187.466 147.352 194.763 148.789C202.06 150.225 208.767 153.793 214.036 159.042C219.306 164.29 222.9 170.983 224.366 178.275C225.831 185.566 225.101 193.128 222.269 200.005C219.436 206.882 214.628 212.764 208.453 216.908C202.277 221.052 195.012 223.272 187.574 223.287C182.636 223.297 177.744 222.334 173.178 220.454C168.612 218.573 164.461 215.812 160.962 212.327C157.463 208.842 154.685 204.702 152.787 200.143C150.888 195.584 149.906 190.696 149.897 185.758Z"/>
+                  </g>
+                </svg>
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-inline-list__link--rss" title="Use the Ubuntu Blog rss feed" href="/blog/feed"><svg width="2rem" height="2rem" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                  <style>
+                    .rss-icon {
+                      fill: #666666;
+                    }
+
+                    .cls-2 {
+                      fill: #E5E5E5;
+                    }
+                  </style>
+                </defs>
+                <g class="rss-icon">
+                  <circle cx="20" cy="20" r="20"></circle>
+                </g>
+                <g class="cls-2" transform="translate(10.000000, 8.000000)">
+                  <circle cx="3" cy="18.875" r="3"></circle>
+                  <path d="M14.5,21.875 L10.25,21.875 C10.25,16.2140813 5.66091869,11.625 3.55271368e-15,11.625 L3.55271368e-15,7.375 C8.00812887,7.375 14.5,13.8668711 14.5,21.875 Z"></path>
+                  <path d="M17.5,21.875 C17.5,12.2100169 9.66498312,4.375 7.10542736e-15,4.375 L7.10542736e-15,0 C12.0812289,0 21.875,9.7937711 21.875,21.875 L17.5,21.875 Z"></path>
+                </g>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      /* Add the page to the report a bug link */
+      var bugLink = document.querySelector('#report-a-bug');
+      bugLink.href += '?body=%0a%0a%0a---%0a*Reported%20from:%20' + location.href + '*';
+    </script>
+    <span class="u-off-screen"><a href="#">Go to the top of the page</a></span>
+  </div>
+</footer>
+
+
+    
+    
+    
+  
+</body>
+</html>
