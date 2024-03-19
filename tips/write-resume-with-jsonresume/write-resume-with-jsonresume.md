@@ -202,6 +202,8 @@ resume export resume.html --format html --theme actualzh
 
 显然，编写 JSON 并没有 Markdown 那么舒服，将原来的简历搬运到 JSON 的框框里也不是那么轻松。可是我们现在是 AI 时代了，这个事情 AI 完成的相当出色。例如可以让 Claude 根据示例 JSON 格式，将你其他格式的简历，转化为 JSON 格式。我的第一份 JSON 简历就是这么得到的，效果相当令人满意。
 
+## 参考
+
 [^1]: https://github.com/BingyanStudio/LapisCV "LapisCV"
 [^2]: https://easycv.cn/ "简单简历"
 [^3]: https://github.com/AmruthPillai/Reactive-Resume "Reactive Resume"
