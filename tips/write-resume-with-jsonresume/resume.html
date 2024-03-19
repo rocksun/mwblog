@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>@charset "UTF-8";
+/* Workaround for 'break-before:avoid' */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+span, q {
+  display: block;
+}
+
+p {
+  margin: 0;
+}
+
+@media not print {
+  body {
+    margin: 30px 0 50px 0;
+  }
+}
+@page {
+  size: A4;
+  margin: 15mm 0 20mm 0;
+}
+a {
+  color: #222222;
+  font-weight: inherit;
+  text-decoration: none;
+}
+a[href] {
+  text-decoration: underline;
+  text-decoration-color: #888888;
+}
+
+p, q {
+  line-height: 1.25em;
+}
+
+li {
+  line-height: 1.35em;
+}
+li:first-child {
+  margin-top: 0;
+}
+
+.content {
+  width: 1000px;
+  height: auto;
+  padding: 0 50px;
+  margin: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #222222;
+}
+
+.table {
+  width: 100%;
+  display: table;
+}
+.table .main {
+  display: table-cell;
+  width: 70%;
+  padding-right: 50px;
+}
+.table .side {
+  display: table-cell;
+  width: 30%;
+  padding-left: 50px;
+  text-align: right;
+}
+
+.summary {
+  font-size: 15px;
+}
+.summary:empty {
+  display: none;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+}
+
+.margin-container-2:not(:first-child) {
+  margin-top: 20px;
+}
+
+.margin-container-3:not(:first-child) {
+  margin-top: 30px;
+}
+
+.margin-container-4:not(:first-child) {
+  margin-top: 50px;
+}
+
+.padding-container-2 {
+  padding: 20px 0;
+}
+
+.padding-top-container-2 {
+  padding-top: 20px;
+}
+
+.padding-bottom-container-2 {
+  padding-bottom: 20px;
+}
+
+.margin-text-1 {
+  margin-top: 2px;
+}
+.margin-text-1:empty {
+  display: none;
+}
+
+.margin-text-2 {
+  margin-top: 4px;
+}
+.margin-text-2:empty {
+  display: none;
+}
+
+.margin-text-3 {
+  margin-top: 6px;
+}
+.margin-text-3:empty {
+  display: none;
+}
+
+.margin-text-4 {
+  margin-top: 8px;
+}
+.margin-text-4:empty {
+  display: none;
+}
+
+.margin-text-5 {
+  margin-top: 14px;
+}
+.margin-text-5:empty {
+  display: none;
+}
+
+.no-break {
+  break-inside: avoid;
+}
+
+.no-alone-1 {
+  break-inside: avoid;
+}
+.no-alone-1::after {
+  content: "";
+  display: block;
+  height: 75px;
+  margin-bottom: -75px;
+}
+
+.no-alone-2 {
+  break-inside: avoid;
+}
+.no-alone-2::after {
+  content: "";
+  display: block;
+  height: 150px;
+  margin-bottom: -150px;
+}
+
+.markdown h1 {
+  font-size: 160%;
+  font-weight: bolder;
+}
+.markdown h2 {
+  font-size: 150%;
+  font-weight: bolder;
+}
+.markdown h3 {
+  font-size: 140%;
+  font-weight: bolder;
+}
+.markdown h4 {
+  font-size: 130%;
+  font-weight: bold;
+}
+.markdown h5 {
+  font-size: 120%;
+  font-weight: bold;
+}
+.markdown h6 {
+  font-size: 110%;
+  font-weight: bold;
+}
+.markdown ul, .markdown ol {
+  margin-left: 20px;
+}
+.markdown img {
+  display: block;
+  margin: 20px auto;
+  max-width: 1000px;
+  text-align: center;
+}
+.markdown blockquote {
+  margin: 20px 0;
+  padding: 15px 20px;
+}
+.markdown blockquote p {
+  display: inline;
+}
+.markdown code {
+  font-family: monospace;
+}
+
+.main .highlights {
+  width: auto;
+  display: block;
+  padding: 0 10px;
+  margin-bottom: 0;
+  columns: 2;
+  column-width: 310px;
+  column-gap: 10px;
+}
+.main .highlights li {
+  font-size: 14px;
+  list-style: none;
+}
+.main .highlights li:before {
+  content: "· ";
+  vertical-align: middle;
+}
+.main .left {
+  display: table-cell;
+}
+.main .left .title {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+.main .left .subtitle {
+  font-size: 16px;
+  font-weight: lighter;
+  display: block;
+}
+.main .right {
+  text-align: right;
+  display: table-cell;
+}
+.main .right .date {
+  font-size: 15px;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+
+.basics .main {
+  vertical-align: middle;
+}
+.basics .main .name {
+  font-size: 80px;
+  line-height: 1em;
+  font-weight: bold;
+  display: block;
+  margin-left: -5.6px;
+}
+.basics .main .label {
+  font-size: 40px;
+  line-height: 1em;
+  font-weight: lighter;
+  display: block;
+  margin-left: -1.6px;
+}
+.basics .side {
+  vertical-align: middle;
+  padding-left: 0;
+  padding-top: 15px;
+}
+.basics .side .contact {
+  list-style-type: none;
+}
+.basics .side .contact li {
+  font-size: 18px;
+  line-height: 1.6em;
+}
+
+.links ul {
+  list-style: none;
+}
+.links ul li {
+  font-size: 14px;
+}
+
+.education .title {
+  font-size: 15px;
+}
+.education .institution {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.awards .header .title {
+  font-size: 15px;
+}
+.awards .header .awarder {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.awards .summary {
+  font-size: 14px;
+}
+
+.certificates .name {
+  font-size: 15px;
+}
+.certificates .issuer {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.skills .section-title {
+  margin: 0;
+}
+.skills .container {
+  display: block;
+  columns: 2;
+  column-gap: 10px;
+}
+.skills .container .article {
+  break-inside: avoid-column;
+  min-width: 120px;
+  padding-top: 20px;
+}
+.skills .container .article span {
+  display: block;
+  font-size: 18px;
+  font-weight: lighter;
+}
+.skills .container .article li {
+  font-size: 14px;
+  list-style: none;
+}
+
+.languages ul {
+  list-style: none;
+}
+.languages ul li {
+  font-size: 14px;
+}
+
+.interests ul {
+  list-style: none;
+}
+.interests ul li {
+  font-size: 14px;
+}
+
+.references .name {
+  font-size: 15px;
+}
+.references q {
+  font-size: 14.5px;
+  font-weight: lighter;
+  font-style: italic;
+}</style><title>Resume 岱军 – 云原生专家</title></head><body><div class="content"><div class="basics"><div class="table padding-bottom-container-2"><div class="main"><span class="name">岱军</span><span class="label">云原生专家</span></div><div class="side"><ul class="contact"><li>(86)88866669999</li><li>daijun@example.com</li><li class="margin-text-5">青岛</li></ul></div></div><div class="summary markdown padding-container-2"><p>近些年来主要带领云原生转型和相关的研发效能提升工作（见公众号“<a href="https://mp.weixin.qq.com/s/pOOg9IC78zJ70uMQzkQUDA">云云众生s</a>”）。精通 Kubernetes 等云原生技术，熟练运用 DevOps、Scrum 和 Design Thinking 等方法论。技术功底全面，善于学习和处理问题，对于 ChatGPT 等生成式 AI 技术有比较深入的研究和应用。具备丰富的 Golang、Java、Python 以及前端项目经验。多年的 WebSphere 中间件产品专家工作经验，也曾经担任 BEA（后被 Oracle 收购） Dev2dev 社区 WebLogic 管理版块版主，精通各类 Java 中间件以及 Tuxedo 。精通研发过程的各个方面。早年也从事过自动化测试、软件配置管理和自动化运维等工作。</p>
+</div></div><div class="table padding-top-container-2"><div class="main"><div class="work margin-container-4"><p class="section-title no-alone-2">工作经历</p><div class="container"><div class="article margin-container-3"><div class="header no-alone-1"><div class="table"><div class="left"><span class="title">云原生解决方案部总监</span><span class="subtitle margin-text-1"><a>云云众生</a> · 北京</span></div><div class="right"><span class="date">2021-07 - Present</span></div></div></div><div class="summary markdown margin-text-4"><p>组建云原生团队，构建 DevOps 和平台工程平台，带领研发部门进行云原生转型，并形成解决方案推向给客户，负责重要客户的云原生服务售前工作。还开发了 Go 核心代码，组建了公司战略运维产品 Edith 的开发团队。</p>
+</div><ul class="highlights margin-text-4 no-break"><li>完整的云原生 DevOps 方案</li><li>完整的平台工程方案</li><li>云原生的实战 DevOps 课程</li><li>开源云原生数据库方案</li><li>新一代可观测性方案</li><li>基于 Go 的自动化运维产品</li><li>引入大数据、全文检索、OCR和GenAI等技术</li></ul></div></div></div><div class="projects margin-container-4"><p class="section-title no-alone-2">项目</p><div class="container"><div class="article margin-container-3"><div class="header no-alone-1"><div class="table"><div class="left"><span class="title">项目经理</span><span class="subtitle margin-text-1"><a>EasyDevOps 课程</a></span></div><div class="right"><span class="date">2023-11 - 2024-03</span></div></div></div><div class="summary markdown margin-text-4"><p>EasyDevOps 是一套完整的云原生开源 DevOps 课程。这个课程为大家提供了一套 DevOps 平台参考架构，包含 Kubernetes, Jenkins, ArgoCD, Harbor, GitLab 等产品，融合各类云原生运维和开发的方法论，可以帮助开发和运维团队快速转向云原生 DevOps 环境。</p>
+</div></div><div class="article margin-container-3"><div class="header no-alone-1"><div class="table"><div class="left"><span class="title">项目经理</span><span class="subtitle margin-text-1"><a>Etude - 云原生数据库和中间件管理平台</a></span></div><div class="right"><span class="date">2022-11 - 2023-03</span></div></div></div><div class="summary markdown margin-text-4"><p>根据 Kubernetes 下管理数据库的经验和最佳实践，使用 ArgoCD 和 Helm 构建了一套 Etude 云原生数据库和中间件管理平台。通过 Etude 可以一个 YAML 文件部署具备自动备份、可观测面板的高可用数据库和中间件，大大减轻数据库和中间件工程师的运维工作。</p>
+<p>目前 Etude 已经支持了 MySQL、 PostgreSQL、MongoDB、ElasticSearch、Redis，达梦，openGauss 等数据库和中间件。另外，方案也参考了 KubeBlock 和 Percona 等云原生数据库平台。</p>
+</div></div><div class="article margin-container-3"><div class="header no-alone-1"><div class="table"><div class="left"><span class="title">项目经理</span><span class="subtitle margin-text-1"><a>Concerto - 统一可观测平台</a></span></div><div class="right"><span class="date">2023-04 - 2023-11</span></div></div></div><div class="summary markdown margin-text-4"><p>许多传统的可观测系统可能只关注 Log, Metric 和 Trace 的某一方面。但是对于解决问题来说，有一个统一的可观测平台会更有价值。Concerto 是新一代的可观测解决方案，融合了 OpenTelemetry, eBPF 和 ClickHouse 等工具，能够更轻松地实现复杂的可观测能力。</p>
+</div></div></div></div><div class="volunteer margin-container-4"><p class="section-title no-alone-2">志愿者</p><div class="container"><div class="article margin-container-3"><div class="header no-alone-1"><div class="table"><div class="left"><span class="title">Subversion 中文站站长</span><span class="subtitle margin-text-1"><a href="https://subversion.apache.org/">Subversion 社区</a></span></div><div class="right"><span class="date">2004-01 - 2012-01</span></div></div></div><div class="summary markdown margin-text-4"><p>Subversion(SVN)项目代码贡献者。建设 Subversion 中文站，组织维护官方文档的翻译，编写原创 SVN 教程。</p>
+</div><ul class="highlights margin-text-4 no-break"><li>组织完成 Subversion 官方文档翻译工作</li><li>为 Subversion 贡献代码</li><li>参与 TortoiseSVN 项目</li><li>独立完成 Subersion 中文站建设</li></ul></div></div></div></div><div class="side"><div class="skills margin-container-4"><p class="section-title no-alone-1">技能</p><div class="container"><div class="article no-break"><span>后端开发</span><ul class="margin-text-2"><li>Java</li><li>Go</li><li>Python</li></ul></div><div class="article no-break"><span>中间件</span><ul class="margin-text-2"><li>WebLogic</li><li>WebSphere</li><li>JBoss</li></ul></div><div class="article no-break"><span>方法论</span><ul class="margin-text-2"><li>Scrum</li><li>DevOps</li><li>Design Thinking</li></ul></div><div class="article no-break"><span>云原生</span><ul class="margin-text-2"><li>Kubernetes</li><li>Jenkins</li><li>ArgoCD</li><li>Helm</li></ul></div><div class="article no-break"><span>前端开发</span><ul class="margin-text-2"><li>Angular</li><li>VUE</li><li>React</li><li>NEXT.js</li></ul></div><div class="article no-break"><span>云计算</span><ul class="margin-text-2"><li>AWS</li><li>阿里云</li><li>华为云</li><li>Azure</li></ul></div></div></div><div class="education margin-container-4"><p class="section-title no-alone-1">教育</p><div class="container"><div class="article margin-container-2 no-break"><div class="title markdown"><p>本科, 数学与应用数学 和 计算机科学</p>
+</div><span class="institution margin-text-2"><a>中国海洋大学</a></span></div></div></div><div class="certificates margin-container-4"><p class="section-title no-alone-1">证书</p><div class="container"><div class="article margin-container-2 no-break"><div class="name markdown"><a><p>WLS-D11-8 J2EE Programming with servlets and JSPs Web Using BEA Weblogic Server</p>
+</a></div><span class="issuer margin-text-2">BEA</span></div></div></div><div class="awards margin-container-4"><p class="section-title no-alone-1">获奖</p><div class="container"><div class="article margin-container-2 no-break"><div class="header"><span class="title">软件企业经营技能人才</span><span class="awarder margin-text-2">北京软件和信息服务业协会</span></div><div class="summary markdown margin-text-3"></div></div></div></div><div class="interests margin-container-4 no-break"><p class="section-title no-alone-1">兴趣</p><div class="container"><ul><li class="article margin-text-2">开源</li><li class="article margin-text-2">宗教</li><li class="article margin-text-2">电影</li></ul></div></div><div class="links margin-container-4 no-break"><p class="section-title no-alone-1">链接</p><div class="container"><ul><li class="article"><a href="https://yylives.cc"><strong>yylives.cc</strong></a></li><li class="article margin-text-4"><a href="https://github.com/rocksun"><strong>github.com</strong>/rocksun</a></li></ul></div></div></div></div></div></body></html>
