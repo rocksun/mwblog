@@ -7,15 +7,15 @@ cover: ./cover.png
 
 > 先做个广告，最近想组织一个 DevOps 培训，通过这个课程你可以学习到 Kubernetes, Harbor, Jenkins, Helm, ArgoCD 的安装和最佳实践，另外也能帮你理解开发和运维不同的的工作方式。最重要的是，是可以学习到一些适合中小企业的实践过的、**符合理论和最佳实践的流程**。具体时间和形式还没定，大家可以先加我的微信（备注 devops）进群讨论。
 
-言归正传，最近就业市场好像非常严峻，不少人都在准备简历。市面上也有不少不错的工具，例如[LapisCV][1]，这是一个 obsidian/Typora 的插件，可以直接用 Markdown 写简历；也可以考虑[简单简历][2]这样的收费产品，已经有了许多付费用户；如果愿意折腾，也可以考虑[Reactive Resume](3)这样的开源工具。
+言归正传，最近就业市场好像非常严峻，不少人都在准备简历。市面上也有不少不错的工具，例如 LapisCV[^1]，这是一个 obsidian/Typora 的插件，可以直接用 Markdown 写简历；也可以考虑简单简历[^2]这样的收费产品，已经有了许多付费用户；如果愿意折腾，也可以考虑 Reactive Resume[^3] 这样的开源工具。
 
 ## 介绍
 
-不过，今天介绍了的是 [JSON Resume](https://jsonresume.org/)。这个工具其实我很久之前尝试过一次，当时生成的简历很多不满意的地方，所以也没实际用起来。不过这次觉得，有个 JSON 简历还是方便，所以决定再尝试一次，结果还不错，所以通过本文跟大家分享一下。
+不过，今天介绍了的是 JSON Resume[^4]。这个工具其实我很久之前尝试过一次，当时生成的简历很多不满意的地方，所以也没实际用起来。不过这次觉得，有个 JSON 简历还是方便，所以决定再尝试一次，结果还不错，所以通过本文跟大家分享一下。
 
 ## 安装
 
-JSON Resume 是一个 Node 项目，所以主要是首先要安装 Node，安装 18.* 版本的即可，这里就不详细讲了。不过强烈建议大家使用 [nvm][5] 管理 Node 版本，我作为一个半吊子前端开发，手上也有几个项目使用了不同的 Node 版本，偶尔还是需要用 nvm 切换下版本。
+JSON Resume 是一个 Node 项目，所以主要是首先要安装 Node，安装 18.* 版本的即可，这里就不详细讲了。不过强烈建议大家使用 nvm[^5] 管理 Node 版本，我作为一个半吊子前端开发，手上也有几个项目使用了不同的 Node 版本，偶尔还是需要用 nvm 切换下版本。
 
 然后安装 resume-cli：
 
@@ -25,9 +25,9 @@ npm install -g resume-cli
 
 ## 安装主题
 
-然后我们要安装主题。我第一次试用时觉得不爽，一个很重要的原因是没有看到舒服的主题，而且许多主题包含的元素并不一致，导致结果总是与预期不一致，所以这一次，我从一开始就先确定好了主题 [actual](6)。这个主题比较简约紧凑，正是我心目中的样子。只是，其中的章节标题都是英文，作为中文简历，还是需要调整一下。
+然后我们要安装主题。我第一次试用时觉得不爽，一个很重要的原因是没有看到舒服的主题，而且许多主题包含的元素并不一致，导致结果总是与预期不一致，所以这一次，我从一开始就先确定好了主题 actual[^6]。这个主题比较简约紧凑，正是我心目中的样子。只是，其中的章节标题都是英文，作为中文简历，还是需要调整一下。
 
-我 fork 了 actual 项目，做了一个 [actualzh](7) 的主题，修改了其中的标题和日期样式。如果想要试用这个主题，可以按照以下步骤操作。
+我 fork 了 actual 项目，做了一个 actualzh[^7] 的主题，修改了其中的标题和日期样式。如果想要试用这个主题，可以按照以下步骤操作。
 
 首先是下载编译这个项目：
 
@@ -202,12 +202,10 @@ resume export resume.html --format html --theme actualzh
 
 显然，编写 JSON 并没有 Markdown 那么舒服，将原来的简历搬运到 JSON 的框框里也不是那么轻松。可是我们现在是 AI 时代了，这个事情 AI 完成的相当出色。例如可以让 Claude 根据示例 JSON 格式，将你其他格式的简历，转化为 JSON 格式。我的第一份 JSON 简历就是这么得到的，效果相当令人满意。
 
-## 参考
-
-- [1]: https://github.com/BingyanStudio/LapisCV "LapisCV"
-- [2]: https://easycv.cn/ "简单简历"
-- [3]: https://github.com/AmruthPillai/Reactive-Resume "Reactive Resume"
-- [4]: https://jsonresume.org/ "JSON Resume"
-- [5]: https://github.com/nvm-sh/nvm "nvm"
-- [6]: https://github.com/davcd/jsonresume-theme-actual "Actual theme"
-- [7]: https://github.com/rocksun/jsonresume-theme-actual "Actual Chinese theme"
+[^1]: https://github.com/BingyanStudio/LapisCV "LapisCV"
+[^2]: https://easycv.cn/ "简单简历"
+[^3]: https://github.com/AmruthPillai/Reactive-Resume "Reactive Resume"
+[^4]: https://jsonresume.org/ "JSON Resume"
+[^5]: https://github.com/nvm-sh/nvm "nvm"
+[^6]: https://github.com/davcd/jsonresume-theme-actual "Actual theme"
+[^7]: https://github.com/rocksun/jsonresume-theme-actual "Actual Chinese theme"
