@@ -1,0 +1,26 @@
+# Strategies for Navigating Data Deluge
+![Featued image for: Strategies for Navigating Data Deluge](https://cdn.thenewstack.io/media/2024/03/20c93ae3-files-1024x576.jpg)
+We have all heard that “data is king,” and we are generating more and more of it in both our personal and professional lives.
+Historically, storing data was often an afterthought — creating it was the priority. However, organizations are finding it increasingly difficult to
+[manage the growth of the data](https://thenewstack.io/whats-next-managing-data-in-cloud-native-environments/) they have created.
+We see that most organizations interrogate their data (such as reporting) based on short-term requirements, looking at data generated in the past week, month or quarter. Some data types may be used for year-over-year comparisons (think financial data, etc.). If left unchecked, however, this data sprawl can become unmanageable.
+Backups — and, more importantly, restores — can become extremely time-consuming and disruptive. If data needs to be restored in a production environment, the longer the process takes, the greater the chance it will have a material impact on the company’s brand or reputation. So getting it restored as quickly and cleanly as possible is critical.
+Data sprawl also can bring database queries used in applications or reporting to a crawl. Nobody wants to wait an hour for a report to run!
+Yet much of this data, including the oldest elements, is likely to still hold value and serve a purpose. This is especially true today, as
+[AI models](https://roadmap.sh/guides/introduction-to-llms) become more prevalent and companies seek to retain and use data for training purposes. With even the oldest of data being given a renewed purpose, companies [need to address the growing need to maintain and store data longer](https://thenewstack.io/how-a-data-fabric-gets-snow-tires-to-a-store-when-you-need-them/). So it is essential for organizations to evaluate their data critically and determine what they really need to retain.
+**Addressing the Data Management Dilemma**
+A vital step is to ensure your organization’s Ops and development teams are connected and collaborating effectively. The DevOps movement has promised to enable this interdepartmental harmony. While this sounds great in theory, it doesn’t always play out in reality. Ops teams and developers have very different priorities. While development teams focus primarily on feature velocity and release cadence, Ops teams are focused on data management strategies (offloading older data, archiving, purging, etc.). This disconnect can often result in a stalemate in which nothing much changes and the same old challenges persist.
+Therefore, it is crucial to identify and implement data management strategies to segregate data based on its utility and use case. After all, it’s impossible to manage data effectively without knowing its worth, and it’s impossible to know its worth without knowing its purpose. As such, any effective data management strategy — especially those focused on taming sprawl — should make segregation and categorization the primary goals.
+Effective use of metadata is one of the most fundamental steps in enabling such a strategy. For data to be effectively segregated and categorized, organizations must ensure metadata is consistent, detailed and robust to ensure coherence across applications and that a data’s purpose or business use case can be identified quickly and accurately.
+Data quality is the other pillar for an effective management strategy. Too often, inconsistencies caused by data silos, lack of standardized processes, and the absence of effective screening and validation methods undermine an organization’s ability to manage data effectively and contain sprawl.
+**A Data-Dominated World Begins with Company Culture**
+Ultimately, prioritization is vital — ensuring that older legacy data is archived or purged, and the most recent data, or that which will be used most often, is optimized, tuned and made as efficient as possible.
+However, this brings us back to effective collaboration. To segregate data correctly, Ops teams and
+[developers must work](https://thenewstack.io/using-ai-to-help-developers-work-with-regular-expressions/) together, maintaining open lines of communication around each team’s wants and needs. When relegated to silos, it becomes impossible for either team to identify and prioritize data effectively. Often cultural change is the most powerful and important data management strategy an organization can employ. DevOps offers a helpful paradigm, but ultimately, most organizations will have to tackle cultural considerations in their own way.
+Data generation and consumption are growing exponentially, with artificial intelligence and machine learning hurtling us into a future where even the oldest data has a new lease on life.
+As such, the practice of simply “deleting the old stuff” is quickly becoming a thing of the past, so organizations today must seriously consider prioritizing data management strategies for the long term.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
