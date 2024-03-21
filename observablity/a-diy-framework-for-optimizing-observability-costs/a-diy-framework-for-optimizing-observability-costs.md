@@ -1,6 +1,6 @@
 <!--
 title: 降低观测性成本的自建方法
-cover: https://cdn.thenewstack.io/media/2024/03/6ec3970e-cats3-1024x667.png
+cover: ./cover.png
 -->
 
 随着技术和组织的发展，可观测性成本不断攀升，有必要采取相应措施加以控制。
