@@ -32,13 +32,13 @@ langchain_community
 jupyter
 ```
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 设置环境变量，以便代码可以隐式访问 API 密钥。
 
-```
+```bash
 export GOOGLE_API_KEY="YOUR_GOOGLE_API_KEY"
 ```
 
