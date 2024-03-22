@@ -1,7 +1,7 @@
 
 <!--
 title: 英伟达CEO介绍了一种新的AI软件开发方式
-cover: https://cdn.thenewstack.io/media/2024/03/c206efb3-jensen_huang-nvidia.png
+cover: ./cover.png
 -->
 
 “我们将发明一种新的方式，让您接收和操作软件，”英伟达首席执行官黄仁勋在本周的 GTC 上宣布。
