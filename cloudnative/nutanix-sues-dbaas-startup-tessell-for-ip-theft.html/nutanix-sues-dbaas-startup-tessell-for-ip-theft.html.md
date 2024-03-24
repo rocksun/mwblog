@@ -1,7 +1,7 @@
 
 <!--
 title: Nutanix起诉DBaaS初创公司Tessell窃取知识产权
-cover: https://images.techhive.com/images/article/2015/09/hack-hacker-cyber-thief-theft-stolen-100613858-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 Nutanix 声称 Tessell 的新产品是使用 Nutanix 的源代码和其他资源构建的。
