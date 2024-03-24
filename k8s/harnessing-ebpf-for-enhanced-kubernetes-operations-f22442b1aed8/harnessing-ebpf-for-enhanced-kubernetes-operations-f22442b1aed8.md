@@ -1,7 +1,7 @@
 
 <!--
 title: 利用eBPF增强Kubernetes操作
-cover: https://miro.medium.com/v2/resize:fit:551/1*v_XW1Bb5Pv5NoeRYNwfamQ.png
+cover: ./cover.png
 -->
 
 运行 Kubernetes 释放了容器的强大功能，但看到更多功能岂不更好？eBPF（扩展 Berkeley 数据包过滤器）是一种…
