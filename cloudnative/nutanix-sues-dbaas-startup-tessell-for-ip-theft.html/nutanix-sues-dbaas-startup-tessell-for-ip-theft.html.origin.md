@@ -1,0 +1,19 @@
+Datacenter and hybrid multi-cloud software provider
+[Nutanix](https://www.networkworld.com/article/972199/nutanix-new-multicloud-management-products-aim-for-simplification.html) has filed a lawsuit against database-as-a-service (DBaaS) providing startup, Tessell, alleging that its products were built using Nutanix’s source code and other resources.
+The
+[lawsuit](https://www.pacermonitor.com/public/filings/D2GFHMSY/Nutanix_Inc_v_Tessell_Inc__candce-24-01729__0001.0.pdf), more significantly, is targeted at the three co-founders of the San Francisco-headquartered Tessell, including Bala Kuchibhotla, Kamaldeep Khanuja, and Bakul Banthia. The lawsuit alleged that the co-founders developed Tessell products while being employed at Nutanix.
+While Kuchibhotla served as the general manager and senior VP of the Era business, Khanuja and Banthia were senior engineers.
+“Kuchibhotla used Nutanix facilities, equipment, services, and even the Nutanix Era source code when developing the Tessell product. Kuchibhotla planned, developed, obtained initial financing for, and demonstrated prototypes of the competing product—all using Nutanix computers,” the company alleged in the lawsuit filed with the Northern District Court of California.
+“One of the Tessell prototypes they demonstrated actually ran on Nutanix servers,” the company added.
+The lawsuit further goes on to say that the theft of intellectual property was discovered after the company carried out a thorough forensic investigation of their internal resources, which was triggered based on suspicions arising post the launch of Tessell’s offerings.
+“When Tessell launched its product in late 2022, however, the speed with which it came to market with features strikingly similar to Era caused Nutanix to commence a full-fledged forensic investigation,” the company said.
+Nutanix describes its Era offering as software that helps enterprises manage multiple databases in servers located in their data centers or hybrid cloud environments.
+Essentially, Era simplifies the processes for managing databases, including creating, populating, backing up, duplicating, and administering databases, the company explained, adding that Era helps enterprises cut down on time, money, and talent significantly.
+Tessell’s
+[offerings](https://www.tessell.com/), which include targeted products for PostgreSQL, MySQL, SQL Server, Milvus, Oracle, MongoDB, and SQL Server, compete with Nutanix Era, which also supports databases such as Oracle, Microsoft SQL Server, MongoDB, MySQL, and PostgreSQL.
+The company sees the act of the three founders as a case of intellectual property theft as it believes that all three former employees were contractually bound to disclose and assign “the stolen IP” to Nutanix.
+An email query sent to Tessell about the lawsuit received no response.
+In a
+[separate statement](https://www.nutanix.com/press-releases/2024/nutanix-files-theft-of-intellectual-property-lawsuit-against-tessell-inc) to the press, Nutanix said that the lawsuit filed against Tessell and its founders also alleges that they schemed to remove all indicia of Nutanix branding from their prototype, and then tried to cover their tracks by wiping their Nutanix laptops.
+“Nutanix is seeking the return of its stolen intellectual property, an injunction to stop further infringement, restitution for the Nutanix resources taken by the three former employees for the founding of Tessell, and money damages in an amount to be proven,” the company said.
+Further, Nutanix added that it was commencing separate arbitration proceedings against the Tessell founders per their Nutanix employee agreements.
