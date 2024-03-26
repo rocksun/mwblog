@@ -1,7 +1,7 @@
 
 <!--
 title: Redis转向源代码可用许可证
-cover: https://images.techhive.com/images/article/2017/03/6554314981_7f95641814_o-100714680-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 云服务提供商托管 Redis 产品将不再被允许免费使用 Redis 源代码，该公司表示。
