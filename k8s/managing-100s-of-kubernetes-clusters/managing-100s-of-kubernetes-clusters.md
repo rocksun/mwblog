@@ -85,6 +85,8 @@ cover: ./cover.png
 
 我们实现了一个节点池 Kubernetes operator，它引入了一个封装了替换节点池多步骤过程的 Nodepool 资源。在后台，该运算符会创建一个新的节点池、清空旧节点池，然后在对用户完全不透明的过程中删除它。从用户的角度来看，所有节点池操作都是通过单个 GitOps 更改就地完成的。这种端到端自动化在 Kubernetes 版本升级期间尤其强大。
 
+![](https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbc3bac98-3e65-43c6-867b-0e59195ecec0_1456x1188.png)
+
 唯一的限制是，我们无法使用 ownerReference 将新的 Nodepool 资源链接到 Cluster API 的 MachinePool 或 CAPZ 的 AzureManagedMachinePool 资源的现有层次结构。相反，这些资源并排存在，并使用 objectReference 链接。在完全删除节点池时，此缺点变得明显，因为资源层次结构是使用 [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) 删除的。
 
 ## 结论
