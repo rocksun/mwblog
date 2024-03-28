@@ -1,7 +1,7 @@
 
 <!--
 title: 揭秘Kubernetes网络：顶级工程师实用指南
-cover: https://cdn.sanity.io/images/rhzn5s2f/production/09c5cf6ab47ed35e6bb811568057d8bd1f2e2b94-1200x628.jpg?w=1230&fit=max&auto=format
+cover: ./cover.png
 -->
 
 在现代[云原生](/kubernetes-glossary/cloud-native)生态系统中，Kubernetes 是容器编排的首选，它能够轻松管理和扩展容器化应用程序。从本质上讲，Kubernetes 可以看作是一个分布式系统，其中独立的[节点](/kubernetes-glossary/node)容器）组合在一起，为用户呈现一个统一、有凝聚力的环境。
