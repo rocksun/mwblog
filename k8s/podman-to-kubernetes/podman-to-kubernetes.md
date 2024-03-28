@@ -447,6 +447,8 @@ curl localhost:8080
 
 您还可以通过 Web 浏览器访问您的服务器。输入 `localhost:8080`，应该会显示类似的网页：
 
+![](https://imagedelivery.net/xZXo0QFi-1_4Zimer-T0XQ/3a474a5e-4274-4869-9713-9a65ce04a200/lg1x)
+
 之前，我们提到过在提供初始 Pod 定义后，您无法为特定容器公开其他端口。我们来确认一下。
 
 创建另一个 Pod：
