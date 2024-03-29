@@ -1,7 +1,7 @@
 
 <!--
 title: CSI（Container Storage Interface）的工作原理
-cover: https://static.wixstatic.com/media/a7fbb2_2a8fd8f55d654398b98b33568927746f~mv2.jpg/v1/fill/w_1200,h_627,al_c/a7fbb2_2a8fd8f55d654398b98b33568927746f~mv2.jpg
+cover: ./cover.png
 -->
 
 深入了解 CSI（Container Storage Interface）是什么以及它如何在 Kubernetes（k8s）中工作。
