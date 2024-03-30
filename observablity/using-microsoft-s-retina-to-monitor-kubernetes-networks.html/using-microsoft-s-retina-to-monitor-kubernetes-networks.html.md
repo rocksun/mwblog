@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Microsoft的Retina监控Kubernetes网络
-cover: https://images.techhive.com/images/article/2016/11/ethernet_cables-100694419-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 开源 Retina 使用 eBPF 为 Kubernetes 中的容器网络带来可观测性。
