@@ -55,7 +55,7 @@ Retina 提供的一个有用的指标是经常被忽略的指标：API 延迟。
 
 拥有这些数据可以让您开始与 API 提供商进行诊断过程，帮助追踪任何延迟的来源。API 访问延迟可能是您的应用程序中的一个重大障碍，因此拥有这些数据可以帮助您提供更可靠、响应更快的应用程序。
 
-### Kubernetes 生态系统的成熟
+## Kubernetes 生态系统的成熟
 
 Microsoft 已发布基于 Retina 的可观测性工具的预览版本，[可用于 Azure Kubernetes 服务作为网络可观测性加载项](https://learn.microsoft.com/en-us/azure/aks/network-observability-overview)。这适用于 Azure 托管的 Prometheus 和 Grafana。您可以在其文档中找到预配置指标的列表，但它目前仅提供 Retina 功能的一个子集，仅提供节点级指标。
 
