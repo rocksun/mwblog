@@ -1,6 +1,6 @@
 
 <!--
-title: CSI（Container Storage Interface）的工作原理
+title: Kubernetes CSI的工作原理
 cover: ./cover.png
 -->
 

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Best Practices for Using kubectl on Windows | jimangel.io</title>
+<meta name="keywords" content="kubectl, kubernetes, windows, proxy, powershell, multiple-clusters">
+<meta name="description" content="A comprehensive guide on setting up and using kubectl on Windows, including dealing with proxies, managing multiple clusters and upgrading kubectl.">
+<meta name="author" content="Jim Angel">
+<link rel="canonical" href="https://www.jimangel.io/posts/kubectl-best-practices-windows/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.74dcb7a13f2da432dbfcd2f4419af7db382b85bcc0a1d59861f4bd669eacd4e3.css" integrity="sha256-dNy3oT8tpDLb/NL0QZr32zgrhbzAodWYYfS9Zp6s1OM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://www.jimangel.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.jimangel.io/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.jimangel.io/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://www.jimangel.io/img/apple-touch-icon.png">
+<link rel="mask-icon" href="https://www.jimangel.io/img/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7X0S9Y56NW"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7X0S9Y56NW', { 'anonymize_ip': false });
+}
+</script>
+<meta property="og:title" content="Best Practices for Using kubectl on Windows" />
+<meta property="og:description" content="A comprehensive guide on setting up and using kubectl on Windows, including dealing with proxies, managing multiple clusters and upgrading kubectl." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jimangel.io/posts/kubectl-best-practices-windows/" /><meta property="og:image" content="https://www.jimangel.io/img/social.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-26T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.jimangel.io/img/social.jpg"/>
+
+<meta name="twitter:title" content="Best Practices for Using kubectl on Windows"/>
+<meta name="twitter:description" content="A comprehensive guide on setting up and using kubectl on Windows, including dealing with proxies, managing multiple clusters and upgrading kubectl."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://www.jimangel.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Best Practices for Using kubectl on Windows",
+      "item": "https://www.jimangel.io/posts/kubectl-best-practices-windows/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best Practices for Using kubectl on Windows",
+  "name": "Best Practices for Using kubectl on Windows",
+  "description": "A comprehensive guide on setting up and using kubectl on Windows, including dealing with proxies, managing multiple clusters and upgrading kubectl.",
+  "keywords": [
+    "kubectl", "kubernetes", "windows", "proxy", "powershell", "multiple-clusters"
+  ],
+  "articleBody": " Warning\nThis post may contain inaccuracies and partial information or solutions.\nTo reduce my backlog of docs, I’ve decided to publish my nearly completed drafts assisted by AI.\nI wrote most of the following content but used generative AI to format, organize, and complete the post. I’m sure some tone is lost along the way.\nLeave a comment if you find any issues!\n(originally created June 4th 2019)\nOverview Kubectl is the beating heart of accessing Kubernetes clusters. The docs have traditionally focused on Linux, this post provides best practices for using kubectl on Windows 10, including:\nSetup kubectl for PowerShell Using kubectl behind a corporate proxy Adding clusters to kubectl Common multi-cluster kubectl commands Upgrading kubectl Troubleshooting and tips With Kubernetes 1.14 announcing full support for Windows nodes, there is now more documentation around running kubectl on Windows. This post combines that with real-world experience to provide comprehensive guidance. Feel free to adapt this to your organization’s specific setup.\nKey Terms to Know Term Explanation kubectl A CLI for running commands against Kubernetes clusters context A group of access parameters (cluster, user, namespace) under a friendly name kubeconfig A file containing contexts which kubectl uses for authentication proxy A company-owned server that filters and controls external internet access Why this Approach? No manual kubeconfig file editing required Unified kubectl workflow across environments Simplified onboarding for developers Custom contexts per cluster and namespace Requirements Windows 10 PowerShell v5.2+ Internet access to download kubectl.exe Setup kubectl for PowerShell Initial setup only needs to be done once:\nCreate a folder for kubectl binaries:\nNew-Item -ItemType directory -Path \"C:\\k\" Add the folder to your $PATH:\n[Environment]::SetEnvironmentVariable(\"Path\", $env:Path + \";C:\\k\", \"User\") Note: Changes take effect in a new PowerShell session\nDownload kubectl.exe (version should match your cluster) and place in C:\\k\nVerify kubectl works:\nkubectl version --client Setup kubectl for use behind a company proxy If your company uses a proxy server, you will likely need to configure the HTTP_PROXY, HTTPS_PROXY, and NO_PROXY environment variables for kubectl to connect to your cluster.\nProxy Variables 101 Proxies are meant to be a way to regulate and secure outbound traffic in large environments. Configuring your kubectl / PowerShell correctly is based on two important parameters:\nInternal Kubernetes cluster HTTPS API(s) for NO_PROXY Corporate proxy URL:PORT for HTTP_PROXY and HTTPS_PROXY Variable Explanation Example NO_PROXY IPs/domains that should bypass the proxy (comma-separated) \"corp.com,10.0.0.0/8\" HTTP_PROXY Proxy server URL for HTTP traffic \"http://proxy.corp.com:80\" HTTPS_PROXY Proxy server URL for HTTPS traffic \"http://proxy.corp.com:443\" When should I not set NO_PROXY?\nIf your cluster is external (public) When should I set NO_PROXY?\nIf your cluster is internal (private) Recommended Settings To route all internal IPs directly while sending external traffic through the proxy:\n[Environment]::SetEnvironmentVariable(\"HTTP_PROXY\", \"http://proxy.corp.com:80\", \"User\") [Environment]::SetEnvironmentVariable(\"HTTPS_PROXY\", \"http://proxy.corp.com:443\", \"User\") [Environment]::SetEnvironmentVariable(\"NO_PROXY\", \"localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16\", \"User\") Restart PowerShell for changes to take effect\nAdding a Cluster to kubectl Get cluster API server URL and auth details from your admin\nCreate the cluster context:\nkubectl config set-cluster mycluster --server=https://k8sapi.corp.com:6443 --certificate-authority=./ca.crt --embed-certs Set credentials for the context:\nkubectl config set-credentials mycluster-admin --token=\"\" Create a context that ties together cluster and user:\nkubectl config set-context mycluster --cluster=mycluster --user=mycluster-admin Start using the new context:\nkubectl config use-context mycluster Common multi-cluster kubectl commands # Show current context kubectl config current-context # Switch contexts kubectl config use-context mycluster # List available contexts kubectl config get-contexts # Set default namespace for a context kubectl config set-context --current --namespace=dev # Rename a context kubectl config rename-context old-name new-name # Delete a context kubectl config delete-context mycluster Upgrading kubectl Download the new kubectl.exe binary Replace the existing file in your kubectl directory (e.g. C:\\k) Help and Troubleshooting Fix slow kubectl performance Slowness is often caused by kubectl using a network drive for cache. Fix by overriding $HOME:\n[Environment]::SetEnvironmentVariable(\"HOME\", $env:USERPROFILE, \"User\") Warning: This will reset your kubectl config location and remove existing config\nRevert all proxy settings [Environment]::SetEnvironmentVariable(\"HTTP_PROXY\", $null, \"Machine\") [Environment]::SetEnvironmentVariable(\"HTTPS_PROXY\", $null, \"Machine\") [Environment]::SetEnvironmentVariable(\"NO_PROXY\", $null, \"Machine\") Tips Use k alias instead of kubectl by renaming binary to k.exe Backup kubeconfig with: $env:KUBECONFIG_SAVE=$env:KUBECONFIG Restore kubeconfig with: $env:KUBECONFIG=$env:KUBECONFIG_SAVE With this configuration, you’ll have a robust kubectl setup on Windows that works seamlessly with corporate proxies and multiple Kubernetes clusters. The key is leveraging contexts to organize access to clusters and namespaces. Combine this with PowerShell environment variables for dynamic configuration.\n",
+  "wordCount" : "712",
+  "inLanguage": "en",
+  "datePublished": "2024-03-26T00:00:00Z",
+  "dateModified": "2024-03-26T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Jim Angel"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.jimangel.io/posts/kubectl-best-practices-windows/"
+  },
+  "publisher": {
+    "@type": "Website",
+    "name": "Jim Angel | jimangel.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.jimangel.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://www.jimangel.io/" accesskey="h" title="jimangel.io (Alt + H)">jimangel.io</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://www.jimangel.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jimangel.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.jimangel.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://www.jimangel.io/">Home</a>&nbsp;»&nbsp;<a href="https://www.jimangel.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Best Practices for Using kubectl on Windows
+    </h1>
+    <div class="post-description">
+      A comprehensive guide on setting up and using kubectl on Windows, including dealing with proxies, managing multiple clusters and upgrading kubectl.
+    </div>
+    <div class="post-meta"><span title='2024-03-26 00:00:00 +0000 UTC'>March 26, 2024</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Jim Angel
+
+</div>
+  </header> 
+  <div class="post-content"><style type="text/css">.notice,body.dark .notice{--root-background:#eff;--title-color:#fff;--title-background:#7bd}.notice{--root-color:#444;--warning-title:#c33;--warning-content:#fee;--info-title:#fb7;--info-content:#fec;--note-title:#6be;--note-content:#e7f2fa;--tip-title:#5a5;--tip-content:#efe;padding:18px;line-height:24px;margin-bottom:24px;border-radius:4px;color:var(--root-color);background:var(--root-background)}body.dark .notice{--root-color:#ddd;--warning-title:#800;--warning-content:#400;--info-title:#a50;--info-content:#420;--note-title:#069;--note-content:#023;--tip-title:#363;--tip-content:#121}.notice p:last-child{margin-bottom:0}.notice-title{margin:-18px -18px 12px;padding:4px 18px;border-radius:4px 4px 0 0;font-weight:700;color:var(--title-color);background:var(--title-background)}.notice.warning .notice-title{background:var(--warning-title)}.notice.warning{background:var(--warning-content)}.notice.info .notice-title{background:var(--info-title)}.notice.info{background:var(--info-content)}.notice.note .notice-title{background:var(--note-title)}.notice.note{background:var(--note-content)}.notice.tip .notice-title{background:var(--tip-title)}.notice.tip{background:var(--tip-content)}.icon-notice{display:inline-flex;align-self:center;margin-right:8px}.icon-notice img,.icon-notice svg{height:1em;width:1em;fill:currentColor}.icon-notice img,.icon-notice.baseline svg{top:.125em;position:relative}</style>
+<div><svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg"><symbol id="tip-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></symbol><symbol id="note-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></symbol><symbol id="warning-notice" viewBox="0 0 576 512" preserveAspectRatio="xMidYMid meet"><path d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"/></symbol><symbol id="info-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"/></symbol></svg></div><div class="notice warning" >
+<p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#warning-notice"></use></svg></span>Warning</p><p>This post may contain inaccuracies and partial information or solutions.</p>
+<p>To reduce my backlog of docs, I&rsquo;ve decided to publish my nearly completed drafts assisted by AI.</p>
+<p>I wrote most of the following content but used generative AI to format, organize, and complete the post. I&rsquo;m sure some tone is lost along the way.</p>
+<p>Leave a comment if you find any issues!</p></div>
+<p><em>(originally created <strong>June 4th 2019</strong>)</em></p>
+<h2 id="overview">Overview<a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>Kubectl is the beating heart of accessing Kubernetes clusters. The docs have traditionally focused on Linux, this post provides best practices for using kubectl on Windows 10, including:</p>
+<ul>
+<li><a href="#setup-kubectl-for-powershell">Setup kubectl for PowerShell</a></li>
+<li><a href="#setup-kubectl-for-use-behind-a-company-proxy">Using kubectl behind a corporate proxy</a></li>
+<li><a href="#adding-a-cluster-to-kubectl">Adding clusters to kubectl</a></li>
+<li><a href="#common-multi-cluster-kubectl-commands">Common multi-cluster kubectl commands</a></li>
+<li><a href="#upgrading-kubectl">Upgrading kubectl</a></li>
+<li><a href="#help-and-troubleshooting">Troubleshooting and tips</a></li>
+</ul>
+<p>With Kubernetes 1.14 announcing full support for Windows nodes, there is now more documentation around running kubectl on Windows. This post combines that with real-world experience to provide comprehensive guidance. Feel free to adapt this to your organization&rsquo;s specific setup.</p>
+<h3 id="key-terms-to-know">Key Terms to Know<a hidden class="anchor" aria-hidden="true" href="#key-terms-to-know">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kubectl</code></td>
+<td>A CLI for running commands against Kubernetes clusters</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>A group of access parameters (cluster, user, namespace) under a friendly name</td>
+</tr>
+<tr>
+<td><code>kubeconfig</code></td>
+<td>A file containing contexts which kubectl uses for authentication</td>
+</tr>
+<tr>
+<td><code>proxy</code></td>
+<td>A company-owned server that filters and controls external internet access</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-this-approach">Why this Approach?<a hidden class="anchor" aria-hidden="true" href="#why-this-approach">#</a></h3>
+<ul>
+<li>No manual kubeconfig file editing required</li>
+<li>Unified kubectl workflow across environments</li>
+<li>Simplified onboarding for developers</li>
+<li>Custom contexts per cluster and namespace</li>
+</ul>
+<h3 id="requirements">Requirements<a hidden class="anchor" aria-hidden="true" href="#requirements">#</a></h3>
+<ul>
+<li>Windows 10</li>
+<li>PowerShell v5.2+</li>
+<li>Internet access to download kubectl.exe</li>
+</ul>
+<h2 id="setup-kubectl-for-powershell">Setup kubectl for PowerShell<a hidden class="anchor" aria-hidden="true" href="#setup-kubectl-for-powershell">#</a></h2>
+<p>Initial setup only needs to be done once:</p>
+<ol>
+<li>
+<p>Create a folder for kubectl binaries:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">directory</span> <span class="n">-Path</span> <span class="s2">&#34;C:\k&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Add the folder to your $PATH:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;Path&#34;</span><span class="p">,</span> <span class="nv">$env:Path</span> <span class="p">+</span> <span class="s2">&#34;;C:\k&#34;</span><span class="p">,</span> <span class="s2">&#34;User&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Note: Changes take effect in a new PowerShell session</p>
+</blockquote>
+</li>
+<li>
+<p>Download kubectl.exe (version should match your cluster) and place in C:\k</p>
+</li>
+<li>
+<p>Verify kubectl works:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">kubectl</span> <span class="n">version</span> <span class="p">-</span><span class="n">-client</span>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="setup-kubectl-for-use-behind-a-company-proxy">Setup kubectl for use behind a company proxy<a hidden class="anchor" aria-hidden="true" href="#setup-kubectl-for-use-behind-a-company-proxy">#</a></h2>
+<p>If your company uses a proxy server, you will likely need to configure the <code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, and <code>NO_PROXY</code> environment variables for kubectl to connect to your cluster.</p>
+<h3 id="proxy-variables-101">Proxy Variables 101<a hidden class="anchor" aria-hidden="true" href="#proxy-variables-101">#</a></h3>
+<p>Proxies are meant to be a way to regulate and secure outbound traffic in large environments. Configuring your <code>kubectl</code> / PowerShell correctly is based on two important parameters:</p>
+<ul>
+<li>Internal Kubernetes cluster HTTPS API(s) for <code>NO_PROXY</code></li>
+<li>Corporate proxy URL:PORT for <code>HTTP_PROXY</code> and <code>HTTPS_PROXY</code></li>
+</ul>
+<p><img loading="lazy" src="/img/proxy.png" alt=""  />
+</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Explanation</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NO_PROXY</code></td>
+<td>IPs/domains that should bypass the proxy (comma-separated)</td>
+<td><code>&quot;corp.com,10.0.0.0/8&quot;</code></td>
+</tr>
+<tr>
+<td><code>HTTP_PROXY</code></td>
+<td>Proxy server URL for HTTP traffic</td>
+<td><code>&quot;http://proxy.corp.com:80&quot;</code></td>
+</tr>
+<tr>
+<td><code>HTTPS_PROXY</code></td>
+<td>Proxy server URL for HTTPS traffic</td>
+<td><code>&quot;http://proxy.corp.com:443&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>When should I <strong>not</strong> set <code>NO_PROXY</code>?</p>
+<ul>
+<li>If your cluster is external (public)</li>
+</ul>
+<p>When should I set <code>NO_PROXY</code>?</p>
+<ul>
+<li>If your cluster is internal (private)</li>
+</ul>
+<h3 id="recommended-settings">Recommended Settings<a hidden class="anchor" aria-hidden="true" href="#recommended-settings">#</a></h3>
+<p>To route all internal IPs directly while sending external traffic through the proxy:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;HTTP_PROXY&#34;</span><span class="p">,</span> <span class="s2">&#34;http://proxy.corp.com:80&#34;</span><span class="p">,</span> <span class="s2">&#34;User&#34;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;HTTPS_PROXY&#34;</span><span class="p">,</span> <span class="s2">&#34;http://proxy.corp.com:443&#34;</span><span class="p">,</span> <span class="s2">&#34;User&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;NO_PROXY&#34;</span><span class="p">,</span> <span class="s2">&#34;localhost,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16&#34;</span><span class="p">,</span> <span class="s2">&#34;User&#34;</span><span class="p">)</span>  
+</span></span></code></pre></div><blockquote>
+<p>Restart PowerShell for changes to take effect</p>
+</blockquote>
+<h2 id="adding-a-cluster-to-kubectl">Adding a Cluster to kubectl<a hidden class="anchor" aria-hidden="true" href="#adding-a-cluster-to-kubectl">#</a></h2>
+<ol>
+<li>
+<p>Get cluster API server URL and auth details from your admin</p>
+</li>
+<li>
+<p>Create the cluster context:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl config set-cluster mycluster --server<span class="o">=</span>https://k8sapi.corp.com:6443 --certificate-authority<span class="o">=</span>./ca.crt --embed-certs 
+</span></span></code></pre></div></li>
+<li>
+<p>Set credentials for the context:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl config set-credentials mycluster-admin --token<span class="o">=</span><span class="s2">&#34;&lt;bearer token here&gt;&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Create a context that ties together cluster and user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl config set-context mycluster --cluster<span class="o">=</span>mycluster --user<span class="o">=</span>mycluster-admin
+</span></span></code></pre></div></li>
+<li>
+<p>Start using the new context:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl config use-context mycluster  
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="common-multi-cluster-kubectl-commands">Common multi-cluster kubectl commands<a hidden class="anchor" aria-hidden="true" href="#common-multi-cluster-kubectl-commands">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show current context </span>
+</span></span><span class="line"><span class="cl">kubectl config current-context
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Switch contexts</span>
+</span></span><span class="line"><span class="cl">kubectl config use-context mycluster
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># List available contexts</span>
+</span></span><span class="line"><span class="cl">kubectl config get-contexts
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set default namespace for a context</span>
+</span></span><span class="line"><span class="cl">kubectl config set-context --current --namespace<span class="o">=</span>dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Rename a context  </span>
+</span></span><span class="line"><span class="cl">kubectl config rename-context old-name new-name
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Delete a context</span>
+</span></span><span class="line"><span class="cl">kubectl config delete-context mycluster
+</span></span></code></pre></div><h2 id="upgrading-kubectl">Upgrading kubectl<a hidden class="anchor" aria-hidden="true" href="#upgrading-kubectl">#</a></h2>
+<ol>
+<li>Download the new kubectl.exe binary</li>
+<li>Replace the existing file in your kubectl directory (e.g. C:\k)</li>
+</ol>
+<h2 id="help-and-troubleshooting">Help and Troubleshooting<a hidden class="anchor" aria-hidden="true" href="#help-and-troubleshooting">#</a></h2>
+<h3 id="fix-slow-kubectl-performance">Fix slow kubectl performance<a hidden class="anchor" aria-hidden="true" href="#fix-slow-kubectl-performance">#</a></h3>
+<p>Slowness is often caused by kubectl using a network drive for cache. Fix by overriding $HOME:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;HOME&#34;</span><span class="p">,</span> <span class="nv">$env:USERPROFILE</span><span class="p">,</span> <span class="s2">&#34;User&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><blockquote>
+<p>Warning: This will reset your kubectl config location and remove existing config</p>
+</blockquote>
+<h3 id="revert-all-proxy-settings">Revert all proxy settings<a hidden class="anchor" aria-hidden="true" href="#revert-all-proxy-settings">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;HTTP_PROXY&#34;</span><span class="p">,</span> <span class="vm">$null</span><span class="p">,</span> <span class="s2">&#34;Machine&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;HTTPS_PROXY&#34;</span><span class="p">,</span> <span class="vm">$null</span><span class="p">,</span> <span class="s2">&#34;Machine&#34;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">Environment</span><span class="p">]::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&#34;NO_PROXY&#34;</span><span class="p">,</span> <span class="vm">$null</span><span class="p">,</span> <span class="s2">&#34;Machine&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h3 id="tips">Tips<a hidden class="anchor" aria-hidden="true" href="#tips">#</a></h3>
+<ul>
+<li>Use <code>k</code> alias instead of <code>kubectl</code> by renaming binary to k.exe</li>
+<li>Backup kubeconfig with: <code>$env:KUBECONFIG_SAVE=$env:KUBECONFIG</code></li>
+<li>Restore kubeconfig with: <code>$env:KUBECONFIG=$env:KUBECONFIG_SAVE</code></li>
+</ul>
+<p>With this configuration, you&rsquo;ll have a robust kubectl setup on Windows that works seamlessly with corporate proxies and multiple Kubernetes clusters. The key is leveraging contexts to organize access to clusters and namespaces. Combine this with PowerShell environment variables for dynamic configuration.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://www.jimangel.io/tags/kubernetes/">kubernetes</a></li>
+      <li><a href="https://www.jimangel.io/tags/kubectl/">kubectl</a></li>
+      <li><a href="https://www.jimangel.io/tags/windows/">windows</a></li>
+      <li><a href="https://www.jimangel.io/tags/proxy/">proxy</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://www.jimangel.io/posts/unifi-switch-24-fan-replacement/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Replacing the stock fans on UniFi Dream Machine and 24 Port Switch</span>
+  </a>
+  <a class="next" href="https://www.jimangel.io/posts/free-wildcard-ssl-certificates-lets-encrypt/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Wildcard SSL certificates for free with Let&#39;s Encrypt</span>
+  </a>
+</nav>
+
+  </footer><div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jimangel" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://www.jimangel.io/">jimangel.io</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
