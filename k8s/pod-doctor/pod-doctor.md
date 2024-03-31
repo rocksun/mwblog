@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Gradio和GPT-4构建Kubernetes Pod医生
-cover: https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDN8fGRvY3RvcnxlbnwwfHx8fDE3MTEzNzk0NDR8MA&ixlib=rb-4.0.3&q=80&w=2000content/images/size/w1200
+cover: ./cover.png
 -->
 
 Pod Doctor 允许您与 Kubernetes Pod 交互，检索信息并对 Pod 进行故障排除，并从 GPT-4 接收专家见解
