@@ -56,7 +56,7 @@ Grafana 引入了一项功能，允许从 k6 性能测试中[捕获分布式跟�
 
 ![](https://cdn.thenewstack.io/media/2024/03/f4ea0f22-image2a.png)
 
-[Artillery.io](http://artillery.io) 也看到了在运行性能测试时利用指标和跟踪的价值，并 [最近宣布了对 OpenTelemetry 的支持](https://www.artillery.io/blog/introducing-opentelemetry-support)。
+[Artillery.io](http://artillery.io) 也看到了在运行性能测试时利用指标和跟踪的价值，并[最近宣布了对 OpenTelemetry 的支持](https://www.artillery.io/blog/introducing-opentelemetry-support)。
 
 [Tracetest](https://tracetest.io/) 在更广泛的背景下解决了这个问题。它适用于任何支持 OpenTelemetry 的后端，包括 Grafana Tempo、AWS X-Ray、Honeycomb 和 Dynatrace。它 [与您现有的测试集成](https://thenewstack.io/the-struggle-for-microservice-integration-testing/) 框架：
 

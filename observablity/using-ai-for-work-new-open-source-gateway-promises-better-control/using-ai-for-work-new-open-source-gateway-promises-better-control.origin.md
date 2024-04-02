@@ -1,0 +1,31 @@
+# Using AI for Work: New Open Source Gateway Promises Better Control
+![Featued image for: Using AI for Work: New Open Source Gateway Promises Better Control](https://cdn.thenewstack.io/media/2024/03/976ee8ec-india-gate-3526277_1920-1024x674.jpg)
+There are a few problems developers face when implementing large language models (LLMs) for generative AI applications.
+First, organizations are concerned about data leaking out into the public as users interact with the LLM, said
+[Marco Palladino](https://www.linkedin.com/in/marcopalladino/), co-founder and CTO of the open source API management platform Kong. Second, they’re concerned about [AI hallucinations](https://thenewstack.io/reduce-ai-hallucinations-with-retrieval-augmented-generation/). Third, they’re concerned about the costs of API calls to cloud-based LLMs, he added.
+“They understand the power of AI, they want to use AI, but they’re also very concerned about making sure that there is responsible usage of AI from the organization,” Palladino said. “Some organizations are implementing AI from a testing standpoint, but they don’t really know how to productionize it. What we’re giving them is the capability to ensure governance and compliance and abuse prevention on their AI traffic.”
+Kong has created an AI gateway, which is integrated into its
+[API management middleware](https://thenewstack.io/what-is-api-management/), to help organizations deal with these challenges. It’s available as an [open source plugin for Kong Gateway 3.6](https://docs.konghq.com/gateway/latest/get-started/ai-gateway/).
+## AI as an API Use Case
+Fundamentally, AI is an API use case, just like the internet is driven primarily by APIs now, and as microservices are driven by APIs, AI will be driven by API use, Palladino asserted.
+“There are three things that we can do with AI: We can use AI,
+[we can train AI](https://thenewstack.io/meeting-the-operational-challenges-of-training-llms/) or we can have AI interact with the world using an API. Whether we use it, whether we train it or whether AI interacts with other services, other data, or all of these three things, it is APIs that drive that,” he said. “AI just happens to be the latest digital use case that drives API consumption in the world.”
+And that certainly seems to be how it’s playing out: It’s easier to leverage an API to an existing generative pre-trained transformer (GPT), such as OpenAI’s ChatGPT 4, than build. Add to that the fact that LLMs can solve different use cases, and it’s unlikely that developers will be connecting to just one LLM, he added. Just one reason why that’s the case: One way to reduce hallucinations is to use a second LLM to review the first LLM’s answer to a prompt before serving it up, sources have told The New Stack.
+“Organizations are using LLMs based on the data set they’re training those LLMs with, and they’re using the AI technologies that better fit the job,” he said. “It’s never going to be one technology to cater to every use case. It’s is going to be multiple LLMs.”
+## Controlling AI for Enterprise Use
+But it’s also expensive to call all those cloud-model AI APIs. The trend that Kong’s seeing is that enterprise-sized organizations are orchestrating between self-hosted LLMs that are cheaper and faster from a latency standpoint, with the cloud LLMs being a fallback in case the self-hosted LLM is not sufficient or goes down, Palladino said. The AI gateway supports that scenario, he added, giving developers “one API to rule them all.”
+“We’ve been working with a few select design partners of ours, customers of ours, to create an AI gateway that allows the developers to be more productive by giving [them] one API they can use to consume as many LLMs as they want,” Palladino said. “Instead of having to build with applications integrations with one LLM and then another one and then another one, they can build it once and then they can, with the flip of a switch,
+[choose what LLM they want to support](https://thenewstack.io/pivot-ai-devs-move-to-switch-llms-reduce-openai-dependency/) and today we support six of them in our product.”
+So far, the AI gateway integrates with APIs from the following
+[cloud LLM providers](https://thenewstack.io/generative-ai-cloud-services-aws-azure-or-google-cloud/):
+Kong plans to add support for
+[Hugging Face’s open source LLMs](https://thenewstack.io/machine-learning-is-as-easy-as-an-api-says-hugging-face/) and [AWS Bedrock](https://thenewstack.io/generative-ai-cloud-services-aws-azure-or-google-cloud/).
+“You build once and you can switch between any other LLM that we support, Once you do that, we provide a centralized way to manage AI credentials, AI analytics, AI security, on top of the gateway, so that if we want to rotate our tokens, if we want to capture AI
+[observability logs](https://thenewstack.io/observability-working-with-metrics-logs-and-traces/), we can do that on the gateway layer,” he said. “We don’t have to change our applications or build stuff in our applications; the gateway does it for us.”
+The gateway also gives organizations a way to provide governance and compliance around AI because it incorporates a firewall that only allows for certain types of prompts and allows the organization to establish parameters about the prompts. It can, for instance, perform profanity checks or make sure nothing illegal is being performed, he said. The gateway incorporates an orchestration engine too, which manages traffic between self-hosted LLMs and cloud LLMs to help improve performance and reduce the cost of using AI, he added.
+“What we’re giving them is the capability to ensure governance and compliance and abuse prevention on their AI traffic, so they are comfortable that they can enforce their rules on top of any AI consumption developers are making,” he said. “We’re giving them the infrastructure to be able to go live and in production with APIs.”
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
