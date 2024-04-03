@@ -1,7 +1,7 @@
 
 <!--
 title: 超越Git：AI/ML开发的新协作模式
-cover: https://cdn.thenewstack.io/media/2024/03/d18d42b8-code-7522129_1280-1024x798.png
+cover: ./cover.png
 -->
 
 Git 经过优化，可处理大量小文件，例如文本文件。仅此一项就使得 Git 不适用于管理此类数据集。
