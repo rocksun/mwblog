@@ -28,9 +28,6 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
 
 在本文中，我们将使用 [Debian 12 Bookworm](https://cloud.debian.org/images/cloud/) 的*通用*云镜像。
 
-[全尺寸](/articles/2024/03/proxmox-k8s-with-cilium/images/debian-dark.svg))
-[全尺寸](/articles/2024/03/proxmox-k8s-with-cilium/images/debian-light.svg))
-
 像 [Ubuntu](https://ubuntu.com/), [Rocky Linux](https://rockylinux.org/), [OpenSUSE](https://www.opensuse.org/), 或 [Arch Linux](https://archlinux.org/) 等其他 Linux 发行版也应该可以工作，但某些步骤可能会有所不同。还有 [Talos Linux](https://www.talos.dev/)，这是一个专为 Kubernetes 构建的不可变操作系统，我计划在不久的将来尝试一下。
 
 ## OpenTofu（Terraform）
@@ -57,7 +54,7 @@ bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-i
 
 ## Cilium
 
-[Cilium](https://cilium.io) — 凭借其 [eBPF 🐝](https://ebpf.io) 的优势，目前是 Kubernetes 的最热门 [CNI 插件](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)（个人拙见）。
+[Cilium](https://cilium.io) — 凭借其 [eBPF](https://ebpf.io) 的优势，目前是 Kubernetes 的最热门 [CNI 插件](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)（个人拙见）。
 
 在 [Isovalent](https://isovalent.com/) — Cilium 的创建者，[宣布](https://isovalent.com/blog/post/cisco-acquires-isovalent/) 被 [Cisco](https://www.cisco.com/)收购后，我有一点怀疑。然而 Cilium 是一个 [CNCF](https://www.cncf.io/) 项目，并且在上周在巴黎举行的 [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) 上与一些相关人员交谈后，这种怀疑消失了。
 
@@ -203,8 +200,6 @@ euclid_auth = {
 ```
 
 ### 镜像
-
-[#](#image)
 
 配置好 Proxmox Provider 后，我们可以继续选择要用于 VM 的基础镜像。如前所述，我正在使用 Debian 12 Bookworm 镜像。要查找较新的镜像，请导航至 [https://cloud.debian.org/images/cloud/](https://cloud.debian.org/images/cloud/)。您需要 qcow2 格式的镜像，该镜像与 Proxmox 兼容，但您需要使用 .img 扩展名保存它。校验和是可选的，但对下载失败造成的奇怪错误进行双重检查无害。
 
@@ -506,7 +501,6 @@ resource "proxmox_virtual_environment_file" "cloud-init-work-01" {
 *在 Proxmox VE Web 界面中启用片段内容。*
 
 ### 虚拟机
-[#](#virtual-machines)
 
 现在我们已经准备好了操作系统映像和 cloud-init 配置，是时候配置虚拟机了。作为概念验证，我们将创建一个控制平面节点并加入一个孤立的工作器节点。
 
@@ -537,100 +531,6 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 在涉及磁盘时，我选择了高速缓存直写（第 39 行），根据 [文档](https://pve.proxmox.com/wiki/Performance_Tweaks#Disk_Cache) 平衡安全性与读取性能。
 
 ```ruby
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-
-11
-
-12
-
-13
-
-14
-15
-16
-
-17
-
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-
-29
-
-30
-31
-32
-33
-34
-35
-36
-37
-38
-
-39
-
-40
-41
-42
-43
-44
-45
-46
-47
-
-48
-
-49
-50
-51
-
-52
-
-53
-54
-55
-56
-
-57
-
-58
-
-59
-60
-61
-
-62
-
-63
-
-64
-65
-66
-67
-
-68
-
-69
-70
-
-	
 resource "proxmox_virtual_environment_vm" "k8s-ctrl-01" {
   provider  = proxmox.euclid
   node_name = var.euclid.node_name
@@ -810,92 +710,6 @@ module "kubeadm-join" {
 工作节点的配置与控制平面节点的配置非常相似，但 RAM 更多（第 21 行），并且安装了 PCIe 设备（第 71 行）。
 
 ```ruby
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-
-21
-
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-
-71
-
-72
-73
-74
-75
-76
-77
-78
-79
-80
-
-	
 resource "proxmox_virtual_environment_vm" "k8s-work-01" {
   provider  = proxmox.euclid
   node_name = var.euclid.node_name
