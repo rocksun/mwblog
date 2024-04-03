@@ -1,0 +1,32 @@
+# Beyond Git: A New Collaboration Model for AI/ML Development
+![Featued image for: Beyond Git: A New Collaboration Model for AI/ML Development](https://cdn.thenewstack.io/media/2024/03/d18d42b8-code-7522129_1280-1024x798.png)
+Those who have been in the field for a while might recall when data scientists began to participate in projects, raising questions about collaboration with application development teams.
+The development teams that were already established in their workflows
+[used Git](https://thenewstack.io/getting-legit-with-git-and-github-the-art-of-the-commit-message/), had an elaborate CI/CD pipeline and could deploy to production at will.
+However, these teams had no clear strategy for collaborating with data scientists, who were often preoccupied with pressing feature developments.
+The team reviewed the data scientists’ work with urgency, perceiving it merely as code. Consequently, they advised data scientists to use Git for collaboration between the groups. The consequences of that hasty recommendation have been painful for the industry. This was a time where AI/ML was even less understood by application developers — so I, too, recommended using Git.
+Fast forward almost a decade and
+[Git](https://thenewstack.io/git-for-managing-small-projects/) still remains a big part of how data scientists, application developers and [DevOps](https://thenewstack.io/devops/) engineers collaborate. However, it is an uneasy collaboration. According to Gartner, at least 50% of AI/ML models never make it to production. And when they do, it takes on average nine months to get to production.
+## Why Can We Use Git for Everything Except AI/ML?
+There are multiple reasons why
+[Git is not sufficient for AI/ML projects](https://thenewstack.io/beyond-code-control-git-for-everything/). AI/ML projects require more than code to be reproducible. Unlike applications that execute code directly, AI/ML models derive their function from training data. The ML code is there to facilitate the training. Moreover, the training and validation of the models require datasets to be different. Therefore AI/ML requires automated data versioning alongside code.
+Speaking about data, a large portion of AI/ML projects use large unstructured datasets (images, videos, audio) for training, which poses massive storage challenges. Git, on the other hand, is optimized to work with large numbers of small files, like text files. This alone makes Git impractical for managing such datasets.
+Git, along with
+[application CI/CD](https://thenewstack.io/ci-cd/), is rooted in the fact that builds are easily reproducible. CI/CD pipelines can reproduce a given artifact with ease and precision for application. For AI/ML, this is not the case. Training an AI can be expensive, time-consuming and non-deterministic. As a consequence, the version system may have to carry the trained model artifacts for validation, integration and eventually for production deployment.
+In inner-loop development (which is the iterative process that developers go through when writing, testing and debugging code), there is also a difference between AI/ML and other applications. The AI/ML inner loop consists of a series of experiments with different parameters. This requires the context and details of the experiments to be recorded and compared in order to find a candidate model that would satisfy the validation metrics. That requires not only our selected model (Champion model) but also the candidate models, along with the availability of their experiment results.
+## Introducing Kitops and Its ModelKits
+We have been working on a new command-line interface called kit and a packaging system that we call ModelKits; these tools help with some common pain points. Here’s how Kitops, kit and its ModelKits improve AI/ML collaboration and deployment.
+[Kitops](https://github.com/jozu-ai/kitops) introduces a novel collaboration model through the kit CLI and ModelKits, streamlining the integration of data scientists’ work with application development and deployment workflows.
+By embracing ModelKits, teams can easily encapsulate AI/ML models, datasets and essential configurations into a standardized, portable format. This ensures seamless sharing and collaboration across diverse computing environments, fostering unity and efficiency between data scientists and developers.
+Kitops acknowledges the unique requirement of AI/ML projects for simultaneous code and data versioning. The kitfile, a central blueprint for AI/ML projects, facilitates version control for both code and datasets together, ensuring reproducibility and consistency across experiments.
+ModelKits are designed to manage and distribute large unstructured datasets without the limitations faced by Git. By packaging data, code and serialized models as distinct layers, ModelKits offer a practical solution to the storage challenges of AI/ML projects.
+Kitops significantly reduces the time to production for AI/ML models. ModelKits’ immutability guarantees the integrity of models from training through to deployment, facilitating quick validation, integration and production readiness. This addresses the industry-wide challenge of lengthy deployment cycles.
+The kit file allows for detailed recording of AI/ML metadata, including parameters and metrics, enabling data scientists to compare and select the optimal model for deployment. This record-keeping simplifies the selection process for the best-performing model, streamlining the path from experimentation to validation.
+## Standards-Based Approach
+By implementing ModelKits as OCI artifacts, Kitops ensures broad compatibility, and simplifies sharing across any OCI-compliant registry. This universal approach allows for leveraging existing infrastructure, such as DockerHub or Quay.io, for storing and retrieving AI/ML artifacts. The immutability of ModelKits further assures consistency across development, testing and production environments, making AI/ML projects as manageable as traditional software applications.
+Take a moment to familiarize yourself with Kitops and see how it could streamline and enrich your AI/ML projects. Kitops offers a fresh perspective on managing and collaborating on AI/ML development. Feel free to visit kitops.ml, delve deeper into its capabilities and perhaps start your own journey with Kitops.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
