@@ -1,0 +1,37 @@
+# Customer-Obsessed? 4 Steps to Improve Your Culture
+![Featued image for: Customer-Obsessed? 4 Steps to Improve Your Culture](https://cdn.thenewstack.io/media/2024/04/f690cef1-people-1024x558.png)
+Fast-moving market conditions coupled with high expectations from both business and customer mean that applications and infrastructure must reach new highs in terms of quality of service, availability and response.
+Complicating this is the growing complexity of the data interdependencies underpinning digital businesses. It’s become impossible to build this infrastructure without stitching together a tapestry of services and sources into a multi- and hybrid-cloud technology platform inside and outside your organization. The complexity of the interdependencies this entails are now an everyday reality.
+You can’t solve these challenges and complexities to digital transformation solely through the lens of technologies, or assume it’s about hiring the right skills team.
+Company culture — transforming the DNA of your team, its practices and your organizational models — is often overlooked. Get that right and you can create processes that allow you to operationalize those technologies. Get it wrong and digitalization will fail to reach its full potential.
+How do you change the culture? Here’s a four-step process:
+## Create a Clear, Customer-Centric Vision
+Everything starts with the customer, right? Through our conversations with industry leaders regarding digital transformation, the top consideration repeated throughout these conversations is that knowledge of customers is vital for any successful digital transformation.
+[Forrester has found this to be true](https://www.forrester.com/report/the-state-of-customer-obsession-2023/RES179912): “Customer-obsessed organizations grow 1.6 times faster than those who aren’t, and technology is transforming in parallel with the organization’s level of customer obsession.”
+Organizations can only succeed at digital when they design the customer experience from the outside in: Take the time to find out what your customers want, the journey that they take, then design and deliver your digital business IT system around that.
+## Move Quickly — and Continuously
+Agile methodologies and DevOps practices have been installed far and wide, but execution at the speed of digital comes not by running pipelines through your organization and automating existing procedures, but through a willingness to place bold bets and to work quickly.
+At Andela, we needed to reinvent our processes to make them quicker and more efficient for our clients, as hiring processes without technology frequently involve many stakeholders and can take weeks to complete. To address this bottleneck, we created Andela Talent Cloud (ATC), an AI-driven hiring and recruitment platform that enables a single hiring manager to find and hire a candidate in as little as 48 hours.
+We rebuilt the hiring experience around capturing structured data throughout the talent life cycle, enabling us to apply machine learning and natural language processing to jobs, talent profiles, user feedback and activity to ensure that the top recommendation for a job will be well-selected for that role. This not only gets the right candidate in front of hiring managers instantly, but cuts down on interview cycles that often include multiple rounds and candidates, and optimizes for talent who are actively searching for roles and ready to start immediately.
+We’re continuing to improve on this new process as we gain feedback from our customers, including experimenting with large language models to simplify the process for creating jobs, and leveraging our qualified assessment platform to better identify both technical and soft skills that will predict job success.
+## Create the Space to Learn
+ChatGPT has been with us for only a year. As it began to make its impact, we took a ton of calls from those eager to know more about it. It was a horse race, and everyone was at the same starting gate.
+What got us, and our clients, headed in the right direction was the decision to foster a climate where individuals and teams could learn about this fast-changing environment, and one where they could experiment.
+We worked with one
+[major news organization](https://youtu.be/iMftWzqGxnQ) to increase its audience engagement on social media with the assistance of AI. We created an environment where its team could experiment with different-sized [LLMs](https://roadmap.sh/guides/free-resources-to-learn-llms) and a variety of model types, and fine-tune its system to the point that it launched a viable chatbot in just six weeks.
+Close to six months later, that company has created an AI projects center, with new learnings and never-before-deployed AI features offered each quarter. Model deployment times have shrunk from weeks to a day, with improved natural language processing capability and a mobile app in the works.
+## Break the Talent/Skills Shortage Cycle
+AI is accelerating demand for digital talent, and has worsened the existing talent shortage. The standard approach of hiring enough of the right people for technologies such as Kubernetes or LLMs has failed if the ongoing shortages, rising salaries and bottleneck on deployments are anything to go by.
+Success in digital means embracing a new model that is as scalable as cloud computing itself, and sourcing talent in response to demand quickly and from a deeper pool.
+If we look at Africa, for example, we see an emerging source of software engineering talent that will make up a significant part of the global technology talent supply chain in 2024. The World Economic Forum emphasizes that Africa is also home to the
+[fastest-growing population of engineering talent](https://qz.com/africa/1743569/africa-is-the-fastest-growing-continent-for-developers-globally).
+Analysts have reported that vacancies in roles like “
+[software and web development, system and security analysis, and database and network architecture cost U.S. companies over $120 billion per month.](https://finance.yahoo.com/news/unfilled-jobs-costing-economy-over-130000019.html)” It’s important for companies to tap into global regions that can fill these vacancies and operate seamlessly in a remote environment. With more than [75% of African developers operating in a remote or hybrid workplace](https://andela.com/africa-developer-survey/), tapping this region for talent is a win-win.
+## Conclusion
+Some incredible technologies are helping reinvent business, but their strategic potential can only be realized if companies also adopt a culture that enables them to take advantage. A clear vision, a nimble structure with a shift-left security mindset, and a bold leadership team will connect business at an organizational level to the technology changes they are making. This mindset will allow teams to mobilize effectively and achieve their digital objectives.
+Download our latest ebook, “
+[The Shifting Paradigm of the CIO](https://andela.com/resource/the-shifting-paradigm-of-the-cio/?utm_medium=contentmarketing&utm_source=ebook&utm_campaign=client-global-2024-02-digital-transformation&utm_content=shifting-paradigm&utm_term=byline),” to uncover six strategies to help lead and adapt your organization through change. [
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
