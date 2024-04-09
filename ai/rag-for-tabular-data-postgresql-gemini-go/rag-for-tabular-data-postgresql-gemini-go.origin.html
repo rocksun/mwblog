@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script data-ad-client="ca-pub-9529857974450302" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Building a RAG for tabular data in Go with PostgreSQL & Gemini &#8211; P. Galeone's blog</title>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="In this article we explore how to combine a large language model (LLM) with a relational database to allow users to ask questions about their data in a natural way. It demonstrates a Retrieval-Augmented Generation (RAG) system built with Go that utilizes PostgreSQL and pgvector for data storage and retrieval. The provided code showcases the core functionalities. This is an overview of how the &quot;chat with your data&quot; feature of fitsleepinsights.app is being developed.">
+<link rel="manifest" type="application/manifest+json; charset=utf-8" href="/manifest.json" />
+<meta name="robots" content="all">
+<meta name="author" content="Paolo Galeone">
+<meta name="keywords" content="golang, vertexai">
+<link rel="canonical" href="https://pgaleone.eu/golang/vertexai/2024/04/06/rag-for-tabular-data-postgresql-gemini-go/">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed for P. Galeone's blog" href="/feed.xml" />
+
+<link rel="stylesheet" href="/css/pixyll.css?202404061238" type="text/css">
+
+<link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Lato:900,300" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+<meta name="google-site-verification" content="ZQfgLZBmY7oIkDQWf87ysRgySpoZzeFn0jGqOciv4q4" />
+<meta name="msvalidate.01" content="1084D9EBDD4D72C5C6A7B5056387DBF3" />
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a RAG for tabular data in Go with PostgreSQL &amp; Gemini">
+<meta property="og:description" content="In this article we explore how to combine a large language model (LLM) with a relational database to allow users to ask questions about their data in a natural way. It demonstrates a Retrieval-Augmented Generation (RAG) system built with Go that utilizes PostgreSQL and pgvector for data storage and retrieval. The provided code showcases the core functionalities. This is an overview of how the " chat with your data" feature of fitsleepinsights.app is being developed.">
+<meta property="og:url" content="https://pgaleone.eu/golang/vertexai/2024/04/06/rag-for-tabular-data-postgresql-gemini-go/">
+<meta property="og:site_name" content="P. Galeone's blog">
+<meta property="og:image" content="https://pgaleone.eu/images/me.jpeg">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@paolo_galeone" />
+<meta name="twitter:creator" content="@paolo_galeone" />
+<meta name="twitter:title" content="Building a RAG for tabular data in Go with PostgreSQL & Gemini" />
+<meta name="twitter:description" content="In this article we explore how to combine a large language model (LLM) with a relational database to allow users to ask questions about their data in a natural way. It demonstrates a Retrieval-Augmented Generation (RAG) system built with Go that utilizes PostgreSQL and pgvector for data storage and retrieval. The provided code showcases the core functionalities. This is an overview of how the " chat with your data" feature of fitsleepinsights.app is being developed." />
+<meta name="twitter:url" content="https://pgaleone.eu/golang/vertexai/2024/04/06/rag-for-tabular-data-postgresql-gemini-go/" />
+<meta name="twitter:image" content="https://pgaleone.eu/images/me.jpeg" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/favicon-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86940918-1"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-86940918-1');
+    </script>
+</head>
+<body class="site">
+<div class="site-wrap">
+<header class="site-header px2 px-responsive">
+<div class="mt2 wrap">
+<div class="measure">
+<a href="/" class="site-title">P. Galeone's blog</a>
+<nav class="site-nav">
+<a href="/about/">About me</a>
+<a href="//talks.pgaleone.eu">Talks</a>
+<a href="/contact/">Contact me</a>
+<a href="/subscribe/">Subscribe</a>
+</nav>
+<div class="clearfix"></div>
+<div class="social-icons">
+<div class="social-icons-right">
+<a class="fa fa-github" href="https://github.com/galeone"></a>
+<a class="fa fa-reddit" href="https://reddit.com/user/pgaleone"></a>
+<a class="fa fa-stack-overflow" href="https://stackoverflow.com/users/2891324"></a>
+<a class="fa fa-rss" href="/feed.xml"></a>
+<a class="fa fa-twitter" href="https://twitter.com/paolo_galeone"></a>
+<a class="fa fa-envelope" href="/cdn-cgi/l/email-protection#e9878c9a9a9c8786a9878c9b8d93c78c9c"></a>
+<a class="fa fa-linkedin" href="https://www.linkedin.com/in/paolo-galeone-6782b311b"></a>
+</div>
+<div class="right">
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+</header>
+<div class="post p2 p-responsive wrap" role="main">
+<div class="measure">
+<div class="post-header mb2">
+<h1>Building a RAG for tabular data in Go with PostgreSQL & Gemini</h1>
+<span class="post-meta">Apr 6, 2024</span><br>
+<span class="post-meta small">
+16 minute read
+</span>
+<span class="post-meta small" style="float: right">
+Author: <a href="https://pgaleone.eu/">Paolo Galeone</a>
+</span>
+</div>
+<article class="post-content">
+<p>Large Language Models (LLMs) are well-suited for working with non-structured data. So far, their usage with structured data hasn’t been explored in depth although structured data is everywhere relational databases are. Making an LLM able to interact with a relational database can be an interesting idea since it will unlock the possibility of letting a user “chat with the data” and let the LLM discover relationships inside the <a href="https://cloud.google.com/learn/what-is-a-data-lake">data lake</a></p>
+<p>In this article, we’ll explore a possible integration of Gemini (the multimodal large language model developed by Google) with PostgreSQL, and how to build a Retrieval-Augmented Generation (RAG) system to navigate in the structured data. Everything will be done using the Go programming language.</p>
+<p>This is the fourth article of a series about the usage of Vertex AI in Go, and as such, it will share the same prerequisite presented in both of them: the services account creation, the environment variables, and so on. The prerequisite parts can be read in each of those articles.</p>
+<ul>
+<li><a href="/golang/vertexai/2023/08/27/vertex-ai-custom-training-go-golang/">Custom model training &amp; deployment on Google Cloud using Vertex AI in Go</a></li>
+<li><a href="/golang/vertexai/2023/06/14/automl-pipeline-tabular-data-vertexai-go-golang/">AutoML pipeline for tabular data on VertexAI in Go</a>.</li>
+<li><a href="/golang/vertexai/2024/02/26/gemini-go-limits-details/">Using Gemini in a Go application: limits and details</a></li>
+</ul>
+<p>This article tries to implement the idea presented at the end of the last article. Given that converting all the user data to a textual representation overflows the maximum context length of Gemini, we implement a RAG to overcome this limitation.</p>
+<h2 id="rag-and-embeddings">RAG and Embeddings</h2>
+<p>Before going to the implementation in PostgreSQL, Go, and Gemini (through Vertex AI) we need to understand how a RAG system works. The analogy with a detective searching inside a massive document archive for clues works well. In a RAG we have three components:</p>
+<ul>
+<li><strong>The Detective:</strong> This is the generative model, like Gemini, that uses its knowledge to answer your questions or complete tasks.</li>
+<li><strong>The Archive:</strong> This is your PostgreSQL database, holding all the tabular data (your documents).</li>
+<li><strong>The Informant:</strong> This is the retriever, a special tool that understands both your questions and the data in the archive. It acts like your informant, scanning the archive to find the most relevant documents (clues) for the detective.</li>
+</ul>
+<p>But how does the informant know which documents are relevant? Here’s where <strong>embeddings</strong> come in. Embeddings are like condensed summaries of information. Imagine each document and your questions are shrunk down into unique sets of numbers. The closer these numbers are in space, the more similar the meaning.</p>
+<p>The informant uses an embedding technique to compare your question’s embedding to all the document embeddings in the archive. It then retrieves the documents with the most similar embeddings, essentially pointing the detective in the right direction.</p>
+<p>With these relevant documents at hand, the detective (generative model) can then analyze them and use its knowledge to answer your question or complete your request.</p>
+<p>Given this structure, we need:</p>
+<ul>
+<li>The detective: in our case, it will be Gemini used through Vertex AI.</li>
+<li>The <strong>embedding model</strong>: a model able to create embeddings from a document.</li>
+<li>The archive: PostgreSQL. We need to <strong>convert</strong> the structured information from the database to a format valid for the embedding model. Then store the embeddings on the database.</li>
+<li>The informant: <a href="https://github.com/pgvector/pgvector">pgvector</a>. The open-source vector similarity search extension for PostgreSQL.</li>
+</ul>
+<p>The <strong>embedding model</strong> is able to create embeddings only of <em>a document</em>. So, we need to find a way to convert the structured representation into a document as the first step.</p>
+<h2 id="from-structured-to-unstructured-data">From structured to Unstructured data</h2>
+<p>LLMs are very good at extracting information from textual data and executing tasks described using text. Depending on our data, we may be lucky to have something easy “to narrate”.</p>
+<p>In the case described in this article, we are going to use all the data related to sleep, physical activities, food, heart rate, and number of steps (and others) gathered during a day for a single user. With this information it’s quite easy to extract a regular description of a user’s day, section by section. Being the data so regular, we can try to make it fit in a <strong>template</strong>.</p>
+<h3 id="the-template-the-daily-report">The template: the daily report</h3>
+<p>We can define a template that summarizes/highlights the important part we want to be able to retrieve while searching through our RAG. The template will be used by Gemini as part of its prompt in a chat session. In this chat session, we are going to ask the model to extract from the JSON data the information that we want to display in the report.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### Date [LLM to write date]</span>
+
+<span class="gu">## Activity</span>
+<span class="p">
+-</span> Total Active Time: [LLM to fill from activities_summaries.active_minutes]
+<span class="p">-</span> Calories Burned: [LLM to fill from activities_summaries.calories_out]
+<span class="p">-</span> Steps Taken: [LLM to fill from activities_summaries.steps]
+<span class="p">-</span> Distance Traveled: [LLM to fill from activities_summaries.distance / activities_summary_distances.distance]
+<span class="p">-</span> List of activities: [LLM to iterate through activities_summary_activities and fill name, duration, calories burned]
+
+<span class="gu">### Active Minutes Breakdown</span>
+<span class="p">
+-</span> Lightly Active Minutes: [LLM to fill from activities_summaries.lightly_active_minutes]
+<span class="p">-</span> Fairly Active Minutes: [LLM to fill from activities_summaries.fairly_active_minutes]
+<span class="p">-</span> Very Active Minutes: [LLM to fill from activities_summaries.very_active_minutes]
+
+<span class="gu">### Heart Rate Zones</span>
+<span class="p">
+-</span> [LLM to iterate through activities_summary_heart_rate_zones and fill from heart_rate_zones (zone name, minutes)]
+
+<span class="gu">## Sleep</span>
+<span class="p">
+-</span> Total Sleep Duration: [LLM to fill from sleep_logs.duration]
+<span class="p">-</span> Sleep Quality: [LLM to fill from sleep_logs.efficiency]
+<span class="p">-</span> Deep Sleep: [LLM to fill from sleep_stage_details where sleep_stage='deep sleep'] (minutes)
+<span class="p">-</span> Light Sleep: [LLM to fill from sleep_stage_details where sleep_stage='light sleep'] (minutes)
+<span class="p">-</span> REM Sleep: [LLM to fill from sleep_stage_details where sleep_stage='rem sleep'] (minutes)
+<span class="p">-</span> Time to Fall Asleep: [LLM to fill from sleep_logs.minutes_to_fall_asleep]
+
+<span class="gu">## Exercise Activities</span>
+<span class="p">
+-</span> [LLM to iterate through daily_activity_summary_activities / minimal_activities and fill name, duration, calories burned (from activity_logs)]
+...
+</code></pre></div></div>
+<p>Before digging inside the Go code, we have to design the structure for our data in the database.</p>
+<p>The simplest solution is to create a table containing the textual reports that our LLM will generate together with its “compact representation” (the embeddings).</p>
+<h2 id="the-table-creation">The table creation</h2>
+<p>Being our data already stored on PostgreSQL it would be ideal to use the same database also for storing the embeddings and performing spatial queries on them, and not introduce a new “vector database”.</p>
+<p><a href="https://github.com/pgvector/pgvector">pgvector</a> is the extension for PostgreSQL that allows us to define a data type “vector” and it gives our operators and function to perform measures like cosine distance, l2 distance, and many others.</p>
+<p>Once installed and granted the superuser access to our database user, we can enable the extension and define the table for storing our data.</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Enable the pgvector extension</span>
+<span class="k">CREATE</span> <span class="n">EXTENSION</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">vector</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">reports</span> <span class="p">(</span>
+    <span class="n">id</span> <span class="nb">SERIAL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">user_id</span> <span class="nb">BIGINT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">REFERENCES</span> <span class="n">users</span><span class="p">(</span><span class="n">id</span><span class="p">),</span>
+    <span class="n">start_date</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">end_date</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">report_type</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">report</span> <span class="nb">TEXT</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">embedding</span> <span class="n">VECTOR</span>
+<span class="p">);</span>
+</code></pre></div></div>
+<p>After enabling the <code class="language-plaintext highlighter-rouge">vector</code> extension we can define the <code class="language-plaintext highlighter-rouge">embedding</code> field of type <code class="language-plaintext highlighter-rouge">vector</code>. There’s no need to specify the maximum length of the vector since the extension supports dynamically shaped vectors.</p>
+<p>The table is defined to store all the users’ reports. In this article, we are going to cover only the daily reports (so <code class="language-plaintext highlighter-rouge">start_date</code> will be equal to <code class="language-plaintext highlighter-rouge">end_date</code>) but to concept is easily generalizable to different kinds of reports. This is also the reason for the <code class="language-plaintext highlighter-rouge">report_type</code> field.</p>
+<h3 id="the-go-data-structure">The Go data structure</h3>
+<p>It’s a good practice to map a SQL table to a struct. Using <a href="https://github.com/galeone/igor">galeone/igor</a> for interacting with PostgreSQL from Go this is pretty much mandatory.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">(</span>
+    <span class="s">"time"</span>
+    <span class="s">"github.com/pgvector/pgvector-go"</span>
+<span class="p">)</span>
+
+<span class="k">type</span> <span class="n">Report</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">ID</span>         <span class="kt">int64</span> <span class="s">`igor:"primary_key"`</span>
+    <span class="n">UserID</span>     <span class="kt">int64</span>
+    <span class="n">StartDate</span>  <span class="n">time</span><span class="o">.</span><span class="n">Time</span>
+    <span class="n">EndDate</span>    <span class="n">time</span><span class="o">.</span><span class="n">Time</span>
+    <span class="n">ReportType</span> <span class="kt">string</span>
+    <span class="n">Report</span>     <span class="kt">string</span>
+    <span class="n">Embedding</span>  <span class="n">pgvector</span><span class="o">.</span><span class="n">Vector</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span><span class="n">Report</span><span class="p">)</span> <span class="n">TableName</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"reports"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>That’s all. We are now ready to interact with Vertex AI to:</p>
+<ol>
+<li>Go from structured to unstructured data, making Gemini filling the previously defined template.</li>
+<li>Generate the embeddings of both the report.</li>
+<li>Let the user create a chat session with Gemini and create the embeddings of its prompt.</li>
+<li>Doing a spatial query for retrieving the (hopefully) relevant documents we have in the database.</li>
+<li>Pass these documents to Gemini as its search context.</li>
+<li>Ask the model to answer the user question by looking at the provided document.</li>
+</ol>
+<h3 id="the-reporter-type">The Reporter type</h3>
+<p>We can design a data type <code class="language-plaintext highlighter-rouge">Reporter</code> whose goal is to generate these reports. Using the (well-known after three articles) pattern for the interaction with Vertex AI, we are going to create 2 different clients:</p>
+<ul>
+<li>The generative AI client for Gemini</li>
+<li>The prediction client for our embedding model</li>
+</ul>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">(</span>
+    <span class="n">vai</span> <span class="s">"cloud.google.com/go/aiplatform/apiv1beta1"</span>
+    <span class="n">vaipb</span> <span class="s">"cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb"</span>
+    <span class="s">"cloud.google.com/go/vertexai/genai"</span>
+    <span class="s">"google.golang.org/api/option"</span>
+    <span class="s">"google.golang.org/protobuf/types/known/structpb"</span>
+<span class="p">)</span>
+<span class="k">type</span> <span class="n">Reporter</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">user</span>             <span class="o">*</span><span class="n">types</span><span class="o">.</span><span class="n">User</span>
+    <span class="n">predictionClient</span> <span class="o">*</span><span class="n">vai</span><span class="o">.</span><span class="n">PredictionClient</span>
+    <span class="n">genaiClient</span>      <span class="o">*</span><span class="n">genai</span><span class="o">.</span><span class="n">Client</span>
+    <span class="n">ctx</span>              <span class="n">context</span><span class="o">.</span><span class="n">Context</span>
+<span class="p">}</span>
+
+<span class="c">// NewReporter creates a new Reporter</span>
+<span class="k">func</span> <span class="n">NewReporter</span><span class="p">(</span><span class="n">user</span> <span class="o">*</span><span class="n">types</span><span class="o">.</span><span class="n">User</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">Reporter</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ctx</span> <span class="o">:=</span> <span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">()</span>
+
+    <span class="k">var</span> <span class="n">predictionClient</span> <span class="o">*</span><span class="n">vai</span><span class="o">.</span><span class="n">PredictionClient</span>
+    <span class="k">var</span> <span class="n">err</span> <span class="kt">error</span>
+    <span class="k">if</span> <span class="n">predictionClient</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">vai</span><span class="o">.</span><span class="n">NewPredictionClient</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">option</span><span class="o">.</span><span class="n">WithEndpoint</span><span class="p">(</span><span class="n">_vaiEndpoint</span><span class="p">));</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="no">nil</span><span class="p">,</span> <span class="n">err</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="n">genaiClient</span> <span class="o">*</span><span class="n">genai</span><span class="o">.</span><span class="n">Client</span>
+    <span class="k">const</span> <span class="n">region</span> <span class="o">=</span> <span class="s">"us-central1"</span>
+    <span class="k">if</span> <span class="n">genaiClient</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">genai</span><span class="o">.</span><span class="n">NewClient</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">_vaiProjectID</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">option</span><span class="o">.</span><span class="n">WithCredentialsFile</span><span class="p">(</span><span class="n">_vaiServiceAccountKey</span><span class="p">));</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="no">nil</span><span class="p">,</span> <span class="n">err</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">Reporter</span><span class="p">{</span><span class="n">user</span><span class="o">:</span> <span class="n">user</span><span class="p">,</span> <span class="n">predictionClient</span><span class="o">:</span> <span class="n">predictionClient</span><span class="p">,</span> <span class="n">genaiClient</span><span class="o">:</span> <span class="n">genaiClient</span><span class="p">,</span> <span class="n">ctx</span><span class="o">:</span> <span class="n">ctx</span><span class="p">},</span> <span class="no">nil</span>
+<span class="p">}</span>
+
+<span class="c">// Close closes the client</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span><span class="n">Reporter</span><span class="p">)</span> <span class="n">Close</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">predictionClient</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">genaiClient</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Our <code class="language-plaintext highlighter-rouge">Reporter</code> will be used to generate both the reports and its vector representation (embedding).</p>
+<h3 id="generate-the-embeddings">Generate the embeddings</h3>
+<p>We can start by using the <code class="language-plaintext highlighter-rouge">predictionClient</code> to invoke a text embedding model.</p>
+<p>The pattern is always the same. Working with Vertex AI in Go is quite convoluted because every client request has to be created by filling in the correct protobuf fields and this is verbose and not immediate. Just look at all the boilerplate code we have to write to extract the embeddings from the response.</p>
+<p><code class="language-plaintext highlighter-rouge">_vaiEmbeddingsEndpoint</code> is the global variable containing the endpoint for the chosen model. In our case the endpoint for Google’s model <code class="language-plaintext highlighter-rouge">textembedding-gecko@003</code>.</p>
+<p>This method returns a <code class="language-plaintext highlighter-rouge">pgvector.Vector</code> offered by the <a href="https://github.com/pgvector/pgvector-go">pgvector/pgvector-go</a> package.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="s">"github.com/pgvector/pgvector-go"</span>
+
+<span class="c">// GenerateEmbeddings uses VertexAI to generate embeddings for a given prompt</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span><span class="n">Reporter</span><span class="p">)</span> <span class="n">GenerateEmbeddings</span><span class="p">(</span><span class="n">prompt</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="n">embeddings</span> <span class="n">pgvector</span><span class="o">.</span><span class="n">Vector</span><span class="p">,</span> <span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">promptValue</span> <span class="o">*</span><span class="n">structpb</span><span class="o">.</span><span class="n">Value</span>
+    <span class="k">if</span> <span class="n">promptValue</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">structpb</span><span class="o">.</span><span class="n">NewValue</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span><span class="s">"content"</span><span class="o">:</span> <span class="n">prompt</span><span class="p">});</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="c">// PredictRequest: create the model prediction request</span>
+    <span class="c">// autoTruncate: false</span>
+    <span class="k">var</span> <span class="n">autoTruncate</span> <span class="o">*</span><span class="n">structpb</span><span class="o">.</span><span class="n">Value</span>
+    <span class="k">if</span> <span class="n">autoTruncate</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">structpb</span><span class="o">.</span><span class="n">NewValue</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{}{</span><span class="s">"autoTruncate"</span><span class="o">:</span> <span class="no">false</span><span class="p">});</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="n">req</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">vaipb</span><span class="o">.</span><span class="n">PredictRequest</span><span class="p">{</span>
+        <span class="n">Endpoint</span><span class="o">:</span>   <span class="n">_vaiEmbeddingsEndpoint</span><span class="p">,</span>
+        <span class="n">Instances</span><span class="o">:</span>  <span class="p">[]</span><span class="o">*</span><span class="n">structpb</span><span class="o">.</span><span class="n">Value</span><span class="p">{</span><span class="n">promptValue</span><span class="p">},</span>
+        <span class="n">Parameters</span><span class="o">:</span> <span class="n">autoTruncate</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c">// PredictResponse: receive the response from the model</span>
+    <span class="k">var</span> <span class="n">resp</span> <span class="o">*</span><span class="n">vaipb</span><span class="o">.</span><span class="n">PredictResponse</span>
+    <span class="k">if</span> <span class="n">resp</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">predictionClient</span><span class="o">.</span><span class="n">Predict</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="n">req</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="c">// Extract the embeddings from the response</span>
+    <span class="n">mapResponse</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">resp</span><span class="o">.</span><span class="n">Predictions</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetStructValue</span><span class="p">()</span><span class="o">.</span><span class="n">AsMap</span><span class="p">()[</span><span class="s">"embeddings"</span><span class="p">]</span><span class="o">.</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">interface</span><span class="p">{})</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"error extracting embeddings"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">values</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="n">mapResponse</span><span class="p">[</span><span class="s">"values"</span><span class="p">]</span><span class="o">.</span><span class="p">([]</span><span class="k">interface</span><span class="p">{})</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">ok</span> <span class="p">{</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"error extracting embeddings"</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">rawEmbeddings</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">float32</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">values</span> <span class="p">{</span>
+        <span class="n">rawEmbeddings</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kt">float32</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="p">(</span><span class="kt">float64</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="n">embeddings</span> <span class="o">=</span> <span class="n">pgvector</span><span class="o">.</span><span class="n">NewVector</span><span class="p">(</span><span class="n">rawEmbeddings</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>It should be pointed out that we are not taking into account the model’s input length limitations because we suppose that the report text and the model input are always below <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings#get_text_embeddings_for_a_snippet_of_text">3072 tokens</a>. Anyway, with the <code class="language-plaintext highlighter-rouge">autoTruncate</code> parameter set to false, this method will fail if the input length exceeds the limit.</p>
+<p>This function can now be used by the final users (for embedding their questions) and by the report generation method, that will create the <code class="language-plaintext highlighter-rouge">type.Report</code> (that will be inserted inside the database).</p>
+<h3 id="generate-the-reports">Generate the reports</h3>
+<p>In Go, we can embed files directly inside the binary using the <a href="https://pkg.go.dev/embed">embed</a> package. Embedding a template is the perfect use-case for this module:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="s">"embed"</span>
+
+<span class="k">var</span> <span class="p">(</span>
+    <span class="c">//go:embed templates/daily_report.md</span>
+    <span class="n">dailyReportTemplate</span> <span class="kt">string</span>
+<span class="p">)</span>
+</code></pre></div></div>
+<p>The method <code class="language-plaintext highlighter-rouge">GenerateDailyReport</code> will use <code class="language-plaintext highlighter-rouge">gemini-pro</code> to fill the template as requested. After filling the template, we’ll invoke the previously defined <code class="language-plaintext highlighter-rouge">GenerateEmbeddings</code> method to completely fill the <code class="language-plaintext highlighter-rouge">Report</code> structure previously defined.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// GenerateDailyReport generates a daily report for the given user</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span><span class="n">Reporter</span><span class="p">)</span> <span class="n">GenerateDailyReport</span><span class="p">(</span><span class="n">data</span> <span class="o">*</span><span class="n">UserData</span><span class="p">)</span> <span class="p">(</span><span class="n">report</span> <span class="o">*</span><span class="n">types</span><span class="o">.</span><span class="n">Report</span><span class="p">,</span> <span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">gemini</span> <span class="o">:=</span> <span class="n">r</span><span class="o">.</span><span class="n">genaiClient</span><span class="o">.</span><span class="n">GenerativeModel</span><span class="p">(</span><span class="s">"gemini-pro"</span><span class="p">)</span>
+	<span class="n">temperature</span> <span class="o">:=</span> <span class="n">ChatTemperature</span>
+	<span class="n">gemini</span><span class="o">.</span><span class="n">Temperature</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">temperature</span>
+
+	<span class="k">var</span> <span class="n">builder</span> <span class="n">strings</span><span class="o">.</span><span class="n">Builder</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"This is a markdown template you have to fill with the data I will provide you in the next message."</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"```</span><span class="se">\n</span><span class="s">%s```</span><span class="se">\n\n</span><span class="s">"</span><span class="p">,</span> <span class="n">dailyReportTemplate</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"You can find the sections to fill highlighted with </span><span class="se">\"</span><span class="s">[LLM to ...]</span><span class="se">\"</span><span class="s"> with instructions on how to fill the section."</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"I will send you the data in JSON format in the next message."</span><span class="p">)</span>
+	<span class="n">introductionString</span> <span class="o">:=</span> <span class="n">builder</span><span class="o">.</span><span class="n">String</span><span class="p">()</span>
+
+	<span class="n">chatSession</span> <span class="o">:=</span> <span class="n">gemini</span><span class="o">.</span><span class="n">StartChat</span><span class="p">()</span>
+	<span class="n">chatSession</span><span class="o">.</span><span class="n">History</span> <span class="o">=</span> <span class="p">[]</span><span class="o">*</span><span class="n">genai</span><span class="o">.</span><span class="n">Content</span><span class="p">{</span>
+		<span class="p">{</span>
+			<span class="n">Parts</span><span class="o">:</span> <span class="p">[]</span><span class="n">genai</span><span class="o">.</span><span class="n">Part</span><span class="p">{</span>
+				<span class="n">genai</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">introductionString</span><span class="p">),</span>
+			<span class="p">},</span>
+			<span class="n">Role</span><span class="o">:</span> <span class="s">"user"</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="n">Parts</span><span class="o">:</span> <span class="p">[]</span><span class="n">genai</span><span class="o">.</span><span class="n">Part</span><span class="p">{</span>
+				<span class="n">genai</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s">"Send me the data in JSON format. I will fill the template you provided using this data"</span><span class="p">),</span>
+			<span class="p">},</span>
+			<span class="n">Role</span><span class="o">:</span> <span class="s">"model"</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
+
+	<span class="k">var</span> <span class="n">jsonData</span> <span class="p">[]</span><span class="kt">byte</span>
+	<span class="k">if</span> <span class="n">jsonData</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">Marshal</span><span class="p">(</span><span class="n">data</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="no">nil</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+
+	<span class="k">var</span> <span class="n">response</span> <span class="o">*</span><span class="n">genai</span><span class="o">.</span><span class="n">GenerateContentResponse</span>
+	<span class="k">if</span> <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">chatSession</span><span class="o">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="n">genai</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">jsonData</span><span class="p">)));</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="no">nil</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+	<span class="n">report</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">types</span><span class="o">.</span><span class="n">Report</span><span class="p">{</span>
+		<span class="n">StartDate</span><span class="o">:</span>  <span class="n">data</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span>
+		<span class="n">EndDate</span><span class="o">:</span>    <span class="n">data</span><span class="o">.</span><span class="n">Date</span><span class="p">,</span>
+		<span class="n">ReportType</span><span class="o">:</span> <span class="s">"daily"</span><span class="p">,</span>
+		<span class="n">UserID</span><span class="o">:</span>     <span class="n">r</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">candidates</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">response</span><span class="o">.</span><span class="n">Candidates</span> <span class="p">{</span>
+		<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">part</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">candidates</span><span class="o">.</span><span class="n">Content</span><span class="o">.</span><span class="n">Parts</span> <span class="p">{</span>
+			<span class="n">report</span><span class="o">.</span><span class="n">Report</span> <span class="o">+=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">Embedding</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">GenerateEmbeddings</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">Report</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="no">nil</span><span class="p">,</span> <span class="n">err</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="n">report</span><span class="p">,</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>We created a <code class="language-plaintext highlighter-rouge">ChatSession</code> with Gemini giving the model a fake history as context and sending the JSON-serialized user data as it’s only source of information.</p>
+<p>For example, a (partial) report generated is:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### April 4, 2024</span>
+
+<span class="gu">## Activity</span>
+<span class="p">
+-</span> Total Active Time: 41 minutes
+<span class="p">-</span> Calories Burned: 346
+<span class="p">-</span> Steps Taken: 704
+<span class="p">-</span> Distance Traveled: 0 miles
+<span class="p">-</span> List of activities:
+<span class="p">  -</span> Weights: 41 minutes, 346 calories
+
+<span class="gu">### Active Minutes Breakdown</span>
+<span class="p">
+-</span> Lightly Active Minutes: 254
+<span class="p">-</span> Fairly Active Minutes: 18
+<span class="p">-</span> Very Active Minutes: 35
+
+<span class="gu">### Heart Rate Zones</span>
+<span class="p">
+-</span> Out of Range: 6 minutes
+<span class="p">-</span> Fat Burn: 35 minutes
+<span class="p">-</span> Cardio: 0 minutes
+<span class="p">-</span> Peak: 0 minutes
+
+<span class="gu">## Sleep</span>
+<span class="p">
+-</span> Total Sleep Duration: 7 hours 30 minutes
+<span class="p">-</span> Sleep Quality: 75%
+<span class="p">-</span> Deep Sleep: 95 minutes
+<span class="p">-</span> Light Sleep: 250 minutes
+<span class="p">-</span> REM Sleep: 118 minutes
+<span class="p">-</span> Time to Fall Asleep: 10 minutes
+
+<span class="gu">## Exercise Activities</span>
+<span class="p">
+-</span> Weights: 41 minutes, 346 calories
+
+...
+</code></pre></div></div>
+<p>Some information is true, but other information is missing although present in the data (e.g. Cardio/Peak info is present in the JSON but the model inserted 0 as value - that’s wrong). Using an LLM for filling the template is just a way to speed up the template completion process, although being this data available in a structured format the best thing to do would have been to just create the right query to tell the right story. Avoiding thus the randomness of the LLM.</p>
+<h3 id="chatting-with-the-data">Chatting with the data</h3>
+<p>Supposing that we have inserted all the reports inside the database, we can now receive messages from the user and try to answer.</p>
+<p>Let’s suppose that <code class="language-plaintext highlighter-rouge">msg</code> contains the user question. We have to:</p>
+<ol>
+<li>Generate the embeddings</li>
+<li>Search for the best similar reports available (top-k with k=3 just for limiting the context size)</li>
+<li>Share the reports with Gemini inside a chatSession and ask the user question</li>
+<li>Send the result</li>
+</ol>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// 1. Generate the embeddings</span>
+<span class="k">var</span> <span class="n">queryEmbeddings</span> <span class="n">pgvector</span><span class="o">.</span><span class="n">Vector</span>
+<span class="k">if</span> <span class="n">queryEmbeddings</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">reporter</span><span class="o">.</span><span class="n">GenerateEmbeddings</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">err</span>
+<span class="p">}</span>
+
+<span class="c">// 2. Search for similar reports</span>
+<span class="k">var</span> <span class="n">reports</span> <span class="p">[]</span><span class="kt">string</span>
+<span class="c">// Top-3 related reports, sorted by l2 similarity</span>
+<span class="k">if</span> <span class="n">err</span> <span class="o">=</span> <span class="n">_db</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="n">types</span><span class="o">.</span><span class="n">Report</span><span class="p">{})</span><span class="o">.</span><span class="n">Where</span><span class="p">(</span><span class="o">&amp;</span><span class="n">types</span><span class="o">.</span><span class="n">Report</span><span class="p">{</span><span class="n">UserID</span><span class="o">:</span> <span class="n">user</span><span class="o">.</span><span class="n">ID</span><span class="p">})</span>
+        <span class="o">.</span><span class="n">Order</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"embedding &lt;-&gt; '%s'"</span><span class="p">,</span> <span class="n">queryEmbeddings</span><span class="o">.</span><span class="n">String</span><span class="p">()))</span>
+        <span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="s">"report"</span><span class="p">)</span><span class="o">.</span><span class="n">Limit</span><span class="p">(</span><span class="m">3</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">reports</span><span class="p">);</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">err</span>
+<span class="p">}</span>
+
+<span class="c">// 3. Share the reports with Gemini inside a chatSession and ask the user question</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">Reset</span><span class="p">()</span> <span class="c">// builder is a stringBuilder</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"Here are the reports to help you with the analysis:"</span><span class="p">)</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">report</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">reports</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="n">report</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="s">"Here's the user question you have to answer:"</span><span class="p">)</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintln</span><span class="p">(</span><span class="o">&amp;</span><span class="n">builder</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+
+<span class="k">var</span> <span class="n">responseIterator</span> <span class="o">*</span><span class="n">genai</span><span class="o">.</span><span class="n">GenerateContentResponseIterator</span> <span class="o">=</span> <span class="n">chatSession</span><span class="o">.</span><span class="n">SendMessageStream</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">genai</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">String</span><span class="p">()))</span>
+
+<span class="c">// 4. Send the result</span>
+<span class="k">for</span> <span class="p">{</span>
+    <span class="n">response</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">responseIterator</span><span class="o">.</span><span class="n">Next</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">==</span> <span class="n">iterator</span><span class="o">.</span><span class="n">Done</span> <span class="p">{</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">candidates</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">response</span><span class="o">.</span><span class="n">Candidates</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">part</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">candidates</span><span class="o">.</span><span class="n">Content</span><span class="o">.</span><span class="n">Parts</span> <span class="p">{</span>
+            <span class="n">reply</span> <span class="o">:=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span>
+            <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Note that point 3 is partial: we are inside a chatSession where the initial prompt instructed Gemini to behave in a certain way, and that we’ll send messages with reports and the user question.</p>
+<p>Point 4 instead is a demonstration of how to receive a streaming response from Gemini - useful when creating a websocket-based application where the Gemini response can be streamed back to the user directly through the websocket.</p>
+<p>The image below shows how this interaction allows the users to get insights from their data :)</p>
+<div class="blog-image-container">
+<p><img src="/images/ragdb/ch2.png" alt="Chatting with data example" class="blog-image" /></p>
+</div>
+<h2 id="conclusion--fitsleepinsights">Conclusion &amp; FitSleepInsights</h2>
+<p>Interacting with Gemini and other models via Vertex AI is quite simple, once understood the pattern to follow and how to extract/insert data from the Protobuf structures. The presented solution that allows the creation of a RAG for data stored in PostgreSQL passes through the generation of a template. This template has been filled by Gemini - but a better solution (although longer to develop) would be to manually fill the template and create these “stories”. In this way, we can remove the randomness of the LLM at least from the data generation part.</p>
+<p>The integration of pgvector allowed us to store embeddings on PostgreSQL and make spatial queries in a seamless way.</p>
+<p>By the end of the article, we also leaked a screenshot of this feature implemented on <a href="https://fitsleepinsights.app/">fitsleepinsights.app</a>. By the time of the publication of this article, the application is not yet deployed - but the source code is available on Github @ <a href="https://github.com/galeone/fitsleepinsights/">https://github.com/galeone/fitsleepinsights/</a>.</p>
+<p>For any feedback or comments, please use the Disqus form below - Thanks!</p>
+<p><small>
+This article has been possible thanks to the Google ML Developer Programs team that supported this work by providing Google Cloud Credit.
+</small></p>
+</article>
+<div id="mailchimp">
+<h4>Don't you want to miss the next article? Do you want to be kept updated?<br>Subscribe to the newsletter!</h4>
+<form action="https://nerdz.us20.list-manage.com/subscribe/post?u=fb89d477dbac0540417f20fb7&amp;id=d41207f25e" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate" target="_blank" novalidate>
+<div class="mc-field-group">
+<input type="email" placeholder="Email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="on">
+<input type="submit" value="Subscribe" name="subscribe" class="button button-blue button-big mobile-block">
+</div>
+</form>
+</div>
+<div class="share-page">
+<h4> If you liked the article: share it! </h4>
+<div class="share-links">
+<a class="fa fa-facebook" href="https://facebook.com/sharer.php?u=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+<a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini&amp;url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+<a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;title=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+<a class="fa fa-digg" href="http://digg.com/submit?url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;title=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on Digg"></a>
+<a class="fa fa-tumblr" href="https://www.tumblr.com/share/link?url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;name=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on Tumblr"></a>
+<a class="fa fa-reddit" href="http://reddit.com/submit?url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;title=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on Reddit"></a>
+<a class="fa fa-stumbleupon" href="http://www.stumbleupon.com/submit?url=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;title=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on StumbleUpon"></a>
+<a class="fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fpgaleone.eu%2Fgolang%2Fvertexai%2F2024%2F04%2F06%2Frag-for-tabular-data-postgresql-gemini-go%2F&amp;t=Building+a+RAG+for+tabular+data+in+Go+with+PostgreSQL+%26+Gemini" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    var disqus_shortname  = 'pgaleone';
+    var disqus_identifier = '/golang/vertexai/2024/04/06/rag-for-tabular-data-postgresql-gemini-go';
+    var disqus_title      = "Building a RAG for tabular data in Go with PostgreSQL & Gemini";
+
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<h3 class="related-post-title">Related Posts</h3>
+<div class="post ml2">
+<a href="/golang/vertexai/2024/02/26/gemini-go-limits-details/" class="post-link">
+<h4 class="post-title">Using Gemini in a Go application: limits and details</h4>
+<p class="post-summary">This article explores using Gemini within Go applications via Vertex AI. We'll delve into the limitations encountered, including the model's context window size and regional restrictions. We'll also explore various methods for feeding data to Gemini, highlighting the challenges faced due to these limitations. Finally, we'll briefly introduce RAG (Retrieval-Augmented Generation) as a potential solution, but leave its implementation details for future exploration.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/golang/vertexai/2023/08/27/vertex-ai-custom-training-go-golang/" class="post-link">
+<h4 class="post-title">Custom model training & deployment on Google Cloud using Vertex AI in Go</h4>
+<p class="post-summary">This article shows a different approach to solving the same problem presented in the article AutoML pipeline for tabular data on VertexAI in Go. This time, instead of relying on AutoML we will define the model and the training job ourselves. This is a more advanced usage that allows the experienced machine learning practitioner to have full control on the pipeline from the model definition to the hardware to use for training and deploying. At the end of the article, we will also see how to use the deployed model. All of this, in Go and with the help of Python and Docker for the custom training job definition.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/2023/06/18/unreal-engine-third-party-linux-sysroot-dependencies/" class="post-link">
+<h4 class="post-title">Integrating third-party libraries as Unreal Engine plugins: solving the ABI compatibility issues on Linux when the source code is available</h4>
+<p class="post-summary">In this article, we will discuss the challenges and potential issues that may arise during the integration process of a third-party library when the source code is available. It will provide guidance on how to handle the compilation and linking of the third-party library, manage dependencies, and resolve compatibility issues. We'll realize a plugin for redis plus plus as a real use case scenario, and we'll see how tough can it be to correctly compile the library for Unreal Engine - we'll solve every problem step by step.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/golang/vertexai/2023/06/14/automl-pipeline-tabular-data-vertexai-go-golang/" class="post-link">
+<h4 class="post-title">AutoML pipeline for tabular data on VertexAI in Go</h4>
+<p class="post-summary">In this article, we delve into the development and deployment of tabular models using VertexAI and AutoML with Go, showcasing the actual Go code and sharing insights gained through trial & error and extensive Google research to overcome documentation limitations.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2023/03/27/advent-of-code-tensorflow-day-12/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 12</h4>
+<p class="post-summary">Solving problem 12 of the AoC 2022 in pure TensorFlow is a great exercise in graph theory and more specifically in using the Breadth-First Search (BFS) algorithm. This problem requires working with a grid of characters representing a graph, and the BFS algorithm allows us to traverse the graph in the most efficient way to solve the problem.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2023/03/26/advent-of-code-tensorflow-day-11/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 11</h4>
+<p class="post-summary">In this article, we'll show how to solve problem 11 from the Advent of Code 2022 (AoC 2022) using TensorFlow. We'll first introduce the problem and then provide a detailed explanation of our TensorFlow solution. The problem at hand revolves around the interactions of multiple monkeys inspecting items, making decisions based on their worry levels, and following a set of rules.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2023/03/25/advent-of-code-tensorflow-day-10/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 10</h4>
+<p class="post-summary">Solving problem 10 of the AoC 2022 in pure TensorFlow is an interesting challenge. This problem involves simulating a clock signal with varying frequencies and tracking the state of a signal-strength variable. TensorFlow's ability to handle complex data manipulations, control structures, and its @tf.function decorator for efficient execution makes it a fitting choice for tackling this problem. By utilizing TensorFlow's features such as Dataset transformations, efficient filtering, and tensor operations, we can create a clean and efficient solution to this intriguing puzzle.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2023/01/23/advent-of-code-tensorflow-day-9/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 9</h4>
+<p class="post-summary">In this article, we'll show two different solutions to the Advent of Code 2022 day 9 problem. Both of them are purely TensorFlow solutions. The first one, more traditional, just implement a solution algorithm using only TensorFlow's primitive operations - of course, due to some TensorFlow limitations this solution will contain some details worth reading (e.g. using a pairing function for being able to use n-dimensional tf.Tensor as keys for a mutable hashmap). The second one, instead, demonstrates how a different interpretation of the problem paves the way to completely different solutions. In particular, this solution is Keras based and uses a multi-layer convolutional model for modeling the rope movements.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2023/01/14/advent-of-code-tensorflow-day-8/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 8</h4>
+<p class="post-summary">Solving problem 8 of the AoC 2022 in pure TensorFlow is straightforward. After all, this problem requires working on a bi-dimensional grid and evaluating conditions by rows or columns. TensorFlow is perfectly suited for this kind of task thanks to its native support for reduction operators (tf.reduce) which are the natural choice for solving problems of this type.</p>
+</a>
+</div>
+<div class="post ml2">
+<a href="/tensorflow/2022/12/29/advent-of-code-tensorflow-day-7/" class="post-link">
+<h4 class="post-title">Advent of Code 2022 in pure TensorFlow - Day 7</h4>
+<p class="post-summary">Solving problem 7 of the AoC 2022 in pure TensorFlow allows us to understand certain limitations of the framework. This problem requires a lot of string manipulation, and TensorFlow (especially in graph mode) is not only not easy to use when working with this data type, but also it has a set of limitations I'll present in the article. Additionally, the strings to work with in problem 7 are (Unix) paths. TensorFlow has zero support for working with paths, and thus for simplifying a part of the solution, I resorted to the pathlib Python module, thus not designing a completely pure TensorFlow solution.</p>
+</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="center">
+<div class="measure">
+<small>
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br>
+Theme crafted with &lt;3 by <a href="http://johnotander.com">John Otander</a> (<a href="https://twitter.com/4lpine">@4lpine</a>). &lt;/&gt; available on <a href="https://github.com/johnotander/pixyll">Github</a>
+</small>
+</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.0.0/anchor.min.js"></script>
+<script>
+    anchors.options.visible = 'always';
+    anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+<script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+    }
+</script>
+</body>
+</html>
