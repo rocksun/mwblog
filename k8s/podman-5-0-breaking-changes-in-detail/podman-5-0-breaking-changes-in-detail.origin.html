@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='noindex, nofollow' />
+<title>Podman 5.0 breaking changes in detail</title>
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//i0.wp.com' />
+<link rel='dns-prefetch' href='//c0.wp.com' />
+<link rel='dns-prefetch' href='//jetpack.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//public-api.wordpress.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Feed" href="https://blog.podman.io/feed/" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Comments Feed" href="https://blog.podman.io/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Podman 5.0 breaking changes in detail Comments Feed" href="https://blog.podman.io/2024/03/podman-5-0-breaking-changes-in-detail/feed/" />
+<link rel='stylesheet' id='genesis-blocks-style-css-css' href='https://blog.podman.io/wp-content/plugins/genesis-blocks/dist/style-blocks.build.css?ver=1711551705' media='all' />
+<link rel='stylesheet' id='wp-block-image-css' href='https://c0.wp.com/c/6.4.3/wp-includes/blocks/image/style.min.css' media='all' />
+<style id='wp-block-image-inline-css'>
+.wp-block-image{margin-top: 0;margin-right: 0;margin-bottom: 30px;margin-left: 0;}
+</style>
+<style id='wp-block-heading-inline-css'>
+h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+.wp-block-heading{color: var(--wp--preset--color--foreground);font-family: var(--wp--preset--font-family--montserrat);font-weight: var(--wp--custom--font-weight--medium);line-height: var(--wp--custom--line-height--heading);margin-top: 0px;margin-bottom: 10px;}
+</style>
+<style id='wp-block-group-inline-css'>
+.wp-block-group{box-sizing:border-box}
+.wp-block-group{padding: 0px;}
+</style>
+<style id='wp-block-column-inline-css'>
+.wp-block-column{border-radius: 4px;border-width: 0;margin-bottom: 0px;}
+</style>
+<link rel='stylesheet' id='wp-block-button-css' href='https://c0.wp.com/c/6.4.3/wp-includes/blocks/button/style.min.css' media='all' />
+<style id='wp-block-button-inline-css'>
+.wp-block-button .wp-block-button__link{background-color: var(--wp--preset--color--primary);font-size: var(--wp--preset--font-size--small);font-weight: var(--wp--custom--font-weight--medium);}
+</style>
+<style id='wp-block-buttons-inline-css'>
+.wp-block-buttons.is-vertical{flex-direction:column}.wp-block-buttons.is-vertical>.wp-block-button:last-child{margin-bottom:0}.wp-block-buttons>.wp-block-button{display:inline-block;margin:0}.wp-block-buttons.is-content-justification-left{justify-content:flex-start}.wp-block-buttons.is-content-justification-left.is-vertical{align-items:flex-start}.wp-block-buttons.is-content-justification-center{justify-content:center}.wp-block-buttons.is-content-justification-center.is-vertical{align-items:center}.wp-block-buttons.is-content-justification-right{justify-content:flex-end}.wp-block-buttons.is-content-justification-right.is-vertical{align-items:flex-end}.wp-block-buttons.is-content-justification-space-between{justify-content:space-between}.wp-block-buttons.aligncenter{text-align:center}.wp-block-buttons:not(.is-content-justification-space-between,.is-content-justification-right,.is-content-justification-left,.is-content-justification-center) .wp-block-button.aligncenter{margin-left:auto;margin-right:auto;width:100%}.wp-block-buttons[style*=text-decoration] .wp-block-button,.wp-block-buttons[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-button.aligncenter{text-align:center}
+.wp-block-buttons-is-layout-flow > :first-child:first-child{margin-block-start: 0;}.wp-block-buttons-is-layout-flow > :last-child:last-child{margin-block-end: 0;}.wp-block-buttons-is-layout-flow > *{margin-block-start: 10px;margin-block-end: 0;}.wp-block-buttons-is-layout-constrained > :first-child:first-child{margin-block-start: 0;}.wp-block-buttons-is-layout-constrained > :last-child:last-child{margin-block-end: 0;}.wp-block-buttons-is-layout-constrained > *{margin-block-start: 10px;margin-block-end: 0;}.wp-block-buttons-is-layout-flex{gap: 10px;}.wp-block-buttons-is-layout-grid{gap: 10px;}
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}p.has-background{padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+p{margin-top: 0px;margin-bottom: 30px;}
+</style>
+<style id='wp-block-columns-inline-css'>
+.wp-block-columns{align-items:normal!important;box-sizing:border-box;display:flex;flex-wrap:wrap!important}@media (min-width:782px){.wp-block-columns{flex-wrap:nowrap!important}}.wp-block-columns.are-vertically-aligned-top{align-items:flex-start}.wp-block-columns.are-vertically-aligned-center{align-items:center}.wp-block-columns.are-vertically-aligned-bottom{align-items:flex-end}@media (max-width:781px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:100%!important}}@media (min-width:782px){.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis]{flex-grow:0}}.wp-block-columns.is-not-stacked-on-mobile{flex-wrap:nowrap!important}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column{flex-basis:0;flex-grow:1}.wp-block-columns.is-not-stacked-on-mobile>.wp-block-column[style*=flex-basis]{flex-grow:0}:where(.wp-block-columns){margin-bottom:1.75em}:where(.wp-block-columns.has-background){padding:1.25em 2.375em}.wp-block-column{flex-grow:1;min-width:0;overflow-wrap:break-word;word-break:break-word}.wp-block-column.is-vertically-aligned-top{align-self:flex-start}.wp-block-column.is-vertically-aligned-center{align-self:center}.wp-block-column.is-vertically-aligned-bottom{align-self:flex-end}.wp-block-column.is-vertically-aligned-stretch{align-self:stretch}.wp-block-column.is-vertically-aligned-bottom,.wp-block-column.is-vertically-aligned-center,.wp-block-column.is-vertically-aligned-top{width:100%}
+.wp-block-columns{border-radius: 4px;border-width: 0;margin-bottom: 0px;}
+</style>
+<style id='wp-block-template-part-inline-css'>
+.wp-block-template-part{margin-top: 0px !important;}
+</style>
+<style id='wp-block-post-featured-image-inline-css'>
+.wp-block-post-featured-image{margin-left:0;margin-right:0}.wp-block-post-featured-image a{display:block;height:100%}.wp-block-post-featured-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom;width:100%}.wp-block-post-featured-image.alignfull img,.wp-block-post-featured-image.alignwide img{width:100%}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim{background-color:#000;inset:0;position:absolute}.wp-block-post-featured-image{position:relative}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-gradient{background-color:transparent}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-0{opacity:0}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-10{opacity:.1}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-20{opacity:.2}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-30{opacity:.3}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-40{opacity:.4}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-50{opacity:.5}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-60{opacity:.6}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-70{opacity:.7}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-80{opacity:.8}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-90{opacity:.9}.wp-block-post-featured-image .wp-block-post-featured-image__overlay.has-background-dim-100{opacity:1}.wp-block-post-featured-image:where(.alignleft,.alignright){width:100%}
+</style>
+<style id='wp-block-post-template-inline-css'>
+.wp-block-post-template{list-style:none;margin-bottom:0;margin-top:0;max-width:100%;padding:0}.wp-block-post-template.wp-block-post-template{background:none}.wp-block-post-template.is-flex-container{display:flex;flex-direction:row;flex-wrap:wrap;gap:1.25em}.wp-block-post-template.is-flex-container>li{margin:0;width:100%}@media (min-width:600px){.wp-block-post-template.is-flex-container.is-flex-container.columns-2>li{width:calc(50% - .625em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-3>li{width:calc(33.33333% - .83333em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-4>li{width:calc(25% - .9375em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-5>li{width:calc(20% - 1em)}.wp-block-post-template.is-flex-container.is-flex-container.columns-6>li{width:calc(16.66667% - 1.04167em)}}@media (max-width:600px){.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid.wp-block-post-template-is-layout-grid{grid-template-columns:1fr}}.wp-block-post-template-is-layout-constrained>li>.alignright,.wp-block-post-template-is-layout-flow>li>.alignright{-webkit-margin-start:2em;-webkit-margin-end:0;float:right;margin-inline-end:0;margin-inline-start:2em}.wp-block-post-template-is-layout-constrained>li>.alignleft,.wp-block-post-template-is-layout-flow>li>.alignleft{-webkit-margin-start:0;-webkit-margin-end:2em;float:left;margin-inline-end:2em;margin-inline-start:0}.wp-block-post-template-is-layout-constrained>li>.aligncenter,.wp-block-post-template-is-layout-flow>li>.aligncenter{-webkit-margin-start:auto;-webkit-margin-end:auto;margin-inline-end:auto;margin-inline-start:auto}
+</style>
+<style id='wp-block-spacer-inline-css'>
+.wp-block-spacer{clear:both}
+.wp-block-spacer{margin-top: 0 !important;}
+</style>
+<style id='wp-block-post-terms-inline-css'>
+.wp-block-post-terms{box-sizing:border-box}.wp-block-post-terms .wp-block-post-terms__separator{white-space:pre-wrap}
+</style>
+<style id='wp-block-post-title-inline-css'>
+.wp-block-post-title{box-sizing:border-box;word-break:break-word}.wp-block-post-title a{display:inline-block}
+.wp-block-post-title{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--x-large);font-weight: var(--wp--custom--font-weight--medium);line-height: var(--wp--custom--line-height--heading);}
+</style>
+<style id='wp-block-post-date-inline-css'>
+.wp-block-post-date{box-sizing:border-box}
+</style>
+<style id='wp-block-post-author-inline-css'>
+.wp-block-post-author{display:flex;flex-wrap:wrap}.wp-block-post-author__byline{font-size:.5em;margin-bottom:0;margin-top:0;width:100%}.wp-block-post-author__avatar{margin-right:1em}.wp-block-post-author__bio{font-size:.7em;margin-bottom:.7em}.wp-block-post-author__content{flex-basis:0;flex-grow:1}.wp-block-post-author__name{margin:0}
+</style>
+<style id='wp-block-code-inline-css'>
+.wp-block-code{box-sizing:border-box}.wp-block-code code{display:block;font-family:inherit;overflow-wrap:break-word;white-space:pre-wrap}
+.wp-block-code{background-color: var(--wp--preset--color--foreground);border-radius: 0;border-width: 0;color: var(--wp--preset--color--background);font-family: var(--wp--preset--font-family--monospace);font-size: var(--wp--preset--font-size--small);padding-top: 25px;padding-right: 30px;padding-bottom: 25px;padding-left: 30px;}
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}ol.has-background,ul.has-background{padding:1.25em 2.375em}
+</style>
+<style id='wp-block-comment-template-inline-css'>
+.wp-block-comment-template{box-sizing:border-box;list-style:none;margin-bottom:0;max-width:100%;padding:0}.wp-block-comment-template li{clear:both}.wp-block-comment-template ol{list-style:none;margin-bottom:0;max-width:100%;padding-left:2rem}.wp-block-comment-template.alignleft{float:left}.wp-block-comment-template.aligncenter{margin-left:auto;margin-right:auto;width:-moz-fit-content;width:fit-content}.wp-block-comment-template.alignright{float:right}
+</style>
+<style id='wp-block-comments-pagination-inline-css'>
+.wp-block-comments-pagination>.wp-block-comments-pagination-next,.wp-block-comments-pagination>.wp-block-comments-pagination-numbers,.wp-block-comments-pagination>.wp-block-comments-pagination-previous{margin-bottom:.5em;margin-right:.5em}.wp-block-comments-pagination>.wp-block-comments-pagination-next:last-child,.wp-block-comments-pagination>.wp-block-comments-pagination-numbers:last-child,.wp-block-comments-pagination>.wp-block-comments-pagination-previous:last-child{margin-right:0}.wp-block-comments-pagination .wp-block-comments-pagination-previous-arrow{display:inline-block;margin-right:1ch}.wp-block-comments-pagination .wp-block-comments-pagination-previous-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-comments-pagination .wp-block-comments-pagination-next-arrow{display:inline-block;margin-left:1ch}.wp-block-comments-pagination .wp-block-comments-pagination-next-arrow:not(.is-arrow-chevron){transform:scaleX(1)}.wp-block-comments-pagination.aligncenter{justify-content:center}
+</style>
+<style id='wp-block-post-comments-form-inline-css'>
+.wp-block-post-comments-form{box-sizing:border-box}.wp-block-post-comments-form[style*=font-weight] :where(.comment-reply-title){font-weight:inherit}.wp-block-post-comments-form[style*=font-family] :where(.comment-reply-title){font-family:inherit}.wp-block-post-comments-form[class*=-font-size] :where(.comment-reply-title),.wp-block-post-comments-form[style*=font-size] :where(.comment-reply-title){font-size:inherit}.wp-block-post-comments-form[style*=line-height] :where(.comment-reply-title){line-height:inherit}.wp-block-post-comments-form[style*=font-style] :where(.comment-reply-title){font-style:inherit}.wp-block-post-comments-form[style*=letter-spacing] :where(.comment-reply-title){letter-spacing:inherit}.wp-block-post-comments-form input[type=submit]{box-shadow:none;cursor:pointer;display:inline-block;overflow-wrap:break-word;text-align:center}.wp-block-post-comments-form input:not([type=submit]),.wp-block-post-comments-form textarea{border:1px solid #949494;font-family:inherit;font-size:1em}.wp-block-post-comments-form input:not([type=submit]):not([type=checkbox]),.wp-block-post-comments-form textarea{padding:calc(.667em + 2px)}.wp-block-post-comments-form .comment-form input:not([type=submit]):not([type=checkbox]):not([type=hidden]),.wp-block-post-comments-form .comment-form textarea{box-sizing:border-box;display:block;width:100%}.wp-block-post-comments-form .comment-form-author label,.wp-block-post-comments-form .comment-form-email label,.wp-block-post-comments-form .comment-form-url label{display:block;margin-bottom:.25em}.wp-block-post-comments-form .comment-form-cookies-consent{display:flex;gap:.25em}.wp-block-post-comments-form .comment-form-cookies-consent #wp-comment-cookies-consent{margin-top:.35em}.wp-block-post-comments-form .comment-reply-title{margin-bottom:0}.wp-block-post-comments-form .comment-reply-title :where(small){font-size:var(--wp--preset--font-size--medium,smaller);margin-left:.5em}
+</style>
+<style id='jetpack-block-button-inline-css'>
+.amp-wp-article .wp-block-jetpack-button{color:#fff}.wp-block-jetpack-button:not(.is-style-outline) button{border:none}
+</style>
+<style id='wp-block-separator-inline-css'>
+@charset "UTF-8";.wp-block-separator{border:1px solid;border-left:none;border-right:none}.wp-block-separator.is-style-dots{background:none!important;border:none;height:auto;line-height:1;text-align:center}.wp-block-separator.is-style-dots:before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}
+.wp-block-separator{border-radius: 0;border-width: 0;color: var(--wp--preset--color--foreground);font-size: var(--wp--preset--font-size--large);}
+</style>
+<style id='wp-block-latest-posts-inline-css'>
+.wp-block-latest-posts{box-sizing:border-box}.wp-block-latest-posts.alignleft{margin-right:2em}.wp-block-latest-posts.alignright{margin-left:2em}.wp-block-latest-posts.wp-block-latest-posts__list{list-style:none;padding-left:0}.wp-block-latest-posts.wp-block-latest-posts__list li{clear:both}.wp-block-latest-posts.is-grid{display:flex;flex-wrap:wrap;padding:0}.wp-block-latest-posts.is-grid li{margin:0 1.25em 1.25em 0;width:100%}@media (min-width:600px){.wp-block-latest-posts.columns-2 li{width:calc(50% - .625em)}.wp-block-latest-posts.columns-2 li:nth-child(2n){margin-right:0}.wp-block-latest-posts.columns-3 li{width:calc(33.33333% - .83333em)}.wp-block-latest-posts.columns-3 li:nth-child(3n){margin-right:0}.wp-block-latest-posts.columns-4 li{width:calc(25% - .9375em)}.wp-block-latest-posts.columns-4 li:nth-child(4n){margin-right:0}.wp-block-latest-posts.columns-5 li{width:calc(20% - 1em)}.wp-block-latest-posts.columns-5 li:nth-child(5n){margin-right:0}.wp-block-latest-posts.columns-6 li{width:calc(16.66667% - 1.04167em)}.wp-block-latest-posts.columns-6 li:nth-child(6n){margin-right:0}}.wp-block-latest-posts__post-author,.wp-block-latest-posts__post-date{display:block;font-size:.8125em}.wp-block-latest-posts__post-excerpt{margin-bottom:1em;margin-top:.5em}.wp-block-latest-posts__featured-image a{display:inline-block}.wp-block-latest-posts__featured-image img{height:auto;max-width:100%;width:auto}.wp-block-latest-posts__featured-image.alignleft{float:left;margin-right:1em}.wp-block-latest-posts__featured-image.alignright{float:right;margin-left:1em}.wp-block-latest-posts__featured-image.aligncenter{margin-bottom:1em;text-align:center}
+</style>
+<style id='wp-block-categories-inline-css'>
+.wp-block-categories{box-sizing:border-box}.wp-block-categories.alignleft{margin-right:2em}.wp-block-categories.alignright{margin-left:2em}.wp-block-categories.wp-block-categories-dropdown.aligncenter{text-align:center}
+</style>
+<style id='wp-block-search-inline-css'>
+.wp-block-search__button{margin-left:10px;word-break:normal}.wp-block-search__button.has-icon{line-height:0}.wp-block-search__button svg{fill:currentColor;min-height:24px;min-width:24px;vertical-align:text-bottom}:where(.wp-block-search__button){border:1px solid #ccc;padding:6px 10px}.wp-block-search__inside-wrapper{display:flex;flex:auto;flex-wrap:nowrap;max-width:100%}.wp-block-search__label{width:100%}.wp-block-search__input{-webkit-appearance:initial;appearance:none;border:1px solid #949494;flex-grow:1;margin-left:0;margin-right:0;min-width:3rem;padding:8px;text-decoration:unset!important}.wp-block-search.wp-block-search__button-only .wp-block-search__button{flex-shrink:0;margin-left:0;max-width:calc(100% - 100px)}:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper){border:1px solid #949494;box-sizing:border-box;padding:4px}:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper) .wp-block-search__input{border:none;border-radius:0;padding:0 4px}:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper) .wp-block-search__input:focus{outline:none}:where(.wp-block-search__button-inside .wp-block-search__inside-wrapper) :where(.wp-block-search__button){padding:4px 8px}.wp-block-search.aligncenter .wp-block-search__inside-wrapper{margin:auto}.wp-block-search__button-behavior-expand .wp-block-search__inside-wrapper{min-width:0!important;transition-property:width}.wp-block-search__button-behavior-expand .wp-block-search__input{flex-basis:100%;transition-duration:.3s}.wp-block-search__button-behavior-expand.wp-block-search__searchfield-hidden,.wp-block-search__button-behavior-expand.wp-block-search__searchfield-hidden .wp-block-search__inside-wrapper{overflow:hidden}.wp-block-search__button-behavior-expand.wp-block-search__searchfield-hidden .wp-block-search__input{border-left-width:0!important;border-right-width:0!important;flex-basis:0;flex-grow:0;margin:0;min-width:0!important;padding-left:0!important;padding-right:0!important;width:0!important}.wp-block[data-align=right] .wp-block-search__button-behavior-expand .wp-block-search__inside-wrapper{float:right}
+</style>
+<link rel='stylesheet' id='wp-block-social-links-css' href='https://c0.wp.com/c/6.4.3/wp-includes/blocks/social-links/style.min.css' media='all' />
+<style id='wp-block-page-list-inline-css'>
+.wp-block-navigation .wp-block-page-list{align-items:var(--navigation-layout-align,initial);background-color:inherit;display:flex;flex-direction:var(--navigation-layout-direction,initial);flex-wrap:var(--navigation-layout-wrap,wrap);justify-content:var(--navigation-layout-justify,initial)}.wp-block-navigation .wp-block-navigation-item{background-color:inherit}
+</style>
+<link rel='stylesheet' id='uniblock-theme-fonts-css' href='https://blog.podman.io/wp-content/fonts/a156c598d0cb569c3d8ce3c70e987359.css?ver=1.1.5' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://c0.wp.com/c/6.4.3/wp-includes/css/dist/block-library/common.min.css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--primary: #5A13F1;--wp--preset--color--secondary: #10002B;--wp--preset--color--header-footer: #10002B;--wp--preset--color--tertiary: #6C6C77;--wp--preset--color--lightgrey: #EDEDED;--wp--preset--color--foreground: #10002B;--wp--preset--color--background: #FBF9FF;--wp--preset--color--light-background: #ffffff;--wp--preset--color--custom-color-1: #9848c6;--wp--preset--color--custom-color-2: #ac8aff;--wp--preset--color--custom-color-3: #9b9b9b;--wp--preset--color--custom-color-4: #ddbcff;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--black-primary: linear-gradient(180deg, var(--wp--preset--color--secondary) 0%, var(--wp--preset--color--secondary) 73%, var(--wp--preset--color--background) 73%, var(--wp--preset--color--background) 100%);--wp--preset--gradient--black-secondary: linear-gradient(135deg,rgba(0,0,0,1) 50%,var(--wp--preset--color--tertiary) 100%);--wp--preset--font-size--small: clamp(16px, 1rem + ((1vw - 3.2px) * 1), 16px);--wp--preset--font-size--medium: clamp(18px, 1.125rem + ((1vw - 3.2px) * 0.208), 20px);--wp--preset--font-size--large: clamp(20px, 1.25rem + ((1vw - 3.2px) * 0.417), 24px);--wp--preset--font-size--x-large: clamp(34px, 2.125rem + ((1vw - 3.2px) * 1.667), 50px);--wp--preset--font-size--max-36: clamp(30px, 1.875rem + ((1vw - 3.2px) * 0.625), 36px);--wp--preset--font-size--max-48: clamp(36px, 2.25rem + ((1vw - 3.2px) * 1.25), 48px);--wp--preset--font-size--max-60: clamp(42px, 2.625rem + ((1vw - 3.2px) * 1.875), 60px);--wp--preset--font-size--max-72: clamp(48px, 3rem + ((1vw - 3.2px) * 2.5), 72px);--wp--preset--font-family--outfit: Outfit, sans-serif;--wp--preset--font-family--sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif);--wp--preset--font-family--serif: serif;--wp--preset--font-family--monospace: monospace;--wp--preset--font-family--archivo: Archivo, sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--bitter: Bitter, sans-serif;--wp--preset--font-family--crimson-pro: Crimson Pro, serif;--wp--preset--font-family--dm-sans: DM Sans, sans-serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--ibm-plex-sans: IBM Plex Sans, sans-serif;--wp--preset--font-family--ibm-plex-mono: IBM Plex Mono, monospace;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: Josefin Sans, sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--lexend: Lexend, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--manrope: Manrope, sans-serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--mulish: Mulish, sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: Open Sans, sans-serif;--wp--preset--font-family--oswald: Oswald, sans-serif;--wp--preset--font-family--playfair-display: Playfair Display, serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--quicksand: Quicksand, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--source-sans-pro: Source Sans Pro, sans-serif;--wp--preset--font-family--source-serif-pro: Source Serif Pro, sans-serif;--wp--preset--font-family--space-grotesk: Space Grotesk, sans-serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: Work Sans, sans-serif;--wp--preset--font-family--yeseva-one: Yeseva One, sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--spacing--x-small: 20px;--wp--preset--spacing--small: 40px;--wp--preset--spacing--medium: 60px;--wp--preset--spacing--large: 80px;--wp--preset--spacing--x-large: 100px;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);--wp--custom--font-weight--black: 900;--wp--custom--font-weight--bold: 700;--wp--custom--font-weight--extra-bold: 800;--wp--custom--font-weight--light: 300;--wp--custom--font-weight--medium: 500;--wp--custom--font-weight--regular: 400;--wp--custom--font-weight--semi-bold: 600;--wp--custom--line-height--body: 1.75;--wp--custom--line-height--heading: 1.1;--wp--custom--line-height--medium: 1.5;--wp--custom--line-height--one: 1;--wp--custom--spacing--outer: 30px;--wp--custom--heading--typography--font-family: var(--wp--preset--font-family--montserrat);}body { margin: 0;--wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1280px; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding :where(.has-global-padding:not(.wp-block-block)) { padding-right: 0; padding-left: 0; }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(.has-global-padding:not(.wp-block-block)) > .alignfull { margin-right: 0; margin-left: 0; }.has-global-padding > .alignfull:where(:not(.has-global-padding):not(.is-layout-flex):not(.is-layout-grid)) > :where([class*="wp-block-"]:not(.alignfull):not([class*="__"]),p,h1,h2,h3,h4,h5,h6,ul,ol) { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding :where(.has-global-padding) > .alignfull:where(:not(.has-global-padding)) > :where([class*="wp-block-"]:not(.alignfull):not([class*="__"]),p,h1,h2,h3,h4,h5,h6,ul,ol) { padding-right: 0; padding-left: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 30px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child:first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child:last-child { margin-block-end: 0; }body { --wp--style--block-gap: 30px; }:where(body .is-layout-flow)  > :first-child:first-child{margin-block-start: 0;}:where(body .is-layout-flow)  > :last-child:last-child{margin-block-end: 0;}:where(body .is-layout-flow)  > *{margin-block-start: 30px;margin-block-end: 0;}:where(body .is-layout-constrained)  > :first-child:first-child{margin-block-start: 0;}:where(body .is-layout-constrained)  > :last-child:last-child{margin-block-end: 0;}:where(body .is-layout-constrained)  > *{margin-block-start: 30px;margin-block-end: 0;}:where(body .is-layout-flex) {gap: 30px;}:where(body .is-layout-grid) {gap: 30px;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}body{background-color: var(--wp--preset--color--background);color: var(--wp--preset--color--tertiary);font-family: var(--wp--preset--font-family--source-sans-pro);font-size: var(--wp--preset--font-size--small);font-weight: var(--wp--custom--font-weight--regular);line-height: var(--wp--custom--line-height--body);--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: 0px;--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: 0px;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--custom-color-1);text-decoration: underline;}h1{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--x-large);}h2{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--large);}h3{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--large);}h4{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--medium);}h5{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--small);}h6{font-family: var(--wp--preset--font-family--montserrat);font-size: var(--wp--preset--font-size--small);}.wp-element-button, .wp-block-button__link{background-color: var(--wp--preset--color--primary);border-radius: 4px;border-width: 0;color: var(--wp--preset--color--background);font-family: inherit;font-size: var(--wp--preset--font-size--small);font-weight: var(--wp--custom--font-weight--medium);line-height: inherit;padding-top: 10px;padding-right: 25px;padding-bottom: 10px;padding-left: 25px;text-decoration: none;}.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption{color: var(--wp--preset--color--foreground);font-size: var(--wp--preset--font-size--small);margin-top: 10px;margin-bottom: 0px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-color{color: var(--wp--preset--color--primary) !important;}.has-secondary-color{color: var(--wp--preset--color--secondary) !important;}.has-header-footer-color{color: var(--wp--preset--color--header-footer) !important;}.has-tertiary-color{color: var(--wp--preset--color--tertiary) !important;}.has-lightgrey-color{color: var(--wp--preset--color--lightgrey) !important;}.has-foreground-color{color: var(--wp--preset--color--foreground) !important;}.has-background-color{color: var(--wp--preset--color--background) !important;}.has-light-background-color{color: var(--wp--preset--color--light-background) !important;}.has-custom-color-1-color{color: var(--wp--preset--color--custom-color-1) !important;}.has-custom-color-2-color{color: var(--wp--preset--color--custom-color-2) !important;}.has-custom-color-3-color{color: var(--wp--preset--color--custom-color-3) !important;}.has-custom-color-4-color{color: var(--wp--preset--color--custom-color-4) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-background-color{background-color: var(--wp--preset--color--primary) !important;}.has-secondary-background-color{background-color: var(--wp--preset--color--secondary) !important;}.has-header-footer-background-color{background-color: var(--wp--preset--color--header-footer) !important;}.has-tertiary-background-color{background-color: var(--wp--preset--color--tertiary) !important;}.has-lightgrey-background-color{background-color: var(--wp--preset--color--lightgrey) !important;}.has-foreground-background-color{background-color: var(--wp--preset--color--foreground) !important;}.has-background-background-color{background-color: var(--wp--preset--color--background) !important;}.has-light-background-background-color{background-color: var(--wp--preset--color--light-background) !important;}.has-custom-color-1-background-color{background-color: var(--wp--preset--color--custom-color-1) !important;}.has-custom-color-2-background-color{background-color: var(--wp--preset--color--custom-color-2) !important;}.has-custom-color-3-background-color{background-color: var(--wp--preset--color--custom-color-3) !important;}.has-custom-color-4-background-color{background-color: var(--wp--preset--color--custom-color-4) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-primary-border-color{border-color: var(--wp--preset--color--primary) !important;}.has-secondary-border-color{border-color: var(--wp--preset--color--secondary) !important;}.has-header-footer-border-color{border-color: var(--wp--preset--color--header-footer) !important;}.has-tertiary-border-color{border-color: var(--wp--preset--color--tertiary) !important;}.has-lightgrey-border-color{border-color: var(--wp--preset--color--lightgrey) !important;}.has-foreground-border-color{border-color: var(--wp--preset--color--foreground) !important;}.has-background-border-color{border-color: var(--wp--preset--color--background) !important;}.has-light-background-border-color{border-color: var(--wp--preset--color--light-background) !important;}.has-custom-color-1-border-color{border-color: var(--wp--preset--color--custom-color-1) !important;}.has-custom-color-2-border-color{border-color: var(--wp--preset--color--custom-color-2) !important;}.has-custom-color-3-border-color{border-color: var(--wp--preset--color--custom-color-3) !important;}.has-custom-color-4-border-color{border-color: var(--wp--preset--color--custom-color-4) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-black-primary-gradient-background{background: var(--wp--preset--gradient--black-primary) !important;}.has-black-secondary-gradient-background{background: var(--wp--preset--gradient--black-secondary) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-max-36-font-size{font-size: var(--wp--preset--font-size--max-36) !important;}.has-max-48-font-size{font-size: var(--wp--preset--font-size--max-48) !important;}.has-max-60-font-size{font-size: var(--wp--preset--font-size--max-60) !important;}.has-max-72-font-size{font-size: var(--wp--preset--font-size--max-72) !important;}.has-outfit-font-family{font-family: var(--wp--preset--font-family--outfit) !important;}.has-sans-serif-font-family{font-family: var(--wp--preset--font-family--sans-serif) !important;}.has-serif-font-family{font-family: var(--wp--preset--font-family--serif) !important;}.has-monospace-font-family{font-family: var(--wp--preset--font-family--monospace) !important;}.has-archivo-font-family{font-family: var(--wp--preset--font-family--archivo) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-bitter-font-family{font-family: var(--wp--preset--font-family--bitter) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-lexend-font-family{font-family: var(--wp--preset--font-family--lexend) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-manrope-font-family{font-family: var(--wp--preset--font-family--manrope) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-mulish-font-family{font-family: var(--wp--preset--font-family--mulish) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-oswald-font-family{font-family: var(--wp--preset--font-family--oswald) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-quicksand-font-family{font-family: var(--wp--preset--font-family--quicksand) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-source-sans-pro-font-family{font-family: var(--wp--preset--font-family--source-sans-pro) !important;}.has-source-serif-pro-font-family{font-family: var(--wp--preset--font-family--source-serif-pro) !important;}.has-space-grotesk-font-family{font-family: var(--wp--preset--font-family--space-grotesk) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}.has-yeseva-one-font-family{font-family: var(--wp--preset--font-family--yeseva-one) !important;}
+</style>
+<style id='core-block-supports-inline-css'>
+.wp-elements-3119121a9f46b390a1d229911c3cfac7 a{color:var(--wp--preset--color--white);}.wp-container-core-group-layout-1.wp-container-core-group-layout-1{flex-wrap:nowrap;}.wp-container-core-group-layout-3.wp-container-core-group-layout-3{flex-wrap:nowrap;justify-content:space-between;}.wp-container-core-buttons-layout-1.wp-container-core-buttons-layout-1{justify-content:flex-end;}.wp-elements-dc465fd0a34bdcdb42c3cd6b3e8104c6 a{color:var(--wp--preset--color--custom-color-1);}.wp-elements-b456be5b6a089e28b118097a0845c49e a{color:var(--wp--preset--color--custom-color-1);}.wp-container-core-columns-layout-1.wp-container-core-columns-layout-1{flex-wrap:nowrap;}.wp-container-core-group-layout-5.wp-container-core-group-layout-5{flex-wrap:nowrap;gap:5px;justify-content:flex-start;}.wp-container-core-group-layout-6.wp-container-core-group-layout-6 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-layout-6.wp-container-core-group-layout-6.wp-container-core-group-layout-6.wp-container-core-group-layout-6 > * + *{margin-block-start:10px;margin-block-end:0;}.wp-container-core-group-layout-7.wp-container-core-group-layout-7{flex-wrap:nowrap;gap:5px;justify-content:flex-start;}.wp-container-core-group-layout-8.wp-container-core-group-layout-8 > *{margin-block-start:0;margin-block-end:0;}.wp-container-core-group-layout-8.wp-container-core-group-layout-8.wp-container-core-group-layout-8.wp-container-core-group-layout-8 > * + *{margin-block-start:0px;margin-block-end:0;}.wp-container-core-columns-layout-2.wp-container-core-columns-layout-2{flex-wrap:nowrap;}.wp-elements-87f19e9b7a9956311bf6b442c867cf71 a{color:var(--wp--preset--color--white);}.wp-container-core-social-links-layout-1.wp-container-core-social-links-layout-1{gap:3px 19px;justify-content:flex-start;}.wp-elements-3e71b908776be43e061df907410da54e a{color:var(--wp--preset--color--custom-color-4);}.wp-container-core-columns-layout-3.wp-container-core-columns-layout-3{flex-wrap:nowrap;}.wp-container-core-group-layout-16.wp-container-core-group-layout-16{justify-content:space-between;}
+</style>
+<style id='wp-block-template-skip-link-inline-css'>
+
+		.skip-link.screen-reader-text {
+			border: 0;
+			clip: rect(1px,1px,1px,1px);
+			clip-path: inset(50%);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute !important;
+			width: 1px;
+			word-wrap: normal !important;
+		}
+
+		.skip-link.screen-reader-text:focus {
+			background-color: #eee;
+			clip: auto !important;
+			clip-path: none;
+			color: #444;
+			display: block;
+			font-size: 1em;
+			height: auto;
+			left: 5px;
+			line-height: normal;
+			padding: 15px 23px 14px;
+			text-decoration: none;
+			top: 5px;
+			width: auto;
+			z-index: 100000;
+		}
+</style>
+<link rel='stylesheet' id='vk-filter-search-style-css' href='https://blog.podman.io/wp-content/plugins/vk-filter-search/inc/filter-search/package/build/style.css?ver=2.3.2' media='all' />
+<link rel='stylesheet' id='uniblock-css' href='https://blog.podman.io/wp-content/themes/uniblock/style.css?ver=1.1.5' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='https://c0.wp.com/p/jetpack/13.3/css/jetpack.css' media='all' />
+<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js" id="wp-polyfill-inert-js"></script>
+<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/dist/vendor/regenerator-runtime.min.js" id="regenerator-runtime-js"></script>
+<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/dist/vendor/wp-polyfill.min.js" id="wp-polyfill-js"></script>
+<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/dist/hooks.min.js" id="wp-hooks-js"></script>
+<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/dist/i18n.min.js" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script src="https://blog.podman.io/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/js/accessible-form.js?minify=false&amp;ver=13.3" id="accessible-form-js" defer data-wp-strategy="defer"></script>
+<link rel="https://api.w.org/" href="https://blog.podman.io/wp-json/" /><link rel="alternate" type="application/json" href="https://blog.podman.io/wp-json/wp/v2/posts/321" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.podman.io/xmlrpc.php?rsd" />
+<link rel="canonical" href="https://blog.podman.io/2024/03/podman-5-0-breaking-changes-in-detail/" />
+<link rel='shortlink' href='https://blog.podman.io/?p=321' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.podman.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.podman.io%2F2024%2F03%2Fpodman-5-0-breaking-changes-in-detail%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.podman.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.podman.io%2F2024%2F03%2Fpodman-5-0-breaking-changes-in-detail%2F&#038;format=xml" />
+	<style>img#wpstats{display:none}</style>
+		
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Podman 5.0 breaking changes in detail" />
+<meta property="og:url" content="https://blog.podman.io/2024/03/podman-5-0-breaking-changes-in-detail/" />
+<meta property="og:description" content="Podman 5.0 is out, and with this also comes several breaking changes, but there is no reason to fear them; unless you are using podman machine, chances are you will not even notice them. Podman Mac…" />
+<meta property="article:published_time" content="2024-03-22T18:21:36+00:00" />
+<meta property="article:modified_time" content="2024-04-08T16:54:30+00:00" />
+<meta property="og:image" content="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?fit=1200%2C800&#038;ssl=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="800" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@Podman_io" />
+<meta name="twitter:site" content="@Podman_io" />
+<meta name="twitter:text:title" content="Podman 5.0 breaking changes in detail" />
+<meta name="twitter:image" content="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?fit=1200%2C800&#038;ssl=1&#038;w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<style id='wp-fonts-local'>
+@font-face{font-family:Outfit;font-style:normal;font-weight:300 900;font-display:block;src:url('https://blog.podman.io/wp-content/themes/uniblock/assets/fonts/Outfit-Variable.woff2') format('woff2');font-stretch:normal;}
+</style>
+<link rel="icon" href="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/11/containersgfx-1.png?fit=28%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/11/containersgfx-1.png?fit=157%2C177&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/11/containersgfx-1.png?fit=157%2C177&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/11/containersgfx-1.png?fit=157%2C177&#038;ssl=1" />
+</head>
+
+<body class="post-template-default single single-post postid-321 single-format-standard wp-custom-logo wp-embed-responsive">
+
+<div class="wp-site-blocks"><header class="site-header wp-block-template-part">
+<div class="wp-block-group alignfull is-style-default has-white-color has-text-color has-background has-link-color wp-elements-3119121a9f46b390a1d229911c3cfac7 has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="background-color:#10002b;margin-top:0px;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px">
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-1 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-layout-3 wp-block-group-is-layout-flex">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-1 wp-block-group-is-layout-flex">
+<figure class="wp-block-image size-full"><a href="https://blog.podman.io"><img decoding="async" width="157" height="177" src="https://blog.podman.io/wp-content/uploads/2022/11/containersgfx-1.png" alt="stack of multi-colored septagons, top one has a large C" class="wp-image-13"/></a></figure>
+
+
+
+<h1 class="wp-block-heading has-lightgrey-color has-text-color"><a href="https://blog.podman.io" data-type="URL" data-id="https://blog.podman.io">Containers</a></h1>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-buttons wpz-header-button wpz-alt-button is-content-justification-right is-layout-flex wp-container-core-buttons-layout-1 wp-block-buttons-is-layout-flex">
+<div class="wp-block-button"><a class="wp-block-button__link has-primary-background-color has-background wp-element-button" href="https://github.com/containers" style="border-radius:4px;padding-top:8px;padding-right:25px;padding-bottom:8px;padding-left:25px" target="_blank" rel="noreferrer noopener">GitHub</a></div>
+</div>
+
+
+
+<p class="has-white-color has-text-color has-link-color has-small-font-size wp-elements-dc465fd0a34bdcdb42c3cd6b3e8104c6" style="font-style:normal;font-weight:600">Blogs, articles, and tips from the <a rel="noreferrer noopener" href="http://podman.io" target="_blank" style="text-decoration: underline;">Podman</a> development team on Podman, Buildah, Skopeo, and a host of other related container <a style="text-decoration: underline;" rel="noreferrer noopener" href="https://github.com/containers" target="_blank">projects</a>.</p>
+
+
+
+<p class="has-link-color wp-elements-b456be5b6a089e28b118097a0845c49e"><a href="https://github.com/containers/" data-type="URL" data-id="https://github.com/containers/">Explore more →</a></p>
+</div>
+</div>
+</div>
+</header>
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained">
+<div class="wp-block-query is-layout-flow wp-block-query-is-layout-flow"><ul class="wp-block-post-template is-layout-flow wp-block-post-template-is-layout-flow"><li class="wp-block-post post-321 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-podman tag-podman tag-upstream">
+<figure style="width:100%;height:500px;" class="wp-block-post-featured-image"><img width="1920" height="1280" src="https://blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" style="height:500px;object-fit:cover;" decoding="async" fetchpriority="high" srcset="https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?w=1920&amp;ssl=1 1920w, https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?resize=300%2C200&amp;ssl=1 300w, https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?resize=1024%2C683&amp;ssl=1 1024w, https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?resize=768%2C512&amp;ssl=1 768w, https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?resize=1536%2C1024&amp;ssl=1 1536w, https://i0.wp.com/blog.podman.io/wp-content/uploads/2022/12/pexels-tom-fisk-3057963.jpg?resize=600%2C400&amp;ssl=1 600w" sizes="(max-width: 1920px) 100vw, 1920px" /></figure>
+</li></ul></div>
+
+
+
+<div style="height:33px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-2 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:66.66%">
+<main class="wp-block-group site-content is-layout-flow wp-block-group-is-layout-flow" style="margin-top:0;padding-top:0;padding-bottom:80px">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-layout-6 wp-block-group-is-layout-constrained"><div style="text-transform:uppercase" class="taxonomy-category has-text-color has-primary-color wp-block-post-terms"><a href="https://blog.podman.io/category/blog/" rel="tag">Blog</a><span class="wp-block-post-terms__separator">, </span><a href="https://blog.podman.io/category/podman/" rel="tag">Podman</a></div>
+
+<h1 class="wp-block-post-title">Podman 5.0 breaking changes in detail</h1>
+
+
+<div class="wp-block-group post-meta is-content-justification-left is-nowrap is-layout-flex wp-container-core-group-layout-5 wp-block-group-is-layout-flex" style="margin-bottom:30px"><div class="wp-block-post-date"><time datetime="2024-03-22T18:21:36+00:00">March 22, 2024</time></div>
+
+
+<p>·</p>
+
+
+<div class="wp-block-post-author"><div class="wp-block-post-author__content"><p class="wp-block-post-author__name">Paul Holzinger</p></div></div></div>
+</div>
+
+
+<div class="entry-content wp-block-post-content has-global-padding is-layout-constrained wp-block-post-content-is-layout-constrained">
+<p><a href="https://github.com/containers/podman/releases/tag/v5.0.0">Podman 5.0 is out</a>, and with this also comes several breaking changes, but there is no reason to fear them; unless you are using podman machine, chances are you will not even notice them.</p>
+
+
+
+<h1 class="wp-block-heading">Podman Machine</h1>
+
+
+
+<p>The biggest breaking change is a major refactor for the podman machine config files. There is no migration from the old to the new format. On MacOS, support for the qemu provider has also been removed in favor of the more performant Apple hypervisor. For more details on the machine changes, see <a href="https://blog.podman.io/2024/03/migration-of-podman-4-to-podman-5-machines/">this post</a> from Brent Baude.</p>
+
+
+
+<h1 class="wp-block-heading">CNI removal</h1>
+
+
+
+<p>With Podman 4.0, we introduced our new networking backend, netavark, to configure container networking, and since then, we defaulted to netavark over CNI. However, users that updated from 3.X and older were not migrated to netavark and thus they kept using CNI. With 5.0 we will only support netavark going forward due to the increased support burden of trying to work with two tools. CNI support is still guarded behind a build tag (<code>cni</code>) and will be enabled on distributions where we still need it, such as RHEL 9 and FreeBSD, but do not expect any help from upstream maintainers in case of issues with the CNI integration.</p>
+
+
+
+<p>Users can check what backend they use with the <code>podman info --format {{.Host.NetworkBackend}}</code> command, it will either print netavark or cni. If it is netavark, you do not need to worry about anything. Everything will keep working like it did before. For cni, manual intervention may be required. If you do not care about your containers you can run podman system reset which deletes everything. Otherwise check with <code>podman network ls</code> if you have any custom network defined. If not, then the update should not cause many issues, although a reboot is highly recommended to prevent any old temporary network interfaces/firewall rules from interfering with netavark. In case you do have custom networks, they all will be lost on the upgrade, so a manual migration will be needed.</p>
+
+
+
+<p>Assuming the networks were only created via <code>podman network create</code>, then one way to migrate is to save all your old cni configs in the new netavark format by using this one liner:</p>
+
+
+
+<pre class="wp-block-code"><code>for name in $(podman network ls -q); do podman network inspect --format "{{json .}}" "$name" &gt; "$name.json"; done</code></pre>
+
+
+
+<p>This command must be executed while still using Podman 4.*. It will create a bunch of .json files in your current directory, once you updated to Podman 5.0 you simply move the files to the network cofig dir.&nbsp; The default as root would be <code>/etc/containers/networks/</code> and as rootless <code>~/.local/share/containers/storage/networks/</code>. Then confirm that <code>podman network ls</code> shows the networks. Alternatively you could just recreate the networks with the <code>podman network create</code> command.</p>
+
+
+
+<h1 class="wp-block-heading">Cgroups v1 deprecation</h1>
+
+
+
+<p>The support for systems with cgroups v1 is deprecated and will be removed in a future release. Please migrate to cgroups v2. Most distributions have already done so we do not expect many users to be affected by this. On cgroups v1 systems a warning will be printed for each podman command. To turn off the warning set the <code>PODMAN_IGNORE_CGROUPSV1_WARNING</code> environment variable.</p>
+
+
+
+<h1 class="wp-block-heading">Pasta default for rootless networking</h1>
+
+
+
+<p>The default rootless networking tool has been switched from <a href="https://github.com/rootless-containers/slirp4netns">slirp4netns</a> to <a href="https://passt.top/passt/about/#pasta-pack-a-subtle-tap-abstraction">pasta</a>. It should offer better performance and more features. As such you need to make sure you have pasta installed (part of the passt package) if you use rootless containers with networking. While I do not think it is necessarily a breaking change for many, it could be to some users. Rootless containers created with the default network option on 4.X  will continue use slirp4netns as networking tool even after the upgrade as the network mode is set when the container was created so if you want to keep your older containers working you need to make sure slirp4netns is still installed after the upgrade in this case.</p>
+
+
+
+<p>Pasta by default performs no Network Address Translation (NAT) and copies the ip addresses from your main interface into the container namespace. For that, pasta will pick your interface with a default route. If pasta cannot find an interface with the default route, it will select an interface if there is only one interface with a valid route. If you do not have a default route and several interfaces have defined routes, pasta will be unable to figure out the correct interface and it will fail to start. In this case the user would need to specify the interface to use with the -i option to pasta, because Podman launches pasta, the user cannot do this directly. A default set of pasta options can be set in containers.conf, the pasta_options key accepts an array of options (they correspond to the pasta cli options, see the pasta(1) man page).&nbsp;</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;network]
+pasta_options = &#91;"-i", "eth0"]</code></pre>
+
+
+
+<p></p>
+
+
+
+<p>By default it will not be possible to connect to the host via the eth0 (or whatever your main interface is called) ip as the exact same ip is used in the container and thus is not routed to the outside. This can cause problems for users of the host.containers.internal name entry as we rely on the host ip being reachable. For Podman 5.0.0 it is likely that this entry will contain a invalid ip but we are working on a fix for Podman 5.0.1. However, the underlying problem will stay if you only have a single host ip (excluding localhost), as there would be no way to route to that if the container always uses the same ip. One workaround for that is to tell pasta to use a different address in the container. In this case set something like this in containers.conf:</p>
+
+
+
+<pre class="wp-block-code"><code>pasta_options = &#91;"-a", "10.0.2.0", "-n", "24", "-g", "10.0.2.2", "--dns-forward", "10.0.2.3"]</code></pre>
+
+
+
+<p>Also, the default rootless networking tool can be selected in containers.conf under the [network] section with default_rootless_network_cmd, which can be set to pasta or slirp4netns. So, if you run into bugs, you can always revert to slirp4netns.</p>
+
+
+
+<pre class="wp-block-code"><code>&#91;network]
+default_rootless_network_cmd = "slirp4netns"</code></pre>
+
+
+
+<p></p>
+
+
+
+<h1 class="wp-block-heading">Podman Inspect</h1>
+
+
+
+<p>Some fields in the podman inspect JSON output have been changed to better match the Docker output. The Config.Entrypoint field was changed to an array from a string because it can hold multiple args. Previously, those would be space-separated, which was not good for parsing. The Config.StopSignal field is now a string and not an integer. As such, it no longer returns the signal number but rather the signal name. This is better for us humans to read and better for cross-platform compatibility because the signal numbers can differ between platforms. Lastly, the State.Health field will no longer be displayed if the container has no healthcheck defined. The same change applies to the libpod REST API. The difference between the two versions looks something like this:</p>
+
+
+
+<pre class="wp-block-code"><code>23,27d22
+&lt;                "Health": {
+&lt;                     "Status": "",
+&lt;                     "FailingStreak": 0,
+&lt;                     "Log": null
+&lt;                },
+145c140,142
+&lt;                "Entrypoint": "sh",
+---
+&gt;                "Entrypoint": &#91;
+&gt;                     "sh"
+&gt;                ],
+149c146
+&lt;                "StopSignal": 15,
+---
+&gt;                "StopSignal": "SIGTERM",</code></pre>
+
+
+
+<h1 class="wp-block-heading">Podman Pod Inspect</h1>
+
+
+
+<p>The podman pod inspect command now always outputs an array instead of a single object. This was done to improve the consistency with other inspect commands that do the same. If you parse the <code>podman pod inspect</code> JSON, you have to update it to use the first array element.</p>
+
+
+
+<h1 class="wp-block-heading">Container Stats API</h1>
+
+
+
+<p>The libpod stats API was changed to return network stats per interface. The single NetInput and NetOutput fields that contain the sum of all the interfaces were removed, and instead a Network field was added that contains a map/object with the interface name as key, and the per interface statistics as value.</p>
+
+
+
+<pre class="wp-block-code"><code>"Network":{"eth0":{"RxBytes":3740,"RxDropped":0,"RxErrors":0,"RxPackets":42,"TxBytes":3036,"TxDropped":0,"TxErrors":0,"TxPackets":34}}</code></pre>
+
+
+
+<p>This gives much more information to the user.</p>
+
+
+
+<h1 class="wp-block-heading">Podman command line flags</h1>
+
+
+
+<p>The parsing for a number of Podman CLI options which accept arrays has been changed to no longer accept string-delineated lists.</p>
+
+
+
+<p>These options are:</p>
+
+
+
+<ul>
+<li><code>--annotation</code> for <code>podman manifest annotate</code> and <code>podman manifest add</code></li>
+
+
+
+<li><code>--configmap</code>, <code>--log-opt</code> and <code>--annotation</code> for <code>podman kube play</code></li>
+
+
+
+<li><code>--pubkeysfile</code> for <code>podman image trust set</code></li>
+
+
+
+<li><code>--encryption-key</code> and <code>--decryption-key</code> for <code>podman create</code>, <code>podman run</code>, <code>podman push</code> and <code>podman pull</code></li>
+
+
+
+<li><code>--env-file</code> for <code>podman exec</code></li>
+
+
+
+<li><code>--bkio-weight-device</code>, <code>--device-read-bps</code>,<code> --device-write-bps</code>, <code>--device-read-iops</code>, <code>--device-write-iops</code>, <code>--device</code>, <code>--label-file</code>, <code>--chrootdirs</code>, <code>--log-opt</code> and <code>--env-file</code> for <code>podman create</code> and <code>podman run</code></li>
+
+
+
+<li><code>--hooks-dir</code> and <code>--module</code> as global <code>podman</code> options.</li>
+</ul>
+
+
+
+<p>The reason for this change was to allow commas in their values rather the interpreting this as a separator. So for example, if my annotation did contain a comma setting <code>--annotation key=val,withcomma</code>, it would have resulted in an error as it tried to parse <code>withcomma</code> as a second annotation. So unless you relied on the comma as a separator, this change should not affect you. Otherwise you need to give the option multiple times for each of your value, i.e. <code>--annotation key1=val1 --annotation key2=val2</code>.</p>
+</div>
+
+
+<div class="wp-block-group has-global-padding is-layout-constrained wp-container-core-group-layout-8 wp-block-group-is-layout-constrained">
+<div class="wp-block-group is-content-justification-left is-nowrap is-layout-flex wp-container-core-group-layout-7 wp-block-group-is-layout-flex">
+<p>In:</p>
+
+
+<div class="taxonomy-category wp-block-post-terms"><a href="https://blog.podman.io/category/blog/" rel="tag">Blog</a><span class="wp-block-post-terms__separator">, </span><a href="https://blog.podman.io/category/podman/" rel="tag">Podman</a></div></div>
+
+
+<div class="taxonomy-post_tag wp-block-post-terms"><a href="https://blog.podman.io/tag/podman/" rel="tag">podman</a><span class="wp-block-post-terms__separator">, </span><a href="https://blog.podman.io/tag/upstream/" rel="tag">upstream</a></div></div>
+
+
+<section class="site-comments wp-block-template-part">
+<div class="wp-block-group has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:60px">
+<div class="wp-block-comments-query-loop">
+
+
+
+
+
+
+		<div id="respond" class="comment-respond wp-block-post-comments-form">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2024/03/podman-5-0-breaking-changes-in-detail/#respond" style="display:none;">Cancel reply</a></small></h3>			<form id="commentform" class="comment-form">
+				<iframe
+					title="Comment Form"
+					src="https://jetpack.wordpress.com/jetpack-comment/?blogid=213441485&#038;postid=321&#038;comment_registration=0&#038;require_name_email=1&#038;stc_enabled=1&#038;stb_enabled=1&#038;show_avatars=1&#038;avatar_default=mystery&#038;greeting=Leave+a+Reply&#038;jetpack_comments_nonce=72488cbe4c&#038;greeting_reply=Leave+a+Reply+to+%25s&#038;color_scheme=light&#038;lang=en_US&#038;jetpack_version=13.3&#038;show_cookie_consent=10&#038;has_cookie_consent=0&#038;is_current_user_subscribed=0&#038;token_key=%3Bnormal%3B&#038;sig=ee25120651332972b8522d269766d47ad5fe9eb8#parent=https%3A%2F%2Fblog.podman.io%2F2024%2F03%2Fpodman-5-0-breaking-changes-in-detail%2F"
+											name="jetpack_remote_comment"
+						style="width:100%; height: 430px; border:0;"
+										class="jetpack_remote_comment"
+					id="jetpack_remote_comment"
+					sandbox="allow-same-origin allow-top-navigation allow-scripts allow-forms allow-popups"
+				>
+									</iframe>
+									<!--[if !IE]><!-->
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var commentForms = document.getElementsByClassName('jetpack_remote_comment');
+							for (var i = 0; i < commentForms.length; i++) {
+								commentForms[i].allowTransparency = false;
+								commentForms[i].scrolling = 'no';
+							}
+						});
+					</script>
+					<!--<![endif]-->
+							</form>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="" />
+
+		</div>
+</div>
+</section></main>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="padding-left:var(--wp--preset--spacing--x-small);flex-basis:33.33%"><div class="wp-block-template-part">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Subscribe</h2>
+
+
+
+<p>Sign up with your email address to receive updates by email from this website.</p>
+
+
+<div data-test='contact-form' id='contact-form-block-template-part-uniblock//sidebar' class='wp-block-jetpack-contact-form-container '>
+<form action='/2024/03/podman-5-0-breaking-changes-in-detail/#contact-form-block-template-part-uniblock//sidebar' method='post' class='contact-form commentsblock wp-block-jetpack-contact-form' aria-label="Podman 5.0 breaking changes in detail" novalidate>
+
+<div class="wp-block-jetpack-contact-form" style="padding-top:16px;padding-right:16px;padding-bottom:16px;padding-left:16px">
+<div style="" class='grunion-field-name-wrap grunion-field-wrap'  >
+<label
+				for='gblock-template-part-uniblocksidebar-name'
+				class='grunion-field-label name'>Name<span class="grunion-label-required" aria-hidden="true">(required)</span></label>
+<input
+					type='text'
+					name='gblock-template-part-uniblocksidebar-name'
+					id='gblock-template-part-uniblocksidebar-name'
+					value=''
+					class='name  grunion-field' 
+					required aria-required='true' />
+	</div>
+
+
+
+<div style="" class='grunion-field-email-wrap grunion-field-wrap'  >
+<label
+				for='gblock-template-part-uniblocksidebar-email'
+				class='grunion-field-label email'>Email<span class="grunion-label-required" aria-hidden="true">(required)</span></label>
+<input
+					type='email'
+					name='gblock-template-part-uniblocksidebar-email'
+					id='gblock-template-part-uniblocksidebar-email'
+					value=''
+					class='email  grunion-field' 
+					required aria-required='true' />
+	</div>
+
+
+
+<div style="" class='grunion-field-consent-wrap grunion-field-wrap'  >
+<label class='grunion-field-label consent consent-implicit' style=''>		<input aria-hidden='true' type='checkbox' checked name='gblock-template-part-uniblocksidebar-consent' value='Yes' style='display:none;' /> 
+		By submitting your information&#044; you&#039;re giving us permission to email you. You may unsubscribe at any time.</label>
+<div class='clear-form'></div>
+	</div>
+
+
+<div class="wp-block-jetpack-button wp-block-button" style=""><button class="wp-block-button__link" style="" data-id-attr="placeholder" type="submit">Subscribe</button></div></div>
+		<input type='hidden' name='contact-form-id' value='block-template-part-uniblock//sidebar' />
+		<input type='hidden' name='action' value='grunion-contact-form' />
+		<input type='hidden' name='contact-form-hash' value='a1967839efa15543a1accc4bde61c95f3339f0c6' />
+</form>
+</div>
+
+
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#6d6d7845;color:#6d6d7845"/>
+
+
+
+<div style="height:64px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Latest news</h2>
+
+
+<ul class="wp-block-latest-posts__list wp-block-latest-posts"><li><a class="wp-block-latest-posts__post-title" href="https://blog.podman.io/2024/04/hack-podman-volumes-and-ansible-template-idempotency/">Hack: Podman volumes and Ansible template idempotency</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="https://blog.podman.io/2024/03/the-dreaded-vfkit-exit-1/">the dreaded vfkit exit 1</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="https://blog.podman.io/2024/03/podman-5-0-has-been-released/">Podman 5.0 has been released!</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="https://blog.podman.io/2024/03/podman-5-0-breaking-changes-in-detail/">Podman 5.0 breaking changes in detail</a></li>
+<li><a class="wp-block-latest-posts__post-title" href="https://blog.podman.io/2024/03/migration-of-podman-4-to-podman-5-machines/">Migration of Podman 4 to Podman 5 machines</a></li>
+</ul>
+
+
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#6d6d784f;color:#6d6d784f"/>
+
+
+
+<div style="height:64px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Categories</h2>
+
+
+<ul class="wp-block-categories-list wp-block-categories">	<li class="cat-item cat-item-20"><a href="https://blog.podman.io/category/announcement/">Announcement</a> (16)
+</li>
+	<li class="cat-item cat-item-18"><a href="https://blog.podman.io/category/articles/">Articles</a> (8)
+</li>
+	<li class="cat-item cat-item-23"><a href="https://blog.podman.io/category/blog/">Blog</a> (30)
+</li>
+	<li class="cat-item cat-item-27"><a href="https://blog.podman.io/category/buildah/">Buildah</a> (2)
+</li>
+	<li class="cat-item cat-item-25"><a href="https://blog.podman.io/category/podman/">Podman</a> (33)
+</li>
+	<li class="cat-item cat-item-26"><a href="https://blog.podman.io/category/podman-desktop/">Podman Desktop</a> (1)
+</li>
+	<li class="cat-item cat-item-13"><a href="https://blog.podman.io/category/releases/">Releases</a> (9)
+</li>
+	<li class="cat-item cat-item-19"><a href="https://blog.podman.io/category/tutorials/">Tutorials</a> (5)
+</li>
+	<li class="cat-item cat-item-1"><a href="https://blog.podman.io/category/uncategorized/">Uncategorized</a> (5)
+</li>
+</ul>
+
+
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#6d6d784f;color:#6d6d784f"/>
+
+
+
+<div style="height:64px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+
+
+
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h2 class="wp-block-heading">Search</h2>
+
+
+<form role="search" method="get" action="https://blog.podman.io/" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search"    ><label class="wp-block-search__label screen-reader-text" for="wp-block-search__input-1" >Search</label><div class="wp-block-search__inside-wrapper " ><input class="wp-block-search__input" id="wp-block-search__input-1" placeholder="Enter your keywords" value="" type="search" name="s" required /><button aria-label="Search" class="wp-block-search__button wp-element-button" type="submit" >Search</button></div></form>
+
+
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#6d6d784f;color:#6d6d784f"/>
+
+
+
+<div style="height:64px" aria-hidden="true" class="wp-block-spacer"></div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+<footer class="site-footer wp-block-template-part">
+<div class="wp-block-group alignfull is-style-default has-white-color has-header-footer-background-color has-text-color has-background has-link-color has-small-font-size wp-elements-87f19e9b7a9956311bf6b442c867cf71 has-global-padding is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:0px;padding-top:40px;padding-bottom:40px">
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-3 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h2 class="wp-block-heading has-tertiary-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--50)">Containers</h2>
+
+
+
+<p>The Containers Community creates a collection of open source tools that create, configure, and work with containers. This is our publication where you can read articles, tutorials, and release announcements about our tools.</p>
+
+
+
+<ul class="wp-block-social-links has-icon-color is-style-logos-only is-content-justification-left is-layout-flex wp-container-core-social-links-layout-1 wp-block-social-links-is-layout-flex"><li style="color: #ffffff; " class="wp-social-link wp-social-link-twitter has-white-color wp-block-social-link"><a href="https://twitter.com/podman_io" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M22.23,5.924c-0.736,0.326-1.527,0.547-2.357,0.646c0.847-0.508,1.498-1.312,1.804-2.27 c-0.793,0.47-1.671,0.812-2.606,0.996C18.324,4.498,17.257,4,16.077,4c-2.266,0-4.103,1.837-4.103,4.103 c0,0.322,0.036,0.635,0.106,0.935C8.67,8.867,5.647,7.234,3.623,4.751C3.27,5.357,3.067,6.062,3.067,6.814 c0,1.424,0.724,2.679,1.825,3.415c-0.673-0.021-1.305-0.206-1.859-0.513c0,0.017,0,0.034,0,0.052c0,1.988,1.414,3.647,3.292,4.023 c-0.344,0.094-0.707,0.144-1.081,0.144c-0.264,0-0.521-0.026-0.772-0.074c0.522,1.63,2.038,2.816,3.833,2.85 c-1.404,1.1-3.174,1.756-5.096,1.756c-0.331,0-0.658-0.019-0.979-0.057c1.816,1.164,3.973,1.843,6.29,1.843 c7.547,0,11.675-6.252,11.675-11.675c0-0.178-0.004-0.355-0.012-0.531C20.985,7.47,21.68,6.747,22.23,5.924z"></path></svg><span class="wp-block-social-link-label screen-reader-text">Twitter</span></a></li></ul>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h3 class="wp-block-heading has-tertiary-color has-text-color has-small-font-size" style="margin-bottom:var(--wp--preset--spacing--50)">Community</h3>
+
+
+
+<ul>
+<li><a href="https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md" data-type="URL" data-id="https://github.com/containers/common/blob/main/CODE-OF-CONDUCT.md">Community Code of Conduc</a>t</li>
+
+
+
+<li><a href="https://github.com/containers/common/blob/main/CONTRIBUTING.md" data-type="link" data-id="https://github.com/containers/common/blob/main/CONTRIBUTING.md">Contributor Guidelines</a></li>
+
+
+
+<li><a href="https://github.com/containers">Our GitHub page</a></li>
+
+
+
+<li><a href="https://podman.io/community/">Join our community</a></li>
+
+
+
+<li><a href="https://github.com/containers/podman.io/issues">Found a bug in this website?</a></li>
+</ul>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h3 class="wp-block-heading has-tertiary-color has-text-color has-small-font-size" style="margin-bottom:var(--wp--preset--spacing--50)">Sitemap</h3>
+
+
+<ul class="wp-block-page-list"><li class="wp-block-pages-list__item"><a class="wp-block-pages-list__item__link" href="https://blog.podman.io/archives/">Archives</a></li><li class="wp-block-pages-list__item"><a class="wp-block-pages-list__item__link" href="https://blog.podman.io/buildah/">buildah</a></li></ul></div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+<h3 class="wp-block-heading has-tertiary-color has-text-color has-small-font-size" style="margin-bottom:var(--wp--preset--spacing--50)">Subscribe to our mailing list.</h3>
+
+
+
+<p>Sign up with your email address to receive regular discussion emails about our projects:</p>
+
+
+
+<p class="has-link-color wp-elements-3e71b908776be43e061df907410da54e" style="font-style:normal;font-weight:600"><a href="https://podman.io/community/#mailing-list">Containers Community Mailing List</a></p>
+
+
+
+<p></p>
+</div>
+</div>
+
+
+
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#ffffff24;color:#ffffff24"/>
+
+
+
+<div class="wp-block-group is-content-justification-space-between is-layout-flex wp-container-core-group-layout-16 wp-block-group-is-layout-flex">
+<p class="has-tertiary-color has-text-color">Copyright © 2022 Containers Org</p>
+
+
+
+<p class="has-tertiary-color has-text-color">Powered by WordPress. Based on the Uniblock theme by <a rel="noreferrer noopener" href="https://www.wpzoom.com" data-type="URL" data-id="https://www.wpzoom.com" target="_blank">WPZOOM</a>. Designed by Máirin Duffy</p>
+</div>
+</div>
+</footer></div>
+	<script type="text/javascript">
+		function genesisBlocksShare( url, title, w, h ){
+			var left = ( window.innerWidth / 2 )-( w / 2 );
+			var top  = ( window.innerHeight / 2 )-( h / 2 );
+			return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=600, height=600, top='+top+', left='+left);
+		}
+	</script>
+	<script src="https://c0.wp.com/c/6.4.3/wp-includes/js/comment-reply.min.js" id="comment-reply-js" async data-wp-strategy="async"></script>
+<script src="https://blog.podman.io/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/blocks/view.js?minify=false&amp;ver=3c1dafb8321ff5c9a4a9" id="jp-forms-blocks-js"></script>
+<script src="https://blog.podman.io/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-image-cdn/dist/image-cdn.js?minify=false&amp;ver=132249e245926ae3e188" id="jetpack-photon-js"></script>
+<script id="wp-block-template-skip-link-js-after">
+	( function() {
+		var skipLinkTarget = document.querySelector( 'main' ),
+			sibling,
+			skipLinkTargetID,
+			skipLink;
+
+		// Early exit if a skip-link target can't be located.
+		if ( ! skipLinkTarget ) {
+			return;
+		}
+
+		/*
+		 * Get the site wrapper.
+		 * The skip-link will be injected in the beginning of it.
+		 */
+		sibling = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! sibling ) {
+			return;
+		}
+
+		// Get the skip-link target's ID, and generate one if it doesn't exist.
+		skipLinkTargetID = skipLinkTarget.id;
+		if ( ! skipLinkTargetID ) {
+			skipLinkTargetID = 'wp--skip-link--target';
+			skipLinkTarget.id = skipLinkTargetID;
+		}
+
+		// Create the skip link.
+		skipLink = document.createElement( 'a' );
+		skipLink.classList.add( 'skip-link', 'screen-reader-text' );
+		skipLink.href = '#' + skipLinkTargetID;
+		skipLink.innerHTML = 'Skip to content';
+
+		// Inject the skip link.
+		sibling.parentElement.insertBefore( skipLink, sibling );
+	}() );
+	
+</script>
+<script src="https://blog.podman.io/wp-content/plugins/genesis-blocks/dist/assets/js/dismiss.js?ver=1711551705" id="genesis-blocks-dismiss-js-js"></script>
+<script src="https://stats.wp.com/e-202415.js" id="jetpack-stats-js" data-wp-strategy="defer"></script>
+<script id="jetpack-stats-js-after">
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"213441485\",\"post\":\"321\",\"tz\":\"0\",\"srv\":\"blog.podman.io\",\"j\":\"1:13.3\"}") ]);
+_stq.push([ "clickTrackerInit", "213441485", "321" ]);
+</script>
+		<script type="text/javascript">
+			(function () {
+				const iframe = document.getElementById( 'jetpack_remote_comment' );
+								const watchReply = function() {
+					// Check addComment._Jetpack_moveForm to make sure we don't monkey-patch twice.
+					if ( 'undefined' !== typeof addComment && ! addComment._Jetpack_moveForm ) {
+						// Cache the Core function.
+						addComment._Jetpack_moveForm = addComment.moveForm;
+						const commentParent = document.getElementById( 'comment_parent' );
+						const cancel = document.getElementById( 'cancel-comment-reply-link' );
+
+						function tellFrameNewParent ( commentParentValue ) {
+							const url = new URL( iframe.src );
+							if ( commentParentValue ) {
+								url.searchParams.set( 'replytocom', commentParentValue )
+							} else {
+								url.searchParams.delete( 'replytocom' );
+							}
+							if( iframe.src !== url.href ) {
+								iframe.src = url.href;
+							}
+						};
+
+						cancel.addEventListener( 'click', function () {
+							tellFrameNewParent( false );
+						} );
+
+						addComment.moveForm = function ( _, parentId ) {
+							tellFrameNewParent( parentId );
+							return addComment._Jetpack_moveForm.apply( null, arguments );
+						};
+					}
+				}
+				document.addEventListener( 'DOMContentLoaded', watchReply );
+				// In WP 6.4+, the script is loaded asynchronously, so we need to wait for it to load before we monkey-patch the functions it introduces.
+				document.querySelector('#comment-reply-js')?.addEventListener( 'load', watchReply );
+
+				
+				window.addEventListener( 'message', function ( event ) {
+					if ( event.origin !== 'https://jetpack.wordpress.com' ) {
+						return;
+					}
+					iframe.style.height = event.data + 'px';
+				});
+			})();
+		</script>
+		</body>
+</html>
