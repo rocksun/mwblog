@@ -1,7 +1,7 @@
 
 <!--
 title: Google添加Gemini到数据库，加快代码开发和迁移
-cover: https://images.idgesg.net/images/article/2018/07/google-next18_day-0-7532-100765544-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 预计 Gemini 在 Google Cloud 数据库产品中的可用性将帮助开发者比去年集成的 Duet AI 更快地编写代码和迁移。
