@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes上的高性能计算 (HPC)
-cover: https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/1ddf7a27-490a-4884-bbfc-3036e3f3dbf6/Nanoscience_High-Performance_Computing_Facility.jpg?t=1712250549
+cover: ./cover.png
 -->
 
 机器学习 (ML) 工程在过去几年已演变为一门学科和职业道路。软件工程师构建 Web、移动和嵌入式体验，而 ML 工程师提供模型版本、推理和整个 RAG 应用程序。
