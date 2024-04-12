@@ -1,0 +1,69 @@
+
+<!--
+title: 使用微分段增强Kubernetes网络安全
+cover: https://cdn.thenewstack.io/media/2024/04/1bae51e9-boxes.jpg
+-->
+
+微分段使用 Kubernetes 网络策略来定制安全措施，以满足特定的组织需求和合规性要求。
+
+> 译自 [Enhancing Kubernetes Network Security with Microsegmentation](https://thenewstack.io/enhancing-kubernetes-network-security-with-microsegmentation/)，作者 Dhiraj Sehgal。
+
+微分段代表了一种变革性方法，用于增强 Kubernetes 环境中的网络安全。此技术将网络划分为更小、更独立的段，从而可以精细控制流量并显著增强安全态势。微分段的核心是利用 Kubernetes [网络策略](https://thenewstack.io/networking/)来隔离工作负载、应用程序、命名空间和整个集群，根据特定的组织需求和合规性要求定制安全措施。
+
+## 微分段策略的精髓
+
+### 可扩展性和灵活性
+
+通过网络策略进行微分段的基本优势在于其可扩展性和灵活性。Kubernetes 的动态、基于标签的选择过程有助于添加新段，而不会损害现有的网络基础设施，使组织能够无缝适应不断变化的安全环境。
+
+![对资产进行标记是微分段成功的关键](https://cdn.thenewstack.io/media/2024/04/8ba45bf0-image1.png)
+
+*对资产进行标记是微分段成功的关键。*
+
+### 防止威胁横向移动
+
+工作负载隔离是微分段的关键组成部分，它强调了通过仅允许必需且经过批准的通信来保护命名空间或租户中的各个微服务的重要性。这最大程度地减少了攻击面，并防止了未经授权的横向移动。
+
+### 命名空间和租户隔离
+
+命名空间隔离通过将应用程序隔离到唯一的命名空间中来进一步增强安全性，确保操作独立性并减少潜在安全漏洞的影响。类似地，租户隔离满足了多租户 [环境通过保护共享 Kubernetes 基础设施](https://thenewstack.io/a-security-checklist-for-cloud-native-kubernetes-environments/) 的需求，从而保护租户免受彼此的影响，并减轻与基础设施级攻击相关的风险。
+
+## 在 Kubernetes 中实施微分段
+
+实施微分段涉及几个关键步骤，首先是识别 [安全域和定义策略模型](https://thenewstack.io/tutorial-create-a-kubernetes-pod-security-policy/)，该模型反映了这些域内的特定通信模式。域可以是组织、工作负载类型或区域。
+
+此方法确保只有明确允许的流量才能通过网络，如域中定义的那样，通过实施“默认拒绝”立场，这意味着所有流量都被阻止，除非明确允许。
+
+![使用安全域方法构建策略可提供纵深防御](https://cdn.thenewstack.io/media/2024/04/7129aef7-image2a.png)
+
+*使用安全域方法构建策略可提供纵深防御。*
+
+以下是一些加速 Kubernetes 集群中微分段部署的技巧：
+
+- **识别端点**：自动检测属于标准互联网工程任务组 (IETF) 公共和专用网络名称的 Pod 和节点的网络标识 (IP)，并将这些标识显示为图形上的实体。
+- **高级策略编写**：提供策略排序/优先级、拒绝规则和更灵活的匹配规则，将策略从 Pod 扩展到 VM 和主机接口。
+- **生态系统可扩展性**：支持[在第 5-7 层保护应用程序](https://thenewstack.io/the-osi-7-layer-model-can-help-define-enterprise-application-security/)，提供基于工作负载标识的匹配条件。
+- **在组织护栏内实施策略**：允许组织实施对企业安全不可协商的高优先级策略。这确保始终遵守 NIST、GDPR、PCI 和 SOC 2 等关键框架，并为流量执行提供层次结构。
+
+![基于组织的策略实施有助于团队协作并保持独立性。](https://cdn.thenewstack.io/media/2024/04/7f7dd2bf-image3.png)
+
+*基于组织的策略实施有助于团队协作并保持独立性。*
+
+- **策略建议**：根据工作负载流量，提供自动工作负载隔离，从而简化有效网络安全策略的创建和实施。
+- **声明式微分段**：将微分段部署为代码，允许管理员使用 YAML 或通过 UI 定义安全意图，并使用标签选择器根据工作负载标识应用这些意图。
+
+![将策略编写为代码并向开发人员和平台团队推出是强制性 GitOps 要求。](https://cdn.thenewstack.io/media/2024/04/0e71cad1-image4.png)
+
+*将策略编写为代码以及为开发人员和平台团队进行推出是 GitOps 的强制性要求。*
+
+* **动态微分段**:根据工作负载的标签动态调整，而不是静态 IP 地址，从而增强安全性与灵活性。
+
+### 优势和影响
+
+- **改善的安全态势**：启用更精细、灵活和动态的微分段可以帮助组织更好地[保护其 Kubernetes 环境](https://thenewstack.io/protecting-kubernetes-data-the-stateful-application-edition/)免受威胁。
+- **运营效率**：分层策略管理和 UI 工具简化了微分段的复杂策略结构的管理，使团队更容易实施和维护安全策略。
+- **合规性和风险管理**：高级策略管理功能有助于满足合规性要求并更有效地管理风险，方法是确保只允许授权的流量，并阻止潜在的有害流量。
+
+## 结论
+
+最终，使用 Kubernetes 和 Calico 进行微分段代表了网络安全的一种战略方法，它提供了对网络流量的可扩展、灵活和精确控制。通过实施微分段，组织可以显著增强其安全态势、保护关键工作负载并满足严格的合规性要求，同时保持在现代云原生环境中至关重要的敏捷性和可扩展性。
