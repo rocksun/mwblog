@@ -1,6 +1,6 @@
 
 <!--
-title: 内存不足时如何获得峰值性能
+title: 内存不足时如何获得巅峰性能
 cover: https://cdn.thenewstack.io/media/2024/04/ab569452-buffalo.jpg
 -->
 
