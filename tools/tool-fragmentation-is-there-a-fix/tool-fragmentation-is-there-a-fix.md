@@ -6,9 +6,6 @@ cover: https://cdn.thenewstack.io/media/2024/04/3160e525-digital-workspace-fragm
 
 现代工具让我们比以往任何时候都更容易、更好地获取数据和知识。那么，为什么我们感觉如此支离破碎、注意力不集中且效率低下？
 
-
-![工具碎片化——有办法解决吗？的特色图片](https://cdn.thenewstack.io/media/2024/04/3160e525-digital-workspace-fragmentation-chatbot2-1024x576.jpg)
-
 在我们的数字时代，工作空间由一系列必备工具提供支持：用于对话的 Slack 和 [Microsoft](https://news.microsoft.com/?utm_content=inline+mention) Teams；用于文档管理的 Notion、
 
 然而，尽管这些工具有其优势，但它们通常独立运行，创建了[阻碍生产力](https://thenewstack.io/productivity-paradox-productivity-in-the-age-of-knowledge-work/)并混淆用户体验的数字孤岛。我们发现自己身处一个界面迷宫中，难以共享信息或跟踪进度，这会分散我们的主要目标。
