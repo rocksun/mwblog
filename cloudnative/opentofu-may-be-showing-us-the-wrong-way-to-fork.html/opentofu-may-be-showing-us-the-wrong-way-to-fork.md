@@ -1,7 +1,7 @@
 
 <!--
 title: OpenTofu可能向我们展示了错误的fork方式
-cover: https://images.idgesg.net/images/idge/imported/imageapi/2022/06/14/10/wrong_way_road_sign_neonbrand_cc0_via_unsplash_1200x800-100753508-large-100929050-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 不同意许可证？分叉项目，但不要直接拿走代码并声称它一直是公开可用的。比较 HashiCorp 代码和许可证与 OpenTofu 的版本。
