@@ -1,7 +1,7 @@
 
 <!--
 title: Python中`__init__.py`文件的作用是什么？
-cover: https://miro.medium.com/v2/resize:fit:1200/1*XBdi0a1vke5_EOq7FNA_eQ.png
+cover: ./cover.png
 -->
 
 在 Python 中，`__init__.py` 文件是一个特殊文件，在包中扮演着几个重要的角色。在本教程中，我们将解释…
