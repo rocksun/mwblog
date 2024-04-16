@@ -157,14 +157,14 @@ docker run -d -p 3000:3000 --name=grafana grafana/grafana
 
 有关其他安装方法和更详细的说明，请参阅 [Grafana 文档](https://grafana.com/docs/grafana/latest/installation/)。
 
-## 添加 Prometheus 作为数据源
+### 添加 Prometheus 作为数据源
 
 - 在 Grafana 中，导航至 **Connections** > **Data Sources**。
 - 单击 **Add data source** 并选择 **Prometheus**。
 - 在设置中，输入您的 Prometheus URL，例如，`http://<your_prometheus_host>`，以及任何其他必需的详细信息。
 - 选择 **Save & Test**。
 
-## 探索您的指标
+### 探索您的指标
 
 1. 转到 **Explore** 页面。
 
