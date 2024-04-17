@@ -1,0 +1,73 @@
+
+<!--
+title: 使用SQL查询Apache Kafka
+cover: https://cdn.thenewstack.io/media/2024/04/91a6c0b1-kafka-postgresql.png
+-->
+
+数据用户长期以来一直寻求直接在 Kafka 中查询数据的途径，而我们正接近于通过 SQL 找到这种缺失的魔力。
+
+> 译自 [Query Apache Kafka with SQL](https://thenewstack.io/query-apache-kafka-with-sql/)，作者 Stéphane Derosiaux。
+
+Apache Kafka 在大型组织中广泛用于存储和交换数据，但它有一个大问题：你无法轻松查询这些数据。必须始终将数据复制到常规数据库才能对其进行查询。这会减慢数据创新，并迫使企业构建可能发生任何事情的管道。
+
+使组织中的每个团队成员都能使用他们想要的解决方案访问和利用实时数据，是一种变革性策略，它推动了广泛采用和运营效率。这不仅赋予了开发人员权力，还赋予了业务分析师、数据科学家和构建数据驱动型文化的决策者权力。
+
+## Kafka 仅仅用于流式 ETL 吗？
+
+Kafka 在 2011 年开源，当时大型数据库和大数据盛行。从那时起，我们已经了解了很多关于使用这种新方法在数据移动和转换时保持数据动态的信息。
+
+如今，Kafka 主要用于将数据可靠地移动到每个人都可以使用的地方。这可能是一个数据库、数据仓库或数据湖，用户可以对其进行查询（例如 PostgreSQL、ClickHouse、Elasticsearch 或 [Snowflake](https://www.snowflake.com/?utm_content=inline+mention)），分析团队可以使用它，并且可以用来构建仪表盘和机器学习模型。Kafka 通常仅用于其实时功能，并且不包含历史数据——Kafka 中的默认数据保留时间只有几天，之后数据将自动删除。
+
+Kafka 与流处理技术（如 Kafka Streams、Apache Spark 或 Apache Flink）结合使用，以进行转换、过滤数据、使用用户数据对其进行丰富，并可能在各种来源之间进行一些联接。Kafka 非常适合构建流式提取、转换和加载 (ETL)，它可以实时捕获、转换和将数据加载到另一个地方，这与在计划的基础上（每 X 分钟）定义的传统批处理相反。
+
+一切都很好，但 Kafka 有一个很大的缺点：它无法使数据可访问。
+
+## Kafka 对于查询来说不是很好
+
+Apache Kafka 通常是组织中所有数据在移入其他应用程序之前创建的地方。然后所有应用程序通过 Kafka 进行通信并生成数据。但不知何故，这些数据对于包括数据科学家、分析师和产品所有者在内的非开发人员来说几乎无法访问。
+
+即使对于开发人员来说，探索和处理数据也不是一件容易的事，因为没有像 [SQL](https://roadmap.sh/sql) 这样的简单语言来用 Kafka 讨论数据。你通常需要外部工具（如 [Conduktor](https://www.conduktor.io/)）或终端中的高级命令行工具来查看和分析数据——但这只能做到这一步。
+
+并非组织中的每个人都是精通技术的，而组织希望为每个人提供一致的体验，以便平等地进行交流。例如，他们希望整个团队，无论他们对技术有多么熟悉，都能够在无需学习复杂的新工具的情况下开展新项目。
+
+在 Kafka 领域，组织依赖数据工程团队来构建必要的管道和 ETL，以使数据可访问。这些团队还使用 Debezium 等变更数据捕获 (CDC) 工具将数据移出 Kafka，这会稀释数据所有权、安全性和责任。
+
+## 但 Apache Kafka 不是数据库……是吗？
+
+正如 Martin Kleppmann 在 2018 年 Kafka 峰会旧金山分会上所讨论的那样：“[Kafka 是一个数据库吗？](https://www.youtube.com/watch?v=v2RJQELoM6Y)”：Kafka 可以通过构建流处理器来实现数据库的所有原子性、一致性、隔离性和持久性 (ACID) 要求。Kafka 还完全支持一次性事务，Apache 的 [KIP-939](https://cwiki.apache.org/confluence/display/KAFKA/KIP-939%3A+Support+Participation+in+2PC) 提议正在出现，以支持两阶段提交 (2PC) 协议，以便与其他数据库进行分布式事务。
+
+有趣的是，Kleppman 得出的结论是“肯定没有临时查询”，并且你必须将数据移到真正的数据库中才能处理此类问题。六年后，这是仍然存在的一个警告，并且减慢了所有想要使用 Kafka 的人的速度。
+
+## 处理数据混乱
+
+组织在 Kafka 和数据库中拥有大量数据。数据的质量各不相同。规则并非处处相同。没有人对所有事情都有相同的看法。很难知道数据在哪里或真实来源在哪里。这就是我们所说的数据混乱。
+
+将数据从 Kafka 复制到数据库会增加一层复杂性。由于安全模型根本不同，数据的拥有权和安全性变得脆弱，并且可能不一致。[Kafka](https://thenewstack.io/protect-sensitive-data-and-prevent-bad-practices-in-apache-kafka/)和数据库在数据保护方面有不同的方法。这种不匹配很难修复，尤其是在添加数据屏蔽或字段级加密等要求时。
+
+数据泄露事件突显了生态系统中技能、一致性和成熟度的不足。例如，法国政府在 3 月份发生了一次违规行为，[泄露了多达 4300 万人的数据](https://www.theregister.com/2024/03/14/mega_data_breach_at_french/)。
+
+数据产品的快速增长加剧了组织内的数据版图的分散性。这种激增创造了数据孤岛，每个孤岛各自独立运行，稀释统一数据战略的潜力。数据管道项目的临时开发在内聚治理框架之外进行，导致组织易受不准确性和不一致性的影响。
+
+## SQL 是否是终局？
+
+SQL 是一款非常著名且流行的编程语言，在 [TIOBE 指数](https://www.tiobe.com/tiobe-index/sql/)中排名第 6 位，全球 40% 的开发人员都在使用它——其中有 78% 的人经常在工作中使用 SQL。
+
+[PostgreSQL](https://thenewstack.io/a-cheat-sheet-to-database-access-control-postgresql/)是领先的数据库协议，许多供应商都希望与之兼容。Grafana、Metabase、Tableau、DBeaver 和 [Apache Superset](https://thenewstack.io/explore-and-visualize-data-the-apache-superset-way/) 等工具都可以连接到提供与 PostgreSQL 兼容的端点的服务。拥有为任何主题提供此类端点的 Kafka 平台能够使用这些工具进行数据可视化和直接内省。
+
+SQL 为构建统一的数据生态系统提供了坚实的基础，而 Kafka 作为其核心中的单一事实来源。PostgreSQL 以其广泛的兼容性和易于上手而脱颖而出，这要归功于许多易于接近的供应商。其开源特性、与开发环境无缝集成以及直接的设置和管理，使其成为可扩展性、多用性、灵活性和健壮性的首选数据库选择。
+
+通过对 Kafka 进行现代化改造以纳入 SQL 功能，我们可以显著减少对数据管道和复制的需求。它还将带来整体效率、成本效率、更简单的治理以及更少的安全故障。
+
+这样做还能让数据工程师直接融入产品团队，而不是让他们孤立在自己的筒仓中，拥有自己的数据路线图，从而加强开发人员和分析团队之间的协作。
+
+## AI 和机器学习 (ML) 的进一步发展
+
+SQL 非常适合即席分析、仪表盘或构建数据管道。但它并非最适合处理数据科学和 AI/ML 所需的海量数据。这是 Apache Parquet 和 Apache Iceberg 等技术发挥作用的地方。
+
+它们提供了基于列的系统和下推式筛选器优化，可有效查询大量数据。许多数据科学家喜欢它们，因为它们可以使用 Apache Spark、Pandas、Dask 和 Trino 等工具进行查询。这改进了数据可访问性，并简化了构建 AI/ML 应用程序的方式。
+
+正如我们在对 [Kafka 峰会伦敦 2024 年](https://www.conduktor.io/blog/kafka-summit-london-2024/)的回顾中所分享的，随着组织寻求以多种格式在 Kafka 中公开数据，Kafka 作为单一事实来源的能力正在成为现实。Confluent 宣布了 [TableFlow](https://www.confluent.io/en-gb/blog/introducing-tableflow/)，它可以无缝地将 Apache Kafka 主题具体化为 Apache Iceberg 表格，而无需构建和维护数据管道。
+
+## 铺平解放数据之路
+
+Conduktor 和 Kafka 具有支持实时数据需求的功能，可以利用 SQL 处理联机分析处理 (OLAP) 和业务需求。他们还通过 Parquet 和 Iceberg 等文件格式来满足人工智能/机器学习要求。通过这些途径，他们正在为数据真正可访问并针对各种消费偏好进行优化的那一天铺平道路。构建真正的产品数据并消除跨不同数据存储的技术重复的需求，将导致更有效率和更安全的的 data 数据生态系统。
