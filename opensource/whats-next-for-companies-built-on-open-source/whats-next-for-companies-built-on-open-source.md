@@ -1,6 +1,6 @@
 
 <!--
-title: 未来的开源公司要怎么办？
+title: 开源公司以后要怎么办？
 cover: https://cdn.thenewstack.io/media/2024/04/78e9352d-what-now-open-source-2.jpg
 -->
 
