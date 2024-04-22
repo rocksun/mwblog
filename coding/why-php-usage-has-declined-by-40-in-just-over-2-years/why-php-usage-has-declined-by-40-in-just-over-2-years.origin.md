@@ -1,0 +1,35 @@
+# Why PHP Usage Has Declined by 40% in Just Over 2 Years
+![Featued image for: Why PHP Usage Has Declined by 40% in Just Over 2 Years](https://cdn.thenewstack.io/media/2024/04/7418de50-getty-images-sff7fr7g7fo-unsplash-1024x683.jpg)
+The latest monthly update of the
+[TIOBE index](https://www.tiobe.com/tiobe-index/) asks, “Is PHP losing its mojo?” For the month of April, TIOBE’s programming language index ranked PHP 17th, “its lowest position ever.”
+It’s not just TIOBE that shows PHP declining in popularity. In the annual Stack Overflow developer survey, PHP has fallen from 30.7% in 2018 (i.e. the percentage of respondents that use PHP) to 18.58% in 2023. The
+[JetBrains developer ecosystem survey](https://www.jetbrains.com/lp/devecosystem-2023/languages/#proglang7years__2) shows a similar drop-off, from 30% in 2017 to 18% in 2023. This is particularly notable, since JetBrains (along with WordPress custodian company, Automattic) is among the biggest sponsors of PHP, as I’ll get into shortly.
+The drop-off is perhaps most starkly illustrated
+[in BuiltWith](https://trends.builtwith.com/framework/PHP), where the PHP popularity growth line started going down towards the end of 2020.
+The last time
+[I wrote about PHP, in November 2021](https://thenewstack.io/php-has-survived-for-26-years-because-it-keeps-evolving/), the red line (polling the top 1 million websites) was still above 30,000. Now, two and a quarter years later, it is closer to the 15,000 mark — although the actual figure BuiltWith quotes, as I write this, is 18.19%. That 18% mark aligns better with the Stack Overflow and JetBrains surveys, so we can confidently say that PHP has dropped from about 30% popularity among developers to 18% now. That’s a **40% decrease in just over two years**.
+So what gives? What has changed so much in the past couple of years to make PHP an also-ran in web programming languages?
+## WordPress Now ‘JavaScript-First’
+Arguably the biggest reason for PHP’s decline is that WordPress, by far the web’s most popular content management system, is moving away from PHP and into JavaScript. Matt Mullenweg, the co-creator of WordPress and CEO of Automattic, said as much
+[at WordCamp Asia 2024](https://www.youtube.com/watch?v=EOF70YJLC5U), held last month in Taipei, Taiwan.
+“I believe the majority of new code in WordPress is Javascript now, and has been for some time,” he said, in response to an audience question. “So in many ways, you could argue, by what’s the majority of activity happening, that Gutenberg has made us sort of a JavaScript-first project.”
+Yes, you read that correctly: Matt Mullenweg said that WordPress is now a “JavaScript-first project.” Gutenberg, the company’s controversial new block-based user interface, is the main reason for that. He admitted, though, that the shift from PHP to JavaScript “was not easy.”
+That’s not to say that WordPress isn’t still heavily reliant on PHP. I would know, since I am typing this post into WordPress at a URL ending “/wp-admin/post-new.php.” But it’s clearly no longer the future at WordPress.
+Mullenweg also talked about further improvements he’d like to see in WordPress — and it was striking that he views at least some of this through a JavaScript lens now. For instance, PHP is a server-side scripting language (meaning the code is usually processed on a web server), but Mullenweg would like WordPress to do more on the client-side using JavaScript.
+“Gosh, I feel like we should be doing so much more processing on the client side,” he mused, “and maybe even pushing some of that [processing to the client] if I’m editing something. Maybe that’s faster to do in the browser, in the JavaScript, which now has incredible virtual machines and really fast processors, than it is trying to do that on the server side.”
+Towards the end of his presentation, Mullenweg was asked how he felt about the Gutenberg project and the difficulty that developers have experienced contributing to it. In particular, the developer who asked this question wanted to “reduce the level of abstraction” in Gutenberg.
+“I think the development, honestly, is something that you’ve got to learn,” Mullenweg replied. “And I think that the way that Gutenberg does development and the JavaScript-first [approach] is kind of the future of most web development. It is unfamiliar for me as well, by the way — it’s not what I learned originally. And there are probably some abstractions that we could simplify, but by and large, I would dive into it.”
+He added that Gutenberg — and presumably, the shift to JavaScript — is not yet complete. “When we started Gutenberg, we said it was going to be a 10-year project,” he said, “and so it feels like we’re 60 to 70% of the way there.”
+## Meanwhile, at the PHP Foundation…
+So the WordPress project, the largest reason why PHP is still prevalent across the web, is moving towards the JavaScript world. That is almost certainly discouraging younger developers from adopting PHP, and forcing other developers — such as those devoted to WordPress customers — to move away from PHP and into JavaScript.
+However, there is still a relatively large group of developers using PHP — 18% of two large developer surveys isn’t nothing. And that’s where the PHP Foundation comes in.
+I was prompted to write about PHP back in November 2021 because a new
+[non-profit foundation had been formed](https://thenewstack.io/php-gets-a-foundation-to-work-on-php-core/) that month to assume caretaker duties of PHP. The PHP Foundation was created by a coalition of companies [led by JetBrains](https://blog.jetbrains.com/phpstorm/2021/11/the-php-foundation/) and including Automattic, Zend, Laravel, Acquia (custodians of Drupal), and others. [Roman Pronskiy](https://twitter.com/pronskiy), an engineer from JetBrains, assumed responsibility for the project — he’s currently [listed as](https://thephp.foundation/structure/) “operations manager” on the foundation website.
+At
+[a Laravel conference in February](https://www.youtube.com/watch?v=XE4g1Tl6RQw), Pronskiy mostly focused on technical matters, but he did admit that “addressing PHP’s public image” is “the hardest task for the PHP Foundation.” While he didn’t specify what’s caused that public image to drop, I refer you back to Matt Mullenweg’s comments about why WordPress is now “JavaScript-first.” In any case, Pronskiy quickly pivoted to the active development going on now in the PHP project, including by ten paid developers.
+In conclusion, it is easy to see PHP in 2024 as the forgotten child of web development, while JavaScript is the most popular kid in class. Sadly for PHP, its decline in usage is unlikely to stop any time soon — why would it, when WordPress developers are busy adapting to a new JavaScript paradigm? But at least there is active development at the PHP Foundation.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
