@@ -1,0 +1,49 @@
+# 4 Big Developments in WebAssembly
+![Featued image for: 4 Big Developments in WebAssembly](https://cdn.thenewstack.io/media/2024/04/83b6f355-cars-1024x576.jpg)
+At
+[Wasm I/O](https://wasmio.tech/) in Barcelona and [KubeCon](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/) in Paris, several updates regarding WebAssembly (Wasm) were announced. From these, four big patterns emerged.
+**Programming Language Support Is Booming**
+Since its inception, the biggest risk to Wasm’s success has been lack of support from programming languages. Even the best cross-platform bytecode format cannot succeed if no languages compile to that format.
+I’ve been keeping track of
+[language support in WebAssembly](https://developer.fermyon.com/wasm-languages/webassembly-language-support) for a long time. In particular, I track how many of the top 20 languages, [according to RedMonk](https://redmonk.com/rstephens/2024/03/08/top20-jan2024/), are adopting WebAssembly. Python, JavaScript/TypeScript, Ruby, Rust, C/C++ and Zig have all made the Wasm move, and other languages are on their way.
+At Wasm I/O, JetBrains’ Zalim Bashorov reported on the rapid progress of Kotlin. In addition to being a popular language in its own right,
+[Kotlin represents](https://thenewstack.io/kotlin-multiplatform-mobile-from-jetbrains-takes-on-flutter/) the most progressive elements of the Java world. With Kotlin nearing WebAssembly core support and WASI 0.2 support, I expect that the popularity of the language will gain another boost as it finds a new target developer audience. More than that, it will draw the larger Java community toward WebAssembly.
+Dart now ships with a WebAssembly compile target. At Wasm I/O, Kevin Moore of Google shared the exciting developments in the Dart and Flutter world. Moore did not give the impression that Dart would extend its reach beyond its browser and mobile app roots, but the performance boon that Wasm brings to that world is fantastic. Moore showed benchmarks indicating that Wasm execution can be over 50% faster than JavaScript-based execution times.
+Finally, the Go team, represented by Rajiv Singh and Achille Roussel, covered the new
+[developments in Go’s WebAssembly](https://thenewstack.io/webassembly-developers-lust-for-rust-and-assemblyscript-but-not-go/) support. Go has ceded some of its WebAssembly support to TinyGo (and Ron Evans, head of that project, also presented at Wasm I/O). But the core Go team now has a renewed interest in supporting Wasm both in and out of the browser.
+One more major feature of programming language support, though, is debuggability. Microsoft’s Natalia Venditto and Ralph Squillace demonstrated Wasm debugging inside of Visual Studio Code. Language-neutral Wasm debugging is an absolute must for modern software development, and Microsoft is hard at work on making this a reality.
+**Kubernetes Is the Destination for WebAssembly Deployments**
+Both Wasm I/O and KubeCon were abuzz about
+[running](https://thenewstack.io/dev-news-angulars-new-loading-an-ai-compiler-and-js-runs-wasm/) Wasm inside of Kubernetes. Fermyon, Microsoft, SUSE, Liquid Reply and others collectively released the [open source SpinKube project](https://www.spinkube.dev/) for running Spin-flavored Wasm Kubernetes applications. And at KubeCon, international optics company ZEISS Group showed practical use cases [on the keynote stage](https://youtu.be/tu8a-GefJL8?si=Nr_takAmgqp61JjB).
+SUSE announced Rancher Desktop
+[support for WebAssembly](https://www.suse.com/c/rancher_blog/rancher-desktop-1-13-with-support-for-webassembly-and-more/), using its K3s Kubernetes runtime. Fermyon announced a commercially supported, ultra-dense [Fermyon Platform for Kubernetes](https://www.fermyon.com/blog/introducing-spinkube-fermyon-platform-for-k8s), capable of running 5,000 Wasm apps per Kubernetes node. [Cloud Native Computing Foundation’s wasmCloud project](https://wasmcloud.com/blog/wasmcloud-1-brings-components-to-enterprise) reached 1.0, and supports Kubernetes integration. And NGINX Unit announced support for [running Spin apps inside of its application platform](https://unit.nginx.org/news/2024/fermyon-spin-rust-sdk/).
+After the KubeCon keynote on WebAssembly, EMA analyst Torsten Volk noted that Wasm had
+[trended to the most discussed topic](https://thenewstack.io/kubecon-europe-webassembly-ebpf-are-huge-for-cloud-native/) of the conference.
+What is it about Wasm that
+[meshes so well with Kubernetes](https://thenewstack.io/webassembly/yes-webassembly-can-replace-kubernetes/)? Wasm’s cold start times make it an excellent platform for lambda-like serverless functions. Kubernetes users have long had an interest in running such workloads inside of the cluster, but the first wave of Kubernetes serverless solutions could not match the density, performance and startup speed of Wasm.
+**The Component Model Gets Real**
+There were eight sessions on the
+[WebAssembly Component Model](https://component-model.bytecodealliance.org/) at Wasm I/O this year. While last year’s Wasm I/O covered the component model in a largely theoretical way, this year we saw the impact one year of development has had on components.
+I particularly enjoyed the three-session series with Fermyon’s Thorsten Hans showing polyglot programming with components, Ryan Levick explaining
+[the wherefore and why](https://youtu.be/zqfF7Ssa2QI?si=MEzzCF0csQEdMP59) of components, and Luke Wagner finishing the triad with [a session on asynchronous calls between components](https://youtu.be/y3x4-nQeXxc?si=gTL0tIZxFrp0aphd) (a yet-to-be-completed part of WASI).
+There were other sessions focused on using components to accomplish specific tasks by InfinyOn’s
+[Sejyo Chang](https://www.linkedin.com/in/sehyo/), Design Systems’ [Pierre Dureau](https://github.com/pdureau), Dilla.io’s [Jean Valverde](https://www.linkedin.com/in/jean-valverde/?locale=en_US), Cosmonic’s [Taylor Thomas](https://twitter.com/i/flow/login?redirect_after_login=%2F_oftaylor) and others. Taken in aggregate, it is now clear that the component model is ready for use.
+The most important component-related development, though, came from
+[ F5’s Oscar Spencer and JAF Labs’ Danny Macovei](https://youtu.be/2_-10mRN30s?si=8FIz-ys-KVkU5KAQ). Work on defining a component registry has been ongoing for the last three years, but at the end of Wasm I/O’s first day, Macovei and Spencer launched WA.dev, the first Wasm component registry. It’s fair to compare WA.dev to npm or even Docker Hub. Developers can upload their components to a central registry that makes discovery and management of components easy for us all.
+**Wasm Is Still a Pioneering Language**
+Perhaps the last development is an anti-trend. Language support is falling in line. Kubernetes and Wasm are hitting stride. The Wasm Component Model specification is finding its way into practical tooling. These are all signs of maturation and stability. However, Wasm has not stagnated; there’s still an element of ongoing exploration.
+Nothing illustrates this better than the
+[Wanix project](https://wanix.sh/), which independent developers Jeff Lindsay and Julian Del Signore introduced on the second day of Wasm I/O. Lindsay is a visionary’s visionary whose projects frequently force software developers to rethink their assumptions about how things can be done. From inventing webhooks to his prolific early contributions in the container space, Lindsay has pushed boundaries. Wanix is no exception.
+Del Signore and Lindsay showed an in-browser, Plan9-inspired operating system that powered a CMS-like system capable of syncing state to GitHub. It was a fantastic example of how Wasm’s versatility, performance and cross-platform nature can combine to build a class of tool for which there currently is no name.
+In a similar vein, Daniel Lopez, former head of Wasm Labs at VMware, took the audience on a fun-filled ride when he showed a variety of demos. From
+[running Windows 95 in the browser](https://copy.sh/v86/) to demonstrating AI inferencing, Lopez pointed to a variety of interesting applications of this highly versatile technology. Among the most humorous moments, Lopez showed how Docker could be run inside of Wasm, adding multiple layers of virtualization. The guiding strand of his presentation, though, is that Wasm is not to be pigeonholed.
+On the last day of Wasm I/O, Ron Evans, creator of TinyGo (among other things), introduced an open source framework for Internet of Things (IoT) embedded development. Powered by Wasm,
+[Mechanoid](https://github.com/hybridgroup/mechanoid) supports embedded development in a wide variety of programming languages, including Rust, Go and Zig. IoT is a burgeoning area for WebAssembly. While it has already gained a foothold in [entertainment devices](https://medium.com/bbc-product-technology/building-a-webassembly-runtime-for-bbc-iplayer-and-enhanced-audience-experiences-7087455808ef), Evans explored using it in microcontrollers, pushing Wasm down to classes of tiny devices.
+**Conclusion**
+In many ways, Wasm has shown its maturation. Almost all mainstream languages now support WebAssembly. Kubernetes is proving to be a popular environment for hosting Wasm applications, and the WebAssembly Component Model is unlocking the revolutionary possibilities of WebAssembly, including true polyglot programming.
+But just as Java found use cases beyond its original intent, we also see Wasm opportunities opening up in fascinating areas like IoT as well as emerging areas like Wanix. This serves as a good reminder that maturity does not entail stagnation.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
