@@ -1,14 +1,14 @@
 
 <!--
-title: 使用AI生成电影字幕
+title: 使用AI翻译电影字幕
 cover: ./cover.png
 -->
 
-本文介绍了如何使用 Python 调用 ffmpeg 和 Gemini 实现电影字幕的翻译。
+本文介绍了如何使用 Python 调用 ffmpeg 和 Gemini 实现电影字幕的翻译。效果可以看“效果展示”部分。
 
 ## 背景
 
-不久前离开上家公司了，又恢复了自由身，之前的几个工作都几乎是无缝切换，少了一些思考，这一次决定先好好想想，可以放松的搞一点自己觉得好玩的东西。买了个 NAS，一顿操作，工作中的 IT 技能终于用到了生活中，其中首先是关于电影的中文字幕。
+不久前离开上家公司了，又恢复了自由身，之前的几个工作都几乎是无缝切换，少了一些思考，这一次决定先好好想想，可以放松的搞一点自己觉得好玩的东西。买了个 NAS，发现工作中的 IT 技能终于用到了生活中，其中首先是关于电影的中文字幕。
 
 拿到 NAS 的第一步就是开始疯狂的下载 4K 电影，这些电影都自带字幕，不过有些不带中文字幕，或者翻译的不好。再加上我买的 NAS 软件功能不全，中文字幕下载比较麻烦，所以我希望有一个自动化的方案。经过评估，我觉得可以利用现在的 ChatGPT 和 Gemini 之类的 AI 翻译英文字幕，应该会有不错的效果。
 
@@ -53,7 +53,7 @@ build-backend = "poetry.core.masonry.api"
 ffmpeg -i my_file.mkv outfile.vtt
 ```
 
-但实际上理论上一个视频里会有多个字幕，这样并不准确，所以还是要确认下。所以，我还是考虑用一个 ffmpeg 的库，也就是 [ffmpeg-python](https://github.com/kkroening/ffmpeg-python)，用这个库提取英文字幕的代码如下：
+但实际上一个视频里会有多个字幕，这样并不准确，所以还是要确认下。我还是考虑用一个 ffmpeg 的库，也就是 [ffmpeg-python](https://github.com/kkroening/ffmpeg-python)，用这个库提取英文字幕的代码如下：
 
 ```python
 def _guess_eng_subtitle_index(video_path):
@@ -118,23 +118,6 @@ class UpSubs:
             sub.text = re.sub(r"<[^>]+>", "", sub.text)
             sub.text = sub.text.replace("\\N", " ")
 
-        # clean sub with by indexes
-        for i, sub in enumerate(self.subs):
-            if sub.text.strip() == "":
-                indexes.append(i)
-                continue
-            if sub.start == sub.end:
-                indexes.append(i)
-                continue
-            if sub.end - sub.start < 200:
-                indexes.append(i)
-                continue
-
-        # clean sub with by index in indexes
-        for i in range(len(indexes)-1, -1, -1):
-            del self.subs[indexes[i]]
-
-
     def fill(self, text):
         text = text.strip()
         pattern = r"\n\s*\n"
@@ -164,28 +147,8 @@ class UpSubs:
                 merged_subs.append(merged_event)
             return merged_subs
         
-        first_subs_dict = {(sub.start, sub.end): sub for sub in self.subs}
-        second_subs_dict = {(sub.start, sub.end): sub for sub in second_subs}
-    
-        match_count=0
-        for key in first_subs_dict:
-            if key in second_subs_dict:
-                match_count = match_count+1
-                first_sub = first_subs_dict[key]
-                second_sub = second_subs_dict[key]
-                if first_sub.text == second_sub.text:
-                    merged_subs.append(SSAEvent(first_sub.start, first_sub.end, first_sub.text))
-                else:
-                    merged_subs.append(SSAEvent(first_sub.start, first_sub.end, first_sub.text + "\n" + second_sub.text))
-
-        match_rate = match_count / len(first_subs_dict)
-        print(f"Match rate for zh_hans and en_us subtitles: {match_rate:.2f}")
-        if match_rate < 0.80:
-            print(f"match rate {match_rate:.2f} < 0.80, subtitles not merged") 
-            return None
-        return merged_subs
+        return None
 ```
-
 
 `clean` 方法可以简单的清理字幕；save 方法可以用来保存字幕；`merge_dual` 用来合并双语字幕。这些都比较简单，后面重点说说字幕文本的处理。
 
@@ -218,12 +181,71 @@ chunk-14
 He was supposed to be here hours ago.
 ```
 
-减少了文字数量，依然能跟踪每一段字幕的编号，通过 `fill` 方法，我们可以从翻译后的文本还原成字幕。
+这样做是为了减少文字数量，减少 chunk 数量。而且，依然能跟踪每一段字幕的编号，通过 `fill` 方法，我们可以从翻译后的文本还原回字幕。
 
-## 与 Gemini 交互
+## 调用 Gemini 
 
-先看一下 `tran_subtitles` 方法
+调用 Gemini 有几个问题：
 
+* 需要访问密钥
+* 国内访问需要走合适的代理
+* 要有一定的容错能力
+* 还有要规避 Gemini 的安全机制
+
+所以，针对这些问题，专门写了个 `complete` 方法：
+
+```py
+def complete(prompt, max_tokens=32760):
+    prompt = prompt.strip()
+    if not prompt:
+        return ""
+    
+    safety_settings = [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_NONE"
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_NONE"
+        },
+        {
+            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            "threshold": "BLOCK_NONE"
+        },
+        {
+            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+            "threshold": "BLOCK_NONE"
+        },
+    ]
+
+    retries = 3
+    for _ in range(retries):
+        try:
+            return Gemini(max_tokens=max_tokens, safety_settings=safety_settings, temperature = 0.01).complete(prompt).text
+        except Exception as e:
+            print(f"Error completing prompt: {prompt} \n with error: \n ")
+            traceback.print_exc()
+    return ""
+```
+
+`safety_settings` 很重要，电影字幕中经常出现一些特别敏感的语言，必须告知 Gemini 尽量多容忍。虽然据文档说只有收费账号才能 `BLOCK_NONE` ，但好像对于我翻译电影上述配置没有遇到太多问题，偶尔会遇到一些，但是重试都会消失。
+
+然后是增加了 3 次重试，调用会偶尔有失败，重试能解决一些问题。
+
+最后，可以通过 [Google AI Studio](https://aistudio.google.com/app/apikey) 获取 API Key。然后在项目增加一个 .env 文件：
+
+```env
+http_proxy=http://192.168.0.107:7890
+https_proxy=http://192.168.0.107:7890
+GOOGLE_API_KEY=[your-api-key]
+```
+
+程序就可以读取到 API Key 和代理的设置。
+
+## 调用流程
+
+先看一下最外层 `tran_subtitles` 方法
 
 ```py
 def tran_subtitles(fixed_subtitle, zh_subtitle=None, cncf = False, chunk_size=3000):
@@ -259,3 +281,79 @@ MOVIE_TRAN_PROMPT_TPL = """你是个专业电影字幕翻译，你需要将一�
 ```
 
 可以看到这个提示还是相当简单的。
+
+然后可以关注下 `process_text` 方法：
+
+```py
+def process_text(subs, text, prompt_tpl, opts, chunk_size=2500):
+    # ret = ""
+    chunks = _split_subtitles(text, chunk_size)
+    for(i, chunk) in enumerate(chunks):
+        print("process chunk ({}/{})".format(i+1,len(chunks)))
+        # if i==4:
+        #     break
+        # format string with all the field in a dict 
+        opts["content"] = chunk
+        prompt = prompt_tpl.format(**opts)
+
+        print(prompt)
+        out = complete(prompt, max_tokens=32760)
+        subs.fill(out)
+        print(out)
+```
+
+通过 `_split_subtitles` 方法拆分字幕文本为多个 chunk ，然后分别扔给前面说的 `complete` 方法。
+
+## 效果展示
+
+一开始对字幕的翻译并没有太多的期待，不过最终的效果还是出乎意料的好，以功夫熊猫4为例，这是部分翻译的对比：
+
+英文字幕：
+
+```
+10
+00:02:22,184 --> 00:02:27,606
+Let it be known from the highest mountain
+to the lowest valley that Tai Lung lives,
+
+11
+00:02:27,606 --> 00:02:30,776
+and no one will stand in his way.
+
+12
+00:02:30,776 --> 00:02:34,780
+Not even the great Dragon Warrior.
+
+13
+00:02:43,830 --> 00:02:45,749
+Oh, where is Po?
+```
+
+中文字幕：
+
+```
+10
+00:02:22,184 --> 00:02:27,606
+让最高的山峰和最低的山谷都知道，泰隆还活着，
+
+11
+00:02:27,606 --> 00:02:30,776
+没人能阻挡他。
+
+12
+00:02:30,776 --> 00:02:34,780
+即使是伟大的神龙大侠也不行。
+
+13
+00:02:43,830 --> 00:02:45,749
+哦，阿宝在哪儿？
+```
+
+看到结果出奇的好，我的 prmopt 里也没有提供更多的上下文，Gemini 却给出了地道的翻译。
+
+## 总结
+
+针对电影，上述代码运行的还比较稳定。但是当面对一些本身就不太好的字幕，翻译的结果也不会太好，而且出现了许多异常，为此还需要做许多改进。最近我的视频号（云云众生s）分享了一些技术的视频，就是用改进的代码实现的，后面也会跟大家分享。
+
+感觉，能用技术改变生活挺好，希望有更多的改进机会，欢迎大家多多关注交流。
+
