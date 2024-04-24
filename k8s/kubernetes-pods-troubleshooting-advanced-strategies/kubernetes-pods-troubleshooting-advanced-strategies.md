@@ -1,7 +1,7 @@
 
 <!--
 title: 掌握Kubernetes Pod故障排除：高级策略和方案
-cover: https://cdn.sanity.io/images/rhzn5s2f/production/e43ddff88e75e373ce94de0bf9436333ed554f5e-1200x627.jpg?w=1230&fit=max&auto=format
+cover: ./cover.png
 -->
 
 Kubernetes（K8s）部署通常会带来各种角度的挑战，包括 pod、服务、ingress、无响应集群、控制平面和高可用性设置。Kubernetes [pod](/kubernetes-glossary/pod) 是 Kubernetes 生态系统中最小的可部署单元，封装了一个或多个共享资源和网络的容器。Pod 旨在运行应用程序或进程的单个实例，并根据需要创建和处置。Pod 对于在 K8s 环境中扩展、更新和维护应用程序至关重要。
