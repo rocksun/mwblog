@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How to Beat Proprietary LLMs With Smaller Open Source Models</title>
+
+    <link rel="stylesheet" href="https://www.aidancooper.co.uk/assets/built/screen.css?v=958ada5354">
+
+    <meta name="description" content="The unique advantages of open source LLMs enable you to build systems that are not just cheaper and faster than proprietary LLMs, but better too.">
+    <link rel="icon" href="https://www.aidancooper.co.uk/content/images/size/w256h256/2022/06/AidanCooper_icon.PNG" type="image/png">
+    <link rel="canonical" href="https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/amp/">
+    
+    <meta property="og:site_name" content="Impromptu Engineer">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Beat Proprietary LLMs With Smaller Open Source Models">
+    <meta property="og:description" content="Building your AI applications around open source models can make them better, cheaper, and faster">
+    <meta property="og:url" content="https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/">
+    <meta property="og:image" content="https://www.aidancooper.co.uk/content/images/2024/04/dvg_e.png">
+    <meta property="article:published_time" content="2024-04-26T14:22:37.000Z">
+    <meta property="article:modified_time" content="2024-04-27T14:48:36.000Z">
+    <meta property="article:tag" content="Archive">
+    <meta property="article:tag" content="Machine Learning">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Beat Proprietary LLMs With Smaller Open Source Models">
+    <meta name="twitter:description" content="Building your AI applications around open source models can make them better, cheaper, and faster">
+    <meta name="twitter:url" content="https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/">
+    <meta name="twitter:image" content="https://www.aidancooper.co.uk/content/images/2024/04/dvg_e.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Aidan Cooper">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Archive, Machine Learning">
+    <meta name="twitter:site" content="@AidanTCooper">
+    <meta name="twitter:creator" content="@AidanTCooper">
+    <meta property="og:image:width" content="946">
+    <meta property="og:image:height" content="963">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Impromptu Engineer",
+        "url": "https://www.aidancooper.co.uk/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.aidancooper.co.uk/content/images/size/w256h256/2022/06/AidanCooper_icon.PNG",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Aidan Cooper",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.aidancooper.co.uk/content/images/2021/06/hsss.png",
+            "width": 281,
+            "height": 281
+        },
+        "url": "https://www.aidancooper.co.uk/author/aidan/",
+        "sameAs": [
+            "http://www.github.com/AidanCooper",
+            "https://twitter.com/AidanTCooper"
+        ]
+    },
+    "headline": "How to Beat Proprietary LLMs With Smaller Open Source Models",
+    "url": "https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/",
+    "datePublished": "2024-04-26T14:22:37.000Z",
+    "dateModified": "2024-04-27T14:48:36.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.aidancooper.co.uk/content/images/2024/04/dvg_e.png",
+        "width": 946,
+        "height": 963
+    },
+    "keywords": "Archive, Machine Learning",
+    "description": "Building your AI applications around open source models can make them better, cheaper, and faster",
+    "mainEntityOfPage": "https://www.aidancooper.co.uk/how-to-beat-proprietary-llms/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.82">
+    <link rel="alternate" type="application/rss+xml" title="Impromptu Engineer" href="https://www.aidancooper.co.uk/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://www.aidancooper.co.uk/" data-key="25ee896db3120551bc6196a018" data-api="https://aidan-cooper.ghost.io/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="25ee896db3120551bc6196a018" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://aidan-cooper.ghost.io/" crossorigin="anonymous"></script>
+    
+    <link href="https://www.aidancooper.co.uk/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=958ada5354"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=958ada5354">
+    <script defer src="/public/comment-counts.min.js?v=958ada5354" data-ghost-comments-counts-api="https://www.aidancooper.co.uk/members/api/comments/counts/"></script>
+    <script defer src="/public/member-attribution.min.js?v=958ada5354"></script>
+    <!-- python code style -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"/>
+<!-- <link rel="stylesheet" href="https://www.samclarke.com/assets/migrating-to-hugo/monokai.css"/> -->
+
+<!-- social media icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/brands.min.css" integrity="sha512-+oRH6u1nDGSm3hH8poU85YFIVTdSnS2f+texdPGrURaJh8hzmhMiZrQth6l56P4ZQmxeZzd2DqVEMqQoJ8J89A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .gh-head-menu .nav-github a,
+    .gh-head-menu .nav-linkedin a,
+    .gh-head-menu .nav-twitter a {
+        font-size: 0 !important;
+    }
+
+    .gh-head-menu .nav-github a::before,
+    .gh-head-menu .nav-linkedin a::before,
+    .gh-head-menu .nav-twitter a::before {
+        font-family: "Font Awesome 6 Brands";
+        display: inline-block;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .gh-head-menu .nav-github a::before {content: "\f09b"}
+    .gh-head-menu .nav-linkedin a::before {content: "\f08c"}
+    .gh-head-menu .nav-twitter a::before {content: "\f099"}
+</style>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-16LBECD9KG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-16LBECD9KG');
+</script>
+<!-- Google tag (gtag.js) --->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N1NQEXV2K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3N1NQEXV2K');
+</script> -->
+
+<!-- for LaTeX formulas, wrapped in $$ _ $$ (block) OR \( _ \) (inline) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            // ...options...
+        });
+    });
+</script>
+    <!-- tocbot -->
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.21.0/dist/tocbot.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/tocbot@4.21.0/dist/tocbot.min.css" rel="stylesheet"><style>:root {--ghost-accent-color: #256dda;}</style>
+</head>
+
+<body class="post-template tag-archive tag-machine-learning is-head-left-logo">
+<div class="site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="https://www.aidancooper.co.uk">
+                            Impromptu Engineer
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://www.aidancooper.co.uk/">Home</a></li>
+    <li class="nav-author"><a href="https://www.aidancooper.co.uk/author/aidan/">Author</a></li>
+    <li class="nav-archive"><a href="https://www.aidancooper.co.uk/tag/archive/">Archive</a></li>
+    <li class="nav-github"><a href="https://www.github.com/AidanCooper/">GitHub</a></li>
+    <li class="nav-linkedin"><a href="https://www.linkedin.com/in/aidan-cooper">LinkedIn</a></li>
+    <li class="nav-twitter"><a href="https://twitter.com/aidantcooper">Twitter</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                    <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                    <div class="gh-head-members">
+                                <a class="gh-head-link" href="#/portal/signin" data-portal="signin">Sign in</a>
+                                <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="site-content">
+        
+<main class="site-main">
+
+        <article class="single post tag-archive tag-machine-learning featured">
+
+    <header class="single-header gh-canvas">
+        <div class="single-meta">
+            <span class="single-meta-item single-meta-date">
+                <time datetime="2024-04-26">
+                    Apr 26, 2024
+                </time>
+            </span>
+            <span class="single-meta-item single-meta-length">
+                14 min read
+            </span>
+                <span class="single-meta-item single-meta-tag">
+                    <a class="post-tag post-tag-archive" href="/tag/archive/">Archive</a>
+                </span>
+        </div>
+
+        <h1 class="single-title">How to Beat Proprietary LLMs With Smaller Open Source Models</h1>
+
+            <div class="single-excerpt">
+                Building your AI applications around open source models can make them better, cheaper, and faster
+            </div>
+
+            <figure class="single-media kg-width-narrow">
+                <img srcset="/content/images/size/w400/2024/04/dvg_e.png 400w,
+/content/images/size/w750/2024/04/dvg_e.png 750w,
+/content/images/size/w960/2024/04/dvg_e.png 960w,
+/content/images/size/w1140/2024/04/dvg_e.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2024/04/dvg_e.png" alt="How to Beat Proprietary LLMs With Smaller Open Source Models">
+            </figure>
+    </header>
+
+    <div class="single-content gh-content gh-canvas">
+        <h2 id="introduction">Introduction</h2><p>When designing systems that use text generation models, many people first turn to proprietary services such as OpenAI's GPT-4 or Google's Gemini. After all, these are the biggest and best models out there, so why use anything else? Eventually, the applications hit a scale that these APIs don't support, or they become cost prohibitive, or the response times are too slow. Open source models can be the solution to all of these problems, but you'll fail to get adequate performance if you attempt to use them the same way you would use a proprietary LLM.</p><p>In this article, we explore the unique advantages of open source LLMs, and how you can leverage them to develop AI applications that are not just cheaper and faster than proprietary LLMs, but better too.</p>
+<!--kg-card-begin: html-->
+<div class="toc"></div>
+<style>
+.toc:before {
+  content: "Contents";
+  display: block;
+  margin-bottom: 20px;
+  font-size: larger;
+  font-weight: bold;
+  border-bottom: 1px dashed #dadada;
+  padding-bottom: 10px;
+}
+.toc {
+  padding: 30px;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+a.toc-link {
+  font-size: 80%;
+  text-decoration: none;
+}
+li.toc-list-item {
+    margin-top: 0;
+}
+.toc-list .is-collapsible {
+  margin-left: 15px;
+  color: #666;
+}
+</style>
+<!--kg-card-end: html-->
+<h2 id="proprietary-llms-versus-open-source-llms">Proprietary LLMs versus Open Source LLMs</h2><p>Table 1 compares the key characteristics of proprietary and open source LLMs. Open source LLMs are assumed to run on user-managed infrastructure, whether that's local or in the cloud. In summary: proprietary LLMs are managed services that offer the most capable, closed source models with the largest context windows, but open source LLMs are preferable in every other way that matters.</p><style type="text/css">
+    table {
+        width: 100%;
+        margin-right: 0in;
+        margin-left: 0in;
+        font-size: 100%;
+    }
+    table td {
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+        font-size: 80%
+    }
+    table th {
+        border: 1px solid #acacac;
+        background: #ddd;
+        font-weight: bold;
+        text-align: left;
+        padding: 5px 10px;
+    }
+</style>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:center">Proprietary LLMs</th>
+<th style="text-align:center">Open Source LLMs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><strong>Examples</strong></td>
+<td style="text-align:center"><a href="https://openai.com/research/gpt-4?ref=aidancooper.co.uk">GPT-4</a> (OpenAI)<br><a href="https://gemini.google.com/?ref=aidancooper.co.uk">Gemini</a> (Google)<br><a href="https://www.anthropic.com/claude?ref=aidancooper.co.uk">Claude</a> (Anthropic)</td>
+<td style="text-align:center"><a href="https://huggingface.co/google/gemma-2b-it?ref=aidancooper.co.uk">Gemma 2B</a> (Google)<br><a href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2?ref=aidancooper.co.uk">Mistral 7B</a> (Mistral AI)<br><a href="https://huggingface.co/meta-llama/Meta-Llama-3-70B?ref=aidancooper.co.uk">Llama 3 70B</a> (Meta)</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Software Accessibility</strong></td>
+<td style="text-align:center">Closed source</td>
+<td style="text-align:center">Open source</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Number of parameters</strong></td>
+<td style="text-align:center">Trillions</td>
+<td style="text-align:center">Typical sizes: 2B, 7B, 70B</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Context window</strong></td>
+<td style="text-align:center">Longer. 100k-1M+ tokens</td>
+<td style="text-align:center">Shorter. Typically 8k-32k tokens.</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Capabilities</strong></td>
+<td style="text-align:center">State of the art performance across all leaderboards and benchmarks</td>
+<td style="text-align:center">Historically, lag behind proprietary LLMs</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Infrastructure</strong></td>
+<td style="text-align:center">Platform as a Service (PaaS), managed by provider. Not configurable. API rate limits apply.</td>
+<td style="text-align:center">Usually self-managed on cloud infrastructure (IaaS). Fully configurable.</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Inference Cost</strong></td>
+<td style="text-align:center">More expensive</td>
+<td style="text-align:center">Less expensive</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Speed</strong></td>
+<td style="text-align:center">Slower, at equivalent price points. Can't be tweaked.</td>
+<td style="text-align:center">Depends on infrastructure, techniques, and optimisations, but faster. Highly configurable.</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Throughput</strong></td>
+<td style="text-align:center">Often capped by API rate limits.</td>
+<td style="text-align:center">Unrestricted: scales with your infrastructure.</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Latency</strong></td>
+<td style="text-align:center">Higher. Can accumulate significant network latency for multi-turn conversations.</td>
+<td style="text-align:center">No network latency if models are run locally.</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Functionality</strong></td>
+<td style="text-align:center">Generally expose a limited set of features through their APIs</td>
+<td style="text-align:center">Many powerful techniques unlocked by direct access to the model</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Caching</strong></td>
+<td style="text-align:center">Not accessible server side</td>
+<td style="text-align:center">Configurable server-side strategies that improve throughput and reduce cost</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Fine-tuning</strong></td>
+<td style="text-align:center">Limited fine-tuning services (<a href="https://platform.openai.com/docs/guides/fine-tuning/?ref=aidancooper.co.uk">e.g. OpenAI</a>)</td>
+<td style="text-align:center">Full control over fine-tuning</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>Prompt/Flow Engineering</strong></td>
+<td style="text-align:center">Often cost-prohibitive, or unviable due to rate limits or latency</td>
+<td style="text-align:center">Unrestricted, and minimal downsides to elaborate control flows</td>
+</tr>
+</tbody>
+</table>
+<p><sup><strong>Table 1.</strong> Comparison of proprietary and open source LLM characteristics</sup></p>
+<p>The thrust of this article is that by leveraging the advantages of open source models, it is possible to build AI applications with superior task performance than proprietary LLMs, whilst also achieving better throughput and cost profiles.</p><p>We'll focus on strategies for open source models that are either impossible or less effective with proprietary LLMs. This means we won't discuss techniques that benefit both, such as few-shot prompting or retrieval augmented generation (RAG).</p><hr><h2 id="requirements-of-an-effective-llm-system">Requirements of an Effective LLM System</h2><p>There are some important principles to bear in mind when thinking about how to design effective systems around LLMs.</p><figure class="kg-card kg-image-card"><img src="https://www.aidancooper.co.uk/content/images/2024/04/triangle_.png" class="kg-image" alt="" loading="lazy" width="444" height="398"></figure><p>There are direct tradeoffs between task performance, throughput, and cost: it's easy to improve any one of these, but it usually comes at the expense of the other two. Unless you have unlimited budget, it is necessary to meet a minimum standard across all three for a system to be viable. With proprietary LLMs, it's common to get stuck at the top point of the triangle, unable to reach sufficient throughput at an acceptable cost.</p><p>We'll briefly touch on the characteristics of each of these non-functional requirements before exploring strategies that can help with each of them.</p><h3 id="throughput">Throughput</h3><p>Many LLM systems struggle to achieve sufficient throughput simply because of how slow LLMs are.</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">When working with LLMs, the overall throughput of your system is almost entirely determined by the time it takes to generate text outputs.</div></div><p>Factors other than text generation are relatively insignificant, unless you have especially heavy data processing. LLMs can "read" text much faster than they can generate it — this is because input tokens are computed in parallel, whereas output tokens are generated sequentially.</p><p>We need to maximise the speed of text generation without sacrificing quality or incurring excessive costs.</p><figure class="kg-card kg-image-card"><img src="https://www.aidancooper.co.uk/content/images/2024/04/image-6-1.png" class="kg-image" alt="" loading="lazy" width="519" height="70"></figure><p>This gives us two levers to pull when aiming to increase throughput:</p><ol><li>Reduce the number of tokens that need to be generated</li><li>Increase the speed of generating each individual token</li></ol><p>Many of the strategies that follow aim to improve on one or both of these aspects.</p><h3 id="cost">Cost</h3><p>With proprietary LLMs, you are billed per input and output token. The price per token will correlate with the quality (i.e. size) of the model you're using. This gives you limited options for reducing cost: you either need to reduce the number of input/output tokens, or use a cheaper model (there won't be many too choose from).</p><p>With self-hosted LLMs, your costs are determined by your infrastructure. If you're using a cloud service for hosting, you will be billed per unit of time that you "rent" a virtual machine.</p><figure class="kg-card kg-image-card"><img src="https://www.aidancooper.co.uk/content/images/2024/04/image-5-1.png" class="kg-image" alt="" loading="lazy" width="486" height="68"></figure><p>Bigger models will require bigger, more expensive, virtual machines. Improving throughput without changing hardware reduces costs, as fewer compute hours are needed to process a fixed amount of data. Equally, throughput can be improved by scaling hardware vertically or horizontally, but this will increase costs.</p><p>Strategies for minimising cost focus on enabling smaller models to be used for the task, as these have the highest throughputs and cheapest running costs.</p><h3 id="task-performance">Task Performance</h3><p>Task performance is the fuzziest of the three requirements, but also the requirement with the broadest scope for optimisation and improvement. One of the main challenges of achieving adequate task performance is measuring it: reliable, quantitative evaluation of LLM outputs is hard to get right.</p><p>As we're focussing on techniques that uniquely advantage open source LLMs, our strategies emphasise doing more with less, and exploiting methods that are only possible when you have direct access to the model. </p><hr><h2 id="open-source-llm-strategies-that-beat-proprietary-llms">Open Source LLM Strategies that Beat Proprietary LLMs</h2><p>All of the strategies that follow are effective in isolation, but they're also complementary. They can be applied to different extents to strike the right balance across the system's non-functional requirements, and maximise overall performance.</p><h3 id="multi-turn-conversations-and-control-flow">Multi-turn Conversations and Control Flow</h3><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-text">🟢 Improves task performance<br>🔴 Reduces throughput<br>🔴 Increases cost per input</div></div><p>While it's possible to use extensive <a href="https://www.promptingguide.ai/techniques/prompt_chaining?ref=aidancooper.co.uk">multi-turn conversation strategies</a> with proprietary LLMs, these are often unviable, as they:</p><ul><li>can be cost prohibitive when billed per token</li><li>may exhaust API rate limits, as they require multiple API calls per input </li><li>may be too slow if the back-and-forth exchanges involve generating many tokens or accumulate significant network latency</li></ul><p>This situation is likely to improve over time as proprietary LLMs continue to become faster, more scalable, and more affordable. But for now, proprietary LLMs are often limited to single, monolithic prompting strategies for practical use cases at scale. This is in keeping with the much larger context windows offered by proprietary LLMs: the go-to strategy is often just to cram a ton of information and instructions into a single prompt (which incidentally, has negative cost and speed implications).</p><p>With self-hosted models, these downsides of multi-turn conversations are less concerning: per token costs are less relevant; there are no API rate limits; and network latency can be minimised. The smaller context windows and weaker reasoning capabilities of open source models should also dissuade you from monolithic prompts. This leads us to the central strategy for beating proprietary LLMs:</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">The key to beating proprietary LLMs with smaller open source models is to get the smaller models to do more work across a series of more granular subtasks.</div></div><figure class="kg-card kg-image-card"><img src="https://www.aidancooper.co.uk/content/images/2024/04/image-7.png" class="kg-image" alt="" loading="lazy" width="519" height="472"></figure><p>Elaborate multi-turn prompting strategies are viable for local models. Techniques such as <a href="https://www.promptingguide.ai/techniques/cot?ref=aidancooper.co.uk">chain of thought</a> (CoT), <a href="https://www.promptingguide.ai/techniques/tot?ref=aidancooper.co.uk">tree of thoughts</a> (ToT), and <a href="https://www.promptingguide.ai/techniques/react?ref=aidancooper.co.uk">ReAct</a> can enable less capable models to perform comparably to much larger ones.</p><p>Another layer of sophistication is using <a href="https://github.com/sgl-project/sglang?tab=readme-ov-file&ref=aidancooper.co.uk#control-flow">control flow</a> and <a href="https://github.com/sgl-project/sglang?tab=readme-ov-file&ref=aidancooper.co.uk#parallelism">forks</a> to dynamically guide the model down the correct reasoning pathways and offload some processing tasks to external functions. These can also be used as mechanisms for preserving your context window token budget, by forking subtasks down branches outside of the main prompt flow, and then joining back in the summarised results of these forks.</p><p>Rather than overwhelm a small open source model with an overly complex task, deconstruct the problem into a logical flow of doable subtasks.</p><h3 id="constrained-decoding">Constrained Decoding</h3><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-text">🟢 Increases throughput<br>🟢 Decreases costs<br>🟢 Improves task performance</div></div><p>For applications that involve generating structured outputs,&nbsp;such as a JSON objects,&nbsp;<a href="https://www.aidancooper.co.uk/constrained-decoding/">constrained decoding</a> is a powerful technique that can:</p><ul><li>guarantee outputs that conform to the desired structure</li><li>drastically improve throughput by accelerating token generation, and reducing the number of tokens that need to be generated</li><li>improve task performance by guiding the model</li></ul><p>I've written a separate article that explains the topic in detail:</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://www.aidancooper.co.uk/constrained-decoding/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">A Guide to Structured Generation Using Constrained Decoding</div><div class="kg-bookmark-description">The how, why, power, and pitfalls of constraining generative language model outputs</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://www.aidancooper.co.uk/content/images/size/w256h256/2022/06/AidanCooper_icon.PNG" alt=""><span class="kg-bookmark-author">Impromptu Engineer</span><span class="kg-bookmark-publisher">Aidan Cooper</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://www.aidancooper.co.uk/content/images/2024/04/constrain.webp" alt=""></div></a></figure><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">Crucially, constrained decoding is only possible with text generation models that provide direct access to the full next-token probability distribution, which at the time of writing, is not true of any major proprietary LLM providers.</div></div><p>OpenAI does offer a <a href="https://platform.openai.com/docs/guides/text-generation/json-mode?ref=aidancooper.co.uk">JSON mode</a>, but this does not provide strong guarantees as to the structure of the JSON output — nor the throughput benefits — of strict constrained decoding.</p><p>Constrained decoding goes hand in hand with control flow strategies, as it enables you to reliably direct LLM applications down pre-specified pathways by constraining their responses to different branching options. It's very fast and inexpensive to have a model respond with short, constrained answers to long series of multi-turn conversation questions (remember: the speed of throughput is determined by the numbers of tokens that are generated).</p><p>There aren't any notable downsides to constrained decoding, so if your task requires structured outputs, you should be using it.</p><h3 id="caching-model-quantisation-and-other-backend-optimisations">Caching, Model Quantisation, and Other Backend Optimisations</h3><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-text">🟢 Increases throughput<br>🟢 Decreases costs<br>⚪ Does not affect task performance</div></div><p>Caching is a technique used to speed up data retrieval operations by storing computed input:output pairs, and reusing the results if the same input is encountered again.</p><p>In non-LLM systems, caching is typically applied to requests that exactly match a previously seen request. Some LLM systems may also benefit from this rigid form of caching, but usually when building with LLMs, we don't expect to encounter the exact same inputs routinely.</p><p>Fortunately, there are sophisticated <a href="https://huggingface.co/blog/optimize-llm?ref=aidancooper.co.uk#32-the-key-value-cache">key-value caching</a> techniques specifically for LLMs that are much more flexible. These can greatly accelerate text generation for requests that are partial but non-exact matches to previously seen inputs. This improves system throughput by reducing the volume of tokens that need to be generated (or at least accelerates them, depending on the specific caching technique and the scenario).</p><p>With proprietary LLMs, you don't have control over how caching is or isn't being performed for your requests. But for open source LLMs, there are various backend frameworks for LLM serving that can dramatically improve inference throughput, that can be configured to your system's bespoke requirements.</p><p>Beyond caching, there are other LLM optimisations that can also be used to improve inference throughput, such as <a href="https://huggingface.co/docs/optimum/en/concept_guides/quantization?ref=aidancooper.co.uk" rel="noreferrer">model quantisation</a>. By reducing the precision used for the model weights, it's possible to shrink the model size (and therefore its memory requirements) without significantly compromising the quality of its outputs. Popular models will typically have a plethora of quantised variants available on Hugging Face, contributed by the open source community, which saves you from having to perform the quantisation process yourself.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://www.aidancooper.co.uk/content/images/2024/04/llama_7b.jpg" class="kg-image" alt="" loading="lazy" width="2000" height="503" srcset="https://www.aidancooper.co.uk/content/images/size/w600/2024/04/llama_7b.jpg 600w, https://www.aidancooper.co.uk/content/images/size/w1000/2024/04/llama_7b.jpg 1000w, https://www.aidancooper.co.uk/content/images/size/w1600/2024/04/llama_7b.jpg 1600w, https://www.aidancooper.co.uk/content/images/2024/04/llama_7b.jpg 2000w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">SGLang's impressive throughput claims (see the </span><a href="https://lmsys.org/blog/2024-01-17-sglang/?ref=aidancooper.co.uk"><span style="white-space: pre-wrap;">SGLang launch blog post</span></a><span style="white-space: pre-wrap;">)</span></figcaption></figure><p><a href="https://github.com/vllm-project/vllm?ref=aidancooper.co.uk">vLLM</a> is perhaps the most established serving framework, boasting various caching mechanisms, parallelisations, kernel optimisations, and model quantisation methods. <a href="https://github.com/sgl-project/sglang?tab=readme-ov-file&ref=aidancooper.co.uk#backend-sglang-runtime-srt">SGLang</a> is a more recent player with similar capabilities as vLLM, and an innovative <a href="https://arxiv.org/abs/2312.07104?ref=aidancooper.co.uk">RadixAttention</a> caching approach that claims especially impressive performance.</p><p>If you're self-hosting models, it's well worth using these frameworks and optimisation techniques, as you can reasonably expect to improve your throughput by at least an order of magnitude.</p><h3 id="model-fine-tuning-and-knowledge-distillation">Model Fine-Tuning and Knowledge Distillation</h3><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-text">🟢 Improves task performance<br>⚪ Does not affect inference costs<br>⚪ Does not affect throughput</div></div><p>Fine-tuning encompasses various techniques that are used to adapt an existing model to perform better on a specific task. I recommend checking out Sebastian Raschka's <a href="https://magazine.sebastianraschka.com/p/using-and-finetuning-pretrained-transformers?ref=aidancooper.co.uk">blogpost on fine-tuning methods</a> as a primer on the topic. Knowledge distillation is a related concept, where a smaller "student" model is trained to emulate the outputs of a larger "teacher" model on a task of interest.</p><p>Some proprietary LLM providers, including <a href="https://platform.openai.com/docs/guides/fine-tuning/analyzing-your-fine-tuned-model?ref=aidancooper.co.uk">OpenAI</a>, offer minimal fine-tuning capabilities. But only open source models provide full control over the fine-tuning process, and access to the full gamut of fine-tuning techniques.</p><p>Fine-tuning models can significantly improve task performance, without impacting  inference costs or throughput. But fine-tuning does require time, skills, and good data to implement, and there are costs involved for the training process. <a href="https://huggingface.co/docs/peft/en/index?ref=aidancooper.co.uk">Parameter-efficient fine-tuning</a> (PEFT) techniques, such as <a href="https://www.databricks.com/blog/efficient-fine-tuning-lora-guide-llms?ref=aidancooper.co.uk">LoRA</a>, are particularly attractive as they provide the highest performance returns relative to the amounts of resources they require.</p><p>Fine-tuning and knowledge distillation are amongst the most powerful techniques for maximising model performance. They have no downsides when implemented correctly apart from the initial upfront investment required to perform them. However, you should be careful to ensure that fine-tuning has been conducted in a way that is consistent with other aspects of your system, such as the prompt flow and constrained decoding output structure.&nbsp;If there are discrepancies between these techniques, it may result in unexpected behaviour.</p><h3 id="optimal-model-sizing">Optimal Model Sizing</h3><div class="kg-card kg-callout-card kg-callout-card-grey"><div class="kg-callout-text">Smaller Models...<br>🟢 Increase throughput<br>🟢 Decrease costs<br>🔴 Worsen task performance</div></div><p>This could equally have been framed as "Larger Models" with the pros and cons inverted. The key point is:</p><div class="kg-card kg-callout-card kg-callout-card-blue"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">Size your model as small as possible, such that it still has sufficient capacity to understand and reliably complete the task.</div></div><p>Most proprietary LLM providers offer a couple tiers of model size/capability. When it comes to open source, there's a dizzying array of model options at all sizes you could wish for up to 100B+ parameters.</p><p>As discussed in the multi-turn conversation section, we can simplify a complex task by breaking it down into a series of more manageable subtasks. But there will be a point at which the problem cannot be decomposed any further, or doing so would compromise aspects of the task that need to be tackled more holistically. This depends strongly on the use case, but there will be a sweet spot of task granularity and complexity that determines the right size of the model, as indicated by achieving adequate task performance at minimal model size.</p><p>For some tasks, this will mean using the biggest and most capable model you can; for other tasks, you may be able to use very small models (even non-LLMs).</p><p>In any case, elect to use the best-in-class model at any given parameter size. This can be identified by referring to <a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard?ref=aidancooper.co.uk">public benchmarks</a> and <a href="https://chat.lmsys.org/?leaderboard=&ref=aidancooper.co.uk">leaderboards</a>, and changes regularly given the rapid pace of the field. Some benchmarks will be more relevant for your use case than others, so it's worth figuring out which are most applicable.</p><p>But don't assume that you can simply swap in the <em>new best model</em> and realise immediate performance gains. Different models have different failure modes and characteristics, so a system optimised around one model won't necessarily work well for another model — even if it is supposed to be better.</p><hr><h2 id="a-technical-roadmap">A Technical Roadmap</h2><p>As previously mentioned, all of these strategies are complementary, and when combined, they compound to produce robust, well-rounded systems. But there are also dependencies between these techniques, and it's important to ensure they are aligned to prevent dysfunction.</p><p>The diagram below is a dependency map demonstrating a logical order in which to implement these techniques. This assumes the use case requires a structured output to be produced.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://www.aidancooper.co.uk/content/images/2024/04/image-10.png" class="kg-image" alt="" loading="lazy" width="1772" height="601" srcset="https://www.aidancooper.co.uk/content/images/size/w600/2024/04/image-10.png 600w, https://www.aidancooper.co.uk/content/images/size/w1000/2024/04/image-10.png 1000w, https://www.aidancooper.co.uk/content/images/size/w1600/2024/04/image-10.png 1600w, https://www.aidancooper.co.uk/content/images/2024/04/image-10.png 1772w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Black arrows indicate dependencies, and therefore an order in which to implement the techniques. The green arrows represent a feedback loop whereby examples of bad outputs can be used to improve the system via prompt optimisation or further model training. Additional commentary for each stage number is provided below.</span></figcaption></figure><p>The stages can be understood as follows:</p><ol><li>The <em>target data model</em> is the ultimate output that you want to create. This is informed by your use case and the broader requirements of the overall system, beyond the generative text processing.</li><li>The <em>constrained decoding output structure</em> could be identical to your target data model, or it may be slightly modified for optimal performance during constrained decoding. Refer to my <a href="https://www.aidancooper.co.uk/constrained-decoding/">constrained decoding article</a> to understand why this might be the case. If it is different, you will need a post-processing stage to convert it to the final target data model.</li><li>You should make an initial best guess as to what the right prompting strategy is for your use case. If the problem is straightforward, or cannot be decomposed intuitively, elect for a monolithic prompt strategy. If the problem is highly complex, with many granular subcomponents, opt for a mutli-prompting strategy.</li><li>Your initial model selection is mostly a matter of optimal sizing, and ensuring the model characteristics meet the functional requirements of the problem. Optimal model sizing is discussed above. Model characteristics, such as the required context window length, can be calculated based on the expected output structure ((1) and (2)) and the prompt strategy (3).</li><li>Training data for model fine-tuning must be aligned with the output structure (2). If using a multi-prompting strategy that incrementally builds the output, the training data must also reflect each stage of this process.</li><li>Model fine-tuning/distillation naturally depends on your model selection, training data curation, and prompt flow.</li><li>Quantisation of the fine-tuned model is optional. Your quantisation options will depend on your choice of base model.</li><li>The LLM inference server will only support certain model architectures and quantisation methods, so ensure your previous selections are compatible with your desired backend configuration.</li><li>Once you have an end-to-end system in place, you can establish a feedback loop for continuous improvement. You should be regularly tweaking the prompts and few-shot examples (if you're using these) to address examples where the system has failed to produce an acceptable output. Once you've accumulated a reasonable sample of failure cases, you should also consider performing further model fine-tuning using these examples.</li></ol><p>In reality, the development process is never perfectly linear, and depending on the use case, you may need to prioritise optimising some of these components over others. But this is a reasonable foundation for designing a roadmap tailored to your specific requirements.</p><hr><h2 id="conclusion">Conclusion</h2><p>Open source models can be faster, cheaper, and better than proprietary LLMs. The way to achieve this is by engineering more sophisticated systems that play to open source models' unique advantages, and make the appropriate tradeoffs between throughput, cost, and task performance.</p><p>This design choice trades system complexity for overall performance. A valid alternative is to have a simpler, equally capable system powered by proprietary LLMs, but at higher cost and reduced throughput. The correct decision depends on your application, your budget, and your availability of engineering resources.</p><p>But don't be too quick to write off open source models without adapting your technical strategy to suit them —&nbsp;you might be surprised by what they can do.</p><hr><div class="kg-card kg-button-card kg-align-center"><a href="https://www.aidancooper.co.uk/#/portal/signup/free" class="kg-btn kg-btn-accent">Subscribe</a></div>
+    </div>
+
+    <div class="gh-canvas">
+    <footer class="single-footer">
+
+        <div class="single-footer-left">
+            <div class="navigation navigation-previous">
+                <a class="navigation-link" href="/constrained-decoding/" aria-label="Previous post">
+                    <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="single-footer-middle">
+            <div class="single-footer-top">
+                <h3 class="single-footer-title">Published by:</h3>
+                <div class="author-list">
+                        <div class="author-image-placeholder u-placeholder square">
+                            <a href="/author/aidan/" title="Aidan Cooper">
+                                    <img class="author-image u-object-fit" src="/content/images/size/w150/2021/06/hsss.png" alt="Aidan Cooper" loading="lazy">
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="single-footer-right">
+        </div>
+
+    </footer>
+    </div>
+
+</article>
+                <section class="related-wrapper gh-canvas">
+        <h3 class="related-title">You might also like...</h3>
+        <div class="post-feed related-feed">
+                <article class="feed post featured" data-month="April 2024">
+
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Apr
+        </div>
+        <div class="feed-calendar-day">
+            08
+        </div>
+    </div>
+
+        <div class="feed-image u-placeholder rectangle">
+                <img
+                    class="u-object-fit"
+                    srcset="/content/images/size/w400/2024/04/constrain.webp 400w,
+/content/images/size/w750/2024/04/constrain.webp 750w,
+/content/images/size/w960/2024/04/constrain.webp 960w,
+/content/images/size/w1140/2024/04/constrain.webp 1140w"
+                    sizes="(min-width: 576px) 160px, 90vw"
+                    src="/content/images/size/w750/2024/04/constrain.webp"
+                    alt="A Guide to Structured Generation Using Constrained Decoding"
+                    loading="lazy"
+                >
+        </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">A Guide to Structured Generation Using Constrained Decoding</h2>
+            <div class="feed-excerpt">The how, why, power, and pitfalls of constraining generative language model outputs</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2024-04-08">
+                Apr 8, 2024
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    13 min read
+                </div>
+                <script
+    data-ghost-comment-count="660a7eea6b0ce70001ac89a7"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="div"
+    data-ghost-comment-count-class-name="feed-comments"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="/constrained-decoding/" aria-label="A Guide to Structured Generation Using Constrained Decoding"></a>
+
+</article>                <article class="feed post" data-month="July 2023">
+
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Jul
+        </div>
+        <div class="feed-calendar-day">
+            22
+        </div>
+    </div>
+
+        <div class="feed-image u-placeholder rectangle">
+                <img
+                    class="u-object-fit"
+                    srcset="/content/images/size/w400/2023/07/Screenshot-2023-07-17-at-08.54.20.png 400w,
+/content/images/size/w750/2023/07/Screenshot-2023-07-17-at-08.54.20.png 750w,
+/content/images/size/w960/2023/07/Screenshot-2023-07-17-at-08.54.20.png 960w,
+/content/images/size/w1140/2023/07/Screenshot-2023-07-17-at-08.54.20.png 1140w"
+                    sizes="(min-width: 576px) 160px, 90vw"
+                    src="/content/images/size/w750/2023/07/Screenshot-2023-07-17-at-08.54.20.png"
+                    alt="Modern Data Engineering and the Lost Art of Data Modelling"
+                    loading="lazy"
+                >
+        </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Modern Data Engineering and the Lost Art of Data Modelling</h2>
+            <div class="feed-excerpt">Necessity was the mother of invention. Now, an abundance of cheap storage and compute makes for data anarchy.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2023-07-22">
+                Jul 22, 2023
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    5 min read
+                </div>
+                <script
+    data-ghost-comment-count="648c395171f8010001385318"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="div"
+    data-ghost-comment-count-class-name="feed-comments"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="/the-lost-art-of-data-modelling/" aria-label="Modern Data Engineering and the Lost Art of Data Modelling"></a>
+
+</article>                <article class="feed post" data-month="June 2023">
+
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Jun
+        </div>
+        <div class="feed-calendar-day">
+            07
+        </div>
+    </div>
+
+        <div class="feed-image u-placeholder rectangle">
+                <img
+                    class="u-object-fit"
+                    srcset="/content/images/size/w400/2024/04/approx.webp 400w,
+/content/images/size/w750/2024/04/approx.webp 750w,
+/content/images/size/w960/2024/04/approx.webp 960w,
+/content/images/size/w1140/2024/04/approx.webp 1140w"
+                    sizes="(min-width: 576px) 160px, 90vw"
+                    src="/content/images/size/w750/2024/04/approx.webp"
+                    alt="Approximating Shapley Values for Machine Learning"
+                    loading="lazy"
+                >
+        </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Approximating Shapley Values for Machine Learning</h2>
+            <div class="feed-excerpt">The how and why of Shapley value approximation, explained in code</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2023-06-07">
+                Jun 7, 2023
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    6 min read
+                </div>
+                <script
+    data-ghost-comment-count="6432bbea0f7f38003d635cd1"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="div"
+    data-ghost-comment-count-class-name="feed-comments"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="/approximating-shapley-values/" aria-label="Approximating Shapley Values for Machine Learning"></a>
+
+</article>                <article class="feed post" data-month="April 2023">
+
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Apr
+        </div>
+        <div class="feed-calendar-day">
+            07
+        </div>
+    </div>
+
+        <div class="feed-image u-placeholder rectangle">
+                <img
+                    class="u-object-fit"
+                    srcset="/content/images/size/w400/2023/04/gnillehcs.jpeg 400w,
+/content/images/size/w750/2023/04/gnillehcs.jpeg 750w,
+/content/images/size/w960/2023/04/gnillehcs.jpeg 960w,
+/content/images/size/w1140/2023/04/gnillehcs.jpeg 1140w"
+                    sizes="(min-width: 576px) 160px, 90vw"
+                    src="/content/images/size/w750/2023/04/gnillehcs.jpeg"
+                    alt="Homogeneous neighbourhoods in the Schelling model of segregation"
+                    loading="lazy"
+                >
+        </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Gnillehcs&#x27; Model of Integration</h2>
+            <div class="feed-excerpt">What happens to segregated communities as people increasingly seek diversity?</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2023-04-07">
+                Apr 7, 2023
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    3 min read
+                </div>
+                <script
+    data-ghost-comment-count="6428b04dfbe4ae003da03440"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="div"
+    data-ghost-comment-count-class-name="feed-comments"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="/gnillehcs/" aria-label="Gnillehcs&#x27; Model of Integration"></a>
+
+</article>                <article class="feed post" data-month="December 2022">
+
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Dec
+        </div>
+        <div class="feed-calendar-day">
+            31
+        </div>
+    </div>
+
+        <div class="feed-image u-placeholder rectangle">
+                <img
+                    class="u-object-fit"
+                    srcset="/content/images/size/w400/2022/12/power_set_A-3.png 400w,
+/content/images/size/w750/2022/12/power_set_A-3.png 750w,
+/content/images/size/w960/2022/12/power_set_A-3.png 960w,
+/content/images/size/w1140/2022/12/power_set_A-3.png 1140w"
+                    sizes="(min-width: 576px) 160px, 90vw"
+                    src="/content/images/size/w750/2022/12/power_set_A-3.png"
+                    alt="A power set of feature coalitions."
+                    loading="lazy"
+                >
+        </div>
+
+    <div class="feed-wrapper">
+        <h2 class="feed-title">How Shapley Values Work</h2>
+            <div class="feed-excerpt">In this article, we will explore how Shapley values work - not using cryptic formulae, but by way of code and simplified explanations</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2022-12-31">
+                Dec 31, 2022
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    10 min read
+                </div>
+                <script
+    data-ghost-comment-count="638fb9c108c51c003d0026d9"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="div"
+    data-ghost-comment-count-class-name="feed-comments"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+
+    <a class="u-permalink" href="/how-shapley-values-work/" aria-label="How Shapley Values Work"></a>
+
+</article>        </div>
+    </section>
+
+                <section class="gh-comments gh-canvas">
+        <header class="gh-comments-header">
+            <h3 class="gh-comments-title related-title">Member discussion</h3>
+            <script
+    data-ghost-comment-count="6622b75da434120001e4bc06"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="span"
+    data-ghost-comment-count-class-name="gh-comments-count"
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+        </header>
+        
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.16/umd/comments-ui.min.js" data-ghost-comments="https://www.aidancooper.co.uk/" data-api="https://aidan-cooper.ghost.io/ghost/api/content/" data-admin="https://aidan-cooper.ghost.io/ghost/" data-key="25ee896db3120551bc6196a018" data-title="" data-count="false" data-post-id="6622b75da434120001e4bc06" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#256dda" data-comments-enabled="all" data-publication="Impromptu Engineer" crossorigin="anonymous"></script>
+    
+    </section>
+
+</main>
+    </div>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                Impromptu Engineer © 2024
+            </div>
+            <nav class="gh-foot-menu">
+                
+            </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+        document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+    }
+</script>
+
+<script src="https://www.aidancooper.co.uk/assets/built/main.min.js?v=958ada5354"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-json.min.js"></script>
+
+<!-- To open links in new tab when links appended with ?xgtab&
+<script type='text/javascript'>
+[...document.querySelectorAll("a[href*='?xgtab&']")].forEach(link => {
+	link.setAttribute("target", "moredetail");
+});
+</script> -->
+<script type="text/javascript">
+	var links = document.getElementsByTagName("article")[0].querySelectorAll('a');
+    var a = new RegExp('/' + window.location.host + '/');
+	links.forEach((link) => {
+		if(!a.test(link.href)) {
+			link.setAttribute("target","_blank");
+		}
+	});
+</script> <!-- tocbot -->
+<script>
+    tocbot.init({
+        tocSelector: '.toc',
+        linkClass: 'toc-link',
+        orderedList: true,
+        headingSelector: 'h2, h3',
+        collapseDepth: 3,
+        contentSelector: '.gh-content',
+        ignoreSelector: '.kg-header-card > *',
+        headingsOffset: 40,
+        scrollSmooth: true,
+		scrollSmoothDuration: 420,
+  		scrollSmoothOffset: -40,
+        hasInnerContainers: true
+    });
+</script>
+
+</body>
+</html>
