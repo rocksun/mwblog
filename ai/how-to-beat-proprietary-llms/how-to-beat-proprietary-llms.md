@@ -20,12 +20,12 @@ cover: https://www.aidancooper.co.uk/content/images/2024/04/dvg_e.png
 
 下面是中文版的表格(markdown格式):
 
-|  | 专有大型语言模型 | 开源大型语言模型 | 例子 |
-| --- | --- | --- | --- |
-| **示例** | [GPT-4](https://openai.com/research/gpt-4?ref=aidancooper.co.uk) (OpenAI)、[Gemini](https://gemini.google.com/?ref=aidancooper.co.uk) (Google)、[Claude](https://www.anthropic.com/claude?ref=aidancooper.co.uk) (Anthropic) | [Gemma 2B](https://huggingface.co/google/gemma-2b-it?ref=aidancooper.co.uk) (Google)、[Mistral 7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2?ref=aidancooper.co.uk) (Mistral AI)、[Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B?ref=aidancooper.co.uk) (Meta) | |  
-| **软件可访问性** | 闭源 | 开源 |  |
-| **参数数量** | 万亿级 | 典型规模: 2B、7B、70B |  |
-| **上下文窗口** | 更长,100k-1M+tokens | 更短,典型8k-32k tokens |  |  
+|  | 专有大型语言模型 | 开源大型语言模型 |
+| --- | --- | --- | 
+| **示例** | [GPT-4](https://openai.com/research/gpt-4?ref=aidancooper.co.uk) (OpenAI)、[Gemini](https://gemini.google.com/?ref=aidancooper.co.uk) (Google)、[Claude](https://www.anthropic.com/claude?ref=aidancooper.co.uk) (Anthropic) | [Gemma 2B](https://huggingface.co/google/gemma-2b-it?ref=aidancooper.co.uk) (Google)、[Mistral 7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2?ref=aidancooper.co.uk) (Mistral AI)、[Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B?ref=aidancooper.co.uk) (Meta) | 
+| **软件可访问性** | 闭源 | 开源 | 
+| **参数数量** | 万亿级 | 典型规模: 2B、7B、70B |
+| **上下文窗口** | 更长,100k-1M+tokens | 更短,典型8k-32k tokens |  
 | **能力** | 在所有排行榜和基准测试中表现最佳 | 历史上落后于专有大型语言模型 |
 | **基础设施** | 平台即服务 (PaaS), 由提供商管理。不可配置。API 速率限制。| 通常在云基础设施 (IaaS) 上自我管理。完全可配置。|
 | **推理成本** | 更高  | 更低 |
