@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Llama-3生成PowerPoint
-cover: https://miro.medium.com/v2/resize:fit:1200/1*VszX1H4fpqIMMXIs26_xrA.jpeg
+cover: ./cover.png
 -->
 
 使用 LLM 和 Python-pptx 自动化演示文稿。
