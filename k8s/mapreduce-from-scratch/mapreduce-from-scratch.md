@@ -277,11 +277,11 @@ func Run(cfg *config.Config) {
 
 为了实现这一点，当保存 mappers 中的中间结果时，我们根据 reducers R 的数量使用公式对键进行分区  
 
-![](./p1.png)
+![](https://yylives.cc/wp-content/uploads/2024/04/p1.png)
 
 例如，使用 FNV 哈希和 R = 2，我们得到
 
-![](./p2.png)
+![](https://yylives.cc/wp-content/uploads/2024/04/p2.png)
 
 （数学笔记：这可以解释为“1 与 FNV(brown) mod 2 同余”）。
 
