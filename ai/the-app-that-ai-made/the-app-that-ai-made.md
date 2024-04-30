@@ -1,7 +1,7 @@
 
 <!--
 title: 用AI制作应用
-cover: https://alexredmon.com/api/og?post=the-app-that-ai-made&title=The%20app%20that%20A.I.%20made
+cover: https://www.alexandriaredmon.com/img/blog/the-app-that-ai-made/iphone-triple.jpg
 -->
 
 我用一种我不熟悉的语言和框架制作了多模态多功能移动应用程序 [CrayEye](https://www.crayeye.com)，我依靠现代大语言模型来编写代码，而不仅仅是代码片段，而是全部代码。虽然我后来手动进行了一些微小的调整（例如更改元素颜色或交换元素位置），但 LLM 完成了所有早期和繁重的工作。
