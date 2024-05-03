@@ -1,0 +1,40 @@
+# How Mobile App Quality Can Be Improved With AI
+![Featued image for: How Mobile App Quality Can Be Improved With AI](https://cdn.thenewstack.io/media/2024/05/1f24cb3d-usingaitoimprovemobileapps-1024x684.jpg)
+The pandemic created an interesting dynamic, from a developer’s perspective: Even though more people were home on higher-speed connections, there was a big surge in mobile use. That changed how businesses saw
+[mobile applications](https://thenewstack.io/intertwined-worlds-platform-and-mobile-app-engineering/), explained [Mav Turner](https://www.linkedin.com/in/mav-turner-cto-cpo/), chief product and strategy officer for the automated software testing platform [Tricentis](https://www.tricentis.com/).
+“You look at what happened during the pandemic, everybody had massive use of mobile devices, even though they were mostly at home,” Turner said. “We saw a big expansion of use so that really drove a lot of mobile services. A lot of businesses that were operating differently than they were pre-pandemic really expanded their mobile application.”
+In a
+[March survey issued by Tricentis](https://www.tricentis.com/resources/mobile-application-quality-report), 87% of respondents said that mobile application quality is more critical today than it was last year. For the study, Tricentis partnered with Censuswide to survey more than 1,000 senior IT professionals and application developers in the U.S., U.K., Germany and Singapore.
+Organizations are looking at how
+[artificial intelligence (AI) automation](https://thenewstack.io/how-ai-and-automation-can-improve-operational-resiliency/) can improve that experience, Turner added. For instance, the survey found that 31% of respondents expect AI and automation to improve accessibility, which is one of the biggest considerations for IT professionals and developers.
+## AI Adoption Mirroring Cloud’s Path
+AI is very similar to where the cloud was about 15 years ago, Turner observed when everybody was going to the cloud but they couldn’t always articulate why or what value they hoped to get out of it. The same thought process is unfolding with AI tools, he added.
+“A lot of times if you have this executive mandate, we want to be using AI because it’s great. We don’t want to be behind,” he said. “We hope to get to that maturity level where people really understand the different AI technologies and the use cases — where it does help and where it’s not really going to be beneficial, and hopefully quickly go through that maturity curve that we saw take a very long time and, frankly, is still playing out on the cloud side of things.”
+Developers still seem to be at the tinkering stage with AI, so there is a lot of build activity around AI right now. At the same time, there are certain corporate restrictions on what developers can and can’t use. More mature companies seem to be taking a “buy over build” approach to AI, in part because of legal concerns around the technology, Turner added.
+“Where I see companies further ahead on the maturity curve, frankly, they are looking for their vendors to supply those solutions. Because what happens is, if you’re trying to infuse AI into all of your parts of your business, now you’re trying to compete with your vendors when the whole point is to try to have good vendors that have the best advantage,” he said. “So they say, where do we actually want to invest our AI technology that is truly unique to our business and core to it.”
+The more mature companies are looking carefully at what they need to build versus what they can expect vendors to deliver when it comes to AI tooling, he added. That may be why only 21% are planning to implement AI tools within the next month. Interestingly, the survey also found that 74% have a positive sentiment about
+[integrating AI into their development testing](https://thenewstack.io/insights-on-integration-tests-with-foresight/) processes. The New Stack asked Turner how he reconciled those two statistics.
+It was surprising, Turner acknowledged. One possible explanation may be that many organizations have actually already adopted AI tooling such as
+[enterprise copilots](https://thenewstack.io/copilot-enterprise-introduces-search-and-customized-best-practices/) into their development lifecycle, suggested Turner.
+## AI for App Testing
+Since Tricentis is an
+[automated software testing](https://thenewstack.io/no-time-for-test-automation/) platform, parts of the survey focused on how developer groups intend to use AI for testing software. Eighty-six percent said testing was going to be an important area within the context of AI, he added. In a related finding, 32% of respondents expect their organizations to invest over $1 million in mobile app quality and testing.
+It’s a critical but often neglected part of the process and AI may be able to help ease the pain points of testing, Turner said.
+“Before we did the survey, we were already getting massive pull from our customers because of that dynamic I mentioned earlier, that they were getting pressure from their leadership to make sure they’re using the latest and greatest from an AI perspective, expecting to get the efficiencies and scale,” Turner said. “They’re hoping the AI can come in and do a lot of the heavy lifting to increase the quality.”
+Much is made of a
+[generative AI’s ability to write code](https://thenewstack.io/ai-code-generation-6-faqs-for-developers/), but it can also help test it to improve quality, he said.
+“That’s the thing we’re seeing the most because […] where you’re using AI to generate code, then you get to the next step to say okay, we’ve generated all this code […], how are we going to test it to ensure it meets our quality bars?” He said. “You need more help because of the asymmetry of the problem there.”
+The survey found that while nearly 74% say their organizations have a positive sentiment about integrating AI into development and testing processes, so far under half — 49% — of senior IT professionals and application developers surveyed stated that AI is already a part of their mobile app testing strategies.
+Tricentis plans to roll out a copilot offering of its own soon to help explain the code in natural language and how to fix it. The company will also offer a new tool that will
+[improve the accuracy](https://thenewstack.io/accuracy-improves-when-large-language-models-collaborate/) of the locators, which improves the overall test stability, Turner added.
+## More Interest in Hybrid Platforms
+Although the survey did not look specifically at hybrid platforms such as Flutter, Google’s cross-platform SDK, and React, they are increasingly being favored over native app platforms such as iOS and Android, according to Turner.
+“Most of the time, our customers are actually pulling us to Flutter and React, and they’re trying to get us to build applications once and deploy and pipe — and that’s, again, also from a testing perspective,” he said. “They’re wanting to move away from the native apps and move more towards these hybrid [solutions].”
+That also simplifies testing because you’re testing one code set rather than code sets for multiple native platforms. AI comparative technology becomes really valuable in this type of testing, too, he added.
+Overall, the survey showed that developers and non-executive IT workers are becoming aware of mobile applications as a business enabler, he said.
+“Over 90% of the respondents could really quantify the business impact and it went near millions of dollars, and I was surprised,” Turner said. “Typically, the persona that we’re hitting is more removed, didn’t really care about the business impact as much, but [the survey] seemed to have a strong sense for how important these applications were.”
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
