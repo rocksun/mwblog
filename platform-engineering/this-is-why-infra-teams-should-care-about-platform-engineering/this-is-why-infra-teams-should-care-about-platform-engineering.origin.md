@@ -1,0 +1,29 @@
+# This Is Why Infra Teams Should Care About Platform Engineering
+![Featued image for: This Is Why Infra Teams Should Care About Platform Engineering](https://cdn.thenewstack.io/media/2024/04/67c62dab-ship-1024x576.jpg)
+A growing number of infrastructure teams, especially in the enterprise, are increasingly under pressure, bringing many engineering organizations to the brink of an operational collapse. The majority of these infra teams were tasked years ago with modernization and cloud-migration initiatives that often got stuck halfway.
+Now they need to manage both on-premises and cloud setups side by side while at the same time having to compete with cloud vendors’ consoles that promise to enable developer self-service. Of course, developer self-service can’t be achieved through any such consoles, and infrastructure teams end up having to deal with a constantly building wave of developer requests and tickets.
+Developers complain about the long waiting times and high cognitive load of having to deal with increasingly complex cloud native toolchains. Time to market goes up, and executives blame it on infra teams being a bottleneck.
+This probably sounds too familiar to most. But here’s what’s interesting: In the last couple of years,
+[platform engineering](https://platformengineering.org/blog/what-is-platform-engineering) has promised to solve many of these issues, enabling true developer self-service at scale —and not just by slapping a UI layer on top of your infrastructure — while alleviating pressure on infra teams. Yet, many infrastructure teams I speak to don’t seem to look at platform engineering as a solution to their problems. Why?
+Because they immediately associate it with developer experience (DevEx), which is not really their cup of tea. After all, as an infra team you have to worry about infrastructure and service delivery, so why should you care?
+Because by providing an
+[internal developer platform (IDP)](https://internaldeveloperplatform.org/) to your developers, you both eliminate waiting times for them and prevent the wave of ticket ops from hitting you. You can actually focus on what matters, such as adding new resources and infrastructure (and, let’s be honest, is more fun), rather than having to stand up the Nth instance of the same Postgres DB. You should care, because in the eyes of management, you go from being part of the problem (by being a bottleneck) to being part of the solution.
+## Infrastructure + Platform Engineering = Infrastructure Platform Engineering
+Platform engineering is about taking all the tech and tools floating around your enterprise organization and binding them together into golden paths that enable developer self-service and remove cognitive load from the individual contributor. Gartner then
+[defines infrastructure platform engineering](https://www.gartner.com/en/documents/5352063) as “the discipline of building internal software products [IDPs] that present IT infrastructure to users or other platforms in an easily consumable way.”
+For your platform engineering initiative to be successful, it’s therefore crucial to have a clear communication channel between your platform team and your existing infrastructure teams. Platform engineering is not just about DevEx, and the infrastructure side of things is as essential as the application side or the developer interface. Infrastructure platform engineers play a key role in your platform team.
+There’s a huge opportunity here for platform engineering teams to create a unified experience for developers, regardless of the resources they want to consume, whether from a cloud provider, infrastructure team or both. An enterprise-grade IDP will naturally standardize the consumption of such resources, boosting efficiency, improving security and strengthening compliance across any internal or external providers.
+This can be a massive unlock not just for developers but for infrastructure teams too. IDPs built with platform orchestrators introduce a degree of standardization and automation that can make your life as an infra team considerably more pleasant.
+Assume, for example, you need to upgrade Postgres from Vx to Vx+1, and you need to do so across all your app dev teams. Without an IDP, you have to go to each team, figure out which instance they are running, then map it all out. You’d then have to go back and upgrade, usually together with the individual teams, each unique instance.
+With a properly built IDP (with a
+[platform orchestrator as a backend](https://humanitec.com/blog/why-every-internal-developer-platform-needs-a-backend)), you can simply update one file (a resource definition) and the next time any team deploys their workloads, the newer resource version will automatically be used.
+This drives standardization by design across all your teams and workflows, while getting rid of ticket ops entirely and allowing you to do your best work.
+## Conclusion
+Platform engineering and platform orchestrators are a unique opportunity for engineering organizations to improve their operations and the way developers interact with infrastructure, increasing efficiency and cutting time to market (TTM) as a result.
+But a platform engineering initiative cannot go far without close collaboration with existing infrastructure teams, who in turn will benefit hugely from increases in standardization and automation — and no more ticket ops.
+Infrastructure platform engineers will play an increasingly crucial role in the success of your IDP rollout and broader organization performance. If you are curious to learn more,
+[join PlatformCon24](https://platformcon.com/register) in June. It’s free, and infrastructure platform engineering will be one of the hot trends we’ll discuss. [
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
