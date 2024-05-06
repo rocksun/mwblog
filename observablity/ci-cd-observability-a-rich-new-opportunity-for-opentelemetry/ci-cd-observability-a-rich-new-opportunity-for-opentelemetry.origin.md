@@ -1,0 +1,38 @@
+# CI/CD Observability: A Rich New Opportunity for OpenTelemetry
+![Featued image for: CI/CD Observability: A Rich New Opportunity for OpenTelemetry](https://cdn.thenewstack.io/media/2024/04/203ec45b-animals-3337027_1280-1024x682.jpg)
+Continuous integration and continuous deployment (
+[CI/CD](https://thenewstack.io/ci-cd/)) are the backbone of modern software delivery, but there’s still limited visibility into their processes. Here’s how that’s changing with [OpenTelemetry](https://thenewstack.io/why-the-latest-advances-in-opentelemetry-are-significant/) (OTel), and why those changes are so exciting.
+There are different definitions of
+[CI/CD](https://thenewstack.io/a-primer-continuous-integration-and-continuous-delivery-ci-cd/) depending on whom you ask, but the consistent part is that it’s continuous — a never-ending feedback loop that’s all about reducing manual processes, generating deployable software and rooting out issues before they reach production.
+The practice has become essential for reducing manual processes, generating deployable software and increasing confidence in the software delivery process, yet we lack tools to prevent it from becoming flaky.
+Observability into CI systems is still in the early stages — an opportunity now made possible by a combination of factors. Let’s take a closer look at aspects of CI/CD pipelines that have historically been unobservable, how
+[OpenTelemetry](https://opentelemetry.io/) and related efforts are enabling CI observability, and the high ceiling for developer productivity gains that are ahead.
+**Still Plenty of Room for Shifting Farther Left**
+CI and alerting have traditionally been used as solutions with a common purpose. They work closely together as essential components of continuous automated monitoring. Continuous integration is the guard in the early stages: It detects changes, maintains build health and constantly monitors system signals. Alerting tends to be for later stages. It identifies problems that slip through CI. So CI lays the groundwork while alerting responses to threats — continuously working together to solve the same issue.
+But historically, the focus of observability has been on the
+*run* part of things and has neglected valuable insights from earlier phases, like building, testing and deploying, and other key opportunity areas in earlier phases of the CI pipeline.
+We deploy things, we see things catch on fire and then we try to mitigate the fire.
+But if we only observe the latest stages of the development and deployment cycle, it’s too late. We don’t know what happened in the build phase or the test phase, or we have difficulty in root cause analysis or due to increases in mean time to recovery, and also due to missed optimization opportunities. We know our CI pipelines take a long time to run, but we don’t know what to improve if we want to make them faster.
+If we shift our observability focus to the left, we can address issues before they escalate, enhance efficiency by cutting problems in the process, increase the robustness and integrity of our tests, and minimize costs and expenses related to post-deployment and downtime.
+**Owning Your Own CI Data with OpenTelemetry**
+There’s a reason why OpenTelemetry is one of the most active projects (technically, the “
+[second highest velocity project](https://www.cncf.io/blog/2023/10/27/october-2023-where-we-are-with-velocity-of-cncf-lf-and-top-30-open-source-projects/)”) in the [Cloud Native Computing Foundation](https://cncf.io/?utm_content=inline+mention). It’s been an incredible protocol for defining semantic conventions and unifying signal types across logs, metrics and traces (the “three pillars” of observability), as well as profiling and other emergent signal types.
+We’ve seen OTel making waves over the last year after adding broad support for open standards and common ground in arenas that were once black boxes. Observability areas that were once highly proprietary, like databases, cloud providers, query languages and log file formats, have been cracked open with a well-defined protocol that
+*just works*, and supports just about every popular programming language in our modern polyglot world.
+The CI/CD vendor tooling domain has its own black boxes. Every dev team uses a CI system, and most use more than one. The concept of “owning your own CI data” is getting a lot more play today from users who are tired of complicated workarounds to get at that data in their own well-understood backend schema, but are struggling with context switching and proprietary backends.
+That’s why there was such excitement when the
+[OTel CI/CD working group](https://github.com/open-telemetry/oteps/pull/223) first proposed the introduction of new semantic conventions for CI/CD observability, then followed up recently with a new [Special Interest Group (SIG) specifically for CI/CD observability](https://github.com/open-telemetry/community/pull/1822%23issuecomment-1898876452).
+**What the Future of Observability Data Looks Like**
+Owning your own data means you get to decide where that data goes and how you store it. With OpenTelemetry operating between our CI systems and the destinations we choose, OpenTelemetry takes care of converting it to the database and schema we want, which means a huge wave of innovation based on CI data that was once stovepiped is now being introduced to the observability tooling arena.
+We, for example, built an
+[OpenTelemetry Collector distribution](https://github.com/grafana/grafana-ci-otel-collector) — a binary whose receivers, processors and exporters extract CI data from Drone, transform it into the format you need and then send that data out to the database. [Jenkins has a plug-in](https://plugins.jenkins.io/opentelemetry/) that exports data via the OpenTelemetry protocol (OTLP).
+This is a really exciting time for the observability community. By getting data out of our CIs and integrating it with observability systems, we can trace back to the logs in builds, and see important information — like when the first time something failed was — from our CI. From there, we can find out what’s producing errors, in a way that’s much better pinpointed to the exact time of their origin.
+The CI/CD arena unlocks so much pre-crime data for observability systems. Getting telemetry out of your builds allows you to build timelines of your deployment branches, and discover deeper insight into failures that occur, solving a whole range of flaky test issues, finding and reproducing issue origins easily, and troubleshooting CI/CD pipeline performance and duration.
+As observability continues this shift farther left in the CI pipeline, we can address issues before they escalate, enhance efficiency by removing problems from the process, increase the robustness of the integrity of our tests, and minimize costs and expenses related to post-deployment and downtime.
+With the momentum of OpenTelemetry behind it, we expect the CI/CD arena to be one of the hottest evolutionary areas for observability, joining the ranks of other major observability use cases like infrastructure monitoring and application performance monitoring.
+CI/CD is the foundation of — and often a prerequisite of — every modern production system, so we should emphasize its importance by applying to it all the best practices we use for our production services.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
