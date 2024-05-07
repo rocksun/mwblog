@@ -310,7 +310,7 @@ source ~/.bashrc
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/0*ibkrc8KB9DM31Jcb.gif)
 
-## 声明性工作
+## 声明式工作
 
 Kubernetes 资源的声明性管理涉及使用 YAML 清单文件指定资源的所需状态，并将这些清单应用到集群。
 

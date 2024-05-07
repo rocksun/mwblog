@@ -1,6 +1,6 @@
 
 <!--
-title: Go 语言：如何使用 Go Install 命令
+title: 何使用Go Install命令
 cover: https://cdn.thenewstack.io/media/2024/05/9e40387e-monitor-1307227_1280-1.jpg
 -->
 
