@@ -1,7 +1,7 @@
 
 <!--
 title: 如何编写Kubernetes Operator
-cover: https://miro.medium.com/v2/resize:fit:856/1*bPuZj4i3fv7uxqelc7Vqaw.png
+cover: ./cover.png
 -->
 
 编写 Kubernetes(K8s)  operator 的意图在我心中不断增长。我开始阅读文章、探索 GitHub 存储库，并就此咨询我的同事。虽然我不能说它完全成功，但这个意图仍然存在。
