@@ -1,7 +1,7 @@
 
 <!--
 title: 从未有过的kubectl指南。
-cover: https://miro.medium.com/v2/resize:fit:1200/1*WD8beae38C0PYq-DZw26uw.png
+cover: ./cover.png
 -->
 
 你是哪种工程师？光看外表，有人能猜出来吗？很可能猜不出来。
