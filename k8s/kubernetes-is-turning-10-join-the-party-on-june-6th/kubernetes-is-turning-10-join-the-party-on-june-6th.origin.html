@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-focus-outline">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Kubernetes is turning 10! Join the party on June 6th | CNCF</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:standard,max-video-preview:-1" />
+<link rel="canonical" href="https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/" />
+<meta name="description" content="Over the last 10 years, Kubernetes has risen to become the backbone of modern application deployment and has completely changed the course of innovation." />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="CNCF" />
+<meta property="og:title" content="Kubernetes is turning 10! Join the party on June 6th" />
+<meta property="og:description" content="Over the last 10 years, Kubernetes has risen to become the backbone of modern application deployment and has completely changed the course of innovation. Kubernetes was the first project accepted into&#8230;" />
+<meta property="og:url" content="https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/" />
+<meta property="og:image" content="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60.png" />
+<meta property="og:image:width" content="1800" />
+<meta property="og:image:height" content="945" />
+<meta property="article:published_time" content="2024-05-07T15:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-07T11:31:19+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@cloudnativefdn" />
+<meta name="twitter:title" content="Kubernetes is turning 10! Join the party on June 6th" />
+<meta name="twitter:description" content="Over the last 10 years, Kubernetes has risen to become the backbone of modern application deployment and has completely changed the course of innovation. Kubernetes was the first project accepted into&#8230;" />
+<meta name="twitter:image" content="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.cncf.io/#/schema/WebSite","url":"https://www.cncf.io/","name":"CNCF","inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.cncf.io/search/{search_term_string}/"},"query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","@id":"https://www.cncf.io/#/schema/Organization","name":"CNCF","url":"https://www.cncf.io/","sameAs":["https://www.facebook.com/CloudNativeComputingFoundation/","https://twitter.com/cloudnativefdn","https://www.instagram.com/humans.of.cloudnative/","https://www.youtube.com/c/cloudnativefdn","https://www.linkedin.com/company/cloud-native-computing-foundation/"],"logo":{"@type":"ImageObject","url":"https://www.cncf.io/wp-content/uploads/2022/11/cncf-logo-stacked.png","contentUrl":"https://www.cncf.io/wp-content/uploads/2022/11/cncf-logo-stacked.png","width":1293,"height":762,"contentSize":"12810"}}},{"@type":"WebPage","@id":"https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/","url":"https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/","name":"Kubernetes is turning 10! Join the party on June 6th | CNCF","description":"Over the last 10 years, Kubernetes has risen to become the backbone of modern application deployment and has completely changed the course of innovation.","inLanguage":"en-US","isPartOf":{"@id":"https://www.cncf.io/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://www.cncf.io/#/schema/BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://www.cncf.io/","name":"CNCF"},{"@type":"ListItem","position":2,"item":"https://www.cncf.io/blog/","name":"Category: Blog"},{"@type":"ListItem","position":3,"name":"Kubernetes is turning 10! Join the party on June 6th"}]},"potentialAction":{"@type":"ReadAction","target":"https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/"},"datePublished":"2024-05-07T15:00:00+00:00","dateModified":"2024-05-07T11:31:19+00:00","author":{"@type":"Person","@id":"https://www.cncf.io/#/schema/Person/d97a259a66ac4633ce2cecfb8ee7d597","name":"Jessie"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 10.99ms meta | 0.32ms boot -->
+
+<link rel='dns-prefetch' href='//www.cncf.io' />
+<link rel='dns-prefetch' href='//js.hs-scripts.com' />
+<link rel='dns-prefetch' href='//cmp.osano.com' />
+<link crossorigin='' href='//www.googletagmanager.com' rel='preconnect' />
+<link crossorigin='' href='//www.gstatic.com' rel='preconnect' />
+<link crossorigin href='//js.hscollectedforms.net' rel='preconnect' />
+<link crossorigin href='//js.hs-banner.com' rel='preconnect' />
+<link crossorigin href='//js.hs-analytics.net' rel='preconnect' />
+<link crossorigin href='//js.hsforms.net' rel='preconnect' />
+<link crossorigin href='//js.hs-scripts.com' rel='preconnect' />
+<style id='wp-block-library-inline-css'>
+:root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,161;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px;--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:#9747ff}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip:auto!important;-webkit-clip-path:none;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+</style>
+<link rel='stylesheet' id='main-css' href='https://www.cncf.io/wp-content/themes/cncf-twenty-two/build/styles.min.css?ver=1715124546' media='all' />
+<style id='wp-block-button-inline-css'>
+.wp-block-button__link{box-sizing:border-box;cursor:pointer;display:inline-block;text-align:center;word-break:break-word}.wp-block-button__link.aligncenter{text-align:center}.wp-block-button__link.alignright{text-align:right}:where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padding:calc(.667em + 2px) calc(1.333em + 2px);text-decoration:none}.wp-block-button[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons>.wp-block-button.has-custom-width{max-width:none}.wp-block-buttons>.wp-block-button.has-custom-width .wp-block-button__link{width:100%}.wp-block-buttons>.wp-block-button.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-buttons>.wp-block-button.wp-block-button__width-25{width:calc(25% - var(--wp--style--block-gap, .5em)*.75)}.wp-block-buttons>.wp-block-button.wp-block-button__width-50{width:calc(50% - var(--wp--style--block-gap, .5em)*.5)}.wp-block-buttons>.wp-block-button.wp-block-button__width-75{width:calc(75% - var(--wp--style--block-gap, .5em)*.25)}.wp-block-buttons>.wp-block-button.wp-block-button__width-100{flex-basis:100%;width:100%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-25{width:25%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-50{width:50%}.wp-block-buttons.is-vertical>.wp-block-button.wp-block-button__width-75{width:75%}.wp-block-button.is-style-squared,.wp-block-button__link.wp-block-button.is-style-squared{border-radius:0}.wp-block-button.no-border-radius,.wp-block-button__link.no-border-radius{border-radius:0!important}.wp-block-button .wp-block-button__link:where(.is-style-outline),.wp-block-button:where(.is-style-outline)>.wp-block-button__link{border:2px solid;padding:.667em 1.333em}.wp-block-button .wp-block-button__link:where(.is-style-outline):not(.has-text-color),.wp-block-button:where(.is-style-outline)>.wp-block-button__link:not(.has-text-color){color:currentColor}.wp-block-button .wp-block-button__link:where(.is-style-outline):not(.has-background),.wp-block-button:where(.is-style-outline)>.wp-block-button__link:not(.has-background){background-color:initial;background-image:none}.wp-block-button .wp-block-button__link:where(.has-border-color){border-width:initial}.wp-block-button .wp-block-button__link:where([style*=border-top-color]){border-top-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-right-color]){border-right-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-bottom-color]){border-bottom-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-left-color]){border-left-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-style]){border-width:initial}.wp-block-button .wp-block-button__link:where([style*=border-top-style]){border-top-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-right-style]){border-right-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-bottom-style]){border-bottom-width:medium}.wp-block-button .wp-block-button__link:where([style*=border-left-style]){border-left-width:medium}
+</style>
+<style id='wp-block-buttons-inline-css'>
+.wp-block-buttons.is-vertical{flex-direction:column}.wp-block-buttons.is-vertical>.wp-block-button:last-child{margin-bottom:0}.wp-block-buttons>.wp-block-button{display:inline-block;margin:0}.wp-block-buttons.is-content-justification-left{justify-content:flex-start}.wp-block-buttons.is-content-justification-left.is-vertical{align-items:flex-start}.wp-block-buttons.is-content-justification-center{justify-content:center}.wp-block-buttons.is-content-justification-center.is-vertical{align-items:center}.wp-block-buttons.is-content-justification-right{justify-content:flex-end}.wp-block-buttons.is-content-justification-right.is-vertical{align-items:flex-end}.wp-block-buttons.is-content-justification-space-between{justify-content:space-between}.wp-block-buttons.aligncenter{text-align:center}.wp-block-buttons:not(.is-content-justification-space-between,.is-content-justification-right,.is-content-justification-left,.is-content-justification-center) .wp-block-button.aligncenter{margin-left:auto;margin-right:auto;width:100%}.wp-block-buttons[style*=text-decoration] .wp-block-button,.wp-block-buttons[style*=text-decoration] .wp-block-button__link{text-decoration:inherit}.wp-block-buttons.has-custom-font-size .wp-block-button__link{font-size:inherit}.wp-block-button.aligncenter{text-align:center}
+</style>
+<script defer data-domain='cncf.io' data-api='https://www.cncf.io/wp-json/bc0758/v1/0c2b/2b330bc5' src =//www.cncf.io/wp-content/uploads/6c2f341ddf/917c4731.js?ver=1709539411 id="plausible"></script>
+<script id="plausible-analytics-js-after">
+window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+</script>
+<script defer src="https://cmp.osano.com/16A0DbT9yDNIaQkvZ/c3494b1e-ff3a-436f-978d-842e9a0bed27/osano.js?ver=1" id="osano-js"></script>
+<link rel="https://api.w.org/" href="https://www.cncf.io/wp-json/" /><link rel="alternate" type="application/json" href="https://www.cncf.io/wp-json/wp/v2/posts/106789" /><!-- Google Tag Manager -->
+<script data-type="lazy" data-src="data:text/javascript;base64,KGZ1bmN0aW9uKHcsZCxzLGwsaSl7d1tsXT13W2xdfHxbXTt3W2xdLnB1c2goeydndG0uc3RhcnQnOgpuZXcgRGF0ZSgpLmdldFRpbWUoKSxldmVudDonZ3RtLmpzJ30pO3ZhciBmPWQuZ2V0RWxlbWVudHNCeVRhZ05hbWUocylbMF0sCmo9ZC5jcmVhdGVFbGVtZW50KHMpLGRsPWwhPSdkYXRhTGF5ZXInPycmbD0nK2w6Jyc7ai5hc3luYz10cnVlO2ouc3JjPQonaHR0cHM6Ly93d3cuZ29vZ2xldGFnbWFuYWdlci5jb20vZ3RtLmpzP2lkPScraStkbDtmLnBhcmVudE5vZGUuaW5zZXJ0QmVmb3JlKGosZik7Cn0pKHdpbmRvdyxkb2N1bWVudCwnc2NyaXB0JywnZGF0YUxheWVyJywnR1RNLUtOWEZXVicpOw=="></script>
+<!-- End Google Tag Manager -->
+			<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v11.1.6-->
+			<script class="hsq-set-content-id" data-content-id="blog-post">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "blog-post"]);
+			</script>
+			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
+					<link rel="icon"
+			href="https://www.cncf.io/wp-content/themes/cncf-twenty-two/images/favicon.ico"
+			sizes="any">
+		<link rel="icon"
+			href="https://www.cncf.io/wp-content/themes/cncf-twenty-two/images/favicon.svg"
+			sizes="any" type="image/svg+xml">
+		<link rel="apple-touch-icon"
+			href="https://www.cncf.io/wp-content/themes/cncf-twenty-two/images/apple-touch-icon.png">
+		<link rel="manifest"
+			href="https://www.cncf.io/wp-content/themes/cncf-twenty-two/images/manifest.webmanifest">
+		<meta name="theme-color" content="#000000">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-97e2229449e282c1bef",applicationID:"643908501"};;/*! For license information please see nr-loader-rum-1.258.0.min.js.LICENSE.txt */
+(()=>{var e,t,r={234:(e,t,r)=>{"use strict";r.d(t,{P_:()=>v,Mt:()=>b,C5:()=>s,OP:()=>k,lF:()=>P,Yu:()=>_,Dg:()=>m,CX:()=>c,GE:()=>w,sU:()=>N});var n=r(8632),i=r(9567);const o={beacon:n.ce.beacon,errorBeacon:n.ce.errorBeacon,licenseKey:void 0,applicationID:void 0,sa:void 0,queueTime:void 0,applicationTime:void 0,ttGuid:void 0,user:void 0,account:void 0,product:void 0,extra:void 0,jsAttributes:{},userAttributes:void 0,atts:void 0,transactionName:void 0,tNamePlain:void 0},a={};function s(e){if(!e)throw new Error("All info objects require an agent identifier!");if(!a[e])throw new Error("Info for ".concat(e," was never set"));return a[e]}function c(e,t){if(!e)throw new Error("All info objects require an agent identifier!");a[e]=(0,i.D)(t,o);const r=(0,n.ek)(e);r&&(r.info=a[e])}const u=e=>{if(!e||"string"!=typeof e)return!1;try{document.createDocumentFragment().querySelector(e)}catch{return!1}return!0};var d=r(7056),l=r(50);const f="[data-nr-mask]",g=()=>{const e={mask_selector:"*",block_selector:"[data-nr-block]",mask_input_options:{color:!1,date:!1,"datetime-local":!1,email:!1,month:!1,number:!1,range:!1,search:!1,tel:!1,text:!1,time:!1,url:!1,week:!1,textarea:!1,select:!1,password:!0}};return{feature_flags:[],proxy:{assets:void 0,beacon:void 0},privacy:{cookies_enabled:!0},ajax:{deny_list:void 0,block_internal:!0,enabled:!0,harvestTimeSeconds:10,autoStart:!0},distributed_tracing:{enabled:void 0,exclude_newrelic_header:void 0,cors_use_newrelic_header:void 0,cors_use_tracecontext_headers:void 0,allowed_origins:void 0},session:{expiresMs:d.oD,inactiveMs:d.Hb},ssl:void 0,obfuscate:void 0,jserrors:{enabled:!0,harvestTimeSeconds:10,autoStart:!0},metrics:{enabled:!0,autoStart:!0},page_action:{enabled:!0,harvestTimeSeconds:30,autoStart:!0},page_view_event:{enabled:!0,autoStart:!0},page_view_timing:{enabled:!0,harvestTimeSeconds:30,long_task:!1,autoStart:!0},session_trace:{enabled:!0,harvestTimeSeconds:10,autoStart:!0},harvest:{tooManyRequestsDelay:60},session_replay:{autoStart:!0,enabled:!1,harvestTimeSeconds:60,preload:!1,sampling_rate:10,error_sampling_rate:100,collect_fonts:!1,inline_images:!1,inline_stylesheet:!0,mask_all_inputs:!0,get mask_text_selector(){return e.mask_selector},set mask_text_selector(t){u(t)?e.mask_selector="".concat(t,",").concat(f):""===t||null===t?e.mask_selector=f:(0,l.Z)("An invalid session_replay.mask_selector was provided. '*' will be used.",t)},get block_class(){return"nr-block"},get ignore_class(){return"nr-ignore"},get mask_text_class(){return"nr-mask"},get block_selector(){return e.block_selector},set block_selector(t){u(t)?e.block_selector+=",".concat(t):""!==t&&(0,l.Z)("An invalid session_replay.block_selector was provided and will not be used",t)},get mask_input_options(){return e.mask_input_options},set mask_input_options(t){t&&"object"==typeof t?e.mask_input_options={...t,password:!0}:(0,l.Z)("An invalid session_replay.mask_input_option was provided and will not be used",t)}},spa:{enabled:!0,harvestTimeSeconds:10,autoStart:!0},soft_navigations:{enabled:!0,harvestTimeSeconds:10,autoStart:!0}}},p={},h="All configuration objects require an agent identifier!";function v(e){if(!e)throw new Error(h);if(!p[e])throw new Error("Configuration for ".concat(e," was never set"));return p[e]}function m(e,t){if(!e)throw new Error(h);p[e]=(0,i.D)(t,g());const r=(0,n.ek)(e);r&&(r.init=p[e])}function b(e,t){if(!e)throw new Error(h);var r=v(e);if(r){for(var n=t.split("."),i=0;i<n.length-1;i++)if("object"!=typeof(r=r[n[i]]))return;r=r[n[n.length-1]]}return r}const y={accountID:void 0,trustKey:void 0,agentID:void 0,licenseKey:void 0,applicationID:void 0,xpid:void 0},A={};function w(e,t){if(!e)throw new Error("All loader-config objects require an agent identifier!");A[e]=(0,i.D)(t,y);const r=(0,n.ek)(e);r&&(r.loader_config=A[e])}const _=(0,n.mF)().o;var E=r(385),x=r(6818);const D={buildEnv:x.Re,distMethod:x.gF,version:x.q4,originTime:E.sK},R={customTransaction:void 0,disabled:!1,isolatedBacklog:!1,loaderType:void 0,maxBytes:3e4,onerror:void 0,origin:""+E._A.location,ptid:void 0,releaseIds:{},appMetadata:{},session:void 0,denyList:void 0,harvestCount:0,timeKeeper:void 0},S={};function k(e){if(!e)throw new Error("All runtime objects require an agent identifier!");if(!S[e])throw new Error("Runtime for ".concat(e," was never set"));return S[e]}function N(e,t){if(!e)throw new Error("All runtime objects require an agent identifier!");S[e]={...(0,i.D)(t,R),...D};const r=(0,n.ek)(e);r&&(r.runtime=S[e])}function P(e){return function(e){try{const t=s(e);return!!t.licenseKey&&!!t.errorBeacon&&!!t.applicationID}catch(e){return!1}}(e)}},9567:(e,t,r)=>{"use strict";r.d(t,{D:()=>i});var n=r(50);function i(e,t){try{if(!e||"object"!=typeof e)return(0,n.Z)("Setting a Configurable requires an object as input");if(!t||"object"!=typeof t)return(0,n.Z)("Setting a Configurable requires a model to set its initial properties");const r=Object.create(Object.getPrototypeOf(t),Object.getOwnPropertyDescriptors(t)),o=0===Object.keys(r).length?e:r;for(let a in o)if(void 0!==e[a])try{if(null===e[a]){r[a]=null;continue}Array.isArray(e[a])&&Array.isArray(t[a])?r[a]=Array.from(new Set([...e[a],...t[a]])):"object"==typeof e[a]&&"object"==typeof t[a]?r[a]=i(e[a],t[a]):r[a]=e[a]}catch(e){(0,n.Z)("An error occurred while setting a property of a Configurable",e)}return r}catch(e){(0,n.Z)("An error occured while setting a Configurable",e)}}},6818:(e,t,r)=>{"use strict";r.d(t,{Re:()=>i,gF:()=>o,q4:()=>n});const n="1.258.0",i="PROD",o="CDN"},385:(e,t,r)=>{"use strict";r.d(t,{Nk:()=>d,Tt:()=>s,_A:()=>o,iS:()=>a,il:()=>n,sK:()=>l,ux:()=>c,v6:()=>i,w1:()=>u});const n="undefined"!=typeof window&&!!window.document,i="undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self.navigator instanceof WorkerNavigator||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis.navigator instanceof WorkerNavigator),o=n?window:"undefined"!=typeof WorkerGlobalScope&&("undefined"!=typeof self&&self instanceof WorkerGlobalScope&&self||"undefined"!=typeof globalThis&&globalThis instanceof WorkerGlobalScope&&globalThis),a=Boolean("hidden"===o?.document?.visibilityState),s=/iPad|iPhone|iPod/.test(o.navigator?.userAgent),c=s&&"undefined"==typeof SharedWorker,u=((()=>{const e=o.navigator?.userAgent?.match(/Firefox[/\s](\d+\.\d+)/);Array.isArray(e)&&e.length>=2&&e[1]})(),Boolean(n&&window.document.documentMode)),d=!!o.navigator?.sendBeacon,l=Math.floor(Date.now()-performance.now())},1117:(e,t,r)=>{"use strict";r.d(t,{w:()=>o});var n=r(50);const i={agentIdentifier:"",ee:void 0};class o{constructor(e){try{if("object"!=typeof e)return(0,n.Z)("shared context requires an object as input");this.sharedContext={},Object.assign(this.sharedContext,i),Object.entries(e).forEach((e=>{let[t,r]=e;Object.keys(i).includes(t)&&(this.sharedContext[t]=r)}))}catch(e){(0,n.Z)("An error occurred while setting SharedContext",e)}}}},8e3:(e,t,r)=>{"use strict";r.d(t,{LP:()=>l,RP:()=>c,o5:()=>u});var n=r(8325),i=r(1284),o=r(4322),a=r(3325);const s={};function c(e,t){const r={staged:!1,priority:a.p[t]||0};d(e),s[e].get(t)||s[e].set(t,r)}function u(e,t){d(e),s[e].get(t)&&s[e].delete(t),s[e].size&&f(e)}function d(e){if(!e)throw new Error("agentIdentifier required");s[e]||(s[e]=new Map)}function l(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"feature",r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if(d(e),!e||!s[e].get(t)||r)return g(e,t);s[e].get(t).staged=!0,f(e)}function f(e){const t=[...s[e]];t.every((e=>{let[t,r]=e;return r.staged}))&&(t.sort(((e,t)=>e[1].priority-t[1].priority)),t.forEach((t=>{let[r]=t;s[e].delete(r),g(e,r)})))}function g(e,t){const r=e?n.ee.get(e):n.ee,a=o.X.handlers;if(r.backlog&&a){var s=r.backlog[t],c=a[t];if(c){for(var u=0;s&&u<s.length;++u)p(s[u],c);(0,i.D)(c,(function(e,t){(0,i.D)(t,(function(t,r){r[0].on(e,r[1])}))}))}r.isolatedBacklog||delete a[t],r.backlog[t]=null,r.emit("drain-"+t,[])}}function p(e,t){var r=e[1];(0,i.D)(t[r],(function(t,r){var n=e[0];if(r[0]===n){var i=r[1],o=e[3],a=e[2];i.apply(o,a)}}))}},8325:(e,t,r)=>{"use strict";r.d(t,{A:()=>c,ee:()=>u});var n=r(8632),i=r(2210),o=r(234);class a{constructor(e){this.contextId=e}}var s=r(3117);const c="nr@context:".concat(s.a),u=function e(t,r){var n={},s={},d={},l=!1;try{l=16===r.length&&(0,o.OP)(r).isolatedBacklog}catch(e){}var f={on:p,addEventListener:p,removeEventListener:function(e,t){var r=n[e];if(!r)return;for(var i=0;i<r.length;i++)r[i]===t&&r.splice(i,1)},emit:function(e,r,n,i,o){!1!==o&&(o=!0);if(u.aborted&&!i)return;t&&o&&t.emit(e,r,n);for(var a=g(n),c=h(e),d=c.length,l=0;l<d;l++)c[l].apply(a,r);var p=m()[s[e]];p&&p.push([f,e,r,a]);return a},get:v,listeners:h,context:g,buffer:function(e,t){const r=m();if(t=t||"feature",f.aborted)return;Object.entries(e||{}).forEach((e=>{let[n,i]=e;s[i]=t,t in r||(r[t]=[])}))},abort:function(){f._aborted=!0,Object.keys(f.backlog).forEach((e=>{delete f.backlog[e]}))},isBuffering:function(e){return!!m()[s[e]]},debugId:r,backlog:l?{}:t&&"object"==typeof t.backlog?t.backlog:{},isolatedBacklog:l};return Object.defineProperty(f,"aborted",{get:()=>{let e=f._aborted||!1;return e||(t&&(e=t.aborted),e)}}),f;function g(e){return e&&e instanceof a?e:e?(0,i.X)(e,c,(()=>new a(c))):new a(c)}function p(e,t){n[e]=h(e).concat(t)}function h(e){return n[e]||[]}function v(t){return d[t]=d[t]||e(f,t)}function m(){return f.backlog}}(void 0,"globalEE"),d=(0,n.fP)();d.ee||(d.ee=u)},5546:(e,t,r)=>{"use strict";r.d(t,{E:()=>n,p:()=>i});var n=r(8325).ee.get("handle");function i(e,t,r,i,o){o?(o.buffer([e],i),o.emit(e,t,r)):(n.buffer([e],i),n.emit(e,t,r))}},4322:(e,t,r)=>{"use strict";r.d(t,{X:()=>o});var n=r(5546);o.on=a;var i=o.handlers={};function o(e,t,r,o){a(o||n.E,i,e,t,r)}function a(e,t,r,i,o){o||(o="feature"),e||(e=n.E);var a=t[o]=t[o]||{};(a[r]=a[r]||[]).push([e,i])}},3239:(e,t,r)=>{"use strict";r.d(t,{bP:()=>s,iz:()=>c,m$:()=>a});var n=r(385);let i=!1,o=!1;try{const e={get passive(){return i=!0,!1},get signal(){return o=!0,!1}};n._A.addEventListener("test",null,e),n._A.removeEventListener("test",null,e)}catch(e){}function a(e,t){return i||o?{capture:!!e,passive:i,signal:t}:!!e}function s(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=arguments.length>3?arguments[3]:void 0;window.addEventListener(e,t,a(r,n))}function c(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],n=arguments.length>3?arguments[3]:void 0;document.addEventListener(e,t,a(r,n))}},3117:(e,t,r)=>{"use strict";r.d(t,{a:()=>n});const n=(0,r(4402).Rl)()},4402:(e,t,r)=>{"use strict";r.d(t,{Rl:()=>a,ky:()=>s});var n=r(385);const i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";function o(e,t){return e?15&e[t]:16*Math.random()|0}function a(){const e=n._A?.crypto||n._A?.msCrypto;let t,r=0;return e&&e.getRandomValues&&(t=e.getRandomValues(new Uint8Array(30))),i.split("").map((e=>"x"===e?o(t,r++).toString(16):"y"===e?(3&o()|8).toString(16):e)).join("")}function s(e){const t=n._A?.crypto||n._A?.msCrypto;let r,i=0;t&&t.getRandomValues&&(r=t.getRandomValues(new Uint8Array(e)));const a=[];for(var s=0;s<e;s++)a.push(o(r,i++).toString(16));return a.join("")}},7056:(e,t,r)=>{"use strict";r.d(t,{Bq:()=>n,Hb:()=>a,IK:()=>u,K4:()=>i,oD:()=>o,uT:()=>c,wO:()=>s});const n="NRBA",i="SESSION",o=144e5,a=18e5,s={STARTED:"session-started",PAUSE:"session-pause",RESET:"session-reset",RESUME:"session-resume",UPDATE:"session-update"},c={SAME_TAB:"same-tab",CROSS_TAB:"cross-tab"},u={OFF:0,FULL:1,ERROR:2}},7894:(e,t,r)=>{"use strict";function n(){return Math.floor(performance.now())}r.d(t,{z:()=>n})},50:(e,t,r)=>{"use strict";function n(e,t){"function"==typeof console.warn&&(console.warn("New Relic: ".concat(e)),t&&console.warn(t))}r.d(t,{Z:()=>n})},2825:(e,t,r)=>{"use strict";r.d(t,{N:()=>c,T:()=>s});var n=r(8325),i=r(385);const o="newrelic";const a=new Set,s={};function c(e,t){const r=n.ee.get(t);s[t]??={},e&&"object"==typeof e&&(a.has(t)||(r.emit("rumresp",[e]),s[t]=e,a.add(t),function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};try{i._A.dispatchEvent(new CustomEvent(o,{detail:e}))}catch(e){}}({loaded:!0})))}},2210:(e,t,r)=>{"use strict";r.d(t,{X:()=>i});var n=Object.prototype.hasOwnProperty;function i(e,t,r){if(n.call(e,t))return e[t];var i=r();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:i,writable:!0,enumerable:!1}),i}catch(e){}return e[t]=i,i}},7872:(e,t,r)=>{"use strict";function n(e){var t=this;let r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:500,n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};const i=n?.leading||!1;let o;return function(){for(var n=arguments.length,a=new Array(n),s=0;s<n;s++)a[s]=arguments[s];i&&void 0===o&&(e.apply(t,a),o=setTimeout((()=>{o=clearTimeout(o)}),r)),i||(clearTimeout(o),o=setTimeout((()=>{e.apply(t,a)}),r))}}function i(e){var t=this;let r=!1;return function(){if(!r){r=!0;for(var n=arguments.length,i=new Array(n),o=0;o<n;o++)i[o]=arguments[o];e.apply(t,i)}}}r.d(t,{D:()=>n,Z:()=>i})},1284:(e,t,r)=>{"use strict";r.d(t,{D:()=>n});const n=(e,t)=>Object.entries(e||{}).map((e=>{let[r,n]=e;return t(r,n)}))},4351:(e,t,r)=>{"use strict";r.d(t,{P:()=>o});var n=r(8325);const i=()=>{const e=new WeakSet;return(t,r)=>{if("object"==typeof r&&null!==r){if(e.has(r))return;e.add(r)}return r}};function o(e){try{return JSON.stringify(e,i())}catch(e){try{n.ee.emit("internal-error",[e])}catch(e){}}}},3960:(e,t,r)=>{"use strict";r.d(t,{KB:()=>a,b2:()=>o});var n=r(3239);function i(){return"undefined"==typeof document||"complete"===document.readyState}function o(e,t){if(i())return e();(0,n.bP)("load",e,t)}function a(e){if(i())return e();(0,n.iz)("DOMContentLoaded",e)}},8632:(e,t,r)=>{"use strict";r.d(t,{EZ:()=>d,ce:()=>o,ek:()=>u,fP:()=>a,gG:()=>l,h5:()=>c,mF:()=>s});var n=r(385),i=r(7894);const o={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"};function a(){return n._A.NREUM||(n._A.NREUM={}),void 0===n._A.newrelic&&(n._A.newrelic=n._A.NREUM),n._A.NREUM}function s(){let e=a();return e.o||(e.o={ST:n._A.setTimeout,SI:n._A.setImmediate,CT:n._A.clearTimeout,XHR:n._A.XMLHttpRequest,REQ:n._A.Request,EV:n._A.Event,PR:n._A.Promise,MO:n._A.MutationObserver,FETCH:n._A.fetch}),e}function c(e,t){let r=a();r.initializedAgents??={},t.initializedAt={ms:(0,i.z)(),date:new Date},r.initializedAgents[e]=t}function u(e){let t=a();return t.initializedAgents?.[e]}function d(e,t){a()[e]=t}function l(){return function(){let e=a();const t=e.info||{};e.info={beacon:o.beacon,errorBeacon:o.errorBeacon,...t}}(),function(){let e=a();const t=e.init||{};e.init={...t}}(),s(),function(){let e=a();const t=e.loader_config||{};e.loader_config={...t}}(),a()}},7956:(e,t,r)=>{"use strict";r.d(t,{N:()=>i});var n=r(3239);function i(e){let t=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2?arguments[2]:void 0,i=arguments.length>3?arguments[3]:void 0;(0,n.iz)("visibilitychange",(function(){if(t)return void("hidden"===document.visibilityState&&e());e(document.visibilityState)}),r,i)}},3081:(e,t,r)=>{"use strict";r.d(t,{gF:()=>o,mY:()=>i,t9:()=>n,vz:()=>s,xS:()=>a});const n=r(3325).D.metrics,i="sm",o="cm",a="storeSupportabilityMetrics",s="storeEventMetrics"},7633:(e,t,r)=>{"use strict";r.d(t,{t:()=>n});const n=r(3325).D.pageViewEvent},9251:(e,t,r)=>{"use strict";r.d(t,{t:()=>n});const n=r(3325).D.pageViewTiming},7144:(e,t,r)=>{"use strict";r.d(t,{Ef:()=>i});var n=r(7056);r(3325).D.sessionReplay;const i={RECORD:"recordReplay",PAUSE:"pauseReplay",REPLAY_RUNNING:"replayRunning",ERROR_DURING_REPLAY:"errorDuringReplay"};n.IK.ERROR,n.IK.FULL,n.IK.OFF},5938:(e,t,r)=>{"use strict";r.d(t,{W:()=>i});var n=r(8325);class i{constructor(e,t,r){this.agentIdentifier=e,this.aggregator=t,this.ee=n.ee.get(e),this.featureName=r,this.blocked=!1}}},2758:(e,t,r)=>{"use strict";r.d(t,{j:()=>E});var n=r(3325),i=r(234),o=r(5546),a=r(8325),s=r(8e3),c=r(3960),u=r(385),d=r(50),l=r(3081),f=r(8632),g=r(7144);const p=["setErrorHandler","finished","addToTrace","addRelease","addPageAction","setCurrentRouteName","setPageViewName","setCustomAttribute","interaction","noticeError","setUserId","setApplicationVersion","start","recordReplay","pauseReplay",g.Ef.RECORD,g.Ef.PAUSE],h=["setErrorHandler","finished","addToTrace","addRelease"];var v=r(7894),m=r(7056);function b(){const e=(0,f.gG)();p.forEach((t=>{e[t]=function(){for(var r=arguments.length,n=new Array(r),i=0;i<r;i++)n[i]=arguments[i];return function(t){for(var r=arguments.length,n=new Array(r>1?r-1:0),i=1;i<r;i++)n[i-1]=arguments[i];let o=[];return Object.values(e.initializedAgents).forEach((e=>{e.exposed&&e.api[t]&&o.push(e.api[t](...n))})),o.length>1?o:o[0]}(t,...n)}}))}const y={};var A=r(2825);const w=e=>{const t=e.startsWith("http");e+="/",r.p=t?e:"https://"+e};let _=!1;function E(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},p=arguments.length>2?arguments[2]:void 0,E=arguments.length>3?arguments[3]:void 0,{init:x,info:D,loader_config:R,runtime:S={loaderType:p},exposed:k=!0}=t;const N=(0,f.gG)();D||(x=N.init,D=N.info,R=N.loader_config),(0,i.Dg)(e.agentIdentifier,x||{}),(0,i.GE)(e.agentIdentifier,R||{}),D.jsAttributes??={},u.v6&&(D.jsAttributes.isWorker=!0),(0,i.CX)(e.agentIdentifier,D);const P=(0,i.P_)(e.agentIdentifier),j=[D.beacon,D.errorBeacon];_||(P.proxy.assets&&(w(P.proxy.assets),j.push(P.proxy.assets)),P.proxy.beacon&&j.push(P.proxy.beacon),b(),(0,f.EZ)("activatedFeatures",A.T),e.runSoftNavOverSpa&&=!0===P.soft_navigations.enabled&&P.feature_flags.includes("soft_nav")),S.denyList=[...P.ajax.deny_list||[],...P.ajax.block_internal?j:[]],(0,i.sU)(e.agentIdentifier,S),void 0===e.api&&(e.api=function(e,t){let f=arguments.length>2&&void 0!==arguments[2]&&arguments[2];t||(0,s.RP)(e,"api");const p={};var b=a.ee.get(e),A=b.get("tracer");y[e]=m.IK.OFF,b.on(g.Ef.REPLAY_RUNNING,(t=>{y[e]=t}));var w="api-",_=w+"ixn-";function E(t,r,n,o){const a=(0,i.C5)(e);return null===r?delete a.jsAttributes[t]:(0,i.CX)(e,{...a,jsAttributes:{...a.jsAttributes,[t]:r}}),R(w,n,!0,o||null===r?"session":void 0)(t,r)}function x(){}h.forEach((e=>{p[e]=R(w,e,!0,"api")})),p.addPageAction=R(w,"addPageAction",!0,n.D.pageAction),p.setPageViewName=function(t,r){if("string"==typeof t)return"/"!==t.charAt(0)&&(t="/"+t),(0,i.OP)(e).customTransaction=(r||"http://custom.transaction")+t,R(w,"setPageViewName",!0)()},p.setCustomAttribute=function(e,t){let r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if("string"==typeof e){if(["string","number","boolean"].includes(typeof t)||null===t)return E(e,t,"setCustomAttribute",r);(0,d.Z)("Failed to execute setCustomAttribute.\nNon-null value must be a string, number or boolean type, but a type of <".concat(typeof t,"> was provided."))}else(0,d.Z)("Failed to execute setCustomAttribute.\nName must be a string type, but a type of <".concat(typeof e,"> was provided."))},p.setUserId=function(e){if("string"==typeof e||null===e)return E("enduser.id",e,"setUserId",!0);(0,d.Z)("Failed to execute setUserId.\nNon-null value must be a string type, but a type of <".concat(typeof e,"> was provided."))},p.setApplicationVersion=function(e){if("string"==typeof e||null===e)return E("application.version",e,"setApplicationVersion",!1);(0,d.Z)("Failed to execute setApplicationVersion. Expected <String | null>, but got <".concat(typeof e,">."))},p.start=e=>{try{const t=e?"defined":"undefined";(0,o.p)(l.xS,["API/start/".concat(t,"/called")],void 0,n.D.metrics,b);const r=Object.values(n.D);if(void 0===e)e=r;else{if((e=Array.isArray(e)&&e.length?e:[e]).some((e=>!r.includes(e))))return(0,d.Z)("Invalid feature name supplied. Acceptable feature names are: ".concat(r));e.includes(n.D.pageViewEvent)||e.push(n.D.pageViewEvent)}e.forEach((e=>{b.emit("".concat(e,"-opt-in"))}))}catch(e){(0,d.Z)("An unexpected issue occurred",e)}},p[g.Ef.RECORD]=function(){(0,o.p)(l.xS,["API/recordReplay/called"],void 0,n.D.metrics,b),(0,o.p)(g.Ef.RECORD,[],void 0,n.D.sessionReplay,b)},p[g.Ef.PAUSE]=function(){(0,o.p)(l.xS,["API/pauseReplay/called"],void 0,n.D.metrics,b),(0,o.p)(g.Ef.PAUSE,[],void 0,n.D.sessionReplay,b)},p.interaction=function(e){return(new x).get("object"==typeof e?e:{})};const D=x.prototype={createTracer:function(e,t){var r={},i=this,a="function"==typeof t;return(0,o.p)(l.xS,["API/createTracer/called"],void 0,n.D.metrics,b),f||(0,o.p)(_+"tracer",[(0,v.z)(),e,r],i,n.D.spa,b),function(){if(A.emit((a?"":"no-")+"fn-start",[(0,v.z)(),i,a],r),a)try{return t.apply(this,arguments)}catch(e){throw A.emit("fn-err",[arguments,this,e],r),e}finally{A.emit("fn-end",[(0,v.z)()],r)}}}};function R(e,t,r,i){return function(){return(0,o.p)(l.xS,["API/"+t+"/called"],void 0,n.D.metrics,b),i&&(0,o.p)(e+t,[(0,v.z)(),...arguments],r?null:this,i,b),r?void 0:this}}function S(){r.e(75).then(r.bind(r,7438)).then((t=>{let{setAPI:r}=t;r(e),(0,s.LP)(e,"api")})).catch((()=>{(0,d.Z)("Downloading runtime APIs failed..."),b.abort()}))}return["actionText","setName","setAttribute","save","ignore","onEnd","getContext","end","get"].forEach((e=>{D[e]=R(_,e,void 0,f?n.D.softNav:n.D.spa)})),p.setCurrentRouteName=f?R(_,"routeName",void 0,n.D.softNav):R(w,"routeName",!0,n.D.spa),p.noticeError=function(t,r){"string"==typeof t&&(t=new Error(t)),(0,o.p)(l.xS,["API/noticeError/called"],void 0,n.D.metrics,b),(0,o.p)("err",[t,(0,v.z)(),!1,r,!!y[e]],void 0,n.D.jserrors,b)},u.il?(0,c.b2)((()=>S()),!0):S(),p}(e.agentIdentifier,E,e.runSoftNavOverSpa)),void 0===e.exposed&&(e.exposed=k),_=!0}},8993:(e,t,r)=>{r.nc=(()=>{try{return document?.currentScript?.nonce}catch(e){}return""})()},3325:(e,t,r)=>{"use strict";r.d(t,{D:()=>n,p:()=>i});const n={ajax:"ajax",jserrors:"jserrors",metrics:"metrics",pageAction:"page_action",pageViewEvent:"page_view_event",pageViewTiming:"page_view_timing",sessionReplay:"session_replay",sessionTrace:"session_trace",softNav:"soft_navigations",spa:"spa"},i={[n.pageViewEvent]:1,[n.pageViewTiming]:2,[n.metrics]:3,[n.jserrors]:4,[n.ajax]:5,[n.sessionTrace]:6,[n.pageAction]:7,[n.spa]:8,[n.softNav]:9,[n.sessionReplay]:10}}},n={};function i(e){var t=n[e];if(void 0!==t)return t.exports;var o=n[e]={exports:{}};return r[e](o,o.exports,i),o.exports}i.m=r,i.d=(e,t)=>{for(var r in t)i.o(t,r)&&!i.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},i.f={},i.e=e=>Promise.all(Object.keys(i.f).reduce(((t,r)=>(i.f[r](e,t),t)),[])),i.u=e=>"nr-rum-1.258.0.min.js",i.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),e={},t="NRBA-1.258.0.PROD:",i.l=(r,n,o,a)=>{if(e[r])e[r].push(n);else{var s,c;if(void 0!==o)for(var u=document.getElementsByTagName("script"),d=0;d<u.length;d++){var l=u[d];if(l.getAttribute("src")==r||l.getAttribute("data-webpack")==t+o){s=l;break}}if(!s){c=!0;var f={75:"sha512-dbRQ0U/DzQ6bR/LVo1bSCjmtT4Mn+TUoByqFctqWrjwdLoHvi/Uhr3w190Zk5FuNMJFjPV0z6jQVNhQGb0DrLQ=="};(s=document.createElement("script")).charset="utf-8",s.timeout=120,i.nc&&s.setAttribute("nonce",i.nc),s.setAttribute("data-webpack",t+o),s.src=r,0!==s.src.indexOf(window.location.origin+"/")&&(s.crossOrigin="anonymous"),f[a]&&(s.integrity=f[a])}e[r]=[n];var g=(t,n)=>{s.onerror=s.onload=null,clearTimeout(p);var i=e[r];if(delete e[r],s.parentNode&&s.parentNode.removeChild(s),i&&i.forEach((e=>e(n))),t)return t(n)},p=setTimeout(g.bind(null,void 0,{type:"timeout",target:s}),12e4);s.onerror=g.bind(null,s.onerror),s.onload=g.bind(null,s.onload),c&&document.head.appendChild(s)}},i.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.p="https://js-agent.newrelic.com/",(()=>{var e={50:0,832:0};i.f.j=(t,r)=>{var n=i.o(e,t)?e[t]:void 0;if(0!==n)if(n)r.push(n[2]);else{var o=new Promise(((r,i)=>n=e[t]=[r,i]));r.push(n[2]=o);var a=i.p+i.u(t),s=new Error;i.l(a,(r=>{if(i.o(e,t)&&(0!==(n=e[t])&&(e[t]=void 0),n)){var o=r&&("load"===r.type?"missing":r.type),a=r&&r.target&&r.target.src;s.message="Loading chunk "+t+" failed.\n("+o+": "+a+")",s.name="ChunkLoadError",s.type=o,s.request=a,n[1](s)}}),"chunk-"+t,t)}};var t=(t,r)=>{var n,o,[a,s,c]=r,u=0;if(a.some((t=>0!==e[t]))){for(n in s)i.o(s,n)&&(i.m[n]=s[n]);if(c)c(i)}for(t&&t(r);u<a.length;u++)o=a[u],i.o(e,o)&&e[o]&&e[o][0](),e[o]=0},r=self["webpackChunk:NRBA-1.258.0.PROD"]=self["webpackChunk:NRBA-1.258.0.PROD"]||[];r.forEach(t.bind(null,0)),r.push=t.bind(null,r.push.bind(r))})(),(()=>{"use strict";i(8993);var e=i(50),t=i(7144),r=i(4402);class n{agentIdentifier;constructor(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:(0,r.ky)(16);this.agentIdentifier=e}#e(t){for(var r=arguments.length,n=new Array(r>1?r-1:0),i=1;i<r;i++)n[i-1]=arguments[i];if("function"==typeof this.api?.[t])return this.api[t](...n);(0,e.Z)("Call to agent api ".concat(t," failed. The API is not currently initialized."))}addPageAction(e,t){return this.#e("addPageAction",e,t)}setPageViewName(e,t){return this.#e("setPageViewName",e,t)}setCustomAttribute(e,t,r){return this.#e("setCustomAttribute",e,t,r)}noticeError(e,t){return this.#e("noticeError",e,t)}setUserId(e){return this.#e("setUserId",e)}setApplicationVersion(e){return this.#e("setApplicationVersion",e)}setErrorHandler(e){return this.#e("setErrorHandler",e)}finished(e){return this.#e("finished",e)}addRelease(e,t){return this.#e("addRelease",e,t)}start(e){return this.#e("start",e)}recordReplay(){return this.#e(t.Ef.RECORD)}pauseReplay(){return this.#e(t.Ef.PAUSE)}addToTrace(e){return this.#e("addToTrace",e)}setCurrentRouteName(e){return this.#e("setCurrentRouteName",e)}interaction(){return this.#e("interaction")}}var o=i(3325),a=i(234);const s=Object.values(o.D);function c(e){const t={};return s.forEach((r=>{t[r]=function(e,t){return!0===(0,a.Mt)(t,"".concat(e,".enabled"))}(r,e)})),t}var u=i(2758);var d=i(8e3),l=i(5938),f=i(3960),g=i(385);function p(e){return g.il&&!0===(0,a.Mt)(e,"privacy.cookies_enabled")}function h(e){return!!a.Yu.MO&&p(e)&&!0===(0,a.Mt)(e,"session_trace.enabled")}var v=i(7872);class m extends l.W{constructor(e,t,r){let n=!(arguments.length>3&&void 0!==arguments[3])||arguments[3];super(e,t,r),this.auto=n,this.abortHandler=void 0,this.featAggregate=void 0,this.onAggregateImported=void 0,!1===(0,a.Mt)(this.agentIdentifier,"".concat(this.featureName,".autoStart"))&&(this.auto=!1),this.auto?(0,d.RP)(e,r):this.ee.on("".concat(this.featureName,"-opt-in"),(0,v.Z)((()=>{(0,d.RP)(this.agentIdentifier,this.featureName),this.auto=!0,this.importAggregator()})))}importAggregator(){let t,r=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(this.featAggregate||!this.auto)return;this.onAggregateImported=new Promise((e=>{t=e}));const n=async()=>{let n;try{if(p(this.agentIdentifier)){const{setupAgentSession:e}=await i.e(75).then(i.bind(i,7920));n=e(this.agentIdentifier)}}catch(t){(0,e.Z)("A problem occurred when starting up session manager. This page will not start or extend any session.",t),this.featureName===o.D.sessionReplay&&this.abortHandler?.()}try{if(!this.#t(this.featureName,n))return(0,d.LP)(this.agentIdentifier,this.featureName),void t(!1);const{lazyFeatureLoader:e}=await i.e(75).then(i.bind(i,8582)),{Aggregate:o}=await e(this.featureName,"aggregate");this.featAggregate=new o(this.agentIdentifier,this.aggregator,r),t(!0)}catch(r){(0,e.Z)("Downloading and initializing ".concat(this.featureName," failed..."),r),this.abortHandler?.(),(0,d.LP)(this.agentIdentifier,this.featureName,!0),t(!1),this.ee&&this.ee.abort()}};g.il?(0,f.b2)((()=>n()),!0):n()}#t(e,t){return e!==o.D.sessionReplay||(r=this.agentIdentifier,n=t,!(!h(r)||!n?.isNew&&!n?.state.sessionReplayMode));var r,n}}var b=i(7633);class y extends m{static featureName=b.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,b.t,r),this.importAggregator()}}var A=i(1117),w=i(1284);class _ extends A.w{constructor(e){super(e),this.aggregatedData={}}store(e,t,r,n,i){var o=this.getBucket(e,t,r,i);return o.metrics=function(e,t){t||(t={count:0});return t.count+=1,(0,w.D)(e,(function(e,r){t[e]=E(r,t[e])})),t}(n,o.metrics),o}merge(e,t,r,n,i){var o=this.getBucket(e,t,n,i);if(o.metrics){var a=o.metrics;a.count+=r.count,(0,w.D)(r,(function(e,t){if("count"!==e){var n=a[e],i=r[e];i&&!i.c?a[e]=E(i.t,n):a[e]=function(e,t){if(!t)return e;t.c||(t=x(t.t));return t.min=Math.min(e.min,t.min),t.max=Math.max(e.max,t.max),t.t+=e.t,t.sos+=e.sos,t.c+=e.c,t}(i,a[e])}}))}else o.metrics=r}storeMetric(e,t,r,n){var i=this.getBucket(e,t,r);return i.stats=E(n,i.stats),i}getBucket(e,t,r,n){this.aggregatedData[e]||(this.aggregatedData[e]={});var i=this.aggregatedData[e][t];return i||(i=this.aggregatedData[e][t]={params:r||{}},n&&(i.custom=n)),i}get(e,t){return t?this.aggregatedData[e]&&this.aggregatedData[e][t]:this.aggregatedData[e]}take(e){for(var t={},r="",n=!1,i=0;i<e.length;i++)t[r=e[i]]=Object.values(this.aggregatedData[r]||{}),t[r].length&&(n=!0),delete this.aggregatedData[r];return n?t:null}}function E(e,t){return null==e?function(e){e?e.c++:e={c:1};return e}(t):t?(t.c||(t=x(t.t)),t.c+=1,t.t+=e,t.sos+=e*e,e>t.max&&(t.max=e),e<t.min&&(t.min=e),t):{t:e}}function x(e){return{t:e,min:e,max:e,sos:e*e,c:1}}var D=i(8632),R=i(4351);var S=i(5546),k=i(7956),N=i(3239),P=i(9251),j=i(7894);class T extends m{static featureName=P.t;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,P.t,r),g.il&&((0,k.N)((()=>(0,S.p)("docHidden",[(0,j.z)()],void 0,P.t,this.ee)),!0),(0,N.bP)("pagehide",(()=>(0,S.p)("winPagehide",[(0,j.z)()],void 0,P.t,this.ee))),this.importAggregator())}}var I=i(3081);class O extends m{static featureName=I.t9;constructor(e,t){let r=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];super(e,t,I.t9,r),this.importAggregator()}}new class extends n{constructor(t,r){super(r),g._A?(this.sharedAggregator=new _({agentIdentifier:this.agentIdentifier}),this.features={},(0,D.h5)(this.agentIdentifier,this),this.desiredFeatures=new Set(t.features||[]),this.desiredFeatures.add(y),this.runSoftNavOverSpa=[...this.desiredFeatures].some((e=>e.featureName===o.D.softNav)),(0,u.j)(this,t,t.loaderType||"agent"),this.run()):(0,e.Z)("Failed to initialize the agent. Could not determine the runtime environment.")}get config(){return{info:this.info,init:this.init,loader_config:this.loader_config,runtime:this.runtime}}run(){try{const t=c(this.agentIdentifier),r=[...this.desiredFeatures];r.sort(((e,t)=>o.p[e.featureName]-o.p[t.featureName])),r.forEach((r=>{if(!t[r.featureName]&&r.featureName!==o.D.pageViewEvent)return;if(this.runSoftNavOverSpa&&r.featureName===o.D.spa)return;if(!this.runSoftNavOverSpa&&r.featureName===o.D.softNav)return;const n=function(e){switch(e){case o.D.ajax:return[o.D.jserrors];case o.D.sessionTrace:return[o.D.ajax,o.D.pageViewEvent];case o.D.sessionReplay:return[o.D.sessionTrace];case o.D.pageViewTiming:return[o.D.pageViewEvent];default:return[]}}(r.featureName);n.every((e=>e in this.features))||(0,e.Z)("".concat(r.featureName," is enabled but one or more dependent features has not been initialized (").concat((0,R.P)(n),"). This may cause unintended consequences or missing data...")),this.features[r.featureName]=new r(this.agentIdentifier,this.sharedAggregator)}))}catch(t){(0,e.Z)("Failed to initialize all enabled instrument classes (agent aborted) -",t);for(const e in this.features)this.features[e].abortHandler?.();const r=(0,D.fP)();delete r.initializedAgents[this.agentIdentifier]?.api,delete r.initializedAgents[this.agentIdentifier]?.features,delete this.sharedAggregator;return r.ee.get(this.agentIdentifier).abort(),!1}}}({features:[y,T,O],loaderType:"lite"})})()})();</script>
+		<style>
+		html {
+			visibility: hidden;
+		}
+		</style>
+	</head>
+
+	<body class="post-template-default single single-post postid-106789 single-format-standard wp-embed-responsive">
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNXFWV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+				<a class="skip-link" href="#maincontent">Skip to content</a>
+				<a class="skip-link"
+			href="https://www.cncf.io/accessibility-statement/">Accessibility
+			help</a>
+		
+
+<div class="hello-bar" role="banner"
+	style="background-color: #0175e4; color: #ffffff">
+	<div class="container wrap">
+		<p>Join us in Seattle, June 26-27, at CloudNativeSecurityCon. <a href="https://events.linuxfoundation.org/cloudnativesecuritycon-north-america/register/">Buy tickets now</a>.</p>
+	</div>
+</div>
+
+<header class="header">
+	<div class="container wrap">
+
+				<div class="logo">
+			<a href="/" title="Cloud Native Computing Foundation">
+				<img loading="eager"
+					src="https://www.cncf.io/wp-content/uploads/2023/04/cncf-main-site-logo.svg"
+					width="210" height="40"
+					alt="Cloud Native Computing Foundation">
+			</a>
+		</div>
+		
+		<nav class="main-menu">
+			<ul class="main-menu__wrapper">
+				<li class="menu-item-has-children">
+					<a href="#"><span>About</span></a>
+					<div class="sub-menu">
+						<div class="col-container">
+							<div class="col1">
+								<ul id="menu-about_01" class="menu"><li id="menu-item-71611" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71611 lf-menu-title">Discover CNCF</li>
+<li id="menu-item-71616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71616"><a href="https://www.cncf.io/about/members/">Members<span class="lf-menu-description">From tech icons to innovative startups, meet our members driving cloud native computing</span></a></li>
+<li id="menu-item-71617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71617"><a href="https://www.cncf.io/people/technical-oversight-committee/">Technical Oversight Committee<span class="lf-menu-description">The TOC defines CNCF’s technical vision and provides experienced technical leadership to the cloud native community</span></a></li>
+<li id="menu-item-71618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71618"><a href="https://www.cncf.io/people/governing-board/">Governing Board<span class="lf-menu-description">The GB is responsible for marketing, business oversight, and budget decisions for CNCF</span></a></li>
+<li id="menu-item-102485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102485"><a href="https://www.cncf.io/people/end-user-technical-advisory-board/">End User Technical Advisory Board<span class="lf-menu-description">The End User TAB serves as the voice of the end users in CNCF community decisions</span></a></li>
+<li id="menu-item-72396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72396"><a href="https://www.cncf.io/people/ambassadors/">Ambassadors<span class="lf-menu-description">Meet our Ambassadors—experienced practitioners passionate about helping others learn about cloud native technologies</span></a></li>
+</ul>							</div>
+							<div class="col2">
+								<ul id="menu-about_02" class="menu"><li id="menu-item-71619" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71619 lf-menu-title">Additional Info</li>
+<li id="menu-item-102486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102486"><a href="https://www.cncf.io/about/who-we-are/">Who We Are</a></li>
+<li id="menu-item-74274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74274"><a href="https://www.cncf.io/conduct/">Code of Conduct</a></li>
+<li id="menu-item-71620" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71620"><a href="https://www.cncf.io/people/staff/">Staff</a></li>
+<li id="menu-item-71621" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71621"><a href="https://www.cncf.io/about/faq/">FAQ</a></li>
+<li id="menu-item-71622" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71622"><a href="https://www.cncf.io/about/contact/">Contact Us</a></li>
+</ul>							</div>
+							<div class="col3">
+
+								<ul class="menu">
+									<li class="lf-menu-title">Featured Reads
+									</li>
+								</ul>
+								<div class="columns-one">
+									<div class="main-menu-item">
+	<div
+		class="main-menu-item__image-wrapper not-sticky">
+				<a href="https://www.cncf.io/reports/cncf-annual-report-2023-jp/"
+			title="CNCF Annual Report 2023 – Japanese translation" class="main-menu-item__link">
+			<img width="194" height="102" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-194x102.jpg" srcset="https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-194x102.jpg 194w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-300x158.jpg 300w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-1024x538.jpg 1024w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-768x403.jpg 768w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-388x204.jpg 388w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-776x408.jpg 776w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-1552x816.jpg 1552w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-900x473.jpg 900w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-381x200.jpg 381w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-762x400.jpg 762w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-590x310.jpg 590w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp-1180x620.jpg 1180w, https://www.cncf.io/wp-content/uploads/2024/02/annual-report-jp.jpg 1800w" sizes="(max-width: 200px) 100vw, 200px" alt="CNCF Annual Report 2023 – Japanese translation">		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+				<a class="author-category" title="See more in Annual category" href="https://www.cncf.io/reports/?_sft_lf-report-type=annual">Annual Report</a>
+		
+		<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/reports/cncf-annual-report-2023-jp/"
+				title="CNCF Annual Report 2023 – Japanese translation">CNCF Annual Report 2023 – Japanese translation</a>
+		</span>
+		<span
+			class="main-menu-item__date">February 1, 2024</span>
+	</div>
+</div>
+<div class="main-menu-item">
+	<div
+		class="main-menu-item__image-wrapper not-sticky">
+				<a href="https://www.cncf.io/reports/kubecon-cloudnativecon-europe-2024/"
+			title="KubeCon + CloudNativeCon Europe 2024" class="main-menu-item__link">
+			<img width="194" height="102" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-194x102.jpg" srcset="https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-194x102.jpg 194w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-300x158.jpg 300w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-1024x538.jpg 1024w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-768x403.jpg 768w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-388x204.jpg 388w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-776x408.jpg 776w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-1552x816.jpg 1552w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-900x473.jpg 900w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-381x200.jpg 381w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-762x400.jpg 762w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-590x310.jpg 590w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945-1180x620.jpg 1180w, https://www.cncf.io/wp-content/uploads/2024/05/KubeConEU24_TransparencyReportGraphics_1800x945.jpg 1800w" sizes="(max-width: 200px) 100vw, 200px" alt="KubeCon + CloudNativeCon Europe 2024">		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+				<a class="author-category" title="See more in Conference Transparency category" href="https://www.cncf.io/reports/?_sft_lf-report-type=conference-transparency">Conference Transparency Report</a>
+		
+		<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/reports/kubecon-cloudnativecon-europe-2024/"
+				title="KubeCon + CloudNativeCon Europe 2024">KubeCon + CloudNativeCon Europe 2024</a>
+		</span>
+		<span
+			class="main-menu-item__date">May 1, 2024</span>
+	</div>
+</div>
+
+<div class="main-menu-item">
+	<div class="main-menu-item__image-wrapper">
+
+		<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/"
+			title="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024"
+			class="main-menu-item__link main-menu-item__event">
+
+			<!-- event start  -->
+			<div class="main-menu-item__event-overlay"
+				style="background-color: rgba(65, 30, 79, 0.5) ">
+			</div>
+
+			<figure class="main-menu-item__event-bg-figure">
+				<img width="194" height="102" loading="lazy" class="main-menu-item__event-bg-image" src="https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-194x102.jpg" srcset="https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-194x102.jpg 194w, https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-388x204.jpg 388w, https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-776x408.jpg 776w, https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-1552x816.jpg 1552w, https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-590x310.jpg 590w, https://www.cncf.io/wp-content/uploads/2024/03/Screenshot-2024-03-18-at-3.12.32 PM-1180x620.jpg 1180w" sizes="(max-width: 200px) 100vw, 200px" alt="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024">			</figure>
+
+			<div class="main-menu-item__event-content">
+				<div>
+						<img loading="lazy" class="main-menu-item__event-logo" src="https://www.cncf.io/wp-content/uploads/2024/03/kc24cn_combined_logo_white.svg" alt="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024" width="400" height="245">					<h4><span
+							class="main-menu-item__event-city">Hong Kong</span>
+					</h4>
+				</div>
+			</div>
+
+		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+
+		<a class="author-category" title="See more in Events"
+			href="https://www.cncf.io/events">Next Event</a>
+
+		<span class="main-menu-item__title">
+			<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/"
+				title="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024">KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024</a>
+		</span>
+		<span class="main-menu-item__date">
+		August 21-23, 2024</span>
+	</div>
+</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="menu-item-has-children"><a
+						href="#"><span>Projects</span></a>
+					<div class="sub-menu">
+						<div class="col-container">
+							<div class="col1">
+								<ul id="menu-projects_01" class="menu"><li id="menu-item-71623" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71623 lf-menu-title">CNCF Projects</li>
+<li id="menu-item-71624" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71624"><a href="https://www.cncf.io/projects/">Graduated<span class="lf-menu-description">Projects considered stable, widely adopted, and production ready, attracting thousands of contributors</span></a></li>
+<li id="menu-item-71625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71625"><a href="https://www.cncf.io/projects/">Incubating<span class="lf-menu-description">Projects used successfully in production by a small number users with a healthy pool of contributors</span></a></li>
+<li id="menu-item-71626" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71626"><a href="https://www.cncf.io/sandbox-projects/">Sandbox<span class="lf-menu-description">Experimental projects not yet widely tested in production on the bleeding edge of technology</span></a></li>
+<li id="menu-item-71627" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71627"><a href="https://www.cncf.io/archived-projects/">Archived<span class="lf-menu-description">Projects that have reached the end of their lifecycle and have become inactive</span></a></li>
+<li id="menu-item-94549" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94549"><a href="https://www.cncf.io/project-metrics/">Project Metrics<span class="lf-menu-description">View metrics of CNCF projects moving through maturity levels</span></a></li>
+</ul>							</div>
+							<div class="col2">
+								<ul id="menu-projects_02" class="menu"><li id="menu-item-71628" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71628 lf-menu-title">Get Involved</li>
+<li id="menu-item-71629" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71629"><a href="https://contribute.cncf.io"><span class="lf-external-link">Contribute</span><span class="lf-menu-description">Join the 150K+ folx in #TeamCloudNative who’ve contributed their expertise to CNCF hosted projects</span></a></li>
+<li id="menu-item-103342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103342"><a href="https://contribute.cncf.io/resources/project-services/"><span class="lf-external-link">Services for CNCF Projects</span><span class="lf-menu-description">CNCF services for our open source projects – from marketing to legal services</span></a></li>
+<li id="menu-item-71632" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71632"><a href="https://landscape.cncf.io"><span class="lf-external-link">Cloud Native Landscape</span><span class="lf-menu-description">A comprehensive categorical overview of projects and product offerings in the cloud native space</span></a></li>
+<li id="menu-item-71631" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71631"><a href="/reports/?_sft_lf-report-type=project-journey">Project Journey Reports<span class="lf-menu-description">Showing how CNCF has impacted the progress and growth of various graduated projects</span></a></li>
+<li id="menu-item-71633" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71633"><a href="/project-tools/">Project Tools<span class="lf-menu-description">Quick links to tools and resources for your CNCF project</span></a></li>
+</ul>							</div>
+							<div class="col3">
+								<ul class="menu">
+									<li class="lf-menu-title">Latest Tech Radars
+									</li>
+								</ul>
+
+																<div class="columns-one">
+									
+									<div class="main-menu-item radar-menu-item">
+										<div
+											class="main-menu-item__image-wrapper">
+
+											<a href="https://radar.cncf.io/2021-09-devsecops"
+												title="DevSecOps"
+												class="main-menu-item__link">
+
+																								<img src="https://radar.cncf.io/2021-09-devsecops-raw.svg"
+													alt="DevSecOps"
+													class="main-menu-item__image"
+													loading="lazy">
+																								</a>
+										</div>
+										<div
+											class="main-menu-item__text-wrapper">
+
+											<a class="author-category"
+												title="See more tech radars"
+												href="https://radar.cncf.io/">Tech
+												Radar</a>
+
+											<span class="main-menu-item__title">
+												<a href="https://radar.cncf.io/2021-09-devsecops"
+													title="DevSecOps">DevSecOps</a>
+											</span>
+											<span
+												class="main-menu-item__date">September 2021</span>
+										</div>
+									</div>
+										
+									<div class="main-menu-item radar-menu-item">
+										<div
+											class="main-menu-item__image-wrapper">
+
+											<a href="https://radar.cncf.io/2021-06-multicluster-management"
+												title="Multicluster Management"
+												class="main-menu-item__link">
+
+																								<img src="https://radar.cncf.io/2021-06-multicluster-management--cluster-deployment-raw.svg"
+													alt="Multicluster Management"
+													class="main-menu-item__image"
+													loading="lazy">
+																								</a>
+										</div>
+										<div
+											class="main-menu-item__text-wrapper">
+
+											<a class="author-category"
+												title="See more tech radars"
+												href="https://radar.cncf.io/">Tech
+												Radar</a>
+
+											<span class="main-menu-item__title">
+												<a href="https://radar.cncf.io/2021-06-multicluster-management"
+													title="Multicluster Management">Multicluster Management</a>
+											</span>
+											<span
+												class="main-menu-item__date">June 2021</span>
+										</div>
+									</div>
+										
+									<div class="main-menu-item radar-menu-item">
+										<div
+											class="main-menu-item__image-wrapper">
+
+											<a href="https://radar.cncf.io/2021-02-secrets-management"
+												title="Secret Management"
+												class="main-menu-item__link">
+
+																								<img src="https://radar.cncf.io/2021-02-secrets-management-raw.svg"
+													alt="Secret Management"
+													class="main-menu-item__image"
+													loading="lazy">
+																								</a>
+										</div>
+										<div
+											class="main-menu-item__text-wrapper">
+
+											<a class="author-category"
+												title="See more tech radars"
+												href="https://radar.cncf.io/">Tech
+												Radar</a>
+
+											<span class="main-menu-item__title">
+												<a href="https://radar.cncf.io/2021-02-secrets-management"
+													title="Secret Management">Secret Management</a>
+											</span>
+											<span
+												class="main-menu-item__date">February 2021</span>
+										</div>
+									</div>
+																		</div>
+																							</div>
+						</div>
+					</div>
+				</li>
+				<li class="menu-item-has-children"><a
+						href="#"><span>Training</span></a>
+					<div class="sub-menu">
+						<div class="col-container">
+							<div class="col1">
+								<ul id="menu-certifications_01" class="menu"><li id="menu-item-71634" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71634 lf-menu-title">Become an expert</li>
+<li id="menu-item-97034" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97034"><a href="https://www.cncf.io/training/">Training Overview<span class="lf-menu-description">Find your path to cloud native success with training and certificates from the pioneer of cloud-native technology</span></a></li>
+<li id="menu-item-97032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97032"><a href="https://www.cncf.io/training/certification/">Certifications<span class="lf-menu-description">Get certified by the only authoritative source for cloud-native certification accepted by industry</span></a></li>
+<li id="menu-item-97033" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97033"><a href="https://www.cncf.io/training/courses/">Courses<span class="lf-menu-description">Learn the basics of cloud native or train for a certification with training courses built in collaboration with the Linux Foundation</span></a></li>
+<li id="menu-item-104457" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104457"><a href="https://www.cncf.io/training/kubestronaut/">Kubestronaut Program<span class="lf-menu-description">Uplevel your Kubernetes skills</span></a></li>
+</ul>							</div>
+							<div class="col2">
+								<ul id="menu-certifications_02" class="menu"><li id="menu-item-71638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71638 lf-menu-title">Additional Resources</li>
+<li id="menu-item-71642" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71642"><a href="https://www.cncf.io/training/kubernetes-training-partners/">Kubernetes Training Partners<span class="lf-menu-description">Find a qualified KTP to prepare for your next certification</span></a></li>
+<li id="menu-item-104420" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104420"><a href="https://www.cncf.io/training/cncf-endorsed-content/">CNCF Endorsed Content<span class="lf-menu-description">Training materials that match strict criteria</span></a></li>
+<li id="menu-item-71640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71640"><a href="https://www.cncf.io/training/certification/software-conformance/">Certified Kubernetes<span class="lf-menu-description">Software conformance ensures your versions of CNCF projects support the required APIs</span></a></li>
+<li id="menu-item-72609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72609"><a href="https://www.cncf.io/training/certification/cnf/">Cloud Native Network Function Certification (Beta)<span class="lf-menu-description">CNF Certification ensures applications demonstrate cloud native best practices</span></a></li>
+<li id="menu-item-71643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71643"><a href="https://www.cncf.io/training/certification/kcsp/">Kubernetes Certified Service Provider<span class="lf-menu-description">KCSPs have deep experience helping enterprises successfully adopt cloud native technologies</span></a></li>
+</ul>							</div>
+							<div class="col3">
+								<ul class="menu">
+									<li class="lf-menu-title">Recommended Links
+									</li>
+								</ul>
+
+								<div class="columns-one">
+
+									<div class="main-menu-item promotion-item">
+	<div
+		class="main-menu-item__image-wrapper">
+		<a href="https://www.cncf.io/enduser/"
+			title="Save $10K on Cloud Native" class="main-menu-item__link">
+			<img width="2048" height="1365" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k.jpg" srcset="https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k.jpg 2048w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-300x200.jpg 300w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-768x512.jpg 768w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-1024x683.jpg 1024w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-1536x1024.jpg 1536w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-900x600.jpg 900w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-1800x1200.jpg 1800w, https://www.cncf.io/wp-content/uploads/2022/05/45581516234_606446e424_k-600x400.jpg 600w" sizes="(max-width: 400px) 100vw, 400px" alt="Save $10K on Cloud Native">		</a>
+	</div>
+
+	<div class="main-menu-item__text-wrapper">
+
+	<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/enduser/"
+				title="Save $10K on Cloud Native">Save $10K on Cloud Native</a>
+	</span>
+
+	<p class="main-menu-item__body">Enroll your company as a CNCF End User and save more than $10K in training and conference costs</p>
+
+	<p class="is-style-link-cta"><a href="https://www.cncf.io/enduser/">Become an End User</a></p>
+
+	</div>
+</div>
+
+									</div>
+
+							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="menu-item-has-children"><a
+						href="#"><span>Community</span></a>
+					<div class="sub-menu">
+						<div class="col-container">
+							<div class="col1">
+								<ul id="menu-community_01" class="menu"><li id="menu-item-71644" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71644 lf-menu-title">Take Part</li>
+<li id="menu-item-71645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71645"><a href="https://www.cncf.io/enduser/">End User Community<span class="lf-menu-description">Join our vendor-neutral community using cloud native technologies to build products and services</span></a></li>
+<li id="menu-item-71646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71646"><a href="https://www.cncf.io/events/">Events<span class="lf-menu-description">Meet #TeamCloudNative and CNCF staff at events around the world</span></a></li>
+<li id="menu-item-71648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71648"><a href="https://www.cncf.io/case-studies/">Case Studies<span class="lf-menu-description">Read real-world case studies about the impact cloud native projects are having on organizations around the world</span></a></li>
+<li id="menu-item-71649" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71649"><a href="https://www.cncf.io/case-studies-cn/">最终用户案例研究<span class="lf-menu-description">了解有关云原生对世界各企业的影响的真实案例</span></a></li>
+<li id="menu-item-72634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72634"><a href="https://www.cncf.io/humans-of-cloud-native/">Humans of Cloud Native<span class="lf-menu-description">Read stories of amazing individuals and their contributions</span></a></li>
+</ul>							</div>
+							<div class="col2">
+								<ul id="menu-community_02" class="menu"><li id="menu-item-71651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71651 lf-menu-title">Community Content</li>
+<li id="menu-item-72395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72395"><a href="https://www.cncf.io/online-programs/">Online Programs<span class="lf-menu-description">Watch our free online programs for the latest insights into cloud native technologies and projects</span></a></li>
+<li id="menu-item-71652" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71652"><a href="https://www.cncf.io/kubeweekly/">KubeWeekly<span class="lf-menu-description">Sign up for a weekly dose of all things Kubernetes, curated by #TeamCloudNative</span></a></li>
+<li id="menu-item-71653" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71653"><a href="https://community.cncf.io"><span class="lf-external-link">Community Groups</span><span class="lf-menu-description">Join #TeamCloudNative at events and meetups near you</span></a></li>
+<li id="menu-item-71654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71654"><a href="https://www.cncf.io/phippy/">Phippy &#038; Friends<span class="lf-menu-description">Phippy explains core cloud native concepts in simple terms through stories perfect for all ages</span></a></li>
+<li id="menu-item-71655" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71655"><a href="https://glossary.cncf.io"><span class="lf-external-link">Cloud Native Glossary</span><span class="lf-menu-description">Explore cloud native concepts in clear and simple language – no technical knowledge required!</span></a></li>
+</ul>							</div>
+							<div class="col3">
+								<ul id="menu-community_03" class="menu"><li id="menu-item-71656" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71656 lf-menu-title">Additional Resources</li>
+<li id="menu-item-71657" class="has-icon icon-job menu-item menu-item-type-custom menu-item-object-custom menu-item-71657"><a href="https://jobs.cncf.io"><span class="lf-external-link">Job Board</span></a></li>
+<li id="menu-item-71658" class="has-icon icon-slack menu-item menu-item-type-custom menu-item-object-custom menu-item-71658"><a href="https://slack.cncf.io/"><span class="lf-external-link">Slack</span></a></li>
+<li id="menu-item-71659" class="has-icon icon-mailing menu-item menu-item-type-custom menu-item-object-custom menu-item-71659"><a href="https://lists.cncf.io/g/main/subgroups"><span class="lf-external-link">Mailing Lists</span></a></li>
+<li id="menu-item-71660" class="has-icon icon-store menu-item menu-item-type-custom menu-item-object-custom menu-item-71660"><a href="https://store.cncf.io"><span class="lf-external-link">Store</span></a></li>
+<li id="menu-item-71661" class="has-icon icon-calendar menu-item menu-item-type-post_type menu-item-object-page menu-item-71661"><a href="https://www.cncf.io/calendar/">Calendar</a></li>
+</ul>							</div>
+						</div>
+					</div>
+
+				</li>
+				<li class="menu-item-has-children"><a href="#"><span>Blog &
+							News</span></a>
+					<div class="sub-menu">
+						<div class="col-container">
+							<div class="col1">
+								<ul id="menu-blog_01" class="menu"><li id="menu-item-71662" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71662 lf-menu-title">All the news</li>
+<li id="menu-item-71663" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-71663"><a href="https://www.cncf.io/blog/">Blog<span class="lf-menu-description">Catch up on the latest happenings and technical insights from #TeamCloudNative</span></a></li>
+<li id="menu-item-71664" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-71664"><a href="https://www.cncf.io/announcements/">Announcements<span class="lf-menu-description">Media releases and official CNCF announcements</span></a></li>
+<li id="menu-item-71665" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-71665"><a href="https://www.cncf.io/news/">News<span class="lf-menu-description">CNCF projects and #TeamCloudNative in the media</span></a></li>
+<li id="menu-item-71666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71666"><a href="https://www.cncf.io/reports/">Reports<span class="lf-menu-description">Read transparent, in-depth reports on our organization, events, and projects</span></a></li>
+</ul>							</div>
+							<div class="col2">
+								<ul id="menu-blog_02" class="menu"><li id="menu-item-71667" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71667 lf-menu-title">Media Resources</li>
+<li id="menu-item-75049" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75049"><a href="https://www.cncf.io/brand-guidelines/">Brand Guidelines</a></li>
+<li id="menu-item-71668" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71668"><a href="https://github.com/cncf/artwork"><span class="lf-external-link">Project Logos</span></a></li>
+<li id="menu-item-71669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71669"><a href="https://www.youtube.com/c/cloudnativefdn"><span class="lf-external-link">Videos</span></a></li>
+<li id="menu-item-71670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71670"><a href="https://www.flickr.com/photos/143247548@N03/albums/"><span class="lf-external-link">Pictures</span></a></li>
+</ul>							</div>
+							<div class="col3">
+								<ul class="menu">
+									<li class="lf-menu-title">Latest Blog Posts
+									</li>
+								</ul>
+
+																<div class="columns-one">
+									<div class="main-menu-item">
+	<div
+		class="main-menu-item__image-wrapper not-sticky">
+				<a href="https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/"
+			title="Kubernetes is turning 10! Join the party on June 6th " class="main-menu-item__link">
+			<img width="194" height="102" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-194x102.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-300x158.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1024x538.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-900x473.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60.png 1800w" sizes="(max-width: 200px) 100vw, 200px" alt="Kubernetes is turning 10! Join the party on June 6th ">		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+				<a class="author-category" title="See more in Staff category" href="https://www.cncf.io/lf-author-category/staff/">Staff Post</a>
+		
+		<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/"
+				title="Kubernetes is turning 10! Join the party on June 6th ">Kubernetes is turning 10! Join the party on June 6th </a>
+		</span>
+		<span
+			class="main-menu-item__date">May 7, 2024</span>
+	</div>
+</div>
+<div class="main-menu-item">
+	<div
+		class="main-menu-item__image-wrapper not-sticky">
+				<a href="https://www.cncf.io/blog/2024/05/06/adding-color-blind-themes-to-kubecolor-to-make-kubernetes-more-inclusive/"
+			title="Adding color-blind themes to Kubecolor to make Kubernetes more inclusive" class="main-menu-item__link">
+			<img width="194" height="102" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-194x102.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-300x157.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1024x537.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-900x472.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61.png 1650w" sizes="(max-width: 200px) 100vw, 200px" alt="Adding color-blind themes to Kubecolor to make Kubernetes more inclusive">		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+				<a class="author-category" title="See more in Ambassador category" href="https://www.cncf.io/lf-author-category/ambassador/">Ambassador Post</a>
+		
+		<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/blog/2024/05/06/adding-color-blind-themes-to-kubecolor-to-make-kubernetes-more-inclusive/"
+				title="Adding color-blind themes to Kubecolor to make Kubernetes more inclusive">Adding color-blind themes to Kubecolor to make Kubernetes more inclusive</a>
+		</span>
+		<span
+			class="main-menu-item__date">May 6, 2024</span>
+	</div>
+</div>
+<div class="main-menu-item">
+	<div
+		class="main-menu-item__image-wrapper not-sticky">
+				<a href="https://www.cncf.io/blog/2024/05/03/top-5-cloud-computing-trends-of-2024/"
+			title="Top 5 cloud computing trends of 2024" class="main-menu-item__link">
+			<img width="194" height="102" loading="lazy" class="main-menu-item__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-194x102.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-300x158.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1024x538.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-900x473.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53.png 1800w" sizes="(max-width: 200px) 100vw, 200px" alt="Top 5 cloud computing trends of 2024">		</a>
+	</div>
+	<div class="main-menu-item__text-wrapper">
+				<a class="author-category" title="See more in Member category" href="https://www.cncf.io/lf-author-category/member/">Member Post</a>
+		
+		<span class="main-menu-item__title">
+			<a href="https://www.cncf.io/blog/2024/05/03/top-5-cloud-computing-trends-of-2024/"
+				title="Top 5 cloud computing trends of 2024">Top 5 cloud computing trends of 2024</a>
+		</span>
+		<span
+			class="main-menu-item__date">May 3, 2024</span>
+	</div>
+</div>
+								</div>
+
+									
+							</div>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+
+			<div style="height:60px;" aria-hidden="true"
+				class="wp-block-spacer show-upto-1000">
+			</div>
+
+			
+			<div class="header-cta">
+				<div class="wp-block-button">
+					<a href="https://www.cncf.io/about/join/"
+						class="wp-block-button__link wp-element-button">Join</a>
+				</div>
+			</div>
+
+			<div style="height:20px" aria-hidden="true"
+				class="wp-block-spacer show-upto-1000">
+			</div>
+			
+			<!-- Button to open the search menu  -->
+			<button
+				class="header__search_open search-toggle button-reset show-over-1000"
+				type="button" aria-label="Search">
+				<svg fill="none" viewbox="0 0 29 27" width="29" height="27" xmlns="http://www.w3.org/2000/svg"><path d="M11.172 20.035c5.042 0 9.13-4.036 9.13-9.015s-4.088-9.015-9.13-9.015-9.129 4.036-9.129 9.015c0 4.98 4.087 9.015 9.13 9.015zm5.974-4.615L26.849 25" opacity=".893" stroke="#000" stroke-width="4"/></svg>			</button>
+
+			<div class="header__search_wrapper">
+				<div class="header__search_container">
+
+					<form class="search-form" method="get" autocomplete="off"
+						action="https://www.cncf.io"
+						role="search">
+						<label for="search-bar"
+							class="screen-reader-text">Search
+							CNCF</label>
+						<input class="search-input" type="search"
+							id="search-bar"
+							value=""
+							name="s" placeholder="I'm looking for..."
+							title="Search CNCF site" autocapitalize="off"
+							spellcheck="false" maxlength="98" required>
+						<input class="search-input-button wp-block-button__link has-no-padding"
+							type="submit" value="Search" />
+					</form>
+
+					<div style="height:100px" aria-hidden="true"
+						class="wp-block-spacer show-upto-1000">
+					</div>
+
+					<button class="button-reset search-toggle show-over-1000"
+						type="button" aria-label="Close">
+						<svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.999 2.001L2 16M2 2l13.999 13.999" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>					</button>
+				</div>
+			</div>
+		</nav>
+
+		<button class="hamburger" type="button" aria-label="Toggle Menu">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</button>
+
+	</div>
+</header>
+
+<div class="skip-link-target" id="maincontent"></div>
+<header class="title-wrapper container wrap">
+		<div class="parent-link-align">
+		<a class="parent-link"
+		href="https://www.cncf.io/blog/"
+		title="See Blog posts">Blog</a>
+				<div class="space-slash">&nbsp;/&nbsp;</div>
+		<span><a class="author-category"
+				title="See Staff posts"
+				href="https://www.cncf.io/lf-author-category/staff/">
+				Staff Post			</a></span>
+					</div>
+					<h1 class="is-style-post-title" itemprop="headline">Kubernetes is turning 10! Join the party on June 6th 	</h1>
+							</header>
+<main>
+	<article class="container wrap post-content">
+
+		
+<div class="post-author">
+		<div>
+						<span class="post-author__date">Posted on May 7, 2024</span>
+				</div>
+</div>
+
+<p>Over the last 10 years, <a href="http://kubernetes.io">Kubernetes</a> has risen to become the backbone of modern application deployment and has completely changed the course of innovation.&nbsp;</p>
+
+
+
+<p>Kubernetes was the first project <a href="https://www.cncf.io/announcements/2016/03/10/cloud-native-computing-foundation-accepts-kubernetes-as-first-hosted-project-technical-oversight-committee-elected/">accepted</a> into the CNCF Incubator in March 2016 and remains a top open source project. Kubernetes not only shattered expectations for itself but it set a North Star for the entire CNCF ecosystem. CNCF has since grown to more than 184 cloud native projects and the success of Kubernetes in the CNCF established a baseline of what was possible for others.&nbsp;</p>
+
+
+
+<p>Kubernetes is today the de facto standard to deploy and operate containerized applications. Originally developed at Google and released as open source in 2014, Kubernetes builds on 15 years of running Google&#8217;s containerized workloads and the valuable contributions from the open source community. Kubernetes makes everything associated with deploying and managing applications easier.</p>
+
+
+
+<p><a href="https://events.linuxfoundation.org/kuber10es-birthday-bash/">On June 6</a>, the Kubernetes and cloud native community will come together across the globe to celebrate a tremendous decade and look forward to the next #KuberTENes. Everyone in the community will have a chance to #celebr8k8s in the following ways.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>KuberTENes Birthday Bash</strong></h2>
+
+
+
+<p>Join us for a fun and memorable in-person event at Google’s <a href="https://realestate.withgoogle.com/bayview">Bay View Campus</a> in Mountain View, California to celebrate on June 6th.</p>
+
+
+
+<p>The birthday bash will blend elements of a reunion show, while celebrating many hidden figures that made this project possible, and&nbsp; a preview into what awaits us in the next 10 years. We’ll celebrate people who have been integral in shaping Kubernetes into what it is today, and discuss why its significance will only grow in the years ahead.&nbsp;</p>
+
+
+
+<p>Interested in attending? We would love to have you. Tickets are free but space is limited so <a href="https://events.linuxfoundation.org/kuber10es-birthday-bash/">RSVP</a> soon!&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Birthday Bash Livestream/Replays</strong></h3>
+
+
+
+<p>Can’t join the party in Mountain View? No problem! We will have a livestream during the event and the recording will be available as well on YouTube for all to see.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading"><strong>KuberTENes Birthday Party in a Box &amp; Local Meet-Ups</strong></h2>
+
+
+
+<p>If you’re unable to attend in the Bay Area or simply can’t make it, don’t fret! You can still join the celebration in your local community.  Request a <a href="https://share.hsforms.com/1feeTKzUpRqm5lnnifbqOXQ4tvhy?__hstc=160532258.e00e885cf17bfdbb3d74d6b37932e9de.1698502436143.1713989333711.1714401664068.20&amp;__hssc=160532258.1.1714401664068&amp;__hsfp=1717932986">KuberTENes party in box here</a>, please note all requests need to be made by May 10.  Alternatively, you can connect with local <a href="http://community.cncf.io">Cloud Native Meet-Up Groups</a>, who are already working hard to organize events in your area. Some of the locations on the list (but not limited to) include:</p>
+
+
+
+<ul>
+<li>Cloud Native Wellington</li>
+
+
+
+<li>Cloud Native Quebec</li>
+
+
+
+<li>Cloud Native Luxembourg</li>
+
+
+
+<li>Cloud Native Helsink</li>
+
+
+
+<li>Cloud Native Dahaka</li>
+
+
+
+<li>Cloud Native Chattogram</li>
+
+
+
+<li>Cloud Native Paris</li>
+
+
+
+<li>Cloud Native Tel Aviv</li>
+
+
+
+<li>Cloud Native Singapore</li>
+
+
+
+<li>Cloud Native Taiwan User Group</li>
+
+
+
+<li>Cloud Native Copenhagen</li>
+
+
+
+<li>Cloud Native Aarhus</li>
+
+
+
+<li>Cloud Native Santa Catarina</li>
+
+
+
+<li>Cloud Native New York Kubernetes Meetup</li>
+
+
+
+<li>CloudNative Lorient</li>
+
+
+
+<li>Cloud Native Saint Louis</li>
+
+
+
+<li>Cloud Native Guatemala</li>
+
+
+
+<li>Cloud Native Vilnius</li>
+
+
+
+<li>Cloud Native Istanbul</li>
+
+
+
+<li>Cloud Native Kerala</li>
+
+
+
+<li>Cloud Native New Delhi</li>
+
+
+
+<li>Cloud Native Stockholm</li>
+
+
+
+<li>Cloud Native Aalborg</li>
+
+
+
+<li>Cloud Native Goteborg</li>
+
+
+
+<li>Cloud Native Amsterdam</li>
+
+
+
+<li>Cloud Native and Kubernetes Oslo</li>
+
+
+
+<li>Cloud Native Dallas</li>
+
+
+
+<li>Cloud Native Sao Paulo&nbsp;</li>
+
+
+
+<li>Cloud Native Munich</li>
+
+
+
+<li>Cloud Native Bangalore</li>
+
+
+
+<li>Cloud Native Salt Lake City</li>
+</ul>
+
+
+
+<p>And, whether you join one of these events, be sure to join the biggest gathering of Kubernetes enthusiasts in Salt Lake City for<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"> KubeCon + CloudNativeCon North America</a> where we plan to continue the 10-year celebrations.</p>
+
+		<div style="height:80px"
+			aria-hidden="true" class="wp-block-spacer is-style-80-120">
+		</div>
+		
+<div class="social-share">
+	<p class="social-share__title">Share</p>
+
+	<div class="social-share__wrapper">
+		<!-- linkedin -->
+				<a aria-label="Share on Linkedin"
+			title="Share on Linkedin"
+			href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.cncf.io%2Fblog%2F2024%2F05%2F07%2Fkubernetes-is-turning-10-join-the-party-on-june-6th%2F&#038;summary=Kubernetes%20is%20turning%2010%21%20Join%20the%20party%20on%20June%206th%C2%A0"><svg width="30" height="31" viewbox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.758.456a2.193 2.193 0 0 1 2.204 1.804c.017.11.026.22.026.332v25.705a2.132 2.132 0 0 1-2.033 2.125H2.243c-1.066 0-1.875-.571-2.154-1.537A2.318 2.318 0 0 1 0 28.253V2.632A2.123 2.123 0 0 1 2.135.465C3.16.453 23.5.473 27.758.455ZM15.992 13.62v-1.624c0-.248-.06-.342-.328-.337-1.226.014-2.451.014-3.675 0-.293 0-.361.09-.359.368V25.69c0 .279.07.377.36.372 1.274-.012 2.546-.012 3.817 0 .284 0 .363-.082.361-.367-.01-2.292-.01-4.583 0-6.874a8.238 8.238 0 0 1 .117-1.42c.171-.968.614-1.755 1.64-2.012.328-.072.663-.103.998-.092 1.033.014 1.713.513 1.945 1.518a8.46 8.46 0 0 1 .192 1.802c.02 2.357.012 4.714 0 7.07 0 .272.07.38.36.375 1.272-.012 2.544-.012 3.817 0 .272 0 .35-.084.347-.354v-7.602a13.265 13.265 0 0 0-.29-3.088c-.326-1.384-.966-2.565-2.33-3.177a6.232 6.232 0 0 0-4.216-.35c-1.16.306-2.053 1.03-2.756 2.129Zm-7.075 5.217v-6.843c0-.253-.07-.338-.333-.335-1.288.012-2.578.012-3.87 0-.253 0-.335.065-.333.328V25.73c0 .274.101.33.343.33H8.54c.372 0 .375 0 .375-.375l.002-6.848Zm-2.26-9.095A2.603 2.603 0 1 0 4.05 7.165a2.577 2.577 0 0 0 2.605 2.577h.002Z" fill="currentColor"/></svg></a>
+		
+		<!-- facebook -->
+				<a aria-label="Share on Facebook"
+			title="Share on Facebook"
+			href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cncf.io%2Fblog%2F2024%2F05%2F07%2Fkubernetes-is-turning-10-join-the-party-on-june-6th%2F&#038;t=Kubernetes%20is%20turning%2010%21%20Join%20the%20party%20on%20June%206th%C2%A0"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-0.51 -0.26 26.45 26.45" aria-label="Facebook"><path fill="currentColor" d="M25.497 13.075c0-2.45-.698-4.848-2.011-6.911a12.765 12.765 0 0 0-5.398-4.73A12.671 12.671 0 0 0 11.008.38a12.705 12.705 0 0 0-6.529 2.95A12.827 12.827 0 0 0 .563 9.358a12.896 12.896 0 0 0-.07 7.201 12.831 12.831 0 0 0 3.801 6.103 12.709 12.709 0 0 0 6.471 3.078v-8.957H7.53v-3.708h3.235v-2.824c0-3.213 1.903-4.988 4.813-4.988.956.014 1.909.097 2.852.25V8.67h-1.607a1.83 1.83 0 0 0-1.518.497 1.854 1.854 0 0 0-.561 1.505v2.404h3.535l-.563 3.708h-2.97v8.957a12.725 12.725 0 0 0 7.697-4.337 12.87 12.87 0 0 0 3.054-8.328z"/></svg></a>
+		
+		<!-- x -->
+				<a aria-label="Share on X"
+			title="Share on X"
+			href="https://x.com/intent/tweet?text=Kubernetes%20is%20turning%2010%21%20Join%20the%20party%20on%20June%206th%C2%A0&#038;url=https%3A%2F%2Fwww.cncf.io%2Fblog%2F2024%2F05%2F07%2Fkubernetes-is-turning-10-join-the-party-on-june-6th%2F&#038;hashtags=cncf&#038;via=CloudNativeFDN"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 300 300" aria-label="X"><path fill="currentColor" d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 262.13h-40.66"/></svg>
+</a>
+		
+		<!-- sendto email -->
+				<a aria-label="Share by Email" title="Share by Email"
+			href="mailto:?subject=Kubernetes%20is%20turning%2010%21%20Join%20the%20party%20on%20June%206th%C2%A0&#038;body=https%3A%2F%2Fwww.cncf.io%2Fblog%2F2024%2F05%2F07%2Fkubernetes-is-turning-10-join-the-party-on-june-6th%2F"><svg fill="transparent" viewbox=".16 -.47 30.88 25.5" xmlns="http://www.w3.org/2000/svg" aria-label="Email"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="m4.97 1.675h21.315a2.672 2.672 0 0 1 2.665 2.664v15.987c0 1.466-1.2 2.665-2.665 2.665h-21.315a2.672 2.672 0 0 1 -2.664-2.665v-15.986a2.672 2.672 0 0 1 2.664-2.664z"/><path d="m28.95 4.34-13.323 9.326-13.322-9.326"/></g></svg></a>
+			</div>
+</div>
+
+		<div style="height:80px"
+			aria-hidden="true" class="wp-block-spacer is-style-80-120">
+		</div>
+	</article>
+
+	<aside class="container wrap">
+		<div class="home-events-slider">
+		<a href="https://events.linuxfoundation.org/cloudnativesecuritycon-north-america/" title="CloudNativeSecurityCon NA">
+		<picture>
+			<source media="(max-width: 499px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Mobile-900x1100px.png">
+			<source media="(min-width: 500px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px.png">
+			<img width="2400" height="840" loading="lazy" class="" src="https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px.png" srcset="https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px.png 2400w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-300x105.png 300w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-1024x358.png 1024w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-768x269.png 768w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-900x315.png 900w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-1800x630.png 1800w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-571x200.png 571w, https://www.cncf.io/wp-content/uploads/2024/03/CNCF-homepage-Desktop-2400x840px-1143x400.png 1143w" sizes="(max-width: 1200px) 100vw, 1200px" alt="CloudNativeSecurityCon NA">		</picture>
+	</a>
+	<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/" title="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024">
+		<picture>
+			<source media="(max-width: 499px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2024/03/Mobile-900x1100-2.png">
+			<source media="(min-width: 500px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1.png">
+			<img width="2400" height="840" loading="lazy" class="" src="https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1.png" srcset="https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1.png 2400w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-300x105.png 300w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-1024x358.png 1024w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-768x269.png 768w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-900x315.png 900w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-1800x630.png 1800w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-571x200.png 571w, https://www.cncf.io/wp-content/uploads/2024/03/Desktop-2400x840-option-1-1143x400.png 1143w" sizes="(max-width: 1200px) 100vw, 1200px" alt="KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024">		</picture>
+	</a>
+	<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/" title="KubeCon + CloudNativeCon North America 2024">
+		<picture>
+			<source media="(max-width: 499px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2023/12/Mobile-Icon-900x1100-1.png">
+			<source media="(min-width: 500px)"
+				srcset="https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1.png">
+			<img width="2400" height="840" loading="lazy" class="" src="https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1.png" srcset="https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1.png 2400w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-300x105.png 300w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-1024x358.png 1024w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-768x269.png 768w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-900x315.png 900w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-1800x630.png 1800w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-571x200.png 571w, https://www.cncf.io/wp-content/uploads/2023/12/Desktop-2400x840-1-1143x400.png 1143w" sizes="(max-width: 1200px) 100vw, 1200px" alt="KubeCon + CloudNativeCon North America 2024">		</picture>
+	</a>
+</div>
+<div style="height:100px" aria-hidden="true"
+	class="wp-block-spacer is-style-60-100"></div>
+		<h2>Other posts to check out</h2>
+		<div style="height:60px"
+			aria-hidden="true" class="wp-block-spacer">
+		</div>
+
+		<div class="columns-three">
+	
+<div class="news-item-vertical  not-sticky has-animation-scale-2">
+
+	
+	<a href="https://www.cncf.io/blog/2024/05/07/kubernetes-is-turning-10-join-the-party-on-june-6th/" class="news-item-vertical__link"
+		title="Kubernetes is turning 10! Join the party on June 6th ">
+
+		<img width="388" height="204" loading="lazy" class="news-item-vertical__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-388x204.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-300x158.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1024x538.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-900x473.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-2-60.png 1800w" sizes="(max-width: 400px) 100vw, 400px" alt="">		<h3 class="news-item-vertical__title">Kubernetes is turning 10! Join the party on June 6th </h3>
+	</a>
+		<span
+		class="news-item-vertical__date">May 7, 2024</span>
+
+</div>
+
+<div class="news-item-vertical  not-sticky has-animation-scale-2">
+
+	
+	<a href="https://www.cncf.io/blog/2024/05/06/adding-color-blind-themes-to-kubecolor-to-make-kubernetes-more-inclusive/" class="news-item-vertical__link"
+		title="Adding color-blind themes to Kubecolor to make Kubernetes more inclusive">
+
+		<img width="388" height="204" loading="lazy" class="news-item-vertical__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-388x204.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-300x157.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1024x537.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-900x472.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Copy-of-Single-Card-3-61.png 1650w" sizes="(max-width: 400px) 100vw, 400px" alt="">		<h3 class="news-item-vertical__title">Adding color-blind themes to Kubecolor to make Kubernetes more inclusive</h3>
+	</a>
+		<span
+		class="news-item-vertical__date">May 6, 2024</span>
+
+</div>
+
+<div class="news-item-vertical  not-sticky has-animation-scale-2">
+
+	
+	<a href="https://www.cncf.io/blog/2024/05/03/top-5-cloud-computing-trends-of-2024/" class="news-item-vertical__link"
+		title="Top 5 cloud computing trends of 2024">
+
+		<img width="388" height="204" loading="lazy" class="news-item-vertical__image" src="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-388x204.png" srcset="https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-388x204.png 388w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-300x158.png 300w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1024x538.png 1024w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-768x403.png 768w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-194x102.png 194w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-776x408.png 776w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1552x816.png 1552w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-900x473.png 900w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-381x200.png 381w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-762x400.png 762w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-590x310.png 590w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53-1180x620.png 1180w, https://www.cncf.io/wp-content/uploads/2024/05/Single-Card-53.png 1800w" sizes="(max-width: 400px) 100vw, 400px" alt="">		<h3 class="news-item-vertical__title">Top 5 cloud computing trends of 2024</h3>
+	</a>
+		<span
+		class="news-item-vertical__date">May 3, 2024</span>
+
+</div>
+</div>
+
+			<div style="height:80px"
+			aria-hidden="true" class="wp-block-spacer is-style-80-120">
+		</div>
+
+	</aside>
+</main>
+	
+<footer class="footer">
+	
+	<div class="container wrap footer_container" id="inner-footer-container">
+
+				<div style="height:70px" aria-hidden="true"
+			class="wp-block-spacer is-style-70-100"></div>
+		
+		<div class="newsletter" id="newsletter">
+
+	<p
+		class="newsletter__title is-style-max-width-800"><strong>Subscribe</strong> for updates, event info, webinars, and the latest community news</p>
+
+	<div style="height:60px" aria-hidden="true"
+		class="wp-block-spacer is-style-20-60"></div>
+
+	
+					<script>
+						window.hsFormsOnReady = window.hsFormsOnReady || [];
+						window.hsFormsOnReady.push(()=>{
+							hbspt.forms.create({
+								portalId: 8112310,
+								formId: "be1b038f-98de-43b5-b211-d5f7bf6510c9",
+								target: "#hbspt-form-1715134723000-9004029620",
+								region: "",
+								
+						})});
+					</script>
+					<div class="hbspt-form" id="hbspt-form-1715134723000-9004029620"></div>
+	<div style="height:30px" aria-hidden="true"
+		class="wp-block-spacer is-style-30-40"></div>
+
+	<p
+		class="newsletter__privacy">By submitting this form, I consent to receive marketing emails from the LF and its projects regarding their events, training, research, developments, and related announcements. I understand that I can unsubscribe at any time using the links in the footers of the emails I receive. <a href="https://www.linuxfoundation.org/privacy/">Privacy Policy</a>.</p>
+
+	<div style="height:60px" aria-hidden="true"
+		class="wp-block-spacer is-style-30-60"></div>
+
+</div>
+
+		<div class="horizontal-rule"></div>
+
+		<div style="height:60px" aria-hidden="true"
+			class="wp-block-spacer is-style-40-60"></div>
+
+		<div class="lf-grid">
+			<nav class="width-10/12">
+				<div class="menu-footer_01-container"><ul id="menu-footer_01" class="menu"><li id="menu-item-71671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71671 lf-menu-title">About Us</li>
+<li id="menu-item-71673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71673"><a href="https://www.cncf.io/about/members/">Members</a></li>
+<li id="menu-item-71674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71674"><a href="https://www.cncf.io/people/technical-oversight-committee/">Technical Oversight Committee</a></li>
+<li id="menu-item-71675" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71675"><a href="https://www.cncf.io/people/governing-board/">Governing Board</a></li>
+<li id="menu-item-102487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102487"><a href="https://www.cncf.io/people/end-user-technical-advisory-board/">End User TAB</a></li>
+<li id="menu-item-72638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72638"><a href="https://www.cncf.io/people/ambassadors/">Ambassadors</a></li>
+<li id="menu-item-71722" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71722"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-71672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71672"><a href="https://www.cncf.io/about/who-we-are/">Who We Are</a></li>
+<li id="menu-item-74275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74275"><a href="https://www.cncf.io/conduct/">Code of Conduct</a></li>
+<li id="menu-item-71676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71676"><a href="https://www.cncf.io/people/staff/">Staff</a></li>
+<li id="menu-item-71677" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71677"><a href="https://www.cncf.io/about/faq/">FAQ</a></li>
+<li id="menu-item-71678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71678"><a href="https://www.cncf.io/about/contact/">Contact Us</a></li>
+</ul></div><div class="menu-footer_02-container"><ul id="menu-footer_02" class="menu"><li id="menu-item-71679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71679 lf-menu-title">Projects</li>
+<li id="menu-item-71680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71680"><a href="https://contribute.cncf.io"><span class="lf-external-link">Contribute</span></a></li>
+<li id="menu-item-103343" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103343"><a href="https://contribute.cncf.io/resources/project-services/"><span class="lf-external-link">Services for CNCF Projects</span></a></li>
+<li id="menu-item-71682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71682"><a href="https://landscape.cncf.io"><span class="lf-external-link">Cloud Native Landscape</span></a></li>
+<li id="menu-item-71724" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71724"><a href="https://www.cncf.io/reports/?_sft_lf-report-type=project-journey">Project Journey Reports</a></li>
+<li id="menu-item-72639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72639"><a href="https://www.cncf.io/project-tools/">Project Tools</a></li>
+<li id="menu-item-71723" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71723"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-71684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71684"><a href="https://www.cncf.io/projects/">Graduated</a></li>
+<li id="menu-item-71685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71685"><a href="https://www.cncf.io/projects/">Incubating</a></li>
+<li id="menu-item-71686" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71686"><a href="https://www.cncf.io/sandbox-projects/">Sandbox</a></li>
+<li id="menu-item-71687" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71687"><a href="https://www.cncf.io/archived-projects/">Archive</a></li>
+<li id="menu-item-94550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94550"><a href="https://www.cncf.io/project-metrics/">Project Metrics</a></li>
+</ul></div><div class="menu-footer_03-container"><ul id="menu-footer_03" class="menu"><li id="menu-item-71688" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71688 lf-menu-title">Training</li>
+<li id="menu-item-97055" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97055"><a href="https://www.cncf.io/training/">Training Overview</a></li>
+<li id="menu-item-97053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97053"><a href="https://www.cncf.io/training/certification/">Certifications</a></li>
+<li id="menu-item-97054" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97054"><a href="https://www.cncf.io/training/courses/">Courses</a></li>
+<li id="menu-item-104458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104458"><a href="https://www.cncf.io/training/kubestronaut/">Kubestronaut Program</a></li>
+<li id="menu-item-71725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71725"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-71691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71691"><a href="https://www.cncf.io/training/kubernetes-training-partners/">KTP</a></li>
+<li id="menu-item-104421" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104421"><a href="https://www.cncf.io/training/cncf-endorsed-content/">CNCF Endorsed Content</a></li>
+<li id="menu-item-71689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71689"><a href="https://www.cncf.io/training/certification/software-conformance/">Certified Kubernetes</a></li>
+<li id="menu-item-72642" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72642"><a href="https://www.cncf.io/training/certification/cnf/">CNF</a></li>
+<li id="menu-item-72641" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72641"><a href="https://www.cncf.io/training/certification/kcsp/">KCSP</a></li>
+</ul></div><div class="menu-footer_04-container"><ul id="menu-footer_04" class="menu"><li id="menu-item-71697" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71697 lf-menu-title">Community</li>
+<li id="menu-item-71698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71698"><a href="https://www.cncf.io/enduser/">End User Community</a></li>
+<li id="menu-item-71699" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71699"><a href="https://www.cncf.io/events/">Events We’ll Be At</a></li>
+<li id="menu-item-71701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71701"><a href="https://www.cncf.io/case-studies/">Case Studies</a></li>
+<li id="menu-item-71702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71702"><a href="https://www.cncf.io/case-studies-cn/">最终用户案例研究</a></li>
+<li id="menu-item-72643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72643"><a href="https://www.cncf.io/humans-of-cloud-native/">Humans of Cloud Native</a></li>
+<li id="menu-item-71726" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71726"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-71700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71700"><a href="https://www.cncf.io/online-programs/">Online Programs</a></li>
+<li id="menu-item-71704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71704"><a href="https://www.cncf.io/kubeweekly/">KubeWeekly</a></li>
+<li id="menu-item-71705" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71705"><a href="https://community.cncf.io"><span class="lf-external-link">Community Groups</span></a></li>
+<li id="menu-item-71706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71706"><a href="https://www.cncf.io/phippy/">Phippy &#038; Friends</a></li>
+<li id="menu-item-71707" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71707"><a href="https://glossary.cncf.io"><span class="lf-external-link">Cloud Native Glossary</span></a></li>
+<li id="menu-item-71727" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71727"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-71708" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71708"><a href="https://jobs.cncf.io"><span class="lf-external-link">Job Board</span></a></li>
+<li id="menu-item-71709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71709"><a href="https://slack.cncf.io/"><span class="lf-external-link">Slack</span></a></li>
+<li id="menu-item-71710" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71710"><a href="https://lists.cncf.io/g/main/subgroups"><span class="lf-external-link">Mailing Lists</span></a></li>
+<li id="menu-item-71711" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71711"><a href="https://store.cncf.io"><span class="lf-external-link">Store</span></a></li>
+<li id="menu-item-71712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71712"><a href="https://www.cncf.io/calendar/">Calendar</a></li>
+</ul></div><div class="menu-footer_05-container"><ul id="menu-footer_05" class="menu"><li id="menu-item-71713" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71713 lf-menu-title">Blog & News</li>
+<li id="menu-item-71714" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-71714"><a href="https://www.cncf.io/blog/">Blog</a></li>
+<li id="menu-item-71715" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-71715"><a href="https://www.cncf.io/announcements/">Announcements</a></li>
+<li id="menu-item-71716" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-71716"><a href="https://www.cncf.io/news/">News</a></li>
+<li id="menu-item-71717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71717"><a href="https://www.cncf.io/reports/">Reports</a></li>
+<li id="menu-item-71728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71728"><div class="lf-menu-divider"></div></li>
+<li id="menu-item-75050" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75050"><a href="https://www.cncf.io/brand-guidelines/">Brand Guidelines</a></li>
+<li id="menu-item-71719" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71719"><a href="https://github.com/cncf/artwork"><span class="lf-external-link">Project Logos</span></a></li>
+<li id="menu-item-71720" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71720"><a href="https://www.youtube.com/c/cloudnativefdn"><span class="lf-external-link">Videos</span></a></li>
+<li id="menu-item-71721" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-71721"><a href="https://www.flickr.com/photos/143247548@N03/albums/"><span class="lf-external-link">Pictures</span></a></li>
+</ul></div>			</nav>
+
+						<div class="footer__cta">
+				<a href="https://www.cncf.io/about/join/"
+					class="wp-block-button__link has-no-padding">Join Now</a>
+			</div>
+					</div>
+		<div style="height:80px" aria-hidden="true"
+			class="wp-block-spacer is-style-30-80"></div>
+
+		<div class="lf-grid">
+
+			<div class="footer__logo-and-hub">
+				
+				<a class="footer__logo show-over-1000" href="/"
+					title="Cloud Native Computing Foundation">
+					<img src="https://www.cncf.io/wp-content/uploads/2022/05/CNCF_logo_white.svg"
+						loading="lazy" width="210" height="40"
+						alt="Cloud Native Computing Foundation">
+				</a>
+					
+				<!-- All CNCF button  -->
+				<div class="footer__hub wp-block-buttons">
+					<div class="wp-block-button"><a
+							href="https://www.cncf.io/all-cncf/"
+							class="wp-block-button__link wp-element-button">All
+							CNCF Sites</a></div>
+				</div>
+
+			</div>
+
+			
+<ul class="social-links">
+		<li class="social-twitter"><a title="Cloud Native Computing Foundation on X"
+			href="https://twitter.com/cloudnativefdn"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 300 300" aria-label="X"><path fill="currentColor" d="M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 262.13h-40.66"/></svg>
+		</a></li>
+	
+		<li class="social-github"><a title="Cloud Native Computing Foundation on Github"
+			href="https://github.com/cncf"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-0.1 0.21 24.7 24.14" aria-label="GitHub"><path fill="currentColor" d="M24.188 12.63A11.893 11.893 0 0 0 3.887 4.221a11.893 11.893 0 0 0-1.272 15.317 11.899 11.899 0 0 0 5.81 4.34 1.14 1.14 0 0 0 .612-.885c0-.654-.014-2.337-.014-2.337-.415.061-.834.09-1.253.088a2.692 2.692 0 0 1-2.722-1.837 3.22 3.22 0 0 0-1.336-1.585c-.308-.198-.379-.431-.023-.498 1.643-.308 2.064 1.853 3.16 2.198.76.236 1.58.17 2.293-.183.1-.614.44-1.165.943-1.531-2.791-.267-4.446-1.232-5.304-2.781l-.092-.174-.216-.492-.064-.176a8.34 8.34 0 0 1-.386-2.694A4.596 4.596 0 0 1 5.334 7.58a4.765 4.765 0 0 1 .207-3.43s1.208-.248 3.492 1.378c1.237-.528 4.538-.571 6.1-.117.957-.63 2.71-1.524 3.417-1.274.193.307.604 1.2.25 3.164a5.523 5.523 0 0 1 1.493 3.942 10.198 10.198 0 0 1-.305 2.444l-.103.349s-.06.165-.123.322l-.075.173c-.828 1.809-2.527 2.484-5.274 2.766.89.557 1.144 1.256 1.144 3.146s-.025 2.144-.02 2.578a1.199 1.199 0 0 0 .59.87 11.9 11.9 0 0 0 8.06-11.26z"/></svg></a></li>
+	
+		<li class="social-linkedin"><a title="Cloud Native Computing Foundation on LinkedIn"
+			href="https://www.linkedin.com/company/cloud-native-computing-foundation/"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-10.23 -10.23 531.96 531.96" aria-label="LinkedIn"><rect width="512" height="512" rx="0" fill="currentColor"/><circle fill="#000" cx="142" cy="138" r="37"/><path stroke="#000" stroke-width="66" d="M244 194v198M142 194v198"/><path fill="#000" d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg></a></li>
+	
+		<li class="social-instagram"><a title="Cloud Native Computing Foundation on Instagram"
+			href="https://www.instagram.com/humans.of.cloudnative/"><svg viewbox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"><path d="m12 0c-3.26 0-3.667.015-4.947.072-1.278.06-2.148.261-2.913.558-.789.306-1.459.717-2.126 1.384s-1.079 1.336-1.384 2.126c-.297.765-.499 1.635-.558 2.913-.06 1.28-.072 1.687-.072 4.947s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558 1.28.06 1.687.072 4.947.072s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126-.667-.667-1.335-1.079-2.126-1.384-.765-.297-1.636-.499-2.913-.558-1.28-.06-1.687-.072-4.947-.072zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zm0 10.162c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44s.646-1.439 1.44-1.439c.793-.001 1.44.645 1.44 1.439z"/></svg></a></li>
+	
+		<li class="social-wechat"><a title="Cloud Native Computing Foundation on WeChat"
+			href="https://www.cncf.io/wechat/"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0.14 -0.17 38.02 33.02" aria-label="Wechat"><path fill="currentColor" d="M26.289 10.976a12.972 12.972 0 0 0-8.742 3.53 10.386 10.386 0 0 0-3.224 8.795c-1.326-.164-2.535-.345-3.75-.448a2.332 2.332 0 0 0-1.273.216c-1.18.666-2.311 1.418-3.652 2.255.246-1.112.405-2.087.687-3.024a1.15 1.15 0 0 0-.523-1.52C1.737 17.902.02 13.601 1.307 9.165c1.189-4.1 4.11-6.587 8.077-7.884A13.54 13.54 0 0 1 24.18 5.617a10.135 10.135 0 0 1 2.109 5.359zM10.668 9.594a1.564 1.564 0 0 0-2.095-1.472 1.52 1.52 0 0 0-.895 1.964 1.502 1.502 0 0 0 1.391.966 1.545 1.545 0 0 0 1.598-1.46v.002zm8.15-1.566a1.567 1.567 0 0 0-1.528 1.543 1.528 1.528 0 0 0 1.571 1.492 1.52 1.52 0 0 0 1.375-2.117 1.518 1.518 0 0 0-1.415-.919l-.003.001z"/><path fill="currentColor" d="M33.914 32.137c-1.075-.478-2.062-1.196-3.11-1.306-1.049-.11-2.145.494-3.24.605a10.821 10.821 0 0 1-8.781-2.864c-4.682-4.33-4.013-10.97 1.403-14.518 4.811-3.154 11.874-2.102 15.268 2.273a8.671 8.671 0 0 1-1.002 12.095c-1.046.929-1.422 1.693-.751 2.917.102.257.174.525.213.798zM21.68 20.292a1.264 1.264 0 1 0 .01-2.528 1.264 1.264 0 0 0-.01 2.528zm7.887-2.526a1.266 1.266 0 0 0-1.256 1.21 1.247 1.247 0 1 0 1.256-1.21z"/></svg></a></li>
+	
+		<li class="social-youtube"><a title="Cloud Native Computing Foundation on YouTube"
+			href="https://www.youtube.com/c/cloudnativefdn"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0.21 0.27 34.45 25.07" aria-label="YouTube"><path fill="currentColor" d="M33.729 6.084s-.327-2.33-1.317-3.356a4.691 4.691 0 0 0-3.32-1.432c-4.634-.34-11.589-.34-11.589-.34h-.014s-6.954 0-11.59.342a4.692 4.692 0 0 0-3.32 1.432c-.993 1.025-1.315 3.354-1.315 3.354a52.189 52.189 0 0 0-.331 5.473v2.566c.014 1.829.125 3.656.331 5.472 0 0 .322 2.33 1.316 3.36 1.26 1.345 2.916 1.3 3.653 1.445 2.65.26 11.263.34 11.263.34s6.96-.01 11.597-.353a4.691 4.691 0 0 0 3.32-1.432c.993-1.026 1.316-3.356 1.316-3.356.206-1.817.316-3.644.33-5.473v-2.57a52.26 52.26 0 0 0-.33-5.472zM14.076 17.232V7.729l8.951 4.768-8.95 4.735z"/></svg></a></li>
+	
+		<li class="social-flickr"><a title="Cloud Native Computing Foundation on Flickr"
+			href="https://www.flickr.com/photos/143247548@N03/albums"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-0.35 0.34 27.82 13.45" aria-label="Flickr"><path fill="currentColor" fill-rule="evenodd" d="M12.599 7.083a6.181 6.181 0 1 1-12.363 0 6.181 6.181 0 0 1 12.363 0zm14.376 0a6.18 6.18 0 1 1-12.362 0 6.18 6.18 0 0 1 12.362 0z" clip-rule="evenodd"/></svg></a></li>
+	
+		<li class="social-facebook"><a title="Cloud Native Computing Foundation on Facebook"
+			href="https://www.facebook.com/CloudNativeComputingFoundation/"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-0.51 -0.26 26.45 26.45" aria-label="Facebook"><path fill="currentColor" d="M25.497 13.075c0-2.45-.698-4.848-2.011-6.911a12.765 12.765 0 0 0-5.398-4.73A12.671 12.671 0 0 0 11.008.38a12.705 12.705 0 0 0-6.529 2.95A12.827 12.827 0 0 0 .563 9.358a12.896 12.896 0 0 0-.07 7.201 12.831 12.831 0 0 0 3.801 6.103 12.709 12.709 0 0 0 6.471 3.078v-8.957H7.53v-3.708h3.235v-2.824c0-3.213 1.903-4.988 4.813-4.988.956.014 1.909.097 2.852.25V8.67h-1.607a1.83 1.83 0 0 0-1.518.497 1.854 1.854 0 0 0-.561 1.505v2.404h3.535l-.563 3.708h-2.97v8.957a12.725 12.725 0 0 0 7.697-4.337 12.87 12.87 0 0 0 3.054-8.328z"/></svg></a></li>
+	
+	
+		<li class="social-twitch"><a title="Cloud Native Computing Foundation on Twitch"
+			href="https://www.twitch.tv/cloudnativefdn"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-0.05 0.08 21.22 22.04" aria-label="Twitch"><path fill="currentColor" d="M.402 18.929V4.189c.045-.067.084-.137.118-.21.436-1.158.871-2.316 1.304-3.475h18.98v12.968c-.112.081-.22.168-.323.26-1.66 1.651-3.318 3.305-4.973 4.962a.795.795 0 0 1-.623.257 132.09 132.09 0 0 0-3.482.006.896.896 0 0 0-.553.23c-.793.761-1.557 1.553-2.35 2.313a.913.913 0 0 1-.553.224c-.675.026-1.35.011-2.026.01-.124 0-.247-.016-.408-.027V18.97c-.204-.01-.365-.022-.53-.023-1.526-.007-3.053-.013-4.58-.018zM3.664 2.33v13.435h.439c1.125 0 2.25.006 3.375-.005.248 0 .332.077.328.323-.013.661-.006 1.323 0 1.983 0 .123.015.245.028.45.16-.148.255-.231.345-.32.737-.734 1.466-1.477 2.218-2.196a.884.884 0 0 1 .55-.226c1.492-.018 2.985-.004 4.477-.019a.782.782 0 0 0 .49-.2c.953-.923 1.88-1.866 2.825-2.79a.748.748 0 0 0 .24-.59c-.007-3.131-.009-6.26-.005-9.386 0-.456 0-.456-.465-.456H3.667l-.003-.003z"/><path fill="currentColor" d="M15.654 6.063c.01.152.022.255.022.359 0 1.59-.005 3.182.006 4.773 0 .272-.064.38-.354.367-.458-.022-.919-.006-1.418-.006-.01-.137-.025-.246-.025-.358 0-1.592.004-3.183-.006-4.774 0-.265.051-.384.35-.368.467.025.938.007 1.425.007zm-5.082 2.732c0 .802-.01 1.604.006 2.406.005.283-.094.374-.37.36a12.659 12.659 0 0 0-1.1 0c-.216.007-.322-.05-.32-.293.007-1.64.007-3.28 0-4.92 0-.218.08-.292.291-.286.39.011.782.015 1.172 0 .252-.01.328.086.325.329-.01.799-.004 1.601-.004 2.404z"/></svg></a></li>
+	
+		<li class="social-slack"><a title="Cloud Native Computing Foundation Slack"
+			href="https://slack.cncf.io/"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0.16 -0.03 21.19 21.19" aria-label="Slack"><path fill="currentColor" d="M4.896 13.27a2.147 2.147 0 0 1-2.141 2.142A2.147 2.147 0 0 1 .613 13.27c0-1.178.963-2.141 2.142-2.141h2.141v2.141zm1.08 0c0-1.178.962-2.141 2.141-2.141s2.142.963 2.142 2.141v5.363a2.147 2.147 0 0 1-2.142 2.141 2.147 2.147 0 0 1-2.141-2.142V13.27zm2.141-8.6a2.147 2.147 0 0 1-2.141-2.14c0-1.18.962-2.142 2.141-2.142s2.142.963 2.142 2.141v2.142H8.117zm0 1.08c1.179 0 2.141.962 2.141 2.141a2.147 2.147 0 0 1-2.141 2.142H2.755A2.147 2.147 0 0 1 .613 7.89c0-1.179.963-2.141 2.142-2.141h5.362zm8.599 2.141c0-1.179.963-2.141 2.141-2.141 1.179 0 2.143.962 2.143 2.14a2.147 2.147 0 0 1-2.142 2.142h-2.141V7.89zm-1.08 0a2.147 2.147 0 0 1-2.141 2.142 2.147 2.147 0 0 1-2.141-2.142V2.53c0-1.178.962-2.141 2.141-2.141s2.142.963 2.142 2.141v5.362zm-2.141 8.6c1.179 0 2.142.962 2.142 2.14a2.147 2.147 0 0 1-2.142 2.142 2.147 2.147 0 0 1-2.141-2.141V16.49h2.141zm0-1.08a2.147 2.147 0 0 1-2.141-2.141c0-1.179.962-2.142 2.141-2.142h5.362c1.179 0 2.142.963 2.142 2.142a2.147 2.147 0 0 1-2.142 2.142h-5.362z"/></svg></a></li>
+	</ul>
+
+		</div>
+
+		<div style="height:40px" aria-hidden="true" class="wp-block-spacer show-over-1000"></div>
+
+		<div class="horizontal-rule show-over-1000"></div>
+
+		<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
+
+		
+<div class="lf-grid">
+
+	<div class="footer__copyright">
+		<p>Copyright &copy; 2024 The Linux Foundation®. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/legal/trademark-usage">Trademark Usage</a> page. Linux is a registered trademark of Linus Torvalds. <a href="https://www.linuxfoundation.org/legal/privacy-policy">Privacy Policy</a> and <a href="https://www.linuxfoundation.org/legal/terms">Terms of Use</a>.	</p>
+	</div>
+
+	<p
+		class="footer__issue">
+		
+					<a href="https://www.cncf.io/accessibility-statement/">Accessibility Statement</a><br>
+				<a href="https://github.com/cncf/cncf.io/issues/new?title=Your+issue&projects=cncf/cncf.io/1&body=From+URL%3A+https%3A%2F%2Fwww.cncf.io%2Fblog%2F2024%2F05%2F07%2Fkubernetes-is-turning-10-join-the-party-on-june-6th%2F">Submit an issue with this page</a>
+	</p>
+
+</div>
+
+				<div style="height:90px" aria-hidden="true" class="wp-block-spacer">
+		</div>
+
+	</div>
+</footer>
+
+<div class="back-to-top">
+	<span title="Go to top">
+		<svg width="40" height="27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 23.5l17-17 17 17" stroke="#fff" stroke-width="8"/></svg>
+	</span>
+</div>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}p.has-background{padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+</style>
+<style id='wp-block-heading-inline-css'>
+h1.has-background,h2.has-background,h3.has-background,h4.has-background,h5.has-background,h6.has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}ol.has-background,ul.has-background{padding:1.25em 2.375em}
+</style>
+<link rel='stylesheet' id='slick-css-css' href='https://www.cncf.io/wp-content/themes/cncf-twenty-two/build/slick.min.css?ver=1715124546' media='all' />
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #FFFFFF;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--pink-400: #d62293;--wp--preset--color--tertiary-400: #62a1ff;--wp--preset--color--gray-700: #747474;--wp--preset--color--gray-500: #c4c4c4;--wp--preset--color--gray-400: #e6e6e6;--wp--preset--color--gray-300: #eeeeee;--wp--preset--color--gray-200: #f8f8f8;--wp--preset--color--gray-100: #fcfcfc;--wp--preset--color--gray-050: #fdfdfd;--wp--preset--color--purple: #4A23CC;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 14px;--wp--preset--font-size--medium: 18px;--wp--preset--font-size--large: 20px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--extra-small: 10px;--wp--preset--font-size--normal: 16px;--wp--preset--font-size--larger: 24px;--wp--preset--font-size--extra-large: 36px;--wp--preset--font-size--extra-extra-large: 46px;--wp--preset--font-family--primary: Clarity City,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Roboto,Ubuntu,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;--wp--preset--font-family--serif: Source Serif Pro, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}.wp-block-button .wp-block-button__link{--wp--preset--color--pink-400: #d62293;--wp--preset--color--black: #000000;}body { margin: 0;--wp--style--global--content-size: 1200px;--wp--style--global--wide-size: 1200px; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}body{background-color: var(--wp--preset--color--gray-050);color: var(--wp--preset--color--black);font-family: var(--wp--preset--font-family--primary);font-weight: 400;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;text-decoration: none;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--pink-400);font-weight: 700;text-decoration: none;}h1, h2, h3, h4, h5, h6{color: var(--wp--preset--color--black);font-weight: 700;}.wp-element-button, .wp-block-button__link{background-color: var(--wp--preset--color--pink-400);border-radius: 5px;border-width: 0;color: var(--wp--preset--color--white);font-family: inherit;font-size: 16px;font-weight: 700;letter-spacing: 0.02em;line-height: 18px;padding-top: 11px;padding-right: 40px;padding-bottom: 11px;padding-left: 40px;text-decoration: none;text-transform: uppercase;}.wp-element-button:visited, .wp-block-button__link:visited{color: var(--wp--preset--color--white);text-decoration: none;}.wp-element-button:hover, .wp-block-button__link:hover{background-color: #c53490;color: var(--wp--preset--color--white);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-pink-400-color{color: var(--wp--preset--color--pink-400) !important;}.has-tertiary-400-color{color: var(--wp--preset--color--tertiary-400) !important;}.has-gray-700-color{color: var(--wp--preset--color--gray-700) !important;}.has-gray-500-color{color: var(--wp--preset--color--gray-500) !important;}.has-gray-400-color{color: var(--wp--preset--color--gray-400) !important;}.has-gray-300-color{color: var(--wp--preset--color--gray-300) !important;}.has-gray-200-color{color: var(--wp--preset--color--gray-200) !important;}.has-gray-100-color{color: var(--wp--preset--color--gray-100) !important;}.has-gray-050-color{color: var(--wp--preset--color--gray-050) !important;}.has-purple-color{color: var(--wp--preset--color--purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-pink-400-background-color{background-color: var(--wp--preset--color--pink-400) !important;}.has-tertiary-400-background-color{background-color: var(--wp--preset--color--tertiary-400) !important;}.has-gray-700-background-color{background-color: var(--wp--preset--color--gray-700) !important;}.has-gray-500-background-color{background-color: var(--wp--preset--color--gray-500) !important;}.has-gray-400-background-color{background-color: var(--wp--preset--color--gray-400) !important;}.has-gray-300-background-color{background-color: var(--wp--preset--color--gray-300) !important;}.has-gray-200-background-color{background-color: var(--wp--preset--color--gray-200) !important;}.has-gray-100-background-color{background-color: var(--wp--preset--color--gray-100) !important;}.has-gray-050-background-color{background-color: var(--wp--preset--color--gray-050) !important;}.has-purple-background-color{background-color: var(--wp--preset--color--purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-pink-400-border-color{border-color: var(--wp--preset--color--pink-400) !important;}.has-tertiary-400-border-color{border-color: var(--wp--preset--color--tertiary-400) !important;}.has-gray-700-border-color{border-color: var(--wp--preset--color--gray-700) !important;}.has-gray-500-border-color{border-color: var(--wp--preset--color--gray-500) !important;}.has-gray-400-border-color{border-color: var(--wp--preset--color--gray-400) !important;}.has-gray-300-border-color{border-color: var(--wp--preset--color--gray-300) !important;}.has-gray-200-border-color{border-color: var(--wp--preset--color--gray-200) !important;}.has-gray-100-border-color{border-color: var(--wp--preset--color--gray-100) !important;}.has-gray-050-border-color{border-color: var(--wp--preset--color--gray-050) !important;}.has-purple-border-color{border-color: var(--wp--preset--color--purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-extra-small-font-size{font-size: var(--wp--preset--font-size--extra-small) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}.has-larger-font-size{font-size: var(--wp--preset--font-size--larger) !important;}.has-extra-large-font-size{font-size: var(--wp--preset--font-size--extra-large) !important;}.has-extra-extra-large-font-size{font-size: var(--wp--preset--font-size--extra-extra-large) !important;}.has-primary-font-family{font-family: var(--wp--preset--font-family--primary) !important;}.has-serif-font-family{font-family: var(--wp--preset--font-family--serif) !important;}.wp-block-button .wp-block-button__link.has-pink-400-color{color: var(--wp--preset--color--pink-400) !important;}.wp-block-button .wp-block-button__link.has-black-color{color: var(--wp--preset--color--black) !important;}.wp-block-button .wp-block-button__link.has-pink-400-background-color{background-color: var(--wp--preset--color--pink-400) !important;}.wp-block-button .wp-block-button__link.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.wp-block-button .wp-block-button__link.has-pink-400-border-color{border-color: var(--wp--preset--color--pink-400) !important;}.wp-block-button .wp-block-button__link.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}
+</style>
+<script id="flying-pages-js-before">
+window.FPConfig= {
+	delay: 10,
+	ignoreKeywords: ["\/wp-admin","\/wp-login.php","\/cart","add-to-cart","logout","#","?",".png",".jpeg",".jpg",".gif",".svg"],
+	maxRPS: 3,
+    hoverDelay: 50
+};
+</script>
+<script defer src="https://www.cncf.io/wp-content/plugins/flying-pages/flying-pages.min.js?ver=2.4.6" id="flying-pages-js"></script>
+<script id="leadin-script-loader-js-js-extra">
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"11.1.6"};
+</script>
+<script defer id="leadin-script-loader-js-js" data-type="lazy" data-src="https://js.hs-scripts.com/8112310.js?integration=WordPress&amp;businessUnitId=983905&amp;ver=11.1.6"></script>
+<script defer src="https://www.cncf.io/wp-content/themes/cncf-twenty-two/build/globals.min.js?ver=1715124546" id="global-scripts-js"></script>
+<script src="https://www.cncf.io/wp/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script defer src="https://www.cncf.io/wp-content/themes/cncf-twenty-two/source/js/libraries/slick.min.js?ver=1715124547" id="slick-js"></script>
+<script defer src="https://www.cncf.io/wp-content/themes/cncf-twenty-two/source/js/on-demand/slick-events-config.js?ver=1715124547" id="slick-events-config-js"></script>
+<script defer id="leadin-forms-v2-js" data-type="lazy" data-src="https://js.hsforms.net/forms/embed/v2.js?ver=11.1.6"></script>
+<script type="text/javascript" id="flying-scripts">const loadScriptsTimer=setTimeout(loadScripts,10*1000);const userInteractionEvents=["mouseover","keydown","touchstart","touchmove","wheel"];userInteractionEvents.forEach(function(event){window.addEventListener(event,triggerScriptLoader,{passive:!0})});function triggerScriptLoader(){loadScripts();clearTimeout(loadScriptsTimer);userInteractionEvents.forEach(function(event){window.removeEventListener(event,triggerScriptLoader,{passive:!0})})}
+function loadScripts(){document.querySelectorAll("script[data-type='lazy']").forEach(function(elem){elem.setAttribute("src",elem.getAttribute("data-src"))})}</script>
+    
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-97e2229449e282c1bef","applicationID":"643908501","transactionName":"MVFSYxFWXhICUxdaXggbcVQXXl8PTEMKXVYKUQ==","queueTime":0,"applicationTime":453,"atts":"HRZRFVlMTRw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

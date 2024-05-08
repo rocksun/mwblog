@@ -1,6 +1,6 @@
 
 <!--
-title: Kubernetes 1.30命名功能更强大
+title: Kubernetes 1.30的命名更好了
 cover: https://cdn.thenewstack.io/media/2024/04/22cfa2f9-kubernetes-1-30.png
 -->
 
