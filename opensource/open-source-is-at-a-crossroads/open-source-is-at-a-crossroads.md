@@ -1,7 +1,7 @@
 
 <!--
 title: 开源正处于十字路口
-cover: https://cdn.thenewstack.io/media/2024/04/fe07bb72-crossroads-7766604_1280.jpg
+cover: ./cover.png
 -->
 
 随着许多项目缺乏维持字面意义上运行世界的软件的基本资金，这个全球生态系统开始出现裂缝。
