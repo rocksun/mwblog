@@ -1,0 +1,45 @@
+# New Postman Release Supports AI API Development With … AI
+![Featued image for: New Postman Release Supports AI API Development With … AI](https://cdn.thenewstack.io/media/2024/05/744d7ed9-email-3249062_1280-1024x573.png)
+Artificial intelligence may be the wave of the future, but AI’s use as a development tool depends upon APIs. That’s why better
+[management of APIs](https://thenewstack.io/what-will-be-the-api-management-trends-for-2024/) will be key to success with AI, according to [Abhinav Asthana](https://www.linkedin.com/in/abhinavasthana/), co-founder and CEO of API management platform Postman.
+“The big picture view that we have is that APIs will be even more relevant,” Asthana told The New Stack, adding that AI is a platform shift that will impact every piece of software. AI is also going to require a rethink of how APIs are used and designed;
+[APIs will need](https://thenewstack.io/a-favored-target-for-attackers-apis-need-more-than-the-security-basics/) to be understandable by AI bots and very simple to understand and integrate with, he explained.
+“The AI bot has to understand the nature of the API,” Asthana said. “APIs need to be well documented, they need to be well understood because you can’t rely just on the
+[skill set of a developer](https://thenewstack.io/5-software-development-skills-ai-will-render-obsolete/) alone to go through and really figure it out. Bots — as smart as they are — they’re still just a bot.”
+Ill-designed APIs could cause problems with AI, he added. For instance, the API could open up data to a bot that the organization doesn’t want publicly available.
+“If they misunderstand it and they mistake an action that you don’t want them to perform, you might open up the business for risk,” he said. “In some ways, you have to now have this balance of making APIs understandable, for a new set of use cases, while also thinking about
+[security and the design aspects of the API](https://thenewstack.io/how-to-design-scalable-saas-api-security/) to make sure your business is protected. What is not, I think, up for debate anymore is that you need APIs. If no API exists, the bot can’t do anything.”
+## A Bot for AI APIs
+Postman is betting that the tool for improving AI APIs is AI itself. Sixty percent of API professionals report using generative AI for finding mistakes in code, producing code and coding instructions, according to the company’s
+[State of the API report](https://www.postman.com/state-of-api/). Gartner estimates that in just two years, more than 80% of enterprises will have used generative AI APIs or models — which would be striking growth, considering that the number was less than 5% just last year.
+To make that future a reality, the API management platform created a specialty AI bot that’s trained to help developers build better APIs for AI. Called Postbot, the AI can help with test generation, documentation, debugging,
+[data visualization and developer workflow when developing APIs](https://thenewstack.io/hasura-visualizes-data-api-integration-into-a-supergraph/). It’s generally available in Postman version 11, which was released earlier this month.
+One challenge developers have with AI APIs is that they should support streaming information to create the “flow” of an AI conversation. Typically, REST APIs, by design, are single shot, he said. To support the streaming functionality of an AI bot and the fact that AI bots can “build up context over time,” more developers are turning to
+[WebSockets](https://thenewstack.io/the-challenge-of-scaling-websockets/) and [GraphQL](https://thenewstack.io/graphql-vs-rest-you-really-dont-have-to-choose/), he added. Postman plans to invest in more mature tooling for that in the future, he said. Postman is language- and architecture-agnostic, he added, so it supports REST, [SOAP](https://thenewstack.io/solo-io-adds-legacy-soap-integration-for-gloo-edge-1-8-release/), GraphQL and other types of APIs.
+“Postbot can make everything that you want to do when it comes to prototyping, documentation, testing, demoing all of it even faster, it gets you your first draft, it can get you to completion,” he said.
+It’s also a good example to prove his point because the bot itself requires intelligent infrastructure and well-designed APIs to support the conversational interface, he added. Unlike
+[copilots](https://thenewstack.io/how-mobile-app-quality-can-be-improved-with-ai/), which focus on autocompleting code, Postbot is designed to draw on internal sources and support a conversation about API development.
+“We worked really hard on building up the accuracy of its response,” he said. “We have a combination of models working in the background. We can refer to the data that you have inside a Postman Workspace, it can refer to docs, so it’s really custom-built for API work, and I feel like the future of bots is going to look more like Postbot versus just being an autocomplete tool.”
+## A Workspace for Partnering on APIs
+Postman v11 also includes expanded support for APIs that cater to external partners, which is one of the major pain points for API development. Until recently, the tool of choice for enterprises with multiple partner APIs has been email and sometimes Slack, Asthana said.
+“We just were amazed to see how every company has a bunch of partner APIs and they are often more in number than public APIs,” he said. “We then talk to them — Okay, how do you work with those APIs when you have to get consensus with partners, or a partner comes and tells you, hey, this is what I would like to have or something that’s working or not working. How do you do that?”
+Organizations have found that
+[developer portals](https://thenewstack.io/using-a-developer-portal-for-api-management/) don’t work well for collaborating on APIs, he said. As a workaround, customers have been creating a [Postman collection](https://learning.postman.com/docs/collections/collections-overview/) — which enables developers to group requests with different method types and organize them into folders or subfolders — then sharing those collections with partner organizations either over email or Slack, he said.
+“APIs need to be well documented, they need to be well understood because you can’t rely just on the skill set of a developer alone to go through and really figure it out. Bots — as smart as they are — they’re still just a bot.” — Abhivan Asthana, co-founder and CEO of API management platform Postman
+That isn’t optimal for enterprises, which can be supporting 1,000s of API partners, he pointed out. Postman launched Partner Workspace for enterprises in 2022, but this month Postman expanded the offering to to distribute Postman API collections to multiple external partners on both its enterprise plan and its professional plan. The new support is expected to speed up development time by reducing the headaches of collaboration on APIs, the company said.
+Version 11 also adds a new communication method for updates by incorporating a feed that lets internal and external customers know when an API has been updated. This helps eliminate the risk that consumers are using an outdated API. Workspaces also allow developers to communicate about the API with multiple API partners at once, eliminating the need for multiple email messages.
+“The goal is just like with public APIs, or with private APIs, we shorten the time to value, shorten the time to first call, you can invite all your partners in a single workspace or you can create multiple workspaces for them,” he said. “This feature came very much through feedback from our enterprise customers, who were really finding it very hard to wrangle their partnerships.”
+Postman published a
+[blog post that details all the updates in version 11](https://blog.postman.com/announcing-postman-v11/). Other developer-focused features highlighted include:
+- The addition of a VS
+[code extension that allows programmers to develop and test](https://thenewstack.io/developers-put-ai-bots-to-the-test-of-writing-code/)APIs directly in their IDE;
+- The ability to change a script once, use everywhere, with a feature called the
+[Package Library](https://learning.postman.com/docs/writing-scripts/package-library/), which is used to store to commonly-used scripts and tests as packages;
+- Securely reuse sensitive data in HTTP collections, environments, and requests with the Postman Vault or integrate with third-party vaults you already use including AWS, Azure, and
+[HashiCorp](https://thenewstack.io/ibm-purchases-hashicorp-for-multicloud-it-automation/); and
+- European Union developers can use Postman with early access to the Postman EU Data Residency, which is by invitation only at this time.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
