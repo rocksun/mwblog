@@ -1,6 +1,6 @@
 
 <!--
-title: 通过减少开发人员的“纸张割伤”来提高他们的工作效率
+title: 通过减少开发人员的“纸张割伤”来提高工作效率
 cover: https://cdn.thenewstack.io/media/2024/05/ac0f76ed-joyful123.jpg
 -->
 
