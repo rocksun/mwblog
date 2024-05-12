@@ -14,6 +14,8 @@ cover: https://cdn.thenewstack.io/media/2024/03/cda19fdc-letters-5570359_1280.jp
 
 让我们看看如何基于开源项目（例如 [Dapr](https://thenewstack.io/microsofts-open-source-dapr-could-help-developers-build-agnostic-microservice-applications/)、[Knative Serving](https://thenewstack.io/knative-applies-to-join-kubernetes-community-at-cncf/) 和 [Dagger](https://thenewstack.io/solomon-hykes-dagger-brings-the-promise-of-docker-to-ci-cd/)）构建针对专门工作流优化的自定义（和多语言）开发者体验。
 
+## Dapr
+
 [Dapr](https://dapr.io) 项目提供应用程序级 API、云原生模式和最佳实践，使开发者能够使用不同的语言构建复杂的分布式应用程序。这种 API 驱动的途径使应用程序在环境中具有可移植性，因为数据库、键值存储、消息代理和其他跨领域应用程序问题等应用程序基础设施被抽象在 API 之后。
 
 无论是在本地运行应用程序，还是在云提供商管理的服务中使用 Kubernetes 运行应用程序，应用程序代码都不会更改。Dapr 与流行的框架和工具集成，例如：Java 开发者的 Spring Boot 和 Quarkus；C# 开发者的 ASP.NET Core 和 .NET Aspire；Python 开发者的 Flask，同时提供与 IntelliJ 和 VScode 等 IDE 的集成。
