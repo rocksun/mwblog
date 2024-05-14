@@ -45,4 +45,6 @@ Spring 及其依赖注入框架在 bean 的使用者端提供了强大的注入�
 
 ## 最后的想法
 
-Spring 提供了一些有助于开发过程的出色功能，但它也附带了复杂的配置。了解 Spring 的局限性和缺点对于充分利用它至关重要，但这可能很困难。代码中可能导致性能和稳定性中断的位置并不总是很明显。这就是像 [Sonar](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=newstack&utm_campaign=ss-cleancode&utm_content=media-Spring%20Boot-240507-&utm_term=&s_category=Organic&s_source=External%Referral&s_origin=newstack) 这样的静态分析解决方案可以提供帮助的地方。它包含涵盖和发现主要问题的规则，在编码过程中提供警告，并在 CI/CD 管道中执行持续监控。通过制定适当的规则来确保质量，更容易确信编写的代码将产生增加实际价值的软件，而不是成为一种负担。
+Spring 提供了一些有助于开发过程的出色功能，但它也附带了复杂的配置。了解 Spring 的局限性和缺点对于充分利用它至关重要，但这可能很困难。代码中可能导致性能和稳定性中断的位置并不总是很明显。
+
+这就是像 [Sonar](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=newstack&utm_campaign=ss-cleancode&utm_content=media-Spring%20Boot-240507-&utm_term=&s_category=Organic&s_source=External%Referral&s_origin=newstack) 这样的静态分析解决方案可以提供帮助的地方。它包含涵盖和发现主要问题的规则，在编码过程中提供警告，并在 CI/CD 管道中执行持续监控。通过制定适当的规则来确保质量，更容易确信编写的代码将产生增加实际价值的软件，而不是成为一种负担。
