@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Celery构建生产级工作流编排器
-cover: https://miro.medium.com/v2/da:true/resize:fit:978/1*JmrFn3pifNwDwfUb9-z9UA.gif
+cover: ./cover.png
 -->
 
 使用 Celery 为高 RPS 数据处理引擎构建复杂工作流的分步指南，从设计到实现，再到 Kubernetes 中的新生产。
