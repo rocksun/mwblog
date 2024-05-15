@@ -84,4 +84,4 @@ Top500 榜单正在快速老化，自 2017 年以来，新系统的数量有所�
 
 El Capitan 拥有 AMD 的 CPU 和升级的 MI300 GPU，与 Nvidia 的 GPU 竞争。该超级计算机专为人工智能和高精度科学应用而设计。
 
-欧洲即将推出的百亿亿次超级计算机，称为 Jupiter 和 Jules Vernes，具有模块化[设计，其中量子和人工智能计算](https://thenewstack.io/mapping-quantum-computings-meteoric-rise-in-chip-design/)模块可以根据需要快速插入到基础设施中。
+欧洲即将推出的百亿亿次超级计算机，称为 Jupiter 和 Jules Vernes，具有模块化[设计，其中量子和人工智能计算](https://thenewstack.io/mapping-quantum-computings-meteoric-rise-in-chip-design/)5藕片00模块可以根据需要快速插入到基础设施中。
