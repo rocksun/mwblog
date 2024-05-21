@@ -62,6 +62,3 @@ HashiCorp 在大规模提供真正卓越的 [开发者体验和稳健治理](htt
 
 更多内容即将推出。
 
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube 频道以流式传输我们所有的播客、访谈、演示等。
