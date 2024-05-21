@@ -12,7 +12,7 @@ cover: https://cdn.thenewstack.io/media/2024/05/c07586a0-buildingsmarterchatbots
 
 许多首席信息官的答案是“不”。为了开启由 GenAI 驱动的 [自适应应用程序](https://thenewstack.io/unlock-hyper-personalization-with-ai-driven-adaptive-apps) 新时代，组织必须首先对其数据管理策略进行现代化改造，以控制人工智能日益增长的对高速数据分析和处理的需求。
 
-### 增长限制
+## 增长限制
 
 我们的研究表明，每个组织在数字化现代化方面的平均投资在 2023 年为 2800 万美元，预计今年将增长 27%，超过 3500 万美元。然而，技术、资源和组织支持仍然是关键障碍。我们计算得出，平均而言，组织每年浪费 400 万美元在失败、缩减或延迟的项目上。近三分之二 (63%) 的项目由于 IT 现代化问题而遭受超过三个月的延迟。
 
@@ -20,7 +20,7 @@ cover: https://cdn.thenewstack.io/media/2024/05/c07586a0-buildingsmarterchatbots
 
 [挑战](https://thenewstack.io/ai-everywhere-overcoming-barriers-to-adoption/) 在于，大多数组织尚未做好准备来支持下一代自适应人工智能应用程序，这些应用程序将通过超个性化和实时更新来改变用户体验。他们没有必要的安全和隐私护栏。他们无法提供快速数据访问、共享和使用所需的低延迟。而且他们没有多用途数据库来帮助 [减少](https://thenewstack.io/how-multimodel-databases-can-reduce-data-sprawl/) GenAI [幻觉](https://thenewstack.io/from-rag-to-riches-dispelling-ai-hallucinations/)，方法是创建一个可信赖的数据单一池来与外部模型交互。
 
-### 将各个部分整合到位
+## 将各个部分整合到位
 
 如果首席信息官希望推动 GenAI 成功，他们必须考虑不仅在技术层面，而且在文化层面进行变革。这将要求他们为技术所能做的事情设定切合实际的目标和期望，以让高级领导层参与进来，并为项目提供最佳成功机会。
 
