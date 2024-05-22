@@ -1,0 +1,3 @@
+# Kubernetes Policy Management Engine — Kyverno
+## Kyverno receives the verification and modification admission webhook HTTP callbacks from kube-apiserver, and applies the matching policy to return the result of executing the admission policy or denying the request.
+[Griffin Wooldridge](https://unsplash.com/@dzngriffin?utm_source=medium&utm_medium=referral)on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        
+        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-TBWFRW7"></script>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRQ44W6V6Z"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-VRQ44W6V6Z');
+        </script>
+        
+	    <script type="text/javascript">
+	    (function(c,l,a,r,i,t,y){
+	        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+	        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+	        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+	    })(window, document, "clarity", "script", "lv07jmigdw");
+		</script>
+		
+		<script>
+		    (function(w,d,t,r,u)
+		    {
+		        var f,n,i;
+		        w[u]=w[u]||[],f=function()
+		        {
+		            var o={ti:"187119708", enableAutoSpaTracking: true};
+		            o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")
+		        },
+		        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+		        {
+		            var s=this.readyState;
+		            s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)
+		        },
+		        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+		    })
+		    (window,document,"script","//bat.bing.com/bat.js","uetq");
+		</script>
+		<script>
+		   
+		   window.uetq = window.uetq || [];
+		   window.uetq.push('set', { 'pid': { 
+		      'em': 'contoso@example.com', 
+		      'ph': '+14250000000', 
+		   } });
+		</script>
+        
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LiveWyer | Service Meshes Decoded: a performance comparison of Istio vs Linkerd vs Cilium</title>
+        <meta name="description" content="A performance comparison of three prominent Open Source service meshes Istio, Linkerd, and Cilium | Discovering the fastest service mesh and sharing our comparison experience">
+        <meta name="robots" content="">
+
+        
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/style.css?1716232463" rel="stylesheet" type="text/css" media="screen">
+        <link href="/fonts/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/css/animate.css" rel="stylesheet" type="text/css" media="screen">
+        <link href="/css/magnific-popup.css" rel="stylesheet" type="text/css">
+        <link href="/ion/css/ionicons.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+        <link href="/css/asciinema-player.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/slick/slick-theme.css"/>
+
+        
+        
+        
+
+    </head>
+    <body class="dark-mode">
+        
+        
+        <header class="navbar navbar-inverse navbar-fixed-top" style="">
+            <div class="container">
+                <div class="pull-right search-icon-container">
+                    <div class="nav-search dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-search search-icon"></i></a>
+                        <div class="search-dropdown dropdown-menu">
+                            <script async src="https://js.sitesearch360.com/plugin/bundle/11904.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="" href="/">
+                    	<img class="navbar-brand lw-logo-dark" src="/img/lw-logo-inverse.svg" title="LiveWyer Logo" alt="LiveWyer">
+                    </a>
+	                <a class="" href="/">
+	                	<img class="navbar-brand lw-logo-light" src="/img/lw-logo.svg" title="LiveWyer Logo" alt="LiveWyer">
+	                </a>
+                    
+                </div>
+                <div class="navbar-collapse collapse">
+	                <ul class="nav navbar-nav navbar-right scrollto">
+	                    
+	                    <li>
+	                    	<a href="/case-studies/">Case Studies</a>
+	                    </li>
+	                    <li class="dropdown">
+	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources</a>
+	                        <ul class="dropdown-menu" role="menu">
+	                            <li>
+	                            	<a href="/resources/what-is-cloud-native/">What is Cloud Native?</a>
+	                            </li>
+	                            <li>
+	                            	<a href="/glossary/the-illustrated-kubernetes-glossary/">Illustrated Kubernetes Glossary</a>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li>
+	                    	<a href="/blog/">Blog</a>
+	                    </li>
+	                    <li>
+	                    	<a href="/about/">Our Story</a>
+	                    </li>
+	                    <li class="nav-contact-button">
+	                    	<a href="/contact/">Contact Us</a>
+	                    </li>
+	                    
+	                    
+	                    <li class="dark-mode-button-container">
+	                		<button class="dark-mode-button" onclick="darkMode()"><i class="ion-contrast"></i></button>
+	                	</li>
+	                </ul>
+	            </div>
+            </div>
+        </header>
+
+
+<style>
+.blog-banner {
+	background: url(/img/blog-image-59.png) no-repeat top center;}
+@media (max-width: 768px) {
+	    .blog-banner {
+	        background: url(/img/blog-image-59-mobile.png) no-repeat top center;
+	    }
+}
+
+@media (min-width: 2500px) {
+    .blog-banner {
+        background: url(/img/blog-image-59.png) top center;
+    }
+}
+</style>
+
+<section class="blog-banner parallax" data-stellar-background-ratio="0.5">
+</section>
+
+<section id="service-copy" class="segment service-copy-segment">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-page-container">
+                    <div class="row service-bvs-row-alt">
+                        <div class="col-md-4 col-sm-12 blog-post-sticky-col">
+                            <div class="service-page-title-container-alt">
+                                <h1 class="blog-title">
+                                    Service Meshes Decoded: a performance comparison of Istio vs Linkerd vs Cilium
+                                </h1>
+                                <p class="blog-title-details">
+                                    Oleksandr <span class="extra-padding">|</span> 08 May 2024
+                                </p>
+                                
+                                <div class="blog-toc scrollto">
+                                    <h3>
+                                        Table of Contents
+                                    </h3>
+                                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#environment-setup">Environment Setup</a>
+      <ul>
+        <li><a href="#test-application">Test Application</a></li>
+      </ul>
+    </li>
+    <li><a href="#test-approach">Test Approach</a>
+      <ul>
+        <li><a href="#iterate-and-improve">Iterate and Improve</a></li>
+      </ul>
+    </li>
+    <li><a href="#performance-test-results">Performance Test Results</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12 blog-post-container">
+                            <h2 id="introduction">Introduction</h2>
+<p>A service mesh is a dedicated infrastructure layer that facilitates service-to-service communications between services or microservices using a proxy. Or, referring to Kelsey Hightower, we can say:</p>
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">service mess /ËsÉrvÉs mes/<br>noun<br><br>1. the result of spending more compute resources than your actual business logic dynamically generating and distributing Envoy proxy configs and TLS certificates.</p>&mdash; Kelsey Hightower (@kelseyhightower) <a href="https://twitter.com/kelseyhightower/status/1150158904900431873?ref_src=twsrc%5Etfw">July 13, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>If you are reading this blog post, Iâm assuming you are already familiar with service mesh and are looking for a reliable comparison of the available options to determine the best. In this post, we will compare three popular open-source service meshesâ<a href="https://docs.cilium.io/en/latest/network/servicemesh/">Cilium</a>, <a href="https://istio.io/">Istio</a>, and <a href="https://linkerd.io/">Linkerd</a>âand share our experience with their comparison.</p>
+<p>To give some background, I was tasked with comparing these three meshes and preparing documentation to help LiveWyer understand each product in greater detail, comparing the pros and cons of the tested meshes.</p>
+<p>This comparison covers the following areas:</p>
+<ul>
+<li>Deployment</li>
+<li>Configuration</li>
+<li>Maintenance</li>
+<li>Performance and Connectivity</li>
+<li>Operational Impact</li>
+<li>Compliance and Standards</li>
+</ul>
+<p>Whilst this blog post only compares the performance of the three Service Mesh, the detailed test report and codebase are available in our <a href="https://github.com/livewyer-ops/poc-servicemesh2024">public GitHub repository.</a></p>
+<p>This exercise will use our internal development platform, LWDE (Livewyer Development Environment), to expedite and simplify the environment setup process.</p>
+<h2 id="environment-setup">Environment Setup</h2>
+<p>A stable and consistent environment is crucial to ensure all comparison tests are accurate and fair. I adopted the following key principles to achieve this:</p>
+<ul>
+<li>Uniform environments for all products</li>
+<li>Consistent test tooling</li>
+<li>Identical test parameters and load</li>
+<li>Similar configuration and the same standards for all products</li>
+<li>Versions and configurations remain constant for the duration of the comparison test exercise</li>
+</ul>
+<p>All tests were performed in separate, isolated environments. The environments consisted of an AWS EKS cluster with a tested product installed, and a separate VM was used for load generation on our test applications. Four environments were provisioned - one for the baseline and one for each service mesh. The environments were completely identical, deployed in the same region and availability zone. All versions and configurations across the environments were the same and remained unchanged throughout the tests. All clusters had four nodes of type c5.large, tainted respectively, to ensure scheduling was immutable across all the environments.</p>
+<p>Below, you can see the diagram that shows the environment setup on the infrastructure level:</p>
+<img class="blog-post-image" src="/img/blog-image-59-environment.png" title="" alt="" style="padding:1px;border:thin solid black; height: auto;width: 90%;">
+<p>I created all the clusters using our LWDE. The LWDE makes it easy to manage clusters on different clouds, speeding up the creation and removal of the four clusters multiple times.</p>
+<p>In terms of making the test fair from the product setup side, I performed the following actions:</p>
+<ul>
+<li>All products were installed using the latest stable version, and they are immutable during the tests</li>
+<li>All products were installed using helm with the default parameters or parameters recommended in the documentation</li>
+<li>No optimisations were made to any of the products</li>
+<li>The same features were enabled and tested:
+<ul>
+<li>Enforced mTLS</li>
+<li>Exposing services to the Internet using the documentation recommended method</li>
+</ul>
+</li>
+</ul>
+<p>As part of this task, we also created <a href="https://github.com/livewyer-ops/poc-servicemesh2024/blob/main/docs/operational-manual.md">Operational Manual Updates document</a>. This document explains the important components of each product, including the installation instructions. Product installations were performed using commands from the Operational Manual Updates document, which were scripted into a bash script to simplify the process.</p>
+<h3 id="test-application">Test Application</h3>
+<p>To test a service mesh, an application with multiple microservices is necessary. For this reason, we have decided to use the <a href="https://github.com/istio/istio/blob/master/samples/bookinfo/README.md">Istio Bookinfo app</a>. The original templates were wrapped into a <a href="https://github.com/livewyer-ops/poc-servicemesh2024/tree/main/charts/bookinfo">helm chart</a> and installed on all our environments using Flux which runs in LWDE.</p>
+<h2 id="test-approach">Test Approach</h2>
+<p>This section explains our test approach. When running the tests initially, we faced numerous challenges, resolved before running the final comparison tests and capturing the results. Consequently, this iterative approach improved the reliability and accuracy of the data captured. I have included the details of these challenges and the steps to resolve them in the Iterate and Improve subsection.</p>
+<p>Our test approach is similar to other tests available on the Internet. We generated the load in the test applications of the different environments, comparing the latency, QPS, time, etc. We used an <a href="https://github.com/hatoo/oha">oha</a> load testing tool to generate the load onto the test application. There were two types of traffic: internal and external, or, simply, running oha against Service IP and Ingress IP.</p>
+<p>Refer to the below diagrams to see the difference between Internal and External Testing:</p>
+<p>Internal Load Testing:<br>
+<img class="blog-post-image" src="/img/blog-image-59-load-testing-internal.png" title="" alt="" style="padding:1px;border:thin solid black; height: auto;width: 90%;"></p>
+<p>External Load Testing:<br>
+<img class="blog-post-image" src="/img/blog-image-59-load-testing-external.png" title="" alt="" style="padding:1px;border:thin solid black; height: auto;width: 90%;"></p>
+<p><em><strong>Note:</strong> A service mesh with sidecars used as an example here</em></p>
+<p>Below you can see the oha command used to generate the load onto test application:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oha $URL -c $CONCURRENT_CONNECTIONS -n $REQUESTS --disable-keepalive --disable-compression --insecure --ipv4 --no-tui
+</code></pre></div><p><code>$URL</code> is a DNS name of the service, <code>$CONCURRENT_CONNECTIONS</code> is a number of concurrent connections, <code>$REQUESTS</code> is a number of requests to send.</p>
+<p>Tests were performed using 32, 64 and 128 concurrent connections, it allows us to see the difference between the results keeping the iteration number low.</p>
+<p>We set <code>300 000</code> requests to send, it allows us to run tests for more than 30 minutes and see more statistically correct information (Refer to improvement <code>I002</code> for details as to why we did this)</p>
+<p>Additionally, to see the full picture, we captured the resource usage of components that were involved in tests, they are included in our <a href="https://github.com/livewyer-ops/poc-servicemesh2024/blob/main/docs/test-report.md#performance-tests">Detailed Test Report</a>.</p>
+<h3 id="iterate-and-improve">Iterate and Improve</h3>
+<p>In this section, we will be discussing how we have iterated and improved our testing as part of this process. Since we anticipated that we would need to run multiple iterations of tests, we adopted an iterative approach, analysing the results and making improvements to ensure reliable real-world results. You can find the details of our improvements and failures below:</p>
+<p><strong>Improvement - I001: Duration of tests</strong><br>
+<strong>Details:</strong> The first iteration of tests included running oha commands with limited QPS for 3 minutes. We realised that 3 minutes itâs not enough because we have to include cloud faults, which can be noticed on small timeframes but are recovered on bigger timeframes, so the duration of tests was increased up to 30 minutes.<br>
+<strong>Result:</strong> Test output takes into account transient network issues.</p>
+<p><strong>Improvement - I002: Replace QPS with the number of requests</strong><br>
+<strong>Details:</strong> We removed the QPS limitation from the oha command. Although limiting QPS is a reliable choice, it requires more iterations of tests and provides more lab results rather than real-world results. Therefore, we decided to use an unlimited number of QPS to test the maximum performance of each product without overheating it. We changed -q argument in oha command to -n, which sets the number of requests that should be delivered.<br>
+<strong>Result:</strong> New approach loads our environment correctly, without slamming products or overheating them.</p>
+<p><strong>Improvement - I003: Warm Up</strong><br>
+<strong>Details:</strong> During the first iteration of tests we noticed that the first test took longer to complete than all subsequent tests. It turned out, that after each test application restart we need to do a small warm-up of it. As a result, we added a few more tests, results of which are not included in the report.<br>
+<strong>Result:</strong> Results are more consistent.</p>
+<p><strong>Improvement - I004: Test Applications</strong><br>
+<strong>Details:</strong> We simplified test applications setup. We removed podinfo test application, as it doesnât show the service mesh use case, because there is only one microservice. We also removed HA mode of bookinfo test applications, as it requires more iterations of tests and doesnât show the significant difference in the results.<br>
+<strong>Result:</strong> Test run takes less time.</p>
+<p><strong>Improvement - I005: Availability zone</strong><br>
+<strong>Details:</strong> During the first iteration of tests we noticed that the results across environments are different even when the service mesh disabled, so we decided to minimise the difference between the environments and deploy all nodes in the same availability zone.<br>
+<strong>Result:</strong> Results become slightly better, but the difference is still big.</p>
+<p><strong>Improvement - I006: Region</strong><br>
+<strong>Details:</strong> After the second iteration of tests, when the results across environments are different even when the service mesh disabled, we decided to move from eu-west-2 to us-east-1 as itâs the biggest and oldest AWS region.<br>
+<strong>Result:</strong> The difference in results between the environments ranges from 3% to 5%.</p>
+<p><strong>Improvement - I007: Run tests concurrently</strong><br>
+<strong>Details:</strong> To minimise the difference between the environments we decided to run tests concurrently.<br>
+<strong>Result:</strong> Overall network load is consistent across all environments.</p>
+<p><strong>Failure - F001: VM (External Communication) test on 128 concurrent connections failed for two environments</strong><br>
+<strong>Details:</strong> Tests for Cilium and Baseline have failed due to a memory leak in the bookinfo app, that caused pod recreation.<br>
+<strong>Ð¡onsequence:</strong> It is not possible to include these results in the test report as they are not reliable.</p>
+<h2 id="performance-test-results">Performance Test Results</h2>
+<p>This section summarises the performance of each of the three products. You can find more detailed results, where we compare performance and additional parameters, in our <a href="https://github.com/livewyer-ops/poc-servicemesh2024/blob/main/docs/test-report.md">Detailed Test Report</a> on GitHub.</p>
+<p>Internal Communications Test Results Diagram
+<img class="blog-post-image" src="/img/blog-image-59-chart-pod.png" title="" alt="" style="padding:1px;border:thin solid black; height: auto;width: 90%;"></p>
+<p>External Communications Test Results Diagram
+<img class="blog-post-image" src="/img/blog-image-59-chart-vm.png" title="" alt="" style="padding:1px;border:thin solid black; height: auto;width: 90%;"></p>
+<p><em><strong>Note</strong>: For an explanation of the outlying test results for Cilium and Baseline in the External Communications Test on 128 concurrent connections, refer to F001 in the <a href="#iterate-and-improve">Iterate and Improve</a> section</em></p>
+<p><strong>Linkerd</strong></p>
+<p>Our results show Linkerd is the fastest and most efficient mesh among all those tested, although it is slower than the baseline by 5-10%. Linkerdâs sidecars&rsquo; resource utilisation is low, but when it comes to ingress traffic, its resource usage is highly reliant on third-party ingress controllers. As a result, other meshes with their own controllers demonstrated better resource usage.</p>
+<p><strong>Cilium</strong></p>
+<p>Cilium&rsquo;s performance is slower than Linkerd&rsquo;s but performs comparatively to Istio. In comparison to the baseline Cilium&rsquo;s performance is slower by 20-30% for Internal communications and 30-40% for External communications. The resource utilisation of Ciliumâs daemon sets is low; however, other meshes have demonstrated better results in terms of QPS.</p>
+<p><strong>Istio</strong></p>
+<p>Istio is slower than Linkerd but performs almost as well as Cilium. It is slower than the baseline by 25-35%. The resource utilisation of Istioâs sidecars is higher than Linkerdâs, but the performance is lower. Istioâs Ingress Controller showed the best resource usage among the three tested meshes.</p>
+<h2 id="summary">Summary</h2>
+<p>To summarise, Linkerd is the fastest service mesh among the chosen products tested. If Linkerd was not a suitable product, and you were choosing between Istio and Cillium, your decision would differ depending on your requirements. Istio provides higher QPS and lower latency on low connections, while Cilium performs better on higher connections and internal communications.</p>
+<p>If performance is not the primary factor in your decision-making, check out our <a href="https://github.com/livewyer-ops/poc-servicemesh2024/blob/main/docs/test-report.md">Detailed Test Report</a>, which captures additional parameters such as ease of deployment, maintainability, operational impact, compliance, and more.</p>
+
+                            <div class="blog-post-cta">
+                            	<h2>
+                            		Thank you for reading
+                            	</h2>
+                            	<p>
+                            		Do you need help architecting and implementing a service mesh? Get in touch and let's work together.
+                            	</p>
+                            	<a href="/contact" class="btn btn-theme-bg btn-lg btn-new wow animated fadeInDown" style="">
+			                        Contact Us
+			                    </a>
+			                    <p>
+			                    	At LiveWyer Labs we innovate through research and development, see what else we've been <a href="/blog/">working on</a> lately.
+			                    </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer-bottom">
+    <div class="footer-nav footer-bar">
+        <div class="container">
+            <div class="footer-content">
+            	<div class="row new-footer">
+                	<div class="col-md-4 col-sm-3 col-xs-6">
+                		<img class="homepage-footer-logo" src="/img/lw-logo-inverse.svg" title="LiveWyer" alt="LiveWyer Logo">
+                		<p class="homepage-footer-text">
+                            hello@livewyer.io
+                        </p>
+                		<p class="homepage-footer-text">
+                            9 Great Russell Street, London, WC1B 3NH
+                        </p>
+                        <p class="homepage-footer-text" style="color: #fff;">
+                            +44 (0) 20 3608 0110 (Mon - Fri, 9am - 6pm)
+                        </p>
+                        <p class="homepage-footer-text">Â© LiveWyer 2024</p>
+                	</div>
+                	<div class="col-md-8 col-sm-9 col-xs-6">
+                		<div class="col-sm-3 new-footer-col">
+                			
+                		</div>
+                		<div class="col-sm-3 new-footer-col">
+                			<ul>
+                				<li>
+                					Company
+                				</li>
+                				<li>
+                					<a href="/about/">About Us</a>
+                				</li>
+                				<li>
+                					<a href="/join/">Jobs</a>
+                				</li>
+                				<li>
+                					<a href="/blog/">Blog</a>
+                				</li>
+                			</ul>
+                		</div>
+                		<div class="col-md-4 col-sm-3 new-footer-col">
+                			<ul>
+                				<li>
+                					Resources
+                				</li>
+                				<li>
+                					<a href="/resources/what-is-cloud-native/">What is Cloud Native?</a>
+                				</li>
+                				<li>
+                					<a href="/case-studies/">Case Studies
+                				</li>
+                				<li>
+                					<a href="/glossary/the-illustrated-kubernetes-glossary/">Illustrated Kubernetes Glossary</a>
+                				</li>
+                			</ul>
+                		</div>
+                		<div class="col-md-2 col-sm-3 new-footer-col">
+                			<ul>
+                				<li>
+                					Social
+                				</li>
+                				<li>
+                					<a href="https://github.com/livewyer-ops">Github</a>
+                				</li>
+                				<li>
+                					<a href="https://www.linkedin.com/company/livewyer">Linkedin</a>
+                				</li>
+                				<li>
+                					<a href="https://twitter.com/LiveWyerUK">X | Twitter</a>
+                				</li>
+                			</ul>
+                		</div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/js/jquery.easing.1.3.min.js" type="text/javascript"></script>
+<script src="/js/wow.min.js" type="text/javascript"></script>
+<script src="/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/js/jquery.mixitup.min.js" type="text/javascript"></script>
+<script src="/js/jquery.mb.YTPlayer.js" type="text/javascript"></script>
+<script src="/js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script src="/js/jquery.stellar.min.js" type="text/javascript"></script>
+<script src="/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+<script src="/js/custom.js?1716232463" type="text/javascript"></script>
+<script src="/js/asciinema-player.js"></script>
+<script>
+    
+
+    
+
+    (function() {  
+        var d = document, s = d.createElement('script');
+
+        s.src = '//livewyer.disqus.com/embed.js';  
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+<script>
+function checkScreenWidth() {
+  const element = document.querySelector('.blog-landing-search .ss360-section__input');
+  const navbar = document.querySelector('.navbar-inverse');
+  
+  if (window.innerWidth < 768) {
+    if (element) {
+      if (navbar) {
+        navbar.classList.remove('navbar-fixed-top');
+        navbar.style.marginBottom = '0px';
+      }
+    }
+  } else {
+    if (navbar) {
+      navbar.classList.add('navbar-fixed-top');
+      navbar.style.marginBottom = '';
+    }
+  }
+}
+
+setTimeout(checkScreenWidth, 1000); 
+
+window.addEventListener('resize', function() {
+  checkScreenWidth();
+});
+</script>
+
+
+
+
+<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/9a53d866b96601dee1e73f1d2673841c.js"></script>
+
+
+<script>
+    (function() {
+
+      'use strict';
+
+      
+      var items = document.querySelectorAll(".lx-timeline-container li");
+
+      
+      
+      function isElementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+      }
+
+      function callbackFunc() {
+        for (var i = 0; i < items.length; i++) {
+          if (isElementInViewport(items[i])) {
+            items[i].classList.add("in-view");
+          }
+        }
+      }
+
+      
+      window.addEventListener("load", callbackFunc);
+      window.addEventListener("resize", callbackFunc);
+      window.addEventListener("scroll", callbackFunc);
+
+    })();
+</script>
+
+<script>
+function darkMode() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+
