@@ -1,0 +1,30 @@
+# C. Gordon Bell, Father of the PDP-8 and VAX, Has Died.
+![Featued image for: C. Gordon Bell, Father of the PDP-8 and VAX, Has Died.](https://cdn.thenewstack.io/media/2024/05/b08f4708-1280px-gordon_bell-1024x680.jpg)
+Feature image via Queensland University of Technology, via
+[Wikipedia](https://commons.wikimedia.org/w/index.php?curid=4282911).
+Contrary to what you might think, the first PC wasn’t the
+[IBM PC](https://www.computerhistory.org/revolution/personal-computers/17/301), nor was it the [Altair 8800](https://americanhistory.si.edu/collections/nmah_334396), nor, for those of you of a legal turn of mind, [1971’s Kenbak-1](https://www.computerhistory.org/revolution/personal-computers/17/297#:~:text=Judges%20settled%20on%20John%20Blankenbaker's,on%20a%20single%20circuit%20board.). No, you could argue it was [C. Gordon Bell](https://www.nytimes.com/2024/05/21/technology/c-gordon-bell-dead.html) and [Digital Equipment Computer (DEC)](https://www.britannica.com/money/Digital-Equipment-Corporation)‘s [PDP-8](https://www.computerhistory.org/revolution/minicomputers/11/331) from 1965. This $18 thousand ($179,170 in today’s current) computer wouldn’t spark the PC revolution. It would, however, start the rise of minicomputers, the first real competition to IBM’s mainframes.
+Bell was a true computing pioneer. Born in Kirksville, Missouri, on Aug. 19, 1934, Bell’s curiosity and ingenuity were evident from a young age. Despite ill health that would bedevil him throughout his life, he spent his childhood wiring circuits and dismantling gadgets to rebuild them. He was a born techie.
+His journey into computers began in the 1950s at MIT, where he got his degrees in electrical engineering. In 1960, he joined DEC. There, he played a pivotal role in the design of groundbreaking minicomputers, which, in turn, led DEC to become IBM’s chief rival in the 1960s.
+It wasn’t easy. He did not get along well with DEC founder and CEO Kenneth Olsen. Which, in all fairness, was true of both men. Neither got along that well with others.
+## Birth of the PDP-8
+Together, though, they created the PDP-8. This was the first computer, which enabled users to work directly with computers instead of turning their projects over to mainframe technicians. As Bell said in a 1985
+[ComputerWorld](https://www.computerworld.com/) interview, “All the DEC machines were interactive, and we believed in having people talk directly to computers.” Sounds familiar doesn’t it? It’s how we all work with computers today.
+We don’t remember Bell just for this landmark achievement. He was also instrumental in developing the
+[VAX mini-computer](https://arstechnica.com/gadgets/2023/10/long-gone-dec-is-still-powering-the-world-of-computing/), DEC’s most successful product. With the [VMS operating system](https://vmssoftware.com/), it was also the company’s first time-sharing computer.
+VMS doesn’t ring a bell? It might not, but odds are you have heard of its PC operating system descendants: OS/2 and Windows NT.
+By 1983, however, Bell was tired of fussing with Olsen and left. Thereafter, he co-founded Encore Computer. This company was devoted to creating massively parallel supercomputers from commodity processors. Although unsuccessful, Thomas Sterling and Donald Becker would pick up its core idea at Goddard Space Flight Center (GSFC). In 1994, they created
+[Beowulf](https://www.spacefoundation.org/space_technology_hal/beowulf-computing-cluster/), the first supercomputer to be made from commercial off-the-shelf (COTS) processors. This methodology is still used today to [build supercomputers.](https://thenewstack.io/top500-chinas-supercomputing-silence-aggravates-tech-cold-war-with-u-s/)
+## The Frank Lloyd Wright of Computers
+Bell also served as the founding assistant director of the
+[National Science Foundation’s Computing and Information Science and Engineering Directorate](https://new.nsf.gov/cise). In this role, he played a crucial part in developing the [National Research and Education Network (NREN)](https://en.wikipedia.org/wiki/National_research_and_education_network). This network for connecting supercomputers and helping researchers and academics would be a major part of the [early internet](https://thenewstack.io/vint-cerfs-mission-to-bring-the-internet-to-outer-space/). I met him then at several early internet conferences, but I can’t say that I knew him I wished I had.
+In his spare time, Bell co-founded the
+[Computer History Museum](https://thenewstack.io/how-they-made-films-with-computers-in-1963/). He was a driving force behind preserving the history of computing for future generations. Bell would continue this work until his death as both a generous donor and active member of the museum’s Board of Trustees.
+Bell wasn’t done yet, though. He worked at Microsoft Research for many years. In the mid-2000s, he started working on
+[MyLifeBits](https://www.microsoft.com/en-us/research/project/mylifebits/). This methodology enabled him to capture essentially his whole digital life, including phone calls, message transcripts, and emails. If that sounds a bit like [Microsoft](https://news.microsoft.com/?utm_content=inline+mention)‘s just released [Copilot+](https://blogs.microsoft.com/blog/2024/05/20/introducing-copilot-pcs/) [ PC Replay feature](https://blogs.microsoft.com/blog/2024/05/20/introducing-copilot-pcs/), you’re right; it does.
+Gordon Bell died on May 17 of pneumonia. His legacy as a visionary, innovator, and pioneer in the world of computing will live on to inspire generations of engineers, entrepreneurs, and technology enthusiasts. Datamation magazine called Bell “the Frank Lloyd Wright of computers.” That sounds fair to me.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
