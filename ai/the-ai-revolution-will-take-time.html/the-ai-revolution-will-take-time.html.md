@@ -1,7 +1,7 @@
 
 <!--
 title: 人工智能革命需要时间
-cover: https://images.idgesg.net/images/article/2024/02/shutterstock_435558448-100959581-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 人类总是会因为偏见、恐惧和舒适的习惯而阻碍革命性技术的发展。
