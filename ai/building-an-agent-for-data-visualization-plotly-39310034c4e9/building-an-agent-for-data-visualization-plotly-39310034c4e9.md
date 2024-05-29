@@ -1,7 +1,7 @@
 
 <!--
 title: 构建数据可视化代理（Plotly）
-cover: https://miro.medium.com/v2/resize:fit:1200/1*iyfli_-93wwS5COUsgbCRg.jpeg
+cover: ./cover.png
 -->
 
 Plotly 是我最喜欢的数据可视化库。在广泛撰写有关使用 Plotly 创建高级可视化的文章后，我产生了好奇：我能否通过仅提供 dataframe 和自然语言指令来教语言模型构建我喜欢的可视化？本项目就是尝试此想法的成果，我很高兴与你分享结果。
