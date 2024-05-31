@@ -1,0 +1,45 @@
+# How Cloud Databases Have Evolved for the AI Era
+![Featued image for: How Cloud Databases Have Evolved for the AI Era](https://cdn.thenewstack.io/media/2024/05/16729e04-cloud-databases-ai-evolved-1024x576.jpg)
+Databases are a foundational technology that power the applications that businesses and consumers rely on every day. Cloud databases in particular fuel daily real-time digital experiences — video streaming, credit score monitoring, online shopping, travel booking, restaurant reservations, medical appointments and services, digital payments, package ordering and delivery, and more.
+The
+[explosion of generative AI](https://thenewstack.io/building-ai-driven-applications-with-a-multimodal-approach/) (GenAI) has impacted just about every facet of technology, including cloud databases, the applications they power and the developers making all the magic happen. Recent research found that [73% of enterprises are increasing investment in AI tools](https://www.couchbase.com/blog/cio-survey-digital-modernization-in-2025/) to help developers work more effectively and create new GenAI applications faster.
+GenAI is driving a race among enterprises to build hyperpersonalized, high-performing and
+[adaptive applications](https://thenewstack.io/how-adaptive-applications-unlock-innovation-in-a-new-ai-age/). These types of applications can adjust their behaviors and features in real time based on various factors such as user preferences, environmental conditions, data inputs or changing circumstances. This shift towards dynamic, AI-driven applications requires a real-time, low latency, multipurpose database.
+How did we get here? When did cloud databases emerge, and how have they evolved to be the flexible, scalable, versatile databases developers know and love today?
+To celebrate the third annual
+[National Cloud Database Day](https://www.couchbase.com/clouddbday/), let’s take a look at the history of databases, how cloud databases rose to popularity and what the AI era holds for them.
+## Rewinding the Clock: The Origin of Databases
+It all started in the 1960s when computers were first introduced, marking the beginning of computerized databases.
+[Charles W. Bachman](https://amturing.acm.org/award_winners/bachman_9385610.cfm) designed the integrated data store, the first database management system (DBMS), which consisted of a single set of shared files on a disk, with tools to structure and manage them and a set of powerful commands enabling users to manipulate data.
+Ten years later,
+[IBM](https://www.ibm.com?utm_content=inline+mention) researcher [Edgar F. Codd](https://amturing.acm.org/award_winners/codd_1000892.cfm) proposed the idea of relational database management systems (RDBMS), which could organize information into tables. This was at a time when storage was quite expensive and data needed to be stored efficiently. For the next few decades, relational databases grew increasingly prominent. IBM developed structured query language (SQL), the first standard data language for databases.
+Fast forward to the early 2000s — databases had their first big industry shakeup with the introduction of the internet. Search features, e-commerce solutions and internet-based applications for tasks like point-of-sale transactions were developed and gaining popularity. However, with these new services, the increase in data from millions of users and the transition to more rapid and agile software development, a new era of data management requirements emerged. Traditional relational databases were designed in a “single box” era where scalability was limited to the size of that box. While relational databases’ strict rules and schemas were great for efficiency, they were slowing time-to-market for developers looking to roll out new features every few weeks. Storage became cheap and a new solution was needed.
+NoSQL databases (“not only structured query language”) emerged as a modern alternative to traditional RDBMS and were built to handle the speed, flexibility and horizontal scalability required by big data.
+## Welcome, Cloud Databases
+As the 2010s arrived, organizations continued to evolve and innovate on the DBMS model to meet the emerging needs and challenges of businesses as developers built data-intensive applications. Cloud technologies were rising in popularity, quickly becoming an ideal choice following the 2008 financial crisis, when businesses turned to cloud services over capital-intensive private infrastructures.
+That’s when cloud databases came into the picture, hosted and managed on various cloud platforms to offer benefits in cost, availability, scalability and security. Like traditional databases, cloud databases allow users to store, access, change, remove and process data, with the added flexibility of running on a cloud infrastructure.
+Cloud databases have dramatically evolved the roles and responsibilities of IT and database administrators, freeing them to focus on tasks such as optimizing databases and managing cost efficiency. The simplified setup also allows small teams to offload database tasks to service providers and focus on building new applications and features.
+Over the past 15 years, the DBMS market has grown exponentially with a multitude of iterations of databases as businesses have created their own systems offering unique capabilities. Gartner research says the DBMS market is forecast to reach
+[$203.6 billion by 2027](https://www.gartner.com/en/documents/4594399).
+The cloud fundamentally changed the underlying infrastructure for databases. Organizations today overwhelmingly rely on modern cloud databases to keep business-critical applications running and to deliver premium experiences to customers. To support developers responsible for building these applications, vendors have evolved cloud database capabilities with JSON document storage, relational capabilities, key-value stores, in-memory caching, SQL capabilities, full-text search and more.
+## The AI Era of Cloud Databases
+With the explosion of GenAI in 2023 and 2024, organizations are aiming to build highly intelligent adaptive applications that offer
+[contextualized hyperpersonalization](https://thenewstack.io/unlock-hyper-personalization-with-ai-driven-adaptive-apps/) — enabled by real-time analytic calculations — among other features. Successful cloud database vendors are embracing AI to provide the capabilities required to build modern applications, which include:
+- Context-driven capabilities
+- Vector search features
+- Access to real-time analytics
+[Edge capabilities](https://thenewstack.io/cloud-to-edge-ai-with-a-mobile-database-platform/)
+An AI-ready database with multipurpose capabilities can empower companies to consolidate tech stacks, eliminate data sprawl, reduce developers’ manual toil and enhance the ability to scale. AI also bolsters the developer experience, providing sample code to write application-level code more quickly, advising on index creation, identifying bug fixes and running unit tests to fine-tune applications.
+Leveraging GenAI,
+[machine learning](https://roadmap.sh/mlops) and real-time analytics, developers are empowered to build contextualized, hyperpersonalized applications. Some real-world examples include:
+- A home renovation application that can create custom product recommendations for users based on accumulated knowledge of an individual’s purchasing patterns, interests and recent searches. The application can recommend a complete list of items needed for an outdoor kitchen remodel, provide architecture plans and contact information, search inventory in nearby home improvement stores, and deliver a complete bill of materials.
+- A financial institution application that can use AI to detect fraudulent transactions, notify a user in real time, identify anomalies and actively work to prevent financial crimes.
+- A medical patient-engagement application that leverages AI to track patient interactions across various channels (e.g., opt-in appointment information, medical records, hotline calls, web inquiries) to provide personalized care tips, reminders and timely follow-ups.
+- Insurance field service applications that allow agents to snap damage photos, search for similar accidents, file claim reports and update customer policy information on mobile devices in remote locations with slow or no internet.
+- Autonomous vehicles that are powered by AI to enable perception, decision-making and navigation capabilities all tailored to an individual user’s preferences and habits.
+If you’re interested in learning more about building AI-powered
+[adaptive applications](https://www.couchbase.com/adaptive-applications/) with a multipurpose database, check out [Couchbase Capella](https://www.couchbase.com/products/capella/) and [start a free trial today](https://www.couchbase.com/products/capella/). [
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
