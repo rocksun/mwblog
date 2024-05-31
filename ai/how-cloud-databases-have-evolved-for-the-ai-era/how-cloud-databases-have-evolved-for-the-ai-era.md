@@ -1,7 +1,7 @@
 
 <!--
 title: 云数据库如何为人工智能时代而演变
-cover: https://cdn.thenewstack.io/media/2024/05/16729e04-cloud-databases-ai-evolved.jpg
+cover: ./cover.jpg
 -->
 
 要求苛刻的 GenAI 模型、复杂的数据和强大的 AI 应用程序推动了现代数据库操作方式的重大转变。
