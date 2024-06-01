@@ -1,7 +1,7 @@
 
 <!--
 title: 您的内部开发者门户是否可维护？
-cover: https://cdn.thenewstack.io/media/2024/05/c7750283-maintenance2.jpg
+cover: ./cover.jpg
 -->
 
 评估目录和自助服务操作，以确保门户始终能够满足开发人员的需求。
