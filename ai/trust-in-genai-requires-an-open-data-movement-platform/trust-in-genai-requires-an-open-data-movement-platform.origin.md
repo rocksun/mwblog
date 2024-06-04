@@ -1,0 +1,27 @@
+# Trust in GenAI Requires an Open Data Movement Platform
+![Featued image for: Trust in GenAI Requires an Open Data Movement Platform](https://cdn.thenewstack.io/media/2024/05/5ceae553-digital-8766937_1280-1024x574.png)
+A common refrain from the not-so-distant past was that every company is a software company. That has evolved to every company is a data company, which thrives when decisions are driven and based on accurate data. This is becoming even more important today with the advent of the
+[AI](https://thenewstack.io/ai/) revolution.
+Now, every CIO is looking at AI as a competitive edge with its potential to revolutionize all industries. Fed by the right data, AI can help provide personalized customer experiences, optimize supply chains, improve predictive analytics, and create new innovative products and services at a pace and precision previously unknown.
+This race for a competitive edge is driven by the fact that no one can beat the speed of machine-driven decisions. AI presents an opportunity for CIOs to have an unprecedented impact on their organizations by contributing to revenue generation.
+AI is a multiplier, much the same way as CPUs replaced human calculations. We are not talking about a 2x improvement. We are talking about 10x, 100x, probably more. This multiplier applies in two ways: our understanding of the past, in terms of analytics; as well as the actions and decisions we take in the future, which we can think of as operational.
+AI depends on the quality of the
+[data fed into its models](https://thenewstack.io/boost-cassandra-data-models-with-storage-attached-indexing/) to realize good results. Retrieval Augmented Generation (RAG) is a common way organizations apply commercial generative AI technology to datasets. This requires on-time, reliable and trusted data fed into their vector databases — no trivial task — or there is the risk of creating incorrect results. AI requires all the data from all the sources to make it to the right place at the right time.
+Before AI, when making a decision, if someone saw untrustworthy data, the company’s data team would have to debug it, figure out where in the stack things broke, and fix it. The decision could be delayed by a couple of days (or weeks) delay.
+Now, with AI, the AI makes the decision and recommends (or takes) an action. It’s much harder for a human to notice that things are broken, and so much more important that the data infrastructure is reliable and robust. Relying on homegrown tools to get that last 10% of data from random sources could be a significant problem.
+At virtually every organization, the gold mine of data to enable AI is already there, and it is growing every day. But gold — whether mineral or data — is hard to mine. Data
+[teams need to build and use reliable](https://thenewstack.io/why-a-dataops-team-needs-a-database-reliability-engineer/), automated and intelligent tools. The good news is that this new breed of modern technologies is already available to leverage as the AI revolution takes off.
+But to make it happen, CIOs/CDOs need to go beyond the data swamp they created and ensure it is correctly architected and built in order to enable AI. With AI, it’s essential to
+[clean up the swamp so the right data](https://thenewstack.io/clean-data-trusted-model-ensure-good-data-hygiene-for-your-llms/) is used in models.
+As AI will be leveraged to fuel decisions,
+[teams need all their data](https://thenewstack.io/is-the-answer-to-your-data-science-needs-inside-your-it-team/) sources to power the AI. Any missing data source (either structured and unstructured) can change the resulting decisions suggested by the AI.
+So, how can an organization ensure it can get all its
+[custom data sources](https://thenewstack.io/redefine-customer-data-analytics-using-an-open-source-stack/) covered and trust its data? Especially when data is dynamic and constantly being updated. Doing all the work in-house and keeping up with all the changes has proven in almost all cases to be an unsustainable [model — too much data](https://thenewstack.io/data-modeling-part-1-goals-and-methodology/) from too many different sources has been impossible to maintain with data integrity that can be trusted.
+Then, the choices become commercial options that are either closed or open. An open source
+[data movement platform](https://thenewstack.io/data-warehouses-and-customer-data-platforms-better-together/) that makes it possible to easily build and maintain custom data sources offers the highest degree of trust in terms of transparency. And, supported by a community to share data connectors helps address those custom needs, and ongoing maintenance and provides a sustainable model for handling enormous volumes of constantly-changing data. All of this with trust that you can understand, see and track data throughout the process.
+A data movement platform based on open source is the only way to ensure that all the right data is easily accessible to AI models that will guide impactful decisions to take your business forward. Anything less is unacceptable.
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
