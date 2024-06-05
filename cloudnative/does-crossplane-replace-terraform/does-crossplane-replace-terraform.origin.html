@@ -1,0 +1,1402 @@
+<!doctype html><!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" > <![endif]--><!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" >        <![endif]--><!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" >               <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Ian Miell">
+    <meta name="description" content="Explore the comparison between Crossplane and Terraform in cloud native operations. Understand the roles of APIs, cloud services, and control planes in modern infrastructure management.">
+    <meta name="generator" content="HubSpot">
+    <title>Does Crossplane Replace Terraform? Part I: the Theory</title>
+    <link rel="shortcut icon" href="https://blog.container-solutions.com/hubfs/favicon.ico">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/hs/hsstatic/jquery-libs/static-1.1/jquery/jquery-1.7.1.js"></script>
+<script>hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="Explore the comparison between Crossplane and Terraform in cloud native operations. Understand the roles of APIs, cloud services, and control planes in modern infrastructure management.">
+    <meta property="og:title" content="Does Crossplane Replace Terraform? Part I: the Theory">
+    <meta name="twitter:description" content="Explore the comparison between Crossplane and Terraform in cloud native operations. Understand the roles of APIs, cloud services, and control planes in modern infrastructure management.">
+    <meta name="twitter:title" content="Does Crossplane Replace Terraform? Part I: the Theory">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/module_assets/9848497348/1583840075583/module_9848497348_image--logo.min.css">
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/template_assets/29086683658/1689240292920/CS_Theme/CS--Stylesheets/CS--megamenu.css">
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/module_assets/29104102065/1621606050404/module_29104102065_CS--Megamenu__helper.min.css">
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/module_assets/29544378357/1589895084042/module_29544378357_Blog2_Normal_Sidebar_Topic_Post.min.css">
+<link rel="stylesheet" href="/hs/hsstatic/AsyncSupport/static-1.122/sass/comments_listing_asset.css">
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/module_assets/29544595978/1656510507698/module_29544595978_Footer_Social_Icon_CM_copy.min.css">
+<!-- Editor Styles -->
+<style id="hs_editor_style" type="text/css">
+#hs_cos_wrapper_module_15894459824861109  { display: block !important; padding-left: 0px !important }
+</style>
+    
+
+    
+<!--  Added by GoogleAnalytics integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+_hsp.push(['addPrivacyConsentListener', function(consent) { if (consent.allowed || (consent.categories && consent.categories.analytics)) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-53586058-2','auto');
+  ga('send','pageview');
+}}]);
+</script>
+
+<!-- /Added by GoogleAnalytics integration -->
+
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = true ? 1000 : 0;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-ML0V60VEZ4');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ML0V60VEZ4"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+
+
+<link rel="amphtml" href="https://blog.container-solutions.com/does-crossplane-replace-terraform?hs_amp=true">
+
+<meta property="og:image" content="https://blog.container-solutions.com/hubfs/Screenshot%202024-06-05%20at%2011.26.11.png#keepProtocol">
+<meta property="og:image:width" content="567">
+<meta property="og:image:height" content="363">
+
+<meta name="twitter:image" content="https://blog.container-solutions.com/hubfs/Screenshot%202024-06-05%20at%2011.26.11.png#keepProtocol">
+
+
+<meta property="og:url" content="https://blog.container-solutions.com/does-crossplane-replace-terraform">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://blog.container-solutions.com/does-crossplane-replace-terraform">
+<link rel="stylesheet" href="https://blog.container-solutions.com/hubfs/Blog-Assets/prismCS.css">
+<script type="text/javascript" src="https://blog.container-solutions.com/hubfs/Blog-Assets/prismCS.js"></script>
+<script>
+  Prism.hooks.add("before-highlight", function (env) {
+env.code = env.element.innerText;
+});
+Prism.highlightElement(code);
+
+</script>
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://blog.container-solutions.com/rss.xml">
+<meta name="twitter:domain" content="blog.container-solutions.com">
+<meta name="twitter:site" content="@containersoluti">
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en">
+<link rel="stylesheet" href="//cdn2.hubspot.net/hub/7052064/hub_generated/template_assets/1717581103139/hubspot/hubspot_default/shared/responsive/layout.min.css">
+
+
+<link rel="stylesheet" href="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/template_assets/29544378321/1689350603969/Marketplace/wowdesign/360_template_pack_by_wowdesign/Coded_Files/360_Design_Style.css">
+
+
+    
+
+
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="//2558854.fs1.hubspotusercontent-na1.net/hubfs/2558854/infinite_scroll_v1.js?t=1495695879614"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+
+<script>
+
+
+var ias = $.ias({
+  container : '.post-listing',
+  item: '.post-item',
+  pagination: '.blog-pagination',
+  next: '.next-posts-link',
+});
+
+setTimeout(function(){
+  $('.post-listing').masonry({
+    // options
+    itemSelector: '.post-item',
+    columnWidth: '.post-item',
+    gutter: 1,
+    resizesContainer: false,
+    percentPosition: true,
+    isAnimated: true,
+  });          
+}, 300);
+
+ias.on('loaded', function(data, items) {
+  $('.post-listing').removeData('masonry'); 
+  setTimeout(function(){
+
+    $('.post-listing').masonry({
+      // options
+      itemSelector: '.post-item',
+      columnWidth: '.post-item',
+      gutter: 1,
+      resizesContainer: false,
+      percentPosition: true,
+      isAnimated: true,
+    });          
+  }, 300);
+})
+
+ias.extension(new IASSpinnerExtension());
+ias.extension(new IASTriggerExtension({offset:0}));
+ias.extension(new IASNoneLeftExtension({text: 'There are no more pages left to load.'}));
+
+
+</script>
+    
+
+</head>
+<body class="blog-360-style2   hs-content-id-168804265483 hs-blog-post hs-blog-id-5674137972" style="">
+    <div class="header-container-wrapper">
+    <div class="header-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+<div class="" data-global-widget-path="generated_global_groups/30127606334.html"><div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget line-top-nav center" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_15894459824861109" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_15894459824861109_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><div id="topwrappercarla" style="margin-left: 0!important;">
+<p>Check out our <strong><a href="https://www.container-solutions.com/services" rel="noopener">Cloud Native Services</a> </strong>and<strong> </strong>book a call with one of our experts today!&nbsp;</p>
+</div></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1588876584329219" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1588876586294221" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell header-grp header-360" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-navigation wrapper equal-height-container" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span2 widget-span widget-type-custom_widget hidden-phone" style="" data-widget-type="custom_widget" data-x="0" data-w="2">
+<div id="hs_cos_wrapper_module_1588861885855449" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div>
+
+</div><!--end widget-span -->
+<div class="span2 widget-span widget-type-custom_widget logo-image vertical-center" style="" data-widget-type="custom_widget" data-x="2" data-w="2">
+<div id="hs_cos_wrapper_module_1588861885855450" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div aria-hidden="true" class="logo-main">
+<section class="logo-image">
+            
+    
+
+
+
+  <span id="hs_cos_wrapper_module_1588861885855450_hs_logo_widget" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_logo" style="" data-hs-cos-general-type="widget" data-hs-cos-type="logo"><a href="http://container-solutions.com" id="hs-link-module_1588861885855450_hs_logo_widget" style="border-width:0px;border:0px;"><img src="https://blog.container-solutions.com/hubfs/CS_blog/logo-main.svg" class="hs-image-widget " height="120" style="height: auto;width:120px;border-width:0px;border:0px;" width="120" alt="Container Solutions" title="Container Solutions"></a></span>
+
+</section>
+</div></div>
+
+</div><!--end widget-span -->
+<div class="span8 widget-span widget-type-cell mega-custom-menu header-menu vertical-center custom-menu-primary" style="" data-widget-type="cell" data-x="4" data-w="8">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1588861885855452" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1588861885855453" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<span id="hs_cos_wrapper_module_1588861885855453_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="menu"><div id="hs_menu_wrapper_module_1588861885855453_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="default" data-menu-id="29112379890" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com" role="menuitem">Home</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/services" role="menuitem">Services</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/case-studies" role="menuitem">Case Studies</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/events" role="menuitem">Events</a></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="javascript:;" aria-haspopup="true" aria-expanded="false" role="menuitem">Content</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://blog.container-solutions.com" role="menuitem">Blogs</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.container-solutions.com/wtf-is-cloud-native/collections" role="menuitem">WTF is Cloud Native Collections</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/careers" role="menuitem">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/about-us" role="menuitem">About us</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/talk-to-us" role="menuitem">Talk to us</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/oreilly-cloud-native-transformation-ebook-chat" role="menuitem">Talk to our ChatBot</a></li>
+ </ul>
+</div></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-9 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-menu-1 hidden-phone hidden-tablet" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-drop-1" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-menu hidden-phone" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-3 ">
+    <div class="row-fluid ">
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="0" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-1 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-2 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_16299859664272722" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_16299859664272722_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell center nav-column" style="" data-widget-type="cell" data-x="3" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-3 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-4 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_16299853344462565" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_16299853344462565_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell center nav-column" style="" data-widget-type="cell" data-x="6" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-5 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-6 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_16299853310642563" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_16299853310642563_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="9" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-7 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-8 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1648341413920261" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1648341413920261_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+        </div><!--end row-->
+</div><!--end row-wrapper -->
+
+   </div><!--end widget-span -->
+    </div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-menu-2 hidden-phone hidden-tablet" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-drop-2" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell mega-menu hidden-phone" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-3 ">
+    <div class="row-fluid ">
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="0" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-1 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-2 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1594821908906860" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1594821908906860_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="3" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-3 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-4 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1594822950655390" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1594822950655390_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="6" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-5 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-6 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1594823562783675" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1594823562783675_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell nav-column" style="" data-widget-type="cell" data-x="9" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-7 ">
+        <div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-3 row-number-8 ">
+            <div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1643154843573484" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1643154843573484_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"></span></div>
+
+               </div><!--end widget-span -->
+                </div><!--end row-->
+      </div><!--end row-wrapper -->
+
+           </div><!--end widget-span -->
+            </div><!--end row-->
+  </div><!--end row-wrapper -->
+
+       </div><!--end widget-span -->
+        </div><!--end row-->
+</div><!--end row-wrapper -->
+
+   </div><!--end widget-span -->
+    </div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+</div>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end header -->
+</div><!--end header wrapper -->
+
+<div class="body-container-wrapper">
+    <div class="body-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell wow2-blog-sec" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span7 widget-span widget-type-cell left-col" style="" data-widget-type="cell" data-x="0" data-w="7">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_158381964095203" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_content" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    <div class="blog-section">
+<div class="blog-post-wrapper cell-wrapper">
+<div class="blog-section post-blog-section">
+<div class="blog-social-share">
+<div class="post-social-share">
+<ul>
+<li>share:</li>
+<li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblog.container-solutions.com%2Fdoes-crossplane-replace-terraform"><i class="fab fa-facebook-f"></i></a></li>
+<li><a target="_blank" href="https://www.twitter.com/share?url=https%3A%2F%2Fblog.container-solutions.com%2Fdoes-crossplane-replace-terraform"><i class="fab fa-twitter"></i></a></li>
+<li>  <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://blog.container-solutions.com/does-crossplane-replace-terraform"><i class="fab fa-linkedin-in"></i></a></li>
+<li><a target="_blank" href="#"><i class="fas fa-envelope"></i></a></li>
+</ul>
+</div>                        
+</div>
+<div class="simple-post-wrapper blog-post-wrapper cell-wrapper">
+<div class="section post-header">
+<div class="hs-featured-image-wrapper default-type"> 
+<a href="https://blog.container-solutions.com/does-crossplane-replace-terraform" title="" class="hs-featured-image-link">
+<img src="https://blog.container-solutions.com/hubfs/Screenshot%202024-06-05%20at%2011.26.11.png" alt="" class="hs-featured-image">                                                                                                       
+</a>
+</div>
+<p id="hubspot-topic_data">
+<a class="topic-link" href="https://blog.container-solutions.com/tag/cloud-native">Cloud native</a>,
+<a class="topic-link" href="https://blog.container-solutions.com/tag/kubernetes">Kubernetes</a>,
+<a class="topic-link" href="https://blog.container-solutions.com/tag/ci-cd">CI/CD</a>,
+<a class="topic-link" href="https://blog.container-solutions.com/tag/gitops">GitOps</a>,
+<a class="topic-link" href="https://blog.container-solutions.com/tag/cloud-native-operations">Cloud Native Operations</a>
+</p>
+<h1><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">Does Crossplane Replace Terraform? Part I: the Theory</span></h1>
+<div class="row-fluid post-author-sec">
+<div id="hubspot-author_data" class="span6 hubspot-editable" data-hubspot-form-id="author_data" data-hubspot-name="Blog Author">                      
+<a class="author-link" href="https://blog.container-solutions.com/author/ian-miell">Ian Miell</a>
+<div class="hs-author-avatar"> <img src="https://blog.container-solutions.com/hubfs/ian_miell.jpeg" alt="Ian Miell"> </div> 
+</div>
+<div class="span6 post-read align-right">
+<div><span> June 5, 2024</span></div>
+<span> 20 minutes Read</span>
+</div>
+</div>
+</div>
+<div class="section post-body">
+<span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><h2>What is Crossplane?</h2>
+<p>If you don't already know,&nbsp;<span>Crossplane is billed as an:</span></p>
+<!--more-->
+<blockquote>
+<p><span style="font-weight: normal;">Open source, CNCF project built on the foundation of Kubernetes to orchestrate anything</span><span><span style="font-weight: normal;">.</span> Encapsulate policies, permissions, and other guardrails behind a custom API line to enable your customers to self-service without needing to become an infrastructure expert.</span></p>
+</blockquote>
+<p>Another way to view Crossplane is as a tool that uses a commodity, open source, and well-supported control plane (Kubernetes) to support the creation of other control planes.</p>
+<p>We've been using it at Container Solutions for a while, and have recently been talking about how we think it's going to become more important in future:</p>
+<div class="hs-embed-wrapper" data-service="twitter" data-script-embed="true" data-responsive="true" style="position: relative; overflow: hidden; width: 100%; height: auto; padding: 0px; max-width: 550px; min-width: 256px; display: block; margin: auto;"><div class="hs-embed-content-wrapper"><blockquote class="twitter-tweet" align="center"><p lang="en" dir="ltr">Just as IBM buys Terraform, Crossplane seems to be becoming a default for our client engagements.<br><br>This is for a few reasons, and with some caveats.<br><br>🧵<br><br>1/</p>— Ian Miell (@ianmiell) <a href="https://twitter.com/ianmiell/status/1788973776996028813?ref_src=twsrc%5Etfw">May 10, 2024</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div></div>
+<p>Recently I've been watching <a href="https://www.youtube.com/@DevOpsToolkit" rel="noopener" target="_blank">Viktor Farcic's</a> fantastic set of <a href="https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16" rel="noopener" target="_blank">tutorial videos on Crossplane</a>.&nbsp;If you are an engineer or interested architect, then these primers are ideal for finding out what's going on in this area.</p>
+<p>While following Viktor's work I saw <a href="https://www.youtube.com/watch?v=tgwxMfIsLJY" rel="noopener" target="_blank">another Crossplane-related video</a> by Viktor on a subject we both seem to get asked about a lot: does Crossplane replace Terraform/Ansible/Chef/$Tool?</p>
+<div class="hs-embed-wrapper" data-service="youtube" data-responsive="true" style="position: relative; overflow: hidden; width: 100%; height: auto; padding: 0px; max-width: 256px; min-width: 256px; display: block; margin: auto;"><div class="hs-embed-content-wrapper"><div style="position: relative; overflow: hidden; max-width: 100%; padding-bottom: 56.25%; margin: 0px;"><iframe style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; border: none;" title="Terraform vs. Crossplane vs. Ansible - Rivals or Allies?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" xml="lang" src="https://www.youtube.com/embed/tgwxMfIsLJY?feature=oembed" width="256" height="144.64" frameborder="0" allowfullscreen></iframe></div></div></div>
+<p>This is a difficult question to answer briefly (aside from just saying "yes and no"), because understanding the answer requires you to grasp what is new and different about Crossplane, and what is not. It doesn't help that - from the user point of view - they can seem to do the exact same thing.</p>
+<p><span style="font-weight: bold;">To get to the answer, I want to reframe a few things Viktor says in that video that confused me</span>, in the hope that the two pieces of content taken together help people understand where Crossplane fits into the Cloud Native firmament. Although Viktor and I agree on the role Crossplane plays now and in the future, we do differ a little on defining and interpreting what is new about Crossplane, and how the industry got here.</p>
+<p>This post follows the logic of our 'Cloud Native Family Tree', which seeks to explain the history of devops tooling. It's recently been updated to include Crossplane.</p>
+<p><img src="https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=1064&amp;height=1703&amp;name=history_devops_tools.drawio%20(1).png" width="1064" height="1703" loading="lazy" alt="history_devops_tools.drawio (1)" style="height: auto; max-width: 100%; width: 1064px;" srcset="https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=532&amp;height=852&amp;name=history_devops_tools.drawio%20(1).png 532w, https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=1064&amp;height=1703&amp;name=history_devops_tools.drawio%20(1).png 1064w, https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=1596&amp;height=2555&amp;name=history_devops_tools.drawio%20(1).png 1596w, https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=2128&amp;height=3406&amp;name=history_devops_tools.drawio%20(1).png 2128w, https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=2660&amp;height=4258&amp;name=history_devops_tools.drawio%20(1).png 2660w, https://blog.container-solutions.com/hs-fs/hubfs/history_devops_tools.drawio%20(1).png?width=3192&amp;height=5109&amp;name=history_devops_tools.drawio%20(1).png 3192w" sizes="(max-width: 1064px) 100vw, 1064px"></p>
+<h2>Three Questions</h2>
+<p>Before we get into the debate, we may want to ask ourselves two deceptively simple questions:</p>
+<ul>
+<li>What is an API?</li>
+<li>What is a cloud service?</li>
+</ul>
+<p>And one non-simple question:</p>
+<ul>
+<li>What is a control plane?</li>
+</ul>
+<p>Understanding exactly what the answers to these are is key to defining what's new and useful about Crossplane.<br><br><span style="font-weight: bold;">If you think you know these already, or aren't interested in the philosophy, skip to the end.</span></p>
+<h4>What is an API?</h4>
+<p>Let's start with a definition from an <a href="https://aws.amazon.com/what-is/api/" rel="noopener" target="_blank">AWS page</a>:</p>
+<blockquote>
+<p>APIs are mechanisms that enable two software components to communicate with each other using a set of definitions and protocols.</p>
+</blockquote>
+<p>Nowadays, most people think of an API as a set of services you can call using technologies like HTTP and JSON. But HTTP and JSON (or YAML, or XML etc) are not necessary. In this context, I like to explain to people that the venerable <span style="font-family: 'Courier New', Courier, monospace;">mkdir<span style="font-family: Helvetica, Arial, sans-serif;"> c</span></span>ommand is an API. <span style="font-family: 'Courier New', Courier, monospace;"><span style="font-family: terminal, monospace;">mkdir</span> </span>conforms in these ways:</p>
+<ul>
+<li>enables two software components to communicate with each other [the shell and the Linux API] using</li>
+<li>a set of definitions [the standard flags to <span style="font-family: terminal, monospace;">mkdir</span>] and</li>
+<li>protocols [shell standard input/output and exit codes]</li>
+</ul>
+<p>Pretty much all code is something that calls an API, down to whatever goes on within the hardware (which, by definition, isn't a software component). Technically speaking, code is "APIs all the way down". But this isn't a very helpful definition if it essentially describes all code.</p>
+<p style="text-align: center;"><img src="https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=685&amp;height=511&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png" width="685" height="511" loading="lazy" alt="mkdir's calls to the Linux API" style="height: auto; max-width: 100%; width: 685px; margin-left: auto; margin-right: auto; display: block;" srcset="https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=343&amp;height=256&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 343w, https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=685&amp;height=511&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 685w, https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=1028&amp;height=767&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 1028w, https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=1370&amp;height=1022&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 1370w, https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=1713&amp;height=1278&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 1713w, https://blog.container-solutions.com/hs-fs/hubfs/Screenshot%202024-06-03%20at%2014.31.44.png?width=2055&amp;height=1533&amp;name=Screenshot%202024-06-03%20at%2014.31.44.png 2055w" sizes="(max-width: 685px) 100vw, 685px"><em><span style="font-size: 16px; font-weight: bold;">APIs all the way down: The Linux API calls that </span></em><span style="font-size: 16px; font-weight: bold; font-family: terminal, monospace;">mkdir</span><em><span style="font-size: 16px; font-weight: bold;"> makes in order to create a folder.<br></span></em><span style="font-size: 16px; font-weight: bold;"></span></p>
+<p style="font-weight: normal;">It might be argued that <span style="font-family: terminal, monospace; font-weight: bold;">mkdir</span> is not an API because it is used by humans, and not for 'two software components to communicate'. However, you <em>can</em> telnet to a server and call its API by hand (I used to do this via HTTP a lot when debugging). Further, <span style="font-family: terminal, monospace; font-weight: bold;">mkdir</span> can (and is also designed to) be used within scripts &nbsp;</p>
+<p style="font-weight: bold;">APIs are <em>Stable</em></p>
+<p>What people really want and expect from an API is <em>stability</em>. As a rule, the lower down the stack an API is, the more stable it needs to be. The Intel x86 API has had very few breaking changes since it came into being in 1978, and even carries over idiosyncrasies from the <a href="https://www.righto.com/2023/08/datapoint-to-8086.html" rel="noopener" target="_blank">Datapoint 2022</a> terminal in 1970 (such as the 8086's 'little endian' design. Similarly, the Linux Kernel API has also had very few changes (mostly removals) since <a href="https://en.wikipedia.org/wiki/Linux_kernel_version_history" rel="noopener" target="_blank">version 2.6</a>'s release over 20 years ago (2003).</p>
+<p>The Linux CLI, by contrast, is much less stable. This is one of the main reasons shell scripts get such a bad rep. They are notoriously difficult to write in such a way that they can be run on a wide variety of different machines. Who knows if the <span style="font-family: terminal, monospace;">ifconfig</span> command in my shell script will run in your target shell environment? Even if it's installed and on the <span style="font-family: terminal, monospace;">$PATH</span>, and not some other command with the same name, will it have the same flags available? Will those flags do the same thing consistently? Defensively writing code against these challenges are probably the main reason people avoid writing shell scripts, alongside the ease with which you can write frighteningly broken code.</p>
+<p>This is why tools like Ansible came into being. They abstracted away the messiness of different implementations of configuration commands, and introduced the notion of idempotence to configuration management. Rather than running a <span style="font-family: terminal, monospace;">mkdir</span> command which might succeed or fail, in Ansible you simply declare that the folder exists. This code will create a folder on 'all' your defined hosts.</p>
+<blockquote>
+<p><span style="font-family: terminal, monospace;">- hosts: all<br>&nbsp; tasks:</span><br><span style="font-family: terminal, monospace;">&nbsp; &nbsp; - name: Create a folder</span><br><span style="font-family: terminal, monospace;">&nbsp; &nbsp; &nbsp; file:</span><br><span style="font-family: terminal, monospace;">&nbsp; &nbsp; &nbsp; &nbsp; path: /path/to/your/folder</span><br><span style="font-family: terminal, monospace;">&nbsp; &nbsp; &nbsp; &nbsp; state: directory</span></p>
+</blockquote>
+<p style="font-weight: normal;">Ansible will ssh into them and create the folder if it doesn't already exist, running mkdir, or whatever it needs to run to get the Linux API to deliver an equivalent result.</p>
+<p style="font-weight: normal;">Viktor says that Ansible, Chef et al focussed on 'anything but APIs', and this is where I disagree. They did focus on APIs, but not http-based (or 'modern') APIs; they simplified the various command line APIs into a form that was idempotent and (<a href="/is-it-imperative-to-be-declarative" rel="noopener" target="_blank">mostly</a>) declarative. Just as <span style="font-family: terminal, monospace; font-weight: bold;">mkdir</span> creates a new API in front of the Linux API, Ansible created a means to use (or create your own) APIs that simplified the complexity of other APIs.&nbsp;</p>
+<p style="font-weight: bold;">Terraform: An Open Plugin and Cloud First Model</p>
+<p>Terraform not only simplified the complexity of other APIs, but then added a rich and open plugin framework and a 'cloud first' model (as opposed to Ansible's 'ssh environment first' model). In theory, there was no reason that Ansible couldn't have done the same things Terraform did, but Ansible wasn't designed for infrastructure provisioning the way Terraform was (as Viktor points out).</p>
+<p>This begs the second question: if Terraform was 'cloud first'...</p>
+<h4>What is a Cloud Service?</h4>
+<p>Many people think of a cloud service as something sold by one of the big three hyperscalers. In fact, a cloud service is the combination of three things:</p>
+<ul>
+<li>A remote network connection</li>
+<li>An API</li>
+<li>A delegation of responsibility to a third party</li>
+</ul>
+<p>That's it. That's all a cloud service is.</p>
+<p>We've already established that an API (as opposed to just 'running software') is a <em>stable</em> way for two software components to communicate. Cloud simply takes this and places it on the network. Finally - and crucially - it devolves responsibility for delivering the result to a third party.</p>
+<p>So, if I ask my Linux desktop (y'know, the one literally on my desk) for more memory, and it can't give it to me because it's run out, then that's my responsibility to resolve, therefore it's not a cloud service.</p>
+<p>A colo i<span style="background-color: #ffffff; color: #ffffff;"></span>s not a cloud service, for example, because the interface is not an API over a network. If I want a new server I'll send them an email. If they add an API they become a cloud service.</p>
+<p>This table may help clarify:</p>
+<div data-hs-responsive-table="true" style="overflow-x: auto; max-width: 100%; width: 100%; margin-left: auto; margin-right: auto;">
+<table style="width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid #99acc2; height: 405.556px;">
+<tbody>
+<tr style="height: 86.6667px;">
+<td style="width: 33.0347%; padding: 4px; height: 86.6667px;">&nbsp;</td>
+<td style="width: 17.5578%; padding: 4px; height: 86.6667px;"><strong>Remote Network Connection</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 86.6667px;"><strong>API</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 86.6667px;"><strong>Delegation of Responsibility</strong></td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 28.8889px;">Abacus</td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;">No</td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 28.8889px;">Linux Server</td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;">No</td>
+</tr>
+<tr style="height: 58.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 58.8889px;"><span style="font-family: terminal, monospace;">mkdir</span> CLI Command on Desktop Linux</td>
+<td style="width: 17.5578%; padding: 4px; height: 58.8889px;">No</td>
+<td style="width: 20.0289%; padding: 4px; height: 58.8889px;"><strong>Yes</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 58.8889px;">No</td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 28.8889px;">Outsourced On-Prem Server</td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 28.8889px;">Self-managed API service</td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;">No</td>
+</tr>
+<tr style="height: 57.7778px;">
+<td style="width: 33.0347%; padding: 4px; height: 57.7778px;">Windows Operating System on Desktop</td>
+<td style="width: 17.5578%; padding: 4px; height: 57.7778px;">No</td>
+<td style="width: 20.0289%; padding: 4px; height: 57.7778px;"><strong>Yes</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 57.7778px;"><strong>Yes</strong></td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding: 4px; height: 28.8889px;">Colo Server</td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;">No</td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; height: 28.8889px;"><strong>AWS EKS</strong></td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+</tr>
+<tr style="height: 28.8889px;">
+<td style="width: 33.0347%; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; height: 28.8889px;"><strong>GitHub</strong></td>
+<td style="width: 17.5578%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 20.0289%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+<td style="width: 29.3931%; padding: 4px; height: 28.8889px;"><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>An abacus is a simple calculation tool that doesn't use a network connection, has an interface (moving beads), but not an API, and if the abacus breaks, that's your problem.</li>
+<li>A Linux server has a remote network connection, but no API for management. (SSH and the CLI might be considered an API, but it's certainly not stable).</li>
+</ul>
+<ul>
+<li><span style="font-family: terminal, monospace; font-weight: bold;">mkdir</span> has an API (see above), but from <span style="font-family: terminal, monospace; font-weight: bold;">mkdir</span>'s point of view, disk space is your problem.</li>
+<li>If you engage a company to supply you with an on-prem server, then it's their problem if it breaks down (probably), but you don't generally have an API to the outsourcer.</li>
+<li>If you build your own API and manage it yourself then you can't pick up the phone to get it fixed if it returns an error.<br><br></li>
+<li>If the Windows API breaks (and you paid for support), then you can call on Microsoft support, but the Windows API doesn't need a network connection to invoke.</li>
+<li>A colo server is supplied by you without an API, but if it doesn't get power/bandwidth/whatever else the colo supports, you can get them to fix it, and can connect to it over the network.</li>
+</ul>
+<p>Some of these may be arguable on detail, but it's certainly true that only EKS and GitHub qualify as 'cloud services' in the above table, as they fulfil all three criteria for a cloud service.</p>
+<h4>What is a Control Plane?</h4>
+<p>A less commonly-understood concept that must also be understood is the 'control plane'. The phrase comes from network routing, which divides the router architecture into three 'planes': the 'data plane', the 'control plane', and the 'management plane'.</p>
+<p>In networking, the data plane is the part of the software that processes the data requests. By contrast, the control plane is the part of the software that maintains the routing table and defines what to do with incoming packets, and the management plane handles monitoring and configuration of the network stack.&nbsp;</p>
+<p>You might think of the control plane as the state management of the data that goes through the router, as opposed to the general management and configuration of the system (management plane).</p>
+<p>This concept has been co-opted by other technologies, but I haven't been able to find a formal definition of what a control plane when used outside of networking. I think of it as 'whatever manages how the useful work will be done by the thing' rather than the thing that does the actual work. If that doesn't seem like a rigorous definition to you, then I won't disagree.</p>
+<p>For Kubernetes, the control plane is the etcd database and the core controllers that make sure your workloads are appropriately placed and running.</p>
+<p>All cloud services need a control plane. They need something that orchestrates the delivery of services to clients. This is because they have a remote API and a delegation of responsibility.</p>
+<h2>So Does Crossplane Replace Terraform?</h2>
+<p>OK, now we know what the following things are:</p>
+<ul>
+<li>APIs</li>
+<li>Cloud services</li>
+<li>Control planes</li>
+</ul>
+<p>We can more clearly explain how Crossplane and Terraform (et al) relate.</p>
+<h4>Resources, APIs, Cloud Services</h4>
+<p>Crossplane and Terraform both deal with the creation of resources, and are both designed to help manage cloud services. In this sense, Crossplane <em>can</em> replace Terraform. However...</p>
+<h4>'One-shot' vs Continuous</h4>
+<p>...whereas Terraform is '<span style="font-style: italic;">one-shot</span>' (you run it once and then it's done), Crossplane is <span style="font-style: italic;">continuous</span>. <em>Part</em> of its job is to provision resources, but it's not its only job. Its design, and main purpose, is to give you a framework to ensure that resources remain in a 'known state', ultimately deriving its source of truth from the configuration of its own Kubernetes control plane (or Git, if this configuration is synchronised with a Git repository).</p>
+<h4>Terraform 'Under' Crossplane?</h4>
+<p>If you want, you can run your Terraform code in Crossplane with the <a href="https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.16.0" rel="noopener" target="_blank">Terraform provider</a>. One thing to note here, thought, is that you can't just take your existing Terraform code or other shell scripts and run it unchanged 'within' Crossplane's control plane just as you would have done before. Some work will need to be done to integrate the code to run under Crossplane's control. In this sense, Crossplane <span style="font-style: italic;">does</span><span style="font-style: normal;"> replace Terraform, subsuming the code into its own provider.</span></p>
+<h4>Control Planes</h4>
+<p>In a way, Crossplane is quite close to Chef and Puppet. Both those tools had 'control planes' (the Chef and Puppet servers) that ensured the targets were in a conformant state. However, Chef and Puppet (along with Ansible) were designed to configure individual compute environments (physical servers, VMs etc), and not orchestrate and compose different APIs and resources into another cloud service-like API.</p>
+<h2>Our Experience with Crossplane</h2>
+<p>So much for the theory. What about the practice? Our experience with Crossplane, and how it plays out in the field will be outlined in Part II...</p>
+<div aria-setsize="-1" role="listitem" id="1717506775.464259" data-qa="virtual-list-item" data-item-key="1717506775.464259" tabindex="-1">
+<div role="presentation" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div role="document" aria-roledescription="message" data-qa-hover="true">
+<div>
+<div>
+<div role="presentation" data-qa="message_content">
+<div>
+<div>
+<div data-qa="message-text">
+<div data-qa="block-kit-renderer">
+<div>
+<div dir="auto">&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-setsize="-1" role="listitem" id="1717506959.528539" data-qa="virtual-list-item" data-item-key="1717506959.528539" tabindex="0">
+<div role="presentation" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div role="document" aria-roledescription="message" data-qa-hover="true">
+<div>
+<div>
+<div role="presentation">&nbsp;</div>
+<div role="presentation" data-qa="message_content">
+<div>
+<div>
+<div data-qa="message-text">
+<div data-qa="block-kit-renderer">
+<div>
+<div dir="auto">&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+var $sticky = $('.post-social-share');
+var $stickyrStopper = $('.post-pagination-sec');
+if (!!$sticky.offset()) { // make sure ".sticky" element exists
+var generalSidebarHeight = $sticky.innerHeight();
+var stickyTop = $sticky.offset().top + 500;
+var stickOffset = 0;
+var stickyStopperPosition = $stickyrStopper.offset().top;
+var stopPoint = stickyStopperPosition - generalSidebarHeight - stickOffset;
+var diff = stopPoint + stickOffset;
+$(window).scroll(function(){ // scroll event
+var windowTop = $(window).scrollTop(); // returns number
+if (stopPoint < windowTop) {
+$sticky.css({ position: 'absolute',opacity:'0'});
+} else if (stickyTop < windowTop+stickOffset) {
+$sticky.css({ position: 'fixed', top: stickOffset,opacity:'1' });
+} else {
+$sticky.css({position: 'absolute', top: 'initial',opacity:'1'});
+}
+});
+}
+});
+</script>
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span5 widget-span widget-type-cell right-col" style="" data-widget-type="cell" data-x="7" data-w="5">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell listing-sidebar-rss" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1585037683162262" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">     
+<div class="sidebar-rss">
+  <div class="sidebar-recent-post-section">
+    <div class="sidebar-recent-related-post">             
+      
+    </div>
+  </div>
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1585037960356419" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="post-pagination-sec">
+    <div class="row-fluid-wrapper">
+      <div class="row-fluid">
+            <div class="widget-span widget-type-cell wrapper equal-height-container">
+              <div class="row-fluid-wrapper"> 
+                <div class="row-fluid">
+                 
+                  <div class="span6 left-col">
+                                                  
+                              <div class="span6 prev-post">
+                                  <a href="/in-praise-of-low-tech-devex">
+                                     <div class="span8 prev-pagi-text-sec">
+                                                                   
+                                           <h3>In Praise of Low Tech DevEx</h3>
+                                       </div>
+                                    <div class="span4 featured-image" style="background:url(https://zwischenzugs.com/wp-content/uploads/2024/05/screenshot2.png?w=1024);background-repeat:no-repeat;
+                                                               background-size:cover;height:80px;">
+                                       
+                                    </div>
+                                  </a>
+                              </div>
+                              <div class="span6 prev-anchor align-right">
+                                 <a href="/in-praise-of-low-tech-devex"> <img src="https://3842749.fs1.hubspotusercontent-na1.net/hubfs/3842749/Wow%202019/Images/left-arrow.png" alt="prev-arrow">
+                                   Previous article</a>
+                              </div>
+                          
+                      </div>
+                  <div class="span6 right-col">
+                                        
+                  </div>
+                  
+              </div>
+              </div>
+             </div>
+        </div>
+    </div>
+  </div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell comment-sec" style=" display:block; " data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell wrapper" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget comment-sec-heading-text" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_158382180556003" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_158382180556003_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Comments</span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell comment-form-sec" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-2 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget comment-heading-text" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_158382180556005" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_158382180556005_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="text">Leave your Comment</span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-2 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_158382180556006" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-blog_comments" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_158382180556006_blog_comments" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_blog_comments" style="" data-hs-cos-general-type="widget" data-hs-cos-type="blog_comments">
+<div class="section post-footer">
+    <div id="comments-listing" class="new-comments"></div>
+    
+      <div id="hs_form_target_e5ba3739-20e2-48cd-8272-c926646d555c"></div>
+      
+      
+      
+      
+    
+</div>
+
+</span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end body -->
+</div><!--end body wrapper -->
+
+<div class="footer-container-wrapper">
+    <div class="footer-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+<div class="" data-global-widget-path="generated_global_groups/29544596322.html"><div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell footer-grp" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell wrapper equal-height-container" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget footer-logo" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1579264940018354" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1579264940018354_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"><img src="https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=150&amp;height=61&amp;name=cs-logo-white.png" class="hs-image-widget " width="150" height="61" style="max-width: 100%; height: auto;" alt="cs-logo-white" title="cs-logo-white" srcset="https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=75&amp;height=31&amp;name=cs-logo-white.png 75w, https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=150&amp;height=61&amp;name=cs-logo-white.png 150w, https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=225&amp;height=92&amp;name=cs-logo-white.png 225w, https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=300&amp;height=122&amp;name=cs-logo-white.png 300w, https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=375&amp;height=153&amp;name=cs-logo-white.png 375w, https://blog.container-solutions.com/hs-fs/hubfs/cs-logo-white.png?width=450&amp;height=183&amp;name=cs-logo-white.png 450w" sizes="(max-width: 150px) 100vw, 150px"></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span8 widget-span widget-type-cell four-col" style="" data-widget-type="cell" data-x="0" data-w="8">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span6 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="6">
+<div id="hs_cos_wrapper_module_15783825602011356" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_15783825602011356_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_module_15783825602011356_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu" class="active-branch">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com" role="menuitem" target="_self">Home</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/events" role="menuitem" target="_self">Events</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/services" role="menuitem" target="_self">Services</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/latest-news" role="menuitem" target="_self">Latest News</a></li>
+  <li class="hs-menu-item hs-menu-depth-1 active active-branch" role="none"><a href="https://blog.container-solutions.com" role="menuitem" target="_self">Blog</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/careers" role="menuitem" target="_self">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/talk-to-us" role="menuitem" target="_self">Talk to us</a></li>
+ </ul>
+</div></span></div>
+
+</div><!--end widget-span -->
+<div class="span6 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="6" data-w="6">
+<div id="hs_cos_wrapper_module_15783825632451363" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_15783825632451363_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_module_15783825632451363_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/wtf-is-cloud-native" role="menuitem" target="_self">WTF is Cloud Native</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/website-terms-of-use" role="menuitem" target="_self">Website terms of use</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/privacy-policy" role="menuitem" target="_self">Privacy policy</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/data-privacy-notice-for-job-applicants" role="menuitem" target="_self">Data Privacy for Job Seekers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/cookie-notice" role="menuitem" target="_self">Cookie Notice</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.container-solutions.com/events-code-of-conduct" role="menuitem" target="_self">Events Code of Conduct</a></li>
+ </ul>
+</div></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span4 widget-span widget-type-cell four-col" style="" data-widget-type="cell" data-x="8" data-w="4">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_15783822780451167" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_15783822780451167_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h4 style="line-height: 1.5; font-size: 20px; margin-bottom: 5px !important;"><span style="color: #1b1464;"><strong>Talk to sales</strong></span></h4>
+<div style="line-height: 1.5;"><span style="color: #1b1464;"><a href="mailto:info@container-Solutions.com" rel=" noopener" style="color: #1b1464;">info@container-solutions.com</a></span></div></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_158452391621561" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<div class="row-fluid">
+  <div class="span12 connected-col" style="margin-left:0">
+    <div class="row-fluid-wrapper">
+      <div class="row-fluid">
+        <h4 class="footer_header">
+            Stay In Touch
+        </h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/container-solutions/" target="_blank"><i class="fab fa-linkedin" style="color:white"></i></a></li>
+          <li><a href="https://twitter.com/containersoluti" target="_blank"><i class="fab fa-twitter" style="color:white"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget copy-right-text" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_15783823043581171" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_15783823043581171_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><p><span style="color: #1b1464;">© 2024 Container Solutions</span></p></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-9 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1585658103724856" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><!-- <script>
+$(window).load(function() {
+$("body").addClass('all-loaded');
+});
+</script>   --></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+</div>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end footer -->
+</div><!--end footer wrapper -->
+
+    
+<!-- HubSpot performance collection script -->
+<script defer src="https://static.hsappstatic.net/content-cwv-embed/static-1.840/embed.js"></script>
+<script src="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/template_assets/29544596312/1662583548019/Marketplace/wowdesign/360_template_pack_by_wowdesign/Coded_Files/360_Design_Script.min.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/template_assets/29086575625/1588861659426/CS_Theme/CS--Scrips/CS--Megamenu.min.js"></script>
+<script src="https://blog.container-solutions.com/hs-fs/hub/2252258/hub_generated/module_assets/29104102065/1621606050325/module_29104102065_CS--Megamenu__helper.min.js"></script>
+<script src="/hs/hsstatic/keyboard-accessible-menu-flyouts/static-1.17/bundles/project.js"></script>
+<script src="/hs/hsstatic/AsyncSupport/static-1.122/js/comment_listing_asset.js"></script>
+<script>
+  function hsOnReadyPopulateCommentsFeed() {
+    var options = {
+      commentsUrl: "https://api-na1.hubapi.com/comments/v3/comments/thread/public?portalId=2252258&offset=0&limit=10000&contentId=168804265483&collectionId=5674137972",
+      maxThreadDepth: 10,
+      showForm: true,
+      
+      target: "hs_form_target_e5ba3739-20e2-48cd-8272-c926646d555c"
+    };
+    window.hsPopulateCommentsFeed(options);
+  }
+
+  if (document.readyState === "complete" ||
+      (document.readyState !== "loading" && !document.documentElement.doScroll)
+  ) {
+    hsOnReadyPopulateCommentsFeed();
+  } else {
+    document.addEventListener("DOMContentLoaded", hsOnReadyPopulateCommentsFeed);
+  }
+
+</script>
+
+
+          <!--[if lte IE 8]>
+          <script charset="utf-8" src="https://js.hsforms.net/forms/v2-legacy.js"></script>
+          <![endif]-->
+      
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js"></script>
+
+        <script data-hs-allowed="true">
+            hbspt.forms.create({
+                portalId: '2252258',
+                formId: 'e5ba3739-20e2-48cd-8272-c926646d555c',
+                pageId: '168804265483',
+                region: 'na1',
+                pageName: "Does Crossplane Replace Terraform? Part I: the Theory",
+                contentType: 'blog-post',
+                
+                formsBaseUrl: '/_hcms/forms/',
+                
+                
+                
+                css: '',
+                target: "#hs_form_target_e5ba3739-20e2-48cd-8272-c926646d555c",
+                type: 'BLOG_COMMENT',
+                
+                submitButtonClass: 'hs-button primary',
+                formInstanceId: '2708',
+                getExtraMetaDataBeforeSubmit: window.hsPopulateCommentFormGetExtraMetaDataBeforeSubmit
+            });
+
+            window.addEventListener('message', function(event) {
+              var origin = event.origin; var data = event.data;
+              if ((origin != null && (origin === 'null' || document.location.href.toLowerCase().indexOf(origin.toLowerCase()) === 0)) && data !== null && data.type === 'hsFormCallback' && data.id == 'e5ba3739-20e2-48cd-8272-c926646d555c') {
+                if (data.eventName === 'onFormReady') {
+                  window.hsPopulateCommentFormOnFormReady({
+                    successMessage: "Hi, your comment will be reviewed and posted as soon as possible.",
+                    target: "#hs_form_target_e5ba3739-20e2-48cd-8272-c926646d555c"
+                  });
+                } else if (data.eventName === 'onFormSubmitted') {
+                  window.hsPopulateCommentFormOnFormSubmitted();
+                }
+              }
+            });
+        </script>
+      
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "blog-post"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/blog.container-solutions.com\/does-crossplane-replace-terraform"]);
+_hsq.push(["setPageId", "168804265483"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 168804265483,
+    "legacyPageId": "168804265483",
+    "contentFolderId": null,
+    "contentGroupId": 5674137972,
+    "abTestId": null,
+    "languageVariantId": 168804265483,
+    "languageCode": "en",
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/2252258.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "e46e4d83-c3ec-413d-bbc5-0437923280b0",
+    ticks: 1717583324480,
+    page_id: 168804265483,
+    
+    content_group_id: 5674137972,
+    portal_id: 2252258,
+    app_hs_base_url: "https://app.hubspot.com",
+    cp_hs_base_url: "https://cp.hubspot.com",
+    language: "en",
+    analytics_page_type: "blog-post",
+    scp_content_type: "",
+    analytics_page_id: "168804265483",
+    category_id: 3,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.321/js/index.js"></script>
+
+
+
+<!-- Twitter universal website tag code -->
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','ny8jx');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+
+<div id="fb-root"></div>
+  <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));</script> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 
+
+
+    
+    <!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+
+</body></html>
