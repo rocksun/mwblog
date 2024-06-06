@@ -1,7 +1,7 @@
 
 <!--
 title: VSCode添加多选项卡选择功能
-cover: https://images.idgesg.net/images/article/2023/01/shutterstock_561382627-100936182-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 从 VS Code 1.90 开始，用户可以选择多个选项卡，并一次对多个编辑器应用操作。
