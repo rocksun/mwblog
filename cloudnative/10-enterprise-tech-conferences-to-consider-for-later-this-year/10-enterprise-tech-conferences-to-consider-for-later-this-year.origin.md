@@ -1,0 +1,71 @@
+# 10 Enterprise Tech Conferences To Consider for Later This Year
+![Featued image for: 10 Enterprise Tech Conferences To Consider for Later This Year](https://cdn.thenewstack.io/media/2024/06/96d911a5-conference-1024x576.jpg)
+Conferences: Whether you like ’em or not, they’re back in full force this year. And just in time too, because the world of enterprise tech has a lot to discuss. From
+[generative AI](https://thenewstack.io/ai/) to [open source](https://thenewstack.io/open-source-is-at-a-crossroads/), [platform engineering](https://thenewstack.io/devops-burnout-try-platform-engineering/), [cybersecurity](https://thenewstack.io/three-vital-aspects-of-financial-grade-security/), [API-first development](https://thenewstack.io/what-is-api-sprawl-and-why-is-it-important/) and beyond, there are plenty of trending areas to learn about. But, with many travel budgets slashed, which events should you prioritize?
+Below, we’ll put on our conference badges and walk through ten top events in enterprise tech which will be held during the second half of 2024. These well-regarded in-person conferences are of various sizes and cater to slightly different themes. But each will surely leave you with a head full of expert knowledge.
+## 1. KubeCon + CloudNativeCon North America
+The Cloud Native Computing Foundation (CNCF) flagship conference,
+[KubeCon + CloudNativeCon North America](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/), brings together thousands of open source and cloud native maintainers. This event, which began as KubeCon years ago, has flourished into a seminal event for the cloud native ecosystem. Hot on the heels of [KubeCon EU 2024](https://cloudnativenow.com/features/10-hot-takes-ahead-of-kubecon-eu-2024/), this year’s NA edition will be held Nov. 12-15 in Salt Lake City, Utah.
+Tracks at KubeCon + CloudNativeCon NA will cover many topics, from connectivity to AI/ML, data processing and storage, platform engineering, the software development life cycle, security and observability, and more. And the co-located events will dive deeper into niche technologies like Cilium, Envoy, Istio, WebAssembly, Backstage and others.
+“I am eagerly looking forward to KubeCon + CloudNativeCon NA 2024,” said Taylor Dolezal, head of ecosystem at CNCF. The advancements in AI integration with
+[cloud native technologies](https://thenewstack.io/cloud-native/) and the critical issues of environmental sustainability and platform engineering are particularly thrilling for me.
+If you like cloud native open source and get a kick out of trade shows, this event is for you. It’s unique in offering need-based scholarships and on-site childcare. The call for proposals
+[is provided here](https://sessionize.com/kubecon-cloudnativecon-north-america-2024/), and you can [register for event passes here](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/).
+## 2. AWS re:Invent
+[AWS re:Invent](https://reinvent.awsevents.com/) is the yearly conference celebrating everything Amazon Web Services (AWS). AWS re:Invent gathers speakers from Amazon and beyond to share the latest advancements in [AWS](https://aws.amazon.com/?utm_content=inline+mention) technology through keynotes, talks and interactive labs, and offers plenty of networking opportunities. This year, the event will likely highlight what AWS is developing in the realms of generative AI, analytics and cloud operations.
+AWS still claims the largest cloud market share, hosting
+[one-third](https://aag-it.com/the-latest-cloud-computing-statistics/) of all cloud infrastructure services. If you’re an engineer in an AWS shop and want to learn more about its vast product catalog, this is probably the event for you. Registration will open soon [on this page](https://reinvent.awsevents.com/).
+## 3. Platform Summit
+[Platform Summit](https://nordicapis.com/events/platform-summit-2024/), the flagship conference from [Nordic APIs](https://nordicapis.com/), brings together some of the top minds in the API industry each year. The summit curates quality content in an intimate setting to learn about crafting top-tier, secure API platforms. This year’s event will be held Oct. 7-9 in Stockholm, Sweden.
+“I am excited about Platform Summit 2024 because it’s an event where I get to meet a lot of colleagues and thought leaders that I respect and admire in the API space,” said Travis Spencer, CEO of
+[Curity](https://curity.io/) and co-founder of Nordic APIs. “It’s a conference where I learn a lot and am inspired by new ideas.”
+The eighth Platform Summit will gather 60 speakers to share insights about API design styles and specs,
+[developer experience tips](https://thenewstack.io/developer-tips-in-ai-prompt-engineering/), API-first business and more. Gauging from Nordic APIs’ [Austin API Summit](https://nordicapis.com/6-key-takeaways-from-austin-api-summit-2024/), held [earlier this year](https://nordicapis.com/events/austin-api-summit-2024/), generative AI and access control will likely also be pressing areas of interest.
+“I think that AI will probably be a theme this year, but, knowing the kinds of people who are in the community, I am looking forward to their actionable and practical insights to help me see how this nascent technology can be applied,” said Spencer. “Security will no doubt be a theme as well. This is good because hackers are never standing still, so we can’t either.”
+If you are an API product manager, architect or CTO wanting practical knowledge of how APIs can reshape your organization, this is the scene for you. Early-bird
+[registration is open here](https://nordicapis.com/events/platform-summit-2024/), and the event is now accepting [papers here](https://nordicapis.com/call-speakers/). Be sure to consider the preconference workshops on OAuth and OpenID Connect, which will be held the day before the main conference.
+## 4. Black Hat
+[Black Hat](https://www.blackhat.com/), put on by Informa, is *the* cybersecurity conference. The flagship event, [Black Hat USA 2024](https://www.blackhat.com/us-24/), is slated for six days in early August in Las Vegas. Specialized cybersecurity training starts Aug. 3, and the main two-day event happens Aug. 7-8.
+According to the in-progress
+[speaker schedule](https://www.blackhat.com/us-24/briefings/schedule/), a big focus this year will likely be thwarting attacks in the age of AI, which makes sense given [emerging LLM threats](https://securityboulevard.com/2023/07/understanding-the-owasp-top-10-for-llms/). Other popular topics include vulnerability detection, offensive application security, cloud security, defense and enterprise security.
+Black Hat 2024 USA will hold boot camps on countless cybersecurity topics, such as ransomware prevention, bug hunting, threat modeling, incident response and others. If you’re a hacker looking for the latest defensive strategies, cool open source security tools, and state-of-the-art security products and solutions, Black Hat is the place to be.
+## 5. Open Source Summit EU
+[Open Source Summit](https://events.linuxfoundation.org/open-source-summit-europe/) describes itself as “the premier vendor-neutral conference for open source developers and technologists.” Hosted by The Linux Foundation, the summit is a great opportunity for developers and those in operational roles to meet and collaborate with the open source community. The next OSS Summit will be held Sept. 16-18 in Vienna, Austria.
+OSS Summit is interesting as it’s an “umbrella” event that includes nearly 20 microconferences, each catering to a specific niche. Whether you’re involved in the Linux kernel, collaborating on a standard specification or a leader looking for advice on
+[building an OSS community](https://thenewstack.io/how-to-build-an-open-source-community/), this event has it all.
+Open source technology is at the heart of modern software development, making this conference worth attending, especially for EU developers. Registration with rates for various roles
+[can be found here](https://events.linuxfoundation.org/open-source-summit-europe/register/).
+## 6. LeadDev
+[LeadDev](https://leaddev.com/) brands itself as “the home of engineering leadership,” and its blog and events series are garnering attention for their actionable insights catered to engineering managers. Some upcoming events include [LeadDev New York](https://leaddev.com/leaddev-new-york), which will take place Sept. 4-5 and [LeadDev Berlin](https://leaddev.com/leaddev-berlin), scheduled for Nov. 4-5.
+The New York iteration will feature talks from engineering managers at well-respected tech companies like GitHub, Datadog, Slack, Spotify and Squarespace. Other perks that make LeadDev unique are its speed coaching sessions, table talk discussions, and office hours to chat with speakers.
+## 7. Web Summit
+[Web Summit](https://websummit.com/) is another event organization with a big impact, overseeing its global Web Summit series and yearly [Collision](https://collisionconf.com/) conference in Toronto. One significant event on the horizon is the Web Summit in Lisbon, Portugal, which will be held Nov. 11-14. The event, arguably Europe’s biggest tech conference, is expected to draw 70,000 people this fall.
+Presidents and CEOs from Time, Microsoft, Fender, Qualcomm, ACLU and others are scheduled to speak at the conference. If you’re looking for generalist insights on breaking trends in today’s web technology landscape and thrive on events with a massive scale, Web Summit is the place to be. Registration is open
+[on this page](https://websummit.com/tickets/attendees).
+## 8. Gartner IT Symposium/Xpo
+Gartner, the well-known IT analyst firm, also organizes a series of events. The
+[Gartner IT Symposium/Xpo](https://www.gartner.com/en/conferences/na/symposium-us) is slated for Oct. 21-24 in Orlando, Florida. The symposium will primarily feature Gartner analysts on stage to guide attendees through critical enterprise technologies.
+“It’s never been a more consequential time for CIOs and their senior leadership teams as they sit at the center of their organization’s success with disruptive technologies like AI,” said Rita Sallam, Distinguished VP Analyst at Gartner and IT Symposium/Xpo Orlando conference chair. According to Sallam, the symposium is designed to equip executive leadership with the strategies they need to be at the forefront of innovation.
+Gartner IT Symposium/Xpo will feature pressing topics like scaling GenAI, formulas for CIO success, mitigating AI risks, optimizing digital delivery franchises and more. Gartner’s insights, culled from its analysts’ on-the-ground conversations and data-backed reports, help IT executives stay on top of the latest technology trends.
+[Registration can be found here](https://www.gartner.com/en/conferences/na/symposium-us/register).
+## 9. QCon
+Another event series with a busy schedule in the next twelve months is QCon. InfoQ hosts QCon events to help senior
+[software developers stay on top of the latest industry trends](https://thenewstack.io/tips-for-developers-moving-sectors-in-the-software-industry/) and software design patterns. [QCon San Francisco](https://qconsf.com/), InfoQ’s flagship event, will take place Nov. 18-22, 2024.
+“The conference always generates new ideas through technical talks, hallway conversations and facilitated unconference sessions,” said Renato Losio, InfoQ editor and InfoQ Dev Summit Chair. Key themes will include AI/ML, data architectures, new programming language paradigms and more.
+[QCon London](https://qconlondon.com/) will be held Apr. 7-8, 2025.
+The InfoQ Dev Summit is also happening this year in
+[Boston](https://devsummit.infoq.com/conference/boston2024) and [Munich](https://devsummit.infoq.com/conference/munich2024).
+“InfoQ Dev Summit helps senior developers effectively tackle today’s dev challenges,” said Eder Ignatowicz, InfoQ Dev Summit Boston 2024 chair and senior principal software engineer and architect at Red Hat. He stresses the importance of sharing actionable insights that go beyond the hype.
+## 10. OpenAI Dev Day
+When I inquired with OpenAI’s press email about its
+[OpenAI Dev Day](https://devday.openai.com/), ChatGPT quickly sent me a buttoned-up message thanking me for my interest and offering friendly answers to my questions:
+“OpenAI Dev Day is an event we eagerly anticipate each year, as it brings together developers, researchers, and technology enthusiasts from around the globe to explore the latest advancements in artificial intelligence. This year, we’re particularly excited about the event because it serves as a platform to showcase our latest models and technologies, including GPT-4o, our fastest and most affordable flagship model.”
+ChatGPT, which assured me it represents the views of the OpenAI team, expects 2024’s themes to center around ethical AI development, scaling AI applications from prototype to production, and integrating AI across various industries.
+OpenAI Dev Day’s inaugural event was held last November in San Francisco. Although the 2024 dates have yet to be announced, the event will likely occur in a similar timeframe. Since the programming eyes of the world are on OpenAI, this is a conference to keep close tabs on.
+## Tech Events Are Back in Full Force
+There you have it — a handful of not-to-miss tech conferences on the horizon. Of course, this list is by no means exhaustive. Other enterprise tech events include the
+[TNW Conference](https://thenextweb.com/conference), [InfoBip Shift](https://shift.infobip.com/), [TechCrunch Disrupt](https://techcrunch.com/events/tc-disrupt-2024/) and [Salesforce Dreamforce](https://www.salesforce.com/dreamforce/). Whatever show you choose to attend, I hope you get your dose of knowledge, networking, and complementary food and swag while you’re at it. [
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
