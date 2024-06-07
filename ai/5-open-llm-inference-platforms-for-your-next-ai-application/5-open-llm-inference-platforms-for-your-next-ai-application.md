@@ -1,7 +1,7 @@
 
 <!--
 title: 可用于AI应用的5个开放式LLM推理平台
-cover: https://cdn.thenewstack.io/media/2024/06/ec522010-allison-saeng-kdnvfurdn1k-unsplash.jpg
+cover: ./cover.jpg
 -->
 
 五个生成式 AI 推理平台，可使用开放式 LLM，如 Llama 3、Mistral 和 Gemma。有些还支持针对视觉的模型。
