@@ -4,7 +4,7 @@ title: 在山景城举行的Kubernetes十周年庆典：回顾历史
 cover: https://cdn.thenewstack.io/media/2024/06/da23f913-eric-brewer-closes-talk-at-kubernetes-10-celebration-in-mountain-view-screenshot.png
 -->
 
-昨晚，一场非常特别的活动提供了超过三个小时的见解和历史，讲述了世界第二大开源
+昨晚，一场非常特别的活动提供了三个多小时的见解和历史，讲述了世界第二大开源项目（仅次于 Linux）。
 
 > 译自 [At Kubernetes 10th Anniversary in Mountain View: History Remembered](https://thenewstack.io/at-kubernetes-10th-anniversary-in-mountain-view-history-remembered/)，作者 David Cassel。
 
