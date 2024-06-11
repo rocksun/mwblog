@@ -1,6 +1,6 @@
 
 <!--
-title: 如何使用Kubernetes 建云原生平台
+title: 如何使用Kubernetes构建云原生平台
 cover: ./cover.png
 -->
 
