@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <title>How We Made PostgreSQL as Fast as Pinecone for Vector Data</title>
+  <meta name="HandheldFriendly" content="True"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=1, user-scalable=yes" />
+
+
+  <link rel="stylesheet" type="text/css" href="https://www.timescale.com/blog/assets/built/blog.css?v=2308f59886"/>
+  <script src="https://cmp.osano.com/AzZddaT60OPzDMhS/ecab821a-f266-44a2-b472-c69ded89555c/osano.js"></script>
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+
+    twq('init','o8fs3');
+    twq('track','PageView');
+  </script>
+
+  <meta name="description" content="Read how we equipped PostgreSQL with advanced indexing techniques, making it as fast as other specialized vector databases, like Pinecone.">
+    <link rel="icon" href="https://www.timescale.com/blog/content/images/size/w256h256/2023/05/image--13--1.png" type="image/png">
+    <link rel="canonical" href="https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/amp/">
+    
+    <meta property="og:site_name" content="Timescale Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How We Made PostgreSQL as Fast as Pinecone for Vector Data">
+    <meta property="og:description" content="Read how we equipped PostgreSQL with advanced indexing techniques, making it as fast as other specialized vector databases, like Pinecone.">
+    <meta property="og:url" content="https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/">
+    <meta property="og:image" content="https://www.timescale.com/blog/content/images/size/w1200/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png">
+    <meta property="article:published_time" content="2024-06-11T12:05:45.000Z">
+    <meta property="article:modified_time" content="2024-06-11T12:05:45.000Z">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="pgvector">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/timescaledb">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How We Made PostgreSQL as Fast as Pinecone for Vector Data">
+    <meta name="twitter:description" content="Read how we equipped PostgreSQL with advanced indexing techniques, making it as fast as other specialized vector databases, like Pinecone.">
+    <meta name="twitter:url" content="https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/">
+    <meta name="twitter:image" content="https://www.timescale.com/blog/content/images/size/w1200/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Matvey Arye">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="AI, pgvector">
+    <meta name="twitter:site" content="@timescaleDB">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="876">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Timescale Blog",
+        "url": "https://www.timescale.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.timescale.com/blog/content/images/size/w256h256/2023/05/image--13--1.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Matvey Arye",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.timescale.com/blog/content/images/size/w1200/2019/01/team-mat.jpg",
+            "width": 1200,
+            "height": 1200
+        },
+        "url": "https://www.timescale.com/blog/author/matvey/",
+        "sameAs": []
+    },
+    "headline": "How We Made PostgreSQL as Fast as Pinecone for Vector Data",
+    "url": "https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/",
+    "datePublished": "2024-06-11T12:05:45.000Z",
+    "dateModified": "2024-06-11T12:05:45.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.timescale.com/blog/content/images/size/w1200/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png",
+        "width": 1200,
+        "height": 876
+    },
+    "keywords": "AI, pgvector",
+    "description": "Read how we equipped PostgreSQL with advanced indexing techniques, making it as fast as other specialized vector databases, like Pinecone.",
+    "mainEntityOfPage": "https://www.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.85">
+    <link rel="alternate" type="application/rss+xml" title="Timescale Blog" href="https://www.timescale.com/blog/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" data-i18n="false" data-ghost="https://www.timescale.com/blog/" data-key="28ba0275905927a6bde0a76f15" data-api="https://timescale.ghost.io/blog/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="28ba0275905927a6bde0a76f15" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://timescale.ghost.io/blog/" crossorigin="anonymous"></script>
+    
+    <link href="https://www.timescale.com/blog/webmentions/receive/" rel="webmention">
+    <script defer src="/blog/public/cards.min.js?v=2308f59886"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=2308f59886">
+    <script defer src="/blog/public/member-attribution.min.js?v=2308f59886"></script>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PFLX3HP');</script>
+<!-- End Google Tag Manager -->
+
+<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/themes/prism.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.css"/>
+<link rel="alternate" type="application/rss+xml" title="TimescaleDB" href="https://blog.timescale.com/rss/" />
+<style type="text/css">
+    /**
+     * Dracula Theme originally by Zeno Rocha [@zenorocha]
+     * https://draculatheme.com/
+     *
+     * Ported for PrismJS by Albert Vallverdu [@byverdu]
+     */
+	.post-full-content p code {
+        background-color: #f3f3f3;
+    }
+    code[class*="language-"],
+    pre[class*="language-"] {
+        color: #f8f8f2;
+        background: none;
+        text-shadow: none;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    /* Code blocks */
+    pre[class*="language-"] {
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
+        border-radius: 0.3em;
+    }
+    
+    pre[class*="language-"] code {
+        margin-bottom: -68px;
+        display: block;
+    }
+
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+        background: #333333 !important;
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*="language-"] {
+        padding: .1em;
+        border-radius: .3em;
+        white-space: normal;
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+        color: #9caad6;
+    }
+
+    .token.punctuation {
+        color: #f8f8f2;
+    }
+
+    .namespace {
+        opacity: .7;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+        color: #ff79c6;
+    }
+
+    .token.boolean,
+    .token.number {
+        color: #bd93f9;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted {
+        color: #50fa7b;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string,
+    .token.variable {
+        color: #f8f8f2;
+        background: transparent;
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.function,
+    .token.class-name {
+        color: #f1fa8c;
+    }
+
+    .token.keyword {
+        color: #8be9fd;
+    }
+
+    .token.regex,
+    .token.important {
+        color: #ffb86c;
+    }
+
+    .token.important,
+    .token.bold {
+        font-weight: bold;
+    }
+
+    .token.italic {
+        font-style: italic;
+    }
+
+    .token.entity {
+        cursor: help;
+    }
+    
+    /* Accordion start */
+    details.accordion {
+      --color-accent: #222;
+      margin-bottom: 1em;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      background-color: #e6e6e6;
+    }
+
+    details.accordion summary {
+      list-style: none;
+      padding: 1.5rem;
+    }
+
+    details.accordion summary::marker {
+      display: none;
+    }
+
+    details.accordion summary::before {
+      position: absolute;
+      content: '+';
+      right: 1.5rem;
+      top: 1.35rem;
+      color: #000;
+      font-size: 1.6rem;
+      line-height: 1;
+      font-weight: normal;
+    }
+
+    details.accordion[open] summary::before {
+      content: '-';
+    }
+    
+    details.accordion .content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+    
+    details.accordion pre[class*="language-"] {
+    	margin-bottom: 0 !important;
+    }
+    /* Accordion finish */
+</style>
+
+<!-- Start VWO SmartCode -->
+<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/760841.js" id="vwoCode"></script>
+<!-- End VWO SmartCode -->
+
+<!-- 
+<script>
+  (function(){
+    window.ldfdr = window.ldfdr || {};
+    (function(d, s, ss, fs){
+      fs = d.getElementsByTagName(s)[0];
+      function ce(src){
+        var cs  = d.createElement(s);
+        cs.src = src;
+        setTimeout(function(){fs.parentNode.insertBefore(cs,fs)}, 1);
+      }
+      ce(ss);
+    })(document, 'script', 'https://sc.lfeeder.com/lftracker_v1_YEgkB8lGYxWaep3Z.js');
+  })();
+</script> -->
+
+<!-- 
+<script>
+"use strict";
+//if (window.location.search.indexOf('driftDebug') > -1) {
+    !function() {
+        var t = window.driftt = window.drift = window.driftt || [];
+        if (!t.init) {
+            if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+            t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+                t.factory = function(e) {
+                return function() {
+                    var n = Array.prototype.slice.call(arguments);
+                    return n.unshift(e), t.push(n), t;
+                };
+            }, t.methods.forEach(function(e) {
+                t[e] = t.factory(e);
+            }), t.load = function(t) {
+                var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                var i = document.getElementsByTagName("script")[0];
+                i.parentNode.insertBefore(o, i);
+            };
+        }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('st8y3cgsppen');
+//}
+</script> -->
+
+<style>:root {--ghost-accent-color: #15171A;}</style>
+
+</head>
+<body class="post-template tag-ai tag-pgvector">
+  <div class="site-wrapper">
+    <div class="bg-ts-black sticky z-[999] top-0">
+    <div
+  id='announcement-banner'
+  class='w-full relative hidden theme__yellow min-h-46 before:h-full before:w-[50px] md:before:w-[140px] lg:before:w-[220px] md:before:bg-gradient-to-r before:absolute md:before:from-black after:h-full after:w-[50px] md:after:w-[140px] lg:after:w-[220px] md:after:bg-gradient-to-l after:z-0 after:right-0 after:top-0 after:absolute md:after:from-black'
+>
+  <div
+    class='z-10 flex justify-center align-center text-center relative px-2 md:px-24 xl:px-32 py-1 md:py-2'
+  >
+    <a href='#' target='_blank'>
+      <div class='flex md:block'>
+        <span class='left-side-content flex-none'></span>
+        <span class='mx-2 content'></span>
+        <span class='right-side-content flex-none'></span>
+      </div>
+    </a>
+  </div>
+
+
+</div>    <div id="navbar-container" class="flex w-full items-center justify-between p-6 max-w-[1440px] mx-auto text-white ">
+        <div class="flex items-center gap-10">
+            <a href="https://timescale.com">
+    <div class="flex items-center gap-2">
+        <span><svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_16925_36)">
+<path d="M16.4868 17.1021L16.4849 13.971C16.4849 13.7846 16.4113 13.6058 16.2799 13.4739L13.5793 10.7581L11.6953 12.8445L16.0982 17.2637C16.2417 17.4077 16.487 17.3055 16.487 17.1019L16.4868 17.1021Z" fill="url(#paint0_linear_16925_36)"/>
+<path d="M10.5211 24.6512L5.21403 19.3358L3.31738 21.4038L10.3378 28.4439C10.4813 28.5877 10.7264 28.4857 10.7264 28.2821V25.1485C10.7264 24.9619 10.6525 24.7831 10.5211 24.6512V24.6512Z" fill="url(#paint1_linear_16925_36)"/>
+<path d="M17.591 0.115691C8.06581 0.776174 0.453435 8.6901 0.0947406 18.267C-0.255356 27.6176 6.15063 35.529 14.7996 37.4698L3.26898 25.8942C3.10374 25.7283 3.01104 25.5031 3.01158 25.2685L3.02018 21.5289C3.02045 21.3728 3.2088 21.2946 3.31869 21.4051L5.21533 19.3371C5.09631 19.2176 5.09631 19.0237 5.21533 18.9045L7.0397 17.0776C7.15873 16.9584 7.35138 16.9587 7.47014 17.0776L13.6338 23.2644C13.8957 23.5274 14.0427 23.8839 14.0427 24.2555V30.7107C14.0427 31.6406 14.4108 32.5325 15.0659 33.19L19.7654 37.9072C20.9592 37.856 22.1229 37.692 23.2481 37.4272L17.2946 31.4494C17.0001 31.1538 16.8346 30.7528 16.8346 30.3347V24.0967C16.8346 23.074 16.43 22.0931 15.7094 21.3701L9.45357 15.0908C9.33454 14.9713 9.33454 14.7774 9.45384 14.6579L11.2656 12.845C11.3846 12.7258 11.5773 12.7261 11.696 12.8453L13.58 10.7589C13.5448 10.7185 13.5115 10.6742 13.4782 10.6284C12.9403 9.89968 12.6133 8.69792 12.9946 7.3427C13.2229 6.4751 13.6972 5.82082 14.5715 5.02576C14.6483 4.9559 14.7695 4.9524 14.8477 5.02036L17.1122 6.98967L17.5582 7.3783C17.7296 7.52744 17.9343 7.63317 18.1549 7.68576L25.2152 9.37027C25.2976 9.38969 25.3734 9.43203 25.4331 9.49028L32.6851 16.7521C32.8117 16.8737 32.8837 17.0434 32.8837 17.2197V18.7637C32.8837 19.0011 32.824 19.2349 32.7101 19.4428L29.1213 26.0061C28.9649 26.2936 28.6148 26.4139 28.316 26.2831L26.6617 25.5595H20.6158C20.2273 25.5595 19.9127 25.8756 19.9127 26.2653V28.9711C19.9127 29.3436 20.0594 29.7012 20.3208 29.9655L26.5828 36.299C33.1774 33.3521 37.7764 26.7133 37.7764 18.9962C37.7764 8.09758 28.6046 -0.648893 17.5899 0.114882L17.591 0.115691Z" fill="#F5FF80"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_16925_36" x1="16.5319" y1="14.0686" x2="13.4791" y2="14.0234" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5FF80" stop-opacity="0"/>
+<stop offset="1" stop-color="#F5FF80"/>
+</linearGradient>
+<linearGradient id="paint1_linear_16925_36" x1="10.6624" y1="23.9233" x2="6.85838" y2="23.9233" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5FF80" stop-opacity="0"/>
+<stop offset="0.96" stop-color="#F5FF80"/>
+</linearGradient>
+<clipPath id="clip0_16925_36">
+<rect width="37.8577" height="38" rx="18.9288" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span>
+        <span class="block sm:hidden xl:block"><svg xmlns="http://www.w3.org/2000/svg" width="119" height="20" viewBox="0 0 119 20" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16.9202 3.82773C17.3128 4.20394 17.7833 4.39189 18.3325 4.39189C18.8816 4.39189 19.3445 4.20394 19.7211 3.82773C20.0974 3.43593 20.2859 2.95795 20.2859 2.39379C20.2859 1.82962 20.0977 1.39076 19.7211 1.03044C19.3445 0.65423 18.8816 0.466278 18.3325 0.466278C17.7833 0.466278 17.3128 0.65423 16.9202 1.03044C16.5439 1.39076 16.3555 1.84551 16.3555 2.39379C16.3555 2.94206 16.5436 3.43593 16.9202 3.82773Z" fill="white"/>
+<path d="M19.9715 5.96222H16.6699V19.1523H19.9715V5.96222Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.76899 19.1523H9.17643V3.97728H14.4689V0.937439H0.476562V3.97728H5.76899V19.1523Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M22.6445 19.1522V6.06804H25.3637L25.6109 7.82073C26.0066 7.17902 26.5835 6.66044 27.3415 6.26531C28.0996 5.85384 28.9567 5.6481 29.9125 5.6481C30.8684 5.6481 31.6349 5.85384 32.3109 6.26531C32.9865 6.67678 33.5055 7.26101 33.8685 8.01799C34.2475 7.32666 34.8243 6.75907 35.599 6.31462C36.3901 5.87017 37.2884 5.6481 38.2937 5.6481C39.6452 5.6481 40.7244 6.09255 41.5322 6.98115C42.3562 7.8534 42.7683 9.02186 42.7683 10.4868V19.1519H39.4062V10.6351C39.4062 9.99305 39.2168 9.48295 38.8375 9.10446C38.4752 8.70932 37.9807 8.51206 37.3545 8.51206C36.481 8.51206 35.7642 8.76711 35.2037 9.27721C34.6598 9.78731 34.3881 10.4375 34.3881 11.2275V19.1519H31.026V10.6351C31.026 9.99305 30.8366 9.48295 30.4573 9.10446C30.0949 8.70932 29.6005 8.51206 28.9742 8.51206C28.1005 8.51206 27.3921 8.76711 26.8483 9.27721C26.3044 9.78731 26.0327 10.4375 26.0327 11.2275V19.1519H22.6457L22.6445 19.1522Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M57.5461 12.52C57.5294 11.1295 57.2487 9.91847 56.704 8.88765C56.1596 7.84059 55.4086 7.03867 54.4509 6.4825C53.4935 5.92634 52.3877 5.6481 51.1329 5.6481C49.8782 5.6481 48.7229 5.94258 47.7161 6.53183C46.7092 7.10454 45.9166 7.9224 45.3388 8.98631C44.7778 10.0334 44.4971 11.2444 44.4971 12.6187C44.4971 13.993 44.786 15.13 45.3637 16.1774C45.9415 17.2082 46.7502 18.0179 47.7901 18.6072C48.8467 19.1799 50.0432 19.4663 51.3805 19.4663C52.9485 19.4663 54.2691 19.0734 55.3421 18.2883C56.108 17.7159 56.6931 16.9811 57.0973 16.0838L54.0685 15.2795C53.8528 15.6838 53.5508 16.0074 53.1633 16.2514C52.6845 16.5459 52.0985 16.6929 51.4054 16.6929C50.4314 16.6929 49.6227 16.3819 48.979 15.7602C48.3351 15.1387 47.9473 14.3203 47.815 13.306H57.5461V12.5203V12.52ZM47.9634 11.072C48.1782 10.2539 48.566 9.61587 49.1274 9.15746C49.6885 8.68281 50.357 8.44578 51.1329 8.44578C51.9089 8.44578 52.5279 8.67499 53.0395 9.1331C53.5514 9.59121 53.898 10.2373 54.0794 11.072H47.9637H47.9634Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M64.6665 19.466C62.7618 19.466 61.2961 19.0731 60.2691 18.2877C59.5567 17.743 59.0719 17.0328 58.8135 16.1575L61.9083 15.3382C62.0201 15.75 62.2436 16.0787 62.5794 16.3242C63.0431 16.6352 63.656 16.7904 64.418 16.7904C65.0638 16.7904 65.5607 16.6758 65.9084 16.4469C66.2561 16.2014 66.4302 15.8661 66.4302 15.4407C66.4302 15.1625 66.356 14.9498 66.2068 14.8028C66.074 14.6391 65.9169 14.5245 65.7345 14.4592C65.5525 14.3774 65.188 14.2466 64.6415 14.0664L62.9773 13.5265C62.0828 13.2483 61.3375 12.9619 60.7416 12.6674C60.1619 12.3567 59.6897 11.9557 59.3256 11.4648C58.9779 10.9577 58.8037 10.3275 58.8037 9.57496C58.8037 8.38051 59.2507 7.43151 60.1452 6.72795C61.0397 6.00785 62.298 5.6481 63.9215 5.6481C65.5449 5.6481 66.795 6.04906 67.772 6.85068C68.5262 7.44685 69.0419 8.24064 69.319 9.23266L66.3496 10.0186C66.2533 9.48984 66.0153 9.08828 65.6353 8.81425C65.2048 8.48699 64.6333 8.32336 63.9211 8.32336C63.3579 8.32336 62.9192 8.42984 62.6043 8.6425C62.2895 8.85516 62.1324 9.14964 62.1324 9.52593C62.1324 9.78762 62.2152 10.0087 62.3806 10.1886C62.5629 10.3522 62.7532 10.4749 62.952 10.5568C63.1509 10.6386 63.4986 10.7613 63.9954 10.9249L65.5111 11.4405C66.5377 11.7677 67.3494 12.095 67.9456 12.4223C68.5417 12.733 68.9972 13.1339 69.312 13.6248C69.6433 14.0995 69.8089 14.7212 69.8089 15.4901C69.8089 16.7335 69.3534 17.7072 68.4424 18.4108C67.5315 19.1143 66.2728 19.4663 64.6662 19.4663" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M73.9611 18.5825C74.9976 19.1718 76.2152 19.4663 77.6135 19.4663C79.3741 19.4663 80.8219 18.9672 81.9573 17.9692C82.6636 17.3481 83.1823 16.594 83.5128 15.7066L80.3658 14.868C80.1883 15.284 79.9372 15.6387 79.6127 15.9319C79.0864 16.4066 78.4198 16.6436 77.6135 16.6436C76.577 16.6436 75.738 16.2673 75.0965 15.5147C74.4547 14.7621 74.1338 13.7476 74.1338 12.4713C74.1338 11.195 74.4465 10.2704 75.0717 9.5506C75.6968 8.81426 76.5195 8.44608 77.5397 8.44608C78.3621 8.44608 79.0532 8.69153 79.6127 9.18243C80.0077 9.51751 80.2917 9.93381 80.4653 10.4319L83.6447 9.58459C83.4971 9.11746 83.2881 8.6807 83.0183 8.27433C82.4757 7.43993 81.7353 6.79352 80.7974 6.33542C79.8598 5.87731 78.7819 5.6481 77.5645 5.6481C76.2482 5.6481 75.0717 5.92634 74.0352 6.4825C73.015 7.03867 72.2086 7.83246 71.6167 8.86328C71.0409 9.8941 70.7529 11.0967 70.7529 12.4713C70.7529 13.8459 71.0242 15.0157 71.5671 16.0793C72.1264 17.1429 72.9245 17.9773 73.9611 18.5828" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M95.2276 6.065L94.9302 8.02858C94.5506 7.29224 93.9564 6.71141 93.1476 6.28609C92.355 5.86076 91.4555 5.6481 90.4482 5.6481C89.2926 5.6481 88.2526 5.94258 87.3282 6.53183C86.4202 7.10454 85.7104 7.91428 85.1985 8.96164C84.6865 9.99246 84.4307 11.1704 84.4307 12.4957C84.4307 13.821 84.6947 15.0647 85.2233 16.128C85.7514 17.1754 86.4779 17.9933 87.4023 18.5825C88.3433 19.1718 89.4 19.4663 90.5721 19.4663C91.4637 19.4663 92.256 19.2945 92.9495 18.9507C93.6429 18.6072 94.1876 18.1325 94.5837 17.527V19.0734H97.9513V6.0653H95.2276V6.065ZM93.6429 15.5391C93.032 16.3245 92.223 16.717 91.2163 16.717C90.2097 16.717 89.4167 16.3323 88.7895 15.5635C88.1625 14.7778 87.8487 13.7635 87.8487 12.5197C87.8487 11.2759 88.1625 10.3269 88.7895 9.57436C89.4167 8.80523 90.2343 8.42082 91.2409 8.42082C92.2475 8.42082 93.0323 8.79711 93.6432 9.54969C94.2705 10.3026 94.584 11.2844 94.584 12.4951C94.584 13.7058 94.2705 14.7531 93.6432 15.5388" fill="white"/>
+<path d="M103.611 0.937439H100.31V19.1523H103.611V0.937439Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M118.466 12.5201C118.449 11.1295 118.169 9.91853 117.624 8.88771C117.08 7.84065 116.328 7.03873 115.371 6.48256C114.413 5.9264 113.308 5.64816 112.053 5.64816C110.798 5.64816 109.643 5.94264 108.636 6.53189C107.629 7.10461 106.837 7.92246 106.259 8.98637C105.698 10.0334 105.417 11.2444 105.417 12.6188C105.417 13.9931 105.706 15.1301 106.284 16.1774C106.861 17.2083 107.67 18.018 108.71 18.6072C109.767 19.18 110.963 19.4663 112.3 19.4663C113.868 19.4663 115.189 19.0735 116.262 18.2884C117.028 17.716 117.613 16.9812 118.017 16.0839L114.988 15.2796C114.773 15.6838 114.471 16.0075 114.083 16.2514C113.604 16.5459 113.018 16.693 112.325 16.693C111.351 16.693 110.543 16.382 109.899 15.7602C109.255 15.1388 108.867 14.3203 108.735 13.3061H118.466V12.5204V12.5201ZM108.883 11.0721C109.098 10.2539 109.486 9.61593 110.047 9.15752C110.608 8.68287 111.277 8.44584 112.053 8.44584C112.829 8.44584 113.448 8.67505 113.959 9.13316C114.471 9.59127 114.818 10.2374 114.999 11.0721H108.884H108.883Z" fill="white"/>
+</svg></span>
+    </div>
+</a>            <nav class="items-center gap-8 lg:gap-10 hidden sm:flex">
+    <div id="products-dropdown-trigger" class="nav-group-link">
+        <p>Products</p>
+        <span><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        <div id="products-dropdown" class="hidden !cursor-default">
+    <div class="w-full absolute dropdown font-PP-Mori left-0 text-black">
+        <div class="w-full bg-white">
+            <div class="max-w-[1440px] mx-auto p-6 pb-10">
+                <div class="flex flex-row gap-14 lg:gap-20">
+                    <div class="w-[367px]">
+                        <p class="text-ts-black300 font-bold">Products</p>
+                        <div class="mt-3 flex flex-col gap-4">
+                            <div class="dropdown-card">
+                                <div class='dropdown-card__title'>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.56628 9.66665V9.66177L5.56675 9.65691C5.56937 9.63014 5.56937 9.60317 5.56675 9.57639L5.56215 9.52936L7.48485 7.60665H7.87436L9.00628 8.73856V8.83237C9.00628 9.07094 9.10101 9.30084 9.26988 9.46972C9.43866 9.6385 9.66758 9.73332 9.90628 9.73332C10.145 9.73332 10.3739 9.6385 10.5427 9.46972C10.7115 9.30093 10.8063 9.07201 10.8063 8.83332V8.7388L13.2913 6.23332H13.3329C13.5109 6.23332 13.685 6.18054 13.833 6.08164C13.981 5.98275 14.0963 5.84219 14.1644 5.67773C14.2326 5.51328 14.2504 5.33232 14.2156 5.15774C14.1809 4.98316 14.0952 4.82279 13.9693 4.69692C13.8435 4.57106 13.6831 4.48534 13.5085 4.45061C13.3339 4.41589 13.153 4.43371 12.9885 4.50183C12.8241 4.56995 12.6835 4.6853 12.5846 4.83331C12.4857 4.98131 12.4329 5.15532 12.4329 5.33332V5.33821L12.4325 5.34306C12.4298 5.36984 12.4298 5.3968 12.4325 5.42358L12.4371 5.47061L9.9677 7.93999H9.77768L8.56628 6.70757V6.66665C8.56628 6.42796 8.47145 6.19904 8.30267 6.03026C8.13389 5.86147 7.90497 5.76665 7.66628 5.76665C7.42758 5.76665 7.19866 5.86147 7.02988 6.03026C6.8611 6.19904 6.76628 6.42796 6.76628 6.66665V6.70807L4.7077 8.76665H4.66628C4.42758 8.76665 4.19866 8.86147 4.02988 9.03026C3.8611 9.19904 3.76628 9.42796 3.76628 9.66665C3.76628 9.90535 3.8611 10.1343 4.02988 10.303C4.19866 10.4718 4.42758 10.5667 4.66628 10.5667C4.90497 10.5667 5.13389 10.4718 5.30267 10.3031C5.47145 10.1343 5.56628 9.90535 5.56628 9.66665Z" fill="#333333"/>
+<path d="M2.23294 1.99999V13.4333H13.6663C13.8166 13.4333 13.9607 13.493 14.067 13.5993C14.1732 13.7056 14.2329 13.8497 14.2329 14C14.2329 14.1503 14.1732 14.2944 14.067 14.4007C13.9607 14.507 13.8166 14.5667 13.6663 14.5667H1.66628C1.51599 14.5667 1.37185 14.507 1.26558 14.4007C1.15931 14.2944 1.09961 14.1503 1.09961 14V1.99999C1.09961 1.8497 1.15931 1.70556 1.26558 1.59929C1.37185 1.49302 1.51599 1.43332 1.66628 1.43332C1.81657 1.43332 1.9607 1.49302 2.06697 1.59929C2.17324 1.70556 2.23294 1.8497 2.23294 1.99999Z" fill="#333333"/>
+</svg>
+                                    <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>Timeseries and analytics</p>
+                                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                                </div>
+                                <p>PostgreSQL, but faster. Built for lightning-fast ingest and querying of time-based data.</p>
+                                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/products">Timeseries and analytics</a>
+                            </div>
+
+                            <div class="dropdown-card">
+                                <div class='dropdown-card__title'>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.52734 9.33366V6.66699C2.52733 6.60571 2.53939 6.54497 2.56283 6.48835C2.58627 6.43173 2.62064 6.38029 2.66397 6.33696C2.70731 6.29362 2.75875 6.25925 2.81537 6.23581C2.87199 6.21237 2.93278 6.20031 2.99406 6.20033C3.05534 6.20031 3.11603 6.21237 3.17265 6.23581C3.22927 6.25925 3.28071 6.29362 3.32405 6.33696C3.36738 6.38029 3.40175 6.43173 3.42519 6.48835C3.44864 6.54497 3.46069 6.60571 3.46068 6.66699V9.33366C3.46068 9.45743 3.41151 9.57613 3.32399 9.66364C3.23648 9.75116 3.11778 9.80033 2.99401 9.80033C2.87024 9.80033 2.75154 9.75116 2.66403 9.66364C2.57651 9.57613 2.52734 9.45743 2.52734 9.33366Z" fill="#333333"/>
+<path d="M12.5273 9.33366V6.66699C12.5273 6.60571 12.5394 6.54498 12.5628 6.48835C12.5863 6.43173 12.6206 6.38029 12.664 6.33696C12.7073 6.29362 12.7588 6.25925 12.8154 6.23581C12.872 6.21237 12.9328 6.20031 12.9941 6.20033C13.0553 6.20031 13.116 6.21237 13.1726 6.23581C13.2293 6.25925 13.2807 6.29362 13.324 6.33696C13.3674 6.38029 13.4017 6.43173 13.4252 6.48835C13.4486 6.54497 13.4607 6.60571 13.4607 6.66699V9.33366C13.4607 9.45743 13.4115 9.57613 13.324 9.66364C13.2365 9.75116 13.1178 9.80033 12.994 9.80033C12.8702 9.80033 12.7515 9.75116 12.664 9.66364C12.5765 9.57613 12.5273 9.45743 12.5273 9.33366Z" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.124 2.0606C11.1159 2.12143 11.0958 2.18006 11.0649 2.23311L10.5247 3.16758L10.6373 3.27619C11.0031 3.62931 11.2941 4.05251 11.4929 4.52054C11.6916 4.98857 11.794 5.49184 11.794 6.00032V11.3337C11.794 11.395 11.782 11.4557 11.7585 11.5123C11.7351 11.5689 11.7007 11.6204 11.6574 11.6637C11.614 11.707 11.5626 11.7414 11.506 11.7648C11.4494 11.7883 11.3886 11.8003 11.3273 11.8003H9.79401V14.0003C9.79401 14.1241 9.74484 14.2428 9.65733 14.3303C9.56981 14.4178 9.45111 14.467 9.32734 14.467C9.20358 14.467 9.08488 14.4178 8.99736 14.3303C8.90984 14.2428 8.86068 14.1241 8.86068 14.0003V11.8003H7.12734V14.0003C7.12734 14.1241 7.07818 14.2428 6.99066 14.3303C6.90314 14.4178 6.78444 14.467 6.66068 14.467C6.53691 14.467 6.41821 14.4178 6.33069 14.3303C6.24318 14.2428 6.19401 14.1241 6.19401 14.0003V11.8003H4.66062C4.59934 11.8003 4.53866 11.7883 4.48204 11.7648C4.42542 11.7414 4.37398 11.707 4.33064 11.6637C4.28731 11.6204 4.25294 11.5689 4.2295 11.5123C4.20605 11.4557 4.19399 11.3949 4.19401 11.3337V6.00033C4.194 5.49184 4.29643 4.98857 4.49517 4.52054C4.69391 4.05251 4.98489 3.62931 5.35076 3.27619L5.46328 3.16758L4.92309 2.23311C4.89223 2.18006 4.87215 2.12143 4.86399 2.0606C4.85583 1.99976 4.85976 1.93792 4.87555 1.8786C4.89134 1.81929 4.91868 1.76368 4.956 1.71495C4.99332 1.66622 5.03989 1.62534 5.09304 1.59464C5.14619 1.56394 5.20487 1.54403 5.26573 1.53606C5.32659 1.52808 5.38842 1.5322 5.44769 1.54816C5.50695 1.56413 5.56249 1.59163 5.6111 1.6291C5.65972 1.66656 5.7008 1.71384 5.73134 1.76709L6.23269 2.63436L6.39894 2.55627C6.89802 2.32186 7.44263 2.20032 7.99401 2.20032C8.54539 2.20032 9.09 2.32186 9.58908 2.55627L9.75533 2.63436L10.257 1.7665C10.2876 1.71326 10.3283 1.66656 10.3769 1.6291C10.4255 1.59163 10.4811 1.56413 10.5403 1.54816C10.5996 1.5322 10.6614 1.52808 10.7223 1.53606C10.7831 1.54403 10.8418 1.56394 10.895 1.59464C10.9481 1.62534 10.9947 1.66622 11.032 1.71495C11.0693 1.76368 11.0967 1.81929 11.1125 1.8786C11.1283 1.93792 11.1322 1.99976 11.124 2.0606ZM5.12734 10.867H10.8607V7.13366H5.12734V10.867ZM5.12734 6.00033V6.20033H10.8607V6.00033C10.8607 5.24004 10.5587 4.51089 10.021 3.97329C9.48345 3.43568 8.7543 3.13366 7.99401 3.13366C7.23372 3.13366 6.50457 3.43568 5.96697 3.97329C5.42937 4.51089 5.12734 5.24004 5.12734 6.00033Z" fill="#333333"/>
+</svg>
+                                    <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>Vector (AI/ML)</p>
+                                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                                </div>
+                                <p>PostgreSQL for AI. Seamlessly build RAG, search, and AI agents with the pgvector, pgvectorscale, and pgai extensions.</p>
+                                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/ai">Vector (AI/ML)</a>
+                            </div>
+
+                            <div class="dropdown-card">
+                                <div class='dropdown-card__title'>
+                                    <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M9.21262 1.40151C9.24291 1.15924 9.10984 0.926002 8.88588 0.828779C8.66191 0.731556 8.40065 0.793625 8.24435 0.981193L1.57768 8.98119C1.44106 9.14514 1.41161 9.37332 1.50213 9.56658C1.59265 9.75984 1.78679 9.8833 2.0002 9.8833H7.37717L6.78778 14.5984C6.7575 14.8407 6.89056 15.0739 7.11453 15.1711C7.3385 15.2684 7.59975 15.2063 7.75606 15.0187L14.4227 7.01873C14.5593 6.85478 14.5888 6.6266 14.4983 6.43334C14.4078 6.24008 14.2136 6.11663 14.0002 6.11663H8.62323L9.21262 1.40151ZM8.0002 8.7833H3.17447L7.88843 3.12655L7.45445 6.59841C7.43488 6.75495 7.48348 6.91235 7.58788 7.03062C7.69228 7.14889 7.84245 7.21663 8.0002 7.21663H12.8259L8.11197 12.8734L8.54596 9.40151C8.56552 9.24498 8.51693 9.08757 8.41253 8.9693C8.30812 8.85104 8.15796 8.7833 8.0002 8.7833Z'
+    fill='#755BFF'
+  />
+</svg>                                    <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>Dynamic PostgreSQL (Early Access)</p>
+                                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                                </div>
+                                <p>PostgreSQL managed services with the benefits of serverless but none of the problems.</p>
+                                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/dynamic-postgresql">Dynamic PostgreSQL </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 max-w-[340px]">
+                        <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px]">Deployment options & services</p>
+                        <div class="mt-3 flex flex-col gap-4">
+                            <div class="py-[10px]">
+                                <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Timescale Cloud</p>
+                                <span class="text-ts-grey-400 text-sm">A reliable and worry-free PostgreSQL cloud for your business workloads.</span>
+                                <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] text-clearPurple marker:text-clearPurple">
+                                    <li><a href="https://www.timescale.com/cloud" class="dropdown-link">For AWS</a></li>
+                                    <li><a href="https://www.timescale.com/mst-signup" class="dropdown-link">For GCP and Azure</a></li>
+                                </ul>
+                            </div>
+                            <div class="py-[10px]">
+                                <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Support Services</p>
+                                <span class="text-ts-grey-400 text-sm">Support options to adapt to your use case, infrastructure, and budget.</span>
+                                <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                                    <li><a href="https://www.timescale.com/support" class="dropdown-link">Cloud support</a></li>
+                                    <li><a href="https://www.timescale.com/self-managed-support" class="dropdown-link">Self-managed support</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 max-w-[340px]">
+                        <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px]"></p>
+                        <div class="mt-3 flex flex-col gap-4">
+                            <div class="py-[10px]">
+                                <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Open-Source Extensions and Tools</p>
+                                <span class="text-ts-grey-400 text-sm">Open-source PostgreSQL extensions you can run on your own instances.</span>
+                                <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                                    <li><a href="https://github.com/timescale/timescaledb" class="dropdown-link">timescaledb</a></li>
+                                    <li><a href="https://github.com/timescale/pgvectorscale/" class="dropdown-link">pgvectorscale</a></li>
+                                    <li><a href="https://github.com/timescale/pgai" class="dropdown-link">pgai</a></li>
+                                    <li><a href="https://github.com/timescale/timescaledb-toolkit" class="dropdown-link">timescaledb-toolkit</a></li>
+                                    <li><a href="https://github.com/timescale/pgspot" class="dropdown-link">pgspot</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="lg:leading-6 font-PP-Mori leading-7 text-ts-black mt-4">Timescale is PostgreSQL made <span class="font-PP-Mori-Book text-base italic font-bold">Powerful</span>.</p>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <div id="solutions-dropdown-trigger" class="nav-group-link">
+        <p>Solutions</p>
+        <span><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        <div id="solutions-dropdown" class=" hidden !cursor-default">
+    <div class="dropdown w-full absolute font-PP-Mori left-0 text-black">
+        <div class="w-full bg-white">
+            <div class="max-w-[1440px] mx-auto p-6 pb-10">
+                <div class="flex flex-row gap-8 w-full">
+                    <div class="flex flex-col gap-3 md:min-w-[300px] border-r border-ts-black300 pr-8 mr-8">
+                        <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px]">Industries that rely on us</p>
+                        <ul class="flex flex-col gap-1.5">
+                            <li class="text-clearPurple"><a href="https://www.timescale.com/crypto" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Crypto and finance</span></a></li>
+                            <li class="text-clearPurple"><a href="https://www.timescale.com/energy" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Energy and environment</span></a></li>
+                            <li class="text-clearPurple"><a href="https://www.timescale.com/transportation-and-logistics" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Transportation and logistics</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-3 md:min-w-[300px]">
+                        <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px]">Featured articles</p>
+                        <div class="flex flex-row items-center gap-8">
+                    <div class="flex group flex-row bg-ts-grey-100 w-full rounded-[8px] overflow-hidden hover:bg-[#E8EDFE] transition-all duration-300 relative">
+                        <div class="min-w-[170px] h-[175px] bg-grey">
+                            <img src=https://www.timescale.com/blog/assets/images/iot.png?v=2308f59886 class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5 pr-6 flex flex-col justify-between w-full">
+                            <p>PostgreSQL for Industrial IoT Data</p>
+                            <div class="w-full flex flex-row items-center justify-between ">
+                                <p class="font-PP-Mori-Bold text-base lg:leading-6 font-PP-Mori leading-7 transition duration-300 group-hover:text-ts-black">Read now</p>
+                                <span class="[&>svg>path]:fill-ts-black transition-all duration-500 group-hover:translate-x-2"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                            </div>
+                        </div>
+                        <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/blog/postgresql-for-everything-industrial-iot-data/">PostgreSQL for Industrial IoT Data</a>
+                    </div>
+                    <div class="flex group flex-row bg-ts-grey-100 w-full rounded-[8px] overflow-hidden hover:bg-[#E8EDFE] transition-all duration-300 relative">
+                        <div class="min-w-[170px] h-[175px] bg-grey">
+                            <img src=https://www.timescale.com/blog/assets/images/open-sauced.png?v=2308f59886 class="w-full h-full object-cover" />
+                        </div>
+                        <div class="p-5 pr-6 flex flex-col justify-between">
+                            <p>How OpenSauced Is Building a Copilot for Git History With pgvector and Timescale</p>
+                            <div class="w-full flex flex-row items-center justify-between ">
+                                <p class="font-PP-Mori-Bold text-base lg:leading-6 font-PP-Mori leading-7 transition duration-300 group-hover:text-ts-black">Read now</p>
+                                <span class="[&>svg>path]:fill-ts-black transition-all duration-500 group-hover:translate-x-2"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                            </div>
+                        </div>
+                        <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/blog/how-opensauced-is-building-a-copilot-for-git-history-with-pgvector-and-timescale/">How OpenSauced Is Building a Copilot for Git History With pgvector and Timescale</a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <a href="https://timescale.com/case-studies" class="hidden ml:block link-primary font-semibold">Customers</a>
+
+    <div id="developers-dropdown-trigger" class="nav-group-link">
+        <p>Developers</p>
+        <span><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        <div id="developers-dropdown" class="hidden !cursor-default">
+    <div class="dropdown w-full absolute font-PP-Mori left-0 text-black">
+        <div class="w-full bg-white">
+            <div class="max-w-[1440px] mx-auto p-6 pb-10">
+                <div class="flex flex-row gap-14 w-full">
+                    <div class="w-[367px]">
+                        <div class="flex flex-col gap-4">
+                            <div class="dropdown-card">
+                                <div class='dropdown-card__title'>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.5502 3.33335C14.5502 2.29321 13.707 1.45001 12.6669 1.45001H3.33353C2.29339 1.45001 1.4502 2.29321 1.4502 3.33335V12.6667C1.4502 13.7068 2.29339 14.55 3.33353 14.55H12.6669C13.707 14.55 14.5502 13.7068 14.5502 12.6667V3.33335ZM2.5502 3.33335C2.5502 2.90072 2.90091 2.55001 3.33353 2.55001H12.6669C13.0995 2.55001 13.4502 2.90072 13.4502 3.33335V5.45001H2.5502V3.33335ZM6.55019 6.55001H13.4502V12.6667C13.4502 13.0993 13.0995 13.45 12.6669 13.45H6.55019V6.55001ZM5.4502 6.55001V13.45H3.33353C2.90091 13.45 2.5502 13.0993 2.5502 12.6667V6.55001H5.4502Z" fill="#333333"/>
+</svg>
+                                    <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>Timescale Docs</p>
+                                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                                </div>
+                                <p>Start using and integrating Timescale for your demanding data needs.</p>
+                                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://docs.timescale.com">Timescale Docs</a>
+                            </div>
+                            <div class="dropdown-card group">
+                                <div class='flex gap-2 items-center transition duration-500'>                      
+                                    <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>AI/Vector <span class="hidden md:block absolute opacity-0 group-hover:opacity-100 group-hover:-right-[20px] transition-all duration-500 right-0 [&>svg>path]:fill-clearPurple"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span></p>
+                                </div>
+                                <p>PostgreSQL engineered for fast search with high recall on millions of vector embeddings.</p>
+                                <div class="flex flex-col">
+                                    <a href="https://docs.timescale.com/ai/latest/" class="relative z-10 mt-2 cursor-pointer inline-flex gap-2 items-center text-ts-grey-400 hover:text-ts-black transition duration-300">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.52734 9.33366V6.66699C2.52733 6.60571 2.53939 6.54497 2.56283 6.48835C2.58627 6.43173 2.62064 6.38029 2.66397 6.33696C2.70731 6.29362 2.75875 6.25925 2.81537 6.23581C2.87199 6.21237 2.93278 6.20031 2.99406 6.20033C3.05534 6.20031 3.11603 6.21237 3.17265 6.23581C3.22927 6.25925 3.28071 6.29362 3.32405 6.33696C3.36738 6.38029 3.40175 6.43173 3.42519 6.48835C3.44864 6.54497 3.46069 6.60571 3.46068 6.66699V9.33366C3.46068 9.45743 3.41151 9.57613 3.32399 9.66364C3.23648 9.75116 3.11778 9.80033 2.99401 9.80033C2.87024 9.80033 2.75154 9.75116 2.66403 9.66364C2.57651 9.57613 2.52734 9.45743 2.52734 9.33366Z" fill="#333333"/>
+<path d="M12.5273 9.33366V6.66699C12.5273 6.60571 12.5394 6.54498 12.5628 6.48835C12.5863 6.43173 12.6206 6.38029 12.664 6.33696C12.7073 6.29362 12.7588 6.25925 12.8154 6.23581C12.872 6.21237 12.9328 6.20031 12.9941 6.20033C13.0553 6.20031 13.116 6.21237 13.1726 6.23581C13.2293 6.25925 13.2807 6.29362 13.324 6.33696C13.3674 6.38029 13.4017 6.43173 13.4252 6.48835C13.4486 6.54497 13.4607 6.60571 13.4607 6.66699V9.33366C13.4607 9.45743 13.4115 9.57613 13.324 9.66364C13.2365 9.75116 13.1178 9.80033 12.994 9.80033C12.8702 9.80033 12.7515 9.75116 12.664 9.66364C12.5765 9.57613 12.5273 9.45743 12.5273 9.33366Z" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.124 2.0606C11.1159 2.12143 11.0958 2.18006 11.0649 2.23311L10.5247 3.16758L10.6373 3.27619C11.0031 3.62931 11.2941 4.05251 11.4929 4.52054C11.6916 4.98857 11.794 5.49184 11.794 6.00032V11.3337C11.794 11.395 11.782 11.4557 11.7585 11.5123C11.7351 11.5689 11.7007 11.6204 11.6574 11.6637C11.614 11.707 11.5626 11.7414 11.506 11.7648C11.4494 11.7883 11.3886 11.8003 11.3273 11.8003H9.79401V14.0003C9.79401 14.1241 9.74484 14.2428 9.65733 14.3303C9.56981 14.4178 9.45111 14.467 9.32734 14.467C9.20358 14.467 9.08488 14.4178 8.99736 14.3303C8.90984 14.2428 8.86068 14.1241 8.86068 14.0003V11.8003H7.12734V14.0003C7.12734 14.1241 7.07818 14.2428 6.99066 14.3303C6.90314 14.4178 6.78444 14.467 6.66068 14.467C6.53691 14.467 6.41821 14.4178 6.33069 14.3303C6.24318 14.2428 6.19401 14.1241 6.19401 14.0003V11.8003H4.66062C4.59934 11.8003 4.53866 11.7883 4.48204 11.7648C4.42542 11.7414 4.37398 11.707 4.33064 11.6637C4.28731 11.6204 4.25294 11.5689 4.2295 11.5123C4.20605 11.4557 4.19399 11.3949 4.19401 11.3337V6.00033C4.194 5.49184 4.29643 4.98857 4.49517 4.52054C4.69391 4.05251 4.98489 3.62931 5.35076 3.27619L5.46328 3.16758L4.92309 2.23311C4.89223 2.18006 4.87215 2.12143 4.86399 2.0606C4.85583 1.99976 4.85976 1.93792 4.87555 1.8786C4.89134 1.81929 4.91868 1.76368 4.956 1.71495C4.99332 1.66622 5.03989 1.62534 5.09304 1.59464C5.14619 1.56394 5.20487 1.54403 5.26573 1.53606C5.32659 1.52808 5.38842 1.5322 5.44769 1.54816C5.50695 1.56413 5.56249 1.59163 5.6111 1.6291C5.65972 1.66656 5.7008 1.71384 5.73134 1.76709L6.23269 2.63436L6.39894 2.55627C6.89802 2.32186 7.44263 2.20032 7.99401 2.20032C8.54539 2.20032 9.09 2.32186 9.58908 2.55627L9.75533 2.63436L10.257 1.7665C10.2876 1.71326 10.3283 1.66656 10.3769 1.6291C10.4255 1.59163 10.4811 1.56413 10.5403 1.54816C10.5996 1.5322 10.6614 1.52808 10.7223 1.53606C10.7831 1.54403 10.8418 1.56394 10.895 1.59464C10.9481 1.62534 10.9947 1.66622 11.032 1.71495C11.0693 1.76368 11.0967 1.81929 11.1125 1.8786C11.1283 1.93792 11.1322 1.99976 11.124 2.0606ZM5.12734 10.867H10.8607V7.13366H5.12734V10.867ZM5.12734 6.00033V6.20033H10.8607V6.00033C10.8607 5.24004 10.5587 4.51089 10.021 3.97329C9.48345 3.43568 8.7543 3.13366 7.99401 3.13366C7.23372 3.13366 6.50457 3.43568 5.96697 3.97329C5.42937 4.51089 5.12734 5.24004 5.12734 6.00033Z" fill="#333333"/>
+</svg>
+                                        Timescale Vector Docs
+                                    </a>
+                                    <a href="https://docs.timescale.com/use-timescale/latest/extensions/pgvector/" class="relative z-10 mt-2 cursor-pointer inline-flex gap-2 items-center text-ts-grey-400 hover:text-ts-black transition duration-300">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.28106 10.4966L4.5773 11.4226L5.50324 7.71882L11.9443 1.27776C12.3127 0.909401 12.8123 0.702457 13.3332 0.702457C13.8541 0.702457 14.3538 0.909401 14.7221 1.27776C15.0905 1.64612 15.2974 2.14573 15.2974 2.66667C15.2974 3.18761 15.0905 3.68722 14.7221 4.05558L8.28106 10.4966ZM7.4332 2.11667V3.21667H2.66654C2.45878 3.21667 2.25954 3.2992 2.11264 3.44611C1.96573 3.59301 1.8832 3.79225 1.8832 4.00001V13.3333C1.8832 13.5411 1.96573 13.7403 2.11264 13.8872C2.25954 14.0341 2.45878 14.1167 2.66654 14.1167H11.9999C12.2076 14.1167 12.4069 14.0341 12.5538 13.8872C12.7007 13.7403 12.7832 13.5411 12.7832 13.3333V8.56667H13.8832V13.3333C13.8832 13.8328 13.6848 14.3119 13.3316 14.6651C12.9784 15.0183 12.4994 15.2167 11.9999 15.2167H2.66654C2.16705 15.2167 1.68801 15.0183 1.33482 14.6651C0.981625 14.3119 0.783203 13.8328 0.783203 13.3333V4.00001C0.783203 3.50051 0.981625 3.02148 1.33482 2.66829C1.68801 2.31509 2.16705 2.11667 2.66654 2.11667H7.4332ZM13.3332 1.80246C13.104 1.80246 12.8842 1.89351 12.7221 2.05558L11.4595 3.3182L12.6817 4.54038L13.9443 3.27776C14.1064 3.11569 14.1974 2.89587 14.1974 2.66667C14.1974 2.43747 14.1064 2.21765 13.9443 2.05558C13.7822 1.89351 13.5624 1.80246 13.3332 1.80246ZM6.4965 8.28119L6.08911 9.91077L7.71868 9.50337L11.9039 5.3182L10.6817 4.09602L6.4965 8.28119Z" fill="#333333"/>
+</svg>
+                                        pgvector docs
+                                    </a>
+                                </div>
+                                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/ai">AI/Vector</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row">
+                        <div class="max-w-[340px] flex flex-col gap-1.5">
+                            <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Learn PostgreSQL</p>
+                            <p class="font-PP-Mori-Book text-base text-sm text-ts-grey-400 pb-[10px]">Timescale is PostgreSQL, but faster. Learn the PostgreSQL basics and scale your database performance to new heights</p>
+                            <ul class="list-disc pl-6 pt-1.5 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                                <li><a href="https://www.timescale.com/learn/time-series-basics" class="dropdown-link">Time series basics</a></li>
+                                <li><a href="https://www.timescale.com/learn/postgres-basics" class="dropdown-link">Postgres basics</a></li>
+                                <li><a href="https://www.timescale.com/learn/postgres-guides" class="dropdown-link">Postgres guides</a></li>
+                                <li><a href="https://www.timescale.com/learn/benchmarks" class="dropdown-link">Benchmarks</a></li>
+                                <li><a href="https://www.timescale.com/learn/postgres-cheat-sheet" class="dropdown-link">Postgres cheat sheet</a></li>
+                            </ul>
+                        </div>
+                        <div class="max-w-[340px] flex flex-col gap-1.5">
+                            <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Timescale benchmarks</p>
+                            <ul class="list-disc pl-6 pt-1.5 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                                <li><a href="https://www.timescale.com/blog/timescale-cloud-vs-amazon-rds-postgresql-up-to-350-times-faster-queries-44-faster-ingest-95-storage-savings-for-time-series-data/" class="dropdown-link">vs RDS PostgreSQL</a></li>
+                                <li><a href="https://www.timescale.com/blog/timescaledb-vs-amazon-timestream-6000x-higher-inserts-175x-faster-queries-220x-cheaper/" class="dropdown-link">vs Amazon Timestream</a></li>
+                                <li><a href="https://www.timescale.com/blog/timescaledb-vs-influxdb-for-time-series-data-timescale-influx-sql-nosql-36489299877/" class="dropdown-link">vs Influx</a></li>
+                                <li><a href="https://web-splash-git-chore-products-dropdown-timescale-company.vercel.app/learn/benchmarks" class="dropdown-link">vs MongoDB</a></li>
+                                <li><a href="https://www.timescale.com/blog/what-is-clickhouse-how-does-it-compare-to-postgresql-and-timescaledb-and-how-does-it-perform-for-time-series-data/" class="dropdown-link">vs ClickHouse</a></li>
+                                <li><a href="https://www.timescale.com/blog/what-we-learned-from-benchmarking-amazon-aurora-postgresql-serverless/#:~:text=Ingest%20Performance%20Comparison&text=Aurora%20was%20scaled%20up%20to,1%20ACU%2C%20but%20%F0%9F%A4%B7)." class="dropdown-link">vs Aurora</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5 border-l border-ts-black300 pl-12">
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.8 10.325C3.8 10.615 4.03505 10.85 4.325 10.85L9.575 10.85C9.86495 10.85 10.1 10.615 10.1 10.325C10.1 10.0351 9.86495 9.8 9.575 9.8H4.325C4.03505 9.8 3.8 10.0351 3.8 10.325Z" fill="#F5FF80"/>
+<path d="M3.8 7C3.8 7.28995 4.03505 7.525 4.325 7.525L7.475 7.525C7.76495 7.525 8 7.28995 8 7C8 6.71005 7.76495 6.475 7.475 6.475H4.325C4.03505 6.475 3.8 6.71005 3.8 7Z" fill="#F5FF80"/>
+<path d="M3.8 3.675C3.8 3.96495 4.03505 4.2 4.325 4.2L10.975 4.2C11.265 4.2 11.5 3.96495 11.5 3.675C11.5 3.38505 11.265 3.15 10.975 3.15L4.325 3.15C4.03505 3.15 3.8 3.38505 3.8 3.675Z" fill="#F5FF80"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.775C1 13.4515 1.54845 14 2.225 14L13.775 14C14.4516 14 15 13.4515 15 12.775V1.225C15 0.548451 14.4515 0 13.775 0H2.225C1.54845 0 1 0.548453 1 1.225V12.775ZM2.225 12.95C2.12835 12.95 2.05 12.8716 2.05 12.775L2.05 1.225C2.05 1.12835 2.12835 1.05 2.225 1.05L13.775 1.05C13.8717 1.05 13.95 1.12835 13.95 1.225V12.775C13.95 12.8716 13.8717 12.95 13.775 12.95H2.225Z" fill="#F5FF80"/>
+</svg>
+                            <span>Blog</span>
+                            <a href="https://www.timescale.com/blog" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Blog</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.49307 1.08988C8.40042 0.902165 8.20923 0.783325 7.99989 0.783325C7.79055 0.783325 7.59936 0.902165 7.5067 1.08988L5.57454 5.00421L1.25367 5.63577C1.04657 5.66605 0.874592 5.81125 0.810034 6.01035C0.745476 6.20946 0.799526 6.42795 0.949466 6.57399L4.07557 9.61881L3.3378 13.9204C3.30241 14.1267 3.38724 14.3353 3.55663 14.4583C3.72602 14.5814 3.95058 14.5976 4.13588 14.5001L7.99989 12.4681L11.8639 14.5001C12.0492 14.5976 12.2738 14.5814 12.4431 14.4583C12.6125 14.3353 12.6974 14.1267 12.662 13.9204L11.9242 9.61881L15.0503 6.57399C15.2002 6.42795 15.2543 6.20946 15.1897 6.01035C15.1252 5.81125 14.9532 5.66605 14.7461 5.63577L10.4252 5.00422L8.49307 1.08988ZM6.43307 5.7501L7.99989 2.57591L9.5667 5.7501C9.64674 5.91227 9.8014 6.02472 9.98034 6.05088L13.4849 6.56312L10.9495 9.03266C10.8197 9.15902 10.7605 9.34114 10.7911 9.51963L11.3894 13.0077L8.25588 11.3599C8.09562 11.2756 7.90415 11.2756 7.74389 11.3599L4.61039 13.0077L5.20864 9.51963C5.23925 9.34114 5.18004 9.15902 5.05031 9.03266L2.51485 6.56312L6.01943 6.05088C6.19838 6.02472 6.35303 5.91227 6.43307 5.7501Z" fill="#333333"/>
+</svg>
+                            <span>Tutorials</span>
+                            <a href="https://docs.timescale.com/tutorials/latest/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Tutorials</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.21634 1.45001C2.71685 1.45001 2.23782 1.64843 1.88462 2.00163C1.53143 2.35482 1.33301 2.83385 1.33301 3.33335V14C1.33301 14.2225 1.46701 14.423 1.67253 14.5081C1.87805 14.5933 2.11462 14.5462 2.27192 14.3889L4.77749 11.8833H12.5497C13.0492 11.8833 13.5282 11.6849 13.8814 11.3317C14.2346 10.9785 14.433 10.4995 14.433 10V3.33335C14.433 2.83385 14.2346 2.35482 13.8814 2.00163C13.5282 1.64843 13.0492 1.45001 12.5497 1.45001H3.21634ZM2.66244 2.77945C2.80934 2.63254 3.00859 2.55001 3.21634 2.55001H12.5497C12.7574 2.55001 12.9567 2.63254 13.1036 2.77945C13.2505 2.92635 13.333 3.12559 13.333 3.33335V10C13.333 10.2078 13.2505 10.407 13.1036 10.5539C12.9567 10.7008 12.7574 10.7833 12.5497 10.7833H4.54967C4.40381 10.7833 4.26391 10.8413 4.16077 10.9444L2.43301 12.6722V3.33335C2.43301 3.12559 2.51554 2.92635 2.66244 2.77945Z" fill="#333333"/>
+</svg>
+                            <span>Support</span>
+                            <a href="https://www.timescale.com/support" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Support</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.5287 8.60386L10.4996 8.5L10.4889 8.33189C11.0862 7.83662 11.5229 7.17381 11.7418 6.42779C11.9701 5.64976 11.9503 4.8199 11.685 4.05368C11.4197 3.28746 10.9222 2.62298 10.2617 2.15269C9.60114 1.68239 8.81045 1.42966 7.99961 1.42966C7.18876 1.42966 6.39808 1.68239 5.73756 2.15269C5.07704 2.62298 4.57953 3.28746 4.31425 4.05368C4.04896 4.8199 4.02909 5.64976 4.2574 6.42779C4.48571 7.20583 4.95085 7.89336 5.58811 8.39473L5.72416 8.50177L5.56346 8.56615C4.46032 9.00811 3.49778 9.74115 2.77847 10.6871C2.0592 11.6331 1.61008 12.7565 1.47901 13.9376C1.47081 14.0121 1.47737 14.0875 1.49831 14.1594C1.51925 14.2314 1.55415 14.2985 1.60103 14.357C1.69571 14.4751 1.83343 14.5507 1.98387 14.5673C2.13432 14.5838 2.28518 14.5399 2.40327 14.4452C2.52129 14.3506 2.59691 14.213 2.61351 14.0626C2.76265 12.735 3.39576 11.5084 4.39177 10.618C5.38779 9.72756 6.67695 9.23534 8.01294 9.23534C9.34893 9.23534 10.6381 9.72756 11.6341 10.618C12.6301 11.5084 13.2632 12.7345 13.4123 14.0622C13.4278 14.2013 13.4942 14.3301 13.5988 14.4233C13.7035 14.5164 13.8395 14.5675 13.9796 14.5667L14.0404 14.5676L14.0541 14.5657C14.1977 14.5459 14.3285 14.4718 14.4192 14.3584C14.5126 14.2417 14.556 14.0924 14.5402 13.9439C14.4084 12.7596 13.9569 11.6334 13.234 10.6861C12.5312 9.76521 11.5977 9.04708 10.5287 8.60386ZM7.99961 8.09999C7.45241 8.09999 6.91751 7.93773 6.46253 7.63372C6.00755 7.32972 5.65294 6.89762 5.44354 6.39208C5.23414 5.88654 5.17935 5.33025 5.2861 4.79357C5.39285 4.25689 5.65635 3.76392 6.04328 3.37699C6.4302 2.99007 6.92318 2.72657 7.45986 2.61982C7.99654 2.51306 8.55282 2.56785 9.05837 2.77725C9.56391 2.98666 9.996 3.34127 10.3 3.79624C10.604 4.25122 10.7663 4.78613 10.7663 5.33332C10.7663 6.06709 10.4748 6.7708 9.95594 7.28965C9.43709 7.8085 8.73337 8.09999 7.99961 8.09999Z" fill="#333333"/>
+</svg>
+                            <span>Community</span>
+                            <a href="https://www.timescale.com/community" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Community</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.21423 0.0499779C3.98769 0.411011 1.39243 3.08265 1.04172 6.33195C0.691011 9.72565 2.58485 12.7583 5.46067 13.9136C5.6711 13.9858 5.88153 13.8414 5.88153 13.5526V12.3973C5.88153 12.3973 5.60096 12.4695 5.25025 12.4695C4.26826 12.4695 3.84741 11.603 3.77726 11.0976C3.70712 10.8087 3.56684 10.5921 3.35641 10.3755C3.14598 10.3033 3.07584 10.3033 3.07584 10.2311C3.07584 10.0867 3.28627 10.0867 3.35641 10.0867C3.77726 10.0867 4.12797 10.5921 4.26826 10.8087C4.61897 11.3864 5.03982 11.5308 5.25025 11.5308C5.53082 11.5308 5.74124 11.4586 5.88153 11.3864C5.95167 10.881 6.1621 10.3755 6.58295 10.0867C4.96968 9.72565 3.77726 8.78697 3.77726 7.19842C3.77726 6.40415 4.12797 5.60988 4.61897 5.03223C4.54883 4.88781 4.47868 4.52678 4.47868 4.02134C4.47868 3.73251 4.47868 3.29927 4.68911 2.86603C4.68911 2.86603 5.6711 2.86603 6.65309 3.80472C7.0038 3.6603 7.4948 3.5881 7.98579 3.5881C8.47678 3.5881 8.96778 3.6603 9.38863 3.80472C10.3005 2.86603 11.3526 2.86603 11.3526 2.86603C11.4929 3.29927 11.4929 3.73251 11.4929 4.02134C11.4929 4.59899 11.4228 4.88781 11.3526 5.03223C11.8436 5.60988 12.1943 6.33195 12.1943 7.19842C12.1943 8.78697 11.0019 9.72565 9.38863 10.0867C9.80948 10.4477 10.0901 11.0976 10.0901 11.7474V13.6248C10.0901 13.8414 10.3005 14.058 10.581 13.9858C13.1763 12.9027 15 10.3033 15 7.27063C15 2.93824 11.4228 -0.455468 7.21423 0.0499779Z" fill="#333333"/>
+</svg>
+                            <span>Github</span>
+                            <a href="https://github.com/timescale/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Github</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.15789 3.68421C5.68558 3.68421 2.94453 3.68421 2.47368 3.68421C1.65947 3.68421 1 4.34368 1 5.15789C1 5.97211 1.65947 6.63158 2.47368 6.63158C2.94453 6.63158 5.68558 6.63158 6.15789 6.63158C6.97211 6.63158 7.63158 5.97211 7.63158 5.15789C7.63158 4.34368 6.97211 3.68421 6.15789 3.68421ZM7.63158 1.47368C7.63158 1.91432 7.63158 2.94737 7.63158 2.94737C7.63158 2.94737 6.53147 2.94737 6.15789 2.94737C5.34368 2.94737 4.68421 2.28789 4.68421 1.47368C4.68421 0.659474 5.34368 0 6.15789 0C6.97211 0 7.63158 0.659474 7.63158 1.47368ZM4.68421 8.8421C4.68421 9.31442 4.68421 12.0555 4.68421 12.5263C4.68421 13.3405 5.34368 14 6.15789 14C6.97211 14 7.63158 13.3405 7.63158 12.5263C7.63158 12.0555 7.63158 9.31442 7.63158 8.8421C7.63158 8.02789 6.97211 7.36842 6.15789 7.36842C5.34368 7.36842 4.68421 8.02789 4.68421 8.8421ZM2.47368 7.36842C2.91432 7.36842 3.94737 7.36842 3.94737 7.36842C3.94737 7.36842 3.94737 8.46853 3.94737 8.8421C3.94737 9.65632 3.28789 10.3158 2.47368 10.3158C1.65947 10.3158 1 9.65632 1 8.8421C1 8.02789 1.65947 7.36842 2.47368 7.36842ZM9.8421 10.3158C10.3144 10.3158 13.0555 10.3158 13.5263 10.3158C14.3405 10.3158 15 9.65632 15 8.8421C15 8.02789 14.3405 7.36842 13.5263 7.36842C13.0555 7.36842 10.3144 7.36842 9.8421 7.36842C9.02789 7.36842 8.36842 8.02789 8.36842 8.8421C8.36842 9.65558 9.02789 10.3158 9.8421 10.3158ZM8.36842 12.5263C8.36842 12.0857 8.36842 11.0526 8.36842 11.0526C8.36842 11.0526 9.46853 11.0526 9.8421 11.0526C10.6563 11.0526 11.3158 11.7121 11.3158 12.5263C11.3158 13.3405 10.6563 14 9.8421 14C9.02789 14 8.36842 13.3398 8.36842 12.5263ZM11.3158 5.15789C11.3158 4.68558 11.3158 1.94453 11.3158 1.47368C11.3158 0.659474 10.6563 0 9.8421 0C9.02789 0 8.36842 0.659474 8.36842 1.47368C8.36842 1.94453 8.36842 4.68558 8.36842 5.15789C8.36842 5.97211 9.02789 6.63158 9.8421 6.63158C10.6556 6.63158 11.3158 5.97137 11.3158 5.15789ZM13.5263 6.63158C13.0857 6.63158 12.0526 6.63158 12.0526 6.63158C12.0526 6.63158 12.0526 5.53147 12.0526 5.15789C12.0526 4.34368 12.7121 3.68421 13.5263 3.68421C14.3405 3.68421 15 4.34368 15 5.15789C15 5.97211 14.3398 6.63158 13.5263 6.63158Z" fill="#333333"/>
+</svg>
+                            <span>Slack</span>
+                            <a href="https://slack.timescale.com/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Slack</a>
+                        </div>
+                        <div class="group-link relative">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.5502 3.33335C14.5502 2.29321 13.707 1.45001 12.6669 1.45001H3.33353C2.29339 1.45001 1.4502 2.29321 1.4502 3.33335V12.6667C1.4502 13.7068 2.29339 14.55 3.33353 14.55H12.6669C13.707 14.55 14.5502 13.7068 14.5502 12.6667V3.33335ZM2.5502 3.33335C2.5502 2.90072 2.90091 2.55001 3.33353 2.55001H12.6669C13.0995 2.55001 13.4502 2.90072 13.4502 3.33335V5.45001H2.5502V3.33335ZM6.55019 6.55001H13.4502V12.6667C13.4502 13.0993 13.0995 13.45 12.6669 13.45H6.55019V6.55001ZM5.4502 6.55001V13.45H3.33353C2.90091 13.45 2.5502 13.0993 2.5502 12.6667V6.55001H5.4502Z" fill="#333333"/>
+</svg>
+                            <span>Forum</span>
+                            <a href="https://forum.timescale.com/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Forum</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <section class="w-full">
+    <div class="hidden lg:flex relative w-full h-full items-center gap-36 mt-[46px]">
+        <div class="flex flex-col gap-1">
+            <p class="text-base lg:leading-6 font-PP-Mori leading-7 text-ts-black">Subscribe to the Timescale Newsletter</p>
+            <p class="font-PP-Mori-Book text-sm text-ts-black300">By submitting, you acknowledge Timescale's <a href="https://www.timescale.com/legal/privacy" class="!underline">Privacy Policy</a></p>
+        </div>
+
+            <div class="min-w-[550px]">
+                <form id="newsletter" class="newsletter-form">
+                    <div id="newsletter-input-box" class="flex items-center form rounded-[22px] bg-ts-black200 px-1">
+                        <input id="email" type="text" class="newsletter-input bg-transparent text-ts-black h-[48px] w-full outline-none pl-5" placeholder="Your email" aria-describedby="newsletter-aria-label" aria-labelledby="newsletter-aria-label" value="">
+                        <button class="newsletter-submit-button btn-secondary h-[48px] !border-none -ml-5"><span>Subscribe</span></button>
+                    </div>
+                    <p class="newsletter-form-error !text-sm !text-ts-error800 hidden mt-1 align-center"></p>
+                </form>
+            </div>
+        
+    </div>
+
+    <div class="lg:hidden flex flex-col gap-4">
+        <p class="text-base lg:leading-6 font-PP-Mori leading-7 text-black">Subscribe to the Timescale Newsletter</p>
+        <form id="newsletter" class="newsletter-form max-w-[403px]">
+            <div id="newsletter-input-box" class="flex items-center form rounded-[22px] bg-ts-black200 px-1 border-1 border-ts-black200">
+                <input id="email" type="text" class="newsletter-input bg-transparent text-ts-black h-[48px] w-full outline-none pl-5" placeholder="Your email" aria-describedby="newsletter-aria-label" aria-labelledby="newsletter-aria-label" value="">
+                <button class="newsletter-submit-button btn-secondary h-[48px] !border-none -ml-5"><span>Subscribe</span></button>
+            </div>
+            <p class="newsletter-form-error !text-sm !text-ts-error800 hidden mt-1 align-center"></p>
+        </form>
+        <p class="font-PP-Mori inline-block text-xs leading-[17px] mt-1 !text-ts-black300">By submitting, you acknowledge Timescale's <a href="https://www.timescale.com/legal/privacy" class="!underline">Privacy Policy</a></p>
+    </div>
+</section>                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <a href="https://timescale.com/pricing" class="hidden md:block link-primary font-semibold">Pricing</a>
+</nav>        </div>
+        <div class="flex items-center gap-4">
+    <a href="https://www.timescale.com/contact" class="hidden sm:block link-primary font-semibold">Contact us</a>
+    <a href="https://console.cloud.timescale.com/login" class="hidden xl:block"><button class="btn-secondary">Login</button></a>
+    <a href="https://console.cloud.timescale.com/signup"><button class="hidden sm:block btn-primary">Try for free</button></a>
+    <img id="mobile-nav-trigger" class="cursor-pointer block lg:hidden" src="https://www.timescale.com/blog/assets/images/hamburger-icon.svg?v=2308f59886" alt="open mobile menu"/>
+</div>    </div>
+    <div id="mobile-menu" class="dropdown-mobile hidden">
+    <div class="flex flex-col px-4 gap-10" style='animation: opennav 0.3s'>
+        <div class="h-[88px] w-full relative">
+            <button class="icon-btn absolute top-8 right-0 nav-close-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 11.2157L28.7843 9L20 17.7843L11.2157 9L9 11.2157L17.7843 20L9 28.7843L11.2157 31L20 22.2157L28.7843 31L31 28.7843L22.2157 20L31 11.2157Z" fill="white"/>
+</svg>
+            </button>
+        </div>
+        <div id="products-mobile-trigger" class="flex items-center w-[90%] mx-auto justify-between cursor-pointer">
+            <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Products</h3>
+            <span class="[&>svg]:-rotate-90 [&>svg>path]:fill-ts-black"><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        </div>
+        <div id="solutions-mobile-trigger" class="flex items-center w-[90%] mx-auto justify-between cursor-pointer">
+            <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Solutions</h3>
+            <span class="[&>svg]:-rotate-90 [&>svg>path]:fill-ts-black"><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        </div>
+        <div class="flex items-center w-[90%] mx-auto justify-between">
+            <a href="https://timescale.com/case-studies">
+                <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Costumers</h3>
+            </a>
+        </div>
+        <div id="developers-mobile-trigger" class="flex items-center w-[90%] mx-auto justify-between cursor-pointer">
+            <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Developers</h3>
+            <span class="[&>svg]:-rotate-90 [&>svg>path]:fill-ts-black"><svg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M5.75977 8.41406L1.75977 4.41406L3.17398 2.99985L6.46687 6.29274L9.75977 2.99985L11.174 4.41406L7.17398 8.41406H5.75977Z'
+    fill='#fff'
+  />
+</svg></span>
+        </div>
+        <div class="flex items-center w-[90%] mx-auto justify-between">
+            <a href="https://timescale.com/pricing" class="text-[28px]">
+                <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Pricing</h3>
+            </a>
+        </div>
+        <div class="flex items-center w-[90%] mx-auto justify-between">
+            <a href="https://www.timescale.com/contact" class="text-[28px]">
+                <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Contact Us</h3>
+            </a>
+        </div>
+        <div class="flex items-center w-[90%] mx-auto justify-between">
+            <a href="https://console.cloud.timescale.com/login" class="text-[28px]">
+                <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black">Login</h3>
+            </a>
+        </div>
+        <div class="mt-3 flex items-center w-full justify-between">
+            <a href="https://console.cloud.timescale.com/signup" class="mx-auto w-[90%] sm:w-[35%]"><button class="btn-secondary w-full !h-[48px]">Try for free</button></a>
+        </div>
+    </div>
+</div>    <div id="products-mobile-dropdown" class="hidden dropdown-mobile">
+     <div class="flex flex-col p-6 md:p-8 gap-8" style='animation: opennav 0.3s'>
+        <div class="w-full relative">
+            <button class="icon-btn absolute left-0 hidden nav-back-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.1455 10.1455L25 8L13 20L25 32L27.1455 29.8545L17.2909 20L27.1455 10.1455Z" fill="white"/>
+</svg>
+            </button>
+
+            <button class="icon-btn absolute right-0 nav-close-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 11.2157L28.7843 9L20 17.7843L11.2157 9L9 11.2157L17.7843 20L9 28.7843L11.2157 31L20 22.2157L28.7843 31L31 28.7843L22.2157 20L31 11.2157Z" fill="white"/>
+</svg>
+            </button>
+        </div>
+
+        <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black mt-14 mb-0">Products</h3>
+
+        <div class="flex flex-col gap-4">
+            <div class="dropdown-card">
+                <div class='dropdown-card__title'>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.56628 9.66665V9.66177L5.56675 9.65691C5.56937 9.63014 5.56937 9.60317 5.56675 9.57639L5.56215 9.52936L7.48485 7.60665H7.87436L9.00628 8.73856V8.83237C9.00628 9.07094 9.10101 9.30084 9.26988 9.46972C9.43866 9.6385 9.66758 9.73332 9.90628 9.73332C10.145 9.73332 10.3739 9.6385 10.5427 9.46972C10.7115 9.30093 10.8063 9.07201 10.8063 8.83332V8.7388L13.2913 6.23332H13.3329C13.5109 6.23332 13.685 6.18054 13.833 6.08164C13.981 5.98275 14.0963 5.84219 14.1644 5.67773C14.2326 5.51328 14.2504 5.33232 14.2156 5.15774C14.1809 4.98316 14.0952 4.82279 13.9693 4.69692C13.8435 4.57106 13.6831 4.48534 13.5085 4.45061C13.3339 4.41589 13.153 4.43371 12.9885 4.50183C12.8241 4.56995 12.6835 4.6853 12.5846 4.83331C12.4857 4.98131 12.4329 5.15532 12.4329 5.33332V5.33821L12.4325 5.34306C12.4298 5.36984 12.4298 5.3968 12.4325 5.42358L12.4371 5.47061L9.9677 7.93999H9.77768L8.56628 6.70757V6.66665C8.56628 6.42796 8.47145 6.19904 8.30267 6.03026C8.13389 5.86147 7.90497 5.76665 7.66628 5.76665C7.42758 5.76665 7.19866 5.86147 7.02988 6.03026C6.8611 6.19904 6.76628 6.42796 6.76628 6.66665V6.70807L4.7077 8.76665H4.66628C4.42758 8.76665 4.19866 8.86147 4.02988 9.03026C3.8611 9.19904 3.76628 9.42796 3.76628 9.66665C3.76628 9.90535 3.8611 10.1343 4.02988 10.303C4.19866 10.4718 4.42758 10.5667 4.66628 10.5667C4.90497 10.5667 5.13389 10.4718 5.30267 10.3031C5.47145 10.1343 5.56628 9.90535 5.56628 9.66665Z" fill="#333333"/>
+<path d="M2.23294 1.99999V13.4333H13.6663C13.8166 13.4333 13.9607 13.493 14.067 13.5993C14.1732 13.7056 14.2329 13.8497 14.2329 14C14.2329 14.1503 14.1732 14.2944 14.067 14.4007C13.9607 14.507 13.8166 14.5667 13.6663 14.5667H1.66628C1.51599 14.5667 1.37185 14.507 1.26558 14.4007C1.15931 14.2944 1.09961 14.1503 1.09961 14V1.99999C1.09961 1.8497 1.15931 1.70556 1.26558 1.59929C1.37185 1.49302 1.51599 1.43332 1.66628 1.43332C1.81657 1.43332 1.9607 1.49302 2.06697 1.59929C2.17324 1.70556 2.23294 1.8497 2.23294 1.99999Z" fill="#333333"/>
+</svg>
+                    <p class='text-clearPurple font-bold'>Timeseries and analytics</p>
+                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                </div>
+                <p>PostgreSQL, but faster. Built for lightning-fast ingest and querying of time-based data.</p>
+                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/products">Timeseries and analytics</a>
+            </div>
+
+            <div class="dropdown-card">
+                <div class='dropdown-card__title'>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.52734 9.33366V6.66699C2.52733 6.60571 2.53939 6.54497 2.56283 6.48835C2.58627 6.43173 2.62064 6.38029 2.66397 6.33696C2.70731 6.29362 2.75875 6.25925 2.81537 6.23581C2.87199 6.21237 2.93278 6.20031 2.99406 6.20033C3.05534 6.20031 3.11603 6.21237 3.17265 6.23581C3.22927 6.25925 3.28071 6.29362 3.32405 6.33696C3.36738 6.38029 3.40175 6.43173 3.42519 6.48835C3.44864 6.54497 3.46069 6.60571 3.46068 6.66699V9.33366C3.46068 9.45743 3.41151 9.57613 3.32399 9.66364C3.23648 9.75116 3.11778 9.80033 2.99401 9.80033C2.87024 9.80033 2.75154 9.75116 2.66403 9.66364C2.57651 9.57613 2.52734 9.45743 2.52734 9.33366Z" fill="#333333"/>
+<path d="M12.5273 9.33366V6.66699C12.5273 6.60571 12.5394 6.54498 12.5628 6.48835C12.5863 6.43173 12.6206 6.38029 12.664 6.33696C12.7073 6.29362 12.7588 6.25925 12.8154 6.23581C12.872 6.21237 12.9328 6.20031 12.9941 6.20033C13.0553 6.20031 13.116 6.21237 13.1726 6.23581C13.2293 6.25925 13.2807 6.29362 13.324 6.33696C13.3674 6.38029 13.4017 6.43173 13.4252 6.48835C13.4486 6.54497 13.4607 6.60571 13.4607 6.66699V9.33366C13.4607 9.45743 13.4115 9.57613 13.324 9.66364C13.2365 9.75116 13.1178 9.80033 12.994 9.80033C12.8702 9.80033 12.7515 9.75116 12.664 9.66364C12.5765 9.57613 12.5273 9.45743 12.5273 9.33366Z" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.124 2.0606C11.1159 2.12143 11.0958 2.18006 11.0649 2.23311L10.5247 3.16758L10.6373 3.27619C11.0031 3.62931 11.2941 4.05251 11.4929 4.52054C11.6916 4.98857 11.794 5.49184 11.794 6.00032V11.3337C11.794 11.395 11.782 11.4557 11.7585 11.5123C11.7351 11.5689 11.7007 11.6204 11.6574 11.6637C11.614 11.707 11.5626 11.7414 11.506 11.7648C11.4494 11.7883 11.3886 11.8003 11.3273 11.8003H9.79401V14.0003C9.79401 14.1241 9.74484 14.2428 9.65733 14.3303C9.56981 14.4178 9.45111 14.467 9.32734 14.467C9.20358 14.467 9.08488 14.4178 8.99736 14.3303C8.90984 14.2428 8.86068 14.1241 8.86068 14.0003V11.8003H7.12734V14.0003C7.12734 14.1241 7.07818 14.2428 6.99066 14.3303C6.90314 14.4178 6.78444 14.467 6.66068 14.467C6.53691 14.467 6.41821 14.4178 6.33069 14.3303C6.24318 14.2428 6.19401 14.1241 6.19401 14.0003V11.8003H4.66062C4.59934 11.8003 4.53866 11.7883 4.48204 11.7648C4.42542 11.7414 4.37398 11.707 4.33064 11.6637C4.28731 11.6204 4.25294 11.5689 4.2295 11.5123C4.20605 11.4557 4.19399 11.3949 4.19401 11.3337V6.00033C4.194 5.49184 4.29643 4.98857 4.49517 4.52054C4.69391 4.05251 4.98489 3.62931 5.35076 3.27619L5.46328 3.16758L4.92309 2.23311C4.89223 2.18006 4.87215 2.12143 4.86399 2.0606C4.85583 1.99976 4.85976 1.93792 4.87555 1.8786C4.89134 1.81929 4.91868 1.76368 4.956 1.71495C4.99332 1.66622 5.03989 1.62534 5.09304 1.59464C5.14619 1.56394 5.20487 1.54403 5.26573 1.53606C5.32659 1.52808 5.38842 1.5322 5.44769 1.54816C5.50695 1.56413 5.56249 1.59163 5.6111 1.6291C5.65972 1.66656 5.7008 1.71384 5.73134 1.76709L6.23269 2.63436L6.39894 2.55627C6.89802 2.32186 7.44263 2.20032 7.99401 2.20032C8.54539 2.20032 9.09 2.32186 9.58908 2.55627L9.75533 2.63436L10.257 1.7665C10.2876 1.71326 10.3283 1.66656 10.3769 1.6291C10.4255 1.59163 10.4811 1.56413 10.5403 1.54816C10.5996 1.5322 10.6614 1.52808 10.7223 1.53606C10.7831 1.54403 10.8418 1.56394 10.895 1.59464C10.9481 1.62534 10.9947 1.66622 11.032 1.71495C11.0693 1.76368 11.0967 1.81929 11.1125 1.8786C11.1283 1.93792 11.1322 1.99976 11.124 2.0606ZM5.12734 10.867H10.8607V7.13366H5.12734V10.867ZM5.12734 6.00033V6.20033H10.8607V6.00033C10.8607 5.24004 10.5587 4.51089 10.021 3.97329C9.48345 3.43568 8.7543 3.13366 7.99401 3.13366C7.23372 3.13366 6.50457 3.43568 5.96697 3.97329C5.42937 4.51089 5.12734 5.24004 5.12734 6.00033Z" fill="#333333"/>
+</svg>
+                    <p class='text-clearPurple font-bold'>Vector (AI/ML)</p>
+                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                </div>
+                <p>PostgreSQL engineered for fast search with high recall on millions of vector embeddings.</p>
+                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/ai">Vector (AI/ML)</a>
+            </div>
+
+            <div class="dropdown-card">
+                <div class='dropdown-card__title'>
+                    <svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+  <path
+    fillRule='evenodd'
+    clipRule='evenodd'
+    d='M9.21262 1.40151C9.24291 1.15924 9.10984 0.926002 8.88588 0.828779C8.66191 0.731556 8.40065 0.793625 8.24435 0.981193L1.57768 8.98119C1.44106 9.14514 1.41161 9.37332 1.50213 9.56658C1.59265 9.75984 1.78679 9.8833 2.0002 9.8833H7.37717L6.78778 14.5984C6.7575 14.8407 6.89056 15.0739 7.11453 15.1711C7.3385 15.2684 7.59975 15.2063 7.75606 15.0187L14.4227 7.01873C14.5593 6.85478 14.5888 6.6266 14.4983 6.43334C14.4078 6.24008 14.2136 6.11663 14.0002 6.11663H8.62323L9.21262 1.40151ZM8.0002 8.7833H3.17447L7.88843 3.12655L7.45445 6.59841C7.43488 6.75495 7.48348 6.91235 7.58788 7.03062C7.69228 7.14889 7.84245 7.21663 8.0002 7.21663H12.8259L8.11197 12.8734L8.54596 9.40151C8.56552 9.24498 8.51693 9.08757 8.41253 8.9693C8.30812 8.85104 8.15796 8.7833 8.0002 8.7833Z'
+    fill='#755BFF'
+  />
+</svg>                    <p class='text-clearPurple font-bold'>Dynamic PostgreSQL (Early Access)</p>
+                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                </div>
+                <p>PostgreSQL managed services with the benefits of serverless but none of the problems.</p>
+                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/dynamic-postgresql">Dynamic PostgreSQL </a>
+            </div>
+        </div>
+
+        <div>
+            <p class="text-ts-black300 font-bold">Deployment options & services</p>
+            <div class="mt-3 flex flex-col gap-4">
+                <div class="py-[10px]">
+                    <p class="text-base lg:leading-6 leading-7 text-ts-black font-PP-Mori-Bold">Timescale Cloud</p>
+                    <span class="font-PP-Mori-Book text-ts-grey-400 text-sm">A reliable and worry-free PostgreSQL cloud for your business workloads.</span>
+                    <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] text-clearPurple marker:text-clearPurple">
+                        <li><a href="https://www.timescale.com/cloud" class="dropdown-link">For AWS</a></li>
+                        <li><a href="https://www.timescale.com/mst-signup" class="dropdown-link">For GCP and Azure</a></li>
+                    </ul>
+                </div>
+                <div class="py-[10px]">
+                    <p class="text-base lg:leading-6 leading-7 text-ts-black font-PP-Mori-Bold">Support Services</p>
+                    <span class="font-PP-Mori-Book text-ts-grey-400 text-sm">Support options to adapt to your use case, infrastructure, and budget.</span>
+                    <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                        <li><a href="https://www.timescale.com/support" class="dropdown-link">Cloud support</a></li>
+                        <li><a href="https://www.timescale.com/self-managed-support" class="dropdown-link">Self-managed support</a></li>
+                    </ul>
+                </div>
+                <div class="py-[10px]">
+                    <p class="text-base lg:leading-6 leading-7 text-ts-black font-PP-Mori-Bold">Open-Source Extensions and Tools</p>
+                    <span class="font-PP-Mori-Book text-ts-grey-400 text-sm">Open-source PostgreSQL extensions you can run on your own instances.</span>
+                    <ul class="list-disc pl-6 pt-4 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                        <li><a href="https://github.com/timescale/timescaledb" class="dropdown-link">timescaledb</a></li>
+                        <li><a href="https://github.com/timescale/pgvectorscale/" class="dropdown-link">pgvectorscale</a></li>
+                        <li><a href="https://github.com/timescale/pgai" class="dropdown-link">pgai</a></li>
+                        <li><a href="https://github.com/timescale/timescaledb-toolkit" class="dropdown-link">timescaledb-toolkit</a></li>
+                        <li><a href="https://github.com/timescale/pgspot" class="dropdown-link">pgspot</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>    <div id="solutions-mobile-dropdown" class="hidden dropdown-mobile">
+    <div class="flex flex-col p-6 md:p-8 gap-8" style='animation: opennav 0.3s'>
+        <div class="w-full relative">
+            <button class="icon-btn absolute left-0 hidden nav-back-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.1455 10.1455L25 8L13 20L25 32L27.1455 29.8545L17.2909 20L27.1455 10.1455Z" fill="white"/>
+</svg>
+            </button>
+
+            <button class="icon-btn absolute right-0 nav-close-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 11.2157L28.7843 9L20 17.7843L11.2157 9L9 11.2157L17.7843 20L9 28.7843L11.2157 31L20 22.2157L28.7843 31L31 28.7843L22.2157 20L31 11.2157Z" fill="white"/>
+</svg>
+            </button>
+        </div>
+        <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black mt-14 mb-0">Solutions</h3>
+        <div class="flex flex-col">
+            <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px] mb-2">Industries that rely on us</p>
+            <ul class="flex flex-col gap-1.5">
+                <li class="text-clearPurple"><a href="https://www.timescale.com/crypto" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Crypto and finance</span></a></li>
+                <li class="text-clearPurple"><a href="https://www.timescale.com/energy" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Energy and environment</span></a></li>
+                <li class="text-clearPurple"><a href="https://www.timescale.com/transportation-and-logistics" class="w-full xl:w-max inline-block relative after:bg-ts-black !inline"><span class="font-PP-Mori-Book text-base hover:underline">Transportation and logistics</span></a></li>
+            </ul>
+        </div>
+        <div class="flex flex-col">
+            <p class="text-base lg:leading-6 leading-7 text-ts-black300 font-PP-Mori-Bold min-h-[24px] mb-2">Featured articles</p>
+            <div class="flex flex-col gap-3">
+                <div class="flex group flex-row bg-ts-grey-100 w-full rounded-[8px] overflow-hidden hover:bg-[#E8EDFE] transition-all duration-300 relative">
+                    <div class="min-w-[100px] w-[100px] h-[116px] md:min-w-[170px] md:h-[175px] bg-grey">
+                        <img src=https://www.timescale.com/blog/assets/images/iot.png?v=2308f59886 class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-3 pr-5 flex flex-col justify-between w-full">
+                        <p class="font-PP-Mori-Book text-base text-ts-black text-sm">PostgreSQL for Industrial IoT Data</p>
+                        <div class="w-full flex flex-row items-center justify-between ">
+                            <p class="font-PP-Mori-Bold text-base lg:leading-6 font-PP-Mori leading-7 transition duration-300 group-hover:text-ts-black">Read now</p>
+                            <span class="[&>svg>path]:fill-ts-black transition-all duration-500 group-hover:translate-x-2"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                        </div>
+                    </div>
+                    <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/blog/postgresql-for-everything-industrial-iot-data/">PostgreSQL for Industrial IoT Data</a>
+                </div>
+                <div class="flex group flex-row bg-ts-grey-100 w-full rounded-[8px] overflow-hidden hover:bg-[#E8EDFE] transition-all duration-300 relative">
+                    <div class="min-w-[100px] w-[100px] h-[116px] md:min-w-[170px] md:h-[175px] bg-grey">
+                        <img src=https://www.timescale.com/blog/assets/images/open-sauced.png?v=2308f59886 class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-3 pr-5 flex flex-col justify-between">
+                        <p class="font-PP-Mori-Book text-base text-ts-black text-sm">How OpenSauced Is Building a Copilot for Git History With pgvector and Timescale</p>
+                        <div class="w-full flex flex-row items-center justify-between ">
+                            <p class="font-PP-Mori-Bold text-base lg:leading-6 font-PP-Mori leading-7 transition duration-300 group-hover:text-ts-black">Read now</p>
+                            <span class="[&>svg>path]:fill-ts-black transition-all duration-500 group-hover:translate-x-2"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                        </div>
+                    </div>
+                    <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/blog/how-opensauced-is-building-a-copilot-for-git-history-with-pgvector-and-timescale/">How OpenSauced Is Building a Copilot for Git History With pgvector and Timescale</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    <div id="developers-mobile-dropdown" class="hidden dropdown-mobile">
+     <div class="flex flex-col p-6 md:p-8 gap-8" style='animation: opennav 0.3s'>
+        <div class="w-full relative">
+            <button class="icon-btn absolute left-0 hidden nav-back-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.1455 10.1455L25 8L13 20L25 32L27.1455 29.8545L17.2909 20L27.1455 10.1455Z" fill="white"/>
+</svg>
+            </button>
+
+            <button class="icon-btn absolute right-0 nav-close-button [&>svg>path]:fill-ts-black">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31 11.2157L28.7843 9L20 17.7843L11.2157 9L9 11.2157L17.7843 20L9 28.7843L11.2157 31L20 22.2157L28.7843 31L31 28.7843L22.2157 20L31 11.2157Z" fill="white"/>
+</svg>
+            </button>
+        </div>
+
+        <h3 class="font-PP-Mori text-[28px] md:text-[36px] leading-[34px] md:leading-[43px] text-ts-black mt-14 mb-0">Developers</h3>
+
+        <div class="flex flex-col gap-4">
+            <div class="dropdown-card">
+                <div class='dropdown-card__title'>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.8 10.325C3.8 10.615 4.03505 10.85 4.325 10.85L9.575 10.85C9.86495 10.85 10.1 10.615 10.1 10.325C10.1 10.0351 9.86495 9.8 9.575 9.8H4.325C4.03505 9.8 3.8 10.0351 3.8 10.325Z" fill="#F5FF80"/>
+<path d="M3.8 7C3.8 7.28995 4.03505 7.525 4.325 7.525L7.475 7.525C7.76495 7.525 8 7.28995 8 7C8 6.71005 7.76495 6.475 7.475 6.475H4.325C4.03505 6.475 3.8 6.71005 3.8 7Z" fill="#F5FF80"/>
+<path d="M3.8 3.675C3.8 3.96495 4.03505 4.2 4.325 4.2L10.975 4.2C11.265 4.2 11.5 3.96495 11.5 3.675C11.5 3.38505 11.265 3.15 10.975 3.15L4.325 3.15C4.03505 3.15 3.8 3.38505 3.8 3.675Z" fill="#F5FF80"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.775C1 13.4515 1.54845 14 2.225 14L13.775 14C14.4516 14 15 13.4515 15 12.775V1.225C15 0.548451 14.4515 0 13.775 0H2.225C1.54845 0 1 0.548453 1 1.225V12.775ZM2.225 12.95C2.12835 12.95 2.05 12.8716 2.05 12.775L2.05 1.225C2.05 1.12835 2.12835 1.05 2.225 1.05L13.775 1.05C13.8717 1.05 13.95 1.12835 13.95 1.225V12.775C13.95 12.8716 13.8717 12.95 13.775 12.95H2.225Z" fill="#F5FF80"/>
+</svg>
+                    <p class='text-clearPurple font-bold'>Timescale Docs</p>
+                    <span><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span>
+                </div>
+                <p>PostgreSQL, but faster. Built for lightning-fast ingest and querying of time-based data.</p>
+                <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://docs.timescale.com">Timescale Docs</a>
+            </div>
+        </div>
+
+        <div class="dropdown-card group">
+            <div class='flex gap-2 items-center transition duration-500'>                      
+                <p class='text-base lg:leading-6 leading-7 text-clearPurple font-PP-Mori-Bold flex items-center relative'>AI/Vector <span class="hidden md:block absolute opacity-0 group-hover:opacity-100 group-hover:-right-[20px] transition-all duration-500 right-0 [&>svg>path]:fill-clearPurple"><svg
+    width='14'
+    height='16'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M7.25.25 14 7v2l-6.75 6.75-1.414-1.415L11.172 9H0V7h11.172L5.836 1.665 7.25.25Z"
+      fill='white'
+    />
+  </svg></span></p>
+            </div>
+            <p>PostgreSQL engineered for fast search with high recall on millions of vector embeddings.</p>
+            <div class="flex flex-col gap-2">
+                <a class="relative z-10 mt-2 cursor-pointer inline-flex gap-2 items-center text-ts-grey-400 hover:text-ts-black transition duration-300">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.52734 9.33366V6.66699C2.52733 6.60571 2.53939 6.54497 2.56283 6.48835C2.58627 6.43173 2.62064 6.38029 2.66397 6.33696C2.70731 6.29362 2.75875 6.25925 2.81537 6.23581C2.87199 6.21237 2.93278 6.20031 2.99406 6.20033C3.05534 6.20031 3.11603 6.21237 3.17265 6.23581C3.22927 6.25925 3.28071 6.29362 3.32405 6.33696C3.36738 6.38029 3.40175 6.43173 3.42519 6.48835C3.44864 6.54497 3.46069 6.60571 3.46068 6.66699V9.33366C3.46068 9.45743 3.41151 9.57613 3.32399 9.66364C3.23648 9.75116 3.11778 9.80033 2.99401 9.80033C2.87024 9.80033 2.75154 9.75116 2.66403 9.66364C2.57651 9.57613 2.52734 9.45743 2.52734 9.33366Z" fill="#333333"/>
+<path d="M12.5273 9.33366V6.66699C12.5273 6.60571 12.5394 6.54498 12.5628 6.48835C12.5863 6.43173 12.6206 6.38029 12.664 6.33696C12.7073 6.29362 12.7588 6.25925 12.8154 6.23581C12.872 6.21237 12.9328 6.20031 12.9941 6.20033C13.0553 6.20031 13.116 6.21237 13.1726 6.23581C13.2293 6.25925 13.2807 6.29362 13.324 6.33696C13.3674 6.38029 13.4017 6.43173 13.4252 6.48835C13.4486 6.54497 13.4607 6.60571 13.4607 6.66699V9.33366C13.4607 9.45743 13.4115 9.57613 13.324 9.66364C13.2365 9.75116 13.1178 9.80033 12.994 9.80033C12.8702 9.80033 12.7515 9.75116 12.664 9.66364C12.5765 9.57613 12.5273 9.45743 12.5273 9.33366Z" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.124 2.0606C11.1159 2.12143 11.0958 2.18006 11.0649 2.23311L10.5247 3.16758L10.6373 3.27619C11.0031 3.62931 11.2941 4.05251 11.4929 4.52054C11.6916 4.98857 11.794 5.49184 11.794 6.00032V11.3337C11.794 11.395 11.782 11.4557 11.7585 11.5123C11.7351 11.5689 11.7007 11.6204 11.6574 11.6637C11.614 11.707 11.5626 11.7414 11.506 11.7648C11.4494 11.7883 11.3886 11.8003 11.3273 11.8003H9.79401V14.0003C9.79401 14.1241 9.74484 14.2428 9.65733 14.3303C9.56981 14.4178 9.45111 14.467 9.32734 14.467C9.20358 14.467 9.08488 14.4178 8.99736 14.3303C8.90984 14.2428 8.86068 14.1241 8.86068 14.0003V11.8003H7.12734V14.0003C7.12734 14.1241 7.07818 14.2428 6.99066 14.3303C6.90314 14.4178 6.78444 14.467 6.66068 14.467C6.53691 14.467 6.41821 14.4178 6.33069 14.3303C6.24318 14.2428 6.19401 14.1241 6.19401 14.0003V11.8003H4.66062C4.59934 11.8003 4.53866 11.7883 4.48204 11.7648C4.42542 11.7414 4.37398 11.707 4.33064 11.6637C4.28731 11.6204 4.25294 11.5689 4.2295 11.5123C4.20605 11.4557 4.19399 11.3949 4.19401 11.3337V6.00033C4.194 5.49184 4.29643 4.98857 4.49517 4.52054C4.69391 4.05251 4.98489 3.62931 5.35076 3.27619L5.46328 3.16758L4.92309 2.23311C4.89223 2.18006 4.87215 2.12143 4.86399 2.0606C4.85583 1.99976 4.85976 1.93792 4.87555 1.8786C4.89134 1.81929 4.91868 1.76368 4.956 1.71495C4.99332 1.66622 5.03989 1.62534 5.09304 1.59464C5.14619 1.56394 5.20487 1.54403 5.26573 1.53606C5.32659 1.52808 5.38842 1.5322 5.44769 1.54816C5.50695 1.56413 5.56249 1.59163 5.6111 1.6291C5.65972 1.66656 5.7008 1.71384 5.73134 1.76709L6.23269 2.63436L6.39894 2.55627C6.89802 2.32186 7.44263 2.20032 7.99401 2.20032C8.54539 2.20032 9.09 2.32186 9.58908 2.55627L9.75533 2.63436L10.257 1.7665C10.2876 1.71326 10.3283 1.66656 10.3769 1.6291C10.4255 1.59163 10.4811 1.56413 10.5403 1.54816C10.5996 1.5322 10.6614 1.52808 10.7223 1.53606C10.7831 1.54403 10.8418 1.56394 10.895 1.59464C10.9481 1.62534 10.9947 1.66622 11.032 1.71495C11.0693 1.76368 11.0967 1.81929 11.1125 1.8786C11.1283 1.93792 11.1322 1.99976 11.124 2.0606ZM5.12734 10.867H10.8607V7.13366H5.12734V10.867ZM5.12734 6.00033V6.20033H10.8607V6.00033C10.8607 5.24004 10.5587 4.51089 10.021 3.97329C9.48345 3.43568 8.7543 3.13366 7.99401 3.13366C7.23372 3.13366 6.50457 3.43568 5.96697 3.97329C5.42937 4.51089 5.12734 5.24004 5.12734 6.00033Z" fill="#333333"/>
+</svg>
+                    Timescale Vector Docs
+                </a>
+                <a class="relative z-10 mt-2 cursor-pointer inline-flex gap-2 items-center text-ts-grey-400 hover:text-ts-black transition duration-300">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.28106 10.4966L4.5773 11.4226L5.50324 7.71882L11.9443 1.27776C12.3127 0.909401 12.8123 0.702457 13.3332 0.702457C13.8541 0.702457 14.3538 0.909401 14.7221 1.27776C15.0905 1.64612 15.2974 2.14573 15.2974 2.66667C15.2974 3.18761 15.0905 3.68722 14.7221 4.05558L8.28106 10.4966ZM7.4332 2.11667V3.21667H2.66654C2.45878 3.21667 2.25954 3.2992 2.11264 3.44611C1.96573 3.59301 1.8832 3.79225 1.8832 4.00001V13.3333C1.8832 13.5411 1.96573 13.7403 2.11264 13.8872C2.25954 14.0341 2.45878 14.1167 2.66654 14.1167H11.9999C12.2076 14.1167 12.4069 14.0341 12.5538 13.8872C12.7007 13.7403 12.7832 13.5411 12.7832 13.3333V8.56667H13.8832V13.3333C13.8832 13.8328 13.6848 14.3119 13.3316 14.6651C12.9784 15.0183 12.4994 15.2167 11.9999 15.2167H2.66654C2.16705 15.2167 1.68801 15.0183 1.33482 14.6651C0.981625 14.3119 0.783203 13.8328 0.783203 13.3333V4.00001C0.783203 3.50051 0.981625 3.02148 1.33482 2.66829C1.68801 2.31509 2.16705 2.11667 2.66654 2.11667H7.4332ZM13.3332 1.80246C13.104 1.80246 12.8842 1.89351 12.7221 2.05558L11.4595 3.3182L12.6817 4.54038L13.9443 3.27776C14.1064 3.11569 14.1974 2.89587 14.1974 2.66667C14.1974 2.43747 14.1064 2.21765 13.9443 2.05558C13.7822 1.89351 13.5624 1.80246 13.3332 1.80246ZM6.4965 8.28119L6.08911 9.91077L7.71868 9.50337L11.9039 5.3182L10.6817 4.09602L6.4965 8.28119Z" fill="#333333"/>
+</svg>
+                    pgvector docs
+                </a>
+            </div>
+            <a class="absolute text-[0px] inset-0" referrerPolicy='no-referrer' href="https://www.timescale.com/ai">AI/Vector</a>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+            <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Learn PostgreSQL</p>
+            <p class="font-PP-Mori-Book text-base text-sm text-ts-grey-400 pb-[10px]">Timescale is PostgreSQL, but faster. Learn the PostgreSQL basics and scale your database performance to new heights</p>
+            <ul class="list-disc pl-6 pt-1.5 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                <li><a href="https://www.timescale.com/learn/time-series-basics" class="dropdown-link">Time series basics</a></li>
+                <li><a href="https://www.timescale.com/learn/postgres-basics" class="dropdown-link">Postgres basics</a></li>
+                <li><a href="https://www.timescale.com/learn/postgres-guides" class="dropdown-link">Postgres guides</a></li>
+                <li><a href="https://www.timescale.com/learn/benchmarks" class="dropdown-link">Benchmarks</a></li>
+                <li><a href="https://www.timescale.com/learn/postgres-cheat-sheet" class="dropdown-link">Postgres cheat sheet</a></li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+            <p class="lg:leading-6 text-ts-black font-PP-Mori-Bold text-xl md:text-base">Timescale benchmarks</p>
+            <ul class="list-disc pl-6 pt-1.5 flex flex-col gap-2 z-[99] marker:text-clearPurple">
+                <li><a href="https://www.timescale.com/blog/timescale-cloud-vs-amazon-rds-postgresql-up-to-350-times-faster-queries-44-faster-ingest-95-storage-savings-for-time-series-data/" class="dropdown-link">vs RDS PostgreSQL</a></li>
+                <li><a href="https://www.timescale.com/blog/timescaledb-vs-amazon-timestream-6000x-higher-inserts-175x-faster-queries-220x-cheaper/" class="dropdown-link">vs Amazon Timestream</a></li>
+                <li><a href="https://www.timescale.com/blog/timescaledb-vs-influxdb-for-time-series-data-timescale-influx-sql-nosql-36489299877/" class="dropdown-link">vs Influx</a></li>
+                <li><a href="https://web-splash-git-chore-products-dropdown-timescale-company.vercel.app/learn/benchmarks" class="dropdown-link">vs MongoDB</a></li>
+                <li><a href="https://www.timescale.com/blog/what-is-clickhouse-how-does-it-compare-to-postgresql-and-timescaledb-and-how-does-it-perform-for-time-series-data/" class="dropdown-link">vs ClickHouse</a></li>
+                <li><a href="https://www.timescale.com/blog/what-we-learned-from-benchmarking-amazon-aurora-postgresql-serverless/#:~:text=Ingest%20Performance%20Comparison&text=Aurora%20was%20scaled%20up%20to,1%20ACU%2C%20but%20%F0%9F%A4%B7)." class="dropdown-link">vs Aurora</a></li>
+            </ul>
+        </div>
+
+        <div class="border-t border-ts-black300 mt-4 pt-8 flex flex-col gap-3">
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.8 10.325C3.8 10.615 4.03505 10.85 4.325 10.85L9.575 10.85C9.86495 10.85 10.1 10.615 10.1 10.325C10.1 10.0351 9.86495 9.8 9.575 9.8H4.325C4.03505 9.8 3.8 10.0351 3.8 10.325Z" fill="#F5FF80"/>
+<path d="M3.8 7C3.8 7.28995 4.03505 7.525 4.325 7.525L7.475 7.525C7.76495 7.525 8 7.28995 8 7C8 6.71005 7.76495 6.475 7.475 6.475H4.325C4.03505 6.475 3.8 6.71005 3.8 7Z" fill="#F5FF80"/>
+<path d="M3.8 3.675C3.8 3.96495 4.03505 4.2 4.325 4.2L10.975 4.2C11.265 4.2 11.5 3.96495 11.5 3.675C11.5 3.38505 11.265 3.15 10.975 3.15L4.325 3.15C4.03505 3.15 3.8 3.38505 3.8 3.675Z" fill="#F5FF80"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1 12.775C1 13.4515 1.54845 14 2.225 14L13.775 14C14.4516 14 15 13.4515 15 12.775V1.225C15 0.548451 14.4515 0 13.775 0H2.225C1.54845 0 1 0.548453 1 1.225V12.775ZM2.225 12.95C2.12835 12.95 2.05 12.8716 2.05 12.775L2.05 1.225C2.05 1.12835 2.12835 1.05 2.225 1.05L13.775 1.05C13.8717 1.05 13.95 1.12835 13.95 1.225V12.775C13.95 12.8716 13.8717 12.95 13.775 12.95H2.225Z" fill="#F5FF80"/>
+</svg>
+                <span>Blog</span>
+                <a href="https://www.timescale.com/blog" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Blog</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.49307 1.08988C8.40042 0.902165 8.20923 0.783325 7.99989 0.783325C7.79055 0.783325 7.59936 0.902165 7.5067 1.08988L5.57454 5.00421L1.25367 5.63577C1.04657 5.66605 0.874592 5.81125 0.810034 6.01035C0.745476 6.20946 0.799526 6.42795 0.949466 6.57399L4.07557 9.61881L3.3378 13.9204C3.30241 14.1267 3.38724 14.3353 3.55663 14.4583C3.72602 14.5814 3.95058 14.5976 4.13588 14.5001L7.99989 12.4681L11.8639 14.5001C12.0492 14.5976 12.2738 14.5814 12.4431 14.4583C12.6125 14.3353 12.6974 14.1267 12.662 13.9204L11.9242 9.61881L15.0503 6.57399C15.2002 6.42795 15.2543 6.20946 15.1897 6.01035C15.1252 5.81125 14.9532 5.66605 14.7461 5.63577L10.4252 5.00422L8.49307 1.08988ZM6.43307 5.7501L7.99989 2.57591L9.5667 5.7501C9.64674 5.91227 9.8014 6.02472 9.98034 6.05088L13.4849 6.56312L10.9495 9.03266C10.8197 9.15902 10.7605 9.34114 10.7911 9.51963L11.3894 13.0077L8.25588 11.3599C8.09562 11.2756 7.90415 11.2756 7.74389 11.3599L4.61039 13.0077L5.20864 9.51963C5.23925 9.34114 5.18004 9.15902 5.05031 9.03266L2.51485 6.56312L6.01943 6.05088C6.19838 6.02472 6.35303 5.91227 6.43307 5.7501Z" fill="#333333"/>
+</svg>
+                <span>Tutorials</span>
+                <a href="https://docs.timescale.com/tutorials/latest/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Tutorials</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.21634 1.45001C2.71685 1.45001 2.23782 1.64843 1.88462 2.00163C1.53143 2.35482 1.33301 2.83385 1.33301 3.33335V14C1.33301 14.2225 1.46701 14.423 1.67253 14.5081C1.87805 14.5933 2.11462 14.5462 2.27192 14.3889L4.77749 11.8833H12.5497C13.0492 11.8833 13.5282 11.6849 13.8814 11.3317C14.2346 10.9785 14.433 10.4995 14.433 10V3.33335C14.433 2.83385 14.2346 2.35482 13.8814 2.00163C13.5282 1.64843 13.0492 1.45001 12.5497 1.45001H3.21634ZM2.66244 2.77945C2.80934 2.63254 3.00859 2.55001 3.21634 2.55001H12.5497C12.7574 2.55001 12.9567 2.63254 13.1036 2.77945C13.2505 2.92635 13.333 3.12559 13.333 3.33335V10C13.333 10.2078 13.2505 10.407 13.1036 10.5539C12.9567 10.7008 12.7574 10.7833 12.5497 10.7833H4.54967C4.40381 10.7833 4.26391 10.8413 4.16077 10.9444L2.43301 12.6722V3.33335C2.43301 3.12559 2.51554 2.92635 2.66244 2.77945Z" fill="#333333"/>
+</svg>
+                <span>Support</span>
+                <a href="https://www.timescale.com/support" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Support</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.5287 8.60386L10.4996 8.5L10.4889 8.33189C11.0862 7.83662 11.5229 7.17381 11.7418 6.42779C11.9701 5.64976 11.9503 4.8199 11.685 4.05368C11.4197 3.28746 10.9222 2.62298 10.2617 2.15269C9.60114 1.68239 8.81045 1.42966 7.99961 1.42966C7.18876 1.42966 6.39808 1.68239 5.73756 2.15269C5.07704 2.62298 4.57953 3.28746 4.31425 4.05368C4.04896 4.8199 4.02909 5.64976 4.2574 6.42779C4.48571 7.20583 4.95085 7.89336 5.58811 8.39473L5.72416 8.50177L5.56346 8.56615C4.46032 9.00811 3.49778 9.74115 2.77847 10.6871C2.0592 11.6331 1.61008 12.7565 1.47901 13.9376C1.47081 14.0121 1.47737 14.0875 1.49831 14.1594C1.51925 14.2314 1.55415 14.2985 1.60103 14.357C1.69571 14.4751 1.83343 14.5507 1.98387 14.5673C2.13432 14.5838 2.28518 14.5399 2.40327 14.4452C2.52129 14.3506 2.59691 14.213 2.61351 14.0626C2.76265 12.735 3.39576 11.5084 4.39177 10.618C5.38779 9.72756 6.67695 9.23534 8.01294 9.23534C9.34893 9.23534 10.6381 9.72756 11.6341 10.618C12.6301 11.5084 13.2632 12.7345 13.4123 14.0622C13.4278 14.2013 13.4942 14.3301 13.5988 14.4233C13.7035 14.5164 13.8395 14.5675 13.9796 14.5667L14.0404 14.5676L14.0541 14.5657C14.1977 14.5459 14.3285 14.4718 14.4192 14.3584C14.5126 14.2417 14.556 14.0924 14.5402 13.9439C14.4084 12.7596 13.9569 11.6334 13.234 10.6861C12.5312 9.76521 11.5977 9.04708 10.5287 8.60386ZM7.99961 8.09999C7.45241 8.09999 6.91751 7.93773 6.46253 7.63372C6.00755 7.32972 5.65294 6.89762 5.44354 6.39208C5.23414 5.88654 5.17935 5.33025 5.2861 4.79357C5.39285 4.25689 5.65635 3.76392 6.04328 3.37699C6.4302 2.99007 6.92318 2.72657 7.45986 2.61982C7.99654 2.51306 8.55282 2.56785 9.05837 2.77725C9.56391 2.98666 9.996 3.34127 10.3 3.79624C10.604 4.25122 10.7663 4.78613 10.7663 5.33332C10.7663 6.06709 10.4748 6.7708 9.95594 7.28965C9.43709 7.8085 8.73337 8.09999 7.99961 8.09999Z" fill="#333333"/>
+</svg>
+                <span>Community</span>
+                <a href="https://www.timescale.com/community" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Community</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.21423 0.0499779C3.98769 0.411011 1.39243 3.08265 1.04172 6.33195C0.691011 9.72565 2.58485 12.7583 5.46067 13.9136C5.6711 13.9858 5.88153 13.8414 5.88153 13.5526V12.3973C5.88153 12.3973 5.60096 12.4695 5.25025 12.4695C4.26826 12.4695 3.84741 11.603 3.77726 11.0976C3.70712 10.8087 3.56684 10.5921 3.35641 10.3755C3.14598 10.3033 3.07584 10.3033 3.07584 10.2311C3.07584 10.0867 3.28627 10.0867 3.35641 10.0867C3.77726 10.0867 4.12797 10.5921 4.26826 10.8087C4.61897 11.3864 5.03982 11.5308 5.25025 11.5308C5.53082 11.5308 5.74124 11.4586 5.88153 11.3864C5.95167 10.881 6.1621 10.3755 6.58295 10.0867C4.96968 9.72565 3.77726 8.78697 3.77726 7.19842C3.77726 6.40415 4.12797 5.60988 4.61897 5.03223C4.54883 4.88781 4.47868 4.52678 4.47868 4.02134C4.47868 3.73251 4.47868 3.29927 4.68911 2.86603C4.68911 2.86603 5.6711 2.86603 6.65309 3.80472C7.0038 3.6603 7.4948 3.5881 7.98579 3.5881C8.47678 3.5881 8.96778 3.6603 9.38863 3.80472C10.3005 2.86603 11.3526 2.86603 11.3526 2.86603C11.4929 3.29927 11.4929 3.73251 11.4929 4.02134C11.4929 4.59899 11.4228 4.88781 11.3526 5.03223C11.8436 5.60988 12.1943 6.33195 12.1943 7.19842C12.1943 8.78697 11.0019 9.72565 9.38863 10.0867C9.80948 10.4477 10.0901 11.0976 10.0901 11.7474V13.6248C10.0901 13.8414 10.3005 14.058 10.581 13.9858C13.1763 12.9027 15 10.3033 15 7.27063C15 2.93824 11.4228 -0.455468 7.21423 0.0499779Z" fill="#333333"/>
+</svg>
+                <span>Github</span>
+                <a href="https://github.com/timescale/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Github</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.15789 3.68421C5.68558 3.68421 2.94453 3.68421 2.47368 3.68421C1.65947 3.68421 1 4.34368 1 5.15789C1 5.97211 1.65947 6.63158 2.47368 6.63158C2.94453 6.63158 5.68558 6.63158 6.15789 6.63158C6.97211 6.63158 7.63158 5.97211 7.63158 5.15789C7.63158 4.34368 6.97211 3.68421 6.15789 3.68421ZM7.63158 1.47368C7.63158 1.91432 7.63158 2.94737 7.63158 2.94737C7.63158 2.94737 6.53147 2.94737 6.15789 2.94737C5.34368 2.94737 4.68421 2.28789 4.68421 1.47368C4.68421 0.659474 5.34368 0 6.15789 0C6.97211 0 7.63158 0.659474 7.63158 1.47368ZM4.68421 8.8421C4.68421 9.31442 4.68421 12.0555 4.68421 12.5263C4.68421 13.3405 5.34368 14 6.15789 14C6.97211 14 7.63158 13.3405 7.63158 12.5263C7.63158 12.0555 7.63158 9.31442 7.63158 8.8421C7.63158 8.02789 6.97211 7.36842 6.15789 7.36842C5.34368 7.36842 4.68421 8.02789 4.68421 8.8421ZM2.47368 7.36842C2.91432 7.36842 3.94737 7.36842 3.94737 7.36842C3.94737 7.36842 3.94737 8.46853 3.94737 8.8421C3.94737 9.65632 3.28789 10.3158 2.47368 10.3158C1.65947 10.3158 1 9.65632 1 8.8421C1 8.02789 1.65947 7.36842 2.47368 7.36842ZM9.8421 10.3158C10.3144 10.3158 13.0555 10.3158 13.5263 10.3158C14.3405 10.3158 15 9.65632 15 8.8421C15 8.02789 14.3405 7.36842 13.5263 7.36842C13.0555 7.36842 10.3144 7.36842 9.8421 7.36842C9.02789 7.36842 8.36842 8.02789 8.36842 8.8421C8.36842 9.65558 9.02789 10.3158 9.8421 10.3158ZM8.36842 12.5263C8.36842 12.0857 8.36842 11.0526 8.36842 11.0526C8.36842 11.0526 9.46853 11.0526 9.8421 11.0526C10.6563 11.0526 11.3158 11.7121 11.3158 12.5263C11.3158 13.3405 10.6563 14 9.8421 14C9.02789 14 8.36842 13.3398 8.36842 12.5263ZM11.3158 5.15789C11.3158 4.68558 11.3158 1.94453 11.3158 1.47368C11.3158 0.659474 10.6563 0 9.8421 0C9.02789 0 8.36842 0.659474 8.36842 1.47368C8.36842 1.94453 8.36842 4.68558 8.36842 5.15789C8.36842 5.97211 9.02789 6.63158 9.8421 6.63158C10.6556 6.63158 11.3158 5.97137 11.3158 5.15789ZM13.5263 6.63158C13.0857 6.63158 12.0526 6.63158 12.0526 6.63158C12.0526 6.63158 12.0526 5.53147 12.0526 5.15789C12.0526 4.34368 12.7121 3.68421 13.5263 3.68421C14.3405 3.68421 15 4.34368 15 5.15789C15 5.97211 14.3398 6.63158 13.5263 6.63158Z" fill="#333333"/>
+</svg>
+                <span>Slack</span>
+                <a href="https://slack.timescale.com/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Slack</a>
+            </div>
+            <div class="group-link relative">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M14.5502 3.33335C14.5502 2.29321 13.707 1.45001 12.6669 1.45001H3.33353C2.29339 1.45001 1.4502 2.29321 1.4502 3.33335V12.6667C1.4502 13.7068 2.29339 14.55 3.33353 14.55H12.6669C13.707 14.55 14.5502 13.7068 14.5502 12.6667V3.33335ZM2.5502 3.33335C2.5502 2.90072 2.90091 2.55001 3.33353 2.55001H12.6669C13.0995 2.55001 13.4502 2.90072 13.4502 3.33335V5.45001H2.5502V3.33335ZM6.55019 6.55001H13.4502V12.6667C13.4502 13.0993 13.0995 13.45 12.6669 13.45H6.55019V6.55001ZM5.4502 6.55001V13.45H3.33353C2.90091 13.45 2.5502 13.0993 2.5502 12.6667V6.55001H5.4502Z" fill="#333333"/>
+</svg>
+                <span>Forum</span>
+                <a href="https://forum.timescale.com/" class="absolute text-[0px] inset-0" referrerPolicy='no-referrer'>Forum</a>
+            </div>
+        </div>
+
+        <div class="">
+            <section class="w-full">
+    <div class="hidden lg:flex relative w-full h-full items-center gap-36 mt-[46px]">
+        <div class="flex flex-col gap-1">
+            <p class="text-base lg:leading-6 font-PP-Mori leading-7 text-ts-black">Subscribe to the Timescale Newsletter</p>
+            <p class="font-PP-Mori-Book text-sm text-ts-black300">By submitting, you acknowledge Timescale's <a href="https://www.timescale.com/legal/privacy" class="!underline">Privacy Policy</a></p>
+        </div>
+
+            <div class="min-w-[550px]">
+                <form id="newsletter" class="newsletter-form">
+                    <div id="newsletter-input-box" class="flex items-center form rounded-[22px] bg-ts-black200 px-1">
+                        <input id="email" type="text" class="newsletter-input bg-transparent text-ts-black h-[48px] w-full outline-none pl-5" placeholder="Your email" aria-describedby="newsletter-aria-label" aria-labelledby="newsletter-aria-label" value="">
+                        <button class="newsletter-submit-button btn-secondary h-[48px] !border-none -ml-5"><span>Subscribe</span></button>
+                    </div>
+                    <p class="newsletter-form-error !text-sm !text-ts-error800 hidden mt-1 align-center"></p>
+                </form>
+            </div>
+        
+    </div>
+
+    <div class="lg:hidden flex flex-col gap-4">
+        <p class="text-base lg:leading-6 font-PP-Mori leading-7 text-black">Subscribe to the Timescale Newsletter</p>
+        <form id="newsletter" class="newsletter-form max-w-[403px]">
+            <div id="newsletter-input-box" class="flex items-center form rounded-[22px] bg-ts-black200 px-1 border-1 border-ts-black200">
+                <input id="email" type="text" class="newsletter-input bg-transparent text-ts-black h-[48px] w-full outline-none pl-5" placeholder="Your email" aria-describedby="newsletter-aria-label" aria-labelledby="newsletter-aria-label" value="">
+                <button class="newsletter-submit-button btn-secondary h-[48px] !border-none -ml-5"><span>Subscribe</span></button>
+            </div>
+            <p class="newsletter-form-error !text-sm !text-ts-error800 hidden mt-1 align-center"></p>
+        </form>
+        <p class="font-PP-Mori inline-block text-xs leading-[17px] mt-1 !text-ts-black300">By submitting, you acknowledge Timescale's <a href="https://www.timescale.com/legal/privacy" class="!underline">Privacy Policy</a></p>
+    </div>
+</section>        </div>
+    </div> 
+</div></div>    <div class="flex flex-col items-center px-6 lg:px-10">
+      <div class="site-wrapper ts-site ts-site--overflow-hidden">
+        <div class="ts-site__sidebar">
+          
+<div class="pb-8 md:pt-0">
+        <div class="w-full block md:hidden lg:block">
+  <p class="text-lg text-clearPurple font-semibold leading-[24px] mb-4"
+  >Subscribe to the Timescale Newsletter</p>
+  <form class="newsletter-form">
+    <div>
+      <input
+        id="email"
+        tabindex="0"
+        aria-describedby="newsletter-aria-label"
+        aria-labelledby="newsletter-aria-label"
+        placeholder="Email"
+        class="base-text w-full !text-sm !text-ts-black border border-ts-black300 rounded-md px-4 py-2"
+        type="input"
+        value=""
+      />
+    </div>
+    <p class="newsletter-form-error base-text !text-sm !text-ts-error800 hidden mt-1"></p>
+    <button
+      type="submit"
+      class="newsletter-submit-button tsb-button base-text bg-ts-black !w-full text-center mt-4 disabled:bg-ts-black700"
+    >
+      <span class="!font-semibold base-text">Subscribe</span>
+    </button>
+  </form>
+  <p class="base-text !text-ts-black700 !text-xs mt-2">By submitting you acknowledge Timescale's&nbsp;
+    <a
+      href="https://www.timescale.com/legal/privacy"
+      target="_blank"
+      rel="noreferrer noopener"
+      class="base-text !text-xs !text-ts-black700 inline-block"
+    >Privacy Policy</a>.
+  </p>
+</div>      </div>
+
+
+          <nav class="ts-site-nav min-h-[76px]">
+            
+  <div class="ts-site-nav__search md:mt-2">
+    <div class="ts-site-nav__search-box">
+      <input class="search-box" type="text" placeholder="Search" required/>
+
+      <div class="ts-site-nav__search-box__clear">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.813073 0.813073C1.00833 0.61781 1.32492 0.61781 1.52018 0.813073L4.99996 4.29285L8.47974 0.813073C8.675 0.61781 8.99158 0.61781 9.18684 0.813073C9.38211 1.00833 9.38211 1.32492 9.18684 1.52018L5.70707 4.99996L9.18684 8.47974C9.38211 8.675 9.38211 8.99158 9.18684 9.18684C8.99158 9.38211 8.675 9.38211 8.47974 9.18684L4.99996 5.70707L1.52018 9.18684C1.32492 9.38211 1.00833 9.38211 0.813073 9.18684C0.61781 8.99158 0.61781 8.675 0.813073 8.47974L4.29285 4.99996L0.813073 1.52018C0.61781 1.32492 0.61781 1.00833 0.813073 0.813073Z" fill="#141E35"/>
+        </svg>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ts-site-nav__navigation md:my-8">
+    <div class="ts-site-nav__navigation--desktop">
+      <span>Blog Categories</span>
+        <ul class="nav">
+    <li class="nav-all-posts"><a href="https://www.timescale.com/blog/">All posts</a></li>
+    <li class="nav-ai"><a href="https://www.timescale.com/blog/tag/ai/">AI</a></li>
+    <li class="nav-announcements"><a href="https://www.timescale.com/blog/tag/announcements/">Announcements</a></li>
+    <li class="nav-cloud"><a href="https://www.timescale.com/blog/tag/cloud/">Cloud</a></li>
+    <li class="nav-developer-q-a"><a href="https://www.timescale.com/blog/tag/dev-q-a/">Developer Q&amp;A</a></li>
+    <li class="nav-engineering"><a href="https://www.timescale.com/blog/tag/product/">Engineering</a></li>
+    <li class="nav-general"><a href="https://www.timescale.com/blog/tag/general/">General</a></li>
+    <li class="nav-grafana"><a href="https://www.timescale.com/blog/tag/grafana/">Grafana</a></li>
+    <li class="nav-observability"><a href="https://www.timescale.com/blog/tag/observability/">Observability</a></li>
+    <li class="nav-postgresql"><a href="https://www.timescale.com/blog/tag/postgresql/">PostgreSQL</a></li>
+    <li class="nav-product-updates"><a href="https://www.timescale.com/blog/tag/product-updates/">Product Updates</a></li>
+</ul>
+
+    </div>
+    <div class="ts-site-nav__navigation--mobile">
+      <div class="ts-select">
+        <div class="ts-select__display__container">
+          <button class="ts-select__display" type="button">
+            <span></span>
+            <div class="ts-select__display__highlight"></div>
+          </button>
+          <div class="ts-select__options">
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/"
+                  data-isActive=""
+              >
+                All posts
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/ai/"
+                  data-isActive=""
+              >
+                AI
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/announcements/"
+                  data-isActive=""
+              >
+                Announcements
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/cloud/"
+                  data-isActive=""
+              >
+                Cloud
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/dev-q-a/"
+                  data-isActive=""
+              >
+                Developer Q&amp;A
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/product/"
+                  data-isActive=""
+              >
+                Engineering
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/general/"
+                  data-isActive=""
+              >
+                General
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/grafana/"
+                  data-isActive=""
+              >
+                Grafana
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/observability/"
+                  data-isActive=""
+              >
+                Observability
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/postgresql/"
+                  data-isActive=""
+              >
+                PostgreSQL
+              </button>
+              <button
+                  class="ts-select__option"
+                  type="button"
+                  data-value="https://www.timescale.com/blog/tag/product-updates/"
+                  data-isActive=""
+              >
+                Product Updates
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+          </nav>
+        </div>
+        <div class="ts-site__content">
+          <div class="search-page"></div>
+          
+  <main class="post-page">
+
+    <article class="post-page__post">
+      <h1 class="post-page__title !text-black">
+        How We Made PostgreSQL as Fast as Pinecone for Vector Data
+      </h1>
+
+
+        <figure class="post-page__featured-image">
+          <img
+              srcset="/blog/content/images/size/w300/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png 300w,
+                      /blog/content/images/size/w600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png 600w,
+                      /blog/content/images/size/w1000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png 1000w,
+                      /blog/content/images/size/w2000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png 2000w"
+              sizes="(max-width: 800px) 400px,
+                        (max-width: 1170px) 1170px,
+                            2000px"
+              src="/blog/content/images/size/w2000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization-1.png"
+              alt="How We Made PostgreSQL as Fast as Pinecone for Vector Data"
+          />
+        </figure>
+
+      <div class="post-page__table-of-contents post-page__table-of-contents--open">
+        <button class="post-page__table-of-contents__title !text-black">
+          Table of contents
+        </button>
+        <div class="post-page__table-of-contents__list [&>*]:!text-black"></div>
+      </div>
+
+      <div class="post-page__content [&>*]:!text-black">
+        <p>We’ve <a href="https://www.timescale.com/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost" rel="noreferrer">recently announced the open-sourcing of pgvectorscale</a>, a new PostgreSQL extension that provides advanced indexing techniques for vector data. Pgvectorscale provides a new index method for pgvector data, significantly improving the search performance of approximate nearest neighbor (ANN) queries. These queries are key for leveraging modern vector embedding techniques to facilitate <a href="https://www.timescale.com/learn/vector-search-vs-semantic-search?ref=timescale.com"><u>semantic search</u></a>, which allows for finding things similar to a query's <em>meaning. </em>That, in turn, enables applications like retrieval-augmented generation (RAG), summarization, clustering, or general search.</p><p>In our announcement post, we described how our new StreamingDiskANN vector index allows us to perform vector search faster than bespoke purpose-built databases created for this purpose—like Pinecone. We also observed that if bespoke databases aren’t faster, then there is no reason to use them because they can’t possibly compete with the rich feature set and ecosystem of general-purpose databases like PostgreSQL.</p><p>In this article we’ll go into the technical contributions that allowed us to “break the speed barrier” and create a fast vector index in PostgreSQL. We’ll cover three technical improvements we made:</p><ul><li><strong>Implementing the DiskANN algorithm</strong> to allow the index to be stored on SSDs instead of having to reside in memory. This vastly decreases the cost of storing large amounts of vectors since SSDs are much cheaper than RAM.&nbsp;</li><li><strong>Supporting streaming post-filtering,</strong> which allows for accurate retrieval even when secondary filters are applied. In contrast, the HNSW (hierarchical navigable small world) index fails to accurately retrieve data if the filters exclude the first `ef_search` vectors. Pinecone had previously complained about this problem when comparing itself to pgvector. Guess what; through the power of open source, this issue has been resolved.&nbsp;</li><li><strong>Developing a completely new vector quantization algorithm </strong>we call SBQ (statistical binary quantization). This algorithm provides a better accuracy vs. performance trade-off compared to existing ones like BQ (binary quantization) and PQ (product quantization).</li></ul><h2 id="enhancing-postgresql-for-vector-data">Enhancing PostgreSQL for Vector Data</h2><h3 id="implementing-the-diskann-algorithm-to-optimize-for-ssd-storage"><br>Implementing the DiskANN algorithm to optimize for SSD storage</h3><p>The <a href="https://github.com/microsoft/DiskANN?ref=timescale.com"><u>DiskANN</u></a> algorithm was developed by work coming out of Microsoft. Its goal was to store a very large number of vectors (think Microsoft scale). At that scale, it was simply uneconomical to store everything in RAM. Thus, the algorithm is geared towards enabling storing vectors on SSDs and using less RAM. Its details are described very well in the <a href="https://proceedings.neurips.cc/paper_files/paper/2019/file/09853c7fb1d3f8ee67a61b6bf4a7f8e6-Paper.pdf?ref=timescale.com"><u>paper</u></a>, so I’ll only give a bit of intuition below.&nbsp;</p><p>The DiskANN algorithm is a graph-based search algorithm like HNSW. Graph-based algorithms in this space have a well-known problem: finding an item that’s “very far” from the starting position is expensive because it requires a lot of hops.&nbsp;</p><p>HNSW solves this problem by introducing a system of layers where the first (top) layer only has “long-range” edges that quickly get you into the right vicinity and have pointers to nodes into lower levels that allow you to traverse the graph in a more fine-grained way. This solves the long-range problem but introduces more indirection through the layering system, which requires more random-access that forces the graph into RAM for good performance.&nbsp;</p><p>In contrast, DiskANN uses a single-layer graph and solves the long-range problem during graph construction by allowing for neighbor edges that refer to far-away nodes. The single-layer construction simplifies the algorithm and decreases the random access necessary during search, allowing SSDs to be used effectively.</p><h3 id="support-for-streaming-retrieval-for-accurate-metadata-filtering">Support for streaming retrieval for accurate metadata filtering</h3><p>Oftentimes, when searching for semantically similar items, you want to constrain your search with additional filters. For example, documents are often associated with a set of tags and you may want to constrain your search by requiring a match of the tags as well as vector similarity.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_two-stage-filtering.png" class="kg-image" alt="A diagram representing two-stage filtering" loading="lazy" width="2000" height="1657" srcset="https://www.timescale.com/blog/content/images/size/w600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_two-stage-filtering.png 600w, https://www.timescale.com/blog/content/images/size/w1000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_two-stage-filtering.png 1000w, https://www.timescale.com/blog/content/images/size/w1600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_two-stage-filtering.png 1600w, https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_two-stage-filtering.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><i><em class="italic" style="white-space: pre-wrap;">Figure 1: The problem with two-stage post-filtering is that if the matching records aren’t located in the set before the cutoff of the first stage, the final answer will be incorrect.</em></i></figcaption></figure><p>This is challenging for many HNSW-based indexes (including pgvector’s implementation) because the index retrieves a pre-set number of records from the index (set by the <code>hnsw.ef_search</code> parameter, often set to 1,000 or less) <em>before</em> applying secondary filters. If not enough items in the retrieved set (e.g., first 1,000 items) match the secondary filters, you will miss those results.&nbsp;</p><p>Figure 1 illustrates this problem when you use <code>hnsw.ef_search=5</code> to find the top two vectors closest to a given query <strong>and</strong> matching the tag “department=engineering”. In this scenario, the first item with the correct tag is the seventh vector closest to the query.&nbsp;</p><p>Since the vector search returns only the closest five items and none matches the tag filter, no results will be returned! This is an extreme example where no results are left over, but there will be some accuracy loss any time the retrieved set has less than k items matching the filter.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_streaming-filtering.png" class="kg-image" alt="A diagram representing streaming filtering" loading="lazy" width="2000" height="1657" srcset="https://www.timescale.com/blog/content/images/size/w600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_streaming-filtering.png 600w, https://www.timescale.com/blog/content/images/size/w1000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_streaming-filtering.png 1000w, https://www.timescale.com/blog/content/images/size/w1600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_streaming-filtering.png 1600w, https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_streaming-filtering.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><i><em class="italic" style="white-space: pre-wrap;">Figure 2: Streaming filtering produces the correct result by exposing a </em></i><i><code spellcheck="false" style="white-space: pre-wrap;"><em class="italic">get_next()</em></code></i><i><em class="italic" style="white-space: pre-wrap;"> function that can be called continuously until the right number of records are found. </em></i></figcaption></figure><p>In contrast, our StreamingDiskANN index has no “ef_search” type cutoff. Instead, as shown in Figure 2, it uses a streaming model that allows the index to continuously retrieve the “next closest” item for a given query, potentially even traversing the entire graph! The Postgres execution system will continuously ask for the “next closet” item until it has matched the <code>LIMIT N</code> items that satisfy the additional filters. This is a form of post-filtering that suffers absolutely no accuracy degradation.</p><p>As a side note, Pinecone made a big deal of the “ef_search” type limitation to deposition pgvector in <a href="https://www.pinecone.io/blog/pinecone-vs-pgvector/?ref=timescale.com"><u>their comparison</u></a>. But, with the introduction of StreamingDiskANN, this criticism no longer applies. This just shows the power of open-source projects to move quickly to mitigate limitations.</p><h3 id="statistical-binary-quantization-sbq-a-new-quantization-algorithm">Statistical binary quantization (SBQ): A new quantization algorithm</h3><p>Many vector indexes use compression to reduce the space needed for vector storage and make index traversal faster at the cost of some loss in accuracy. The common algorithms are product quantization (PQ) and binary quantization (BQ). In fact, pgvector’s HNSW index just added BQ in their latest 0.7.0 release (hooray!).&nbsp;</p><p>The way most vector databases work to retrieve K results is as follows. The system first retrieves N results (N&gt;K) using the approximate quantized differences, then “corrects” for the error by rescoring. It calculates the full distance for the N results, sorts the list by the full distance, and returns the K items with the smallest distance. Yet, even with rescoring, accuracy is important because it allows you to decrease N (and thus query faster) and improve the chances that the accurate result will be in the set of N pre-fetched results.</p><p>We took a look at the BQ algorithm and were unhappy with the amount of accuracy loss it produced. We also immediately saw some low-hanging fruit to improve it. In tinkering with the algorithm, we developed a new compression algorithm we are calling statistical binary quantization (SBQ).&nbsp;</p><p>The BQ compression algorithm transforms a floating-point vector into a binary vector in a surprisingly simple way: for each element in the vector, if the value is greater than 0.0, make the binary value 1; otherwise, set the binary value to 0. Then, the distance function simply becomes the <code>XOR</code> function. Why <code>XOR</code>? Well, you’ll find many mathematical explanations (none of which we quite like) but the intuition we use is that the binary vector divides the space into quadrants as seen in Figure 3, and the <code>XOR</code> function is simply a count of how many planes you have to cross to get from one quadrant to another.&nbsp;</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization.png" class="kg-image" alt="A diagram representing BQ" loading="lazy" width="2000" height="1460" srcset="https://www.timescale.com/blog/content/images/size/w600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization.png 600w, https://www.timescale.com/blog/content/images/size/w1000/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization.png 1000w, https://www.timescale.com/blog/content/images/size/w1600/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization.png 1600w, https://www.timescale.com/blog/content/images/2024/06/How-We-Made-PostgreSQL-as-Fast-as-Pinecone-for-Vector-Data_Binary-Quantization.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><i><em class="italic" style="white-space: pre-wrap;">Figure 3: BQ for three dimensions. Quadrant 1 is represented by the binary vector [1,1,1] and any vector falling into that quadrant will have a distance of 0. The distance with vectors in other quadrants increases with the number of dimensions that are different.</em></i></figcaption></figure><p>One of the immediate things that struck us as odd is that the cutoff for each dimension is always 0.0. This was odd because in analyzing real embeddings we’ve previously found that the mean for each dimension is not even approximately 0.0. That means the quadrants we are defining in BQ are not dividing the space of points in half and thus missing out on opportunities for differentiation.&nbsp;</p><p>Intuitively, you want the “origin” of your cutting plane in the middle of all the action, but in BQ, it’s off to the side. The solution was quite simple: we used a learning pass to derive the mean value for each dimension and then set the float-value cutoff to the mean instead of 0.0. Thus, we set the binary value for an element to 1 if and only if the float value is greater than the mean for the dimension.</p><p>But then we noticed yet another odd thing: the compression algorithm worked better for 1,536 dimensions than for 768 dimensions. This made little sense to use because the literature strongly implies that problems with higher dimensions are harder than lower dimensions (the so-called “curse of dimensionality”). But here, the opposite is true.&nbsp;</p><p>However, thinking about the quadrant analogy, this kind of made sense—we’d have fewer quadrants with 768 dimensions, and each quadrant would be bigger and thus less differentiated. So we asked ourselves, could we create more quadrants with 768 dimensions?&nbsp;</p><p>Our approach was to convert each floating-point dimension into two bits (which we later generalized). The idea was to use the mean and standard deviations to derive a z-score (a value’s distance from the mean normalized by standard deviation) and then divide the z-score into three regions. We then encode the three regions into two bits so that adjacent regions have a <code>XOR</code> distance of 1, and the distance increases with the z-score distance. In the two-bit case with three regions the encoding is 00, 01, 11.&nbsp;</p><p>Experimentally, we found that two-bit encoding really helps accuracy with the 768-dimension case. Thus, by default, we use two-bit encoding for any data with less than about 900 dimensions and one-bit encoding otherwise. In one representative example on a dataset with 768 dimensions, the recall improved from 96.5&nbsp;% to 98.6&nbsp;% when switching from the one-bit to two-bit encoding, a significant improvement at such high recall levels.</p><p>In sum, these techniques help us achieve a better accuracy/performance trade-off.</p><h2 id="a-better-postgresql-for-vector-data">A Better PostgreSQL for Vector Data</h2><p>The three techniques we covered in this post allow us to develop a best-in-class index for vector data in PostgreSQL that rivals the performance of bespoke databases like Pinecone. We were able to achieve this with a small team by harnessing much of the infrastructure that PostgreSQL provides, including caching, WAL (write-ahead logging), and the associated recovery infrastructure, and a rock-solid disk writing system.&nbsp;</p><p>We wrote this in Rust using the <a href="https://github.com/pgcentralfoundation/pgrx?ref=timescale.com"><u>PGRX</u></a> framework for writing Rust extensions for PostgreSQL. This further sped up development because we could rely on some of the safety guarantees that Rust and PGRX provide while developing our own safe wrappers for tricky parts of the code (like disk I/O). We think that this combination of tools is really useful and powerful for developing database features and extending the reach of PostgreSQL.&nbsp;</p><h3 id="next-steps">Next steps</h3><p>Our team has been working tirelessly in the last few months to equip PostgreSQL with these new advanced indexing techniques for vector data. Our goal is to help PostgreSQL developers become AI developers. But for that, we need your feedback.</p><p>Here’s how you can get involved:&nbsp;</p><ul><li><strong>Share the news with your friends and colleagues</strong>: Share our posts announcing pgai and pgvectorscale on <a href="https://x.com/TimescaleDB?ref=timescale.com"><u>X/Twitter</u></a>, <a href="https://www.linkedin.com/company/timescaledb/?ref=timescale.com"><u>LinkedIn</u></a>, and Threads. We promise to RT back.</li><li><strong>Submit issues and feature requests</strong>: We encourage you to submit issues and feature requests for functionality you’d like to see, bugs you find, and suggestions you think would improve both projects.</li><li><strong>Make a contribution</strong>: We welcome community contributions for both pgvectorscale and pgai. Pgvectorscale is written in Rust, while pgai uses Python and PL/Python. For pgai specifically, let us know which models you want to see supported, particularly for open-source embedding and generation models. <a href="https://github.com/timescale/pgai/?ref=timescale.com" rel="noreferrer">See the pgai GitHub</a> for more.</li><li><strong>Offer pgvectorscale and pgai extensions on your PostgreSQL cloud</strong>: Pgvectorscale and pgai are open-source projects under the <a href="https://github.com/timescale/pgvectorscale/blob/main/LICENSE?ref=timescale.com" rel="noreferrer"><u>PostgreSQL License</u></a>. We encourage you to offer pgvectorscale and pgai on your managed PostgreSQL database-as-a-service platform, and we can even help you spread the word. Get in touch via our <a href="https://www.timescale.com/contact?ref=timescale.com"><u>Contact Us form</u></a> and mention pgai and pgvectorscale to discuss further.</li><li><strong>Use pgai and pgvectorscale today</strong>: You can find installation instructions on the <a href="https://github.com/timescale/pgai/?ref=timescale.com" rel="noreferrer">pgai GitHub</a> and <a href="https://github.com/timescale/pgvectorscale/?ref=timescale.com" rel="noreferrer">pgvectorscale GitHub</a> repositories, respectively. You can also access both pgai and pgvectorscale on any database service on Timescale’s cloud PostgreSQL platform. For production vector workloads, we’re offering private beta access to vector-optimized databases with pgvector and pgvectorscale on Timescale. <a href="https://timescale.typeform.com/to/H7lQ10eQ?ref=timescale.com"><u>Sign up here for priority access</u></a>.</li></ul>
+        <div class="post-page__cta">
+          <div class="post-page__cta__text base-text">Ingest and query in milliseconds, even at terabyte scale.</div>
+          <button class="tsb-button !bg-electricYellow !border-0 h-[40px] !font-bold">
+            <a class="no-underline whitespace-nowrap font-bold" href="https://console.cloud.timescale.com/signup" target="_blank" referrerpolicy="no-referrer">Try Timescale for free</a>
+          </button>
+
+        </div>
+      </div>
+
+      <div class="post-page__authors">
+        <div class="post-page__authors__title">
+            This post was written by
+        </div>
+        <ul>
+            <li class="post-page__authors__name-list">
+              <a href="/blog/author/matvey/">Matvey Arye</a>
+            </li>
+        </ul>
+
+        <div class="post-page__authors__headshot">
+          <ul>
+              <li class="post-page__authors__headshot__image">
+                <a href="/blog/author/matvey/">
+                    <img class="author-profile-image" src="/blog/content/images/size/w100/2019/01/team-mat.jpg" alt="Matvey Arye" />
+                </a>
+              </li>
+          </ul>
+        </div>
+        <button class="post-page__meta__share__end">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.5C20 7.433 18.433 9 16.5 9C15.4884 9 14.5771 8.57086 13.9381 7.88469L8.82563 10.906C8.93879 11.2502 9 11.6179 9 12C9 12.382 8.93879 12.7498 8.82563 13.094L13.9383 16.1151C14.5773 15.4291 15.4885 15 16.5 15C18.433 15 20 16.567 20 18.5C20 20.433 18.433 22 16.5 22C14.567 22 13 20.433 13 18.5C13 18.1179 13.0612 17.7502 13.1744 17.406L8.06172 14.3849C7.42274 15.0709 6.51148 15.5 5.5 15.5C3.567 15.5 2 13.933 2 12C2 10.067 3.567 8.5 5.5 8.5C6.51148 8.5 7.42274 8.92906 8.06171 9.61511L13.1744 6.59399L13.1748 6.59518C13.0614 6.25065 13 5.88249 13 5.5C13 3.567 14.567 2 16.5 2C18.433 2 20 3.567 20 5.5ZM18.5 5.5C18.5 6.60457 17.6046 7.5 16.5 7.5C15.3954 7.5 14.5 6.60457 14.5 5.5C14.5 4.39543 15.3954 3.5 16.5 3.5C17.6046 3.5 18.5 4.39543 18.5 5.5ZM5.5 14C6.60457 14 7.5 13.1046 7.5 12C7.5 10.8954 6.60457 10 5.5 10C4.39543 10 3.5 10.8954 3.5 12C3.5 13.1046 4.39543 14 5.5 14ZM18.5 18.5C18.5 19.6046 17.6046 20.5 16.5 20.5C15.3954 20.5 14.5 19.6046 14.5 18.5C14.5 17.3954 15.3954 16.5 16.5 16.5C17.6046 16.5 18.5 17.3954 18.5 18.5Z" fill="#141E35"/>
+        </svg>
+        <span>Share this Post</span>
+      </button>
+      </div>
+
+    </article>
+    <div class="post-page__meta">
+      <div class="post-page__meta__content">
+        <div class="post-page__meta__posted">
+          <time class="post-page__meta__date" datetime="2024-06-11">11 Jun 2024</time>
+          <span class="post-page__meta__read-time">9 min read</span>
+        </div>
+
+          <a class="post-page__meta__tag" href="/blog/tag/ai/">AI</a>
+
+        <div class="post-page__meta__authors">
+          <div class="post-page__meta__authors__title">
+            Contributors
+          </div>
+          <ul>
+              <li class="author-list-item">
+                <a href="/blog/author/matvey/">Matvey Arye</a>
+              </li>
+          </ul>
+        </div>
+
+        <div class="post-page__meta__share__wrapper">
+          <span>Share</span>
+          <a target="_blank" href="https://www.twitter.com/intent/tweet?url=https://blog.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data//&text=">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.002 5.92893C21.4351 6.75804 20.7498 7.46446 19.946 8.04822C19.9544 8.16667 19.9586 8.34433 19.9586 8.58122C19.9586 9.68106 19.7979 10.7788 19.4764 11.8744C19.1548 12.97 18.6662 14.0211 18.0105 15.0279C17.3547 16.0347 16.5742 16.9251 15.6689 17.6992C14.7635 18.4734 13.6721 19.0909 12.3944 19.552C11.1168 20.0131 9.75036 20.2437 8.29505 20.2437C6.00208 20.2437 3.90375 19.6303 2 18.4036C2.29614 18.4374 2.62612 18.4543 2.98995 18.4543C4.8937 18.4543 6.59013 17.8706 8.07929 16.703C7.19087 16.6861 6.39554 16.4133 5.69326 15.8845C4.99099 15.3558 4.50871 14.6811 4.24642 13.8604C4.52563 13.9027 4.78369 13.9239 5.02061 13.9239C5.38444 13.9239 5.74403 13.8773 6.09939 13.7843C5.15175 13.5897 4.36699 13.118 3.7451 12.3693C3.12321 11.6206 2.81226 10.7513 2.81226 9.76142V9.71066C3.38762 10.0322 4.00527 10.2056 4.66524 10.231C4.10681 9.85871 3.6626 9.37225 3.33262 8.77157C3.00264 8.17089 2.83765 7.51946 2.83765 6.81726C2.83765 6.07275 3.02379 5.38325 3.39608 4.74873C4.41988 6.00931 5.66576 7.01819 7.13376 7.77538C8.60177 8.53258 10.1734 8.95347 11.8487 9.03807C11.781 8.71658 11.7472 8.40356 11.7472 8.09899C11.7472 6.96531 12.1469 5.99874 12.9465 5.19924C13.7461 4.39974 14.7128 4 15.8466 4C17.0311 4 18.0295 4.43147 18.8418 5.29442C19.764 5.11675 20.6313 4.7868 21.4436 4.30457C21.1305 5.2775 20.5298 6.03045 19.6414 6.56345C20.4282 6.47885 21.2151 6.26735 22.002 5.92893Z" fill="#141E35"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=https://blog.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.6942 11.0172V10.9912C12.6942 10.9912 12.6682 10.9912 12.6942 11.0172Z" fill="#141E35"/>
+              <path d="M20.4011 2H3.46789C2.65531 2 2 2.6291 2 3.44168V20.5583C2 21.3447 2.65531 22 3.46789 22H20.4011C21.2136 22 21.8689 21.3709 21.8689 20.5583V3.41547C21.8689 2.6291 21.2136 2 20.4011 2ZM8.02883 18.7235H5.04063V9.70642H8.02883V18.7235ZM6.53473 8.47444C5.51245 8.47444 4.85714 7.79292 4.85714 6.92792C4.85714 6.0367 5.53866 5.38139 6.56094 5.38139C7.58322 5.38139 8.21232 6.06291 8.23853 6.92792C8.23853 7.76671 7.58322 8.47444 6.53473 8.47444ZM18.8545 18.7235H15.8401V13.9004C15.8401 12.6946 15.3945 11.8558 14.3198 11.8558C13.481 11.8558 13.0092 12.4063 12.7733 12.9568C12.6946 13.1402 12.6684 13.4286 12.6684 13.6907V18.7235H9.68021C9.68021 18.7235 9.73264 10.5452 9.68021 9.70642H12.6684V10.9908C13.0616 10.3879 13.7693 9.49672 15.3683 9.49672C17.3342 9.49672 18.8283 10.7811 18.8283 13.5596V18.7235H18.8545Z" fill="#141E35"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://news.ycombinator.com/submitlink?u=https://blog.timescale.com/blog/how-we-made-postgresql-as-fast-as-pinecone-for-vector-data/">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 4.1425C21.9998 3.57434 21.774 3.02952 21.3722 2.62777C20.9705 2.22602 20.4257 2.00022 19.8575 2H4.1425C3.57434 2.00022 3.02952 2.22602 2.62777 2.62777C2.22602 3.02952 2.00022 3.57434 2 4.1425V19.8567C2 20.425 2.2257 20.97 2.62747 21.3719C3.02925 21.7739 3.5742 21.9998 4.1425 22H19.8567C20.425 22 20.97 21.7743 21.3719 21.3725C21.7739 20.9708 21.9998 20.4258 22 19.8575V4.1425ZM12.6783 13.2092V17.7142H11.2767V13.1292L7.71333 6.28583H9.37833C11.7217 10.6742 11.5742 10.8042 12.0258 11.8925C12.575 10.6867 12.285 10.8033 14.7317 6.28583H16.285L12.6783 13.2092Z" fill="#141E35"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+      <div class="post-page__related">
+        <h2 class="post-page__related__title">
+          Related posts
+        </h2>
+        <div class="post-page__related__list">
+              <article class="post-card post tag-ai tag-announcements tag-postgresql-blog tag-pgvector featured ">
+
+    <a class="post-card__image" href="/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/">
+        <img class="post-card-image"
+             srcset="/blog/content/images/size/w300/2024/06/postgresql-vs-pinecone.jpg 300w,
+                      /blog/content/images/size/w300/2024/06/postgresql-vs-pinecone.jpg 600w,
+                      /blog/content/images/size/w300/2024/06/postgresql-vs-pinecone.jpg 1000w,
+                      /blog/content/images/size/w300/2024/06/postgresql-vs-pinecone.jpg 2000w"
+             sizes="(max-width: 1000px) 400px, 700px"
+             loading="lazy"
+             src="/blog/content/images/size/w300/2024/06/postgresql-vs-pinecone.jpg"
+             alt="PostgreSQL and Pgvector: Now Faster Than Pinecone, 75% Cheaper, and 100% Open Source"
+        />
+    </a>
+
+    <div class="post-card__content">
+      <header class="post-card__header">
+        <div class="post-card__header__tag-share">
+          <div>
+                <div class="post-card__tag">AI</div>
+          </div>
+          <button class="post-card__share" data-url="/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/" aria-label="share">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.5C20 7.433 18.433 9 16.5 9C15.4884 9 14.5771 8.57086 13.9381 7.88469L8.82563 10.906C8.93879 11.2502 9 11.6179 9 12C9 12.382 8.93879 12.7498 8.82563 13.094L13.9383 16.1151C14.5773 15.4291 15.4885 15 16.5 15C18.433 15 20 16.567 20 18.5C20 20.433 18.433 22 16.5 22C14.567 22 13 20.433 13 18.5C13 18.1179 13.0612 17.7502 13.1744 17.406L8.06172 14.3849C7.42274 15.0709 6.51148 15.5 5.5 15.5C3.567 15.5 2 13.933 2 12C2 10.067 3.567 8.5 5.5 8.5C6.51148 8.5 7.42274 8.92906 8.06171 9.61511L13.1744 6.59399L13.1748 6.59518C13.0614 6.25065 13 5.88249 13 5.5C13 3.567 14.567 2 16.5 2C18.433 2 20 3.567 20 5.5ZM18.5 5.5C18.5 6.60457 17.6046 7.5 16.5 7.5C15.3954 7.5 14.5 6.60457 14.5 5.5C14.5 4.39543 15.3954 3.5 16.5 3.5C17.6046 3.5 18.5 4.39543 18.5 5.5ZM5.5 14C6.60457 14 7.5 13.1046 7.5 12C7.5 10.8954 6.60457 10 5.5 10C4.39543 10 3.5 10.8954 3.5 12C3.5 13.1046 4.39543 14 5.5 14ZM18.5 18.5C18.5 19.6046 17.6046 20.5 16.5 20.5C15.3954 20.5 14.5 19.6046 14.5 18.5C14.5 17.3954 15.3954 16.5 16.5 16.5C17.6046 16.5 18.5 17.3954 18.5 18.5Z" fill="#141E35"/>
+            </svg>
+          </button>
+        </div>
+        <a class="post-card__link" href="/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/">
+          <h2 class="post-card__title !text-black">PostgreSQL and Pgvector: Now Faster Than Pinecone, 75% Cheaper, and 100% Open Source</h2>
+        </a>
+      </header>
+
+      <div class="post-card__meta">
+        <div class="post-card__meta__container">
+          <span class="post-card__meta__posted !text-black">
+            <time datetime="2024-06-11">11 Jun 2024</time>
+          </span>
+          <span class="post-card__meta__read-time !text-black">
+            10 min read
+          </span>
+        </div>
+      </div>
+
+      <section class="post-card__excerpt">
+        <a class="post-card__link" href="/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/">
+            <p class="!text-black">Introducing pgvectorscale, an open-source PostgreSQL extension that supercharges pgvector’s vector search performance for large-scale vector workloads.</p>
+        </a>
+      </section>
+    </div>
+</article>
+              <article class="post-card post tag-ai tag-announcements tag-postgresql-blog tag-pgvector ">
+
+    <a class="post-card__image" href="/blog/making-postgresql-a-better-ai-database/">
+        <img class="post-card-image"
+             srcset="/blog/content/images/size/w300/2024/06/Hero-1.png 300w,
+                      /blog/content/images/size/w300/2024/06/Hero-1.png 600w,
+                      /blog/content/images/size/w300/2024/06/Hero-1.png 1000w,
+                      /blog/content/images/size/w300/2024/06/Hero-1.png 2000w"
+             sizes="(max-width: 1000px) 400px, 700px"
+             loading="lazy"
+             src="/blog/content/images/size/w300/2024/06/Hero-1.png"
+             alt="Making PostgreSQL a Better AI Database"
+        />
+    </a>
+
+    <div class="post-card__content">
+      <header class="post-card__header">
+        <div class="post-card__header__tag-share">
+          <div>
+                <div class="post-card__tag">AI</div>
+          </div>
+          <button class="post-card__share" data-url="/blog/making-postgresql-a-better-ai-database/" aria-label="share">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.5C20 7.433 18.433 9 16.5 9C15.4884 9 14.5771 8.57086 13.9381 7.88469L8.82563 10.906C8.93879 11.2502 9 11.6179 9 12C9 12.382 8.93879 12.7498 8.82563 13.094L13.9383 16.1151C14.5773 15.4291 15.4885 15 16.5 15C18.433 15 20 16.567 20 18.5C20 20.433 18.433 22 16.5 22C14.567 22 13 20.433 13 18.5C13 18.1179 13.0612 17.7502 13.1744 17.406L8.06172 14.3849C7.42274 15.0709 6.51148 15.5 5.5 15.5C3.567 15.5 2 13.933 2 12C2 10.067 3.567 8.5 5.5 8.5C6.51148 8.5 7.42274 8.92906 8.06171 9.61511L13.1744 6.59399L13.1748 6.59518C13.0614 6.25065 13 5.88249 13 5.5C13 3.567 14.567 2 16.5 2C18.433 2 20 3.567 20 5.5ZM18.5 5.5C18.5 6.60457 17.6046 7.5 16.5 7.5C15.3954 7.5 14.5 6.60457 14.5 5.5C14.5 4.39543 15.3954 3.5 16.5 3.5C17.6046 3.5 18.5 4.39543 18.5 5.5ZM5.5 14C6.60457 14 7.5 13.1046 7.5 12C7.5 10.8954 6.60457 10 5.5 10C4.39543 10 3.5 10.8954 3.5 12C3.5 13.1046 4.39543 14 5.5 14ZM18.5 18.5C18.5 19.6046 17.6046 20.5 16.5 20.5C15.3954 20.5 14.5 19.6046 14.5 18.5C14.5 17.3954 15.3954 16.5 16.5 16.5C17.6046 16.5 18.5 17.3954 18.5 18.5Z" fill="#141E35"/>
+            </svg>
+          </button>
+        </div>
+        <a class="post-card__link" href="/blog/making-postgresql-a-better-ai-database/">
+          <h2 class="post-card__title !text-black">Making PostgreSQL a Better AI Database</h2>
+        </a>
+      </header>
+
+      <div class="post-card__meta">
+        <div class="post-card__meta__container">
+          <span class="post-card__meta__posted !text-black">
+            <time datetime="2024-06-11">11 Jun 2024</time>
+          </span>
+          <span class="post-card__meta__read-time !text-black">
+            7 min read
+          </span>
+        </div>
+      </div>
+
+      <section class="post-card__excerpt">
+        <a class="post-card__link" href="/blog/making-postgresql-a-better-ai-database/">
+            <p class="!text-black">Meet pgai and pgvectorscale, two new open-source extensions that make PostgreSQL even better for AI applications.</p>
+        </a>
+      </section>
+    </div>
+</article>
+              <article class="post-card post tag-ai tag-announcements tag-postgresql-blog tag-pgvector ">
+
+    <a class="post-card__image" href="/blog/pgvector-vs-pinecone/">
+        <img class="post-card-image"
+             srcset="/blog/content/images/size/w300/2024/06/pgvector-vs-pinecone.png 300w,
+                      /blog/content/images/size/w300/2024/06/pgvector-vs-pinecone.png 600w,
+                      /blog/content/images/size/w300/2024/06/pgvector-vs-pinecone.png 1000w,
+                      /blog/content/images/size/w300/2024/06/pgvector-vs-pinecone.png 2000w"
+             sizes="(max-width: 1000px) 400px, 700px"
+             loading="lazy"
+             src="/blog/content/images/size/w300/2024/06/pgvector-vs-pinecone.png"
+             alt="Pgvector vs. Pinecone: Vector Database Performance and Cost Comparison"
+        />
+    </a>
+
+    <div class="post-card__content">
+      <header class="post-card__header">
+        <div class="post-card__header__tag-share">
+          <div>
+                <div class="post-card__tag">AI</div>
+          </div>
+          <button class="post-card__share" data-url="/blog/pgvector-vs-pinecone/" aria-label="share">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.5C20 7.433 18.433 9 16.5 9C15.4884 9 14.5771 8.57086 13.9381 7.88469L8.82563 10.906C8.93879 11.2502 9 11.6179 9 12C9 12.382 8.93879 12.7498 8.82563 13.094L13.9383 16.1151C14.5773 15.4291 15.4885 15 16.5 15C18.433 15 20 16.567 20 18.5C20 20.433 18.433 22 16.5 22C14.567 22 13 20.433 13 18.5C13 18.1179 13.0612 17.7502 13.1744 17.406L8.06172 14.3849C7.42274 15.0709 6.51148 15.5 5.5 15.5C3.567 15.5 2 13.933 2 12C2 10.067 3.567 8.5 5.5 8.5C6.51148 8.5 7.42274 8.92906 8.06171 9.61511L13.1744 6.59399L13.1748 6.59518C13.0614 6.25065 13 5.88249 13 5.5C13 3.567 14.567 2 16.5 2C18.433 2 20 3.567 20 5.5ZM18.5 5.5C18.5 6.60457 17.6046 7.5 16.5 7.5C15.3954 7.5 14.5 6.60457 14.5 5.5C14.5 4.39543 15.3954 3.5 16.5 3.5C17.6046 3.5 18.5 4.39543 18.5 5.5ZM5.5 14C6.60457 14 7.5 13.1046 7.5 12C7.5 10.8954 6.60457 10 5.5 10C4.39543 10 3.5 10.8954 3.5 12C3.5 13.1046 4.39543 14 5.5 14ZM18.5 18.5C18.5 19.6046 17.6046 20.5 16.5 20.5C15.3954 20.5 14.5 19.6046 14.5 18.5C14.5 17.3954 15.3954 16.5 16.5 16.5C17.6046 16.5 18.5 17.3954 18.5 18.5Z" fill="#141E35"/>
+            </svg>
+          </button>
+        </div>
+        <a class="post-card__link" href="/blog/pgvector-vs-pinecone/">
+          <h2 class="post-card__title !text-black">Pgvector vs. Pinecone: Vector Database Performance and Cost Comparison</h2>
+        </a>
+      </header>
+
+      <div class="post-card__meta">
+        <div class="post-card__meta__container">
+          <span class="post-card__meta__posted !text-black">
+            <time datetime="2024-06-11">11 Jun 2024</time>
+          </span>
+          <span class="post-card__meta__read-time !text-black">
+            10 min read
+          </span>
+        </div>
+      </div>
+
+      <section class="post-card__excerpt">
+        <a class="post-card__link" href="/blog/pgvector-vs-pinecone/">
+            <p class="!text-black">Comparing the query latency, query throughput, and cost of Pinecone vs. self-hosted PostgreSQL with pgvector and pgvectorscale on a 50 million vector benchmark.</p>
+        </a>
+      </section>
+    </div>
+</article>
+        </div>
+      </div>
+
+
+          <div class="scroll-to-top">
+            <button class="scroll-to-top__button" aria-label="Scroll to top">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 13.8738C6.40237 13.4832 6.40237 12.8501 6.79289 12.4595L15.1262 4.12621C15.5168 3.73568 16.1499 3.73568 16.5404 4.12621L24.8738 12.4595C25.2643 12.8501 25.2643 13.4832 24.8738 13.8738C24.4832 14.2643 23.8501 14.2643 23.4596 13.8738L16.8333 7.24753L16.8333 26.5C16.8333 27.0523 16.3856 27.5 15.8333 27.5C15.281 27.5 14.8333 27.0523 14.8333 26.5V7.24753L8.20711 13.8738C7.81658 14.2643 7.18342 14.2643 6.79289 13.8738Z" fill="#141E35"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="share-dialog share-dialog--hidden">
+      <div class="share-dialog__overlay"></div>
+      <div class="share-dialog__card">
+        <div class="share-dialog__inner">
+          <button class="share-dialog__close" aria-label="close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.71967 5.71967C6.01256 5.42678 6.48744 5.42678 6.78033 5.71967L12 10.9393L17.2197 5.71967C17.5126 5.42678 17.9874 5.42678 18.2803 5.71967C18.5732 6.01256 18.5732 6.48744 18.2803 6.78033L13.0607 12L18.2803 17.2197C18.5732 17.5126 18.5732 17.9874 18.2803 18.2803C17.9874 18.5732 17.5126 18.5732 17.2197 18.2803L12 13.0607L6.78033 18.2803C6.48744 18.5732 6.01256 18.5732 5.71967 18.2803C5.42678 17.9874 5.42678 17.5126 5.71967 17.2197L10.9393 12L5.71967 6.78033C5.42678 6.48744 5.42678 6.01256 5.71967 5.71967Z" fill="#141E35"/>
+            </svg>
+          </button>
+          <div class="share-dialog__title">
+            Share this post
+          </div>
+          <div class="share-dialog__links">
+            <a href="" target="_blank" class="share-dialog__link share-dialog__link--linkedin" aria-label="linkedin">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.6942 11.0168V10.9908C12.6942 10.9908 12.6682 10.9908 12.6942 11.0168Z" fill="#141E35"/>
+                <path d="M20.4011 2H3.46789C2.65531 2 2 2.6291 2 3.44168V20.5583C2 21.3447 2.65531 22 3.46789 22H20.4011C21.2136 22 21.8689 21.3709 21.8689 20.5583V3.41547C21.8689 2.6291 21.2136 2 20.4011 2ZM8.02883 18.7235H5.04063V9.70642H8.02883V18.7235ZM6.53473 8.47444C5.51245 8.47444 4.85714 7.79292 4.85714 6.92792C4.85714 6.0367 5.53866 5.38139 6.56094 5.38139C7.58322 5.38139 8.21232 6.06291 8.23853 6.92792C8.23853 7.76671 7.58322 8.47444 6.53473 8.47444ZM18.8545 18.7235H15.8401V13.9004C15.8401 12.6946 15.3945 11.8558 14.3198 11.8558C13.481 11.8558 13.0092 12.4063 12.7733 12.9568C12.6946 13.1402 12.6684 13.4286 12.6684 13.6907V18.7235H9.68021C9.68021 18.7235 9.73264 10.5452 9.68021 9.70642H12.6684V10.9908C13.0616 10.3879 13.7693 9.49672 15.3683 9.49672C17.3342 9.49672 18.8283 10.7811 18.8283 13.5596V18.7235H18.8545Z" fill="#141E35"/>
+              </svg>
+            </a>
+            <a href="" target="_blank" class="share-dialog__link share-dialog__link--facebook" aria-label="facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.0547 8.66667H17.5821L17.1412 12H14.0547V22H9.48018V12H7V8.66667H9.48018V6.42708C9.48018 4.96874 9.86598 3.86632 10.6376 3.11979C11.4092 2.37326 12.6952 2 14.4957 2H17.5821V5.33333H15.7082C15.0101 5.33333 14.56 5.4375 14.3579 5.64583C14.1558 5.85417 14.0547 6.20139 14.0547 6.6875V8.66667Z" fill="#141E35"/>
+              </svg>
+            </a>
+            <a href="" target="_blank" class="share-dialog__link share-dialog__link--twitter" aria-label="twitter">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.002 5.92893C21.4351 6.75804 20.7498 7.46446 19.946 8.04822C19.9544 8.16667 19.9586 8.34433 19.9586 8.58122C19.9586 9.68106 19.7979 10.7788 19.4764 11.8744C19.1548 12.97 18.6662 14.0211 18.0105 15.0279C17.3547 16.0347 16.5742 16.9251 15.6689 17.6992C14.7635 18.4734 13.6721 19.0909 12.3944 19.552C11.1168 20.0131 9.75036 20.2437 8.29505 20.2437C6.00208 20.2437 3.90375 19.6303 2 18.4036C2.29614 18.4374 2.62612 18.4543 2.98995 18.4543C4.8937 18.4543 6.59013 17.8706 8.07929 16.703C7.19087 16.6861 6.39554 16.4133 5.69326 15.8845C4.99099 15.3558 4.50871 14.6811 4.24642 13.8604C4.52563 13.9027 4.78369 13.9239 5.02061 13.9239C5.38444 13.9239 5.74403 13.8773 6.09939 13.7843C5.15175 13.5897 4.36699 13.118 3.7451 12.3693C3.12321 11.6206 2.81226 10.7513 2.81226 9.76142V9.71066C3.38762 10.0322 4.00527 10.2056 4.66524 10.231C4.10681 9.85871 3.6626 9.37225 3.33262 8.77157C3.00264 8.17089 2.83765 7.51946 2.83765 6.81726C2.83765 6.07275 3.02379 5.38325 3.39608 4.74873C4.41988 6.00931 5.66576 7.01819 7.13376 7.77538C8.60177 8.53258 10.1734 8.95347 11.8487 9.03807C11.781 8.71658 11.7472 8.40356 11.7472 8.09899C11.7472 6.96531 12.1469 5.99874 12.9465 5.19924C13.7461 4.39974 14.7128 4 15.8466 4C17.0311 4 18.0295 4.43147 18.8418 5.29442C19.764 5.11675 20.6313 4.7868 21.4436 4.30457C21.1305 5.2775 20.5298 6.03045 19.6414 6.56345C20.4282 6.47885 21.2151 6.26735 22.002 5.92893Z" fill="#141E35"/>
+              </svg>
+            </a>
+            <button class="share-dialog__link share-dialog__link--copy" aria-label="share">
+              <input type="text" aria-label="share">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.7804 2.65291C15.3176 1.1157 17.8099 1.1157 19.3471 2.65291C20.8843 4.19013 20.8843 6.68245 19.3471 8.21967L15.7197 11.8471C14.1825 13.3843 11.6902 13.3843 10.1529 11.8471C10.0399 11.7341 9.93544 11.6162 9.83935 11.4941C9.58315 11.1686 9.11161 11.1125 8.78613 11.3687C8.46066 11.6249 8.40451 12.0964 8.66071 12.4219C8.79339 12.5904 8.93727 12.7527 9.09228 12.9077C11.2153 15.0308 14.6574 15.0308 16.7804 12.9077L20.4078 9.28033C22.5308 7.15733 22.5308 3.71526 20.4078 1.59225C18.2848 -0.530751 14.8427 -0.530751 12.7197 1.59225L9.71966 4.59229C9.42677 4.88518 9.42677 5.36006 9.71966 5.65295C10.0126 5.94584 10.4874 5.94584 10.7803 5.65295L13.7804 2.65291Z" fill="#141E35"/>
+                <path d="M6.28033 10.1529C7.81755 8.6157 10.3099 8.6157 11.8471 10.1529C11.9601 10.266 12.0647 10.3839 12.1607 10.5059C12.4169 10.8313 12.8884 10.8875 13.2139 10.6313C13.5394 10.3751 13.5955 9.90352 13.3393 9.57805C13.2066 9.40945 13.0627 9.2472 12.9077 9.09225C10.7847 6.96925 7.34267 6.96925 5.21967 9.09225L1.59225 12.7197C-0.530751 14.8427 -0.530751 18.2847 1.59225 20.4077C3.71526 22.5308 7.15733 22.5308 9.28033 20.4077L12.2803 17.4077C12.5732 17.1149 12.5732 16.64 12.2803 16.3471C11.9874 16.0542 11.5126 16.0542 11.2197 16.3471L8.21967 19.3471C6.68245 20.8843 4.19013 20.8843 2.65291 19.3471C1.1157 17.8099 1.1157 15.3175 2.65291 13.7803L6.28033 10.1529Z" fill="#141E35"/>
+              </svg>
+            </button>
+            <a href="" target="_blank" class="share-dialog__link share-dialog__link--mail" aria-label="mail">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.75 3C0.783502 3 0 3.7835 0 4.75V18.75C0 19.7165 0.783502 20.5 1.75 20.5H22.25C23.2165 20.5 24 19.7165 24 18.75V4.75C24 3.7835 23.2165 3 22.25 3H1.75ZM1.5 4.75C1.5 4.61193 1.61193 4.5 1.75 4.5H22.25C22.3881 4.5 22.5 4.61193 22.5 4.75V5.60157L12.1399 12.6016C12.0554 12.6587 11.9446 12.6587 11.86 12.6016L1.5 5.6016V4.75ZM1.5 7.41191V18.75C1.5 18.8881 1.61193 19 1.75 19H22.25C22.3881 19 22.5 18.8881 22.5 18.75V7.41187L12.9797 13.8445C12.3878 14.2445 11.6122 14.2445 11.0202 13.8445L1.5 7.41191Z" fill="#141E35"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="ts-footer w-full bg-tsBlack pt-[40px]">
+  <div class="px-5 py-14 sm:px-6 md:px-10 md:py-0 2xl:px-0 max-w-[1440px] xl:mx-auto">
+
+  <img class="mb-6" src="https://www.timescale.com/blog/assets/images/logo.svg?v=2308f59886" height="40px" />
+  <div class="ts-footer__inner">
+    <nav class="ts-footer__nav pb-[80px]">
+      <ul class="ts-footer__nav__list">
+        <li><span class="ts-footer__nav__title h6 font-normal text-gray-300">Products</span></li>
+        <li><a
+            aria-label="Launch 2023"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/launch/2023"
+        >
+          Launch 2023
+        </a></li>
+        <li><a
+            aria-label="Products"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/products"
+          >
+          Time Series and Analytics
+        </a></li>
+        <li><a
+            aria-label="Products"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/ai"
+          >
+          Timescale Vector
+        </a></li>
+        <li><a
+            aria-label="Products"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/enterprise"
+          >
+          Enterprise Tier
+        </a></li>
+        <li><a
+            aria-label="Products"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/dynamic-postgresql"
+          >
+          Dynamic PostgreSQL
+        </a></li>
+        <li><a
+            aria-label="Status"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://status.timescale.com"
+        >
+          Cloud Status
+        </a></li>
+        <li><a
+            aria-label="Support"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/support"
+        >
+          Support
+        </a></li>
+        <li><a
+            aria-label="Security"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/security"
+        >
+          Security
+        </a></li>
+        <li><a
+            aria-label="Terms of Service"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/legal/timescale-cloud-terms-of-service"
+        >
+          Cloud Terms of Service
+        </a></li>
+      </ul>
+      <ul class="ts-footer__nav__list">
+        <li><span class="ts-footer__nav__title h6 font-normal text-gray-300 ">Learn</span></li>
+        <li><a
+            aria-label="Documentation"
+            href="https://docs.timescale.com/"
+            target="_blank"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            rel="noreferrer noopener"
+        >
+          Documentation
+        </a></li>
+        <li><a
+            aria-label="Blog"
+            href="/"
+            target="_blank"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            rel="noreferrer noopener"
+        >
+          Blog
+        </a></li>
+        <li><a
+            aria-label="Tutorials"
+            href="https://www.timescale.com/forum"
+            target="_blank"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            rel="noreferrer noopener"
+        >
+          Forum
+        </a></li>
+        <li><a
+            aria-label="Tutorials"
+            href="https://docs.timescale.com/latest/tutorials"
+            target="_blank"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            rel="noreferrer noopener"
+        >
+          Tutorials
+        </a></li>
+        <li><a
+            aria-label="Release notes"
+            href="https://docs.timescale.com/release-notes"
+            target="_blank"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            rel="noreferrer noopener"
+        >
+          Release notes
+        </a></li>
+        <li><a
+            aria-label="Success Stories"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/case-studies"
+        >
+          Case studies
+        </a></li>
+        <li><a
+            aria-label="Success Stories"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/blog/what-is-a-time-series-database"
+        >
+          Time series database
+        </a></li>
+      </ul>
+      <ul class="ts-footer__nav__list">
+        <li><span class="ts-footer__nav__title h6 font-normal text-gray-300 ">Company</span></li>
+        <li><a
+            aria-label="Contact"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/contact"
+        >
+          Contact us
+        </a></li>
+        <li><a
+            aria-label="Careers"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/careers"
+        >
+          Careers
+        </a></li>
+        <li><a
+            aria-label="About"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/about"
+        >
+          About
+        </a></li>
+        <li><a
+            aria-label="Newsroom"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/newsroom"
+          >Newsroom</a></li>
+          <li><a
+            aria-label="Brand"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/brand"
+          >Brand</a></li
+        <li><a
+            aria-label="About"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/community"
+          >Community</a></li>
+        <li><a
+            aria-label="Sitemap"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/shop"
+          >Timescale shop</a></li>
+        <li><a
+            aria-label="Sitemap"
+            class="base-text text-white hover:text-gray-300 transition duration-200"
+            href="https://www.timescale.com/code-of-conduct"
+          >Code of conduct</a></li>
+      </ul>
+    </nav>
+    <div class="ts-footer__contact">
+      <div class="ts-footer__social">
+        <a
+          aria-label="twitter"
+          href="https://twitter.com/timescaledb?lang=en"
+          target="_blank"
+          class="text-white hover:text-gray-300 transition duration-200"
+          rel="noreferrer noopener"
+        >
+          <img src="https://www.timescale.com/blog/assets/images/social-twitter.svg?v=2308f59886"/>
+        </a>
+        <a
+          aria-label="youtube"
+          href="https://www.youtube.com/channel/UCPmHSkid9IOYbdN1Psh24lg"
+          target="_blank"
+          class="text-white hover:text-gray-300 transition duration-200"
+          rel="noreferrer noopener"
+        >
+          <img src="https://www.timescale.com/blog/assets/images/social-youtube.svg?v=2308f59886"/>
+        </a>
+        <a
+          aria-label="github"
+          href="https://github.com/timescale/"
+          target="_blank"
+          class="text-white hover:text-gray-300 transition duration-200"
+          rel="noreferrer noopener"
+        >
+          <img src="https://www.timescale.com/blog/assets/images/social-github.svg?v=2308f59886"/>
+        </a>
+        <a
+          aria-label="slack"
+          href="https://slack.timescale.com/"
+          target="_blank"
+          class="text-white hover:text-gray-300 transition duration-200"
+          rel="noreferrer noopener"
+        >
+          <img src="https://www.timescale.com/blog/assets/images/social-slack.svg?v=2308f59886"/>
+        </a>
+        <a
+          aria-label="linkedin"
+          href="https://www.linkedin.com/company/timescaledb/"
+          target="_blank"
+          class="text-white hover:text-gray-300 transition duration-200"
+          rel="noreferrer noopener"
+        >
+          <img src="https://www.timescale.com/blog/assets/images/social-linkedin.svg?v=2308f59886"/>
+        </a>
+      </div>
+      <div class="ts-footer__newsletter">
+        <span class="h6 ts-footer__newsletter__label"
+        >Subscribe to the Timescale Newsletter</span>
+        <form id="newsletter" class="newsletter-form">
+          <div class="ts-footer__newsletter__form form mb-[10px]">
+            <div class="input flex-[1_1_auto]">
+              <div class="ts-textfield">
+                <div class="ts-textfield__text-container">
+                  <input
+                    id="email"
+                    tabindex="0"
+                    aria-describedby="newsletter-aria-label"
+                    aria-labelledby="newsletter-aria-label"
+                    placeholder="Your email"
+                    class="base-text text-tsBlack"
+                    type="input"
+                    value=""
+                  />
+                  <div class="ts-textfield__highlight"></div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="newsletter-submit-button tsb-button base-text border-[2px] border-solid border-white disabled:bg-ts-black700"
+            >
+              <span class="relative top-[2px]" >Subscribe</span>
+            </button>
+          </div>
+          <p class="newsletter-form-error base-text !text-sm !text-ts-error800 hidden mt-1"></p>
+        </form>
+        <span class="ts-footer__newsletter__copy text-tsBlack-300 text-xs">By submitting you acknowledge Timescale's&nbsp;
+          <a
+            href="https://www.timescale.com/legal/privacy"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="outboundlink text-white"
+            style="display: inline; text-decoration: none;"
+          >Privacy Policy</a>.
+        </span>
+      </div>
+      
+    </div>
+  </div>
+    <div class="ts-footer__info border-t-[0.5px] border-gray-500 border-solid pt-[40px]">
+      <div class="ts-footer__info__footnote text-sm">
+        2024
+        © Timescale, Inc. All Rights Reserved.
+      </div>
+      <div class="ts-footer__info__links">
+        <a
+          role="button"
+          aria-label="Privacy preferences"
+          class="base-text"
+          onclick="Osano.cm.showDrawer('osano-cm-dom-info-dialog-open')"
+        >Privacy preferences</a>
+        <a
+          aria-label="Legal"
+          class="base-text"
+          href="https://www.timescale.com/legal"
+        >Legal</a>
+        <a
+          aria-label="Privacy"
+          class="base-text"
+          href="https://www.timescale.com/legal/privacy"
+        >Privacy</a>
+        <a
+          aria-label="Sitemap"
+          class="base-text"
+          href="https://www.timescale.com/sitemap"
+        >Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer></div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+</script>
+<script src="https://www.timescale.com/blog/assets/built/timescale.js?v=2308f59886"></script>
+
+<script>
+  var max_pages = parseInt('');
+  // Parse the URL parameter
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  // Give the parameter a variable name
+  var action = getParameterByName('action');
+  var success = getParameterByName('success');
+
+  $(document).ready(function () {
+    if (action == 'subscribe' && (success === null || success === 'true')) {
+      $('body').addClass('subscribe-success');
+    }
+
+    if (action == 'subscribe' && success === 'false') {
+      $('body').addClass('subscribe-failure');
+    }
+
+    $('.subscribe-notification .subscribe-close-button').click(function () {
+      $('.subscribe-notification').addClass('close');
+    });
+
+    // Reset form on opening subscrion overlay
+    $('.subscribe-button').click(function () {
+      $('.subscribe-overlay form').removeClass();
+      $('.subscribe-email').val('');
+    });
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/toolbar/prism-toolbar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.19.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    [...document.querySelectorAll("a")].forEach(link => {
+    if (!(link.getAttribute("href").includes("blog")) && !(link.getAttribute("data-link").includes("cta"))) {
+		link.setAttribute("target", "_blank");	
+    }
+});
+</script>
+
+<script async src="https://cdn.jsdelivr.net/gh/coreysnyder04/fluidbox-ghost-blog-plugin@0.1.0/fluidbox-ghost-blog-plugin.min.js"></script>
+
+<script>
+  window.fluidboxGhostConfig = {
+    theme: 'image-backdrop', // Options: light, dark, image-backdrop, hsla(262, 100%, 82%, 0.6)
+    showCaption: true, // Sets whether to capture the caption and show it below the image when expanded
+  }
+</script>
+
+
+
+</body>
+</html>
