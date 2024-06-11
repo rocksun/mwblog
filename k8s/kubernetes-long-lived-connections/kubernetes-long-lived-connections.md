@@ -102,33 +102,33 @@ Kube-proxy 读取所有服务的 IP 地址列表，并在每个节点中写入�
 
 *考虑一个有三个节点的集群。每个节点都部署了一个 Pod。*
 
-- 2/8
+![- 2/8](https://learnk8s.io/a/28e1cbd79bc0b40cb6a21a6465ee7971.svg)
 
-米色 Pod 是服务的一部分。服务不存在，因此图表将组件灰显。
+*米色 Pod 是服务的一部分。服务不存在，因此图表将组件灰显。*
 
-- 3/8
+![- 3/8](https://learnk8s.io/a/d8b049c0f076938e7a806d29bec83f00.svg)
 
-红色 Pod 想要向服务发出请求，并最终到达其中一个米色 Pod。
+*红色 Pod 想要向服务发出请求，并最终到达其中一个米色 Pod。*
 
-- 4/8
+![- 4/8](https://learnk8s.io/a/7ad64c57cf4c15c89846b6f7759474bf.svg)
 
-但服务不存在。没有进程监听服务的 IP 地址。*它是如何工作的？*
+*但服务不存在。没有进程监听服务的 IP 地址。它是如何工作的？*
 
-- 5/8
+![- 5/8](https://learnk8s.io/a/f7114f63e281868ac2a5f1c9e3083e19.svg)
 
-在从节点分派请求之前，它会被 iptables 规则拦截。
+*在从节点分派请求之前，它会被 iptables 规则拦截。*
 
-- 6/8
+![- 6/8](https://learnk8s.io/a/6ed09629d942890a5b965334414ba3fd.svg)
 
-iptables 规则知道服务不存在，因此用连接到该服务的 Pod 的 IP 地址之一替换其 IP 地址。
+*iptables 规则知道服务不存在，因此用连接到该服务的 Pod 的 IP 地址之一替换其 IP 地址。*
 
-- 7/8
+![- 7/8](https://learnk8s.io/a/3789c862f73c4b36e3849af0ed095387.svg)
 
-请求具有实际 IP 地址作为目标，并且可以正常进行。
+*请求具有实际 IP 地址作为目标，并且可以正常进行。*
 
-- 8/8
+![- 8/8](https://learnk8s.io/a/d720b7535c378ae7ab0d741ffdd7438d.svg)
 
-根据您的网络实现，请求最终到达 Pod。
+*根据您的网络实现，请求最终到达 Pod。*
 
 默认情况下，Kubernetes 使用 iptables 来实现服务。
 
@@ -136,23 +136,23 @@ iptables 规则知道服务不存在，因此用连接到该服务的 Pod 的 IP
 
 不，iptables 主要用于防火墙，不适用于负载均衡。
 
-但是，您可以
-[制作一套智能规则，使 iptables 表现得像负载均衡器](https://scalingo.com/blog/iptables#load-balancing)。
+但是，您可以[制作一套智能规则，使 iptables 表现得像负载均衡器](https://scalingo.com/blog/iptables#load-balancing)。
 
 这正是 Kubernetes 中发生的情况。
 
 如果您有三个 Pod，kube-proxy 会写入以下规则：
 
-- 以 33% 的可能性选择 Pod 1 作为目标。否则，继续执行以下规则。
-- 以 50% 的概率选择 Pod 2 作为目标。否则，继续执行以下规则。
-- 选择 Pod 3 作为目标（无概率）。
+1. 以 33% 的可能性选择 Pod 1 作为目标。否则，继续执行以下规则。
+2. 以 50% 的概率选择 Pod 2 作为目标。否则，继续执行以下规则。
+3. 选择 Pod 3 作为目标（无概率）。
 
 复合概率是 Pod 1、Pod 2 和 Pod 3 被选中的机会均为三分之一 (33%)。
-### 更正后的 Markdown 格式
 
-**此外，无法保证 Pod 2 在 Pod 1 之后被选为目标。**
+![](https://learnk8s.io/a/fbbcbf56da96099c15314b9af4a0dd77.svg)
 
-Iptables 使用 [统计模块](https://www.netfilter.org/projects/iptables/index.html#modules)，其中包含 randommode。因此，负载均衡算法是随机的。
+此外，无法保证 Pod 2 在 Pod 1 之后被选为目标。
+
+> Iptables 使用 [统计模块](https://www.netfilter.org/projects/iptables/index.html#modules)，其中包含 randommode。因此，负载均衡算法是随机的。
 
 您可能听说过 iptables 的替代方案，例如 ipvs 和 eBPF。虽然技术不同，但核心思想是相似的：如何将流量重定向到正确的 Pod？
 
@@ -168,15 +168,22 @@ Iptables 使用 [统计模块](https://www.netfilter.org/projects/iptables/index
 
 如果您打开一个 TCP 连接并将其重复用于后续 HTTP 请求，则可以改善延迟并节省资源。
 
-HTTP 协议有一个称为 HTTP 保持活动或 HTTP 连接重用的功能，它使用单个 TCP 连接来发送和接收多个 HTTP 请求和响应。
+HTTP 协议有一个称为 HTTP keep-alive 或 HTTP 连接重用的功能，它使用单个 TCP 连接来发送和接收多个 HTTP 请求和响应。
 
 它无法开箱即用；您的服务器和客户端应配置为使用它。
+
+![](https://learnk8s.io/a/83f9bebffbbbee8d6a25315b8679f9df.svg)
 
 更改本身很简单，并且在大多数语言和框架中都可用。
 
 以下是如何在不同语言中实现保持活动的一些示例：
 
-* 在 Kubernetes 服务中使用保持活动时会发生什么？
+- [Keep-alive in Node.js.](https://medium.com/@onufrienkos/keep-alive-connection-on-inter-service-http-requests-3f2de73ffa1)
+- [Keep-alive in Spring Boot.](https://www.baeldung.com/httpclient-connection-management)
+- [Keep-alive in Python.](https://blog.insightdatascience.com/learning-about-the-http-connection-keep-alive-header-7ebe0efa209d)
+- [Keep-alive in .NET.](https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.keepalive?view=netframework-4.8)
+
+*当您对 Kubernetes Service 使用 keep-alive 时，将发生什么？*
 
 让我们想象一下前端和后端支持保持活动。
 
@@ -190,7 +197,11 @@ HTTP 协议有一个称为 HTTP 保持活动或 HTTP 连接重用的功能，它
 
 但它不会关闭 TCP 连接，而是将其保持打开状态以供后续 HTTP 请求使用。
 
-* 当前端发出更多请求时会发生什么？**它们被发送到同一个 Pod。** *iptables 不应该分配流量吗？*
+当前端发出更多请求时会发生什么？
+
+它们被发送到同一个 Pod。
+
+iptables 不应该分配流量吗？
 
 是的。
 
@@ -200,22 +211,31 @@ HTTP 协议有一个称为 HTTP 保持活动或 HTTP 连接重用的功能，它
 
 由于所有后续请求都通过同一个 TCP 连接进行，[不再调用 iptables。](https://scalingo.com/blog/iptables#load-balancing)
 
-- 1/5
-红色 Pod 向服务发出请求。
-- 2/5
-您已经知道接下来会发生什么。服务不存在，但 iptables 规则会拦截请求。
-- 3/5
-属于该服务的一个 Pod 被选为目标。
-- 4/5
-最后，请求到达 Pod。此时，在两个 Pod 之间建立了持久连接。
-- 5/5
-红色 Pod 的任何后续请求都会重复使用现有的打开连接。
+![- 1/5](https://learnk8s.io/a/3d9434491906a7f16962b3ca12cf896e.svg)
+
+*红色 Pod 向服务发出请求。*
+
+![- 2/5](https://learnk8s.io/a/f7114f63e281868ac2a5f1c9e3083e19.svg)
+
+*您已经知道接下来会发生什么。服务不存在，但 iptables 规则会拦截请求。*
+
+![- 3/5](https://learnk8s.io/a/6ed09629d942890a5b965334414ba3fd.svg)
+
+*属于该服务的一个 Pod 被选为目标。*
+
+![- 4/5](https://learnk8s.io/a/0f85a87d2a76302ca5ba580180d5fdc5.svg)
+
+*最后，请求到达 Pod。此时，在两个 Pod 之间建立了持久连接。*
+
+![- 5/5](https://learnk8s.io/a/46ec0878e28fc5e8995415774883a3bc.svg)
+
+*红色 Pod 的任何后续请求都会重复使用现有的打开连接。*
 
 **因此，您现在获得了更好的延迟和吞吐量，但失去了扩展后端的能力。**
 
 即使您有两个可以接收来自前端 Pod 的请求的后端 Pod，但只有一个处于活动状态。
 
-* 可以修复吗？
+可以修复吗？
 
 您可以自己修复它，因为 Kubernetes 不知道如何对持久连接进行负载均衡。
 
@@ -229,20 +249,28 @@ HTTP 协议有一个称为 HTTP 保持活动或 HTTP 连接重用的功能，它
 
 执行负载均衡的客户端代码应遵循以下逻辑：
 
-- 从服务中检索端点列表。
-- 对每个端点，打开一个连接并保持打开状态。
-- 在需要发出请求时选择一个打开的连接。
-- 定期刷新端点列表，并删除或添加新连接。
-- 1/4
-您可以对客户端进行负载均衡，而不是让红色 Pod 向您的服务发出请求。
-- 2/4
-您可以编写一些代码来询问哪些 Pod 是服务的一部分。
-- 3/4
-获得该列表后，您可以将其存储在本地并使用它连接到 Pod。
-- 4/4
-您负责负载均衡算法。
+1. 从服务中检索端点列表。
+2. 对每个端点，打开一个连接并保持打开状态。
+3. 在需要发出请求时选择一个打开的连接。
+4. 定期刷新端点列表，并删除或添加新连接。
 
-* 此问题仅适用于 HTTP 保持活动吗？
+![- 1/4](https://learnk8s.io/a/bd7b0d3f4b3d509a113719b1f5d12e48.svg)
+
+*您可以对客户端进行负载均衡，而不是让红色 Pod 向您的服务发出请求。*
+
+![- 2/4](https://learnk8s.io/a/c02175878ab236821df0a61215932760.svg)
+
+*您可以编写一些代码来询问哪些 Pod 是服务的一部分。*
+
+![- 3/4](https://learnk8s.io/a/3d99a9065b0701778cec366802bf21d6.svg)
+
+*获得该列表后，您可以将其存储在本地并使用它连接到 Pod。*
+
+![- 4/4](https://learnk8s.io/a/062514bf827342a12474c032d7b9a4d4.svg)
+
+*您负责负载均衡算法。*
+
+此问题仅适用于 HTTP keep-alive 吗？
 
 ## 长数据库连接
 
@@ -255,22 +283,30 @@ HTTP 协议有一个称为 HTTP 保持活动或 HTTP 连接重用的功能，它
 如果您的数据库使用服务部署在 Kubernetes 中，您可能会遇到与上一个示例相同的问题。
 
 **数据库中的一个副本比其他副本利用得更多。**
-### Kube-proxy 和 Kubernetes 无法帮助平衡持久连接
+
+Kube-proxy 和 Kubernetes 无法帮助平衡持久连接。
+
+![](https://learnk8s.io/a/cb2c01610ebc62e9ab34797eb8627838.svg)
 
 相反，您应该负责对数据库请求进行负载均衡。此时，您有两个选择：
 
-- 更改您的应用以支持连接到多个后端。
-- 引入一个*真正的*负载均衡器来分配负载。
+1. 更改您的应用以支持连接到多个后端。
+2. 引入一个*真正的*负载均衡器来分配负载。
 
-在第一个选项中，您将负载均衡决策移至应用。在伪代码中，如果您想连接到具有多个副本的数据库，则应该执行以下操作：
+在第一个选项中，您将负载均衡决策移至应用。
 
-在发出 SQL 查询之前：
+在伪代码中，如果您想连接到具有多个副本的数据库，则应该执行以下操作：
 
-- 从服务中检索所有副本 IP。
-- 从上一个副本中选择一个不同的副本。
-- 分派 SQL 查询
+```
+Before issuing an SQL query:
+- Retrieve all replica IPs from the Services.
+- Pick a different replica from the previous one.
+- Dispatch the SQL query
+```
 
-此逻辑可能已经存在，具体取决于您用于连接到数据库的库。在[JDBC](https://jdbc.postgresql.org/documentation/use/#connection-fail-over) 的情况下，以下行允许将查询负载均衡到三个 Postgres 副本：
+此逻辑可能已经存在，具体取决于您用于连接到数据库的库。
+
+在[JDBC](https://jdbc.postgresql.org/documentation/use/#connection-fail-over) 的情况下，以下行允许将查询负载均衡到三个 Postgres 副本：
 
 ```
 jdbc:postgresql://node1,node2,node3/database?loadBalanceHosts=true
@@ -278,9 +314,15 @@ jdbc:postgresql://node1,node2,node3/database?loadBalanceHosts=true
 
 [SQLAlchemy 支持提供多个 IP 地址](https://github.com/sqlalchemy/sqlalchemy/issues/4392)，但不提供负载均衡（按顺序尝试 IP 地址，直到其中一个起作用。此时，连接保持稳定）。*在这种情况下，您可以做什么？*
 
-您可以打开几个不同的 SQL 连接并在它们之间循环。或者，您可以使用外部负载均衡器，如[pgpool](https://www.pgpool.net/mediawiki/index.php/Main_Page)。
+您可以打开几个不同的 SQL 连接并在它们之间循环。或者，您可以使用外部负载均衡器，如 [pgpool](https://www.pgpool.net/mediawiki/index.php/Main_Page)。
 
-在此场景中，您的应用连接到一个端点：pgpool。[然后，pgpool 将查询负载均衡到所有可用的 Postgres 副本。](https://www.pgpool.net/docs/latest/en/html/runtime-config-load-balancing.html) **因此，即使应用与 pgpool 之间的连接是持久的（即长期存在的），查询仍会利用所有可用的副本。**
+在此场景中，您的应用连接到一个端点：pgpool。
+
+[然后，pgpool 将查询负载均衡到所有可用的 Postgres 副本。](https://www.pgpool.net/docs/latest/en/html/runtime-config-load-balancing.html) 
+
+![](https://learnk8s.io/a/c8064d5fe89ad7ac42017414019bdbfe.svg)
+
+**因此，即使应用与 pgpool 之间的连接是持久的（即长期存在的），查询仍会利用所有可用的副本。**
 
 我们在 Postgres 中解决了长期连接，但其他几个协议通过长期 TCP 连接工作。您可以在此处阅读一些示例：
 
@@ -301,7 +343,9 @@ jdbc:postgresql://node1,node2,node3/database?loadBalanceHosts=true
 
 [您可以在应用中对 gRPC 请求进行负载均衡](https://itnext.io/grpc-name-resolution-load-balancing-everything-you-need-to-know-and-probably-a-bit-more-77fc0ae9cd6c)，或者您可以使用 [类似 Envoy 的代理来对 gRPC 请求进行负载均衡。](https://svkrclg.medium.com/grpc-load-balancing-using-envoy-e8972214da2c)
 
-对于 Websocket，情况更复杂。只有在打开多个隧道并在它们之间循环时，您才能在客户端平衡连接。您只能使用[负载均衡器，如 HAProxy。](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/websocket/) **请注意，在服务器端解决持久连接主要在于找到一个合适的代理来平衡连接，而在客户端进行负载均衡则需要更多思考。**
+对于 Websocket，情况更复杂。只有在打开多个隧道并在它们之间循环时，您才能在客户端平衡连接。您只能使用[负载均衡器，如 HAProxy。](https://www.haproxy.com/documentation/haproxy-configuration-tutorials/load-balancing/websocket/) 
+
+**请注意，在服务器端解决持久连接主要在于找到一个合适的代理来平衡连接，而在客户端进行负载均衡则需要更多思考。**
 
 但有办法解决这个问题。
 
@@ -314,7 +358,9 @@ Kubernetes 有四种不同的服务：
 - LoadBalancer
 - External
 
-它们都有一个虚拟 IP 地址，kube-proxy 使用该地址创建 iptables 规则。**但所有类型服务的根本构建块都是无头服务。**
+它们都有一个虚拟 IP 地址，kube-proxy 使用该地址创建 iptables 规则。
+
+**但所有类型服务的根本构建块都是无头服务。**
 
 无头服务没有分配的 IP 地址，它只是一种收集 Pod IP 地址和端口（也称为端点）的机制。所有其他服务都建立在无头服务之上。
 
@@ -323,7 +369,9 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 - 控制平面为其分配一个 IP 地址。
 - kube-proxy 遍历所有 IP 地址并创建 iptables 规则。
 
-您可以忽略 kube-proxy，并始终使用无头服务收集的端点列表，以便从客户端对请求进行负载均衡。*但您能想象将该逻辑添加到群集中部署的所有应用中吗？*
+您可以忽略 kube-proxy，并始终使用无头服务收集的端点列表，以便从客户端对请求进行负载均衡。
+
+*但您能想象将该逻辑添加到群集中部署的所有应用中吗？*
 
 如果您有现有的应用，这听起来可能是一项不可能完成的任务。但有一个替代方案。
 
@@ -331,9 +379,9 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 
 您可能已经注意到，客户端负载均衡策略相对标准化。当应用启动时，它应该
 
-- 从服务中检索 IP 地址列表。
-- 打开并维护连接池。
-- 通过添加和删除端点定期刷新池。
+1. 从服务中检索 IP 地址列表。
+2. 打开并维护连接池。
+3. 通过添加和删除端点定期刷新池。
 
 一旦它希望发出请求，它应该：
 
@@ -342,10 +390,7 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 
 这类似于 pgpool 在上一个示例中的工作方式。上述步骤适用于 Websocket 连接、gRPC 和 AMQP。
 
-您可以在单独的库中提取该逻辑，并与所有应用共享。您可以使用服务网格（例如
-### Istio 或 Linkerd
-
-[Istio](https://istio.io/) 或 [Linkerd](https://linkerd.io/)。
+您可以在单独的库中提取该逻辑，并与所有应用共享。您可以使用服务网格，例如 [Istio](https://istio.io/) 或 [Linkerd](https://linkerd.io/)。
 
 服务网格通过一个新进程增强你的应用，该进程：
 
@@ -353,7 +398,9 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 - 检查 WebSocket 和 gRPC 等连接。
 - 使用正确的协议进行负载均衡请求。
 
-**服务网格可以帮助你管理集群内的流量，但它们并不轻量级。** *如果你忽略它会怎样？*
+**服务网格可以帮助你管理集群内的流量，但它们并不轻量级。** 
+
+*如果你忽略它会怎样？*
 
 你可以忽略负载均衡，但仍然不会注意到任何变化。
 
@@ -361,7 +408,13 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 
 **如果你有比服务器更多的客户端，应该会有有限的问题。**
 
-想象一下，你有五个客户端打开到两个服务器的持久连接。即使没有负载均衡，两个服务器也可能被利用。连接可能会分布不均（可能四个最终连接到同一个服务器），但总体而言，两个服务器都有可能被利用。
+想象一下，你有五个客户端打开到两个服务器的持久连接。
+
+即使没有负载均衡，两个服务器也可能被利用。
+
+![](https://learnk8s.io/a/317efc5e7a260b1f477a95e3b1f101f9.svg)
+
+连接可能会分布不均（可能四个最终连接到同一个服务器），但总体而言，两个服务器都有可能被利用。
 
 更成问题的是相反的场景。
 
@@ -369,16 +422,20 @@ ClusterIP 服务是一个具有某些额外功能的无头服务：
 
 想象一下有两个客户端和五个服务器。在最好的情况下，会打开到两个服务器的两个持久连接。其余的服务器根本没有被使用。
 
+![](https://learnk8s.io/a/cada9a6e57b5440f779aef1f6c758494.svg)
+
 **如果两个服务器无法处理客户端流量，水平扩展将无济于事。**
 
 ## 总结
 
-Kubernetes 服务旨在涵盖 Web 应用程序最常见的用途。但是，一旦你开始使用使用持久 TCP 连接的应用程序协议（例如数据库、gRPC 或 WebSocket），它们就会崩溃。Kubernetes 不提供任何内置机制来负载均衡长寿命的 TCP 连接。
+Kubernetes 服务旨在涵盖 Web 应用程序最常见的用途。
+
+但是，一旦你开始使用使用持久 TCP 连接的应用程序协议（例如数据库、gRPC 或 WebSocket），它们就会崩溃。
+
+Kubernetes 不提供任何内置机制来负载均衡长寿命的 TCP 连接。
 
 相反，你应该编写你的应用程序来检索和负载均衡客户端端的 upstream。或者你应该考虑一个可以负载均衡连接的代理。
 
-非常感谢
-[Daniel Weibel](https://medium.com/@weibeld)、[Gergely Risko](https://github.com/errge) 和 [Salman Iqbal](https://twitter.com/soulmaniqbal) 提供了一些宝贵的建议。
+非常感谢 [Daniel Weibel](https://medium.com/@weibeld)、[Gergely Risko](https://github.com/errge) 和 [Salman Iqbal](https://twitter.com/soulmaniqbal) 提供了一些宝贵的建议。
 
-以及
-[Chris Hanson](https://twitter.com/CloudNativChris)，他建议包括一个详细的解释（和流程图）来说明 iptables 规则在实践中的工作原理。
+以及 [Chris Hanson](https://twitter.com/CloudNativChris)，他建议包括一个详细的解释（和流程图）来说明 iptables 规则在实践中的工作原理。
