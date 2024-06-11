@@ -1,7 +1,7 @@
 
 <!--
 title: 如何使用Kubernetes 建云原生平台
-cover: https://miro.medium.com/v2/resize:fit:1200/1*CMHX-SMLoTF396ZXBr-lyA.png
+cover: ./cover.png
 -->
 
 开发者门户、GitOps、最佳实践。
