@@ -32,7 +32,7 @@ Kubernetes 提供了两个便捷的抽象概念，用于部署应用：服务和
 
 *部署定义了一个配方，用于创建同一 Pod 的更多实例。您很少单独部署 Pod。*
 
-[- 4/4](https://learnk8s.io/a/591660df28a878ec937d8ee49a7a2a49.svg)
+![- 4/4](https://learnk8s.io/a/591660df28a878ec937d8ee49a7a2a49.svg)
 
 *Pod 已分配了一个 IP 地址。*
 
