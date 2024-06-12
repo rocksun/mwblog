@@ -1,7 +1,7 @@
 
 <!--
 title: SLA、SLO与SLI的区别
-cover: https://images.prismic.io/checklyhq/65ddda133a605798c18c5640_Maskgroup-4-.png?auto=format,compress
+cover: ./cover.png
 -->
 
 探索 SLA、SLO 和 SLI 之间的区别。了解它们的重要性、Checkly 如何与它们协同工作，以及 SLA 的关键概念。
