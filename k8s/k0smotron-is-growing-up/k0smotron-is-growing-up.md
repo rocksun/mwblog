@@ -1,6 +1,6 @@
 
 <!--
-title: k0smotron 正在成长 | Mirantis
+title: k0smotron 正在成长
 cover: https://www.mirantis.com/images/mirantis-logo-1200x630.png
 -->
 
