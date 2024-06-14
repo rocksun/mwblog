@@ -1,0 +1,32 @@
+![Keyboard with China flag key](https://sites.breakingmedia.com/uploads/sites/3/2022/05/220524_cybersecurity_china_keyboard_GettyImages-184947489-scaled-e1677516091595.jpg)
+Keyboard with China flag key (Getty images)
+WASHINGTON — The US is quickly falling behind
+[China](https://breakingdefense.com/tag/china/) in development of [artificial intelligence](https://breakingdefense.com/tag/artificial-intelligence/), according to a report released today by data analytics firm [Govini](https://breakingdefense.com/tag/govini/), making it nearly impossible for the US to win a war against the PLA if a conflict were to break out between the two global superpowers.
+Govini releases annual reports measuring the performance of the federal government, looking at 15 top critical national security technologies through the lens of acquisition, procurement, supply chain, foreign influence and adversarial capital and science and technology.
+Per this year’s report, the US is under-investing in practical, valuable AI capabilities while also becoming stagnant in the research and development stage.
+“Despite the fact that artificial intelligence is an incredibly, highly visible, arguably the most transformational technology that matters in the critical tech competition, not just for the United States, but around the world, the Department of Defense is still primarily attacking this as a research and development effort,” Govini CEO Tara Murphy Dougherty said during a briefing Wednesday.
+“While there is more to do in R&D for artificial intelligence, it is well past time for DoD to stop treating AI like it is just a science project,” she added.
+Last year’s report revealed that the US was at risk of “weakness and dependence” as it falls behind China in the technology race. Similarly, the
+[2022 report](https://www.govini.com/insights/the-2022-national-security-scorecard-critical-technologies-edition) found that the US wasn’t investing enough money in AI and ML to win the technological race against China. **Related: US risks ‘weakness and dependence’ as it falls behind China in tech race**
+“If you add in an AI advantage that the United States doesn’t have, it potentially tips the war into unwinnable [for the US],” Dougherty said of a potential US-China conflict.
+She added that the ways China can weaponize AI don’t have to be kinetic, it can look like hacking into the US’s energy grid which would have a major impact on the warfighter.
+While the DoD may not be moving fast enough in developments of AI and ML, Dougherty said the capabilities to do so are there.
+“The AI aspects of our spending being so R&D focused, it tells me that we’re not actually moving this into the weapons systems and platforms that we’re deploying today, obviously, appropriately so given that it’s artificial intelligence. But, I believe that the department has a great framework to govern that and make sure that AI is used appropriately in a military context. So let’s get going on it,” she said.
+The report also found that China has more patents than the US in 13 of 15 critical technology areas, further demonstrating how the US is falling behind in AI development. China sped up its patent grants over the past several years following its “14th Five Year Plan for Informatization Development,” Dougherty said.
+“The way to think about patents is that it’s a leading indicator of technological dominance,” she said.
+The DoD needs to perform in-depth patent analyses to figure out why it’s behind China in this regard because, after all, patents drive innovation, she said.
+**Defense Programs Risk Parts Scarcity**
+This year’s report also highlighted another reason a US conflict with China could be unwinnable: the very real possibility of parts scarcity. The report outlined serious risks within seven major DoD programs: the Armored Multi-Purpose Vehicle, Hawk Family helicopters, Virginia-class subs, Arleigh Burke-class destroyers,
+[Minuteman III ICBM](https://breakingdefense.com/tag/minuteman-iii/), the [B-21](https://breakingdefense.com/tag/b-21-raider/) and the [F-35](https://breakingdefense.com/tag/f-35/).
+According to the report, these programs are all at risk of being unable to obtain parts. There are three types of risks within these programs: parts that have little to no inventory, parts that only have one supplier and parts that have too long of a lead time for replacement. The report states that most of the parts that make up these programs have at least one of these risk factors.
+Dougherty said legacy programs like the
+[Black Hawk](https://breakingdefense.com/tag/uh-60-black-hawk/) and newer programs like the B-21 and [F-35](https://breakingdefense.com/tag/f-35/) both face risks of parts scarcity due to one major problem.
+“A huge part of why this happens is because, during the acquisition process, DoD doesn’t insist on having some visibility into the supply chain of the bidders,” she said.
+Further adding to the issue is China’s lead in the global
+[supply chain](https://breakingdefense.com/tag/supply-chain/).
+Dougherty said China still has a dangerously high presence in US government supply chains. The Departments of the Navy and Army showed a decreasing reliance on Chinese suppliers over the past year, however, the Department of the Air Force showed a 68.8 percent increase in the usage of Chinese suppliers.
+“If I were
+[Secretary [Frank] Kendall](https://www.af.mil/About-Us/Biographies/Display/Article/2730581/secretary-of-the-air-force-frank-kendall/) this is something I would absolutely want to pull the thread on and understand, but at a minimum, a warning signal for us that there remains work to be done in this area,” Dougherty said.
+To solve this problem of Chinese dominance in supply chains, Dougherty said she recommends additional foreign countries entering the supply chain.
+“We know we’re never going to get China fully out of US supply chains. I think most government decision-makers would agree with me, that’s not even the goal. But managing the presence of lots of different foreign suppliers, and aligning those to the right level of capability, or component or part, making sure we have redundancy where we need it, and that the most sensitive parts are fully protected, and coming either directly from the United States or from friends and allies, is really what the call to action is,” she said.
+*UPDATED 6/13/2024 at 10:15 am ET to correct the number of critical tech evaluated.*
