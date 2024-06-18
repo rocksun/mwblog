@@ -1,0 +1,46 @@
+# Rust: The Future of Fail-Safe Software Development
+![Featued image for: Rust: The Future of Fail-Safe Software Development](https://cdn.thenewstack.io/media/2024/06/8c5ee7d1-levi-meir-clancy-9fpm0ruywww-unsplash-1024x683.jpg)
+In a move to revolutionize the landscape of safety-critical software, The Rust Foundation has united key vendors —
+[including Arm](https://thenewstack.io/arm-eyes-ai-with-its-latest-neoverse-cores-and-subsystems/) and Toyota — and experts to form the Safety-Critical Rust Consortium, paving the way for the adoption of the [Rust programming language](https://thenewstack.io/rust-whats-next-for-the-fast-growing-programming-language/) in systems where failure is not an option.
+Rust is not only one of the
+[fastest-growing languages](https://thenewstack.io/rust-growing-fastest-but-javascript-reigns-supreme/), it is also sought after for its [memory safety](https://thenewstack.io/out-with-c-and-c-in-with-memory-safety/), which the new consortium will help to proliferate.
+Indeed,
+[The Rust Foundation](https://thenewstack.io/rust-foundation-focusing-on-safety-and-dev-outreach-in-2023/), [AdaCore](https://www.adacore.com/), [Arm](https://arm.com/), [Ferrous Systems](https://ferrous-systems.com/), [HighTec EDV-Systeme GmbH](https://hightec-rt.com/en/), [OxidOS](https://www.oxidos.io/), [TECHFUND](https://techfund.jp/), [TrustInSoft](https://trust-in-soft.com/), [Veecle](https://www.veecle.io/), [Lynx Software Technologies](https://www.lynx.com/), and [Woven by Toyota](https://woven.toyota/en/) make up the new group dedicated to the responsible use of Rust in [safety-critical software](https://thenewstack.io/bjarne-stroustrups-plan-for-bringing-safety-to-c/).
+## Language Safety
+“Programming language safety refers to a language’s ability to prevent errors or undefined behaviors at compile time or runtime. On the other hand, ‘safety-critical’ refers to a system’s ability to operate without causing accidents or catastrophic failures that will result in harm to people, property or the environment,” according to an FAQ provided by the founding members of the Safety-First Rust Consortium. “So, while safety-critical systems rely on languages that emphasize safety and security, such as Rust, programming tools are only one component of the overall strategy.”
+## Consortium Goals
+The consortium aims to develop guidelines, tools, libraries, and language subsets to meet industrial and legal requirements for safety-critical systems.
+Moreover, the initiative seeks to incorporate lessons learned from years of development in the open source ecosystem to make Rust a valuable component of safety toolkits across various industries and severity levels.
+“I think the Safety-Critical Rust Consortium underscores the industry’s confidence in Rust’s capabilities to meet rigorous safety and reliability standards,”
+[Arnal Dayaratna](https://www.linkedin.com/in/cloudcomputingtoday/), an analyst at IDC, told The New Stack. “In particular, the consortium’s support from companies such as Toyota and Arm illustrates the industry’s recognition of how Rust’s memory safety management and concurrency safety capabilities differentiate it from languages such as [C/C++](https://thenewstack.io/google-spends-1-million-to-make-rust-c-interoperable/).”
+Moreover, “Given how ‘critical’ the safety-critical industry is, the Rust Foundation is very motivated to bring together key stakeholders across communities and industries to explore how Rust can meet compliance standards and contribute to better software for everyone,” said
+[Rebecca Rumbul](https://www.linkedin.com/in/rebecca-rumbul-96a5441a/?originalSubdomain=uk), executive director and CEO of the Rust Foundation, in a statement.
+## Industries Using Rust
+Industries that are particularly concerned with functional safety include transportation (such as automotive, aviation, space), energy, life sciences, and more. Rust is used in
+[mission-critical and embedded systems](https://www.lynx.com/press-releases/rust-compiler-support) in many industries.
+“Safety is our foremost priority in vehicle software development. Traditionally, achieving the highest levels of safety has been a complex and lengthy endeavor, requiring the use of specialized tools and processes beyond the programming language,” said
+[JF Bastien](https://www.linkedin.com/in/jfbastien/?originalSubdomain=jp), a distinguished engineer at Woven by Toyota, in a statement. “We are therefore pleased to collaborate with leading experts in the safety industry to integrate new tools such as Rust into our safety-critical systems,” said
+Government agencies such as the
+[NSA](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/3608324/us-and-international-partners-issue-recommendations-to-secure-software-products/), [CISA](https://www.cisa.gov/), [NIST](https://www.nist.gov/itl/ssd/software-quality-group/safer-languages), and [ONCD](https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/) have all cited the [importance of memory-safe languages](https://thenewstack.io/rust-on-the-rise-new-advocacy-expected-to-advance-adoption/), citing Rust as a potential example.
+## Microsoft’s Influence and Focus
+Also, major vendors including
+[Microsoft](https://news.microsoft.com/?utm_content=inline+mention) have advocated for the use of Rust for security and memory safety. As early as 2019, Microsoft expressed a need for “ [a safer systems programming language](https://msrc.microsoft.com/blog/2019/07/we-need-a-safer-systems-programming-language/)” and cited Rust as “the best choice for the industry to adopt whenever possible due to its ability to write systems-level programs in a memory-safe way.”
+Another 2019 Microsoft Research post explains “
+[Why Rust for safe systems programming](https://msrc.microsoft.com/blog/2019/07/why-rust-for-safe-systems-programming/).” The post explained how Rust represents the best alternative to C and C++ currently available.
+“First, there are plenty of fantastic memory-safe languages already available and widely used inside and outside of Microsoft, including .NET languages like C# or F# and other languages like Swift,
+[Go](https://thenewstack.io/go-the-programming-language-of-the-cloud/), and [Python](https://thenewstack.io/an-introduction-to-python-a-language-for-the-ages/). We encourage anyone who is currently using C or C++ to consider whether one of these languages would be appropriate to use instead. We, however, are talking about the need for a safe *systems* programming language (i.e., a language that can build systems other software runs on, like OS kernels). Such workloads need the speed and predictable performance that C, C++, and Rust provide,” the post reads. “Languages which achieve memory safety through garbage collection are not ideal choices for systems programming because their runtimes can lead to unpredictable performance and unnecessary overhead.”
+Moreover, Microsoft’s Azure CTO
+[Mark Russinovich](https://www.linkedin.com/in/markrussinovich), has previously [posted on X (formerly Twitter)](https://x.com/markrussinovich/status/1571995117233504257): “Speaking of languages, it’s time to halt starting any new projects in C/C++ and use Rust for those scenarios where a non-GC language is required. For the sake of security and reliability. the industry should declare those languages as deprecated.”
+Microsoft, which recently
+[contributed $1M to The Rust Foundation](https://thenewstack.io/microsofts-1m-vote-of-confidence-in-rusts-future/), also earlier this year decided to [rewrite some C# code in Rust](https://thenewstack.io/microsoft-we-are-not-abandoning-c-for-rust/).
+## Broadening Community, Increasing Adoption
+Meanwhile, the new consortium plans to work closely with the Rust community to broaden the user base and applicability of Rust without adversely affecting existing users and project participants.
+“The Rust Foundation will consider the Safety-Critical Rust initiative to be successful if we begin to see Rust more broadly utilized across one or more safety-critical industries such as automotive or aerospace,” said
+[Joel Marcey](https://www.linkedin.com/in/joelmarcey/), director of technology at the Rust Foundation, in a statement.
+Finally, “As the home of the Rust programming language, with a key goal to grow adoption and improve quality, the Rust Foundation is well-placed to facilitate and support cross-sectoral and cross-community discussion and collaboration to ensure that Rust is appropriate for use in the safety-critical industry,” Rumbul noted.
+As such, “The consortium is likely to catalyze increased adoption of Rust for safety-critical use cases and applications and accelerate the maturation of the developer ecosystem for Rust,” Dayaratna said. “The maturation of the developer ecosystem for Rust is important because its steep learning curve has historically been one of the major impediments to its adoption.”
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
