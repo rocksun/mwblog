@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>The State of eBPF in Obsrvability</title>
+    <meta name="description" content='eBPF in Observability - a review of the use of ePBF in leading observability platyforms including Groundcover, Odigos, Grafana Beyla, Pixie, Cilium and Apache SkyWalking' />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/fav.png">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/datepicker.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/hover-min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/meanmenu.min.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link href="/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/inc/custom-slider/css/nivo-slider.css" type="text/css" />
+    <link rel="stylesheet" href="/inc/custom-slider/css/preview.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/site.css">
+    <script src="/js/modernizr-2.8.3.min.js"></script>
+<script type="text/javascript">!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+crossOrigin: "anonymous", 
+cfg: { // Application Insights Configuration
+    connectionString: 'InstrumentationKey=a6bf4d81-61dd-461e-be85-c6676971010b;IngestionEndpoint=https://uksouth-1.in.applicationinsights.azure.com/;LiveEndpoint=https://uksouth.livediagnostics.monitor.azure.com/'
+}});</script></head>
+<body class="home">
+    <header>
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <div class="header-top-left" style="display:inline-block;">
+                            <ul>
+                                <li><span id="today"></span></li>
+                            </ul>
+                        </div>
+                        <div class="header-top-left" style="display:inline-block;">
+                           <!--placeholder for login partial-->
+                            
+
+<ul>
+    <li class="nav-item" style="margin-right:0.5em;">
+        <a class="nav-link text-dark" id="register" href="/Identity/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" href="/Identity/Account/Login">Login</a>
+    </li>
+</ul>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="social-media-area">
+                            <nav>
+                                <ul>                                   
+                                    <li><a href="https://github.com/observability-guy"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://twitter.com/TheObsGuy"><i class="fa fa-twitter"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-middle-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="logo-area">
+                            <a href="/home/index"><img src="/images/logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 oc-layout-right-banner-container-1">
+                        <div class="right-banner">
+                            <img src="/images/banner2.png" alt="banner image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom-area oc-header-bottom-area-laytout-1" id="sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                        <div class="navbar-header oc-navbar-header-layout-1">
+                            <div class="col-sm-8 col-xs-8 padding-null">
+                                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 hidden-desktop text-right search">
+                                <a href="#search-mobile" data-toggle="collapse" class="search-icon"></a>
+                                <div id="search-mobile" class="collapse search-box">
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-menu navbar-collapse collapse">
+                            <nav>                               
+                                <ul>
+                                    <li><a href="/Home/Index">News</a></li>                                   
+                                    <li><a href="https://observability-360.beehiiv.com/subscribe">Newsletter</a></li>
+                                    <li><a href="/Docs/Index">Docs</a></li>
+                                    <li><a href="/Calendar/Month">Calendar</a></li>                                   
+                                    <li><a href="/Calendar/Events">Events</a></li>
+                                    <li><a href="/Home/Contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-hidden col-xs-hidden text-right search hidden-mobile">                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div >       
+            
+
+
+
+
+<div id="newsletterModal" class="newsletterModal">
+    <div class="newsLetterModalInner">
+        <div class="newsletter-info-div-docs">
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <div class="newsletter-title-div-docs" style="margin-bottom: 0.4em;">Observability 360 Newsletter</div>
+                        <div>
+                            Join professionals at <strong>Apple</strong>, <strong>Amazon</strong>, <strong>Grafana</strong>, <strong>Datadog</strong> and many more of the world's leading companies.<br /><br />
+                            Subscribe to our fortnightly briefing on news, products, how-to's and more.<br />
+                        </div>
+                        <div class="newsletter" style="margin-top:1.2em; margin-bottom:0.4em;">
+                            <div style="text-align: center;">
+                                <div style="display:inline-block; padding-right:.2em;">
+                                    <a href="#" id="newsletterLink2" class="btnRegister-docs">Let Me See!</a>
+                                </div>
+                                <div class="btnLaterDocsDiv" style="display:inline-block">
+                                    <button id="btnLater" class="btnLaterArticle">Maybe later</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="single-blog-page-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 article-container-ext">
+                <div id="oc-article-container">
+
+                    <div class="single-image">
+    <img src="/images/news/ebpf-in-obs-2.jpg" alt="ebpf" style="border:1px solid #ddd;">
+</div>
+<h1>The eBPF Effect</h1>
+<h4 style="text-transform:none;">How eBPF is re-shaping Observability Engineering (Part One)</h4>
+<p>
+    eBPF is an overnight success which has been a long time in the making. As last year's <a href="https://ebpfdocumentary.com">Unlocking The Kernel</a> documentary showed, the eBPF interpreter was first merged into the Linux network stack back in 2014.
+
+
+    In recent years <a href="https://isovalent.com">Isovalent</a> have been at the forefront of bringing the technology to a wider audience - particularly through developing cutting edge open source products such as <a href="https://cilium.io">Cilium</a> and <a href="https://tetragon.io">Tetragon</a>.
+</p>  <p>
+    eBPF is a game-changer as it allows applications to hook right in to the Linux Kernel. This means that eBPF applications have clear visibility of network traffic as well as a small footprint and massive scalability.
+
+    The potential for observability platforms is huge, as applications can attach to the kernel without the need for any kind of user instrumentation.
+
+</p>
+<img src="/images/articles/ebpf/overview.png" alt="ebpf" style="border:1px solid #ddd;">
+<div style="margin-bottom:.5em;"><span class="oc-imgText-2">eBPF overview</span></div>
+<p>
+    In this round-up we will look at how a number of leading observability platforms are leveraging the power of eBPF in their tooling.
+
+    What is striking is that many of the early adopters of eBPF are relative newcomers to the observability market. Clearly, newer stacks, which do not have an existing codebase to re-engineer, are much better placed to embrace this new technology than existing vendors - especially those with a large code-bases and complex architectures.
+</p>
+<h4>Advantages</h4>
+<p>
+
+    So, we know that eBPF is a powerful and revolutionary technology - but what are the actual advantages to using it in observability platforms?
+
+    One of the first advantages of eBPF is that it is open source. It is a building block for observability tooling that does not involve any licensing costs. As such it considerably lowers the barrier to entry for new entrants into the observability space. It is interesting to note, also, that all of the products listed in this round-up are OSS.
+</p>  <p>
+    Secondly, eBPF (theoretically) obviates the need to develop client SDK's. This can be seen as a win for users as well as for vendors.
+    Developing SDK's compatible with multiple languages, platforms and versions requires significant amounts of effort and finance for vendors. For end users the on-boarding process becomes more frictionless, as cloud-native services no longer need to be instrumented.
+
+    Thirdly, eBPF applications are faster, more scalable and have a smaller resource footprint than SDK-based solutions
+
+</p>
+<p>
+    As we know though, every technical decision implies some kind of trade-offs, and eBPF is no exception to this rule. There are a few limitations and considerations to bear in mind.
+
+</p>
+<h4>Limitations</h4>
+<p>
+
+    The first is that, at the moment, eBPF is a Linux-only technology. It is not cross-platform - although a Windows version is under development.
+    Many eBPF solutions are described as being 'cloud-native' - which often boils down to running on Kubernetes - which obviously, in turn, means running on Linux hosts.
+    Many of the eBPF-based systems on the market assume that you are running your services in a K8S cluster. If you are using a different platform then they may not be the right fit. If you are running on a Windows network then the current generation of eBPF solutions simply won't work.
+</p>  <p>
+    In a similar vein, eBPF solutions will not be able to hook into serverless technologies such as Azure Functions or AWS Lambdas as you do not have access to load the solution into the Linux kernel in a serverless environment. The same limitation applies to technologies such as Azure Web apps or AWS Elastic Beanstalk. Whilst this is by no means a showstopper, it does mean that companies using these technologies will need a solution that supports ingesting telemetry both via eBPF as well as via an agent or a pipeline.
+</p>  <p>
+    Thirdly, there are, at present, functional limitations to eBPF observability. eBPF is powerful but it is not a magic wand. Whilst eBPF is a fantastic enabler, it takes a large degree of specialist engineering skill and knowledge to craft robust, performant and highly scalable eBPF programs. Not all eBPF programs are made equal. Some will only cover a small subset of languages whilst others may only have partial or incomplete capabilities in capturing logs metrics and traces.
+</p>
+<p>
+    Having looked at some of the general principles and theory of eBPF it's time to start looking at how some leading observability solutions are leveraging its power. In Part One of this article we will look at Pixie - a pioneer for eBPF in obervability.
+    In Part Two, we will survey a number of the other leading products in the market.
+
+</p>
+<h4>Pixie</h4>
+<p>
+    It would be somewhat remiss of us if we did not kick off this round-up with <a href="https://px.dev">Pixie</a> - as far as we know, the first tool the utilise eBPF in observability tooling.
+    Pixie is an open source project which was contributed to the CNCF by New Relic as far back as 2021 and indeed, the project still integrates closely with New Relic.
+    Like most eBPF-based tools, Pixie sets up eBPF probes to trigger on a number of kernel or user-space events.
+</p>  <p>
+    When Pixie is deployed in a K8S cluster, it deploys eBPF kernel probes (kprobes) that are set up to trigger on Linux syscalls used for networking. Then, when your application makes network-related syscalls -- such as send() and recv() -- Pixie's eBPF probes snoop the data and send it to the Pixie Edge Module (PEM).
+    In the PEM, the data is parsed according the detected protocol and stored for querying. This is encapsulated in the diagram below:
+    <img src="/images/articles/ebpf/protocol_tracing_tls.svg" alt="ebpf" style="border:1px solid #ddd;">
+    <div style="margin-bottom:.5em;"><span class="oc-imgText-2">eBPF in Pixie</span></div>
+
+</p>  <p>
+    Conceptually, the idea of 'hooking into kernel processes' has quite a simple ring to it. The practical application for observability systems though, entails considerable technical complexity. Complete stack traces are not just sitting around in a neat little box waiting to be collected.
+    In Pixie, the stack trace is recovered by looking at the instruction pointer of the application on the CPU, and then inspecting the stack to find the instruction pointers of all the parent functions (frames) as well. Walking the stack to reconstruct a stack trace has some complexities, but the basic case is shown below.
+    One starts at the leaf frame, and uses frame pointers to successively find the next parent frame. Each stack frame contains a return address instruction pointer which is recorded to construct the entire stack trace.
+    <img src="/images/articles/ebpf/callstack-2.png" alt="call stack" style="border:1px solid #ddd;">
+    <div style="margin-bottom:.5em;"><span class="oc-imgText-2">Walking the Call Stack</span></div>
+</p>
+
+<p>
+    <h5>Dynamic structured logging </h5>
+    Capturing metrics and CPU profiling functionality are probably standard features of most eBPF implementations in observability solutions. One capability which really makes Pixie stand out is its <em>dynamic logging</em> feature, which is something of a game-changer for application debugging. Normally, if you have a function in your application which is not behaving as expected and you need to add logging to it then you will need to edit, rebuild and re-deploy your code. Dynamic logging is an Alpha feature in Pixie which allows users to add logging to a function whilst it is running.
+    <a href="https://docs.px.dev/tutorials/custom-data/dynamic-go-logging/">This article</a>  shows how a simple script can be used to add a new function to a binary. The function is capabale of capturing parameters and writing output to a table, as shown below.
+</p>
+<img src="/images/articles/ebpf/pixie-dynamic-logging.jpg" alt="call stack" style="border:1px solid #ddd;">
+<div style="margin-bottom:.5em;"><span class="oc-imgText-2">Dynamic logging in Pixie</span></div>
+<p>
+    This is a tremendous example of the power of eBPF. In part two of this article, we will continue our round-up by looking at the implementation of eBPF in a further five major systems:
+    <ul style="font-weight:bold;">
+        <li>Cilium</li>
+        <li>Groundcover</li>
+        <li>Odigos</li>
+        <li>Grafana Beyla</li>
+        <li>Apache SkyWalking</li>
+    </ul>
+    Stay tuned!
+</p>
+
+
+               
+                </div>
+
+                <div class="share-section">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 life-style">
+                            <span class="author">
+                                <a href="#"><i class="fa fa-user-o" aria-hidden="true"></i>Admin </a>
+                            </span>
+
+                            <span class="date">
+                                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>06/16/2024
+                            </span>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="share-section share-section2">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <span> Share : </span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <ul class="share-link">
+                                <li class="hvr-bounce-to-right"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://observability-360.com/article/ViewArticle?id=ebpf-in-observability&title=ebpf&#x2B;in&#x2B;observability"> <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+                                <li class="hvr-bounce-to-right"><a href="https://twitter.com/share?text=ebpf&#x2B;in&#x2B;observability&url=https://observability-360.com/article/ViewArticle?id=ebpf-in-observability"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>  
+
+                
+
+<div class="author-comment">
+    <h3 class="title-bg">Comments on this Article</h3>
+    <ul>
+       
+       
+    </ul>
+</div>
+
+
+
+    <div class="leave-comments-area" style="border:1px solid #ddd; padding:20px; font-weight: 500;">
+        <span> <i class="fa fa-info-circle" aria-hidden="true"> </i></span> <span>You need register and be logged in to post a comment</span>
+    </div>
+
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <!-- Blog Single Sidebar Start Here -->
+                <div class="sidebar-area">
+                    <div class="like-box-area">
+                        <ul style="list-style-type: none;">
+                            <li>
+                                <a href="https://twitter.com/TheObsGuy">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i> <span class="like-page">Follow us on twitter</span> <span class="like">
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="recent-post-area hot-news">
+                        <h3 class="title-bg">From the web</h3>
+                        <br/>
+                        <h5 style="margin-top:0.7em;margin-bottom:0.7em; font-weight:500">Articles we like from observability web sites and blogs</h5>
+                        <ul class="news-post" style="list-style-type: none;">
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://www.uber.com/en-IN/blog/datacentral-ubers-observability-and-chargeback-platform"><img src="/images/news/uber-observability-2.jpg" alt="blog image" title="uber image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://www.uber.com/en-IN/blog/datacentral-ubers-observability-and-chargeback-platform">Internal Observability at Uber</a></h4>
+                                                    <span class="from-the-web-source">Uber Blog&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Jun 10, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">Stories about Uber architecture always seem to be interesting, not least because they always involve technology at huge scale - such as this <a href="https://www.infoq.com/news/2024/05/uber-dynamodb-ledgerstore">trillion record migration</a>  from DynamoDB. This article, however, is actually interesting on a number of levels. As well of being of technical interest it also provides some fascinating insight into internal team topologies and management processes - which are also fundamentally important aspects of managing observability at scale. Whilst most organisations will only operate at a fraction of Uber’s scale, every organisation is seeking to minimise costs and improve service to users, and the article provides a number of insights which would be of interest to most observability practitioners.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://www.datadoghq.com/blog/ml-model-monitoring-in-production-best-practices"><img src="/images/news/datadog-ml-monitoring.jpg" alt="blog image" title="uber image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://www.datadoghq.com/blog/ml-model-monitoring-in-production-best-practices">Observability Principles for ML Models</a></h4>
+                                                    <span class="from-the-web-source">Datadog Blog&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>May 16, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">
+                                                        A survey carried out by McKinsey in 2021 found that 57% of respondents were already using Machine Learning to support at least one business function. ML is no longer a niche concern but is becoming a core component of development and CI/CD practices. As this post from the Datadog blog notes, the efficacy of ML models will inevitably degrade over time, so monitoring their performance and reliability is critical.
+
+                                                        The article really drives home the point that ML is a domain with its own specific behaviours, and effective monitoring requires building out new processes, metrics and even infrastructure to cover issues such as Data Drift, Prediction Drift and Concept Drift. Whilst the article does use some specialist terms, it is a highly readable and practical guide to the subject of ML monitoring.
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://www.observeinc.com/blog/observe-o2-architecture"><img src="/images/web/observe-architecture-2.jpg" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://www.observeinc.com/blog/observe-o2-architecture">Observing Observe with Observe</a></h4>
+                                                    <span class="from-the-web-source">Observe&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Apr 13, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">It sounds like it could be a sub-plot in the film Inception, but this is a really interesting article from the Observe blog on how they use an instance of their Observe system to monitor their Observe cloud platform. Observe not only have to support fast reads for complex user queries, they also have to support ingesting one petabyte of telemetry per day. As you can see from the above diagram, Kafka and Snowflake form two of the pillars of the backend architecture. This three-part series offers a fascinating insight into Observe’s own internal observability strategy as well as being a great exemplar of the eat your own dog food principle. This is an article which is of great value to anybody with an interest in large-scale observability architectures.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://www.infoq.com/presentations/cloud-cost-optimizationq"><img src="/images/web/million-dollar-code-2.jpg" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://www.infoq.com/presentations/cloud-cost-optimizationq">The $1m Line of Code</a></h4>
+                                                    <span class="from-the-web-source">InfoQ&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Apr 5, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;"> Most of us have experienced the anguish of bill shock at some point. Being hit with a huge bill for mobile roaming charges on return from your holiday or getting a penalty notice for an inadvertent motoring infringement that happened weeks back. Those are just small pinpricks though, compared to the 50,000 volts of financial burn felt by companies mentioned in this transcript of a scintillating talk by Erik Peterson, CEO of CloudZero. He argues, persuasively, that engineering decisions are buying decisions. In the case mentioned in the headline, a decision to turn on one section of debug code led to vast volumes of logs being emitted and racking up over $1m in costs.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/"><img src="/images/web/retrospective-2.png" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/">An Engineer's Personal Retrospective'</a></h4>
+                                                    <span class="from-the-web-source">CEP&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Mar 9, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;"> This is a really engaging blog post by Infrastructure Engineer Jack Lindamood, where he reviews nearly every infrastructure decision he made over four years working at a start-up. Each choice is graded with a Regret, Endorse or an occasional Unsure. Whilst not explicitly observability-related, it will however, have resonance for any engineer forced to make technological choices (which is probably all of us). The article contains much distilled wisdom and some strong opinions, as well as general observations on the challenges and trade-offs faced by infrastructure engineers. </p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://incident.io/blog/finding-relationships-in-your-data-with-embeddings"><img src="/images/web/incident-io-vector.png" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://incident.io/blog/finding-relationships-in-your-data-with-embeddings">Finding relationships in your data with embeddings</a></h4>
+                                                    <span class="from-the-web-source">Medium&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Feb 8, 2024</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;"> The RAG pattern has really gained traction over the past year as it allows enterprises to leverage the power of LLM's to gain insights into their own data. This is a fascinating and (occasionally technical) article which details how Incident IO used vector embeddings to mine through their data and discover related incidents. The article explains the techniques involved with great clarity and provides really helpful advice on creating embeddings to find hidden patterns in your own data.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://medium.com/chick-fil-atech/observability-at-the-edge-b2385065ab6e"><img src="/images/web/iot.png" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://medium.com/chick-fil-atech/observability-at-the-edge-b2385065ab6e">How Chik-Fil-A Run 2,800 Edge Clusters</a></h4>
+                                                    <span class="from-the-web-source">Medium&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Dec 29, 2023</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">When you think of large corporations pushing the technology envelope, Chik-Fil-A might not be the first name to come to mind. However, the highly distributed nature of their infrastructure presents massive observability challenges, which they have met with some very impressive engineering. The scale of their task is daunting - 2,800 Edge Kubernetes clusters, tens of thousands of IoT devices and billions of MQTT messages each month. This is a really fascinating article on managing IoT observability at scale.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1em;">
+                                                    <a href="https://medium.com/@bijit211987/production-ready-observability-platform-for-ai-systems-17923d19639b"><img src="/images/web/ai-observability-cg-3.jpg" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://medium.com/@bijit211987/production-ready-observability-platform-for-ai-systems-17923d19639b">Production-Ready Observability Platform for AI Systems</a></h4>
+                                                    <span class="from-the-web-source">Medium&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Nov 3, 2023</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">In this blog article, Bijit Ghosh of Deutsche Bank discusses best practices for observability across the full AI system lifecycle. He composes a custom system which knits together a range of technologies including structlog, Flask, Prometheus and Kibana as well as AI-specific tools such as MLFlow and CausalML. It’s a comprehensive article which exhibits a clear understanding of both observability and AI technologies.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <a href="https://www.cncf.io/blog/2023/09/21/infrastructure-monitoring-basics-with-telegraf-influxdb-and-grafana"><img src="/images/web/whisper-gpt-2.jpg" alt="blog image" title="blog image" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;"/>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://www.cncf.io/blog/2023/09/21/infrastructure-monitoring-basics-with-telegraf-influxdb-and-grafana">Infrastructure Monitoring with the TIG Stack</a></h4>
+                                                    <span class="from-the-web-source">CNCF Blog&nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Sept 21, 2023</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">A great example of managing the complexities of Observability engineering. Jay Taylor from InfluxDB builds out a solution using the Telegraf, InfluxDB, Grafana stack.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <a href="https://rtfm.co.ua/en/victoriametrics-deploying-a-kubernetes-monitoring-stack/"><img src="/images/web/vict-metrics-stack.png" alt="victoria metrics stack" title="victoria metrics stack" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://rtfm.co.ua/en/victoriametrics-deploying-a-kubernetes-monitoring-stack/">Deploying a Kubernetes monitoring stack</a></h4>
+                                                    <span class="from-the-web-source">rtfm &nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>July 23, 2023</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">An in-depth look at monitoring K8S with the increasingly popular VictoriaMetrics platform. This follows an end-to-end process from crafting your own Helm chart to configuring alert rules.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
+                                        <div class="item-post">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <a href="https://coroot.com/blog/you-are-overpaying-for-opentelemetry-verbosity"><img src="/images/web/coroot-opentel.jpg" alt="compression query" title="compression query" /></a>
+                                                </div>
+                                                <hr style="width:90%; border-top:1px solid #ddd; margin-bottom:0.5em;" />
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 1.5em;">
+                                                    <h4><a href="https://coroot.com/blog/you-are-overpaying-for-opentelemetry-verbosity">"You're overpaying for OpenTelemetry's verbosity"</a></h4>
+                                                    <span class="from-the-web-source">rtfm &nbsp;&nbsp;</span>
+                                                    <span class="date"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Oct 10, 2023</span>
+                                                    <p style="padding-right:0.1em; font-size:0.9em;">This has really raised a few eyebrows. A forensic analysis by Nikolay Sivko of coroot on how just a few OpenTel meta tags can potentially explode your ingestion fees.</p>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="trending-post-area">
+                        <h3 class="title-bg"></h3>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <ul>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>     
+    </div>
+
+    <footer>
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer About Section Start Here -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-footer footer-one">
+                            <h3>About Observability 360</h3>
+                            <div class="footer-logo"><img src="/images/footer-logo.png" alt="footer-logo"></div>
+                            <p>The number one source on the internet for independent reporting on cloud observability technologies. We offer carefully curated news, unbiased coverage and detailed analysis, comparison and documentation of cloud observability systems.  </p>
+                            <p>We're social, connect with us:</p>
+                            <div class="footer-social-media-area">
+                                <nav>
+                                    <ul>                                     
+                                        <li><a href="https://github.com/observability-guy"><i class="fa fa-github"></i></a></li>                                   
+                                        <li><a href="https://twitter.com/TheObsGuy"><i class="fa fa-twitter"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer About Section End Here -->
+                    <!-- Footer Popular Post Section Start Here -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="single-footer footer-two">
+                           
+                        </div>
+                    </div>
+                    <!-- Footer Popular Post Section End Here -->
+                    <!-- Footer From Flickr Section Start Here -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                       
+                    </div>
+                    <!-- Footer From Flickr Section End Here -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright Area Start Here -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer-bottom">
+                            <p> &copy; Copyrights 2023. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright Area End Here -->
+    </footer>
+
+    <div id="return-to-top">
+        <span>Top</span>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>   
+    <script src="/js/jquery-ui.min.js"></script>   
+    <script src="/js/bootstrap.min.js"></script>   
+    <script src="/js/jquery.meanmenu.js"></script> 
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>  
+    <script src="/js/jquery.magnific-popup.js"></script>
+    <script src="/js/jquery.counterup.min.js"></script>
+    <script src="/js/waypoints.min.js"></script> 
+    <script src="/js/lightbox.min.js"></script>
+    <script src="/inc/custom-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script src="/inc/custom-slider/home.js" type="text/javascript"></script>   
+    <script src="/js/main.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script>
+    
+
+    <script>
+        //modal stuff
+
+      
+            document.addEventListener("DOMContentLoaded", function () {
+                // Function to show the modal
+                function showModal() {
+                    document.getElementById("newsletterModal").style.display = "block";
+                }
+
+                var showPopUp = "True";
+
+                if (showPopUp == "True") {
+                    setTimeout(showModal, 5000);
+                }
+
+
+
+                function closeModal() {
+                    document.getElementById("newsletterModal").style.display = "none";
+                }
+
+                function subscribeNow() {
+                    window.open('https://observability-360.beehiiv.com/subscribe', '_blank');
+                    popUpShown();
+                }
+
+
+                function popUpShown() {
+                    $.ajax({
+                        url: '/Article/SubscriptionPopUpShown',
+                        method: 'POST',
+                        success: function (response) {
+                            console.log('NL PopUp Shown!');
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error with NL PopUp:', error);
+                        }
+                    });
+                    closeModal();
+                }
+
+                //document.getElementById("btnLater").addEventListener("click", popUpShown);
+
+                document.getElementById('btnLater').addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default anchor action
+                    popUpShown();
+                });
+
+                document.getElementById('newsletterLink2').addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default anchor action
+                    subscribeNow();
+                });
+            });
+
+
+        //end of modal stuff
+
+        $("#submitComment").click(function () {
+            let comment = $("#CommentText").val();
+
+            if (!comment) {
+                $("#commentError").text("Comment is required.");
+                return;
+            }
+
+            if (comment.length > 1000) {
+                $("#commentError").text("Comment cannot be longer than 1000 characters.");
+                return;
+            }
+
+
+            let name = $("#PostedBy").val();
+
+            if (!comment) {
+                $("#NameError").text("Name is required.");
+                return;
+            }
+
+            if (comment.length > 100) {
+                $("#NameError").text("Name cannot be longer than 100 characters.");
+                return;
+            }
+
+            var articleComment = new Object();
+            articleComment.CommentText = comment;
+            articleComment.PostedBy = name;
+            articleComment.ArticleGuid = $("#ArticleGuid").val();
+            var json = JSON.stringify(articleComment);
+
+            $.ajax({
+                url: '/Article/SaveComment',
+                type: 'POST',
+                data: json,
+                contentType: "application/json",
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        // Clear textarea if needed
+                        $("#CommentText").val('');
+                    } else {
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+    </script>
+                
+</body>
+</html>
