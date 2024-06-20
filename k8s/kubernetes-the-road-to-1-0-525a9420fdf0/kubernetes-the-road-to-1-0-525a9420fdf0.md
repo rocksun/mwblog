@@ -1,7 +1,7 @@
 
 <!--
 title: 通往Kubernetes 1.0之路
-cover: https://miro.medium.com/v2/resize:fit:1200/1*iY2x44z3OaGdchxvXJcGLA.png
+cover: ./cover.png
 -->
 
 昨晚在 Kubernetes 1.0 庆典上，我谈到了 Kubernetes 1.0 的发展历程，当时我坐在小溪对岸，而项目……
