@@ -1,7 +1,7 @@
 
 <!--
 title: 使用 eBPF在Kubernetes上监控PostgreSQL数据库
-cover: https://s3.eu-central-1.amazonaws.com/anteon-strapi-cms-wuby8hpna3bdecoduzfibtrucp5x/postgre_blog_cover_bca67a658b.jpg
+cover: ./cover.jpg
 -->
 
 在本文中，我们重点介绍使用 Anteon 的 Kubernetes PostgreSQL 监控功能来监控 PostgreSQL 数据库。
