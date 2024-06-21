@@ -13,7 +13,8 @@ cover: https://cdn.thenewstack.io/media/2024/06/0461b334-talent-shortages-cloud-
 数字化转型中一个常被忽视的因素是，该计划的成功与否取决于是否有合格的人才来领导该计划。而获取这些技能可能非常困难：Spiceworks 的 [2024 年 IT 现状](https://www.spiceworks.com/research/state-of-it-budget/) 调查显示，63% 的受访者表示他们的组织难以找到合适的 IT 人才。此外，Spectro Cloud 的一项新研究显示，超过三分之一的受访者表示 [难以找到 Kubernetes 专家](https://thenewstack.io/kubernetes-48-of-users-struggle-with-tool-choice/) 来实现云原生目标——他们预计 [Kubernetes 的采用](https://roadmap.sh/kubernetes) 及其他新兴技术将在两年内翻倍。
 
 ![Andela's white paper "How DevOps Skills Are Evolving to Deploy Kubernetes in the Cloud" includes data on IT hiring trends](https://cdn.thenewstack.io/media/2024/06/1af2034d-it-modernization-andela4.png)
-来源：Andela 的“DevOps 技能如何演变以在云中部署 Kubernetes”
+
+*来源：Andela 的“DevOps 技能如何演变以在云中部署 Kubernetes”*
 
 DevOps 一直是实现云原生迁移的标准，但最近，[平台工程](https://thenewstack.io/platform-engineering/platform-engineering-the-path-to-devops-success/) 应运而生，它通过创建一条“黄金路径”来采用和扩展 Kubernetes，从而扩展了 DevOps。根据 Gartner 的一项调查，到 2024 年底，80% 的大型工程组织将 [采用内部平台](https://www.gartner.com/en/information-technology/insights/top-technology-trends)，这些平台将由平台工程提供支持。
 
