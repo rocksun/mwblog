@@ -9,10 +9,6 @@ cover: https://cdn.thenewstack.io/media/2024/06/6cd1998b-rocket-launch-693236_12
 > 译自 [Haven't Migrated Off CentOS Yet? You Have Until June 30](https://thenewstack.io/havent-migrated-off-centos-yet-you-have-until-june-30/)，作者 Gregory M Kurtzer。
 
 
-# 尚未迁移出 CentOS？您还有时间，截止日期为 6 月 30 日
-
-![Featued image for: Haven’t Migrated Off CentOS Yet? You Have Until June 30](https://cdn.thenewstack.io/media/2024/06/6cd1998b-rocket-launch-693236_1280-1024x682.jpg)
-
 Red Hat [于 2020 年 12 月宣布](https://thenewstack.io/red-hat-deprecates-linux-centos-in-favor-of-a-streaming-edition/) 停止对 CentOS Linux 的支持。CentOS Linux 是政府和企业部署中专业 IT 团队使用最广泛的操作系统之一。数十万家组织使用该平台，该平台支持数百万个工作负载和数千万个计算核心。
 
 CentOS 寿命终结 (EOL) 日期为 2024 年 6 月 30 日。您准备好了吗？
