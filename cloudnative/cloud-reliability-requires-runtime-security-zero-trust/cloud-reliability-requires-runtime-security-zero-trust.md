@@ -8,11 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/06/ce8a1da2-cloud-reliability-requi
 
 > 译自 [Cloud Reliability Requires Runtime Security, Zero Trust](https://thenewstack.io/cloud-reliability-requires-runtime-security-zero-trust/)，作者 Manas Chowdhury。
 
-
-# 云可靠性需要运行时安全和零信任
-
-![云可靠性需要运行时安全和零信任的特色图片](https://cdn.thenewstack.io/media/2024/06/ce8a1da2-cloud-reliability-requires-runtime-security-zero-trust1-1024x576.jpg)
-
 2024 年 2 月，[Red Hat](https://www.openshift.com/try?utm_content=inline+mention) 发布了 [安全公告](https://access.redhat.com/errata/RHSA-2024:0717)，提醒用户注意 runC 中的漏洞。runC 是一个核心容器基础设施组件，用作 [Docker](https://www.docker.com/?utm_content=inline+mention) 的 containerd 和其他运行时的容器运行时引擎。
 
 简而言之，runC 无法将容器与主机操作系统 (OS) 目录正确隔离。结果？攻击者可以利用此漏洞通过具有易受攻击的 runC 版本的容器渗透主机系统。
