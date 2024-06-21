@@ -1,14 +1,12 @@
 
 <!--
-title: 
+title: 什么是 Go struct 以及如何编写一个？
 cover: https://cdn.thenewstack.io/media/2024/06/a7bd071c-buttons-3448899_1280.jpg
 -->
 
-
+在 [Go 编程语言](https://thenewstack.io/golang-co-creator-rob-pike-what-go-got-right-and-wrong/) 中，结构体（也称为“[结构](https://go.dev/tour/moretypes/2)”）是一种复合数据类型，它使将不同类型的值组合到单个实体中成为可能。当您希望将数据分组到单个单元中时，结构体非常方便，而不是必须声明单独的值。
 
 > 译自 [What Is a Go Struct and How Do You Write One?](https://thenewstack.io/what-is-a-go-struct-and-how-do-you-write-one/)，作者 Jack Wallen。
-
-在 [Go 编程语言](https://thenewstack.io/golang-co-creator-rob-pike-what-go-got-right-and-wrong/) 中，结构体（也称为“[结构](https://go.dev/tour/moretypes/2)”）是一种复合数据类型，它使将不同类型的值组合到单个实体中成为可能。当您希望将数据分组到单个单元中时，结构体非常方便，而不是必须声明单独的值。
 
 例如，您可以创建一个结构体来收集有关人员的信息，例如姓氏、名字和年龄。您可以将它们声明为单独的项目，如下所示：
 
