@@ -1,7 +1,7 @@
 
 <!--
 title: eBPF如何塑造Linux和平台工程的未来
-cover: https://images.idgesg.net/images/article/2024/04/shutterstock_166345925-100963085-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 eBPF 允许用户在 Linux 内核中加载和安全运行自定义程序，而无需直接更改内核本身。可能性是无限的。
