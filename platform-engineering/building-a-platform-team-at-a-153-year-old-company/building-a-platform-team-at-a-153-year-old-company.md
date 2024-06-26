@@ -6,8 +6,6 @@ cover: https://cdn.thenewstack.io/media/2024/06/7bf6b0ed-building-a-platform-tea
 
 Hellmann Worldwide Logistics 在 PlatformCon 2024 上所描述的数字化转型，为其他组织提供了可借鉴的经验。
 
-![Featued image for: Building a Platform Team at a 153-Year-Old Company](https://cdn.thenewstack.io/media/2024/06/7bf6b0ed-building-a-platform-team-at-a-153-year-old-company-2-1024x576.jpg)
-
 每家公司都是不同的，因此每个平台都必须是独一无二的。
 
 我们在技术活动中经常听到这句话。采用定制化的平台工程方法让公司投入大量的时间和金钱来自定义开源软件，并从头开始构建自己的内部开发人员平台。
