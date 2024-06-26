@@ -1,7 +1,7 @@
 
 <!--
 title: 流收集器：一种操作Java流的新方法
-cover: https://images.idgesg.net/images/article/2024/06/shutterstock_1158743239-100963295-large.jpg?auto=webp&quality=85,70
+cover: ./cover.png
 -->
 
 Java 22 中 java.util.stream.Gatherers 接口中新的可定制流操作符的代码优先之旅。
