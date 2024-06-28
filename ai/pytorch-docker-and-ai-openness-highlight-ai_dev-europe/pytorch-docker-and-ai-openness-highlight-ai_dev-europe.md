@@ -1,6 +1,6 @@
 
 <!--
-title: PyTorch、Docker 和 AI 开放性成为 AI_dev Europe 的亮点
+title: PyTorch、Docker和AI开放性成为AI_dev欧洲的亮点
 cover: https://cdn.thenewstack.io/media/2024/06/d5cec598-nahrizul-kadri-oasf0qmrwla-unsplash.jpg
 -->
 
