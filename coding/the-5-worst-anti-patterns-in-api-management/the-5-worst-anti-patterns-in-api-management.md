@@ -1,6 +1,6 @@
 
 <!--
-title: API 管理中的 5 种最糟糕的反模式
+title: API管理中的5种最糟糕的反模式
 cover: https://cdn.thenewstack.io/media/2024/06/733ca170-donuts-2031755_1280.jpg
 -->
 
