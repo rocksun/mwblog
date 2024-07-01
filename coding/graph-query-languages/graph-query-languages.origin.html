@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <link rel="canonical" href="https://dgraph.io/blog/post/graph-query-languages/" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="../../images/favicons/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="../../images/favicons/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="../../images/favicons/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="../../images/favicons/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../../images/favicons/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="../../images/favicons/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="../../images/favicons/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="../../images/favicons/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/favicons/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../../images/favicons/android-icon-192x192.png" />
+  <link rel="manifest" href="../../images/favicons/manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="../../images/favicons/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/faviconsfavicon-16x16.png" />
+  <link rel="shortcut icon" href="../../images/favicons/favicon.ico" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="/images/faviconsms-icon-144x144.png" />
+  <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href='../../index.xml' />
+  
+
+  <title>A Guide to Graph Query Languages - Dgraph Blog</title>
+
+  <meta property="og:title" content="A Guide to Graph Query Languages - Dgraph Blog" />
+  <meta property="og:type" content="article" />
+  
+
+  <meta property="og:url" content="https://dgraph.io/blog/post/graph-query-languages/" />
+  
+  <meta name="description" content="Discover the power of the graph database model and how graph query languages like Cypher, Gremlin, and SPARQL simplify handling complex, interconnected data." />
+   
+  <meta property="og:image" content='https://dgraph.io/blog/images/20240628/graph-query-languages.png' />
+  
+  <meta property="og:image:width" content="640" />
+  <meta property="og:image:height" content="500" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css" />
+  
+  
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css" rel="stylesheet" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js" integrity="sha256-sNPiigbfSkqUzMc5rgrdztLnneCMAp6W9wetJUZu9Zw=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link href='../../css/runnable.css?7bbf71b4888bc97241e85bc7326a12fe' rel="stylesheet" />
+
+  <link href='../../css/runnable-custom.css?74110b504a7b8a6e92a95279cfa96032' rel="stylesheet" />
+  <link href='../../font-awesome/css/all.css' rel="stylesheet" />
+  <link rel="preload" as="style" href='../../font-awesome/css/all.css' onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="stylesheet/less" href='../../css/blog.less?v=20210218' />
+
+  <script src="//cdn.jsdelivr.net/npm/less"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" />
+  <script src="https://kit.fontawesome.com/f7fbd5fa92.js" crossorigin="anonymous"></script>
+
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital@1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.js" integrity="sha256-x3BtPVERvw1ozPlwivuFLZoViFCeAAs1Gt6SxEedmo8=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.css" integrity="sha256-7sZe9dsqyNZC9Mk+WPRB7nVvPPPXyorzm2QKqlgXC4k=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/addon/edit/closebrackets.min.js" integrity="sha256-qhu2a7DSpQaammMaLw1iruxBpxmgdw8mdQaQWQUokcY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/javascript/javascript.min.js" integrity="sha256-7Bdg/UdDMmHDPafpQDYZNPCEbnRP7eAvu+2hEoqRCXs=" crossorigin="anonymous"></script>
+  
+
+  <link rel="stylesheet" href='../../css/explainer.css?67b590455fa114bc9377875f6e425846' />
+
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+  <script src='../../js/search.js?04292020'></script>
+
+  
+  <link href='../../css/owl.carousel.min.css' rel="stylesheet" />
+  <link href='../../css/owl.theme.default.min.css' rel="stylesheet" />
+  <script src='../../js/owl.carousel.min.js'></script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.basic.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+
+  <script>
+    $(".subscribe-box").hide();
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 400) {
+        $(".subscribe-box").fadeIn("fast");
+      } else {
+        $(".subscribe-box").fadeOut("fast");
+      }
+    });
+    $(".vrtical-subscribe-box").hide();
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 400) {
+        $(".vrtical-subscribe-box").fadeIn("fast");
+      } else {
+        $(".vrtical-subscribe-box").fadeOut("fast");
+      }
+    });
+
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 50) {
+        $("#page-header").addClass("bg-white");
+      } else {
+        $("#page-header").removeClass("bg-white");
+      }
+    });
+    $(document).scroll(function () {
+      checkOffMobiset();
+    });
+
+    function checkOffMobiset() {
+      var x = $(".bottom-section .container").offset();
+      var leftPosition = x.left - 30;
+      if ($(".vrtical-subscribe-box").offset().top + $(".vrtical-subscribe-box").height() >= $(".bottom-section").offset().top - 10) {
+        $(".vrtical-subscribe-box").addClass("footer-before");
+        $(".footer-before").css("left", -leftPosition);
+      }
+      if ($(document).scrollTop() + window.innerHeight < $(".bottom-section").offset().top) {
+        $(".vrtical-subscribe-box").removeClass("footer-before");
+        $(".vrtical-subscribe-box").css("left", "30px");
+      }
+    }
+
+    $(document).scroll(function () {
+      checkOffset();
+    });
+
+    function checkOffset() {
+      var x = $(".bottom-section .container").offset();
+      var leftPosition = x.left - 30;
+      if ($(".subscribe-box").offset().top + $(".subscribe-box").height() >= $(".bottom-section").offset().top - 10) {
+        $(".subscribe-box").addClass("footer-before");
+        $(".footer-before").css("left", -leftPosition);
+      }
+      if ($(document).scrollTop() + window.innerHeight < $(".bottom-section").offset().top) {
+        $(".subscribe-box").removeClass("footer-before");
+        $(".subscribe-box").css("left", "30px");
+      }
+    }
+    $(document).ready(function () {
+      $(".page-search").wrapInner("<div class='wrapper'></div>");
+      $(".wrapper").after($(".page-search__results"));
+
+      $(".click-subscribe").click(function () {
+        $(".subscribe-box").toggleClass("open");
+        $(".vrtical-subscribe-box").toggleClass("hide");
+      });
+      $(".subscribe-box .close").click(function () {
+        $(".subscribe-box").toggleClass("open");
+        $(".vrtical-subscribe-box").toggleClass("hide");
+      });
+      $(".nav-icon").click(function (e) {
+        $(".page-nav").toggleClass("shownav");
+        $(".page-nav li").removeClass("active");
+        $(this).toggleClass("active");
+        $(".page-header").toggleClass("open");
+      });
+      var $nav = document.querySelector(".page-nav > ul");
+      var $navItems = document.querySelectorAll(".page-nav > ul > li");
+      var $navItemHeading = document.querySelectorAll(".page-nav > ul > li > div");
+      var $subnav = document.querySelectorAll(".page-nav > ul > li > ul");
+      $($navItemHeading).click(function (e) {
+        if ($(this).parent().hasClass("active")) {
+          $(this).parent().toggleClass("active");
+        } else {
+          $($navItems).removeClass("active");
+          $(this).parent().toggleClass("active");
+        }
+      });
+      $('.nav-icon[target="_blank"]').removeAttr("target");
+    });
+  </script>
+  <style>
+    .vrtical-subscribe-box-wrap .fa:hover {
+      color: #f10042;
+    }
+
+    .blog-single .highlight pre {
+      overflow-x: scroll;
+    }
+
+    .blog-single pre:not([class]) {
+      overflow-x: scroll;
+    }
+
+    .blog-single .post__cover img {
+      border-radius: 10px;
+    }
+
+    .share-btn a:hover .fa {
+      color: #f10042;
+    }
+
+    .mobi-box-subsribe {
+      margin-top: 0 !important;
+    }
+
+    #PopupSignupForm_0 {
+      display: none !important;
+    }
+
+    .page-footer__nav h3 {
+      font-size: 14px !important;
+      font-weight: bold;
+      color: #808080;
+    }
+
+    .page-footer__nav h3 > a {
+      font-size: 14px !important;
+      font-weight: bold;
+      color: #808080;
+    }
+
+    .page-body__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    #label-email-fb880b90-e174-414d-9350-2728492a7822 {
+      display: none;
+    }
+
+    #mc_embed_signup .hs-input {
+      outline: none;
+      font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+      font-size: 15px;
+      border: 4px solid transparent;
+      border-radius: 5px;
+      color: #555555;
+      background-color: #fff;
+      box-sizing: border-box;
+      height: 40px;
+      max-width: 440px;
+      width: 100%;
+      flex: 1;
+      padding: 5px;
+      text-align: left;
+      border-bottom: 2px solid #d6d6d6 !important;
+      font-weight: 500;
+      line-height: 24px;
+      margin: 0 0 16px;
+    }
+
+    .hs-main-font-element {
+      display: none;
+    }
+
+    .hs-error-msg {
+      background: none;
+      color: #ec0041;
+      font-size: 12px;
+      text-align: left;
+      padding: 5px 10px;
+      font-weight: bold;
+    }
+
+    .submitted-message {
+      display: block !important;
+    }
+
+    .submitted-message p {
+      font-size: 12px !important;
+      color: #000;
+      font-weight: 500;
+      line-height: 14px;
+    }
+
+    .no-list {
+      list-style: none;
+      margin-left: -40px;
+    }
+
+    .page-nav ul .parent.active ul,
+    .page-nav ul .link.active ul {
+      max-height: 600px !important;
+    }
+  </style>
+
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content='https://dgraph.io/blog/images/20240628/graph-query-languages.png' />
+  <meta name="twitter:title" content="A Guide to Graph Query Languages" />
+  <meta name="twitter:description" content="Discover the power of the graph database model and how graph query languages like Cypher, Gremlin, and SPARQL simplify handling complex, interconnected data." />
+  <meta name="twitter:site" content="@dgraphlabs" />
+
+  
+  <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){if(window.analytics.initialized)return window.analytics[e].apply(window.analytics,arguments);var i=Array.prototype.slice.call(arguments);i.unshift(e);analytics.push(i);return analytics}};for(var i=0;i<analytics.methods.length;i++){var key=analytics.methods[i];analytics[key]=analytics.factory(key)}analytics.load=function(key,i){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=i};analytics._writeKey="aQlf725vSBKhpQnINiGBc6rCtFyVCiAP";;analytics.SNIPPET_VERSION="4.16.1";
+    analytics.load("aQlf725vSBKhpQnINiGBc6rCtFyVCiAP");
+    analytics.page();
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('a');
+      links.forEach((link) =>
+        analytics.trackLink(link, 'Click', {
+          id: link.id,
+          to: link.href,
+          text: link.innerText
+        })
+      );
+    });
+  }}();
+  </script>
+  
+  
+    <script src="https://cdn.usefathom.com/script.js" data-site="EXTODBMG" defer></script>
+  
+  
+  <script>
+    (function () {
+      window.ldfdr = window.ldfdr || {};
+      (function (d, s, ss, fs) {
+        fs = d.getElementsByTagName(s)[0];
+        function ce(src) {
+          var cs = d.createElement(s);
+          cs.src = src;
+          setTimeout(function () {
+            fs.parentNode.insertBefore(cs, fs);
+          }, 1);
+        }
+        ce(ss);
+      })(document, "script", "https://sc.lfeeder.com/lftracker_v1_p1e024BYr0Q7GB6d.js");
+    })();
+  </script>
+<script>
+(function() {
+  if (!location.href.endsWith('/')) {
+    window.location = location.href + '/'
+  }
+}())
+</script></head>
+<body class="blog" data-gr-c-s-loaded="true">
+  
+  
+  
+</body>
+
+
+   <header id="header" class="header w-100 bg-white">
+  <div class="container">
+    <div class="page-header"><style>
+  .navbar .dropdown-wrapper .row .card img {
+    width: 64px;
+    margin: 0 auto;
+  }
+  .navbar .dropdown-wrapper .row .card img {
+    width: 64px;
+    margin: 0 auto;
+  }
+</style>
+
+<div class="dgraph-header">
+  <a href="https://hypermode.com/?utm_source=dgraph&utm_medium=banner&utm_campaign=dgraphbanner" target="_blank">
+    <div class="banner">
+      <p>Hypermode | Get AI features into production faster →</p>
+    </div>
+  </a>
+  <div class="header-container">
+    <a href="https://dgraph.io" aria-current="page" class="dgraph_logo">
+      <div class="nav_logo-embed w-embed">
+        <img src="../../images/DgraphByHypermode_light.svg" alt="Dgraph by Hypermode logo" height="38" width="123" />
+      </div>
+    </a>
+
+    <nav role="navigation" class="dgraph-menu">
+      <a href="https://dgraph.io/product" class="navigation-link">
+        <div>Product</div>
+      </a>
+      <a href="https://dgraph.io/solutions" class="navigation-link">
+        <div>Solutions</div>
+      </a>
+      <a href="https://dgraph.io/docs" class="navigation-link">
+        <div>Docs</div>
+      </a>
+      <a href="https://dgraph.io/pricing" class="navigation-link">
+        <div>Pricing</div>
+      </a>
+      <div class="navigation-link has-submenu">
+        <div class="nav_dropdown-toggle">
+          <div>Resources</div>
+          <div class="nav_dropdown-arrow">
+            <div class="arrow-embed w-embed">
+              <svg
+                width="14"
+                height="8"
+                viewBox="0 0 14 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M13 1L7.00005 6.99995L1 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="nav-submenu nav-mega-menu">
+          <div class="nav-submenu-container">
+            <div class="nav-submenu-column">
+              <div class="nav-submenu-title">Learn</div>
+              <div class="nav-submenu-list">
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/docs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Docs</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      Documents and tutorials to get you started with Dgraph
+                    </div>
+                  </a>
+                </div>
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/tour">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Tour</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      Documents and tutorials to get you started with Dgraph
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-submenu-column">
+              <div class="nav-submenu-title">Resources</div>
+              <div class="nav-submenu-list">
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/blog/">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Blog</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      The latest news and articles from Dgraph team
+                    </div>
+                  </a>
+                </div>
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/paper">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Whitepapers</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      Dgraph most valuable insights and discoveries.
+                    </div>
+                  </a>
+                </div>
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/casestudies">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Case Studies</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      Real-world scenarios where Dgraph added value
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="nav-submenu-column">
+              <div class="nav-submenu-title">Collaborate</div>
+              <div class="nav-submenu-list">
+                <div class="nav-submenu-list-item">
+                  <a href="https://discuss.dgraph.io/">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Forum</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      The latest news and articles from Dgraph team
+                    </div>
+                  </a>
+                </div>
+                <div class="nav-submenu-list-item">
+                  <a href="https://dgraph.io/community">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="nav-submenu-list-item-arrow"
+                      width="15"
+                      height="14"
+                      viewBox="0 0 15 14"
+                      fill="none"
+                    >
+                      <path
+                        d="M1 7H13.5M13.5 7L7.5 1M13.5 7L7.5 13"
+                        stroke="#EF265A"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <div class="nav-submenu-list-item-title">Commmunity</div>
+                    <div class="nav-submenu-list-item-subtitle">
+                      Become part of a community passionate about building
+                      better apps.
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav_buttons-inside">
+        <div class="nav_button_wrapper">
+          <a
+            href="https://cloud.dgraph.io/?__hstc=17958374.33a8f2bf90fb365fa4bbcd78710030ca.1680885624716.1680885624716.1680888099029.2&amp;__hssc=17958374.1.1680888099029&amp;__hsfp=179051687"
+            target="_blank"
+            class="button-ghost nav w-button"
+            >Sign In</a
+          ><a
+            href="https://cloud.dgraph.io/?__hstc=17958374.33a8f2bf90fb365fa4bbcd78710030ca.1680885624716.1680885624716.1680888099029.2&amp;__hssc=17958374.1.1680888099029&amp;__hsfp=179051687"
+            target="_blank"
+            class="button nav w-inline-block"
+          >
+            <div>Contact Us</div>
+            <div class="button-icon-embed w-embed">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M14.351 11.7475V2.48994C14.351 1.98552 13.7451 1.7285 13.3824 2.07907L3.87339 11.2702C3.50397 11.6273 3.75674 12.2525 4.27052 12.2525H9.64896L9.64896 21.5101C9.64896 22.0145 10.2548 22.2715 10.6175 21.921L20.1266 12.7298C20.496 12.3728 20.2432 11.7475 19.7294 11.7475L14.351 11.7475Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav_tablet-left">
+      <div class="nav_tablet-buttons">
+        <div class="nav_button_wrapper">
+          <a
+            href="https://cloud.dgraph.io/?__hstc=17958374.33a8f2bf90fb365fa4bbcd78710030ca.1680885624716.1680885624716.1680888099029.2&amp;__hssc=17958374.1.1680888099029&amp;__hsfp=179051687"
+            target="_blank"
+            class="button-ghost nav w-button"
+            >Sign In</a
+          ><a
+            href="https://cloud.dgraph.io/?__hstc=17958374.33a8f2bf90fb365fa4bbcd78710030ca.1680885624716.1680885624716.1680888099029.2&amp;__hssc=17958374.1.1680888099029&amp;__hsfp=179051687"
+            target="_blank"
+            class="button nav w-inline-block"
+          >
+            <div>Contact Us</div>
+            <div class="button-icon-embed w-embed">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M14.351 11.7475V2.48994C14.351 1.98552 13.7451 1.7285 13.3824 2.07907L3.87339 11.2702C3.50397 11.6273 3.75674 12.2525 4.27052 12.2525H9.64896L9.64896 21.5101C9.64896 22.0145 10.2548 22.2715 10.6175 21.921L20.1266 12.7298C20.496 12.3728 20.2432 11.7475 19.7294 11.7475L14.351 11.7475Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="menu_button w-nav-button"
+        style="-webkit-user-select: text"
+        aria-label="menu"
+        role="button"
+        tabindex="0"
+        aria-controls="w-nav-overlay-0"
+        aria-haspopup="menu"
+        aria-expanded="false"
+      >
+        <div class="nav_icon">
+          <div class="nav_icon-line is-1st"></div>
+          <div class="nav_icon-line is-2nd"></div>
+          <div class="nav_icon-line is-3rd"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menu_button")
+    const dgraphMenu = document.querySelector(".dgraph-menu")
+    const header = document.querySelector("header")
+
+    menuButton.addEventListener("click", function () {
+      if (dgraphMenu.classList.contains("active-menu")) {
+        menuButton.classList.remove("active-menu-btn")
+        dgraphMenu.classList.remove("active-menu")
+        header.classList.remove("menu-opened")
+      } else {
+        menuButton.classList.add("active-menu-btn")
+        dgraphMenu.classList.add("active-menu")
+        header.classList.add("menu-opened")
+      }
+    })
+  })
+
+  
+  function toggleSubmenu(event) {
+    event.stopPropagation()
+
+    const dropdownToggle = event.currentTarget
+    const submenu = dropdownToggle.querySelector(".nav-submenu")
+
+    const allSubmenus = document.querySelectorAll(".nav-submenu")
+    allSubmenus.forEach((otherSubmenu) => {
+      if (
+        otherSubmenu !== submenu &&
+        otherSubmenu.classList.contains("submenu-open")
+      ) {
+        otherSubmenu.classList.remove("submenu-open")
+      }
+    })
+
+    submenu.classList.toggle("submenu-open")
+  }
+
+  const dropdownToggles = document.querySelectorAll(".has-submenu")
+  dropdownToggles.forEach((dropdownToggle) => {
+    dropdownToggle.addEventListener("click", toggleSubmenu)
+  })
+
+  function handleOutsideClick(event) {
+    const allSubmenus = document.querySelectorAll(".nav-submenu")
+
+    allSubmenus.forEach((submenu) => {
+      if (submenu.classList.contains("submenu-open")) {
+        submenu.classList.remove("submenu-open")
+      }
+    })
+  }
+
+  document.addEventListener("click", handleOutsideClick)
+
+  const navSubmenus = document.querySelectorAll(".nav-submenu")
+  navSubmenus.forEach((navSubmenu) => {
+    navSubmenu.addEventListener("click", (event) => {
+      event.stopPropagation()
+    })
+  })
+</script>
+</div>
+  </div>
+</header>
+
+
+
+   <section class="page-body page-blog-single">
+      <div class="page-body__content">
+         <div class="container">
+            <div class="row justify-content-center">
+               <div class="col-xl-10  col-lg-11">
+                  
+<div class="page-search form-group has-search" id="algolia-search">
+</div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container">
+         <div class="row justify-content-center page-blog-single__container">
+            <div class="col-xl-12 page-blog-single__wrap">
+               <div class="">
+                  <div class="post__meta">     
+                     
+                  </div>
+                  <div class="post__cover">
+                     <img
+                        src='../../images/20240628/graph-query-languages.png'>
+                  </div>
+                  <div class="inner-content  clearfix">
+                     <div class="post__wrap">
+                        <div class="post__content ">
+                           <h1 class="post__title">
+                              A Guide to Graph Query Languages
+                           </h1>
+                           <p>You might be wondering what a graph query language is and why it matters. Maybe you’ve heard terms like Cypher, Gremlin, or SPARQL thrown around and felt a bit lost. Or perhaps you’re a developer looking to expand your toolkit.</p>
+<p>We get it. Diving into a new technology can be daunting, especially when you’re already juggling complex projects and tight deadlines. But understanding graph query languages can open up new ways to interact with data, making your life a whole lot easier.</p>
+<p>Let’s break down what a graph query language is and how it can be useful for you.</p>
+<h2 id="what-is-a-graph-query-language">What is a Graph Query Language?</h2>
+<p>A graph query language is a programming language used to query and manipulate graph databases. It allows developers to efficiently retrieve and update data stored in a graph structure. In a graph database, data is represented as nodes (entities) and edges (relationships), making it different from traditional relational databases.</p>
+<p>Using a graph query language, you can navigate through these nodes and edges to find specific patterns or relationships. This makes it easier to handle complex queries that involve multiple levels of connections. For example, you can quickly find all the friends of a friend in a social network or identify the shortest path between two points in a transportation network.</p>
+<p>Graph query languages are designed to be intuitive and expressive, allowing you to describe complex queries in a straightforward manner. They provide a powerful way to interact with graph data, making it easier to uncover insights and make informed decisions.</p>
+<p><strong>TIP:</strong> Explore the <a href="https://dgraph.io/whitepaper/the-ultimate-guide-to-graph-databases">ultimate guide to graph databases</a> to deepen your understanding of graph structures and their applications.</p>
+<h2 id="types-of-graph-query-languages">Types of Graph Query Languages</h2>
+<p>Understanding the different types of graph query languages can help you choose the right tool for your specific needs. Each language has its own strengths and ideal use cases, so let’s dive into some of the most popular options.</p>
+<h3 id="cypher">Cypher</h3>
+<p>Cypher is a declarative query language developed by Neo4j, specifically designed for querying graph databases. It stands out for its use of ASCII-art to represent graph patterns, making it intuitive and easy to read. When you write a Cypher query, you describe the structure of the data you want to retrieve, rather than detailing the steps to get there. This approach simplifies complex queries and allows you to focus on the relationships within the data.</p>
+<p>For example, to find all friends of a person named &ldquo;Alice,&rdquo; you might write:</p>
+<pre tabindex="0"><code>MATCH (alice:Person {name: &#39;Alice&#39;})-[:FRIEND]-&gt;(friend)
+RETURN friend
+</code></pre><p>Here, the pattern <code>(alice:Person {name: 'Alice'})-[:FRIEND]-&gt;(friend)</code> visually represents nodes and relationships, making the query easy to understand.</p>
+<p><strong>TIP:</strong> For a comprehensive understanding of graph databases, check out the <a href="https://dgraph.io/docs/learn/data-engineer/data-model-101/">Graph Data Models 101</a> tutorial.</p>
+<h3 id="gremlin">Gremlin</h3>
+<p>Gremlin, part of the Apache TinkerPop framework, is a graph traversal language that supports both imperative and declarative querying. Unlike Cypher, Gremlin allows you to write queries as a series of steps, which can be executed in a specific order. This flexibility makes Gremlin suitable for complex graph traversals and algorithms.</p>
+<p>Gremlin&rsquo;s syntax is designed to be used with multiple programming languages, including Java, Groovy, and Python. This makes it versatile and adaptable to various development environments. For instance, to find all friends of &ldquo;Alice&rdquo; using Gremlin, you might write:</p>
+<pre tabindex="0"><code>g.V().has(&#39;name&#39;, &#39;Alice&#39;).out(&#39;FRIEND&#39;).values(&#39;name&#39;)
+</code></pre><p>This query starts from a vertex with the name &ldquo;Alice,&rdquo; traverses outgoing &ldquo;FRIEND&rdquo; edges, and retrieves the names of connected vertices.</p>
+<p><strong>TIP:</strong> Learn how Dgraph&rsquo;s <a href="https://dgraph.io/">distributed graph engine</a> can enhance your data management capabilities.</p>
+<h3 id="sparql">SPARQL</h3>
+<p>SPARQL (SPARQL Protocol and RDF Query Language) is a query language for querying RDF (Resource Description Framework) data. It is a W3C recommendation and is widely used in the Semantic Web. SPARQL allows you to query and manipulate data stored in RDF format, which represents information as triples: subject, predicate, and object.</p>
+<p>SPARQL&rsquo;s syntax is designed to match patterns in RDF data. For example, to find all friends of &ldquo;Alice,&rdquo; you might write:</p>
+<pre tabindex="0"><code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+SELECT ?friend
+WHERE {
+  ?alice foaf:name &#34;Alice&#34; .
+  ?alice foaf:knows ?friend .
+}
+</code></pre><p>This query uses the <code>PREFIX</code> declaration to define a namespace for the FOAF (Friend of a Friend) vocabulary, then matches patterns to find all friends of &ldquo;Alice.&rdquo;</p>
+<p>SPARQL supports a range of query types, including SELECT, CONSTRUCT, ASK, and DESCRIBE, each serving different purposes. SELECT queries retrieve specific data, while CONSTRUCT queries create new RDF graphs based on the query results. ASK queries return a boolean value indicating whether a pattern exists, and DESCRIBE queries return RDF data describing resources.</p>
+<p><strong>TIP:</strong> Discover how <a href="https://dgraph.io/blog/post/rise-of-gql-db/">Dgraph&rsquo;s native GraphQL approach</a> can simplify your data queries.</p>
+<h2 id="benefits-of-using-a-graph-query-language">Benefits of Using a Graph Query Language</h2>
+<p>You might be wondering why you should invest time in learning a new query language when you’re already comfortable with SQL. Well, let’s talk about the benefits that make graph query languages worth your while.</p>
+<h3 id="efficient-data-retrieval">Efficient Data Retrieval</h3>
+<p>Graph query languages excel at efficiently traversing and retrieving connected data. When working with graph databases, you often need to explore relationships between entities. For example, finding all friends of a person in a social network or tracing the shortest path in a transportation network. Graph query languages are designed to handle these tasks seamlessly. They allow you to navigate through nodes and edges quickly, ensuring that you can retrieve the information you need without unnecessary delays. This efficiency makes them ideal for applications where performance and speed are critical.</p>
+<p><strong>TIP:</strong> Check out how <a href="https://dgraph.io/case-studies/ke-holdings">KE Holdings achieved high performance with Dgraph</a> for a real-world example.</p>
+<h3 id="expressive-power">Expressive Power</h3>
+<p>Graph query languages provide expressive ways to describe complex relationships and patterns. Unlike traditional query languages, they allow you to specify intricate connections between data points. For instance, you can define patterns that match specific sequences of relationships or identify clusters of related entities. This expressiveness enables you to write queries that capture the nuances of your data model. Whether you&rsquo;re analyzing social networks, fraud detection, or recommendation systems, graph query languages give you the tools to articulate your queries clearly and precisely.</p>
+<h3 id="flexibility">Flexibility</h3>
+<p>Graph query languages are highly adaptable to evolving data models and schemas. In dynamic environments where data structures change frequently, flexibility is key. Graph query languages allow you to modify your queries as your data model evolves. You can easily add new types of nodes and relationships or update existing ones without rewriting your entire query logic. This adaptability ensures that your queries remain relevant and effective, even as your data landscape changes. It also simplifies the process of integrating new data sources and expanding your graph database, making it easier to keep your system up-to-date and responsive to new requirements.</p>
+<h2 id="how-does-a-graph-query-language-work">How Does a Graph Query Language Work?</h2>
+<p>Understanding the mechanics of a graph query language can help you see why it’s so powerful. Let’s break it down.</p>
+<p>Graph query languages use a combination of nodes, edges, and properties to represent and query data. Nodes represent entities, edges define relationships between these entities, and properties store additional information about both nodes and edges. This structure allows you to model complex, interconnected data in a way that mirrors real-world relationships.</p>
+<p>When you write a query, you specify patterns that describe the nodes and edges you are interested in. The query language then traverses the graph, following the edges to explore connections between nodes. This traversal can be as simple as finding direct neighbors or as complex as navigating multiple hops through various relationships.</p>
+<p>For example, if you want to find all friends of a person named &ldquo;Alice,&rdquo; your query would start at the node representing Alice and traverse the &ldquo;FRIEND&rdquo; edges to reach other nodes. The language matches the specified pattern against the graph&rsquo;s structure, ensuring that only relevant data is retrieved.</p>
+<p>Once the traversal and pattern matching are complete, the results are returned as a subgraph or a set of nodes and edges. This means you get a focused view of the data that meets your query criteria, whether it&rsquo;s a small subset of the graph or a more extensive network of interconnected entities. This approach makes it easy to visualize and analyze complex relationships within your data.</p>
+<p><strong>TIP:</strong> Take an <a href="https://dgraph.io/tour/">interactive tour of Dgraph</a> to see how its features can simplify your data queries.</p>
+<h2 id="graph-query-language-vs-sql">Graph Query Language vs. SQL</h2>
+<p>If you’ve been working with SQL for years, you might be skeptical about switching gears. Let’s compare the two so you can see why graph query languages might be worth the leap.</p>
+<p>SQL is designed for querying tabular data, while graph query languages are optimized for graph structures. In SQL, data is organized into tables with rows and columns. This structure works well for many applications but can become cumbersome when dealing with highly interconnected data. Graph query languages, on the other hand, represent data as nodes and edges, mirroring real-world relationships more naturally. This makes them particularly suited for scenarios where connections between entities are as important as the entities themselves.</p>
+<p>Graph query languages can express complex relationships and traversals more naturally than SQL. In a graph database, you can easily navigate through nodes and edges to find specific patterns or relationships. For example, finding all friends of a friend in a social network or tracing the shortest path between two points in a transportation network is straightforward with a graph query language. These languages allow you to describe such queries in a way that directly maps to the graph structure, making the queries more intuitive and easier to write.</p>
+<p>SQL relies on joins for querying related data, which can be inefficient for highly connected datasets. Joins in SQL require matching rows from different tables based on common attributes, which can become complex and slow as the number of connections increases. In contrast, graph query languages traverse edges directly, avoiding the need for multiple joins. This direct traversal method is more efficient and can handle large, interconnected datasets with better performance.</p>
+<p>For instance, consider a social network where you want to find all friends of a friend. In SQL, this would involve multiple joins between tables representing users and their connections. Each join adds complexity and can slow down the query. In a graph query language, you simply start at a node representing a user and traverse the &ldquo;friend&rdquo; edges to reach the connected nodes. This approach is more straightforward and performs better, especially as the network grows.</p>
+<p><strong>TIP:</strong> For SQL users transitioning to graph databases, check out the <a href="https://dgraph.io/docs/tutorials/sql-users/">Introduction to Dgraph for SQL Users</a> tutorial.</p>
+<h2 id="graph-query-language-standards-and-adoption">Graph Query Language Standards and Adoption</h2>
+<p>You might be wondering about the industry standards and how widely these languages are adopted. This can help you gauge their relevance and longevity in the tech landscape.</p>
+<p>The ISO/IEC 39075 standard sets the requirements for graph query languages, ensuring consistency and interoperability across different systems. This standard aims to provide a unified framework for querying graph databases, making it easier for developers to work with various graph technologies.</p>
+<p>Major graph database vendors have developed their own query languages to cater to their specific systems. For example, Neo4j uses Cypher, a declarative language that simplifies querying by using ASCII-art to represent graph patterns. Apache TinkerPop employs Gremlin, a versatile graph traversal language that supports both imperative and declarative querying styles. These proprietary languages have become integral to their respective platforms, offering tailored solutions for graph data manipulation.</p>
+<p>Efforts are underway to develop a unified graph query language standard. The goal is to create a common language that can be used across different graph databases, reducing the learning curve for developers and promoting broader adoption of graph technologies. This initiative seeks to combine the strengths of existing languages like Cypher, Gremlin, and SPARQL, while addressing their limitations. A unified standard would facilitate seamless data integration and interoperability, enabling developers to leverage the full potential of graph databases without being tied to a specific vendor&rsquo;s language.</p>
+<p><strong>TIP:</strong> Read about the <a href="https://dgraph.io/blog/post/gql-enterprise/">long-term benefits of adopting GraphQL</a> in enterprise settings.</p>
+<h2 id="tips-for-learning-a-graph-query-language">Tips for Learning a Graph Query Language</h2>
+<p>Feeling overwhelmed by the prospect of learning a new query language? Don’t worry, we’ve got some tips to make the process smoother.</p>
+<h3 id="start-with-the-basics">Start with the Basics</h3>
+<p>Understanding the fundamental concepts of graphs is the first step. Graphs consist of nodes, edges, and properties. Nodes represent entities, edges define relationships between these entities, and properties store additional information about both nodes and edges. Grasping these basics will help you navigate through more complex queries and data structures.</p>
+<p><strong>TIP:</strong> Dive into the <a href="https://dgraph.io/docs/learn/data-engineer/data-model-101/">Graph Data Models 101</a> tutorial to solidify your foundational knowledge.</p>
+<h3 id="practice-with-sample-datasets">Practice with Sample Datasets</h3>
+<p>Practicing with sample datasets is a great way to get hands-on experience. Many publicly available graph datasets can help you hone your skills. These datasets provide real-world scenarios where you can apply what you&rsquo;ve learned. By writing and executing queries on these datasets, you can better understand how to retrieve and manipulate data effectively.</p>
+<p><strong>TIP:</strong> Explore <a href="https://dgraph.io/case-studies/">Dgraph&rsquo;s case studies</a> to see how different companies use graph databases in practice.</p>
+<h3 id="explore-documentation-and-tutorials">Explore Documentation and Tutorials</h3>
+<p>Official documentation and tutorials are invaluable resources. They provide detailed explanations and examples that can guide you through various aspects of the graph query language. Whether you&rsquo;re just starting or looking to deepen your knowledge, these resources offer step-by-step instructions and best practices. Make sure to refer to the documentation provided by the graph database vendor, as it will be tailored to the specific features and capabilities of the language you&rsquo;re learning.</p>
+<p><strong>TIP:</strong> Check out the <a href="https://dgraph.io/docs/">Dgraph Cloud documentation</a> for comprehensive guides and tutorials.</p>
+<h3 id="join-community-forums">Join Community Forums</h3>
+<p>Engaging with the community can accelerate your learning process. Community forums, discussion boards, and social media platforms are excellent places to ask questions, share experiences, and learn from others. Many developers and experts participate in these forums, offering insights and solutions to common challenges. By joining these communities, you can stay updated on the latest developments and trends in graph query languages, and gain practical advice from those who have faced similar issues.</p>
+<h2 id="is-a-graph-query-language-worth-learning">Is a Graph Query Language Worth Learning?</h2>
+<p>So, is it worth the effort to learn a graph query language? Absolutely, and here’s why.</p>
+<p>Graph databases are becoming increasingly popular for handling complex, connected data. As data grows more interconnected, traditional databases struggle to manage relationships efficiently. Graph databases excel in these scenarios, making them a go-to solution for applications like social networks, recommendation engines, and fraud detection. Their ability to model and query relationships directly translates to faster insights and more intuitive data management.</p>
+<p>Learning a graph query language can be a valuable skill for developers working with graph-based applications. Mastering a graph query language like Cypher, Gremlin, or SPARQL equips you to handle data in ways that are not possible with SQL. These languages allow you to write queries that traverse relationships and patterns naturally. This skill set is particularly useful in industries where understanding connections between data points is vital, such as finance, healthcare, and logistics.</p>
+<p>As graph technologies continue to evolve, proficiency in graph query languages will likely be in high demand. The tech landscape is shifting towards more sophisticated data models, and graph databases are at the forefront of this change. Companies are increasingly adopting graph databases to solve complex problems, and they need developers who can leverage these tools effectively. Knowing a graph query language not only makes you more versatile but also positions you as a valuable asset in a competitive job market.</p>
+<p>Start building today with the world’s most advanced and performant graph database with native GraphQL. At Dgraph, we offer a scalable, fault-tolerant solution designed for high-volume, performance-sensitive environments. Explore our <a href="https://cloud.dgraph.io/pricing?type=free&amp;zo=us-east-1">pricing options</a> and see how we can help you leverage the power of graph databases.</p>
+
+                        </div>
+                        
+                     </div>
+                     <div class="post__sidebar">
+                        <div class="post__info">
+  
+  <aside class="post__authors"> <div class="tile author-tile">
+  <img src="../../images/dgraph-black.png" class="author-tile__photo" />
+
+  <h4 class="author-tile__title">
+    <a href="https://dgraph.io/blog/authors/dgraph/">Dgraph Labs, Inc.</a>
+    Author
+  </h4>
+
+  <p>Dgraph is an open source, low-latency, high throughput, native and distributed graph database.</p>
+<p>Designed to easily scale to meet the needs of small startups as well as large companies with massive amounts of data, Dgraph can handle terabytes of structured data running on commodity hardware with low latency for real time user queries.</p>
+<p>It addresses business needs and uses cases involving diverse social and knowledge graphs, real-time recommendation engines, semantic search, pattern matching and fraud detection, serving relationship data, and serving web apps.</p>
+ 
+</div>
+  
+  </aside>
+   <div class="post__date">
+
+    
+        Thu, Jun 27, 2024
+    
+    
+</div>
+
+</div>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <div class='bottom-section'>
+      <div class="container position-relative">
+         <div class="inner-content lg-pl-80 lg-pr-80 md-pl-30 md-pr-30  clearfix">
+            <div style="max-width: 810px; margin:0 auto 80px auto">
+               <div class="post__comments">
+
+    <div id="discourse-comments"></div>
+
+    
+    <script type="text/javascript">
+        DiscourseEmbed = {
+            discourseUrl: "https:\/\/discuss.dgraph.io\/",
+            discourseEmbedUrl: "https:\/\/dgraph.io\/blog\/post\/graph-query-languages\/"
+            };
+        (function() {
+            var d = document.createElement("script");
+            d.type = "text/javascript";
+            d.async = true;
+            d.src = DiscourseEmbed.discourseUrl + "javascripts/embed.js";
+            (document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(d);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the comments on <a href="https://discuss.dgraph.io/">discuss</a>.</noscript>
+    
+
+</div>
+
+               <div class="modal fade" id="runnable-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <a href="#" data-dismiss="modal" class="modal-close-btn">
+    Close
+  </a>
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+         </div>
+         
+
+         <div class="mx-auto xs-mt-40 md-mt-0" style="max-width:810px">
+
+            
+
+         </div>
+      </div>
+      <div class="page-body__related-content mb-4 container-wide">
+         
+
+
+
+
+
+<div class="page-blog-list">
+	<div class="page-body__content">
+	<div class="container">
+	<div class="post-grid">
+		<div class="post-grid-list">
+
+
+<h3 class=" font-22 related-title">Related posts</h3>
+
+<div class="row justify-flex-start">
+
+	
+	<div class="post-grid__item post-item--new-layout">
+	<div class="post">
+
+		<div class="post__image">
+    <img
+        src='../../images/20240628/graph-database-model.png'>
+</div>
+
+
+		<div class="post__header">
+		  
+	  
+		  
+<div class="post__tags mt-4">
+  <h3 class="">Tags</h3>
+
+  <div class="post__tags">
+      
+    <a href="https://dgraph.io/blog/tags/graph-database/">graph database</a>
+       
+    <a href="https://dgraph.io/blog/tags/property-graph-model/">property graph model</a>
+       
+    <a href="https://dgraph.io/blog/tags/rdf-graph-model/">rdf graph model</a>
+       
+    <a href="https://dgraph.io/blog/tags/data-management/">data management</a>
+       
+    <a href="https://dgraph.io/blog/tags/graph-theory/">graph theory</a>
+       
+    <a href="https://dgraph.io/blog/tags/beginner/">beginner</a>
+     
+  </div>
+</div>
+
+ 
+<div class="post__byline"> Written by Dgraph Labs, Inc.  </div>
+
+
+	  
+		  <h3 class="post__title">
+			<a href="https://dgraph.io/blog/post/graph-database-model/">Graph Database Models Explained</a>
+		  </h3>
+	  
+		  <div class="post__summary"> You might have heard the term &amp;ldquo;graph database model&amp;rdquo; thrown around in tech circles, but what  ...</div>
+	  
+		  <a href="https://dgraph.io/blog/post/graph-database-model/" class="learn-more-btn"
+			>Learn more
+			<span class="learn-more-btn__arrow">
+			  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0.000348091 0H9.60191H12.0003H12.0019V11.8831H9.60191V4.40754L1.93464 12L0 10.0842L7.78356 2.37662H0.000348091V0Z" fill="#EF265A" /></svg></span
+		  ></a>
+		</div>
+	</div>
+	</div>
+
+	
+	<div class="post-grid__item post-item--new-layout">
+	<div class="post">
+
+		<div class="post__image">
+    <img
+        src='../../images/20240625/graphql-authorization.png'>
+</div>
+
+
+		<div class="post__header">
+		  
+	  
+		  
+<div class="post__tags mt-4">
+  <h3 class="">Tags</h3>
+
+  <div class="post__tags">
+      
+    <a href="https://dgraph.io/blog/tags/graph-database/">graph database</a>
+       
+    <a href="https://dgraph.io/blog/tags/authorization/">authorization</a>
+       
+    <a href="https://dgraph.io/blog/tags/data-protection/">data protection</a>
+       
+    <a href="https://dgraph.io/blog/tags/api-security/">api security</a>
+       
+    <a href="https://dgraph.io/blog/tags/beginner/">beginner</a>
+     
+  </div>
+</div>
+
+ 
+<div class="post__byline"> Written by Dgraph Labs, Inc.  </div>
+
+
+	  
+		  <h3 class="post__title">
+			<a href="https://dgraph.io/blog/post/graphql-authorization/">Understanding GraphQL Authorization</a>
+		  </h3>
+	  
+		  <div class="post__summary"> GraphQL authorization is a crucial aspect of securing your APIs. It ensures that only authenticated users ...</div>
+	  
+		  <a href="https://dgraph.io/blog/post/graphql-authorization/" class="learn-more-btn"
+			>Learn more
+			<span class="learn-more-btn__arrow">
+			  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0.000348091 0H9.60191H12.0003H12.0019V11.8831H9.60191V4.40754L1.93464 12L0 10.0842L7.78356 2.37662H0.000348091V0Z" fill="#EF265A" /></svg></span
+		  ></a>
+		</div>
+	</div>
+	</div>
+
+	
+
+
+	
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+      </div>
+      <footer class="page-footer">
+  <div class="footer wf-section">
+    <div class="padding-global">
+      <div class="padding-section-medium">
+        <div class="container">
+          <div class="home-logos_wrapper">
+            <div class="text-color-white-60">Trusted by enterprise companies</div>
+            <div class="home-logos_marquee-track">
+              <div class="home-logos_marquee-grid">
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/641145893b3a843e071e944e_vmware-logo-grey%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589f1be19968a0f6b15_Group.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589a466be0ba5c400e0_Group-1.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/6411458823a7731c43676b5a_Dell_logo%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/6411458947f810b1d362ff7c_Intel_logo_(2006-2020)%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/641145897f602e7c1152c8d7_Capa_1.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589155041a4dd1c0b14_Comcast_Logo%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114588d47e747e065ce660_Cisco_logo%201.svg" loading="lazy" alt="" /></div>
+              </div>
+              <div class="home-logos_marquee-grid">
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/641145893b3a843e071e944e_vmware-logo-grey%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589f1be19968a0f6b15_Group.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589a466be0ba5c400e0_Group-1.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/6411458823a7731c43676b5a_Dell_logo%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/6411458947f810b1d362ff7c_Intel_logo_(2006-2020)%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/641145897f602e7c1152c8d7_Capa_1.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114589155041a4dd1c0b14_Comcast_Logo%201.svg" loading="lazy" alt="" /></div>
+                <div class="home-logos_marquee-block"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114588d47e747e065ce660_Cisco_logo%201.svg" loading="lazy" alt="" /></div>
+              </div>
+            </div>
+            <script>
+              jQuery(document).ready(function ($) {
+                var rollingTween = new TimelineMax();
+                var time = 14;
+                var $rollingTextgoLeft = $(".home-logos_marquee-grid");
+                var $text = $(".home-logos_marquee-grid");
+
+                function startRolling() {
+                  $text.css({ width: "auto" });
+                  $text.width(width);
+                  var width = $text.width();
+
+                  rollingTween.to(".home-logos_marquee-grid", time, {
+                    x: -width,
+                    ease: Linear.easeNone,
+                    repeat: -1,
+                  });
+
+                  return rollingTween;
+                }
+
+                function rollingText() {
+                  $(".home-logos_marquee-grid").clone().appendTo(".home-logos_marquee-track");
+                  startRolling();
+                }
+                rollingText();
+
+                function resizeCheck() {
+                  var progress = rollingTween.progress(); 
+                  rollingTween.time(0).kill(); 
+                  
+
+                  startRolling().progress(progress); 
+                }
+
+                resizeCheck();
+
+                $(window).resize(resizeCheck);
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-global">
+      <div class="padding-section-medium bottom-small">
+        <div class="container">
+          <div class="footer_wrapper">
+            <div class="footer_absolute">
+              <div class="footer-lottie"></div>
+
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.10/lottie.min.js"></script>
+              <script>
+                var animation = bodymovin.loadAnimation({
+                  container: document.querySelector(".footer-lottie"),
+                  renderer: "svg",
+                  loop: true,
+                  autoplay: true,
+                  path: "https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/63ff76e88593a8dd05e1dc70_Dots3.json",
+                });
+              </script>
+            </div>
+            <div class="footer_top">
+              <div class="footer_top-cta">
+                <div class="margin-bottom-40">
+                  <h2 class="heading-style-h3">Get Started Today!</h2>
+                </div>
+                <p class="text-color-cultured _60">
+                  Dgraph gives you the scalability and performance you need with the pricing and transparency you expect. Start building today with the world’s most advanced and performant graph database with native GraphQL.
+                </p>
+                <div class="footer_top-cta_button">
+                  <a href="https://cloud.dgraph.io/pricing?type=free&amp;zo=us-east-1" target="_blank" class="button-red is-icon w-inline-block">
+                    <div>Start Free Trial</div>
+                    <div class="button-icon-embed-whaite w-embed">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M14.351 11.7475V2.48994C14.351 1.98552 13.7451 1.7285 13.3824 2.07907L3.87339 11.2702C3.50397 11.6273 3.75674 12.2525 4.27052 12.2525H9.64896L9.64896 21.5101C9.64896 22.0145 10.2548 22.2715 10.6175 21.921L20.1266 12.7298C20.496 12.3728 20.2432 11.7475 19.7294 11.7475L14.351 11.7475Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                    </div> </a
+                  ><a href="../../pricing" class="button-ghost white w-button">See Pricing Plans</a>
+                </div>
+              </div>
+              <div class="footer_top-ctas">
+                <div class="footer_top-cta-card">
+                  <div class="footer_top-cta-card-left">
+                    <div class="footer_top-cta-card-icon"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/64114862807f1544e36b3543_Frame%2079.svg" loading="lazy" alt="" /></div>
+                    <div class="footer_top-cta-card-content">
+                      <div class="margin-bottom-4">
+                        <h3 class="heading-style-h6">Contribute to Dgraph</h3>
+                      </div>
+                      <div class="text-size-small">View tracker and issues</div>
+                    </div>
+                  </div>
+                  <a href="https://github.com/dgraph-io/dgraph" class="button-red small w-button">GitHub</a>
+                </div>
+                <div class="footer_top-cta-card is-red">
+                  <div class="footer_top-cta-card-left">
+                    <div class="footer_top-cta-card-icon"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/63fd0e561b4680051960c2e0_Frame%2080%20(1).svg" loading="lazy" alt="" /></div>
+                    <div class="footer_top-cta-card-content">
+                      <div class="margin-bottom-4">
+                        <h3 class="heading-style-h6">Join the Community</h3>
+                      </div>
+                      <div class="text-size-small">Participate in the conversation</div>
+                    </div>
+                  </div>
+                  <a href="https://discuss.dgraph.io/" class="button is-small red-bg w-button">Discuss</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer_bottom">
+              <div class="footer_logo_wrapper"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/63fa7ec576d6a3fdbc5baddf_Group%202299.svg" loading="lazy" alt="" /></div>
+              <div class="footer_left">
+                <div class="footer_links-and-logo_wrapper">
+                  <div class="footer_links_wrapper">
+                    <div class="footer_links_row">
+                      <div class="footer-link-heading">Dgraph</div>
+                      <div class="footer_links-row">
+                        <a href="../../product" class="footer_link">Product</a><a href="../../solutions" class="footer_link">Solutions</a><a href="../../pricing" target="_blank" class="footer_link">Pricing</a
+                        ><a href="../../contact" target="_blank" class="footer_link">Contact Us</a>
+                      </div>
+                    </div>
+                    <div class="footer_links_row">
+                      <div class="footer-link-heading">Company</div>
+                      <div class="footer_links-row"><a href="../../company" class="footer_link">About Us</a><a href="../../press" class="footer_link">News/Press</a><a href="../../careers" target="_blank" class="footer_link">Careers</a></div>
+                    </div>
+                    <div id="w-node-bab73d88-44a0-8afc-cfae-1fed659a1ce1-d55847bb" class="footer_links_row is-hidden">
+                      <div class="footer-link-heading">Resources</div>
+                      <div class="footer_links-row">
+                        <a href="../../compare/dgraph-vs-tigergraph" class="footer_link">Dgraph vs TigerGraph</a><a href="../../compare/dgraph-vs-mongodb" class="footer_link">Dgraph vs Mongo DB</a
+                        ><a href="../../compare/dgraph-vs-graphql-platforms" target="_blank" class="footer_link">Dgraph vs GraphQL Platforms</a><a href="../../compare/dgraph-vs-neo4j" target="_blank" class="footer_link">Dgraph vs Neo 4J</a>
+                      </div>
+                    </div>
+                    <div id="w-node-bab73d88-44a0-8afc-cfae-1fed659a1ced-d55847bb" class="footer_links_row last">
+                      <div class="footer-link-heading">Compare</div>
+                      <div class="footer-link-row_column">
+                        <div class="footer_links-row">
+                          <a href="https://dgraph.io/docs" class="footer_link">Docs</a><a href="https://dgraph.io/tour" class="footer_link">Tour</a><a href="https://discuss.dgraph.io/" target="_blank" class="footer_link">Forum</a
+                          ><a href="../../community" target="_blank" class="footer_link">Community</a>
+                        </div>
+                        <div class="footer_links-row"><a href="https://dgraph.io/blog/" class="footer_link">Blog</a><a href="../../paper" class="footer_link">Whitepapers</a><a href="../../casestudies" target="_blank" class="footer_link">Case Studies</a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer_logo_wrapper mobile"><img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/63fa7ec576d6a3fdbc5baddf_Group%202299.svg" loading="lazy" width="123" alt="" /></div>
+                </div>
+                <div class="footer_newsletter_wrapper">
+                  <div class="footer_form w-form">
+                    <p class="text-size-regular sign-up-text">Sign up for our newsletter</p>
+                    <div class="footer-newsletter-form"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="footer_copyright">
+                <div class="footer_legal-notice">
+                  <a href="../../legal-notices/cloud-terms" class="legal-notices-wrap w-inline-block"
+                    ><div class="legal-notices">Legal Notices</div>
+                    <img src="https://global-uploads.webflow.com/63fa3e9d303f20f698270a7a/643fe0a14c67fd3b3ad29b65_top-right-arrow-icon.svg" loading="lazy" alt=""
+                  /></a>
+                </div>
+                <div class="footer_social new">
+                  <a href="https://twitter.com/dgraphlabs" target="_blank" class="footer_social_link w-inline-block"
+                    ><div class="icon-embed w-embed">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M6.62914 14.4027C11.9959 14.4027 14.9314 9.95612 14.9314 6.10048C14.9314 5.9739 14.9314 5.84803 14.9228 5.72359C15.494 5.3101 15.9869 4.79816 16.3785 4.21177C15.8459 4.44786 15.2809 4.60271 14.7024 4.67114C15.3116 4.30639 15.7675 3.73272 15.9852 3.05692C15.4126 3.39675 14.7861 3.63628 14.1328 3.76519C13.6929 3.29711 13.1109 2.98711 12.4771 2.8832C11.8432 2.77929 11.1927 2.88725 10.6264 3.19037C10.0601 3.4935 9.60946 3.97488 9.34437 4.55997C9.07927 5.14506 9.01447 5.80123 9.15998 6.42688C7.99987 6.36874 6.86494 6.06729 5.82889 5.54209C4.79283 5.01689 3.87879 4.27969 3.14612 3.37834C2.77301 4.02062 2.65871 4.78095 2.8265 5.50454C2.99428 6.22813 3.43153 6.86057 4.04923 7.2731C3.58506 7.25966 3.13092 7.13479 2.72514 6.90901V6.94599C2.72542 7.61962 2.95866 8.27243 3.38533 8.79371C3.812 9.31499 4.40583 9.67266 5.06612 9.80608C4.63647 9.92321 4.18569 9.94024 3.74843 9.85585C3.93485 10.4357 4.29789 10.9429 4.78674 11.3062C5.27559 11.6696 5.86581 11.8711 6.47483 11.8825C5.86976 12.3579 5.1769 12.7094 4.43588 12.9169C3.69486 13.1243 2.92021 13.1836 2.15625 13.0914C3.49072 13.9478 5.0435 14.4021 6.62914 14.3999"
+                          fill="currentColor"
+                        ></path>
+                      </svg></div></a
+                  ><a href="https://www.linkedin.com/company/dgraph-labs" target="_blank" class="footer_social_link w-inline-block"
+                    ><div class="icon-embed w-embed">
+                      <svg width=" 100%" height=" 100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M19 3H5C3.895 3 3 3.895 3 5V19C3 20.105 3.895 21 5 21H19C20.105 21 21 20.105 21 19V5C21 3.895 20.105 3 19 3ZM9 17H6.477V10H9V17ZM7.694 8.717C6.923 8.717 6.408 8.203 6.408 7.517C6.408 6.831 6.922 6.317 7.779 6.317C8.55 6.317 9.065 6.831 9.065 7.517C9.065 8.203 8.551 8.717 7.694 8.717ZM18 17H15.558V13.174C15.558 12.116 14.907 11.872 14.663 11.872C14.419 11.872 13.605 12.035 13.605 13.174C13.605 13.337 13.605 17 13.605 17H11.082V10H13.605V10.977C13.93 10.407 14.581 10 15.802 10C17.023 10 18 10.977 18 13.174V17Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg></div></a
+                  ><a href="https://github.com/dgraph-io/dgraph" target="_blank" class="footer_social_link w-inline-block"
+                    ><div class="icon-embed w-embed">
+                      <svg width=" 100%" height=" 100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M16 4C9.37109 4 4 9.37109 4 16C4 21.3008 7.4375 25.8008 12.207 27.3867C12.8086 27.4961 13.0273 27.1289 13.0273 26.8086C13.0273 26.5234 13.0156 25.7695 13.0117 24.7695C9.67187 25.4922 8.96875 23.1602 8.96875 23.1602C8.42188 21.7734 7.63672 21.4023 7.63672 21.4023C6.54688 20.6602 7.71875 20.6758 7.71875 20.6758C8.92188 20.7617 9.55469 21.9102 9.55469 21.9102C10.625 23.7461 12.3633 23.2148 13.0469 22.9102C13.1562 22.1328 13.4687 21.6055 13.8086 21.3047C11.1445 21.0039 8.34375 19.9727 8.34375 15.375C8.34375 14.0625 8.8125 12.9922 9.57812 12.1523C9.45703 11.8516 9.04297 10.6289 9.69531 8.97656C9.69531 8.97656 10.7031 8.65625 12.9961 10.207C13.9531 9.94141 14.9805 9.80859 16 9.80469C17.0195 9.80859 18.0469 9.94141 19.0039 10.207C21.2969 8.65625 22.3008 8.97656 22.3008 8.97656C22.957 10.6289 22.5469 11.8516 22.4219 12.1523C23.1914 12.9922 23.6523 14.0625 23.6523 15.375C23.6523 19.9844 20.8477 20.9961 18.1758 21.2969C18.6055 21.6641 18.9883 22.3984 18.9883 23.5156C18.9883 25.1211 18.9766 26.4141 18.9766 26.8086C18.9766 27.1289 19.1914 27.5039 19.8008 27.3867C24.5664 25.7969 28 21.3008 28 16C28 9.37109 22.6289 4 16 4Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg></div></a
+                  ><a href="https://www.youtube.com/channel/UCghE41LR8nkKFlR3IFTRO4w" target="_blank" class="footer_social_link w-inline-block"
+                    ><div class="icon-embed w-embed">
+                      <svg width=" 100%" height=" 100%" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M15.2876 4.38179C15.1247 3.77262 14.6444 3.29237 14.0352 3.12946C12.9302 2.83337 8.50033 2.83337 8.50033 2.83337C8.50033 2.83337 4.07041 2.83337 2.96541 3.12946C2.35624 3.29237 1.87599 3.77262 1.71308 4.38179C1.41699 5.48679 1.41699 8.50004 1.41699 8.50004C1.41699 8.50004 1.41699 11.5133 1.71308 12.6183C1.87599 13.2275 2.35624 13.7077 2.96541 13.8706C4.07041 14.1667 8.50033 14.1667 8.50033 14.1667C8.50033 14.1667 12.9302 14.1667 14.0352 13.8706C14.6451 13.7077 15.1247 13.2275 15.2876 12.6183C15.5837 11.5133 15.5837 8.50004 15.5837 8.50004C15.5837 8.50004 15.5837 5.48679 15.2876 4.38179ZM7.08366 10.9537V6.04637L11.3337 8.50004L7.08366 10.9537Z"
+                          fill="currentColor"
+                        ></path>
+                      </svg></div
+                  ></a>
+                </div>
+                <div class="footer_copyrightit-wrap">
+                  <div>All rights reserved © <span class="currentYear"></span> Dgraph</div>
+                </div>
+              </div>
+              <script>
+                jQuery(".currentYear").text(new Date().getFullYear());
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+   </div>
+
+   
+</body>
+    <script src="../../js/footnotes.js"></script>
+    <script type="text/javascript">
+        adroll_adv_id = "L42C3U2UXBBPVAMISVXVLC";
+        adroll_pix_id = "MOR4VUNPK5B2LHEZ2NNTDX";
+        adroll_version = "2.0";
+        (function(w, d, e, o, a) {
+            w.__adroll_loaded = true;
+            w.adroll = w.adroll || [];
+            w.adroll.f = [ 'setProperties', 'identify', 'track' ];
+            var roundtripUrl = "https://s.adroll.com/j/" + adroll_adv_id
+                    + "/roundtrip.js";
+            for (a = 0; a < w.adroll.f.length; a++) {
+                w.adroll[w.adroll.f[a]] = w.adroll[w.adroll.f[a]] || (function(n) {
+                    return function() {
+                        w.adroll.push([ n, arguments ])
+                    }
+                })(w.adroll.f[a])
+            }
+            e = d.createElement('script');
+            o = d.getElementsByTagName('script')[0];
+            e.async = 1;
+            e.src = roundtripUrl;
+            o.parentNode.insertBefore(e, o);
+        })(window, document);
+        adroll.track("pageView");
+    </script>
+    <script>
+        var $owlCarouselFeatured = $(".blog-list-featured.owl-carousel");
+        $owlCarouselFeatured.owlCarousel({
+            loop: true,
+            items: 1,
+            loop:false,
+            dots: true,
+            nav: true,
+            navText: [
+            '<img class="nav-arrows arrow-left" src="../../images/left-arrow.svg">',
+            '<img class="naw-arrows arrow-right" src="../../images/right-arrow.svg">'
+            ]
+        });
+    </script>
+	<script src='https://cdn.ranksci.com/dgraph-411505.min.js' type='text/javascript'></script>
+    <script src='60cf26c6b756674be510e773e2d5279d'></script>
+<script type="text/javascript">
+
+   
+   
+
+</script>
+</html>
