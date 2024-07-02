@@ -1,7 +1,7 @@
 
 <!--
 title: 您可能不知道的10个必备Kubernetes工具
-cover: https://miro.medium.com/v2/resize:fit:1200/1*rl6fQ_FEjew5EkvtSUO_YQ.png
+cover: ./cover.png
 -->
 
 随着 Kubernetes 迎来 10 周年庆，其采用率和生态系统呈指数级增长。在 GitHub 上拥有超过 **100,000** 个星标，Kubernetes 已成为云原生生态系统的支柱，能够实现容器化应用程序的可扩展和高效管理。最新版本 [Kubernetes 1.30](https://kubernetes.io/blog/2024/04/17/kubernetes-v1-30-release/) 引入了许多新功能和改进，进一步巩固了其作为领先的容器编排平台的地位。
