@@ -249,8 +249,6 @@ fluxctl sync --k8s-fwd-ns flux
 **kubeflow**|Kubernetes 的机器学习工具包|kubeflow
 **k8sgpt**|GPT 驱动的 Kubernetes 助手|k8sgpt
 
-需要我对这个翻译进行任何解释或补充说明吗？
-
 ## 结束语
 
 我们刚刚庆祝了 Kubernetes 的 10 周年，很明显，生态系统比以往任何时候都更加强大和充满活力。Kubernetes 已发展成为云原生环境的关键组成部分，使组织能够高效可靠地大规模管理其容器化应用程序。
