@@ -8,11 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/07/358d615b-container-images-fault-
 
 > 译自 [Container Image Fault Lines Are Being Exposed](https://thenewstack.io/container-image-fault-lines-are-being-exposed/)，作者 Kim Lewandowski; Adrian Mouat。
 
-
-# 容器镜像的漏洞正在暴露
-
-![容器镜像的漏洞正在暴露的特色图片](https://cdn.thenewstack.io/media/2024/07/358d615b-container-images-fault-lines-exposed-1024x576.jpg)
-
 加州有近 16,000 条断层，其中 500 条处于“活跃”状态，[科学家表示](https://www.californiaresidentialmitigationprogram.com/resources/blog/california-earthquake-probabilities)，未来 30 年发生大地震的可能性超过 95%。这就是为什么旧金山在 2013 年实施了强制性抗震改造计划，[超过 90%](https://www.nbcbayarea.com/investigations/soft-story-retrofits-in-san-francisco/3267556/) 的目标结构已成功完成改造。
 
 如今，我们在软件供应链安全方面也处于类似的境地，该行业的大部分人因 [XZ Utils 威胁](https://www.chainguard.dev/unchained/if-xzs-backdoors-are-inevitable-how-do-we-stay-secure-the-answer-is-move-faster) 而感到震惊，该威胁迅速加入了其他漏洞，如 [SolarWinds](https://thenewstack.io/lessons-learned-from-2021-software-supply-chain-attacks/) 和 [Log4j](https://thenewstack.io/one-year-of-log4j/)，成为臭名昭著的漏洞。公司正在认真审视其供应链，并思考如何保护自己免受“大地震”的侵害。
