@@ -138,7 +138,7 @@ Webmin 运行后，打开与托管服务器位于同一网络上的 Web 浏览�
 
 确保从左侧窗格的 Webmin 组下拉菜单中选择新添加的组，然后单击“立即转换”。转换用户后，您需要返回到新组并选择该组可以访问的 Webmin 模块。为此，请单击“可用的 Webmin 模块”，然后浏览完整列表（图 4），选中该组应具有访问权限的任何/所有模块。
 
-![(https://cdn.thenewstack.io/media/2024/06/50dbf75f-webmin4.jpg)]
+![](https://cdn.thenewstack.io/media/2024/06/50dbf75f-webmin4.jpg)
 
 *图 4：向新的 Webmin 组添加模块*
 
