@@ -37,3 +37,6 @@ Ochakovski 和 Szarf 强调了从 [Kubernetes 生态系统和云提供商](https
 简而言之，仅仅寄希望于最好的结果是不够的。组织必须积极主动地 [寻找威胁](https://thenewstack.io/5-ways-to-automate-threat-hunting/)，并配备合适的工具、知识，以及最重要的，正确的、怀疑性的问题。
 
 如果这听起来很偏执，那么，正如谚语所说，“如果他们真的想对你下手，那就不叫偏执。” 而且，当涉及到 [公共云上的 Kubernetes 集群](https://thenewstack.io/private-vs-public-cloud-how-kubernetes-shifts-the-balance/) 时，攻击者真的想对你下手。
+
+
+!
