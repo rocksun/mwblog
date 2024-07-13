@@ -1,7 +1,7 @@
 
 <!--
 title: Podman和Libkrun
-cover: https://i0.wp.com/blog.podman.io/wp-content/uploads/2023/07/podman-blog-simple.png?fit=1200%2C675&ssl=1
+cover: ./cover.png
 -->
 
 Podman machine 的主要虚拟化驱动程序被称为“提供程序”。在 2024 年 4 月，我为 MacOS 添加了对 krun 作为提供程序的支持。我们对该添加的提及很少，因为我们还需要整理回归测试、测试环境和支持细节等项目。但随着我们接近完成这些项目，我们已准备好让 krun 支持从动物园中逃脱。
