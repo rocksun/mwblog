@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes故障排除手册
-cover: https://miro.medium.com/v2/resize:fit:1200/1*gUfOtR-2j22T3yNXtYI0rQ.png
+cover: ./cover.png
 -->
 
 调试 Kubernetes 应用程序就像在迷宫中导航。由于其分布式特性和众多组件，在 Kubernetes 中识别和解决问题需要一套强大的工具和技术。
