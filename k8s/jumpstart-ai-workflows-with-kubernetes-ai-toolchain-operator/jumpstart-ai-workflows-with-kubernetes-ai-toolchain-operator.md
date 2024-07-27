@@ -1,6 +1,6 @@
 
 <!--
-title: 使用 Kubernetes AI 工具链操作符快速启动 AI 工作流
+title: 使用Kubernetes AI工具链OPERATOR快速启动AI工作流
 cover: https://cdn.thenewstack.io/media/2024/07/c4574198-tools.jpg
 -->
 
@@ -29,6 +29,7 @@ KAITO 是一个 Kubernetes 运算符和开源项目，它在您的集群中运�
 Kubernetes 使扩展 AI 模型变得更加容易，但它并不完全容易。在我的文章“[将您的 AI/ML 工作负载带到 Kubernetes 并利用 KAITO](https://vmblog.com/archive/2024/03/05/bring-your-ai-ml-workloads-to-kubernetes-and-leverage-the-kubernetes-ai-toolchain-operator-kaito.aspx)”中，我重点介绍了开发人员在此过程中面临的一些障碍。例如，仅仅开始就非常复杂。如果没有先前的经验，您可能需要几周才能正确设置您的环境。下载和存储大型模型权重（大小超过 200 GB）仅仅是开始。模型文件存在存储和加载时间要求。然后，您需要有效地将模型容器化并托管它们——在考虑成本的同时选择适合您模型的 GPU 大小。此外，还需要解决计算硬件上令人讨厌的配额限制问题。
 
 使用 KAITO，以前可能需要几周才能完成的工作流现在只需几分钟即可完成。此工具简化了在 Kubernetes 上部署、扩展和管理 AI 工作负载的繁琐细节，因此您可以专注于 ML 生命周期中的其他方面。您可以从各种流行的开源模型中进行选择，或加入您的自定义选项，KAITO 会调整部署参数并自动为您配置 GPU 节点。如今，KAITO 支持[五个模型系列和十多个容器化模型](https://github.com/Azure/kaito/tree/main/presets)，从小型到大型语言模型不等。
+
 ## KAITO 的工作原理
 
 使用 KAITO 是一个两步过程。首先，在您的集群上安装 KAITO，然后选择一个预设，该预设封装了使用您的模型进行推理所需的所有要求。在关联的工作区自定义资源定义 (CRD) 中，建议使用最小 GPU 大小，这样您就不必搜索理想的硬件。您始终可以根据需要自定义 CRD。部署工作区后，KAITO 使用节点供应器控制器来自动执行其余操作。
