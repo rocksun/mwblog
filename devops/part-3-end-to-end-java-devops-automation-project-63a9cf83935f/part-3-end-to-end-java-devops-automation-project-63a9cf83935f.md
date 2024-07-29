@@ -1,7 +1,7 @@
 
 <!--
 title: 端到端JAVA DEVOPS自动化项目-第3部分
-cover: https://miro.medium.com/v2/resize:fit:1178/1*ZjwnE4DHKIV4Z7rh97Gxkw.png
+cover: ./cover.png
 -->
 
 先决条件：第二部分端到端Java DevOps自动化项目
