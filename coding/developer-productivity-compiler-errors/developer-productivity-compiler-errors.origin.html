@@ -1,0 +1,296 @@
+<!doctype html><html lang=en><head><link rel=canonical href=https://www.inkmi.com/blog/developer-productivity-compiler-errors><meta charset=utf-8><link rel=icon href=/favicon.ico sizes=any><link rel=icon href=/icon.svg type=image/svg+xml><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Developer productivity has many factors. We compare compiler messages in Go, Rust, Python, Typescript, Scala, and Java"><link rel=stylesheet href=https://cdn.inkmi.com/static/css/pico.min.css><link rel=stylesheet href=https://cdn.inkmi.com/static/css/reflex.min.css><title>Comparing Compiler Errors for Developer Productivity | Inkmi</title><meta name=robots content="index,follow"><meta name=googlebot content="index,follow"><meta property="og:url" content="https://www.inkmi.com/blog/developer-productivity-compiler-errors.html"><meta property="og:type" content="website"><meta name=og:title content="Comparing Compiler Errors in Go, Rust, Scala, Java, Kotlin, Python, Typescript, and Elm"><meta property="og:description" content="Developer productivity has many factors. We compare compiler messages in Go, Rust, Python, Typescript, Scala, and Java"><meta property="og:site_name" content="Inkmi"><meta property="og:locale" content="en_US"><meta property="article:author" content="Stephan Schmidt"><meta property="twitter:image" content="/Amazing_CTO_Banner.png"><meta property="twitter:image:alt" content="Comparing Compiler Errors in Go, Rust, Scala, Java, Kotlin, Python, Typescript, and Elm"><link rel=author href="Stephan Schmidt"><link rel=publisher href="Stephan Schmidt"><meta itemprop=name content="Comparing Compiler Errors in Go, Rust, Scala, Java, Kotlin, Python, Typescript, and Elm"><meta property="description" content="Developer productivity has many factors. We compare compiler messages in Go, Rust, Python, Typescript, Scala, and Java"><style>:root{--rgb-blurple:85, 34, 250;--rgb-salmon:236, 133, 128;--color-salmon:rgb(var(--rgb-salmon));--color-blurple:rgb(var(--rgb-blurple));--font-size:120%}.title{-webkit-background-clip:text;-webkit-text-fill-color:transparent;background:linear-gradient(135deg,var(--color-blurple) 0,var(--color-salmon) 100%);font-weight:900;background-clip:text;font-size:300%}.pill{display:inline-block;padding:.2em .6em;margin-left:.5em;border-radius:9999px;color:#fff;font-size:.7em}.pill-go{background-color:#6a0dad}.pill-startup{background-color:#ff69b4}.pill-cto{background-color:#9932cc}</style></head><body><main class=container><div class=grid><div class="col-xs-12
+col-lg-2"></div><div class="col-xs-12
+col-lg-9"><p style=margin-bottom:4rem><a href=https://www.inkmi.com><img style=width:4rem src=https://cdn.inkmi.com/static/unicorn_s_super.svg alt="Super Unicorn">
+<img style=width:10rem src=https://cdn.inkmi.com/static/inkmi_logo_text.svg alt="Inkmi Logo"></a></p><h1 class=title>Comparing Compiler Errors in Go, Rust, Scala, Java, Kotlin, Python, Typescript, and Elm</h1><h2>How tools impact developer productivity</h2></div></div><div class=grid><div class="col-xs-12
+col-lg-2
+hidden-md-down"><p><a href=/blog/>Blog Home</a></p><b>Other Articles</b><ul style=font-size:100%><li><a href=/blog/modulith-vs-monolith-vs-microservices>Levels of a Modulith - vs Microservices</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/how-go-golang-is-different-for-loop-embedding-structs-inheritance>How Go Is Different</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/web-ui-tests-in-golang>Web UI Testing With Go</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/go-build-tools-make-bazel-just-xc-taskfile-mage>Build Tools for Go</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/why-we-chose-go-over-rust-for-our-startup>Why I Chose Go over Rust for Inkmi</a>
+<span class="pill pill-go">Go</span></li></ul></div><div class="col-xs-12
+col-lg-9"><p><i>Inkmi is Dream Jobs for CTOs and written as a decoupled monolith in Go, HTMX, Alpinejs, NATS.io and Postgres.
+I document my adventures and challenges in writing the application here on this blog, tune in again.</i></p><p><strong>TLDR</strong> <em>Compiler error messages are widely different and there is no standard or common understanding of compiler messages. The range from the short and confusing to long explanations. Non detect reversed arguments</em></p><section id=overview><table style=white-space:normal "><thead><tr><th>Language</th><th>Compiler Messages</th></tr></thead><tbody><tr><td>Java</td><td style=text-align:left>Very short compiler errors, wording is confusing</td></tr>new<tr><td>Scala</td><td style=text-align:left>Good compiler errors, showing offending values</td></tr><tr><td>Kotlin</td><td style=text-align:left>Short, unclear error messages</td></tr><tr><td>Python</td><td style=text-align:left>Runtime errors, short but clearer wording than Java</td></tr><tr><td>Typescript</td><td style=text-align:left>Very very short error message, does not show offending source line, only works with IDE, good wording</td></tr><tr><td>Go</td><td style=text-align:left>Similar to Typescript, does not show offending source line, only works with IDE, good workding</td></tr><tr><td>Rust</td><td style=text-align:left>Long compiler messages, different parts of source code where the error corresponds. Suggests help with existing
+methods. Has long, optional explanations for errors. <b>Probably the best</b></td></tr><tr><td>Elm</td><td style=text-align:left>Long error messages with the developer in mind. Suggests existing methods for typos. <i>Error messages also have a hint to understand/mitigate the error circumstances.</i></td></tr></tbody></table></section><h2 id=-developer-productivity>🦄 Developer Productivity</h2><p>Developer productivity has many factors. Today we will look into compiler errors. The better and more helpful compiler errors, the faster developers can fix the problem and keep coding.</p><p>For this, we compare</p><ul><li>Rust (1.64.0)</li><li>Go (1.18.2)</li><li>Python (3.8.5)</li><li>Elm (0.19.1)</li><li>Java (19 Amazon)</li><li>Scala (3.2.0)</li><li>Kotlin (1.7.20)</li><li>Typescript (4.8.4)</li></ul><p>While <code>Elm</code> isn&rsquo;t a mainstream language, it is considered one of the best when it comes to compiler error messages.
+We&rsquo;ll see if this is justified.</p><h2 id=call-a-non-existing-method-or-function>Call a non-existing method or function</h2><p>We start by calling a method or function that does not exist.</p><p><code>Java</code> has a plain and simple error message, though the <code>cannot find symbol</code> message is not very clear (why did you lose the symbol?) and the rest of the message is only repeating itself:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ javac -classpath java/ java/Error1.java
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>java/Error1.java:6: error: cannot find symbol
+</span></span><span style=display:flex><span>        e.notThere<span style=color:#f92672>()</span>;
+</span></span><span style=display:flex><span>         ^
+</span></span><span style=display:flex><span>  symbol:   method notThere<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>  location: variable e of type Error1
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span> error
+</span></span></code></pre></div><p>Moving on to <code>Python</code>, another old language on the block that went through many iterations just like <code>Java</code>. Same as before, simple message. Compared to Java the <code>'Error1' object has no attribute 'notThere'</code> is much clearer.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ python3 python/Error1.py
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Traceback <span style=color:#f92672>(</span>most recent call last<span style=color:#f92672>)</span>:
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;python/Error1.py&#34;</span>, line 6, in &lt;module&gt;
+</span></span><span style=display:flex><span>    e.notThere<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>AttributeError: <span style=color:#e6db74>&#39;Error1&#39;</span> object has no attribute <span style=color:#e6db74>&#39;notThere&#39;</span>
+</span></span></code></pre></div><p>Moving on to a newer JVM language, <code>Scala</code>. A fancier output (with color), but the same error message as in Python, easy to find the problem if you&rsquo;re not an absolute beginner.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ scalac scala/Error1.scala
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- <span style=color:#f92672>[</span>E008<span style=color:#f92672>]</span> Not Found Error: scala/Error1.scala:4:7 -----------------------------------------------
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span> |     e.notThere<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>  |     ^^^^^^^^^^
+</span></span><span style=display:flex><span>  |     value notThere is not a member of Error1
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span> error found
+</span></span></code></pre></div><p>I throw in Kotlin because <code>SDKman</code> made it so easy to install more languages. Also, people building Android apps use Kotlin. A short and simple error message, but <code>unresolved reference: notThere</code> to me is worse than the one of Java.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ kotlinc kotlin/Error1.kt
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>kotlin/Error1.kt:4:11: error: unresolved reference: notThere
+</span></span><span style=display:flex><span>        e.notThere<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>          ^
+</span></span></code></pre></div><p>Leaving the <code>JVM</code> we come to Go, a language I currently try to learn. Very short error message (one line), with a good explanation <code>type Error1 has no field or method error</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ go build go/Error1.go
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># command-line-arguments</span>
+</span></span><span style=display:flex><span>go/Error1.go:12:7: e.error undefined <span style=color:#f92672>(</span>type Error1 has no field or method error<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>The same with <code>Typescript</code>, one line error message with a good explanation. We also get an error number <code>TS2339</code>. Sadly googling the number does not turn up more information. Also, Typescript does not show the offending line or the affected type. This probably is fine when you&rsquo;re only using the IDE, which I don&rsquo;t.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ npx tsc typescript/Error1.ts
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>typescript/Error1.ts<span style=color:#f92672>(</span>4,11<span style=color:#f92672>)</span>: error TS2339: Property <span style=color:#e6db74>&#39;notThere&#39;</span> does not exist on type <span style=color:#e6db74>&#39;Error1&#39;</span>.
+</span></span></code></pre></div><p>Then <code>Rust</code>! A language I rather like a lot (very good toolchain), if it didn&rsquo;t have the borrow checker for structs and just used an optional GC instead of plastering everything with <code>Arc</code> (love <code>move</code> and &amp;mut for method calls though, every language should have this, but I digress). Let&rsquo;s see how it fares on compiler errors.</p><p>It throws a large error message at you, with some information. It is the first that tries to help you and shows a similar method which is called <code>error1</code>. It also shows the struct where it tried to find the method.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ rustc rust/Error1.rs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>error<span style=color:#f92672>[</span>E0599<span style=color:#f92672>]</span>: no method named <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> found <span style=color:#66d9ef>for</span> struct <span style=color:#e6db74>`</span>Error1<span style=color:#e6db74>`</span> in the current scope
+</span></span><span style=display:flex><span>  --&gt; rust/Error1.rs:12:7
+</span></span><span style=display:flex><span>   |
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  | struct Error1 <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   | ------------- method <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> not found <span style=color:#66d9ef>for</span> this struct
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span><span style=color:#ae81ff>12</span> |     e.error<span style=color:#f92672>()</span>;
+</span></span><span style=display:flex><span>   |       ^^^^^ help: there is an associated <span style=color:#66d9ef>function</span> with a similar name: <span style=color:#e6db74>`</span>error1<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>error: aborting due to previous error
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>For more information about this error, try <span style=color:#e6db74>`</span>rustc --explain E0599<span style=color:#e6db74>`</span>.
+</span></span></code></pre></div><p>But <code>Rust</code> doesn&rsquo;t stop there. When using the suggested <code>rustc --explain E0599</code> it explains the error in great detail. It might be trivial for this example but makes learning a language much easier, which helps with onboarding and productivity.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ rustc --explain E0599
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>This error occurs when a method is used on a type that doesn<span style=color:#960050;background-color:#1e0010>&#39;</span>t implement it:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Erroneous code example:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>struct Mouth;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>let x <span style=color:#f92672>=</span> Mouth;
+</span></span><span style=display:flex><span>x.chocolate<span style=color:#f92672>()</span>; // error: no method named <span style=color:#e6db74>`</span>chocolate<span style=color:#e6db74>`</span> found <span style=color:#66d9ef>for</span> type <span style=color:#e6db74>`</span>Mouth<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>//        in the current scope
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In this <span style=color:#66d9ef>case</span>, you need to implement the <span style=color:#e6db74>`</span>chocolate<span style=color:#e6db74>`</span> method to fix the error:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>struct Mouth;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>impl Mouth <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>fn chocolate<span style=color:#f92672>(</span>&amp;self<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> // We implement the <span style=color:#e6db74>`</span>chocolate<span style=color:#e6db74>`</span> method here.
+</span></span><span style=display:flex><span>println!<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hmmm! I love chocolate!&#34;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>let x <span style=color:#f92672>=</span> Mouth;
+</span></span><span style=display:flex><span>x.chocolate<span style=color:#f92672>()</span>; // ok!
+</span></span></code></pre></div><p>Last we check the fabled <code>Elm</code> for compiler errors. It&rsquo;s a little different because I didn&rsquo;t use a class and how functions in <code>Elm work</code>. Just like <code>Rust</code>, it shows something similar it found, <code>error1</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Compiling ...-- NAMING ERROR ------------------------------------------------- src/Error1.elm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>I cannot find a <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> variable:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>7|    error <span style=color:#f92672>{</span> msg <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Error happened&#34;</span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>      ^^^^^
+</span></span><span style=display:flex><span>These names seem close though:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    error1
+</span></span><span style=display:flex><span>    floor
+</span></span><span style=display:flex><span>    xor
+</span></span><span style=display:flex><span>    acos
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Hint: Read &lt;https://elm-lang.org/0.19.1/imports&gt; to see how <span style=color:#e6db74>`</span>import<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>declarations work in Elm.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Detected problems in <span style=color:#ae81ff>1</span> module.
+</span></span></code></pre></div><p>When working with <code>Elm</code>, I made some beginner mistakes. One was the wrong naming of files. <code>Elm</code> kindly helped me with the naming. Where quite often it takes some time to learn about what a language expects files to look like, <code>Elm</code> was very helpful in explaining the problem and the reasoning behind it. I&rsquo;m impressed and wished more languages would do such a thing.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Compiling ...-- UNEXPECTED FILE NAME --------------------------------------------------------
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>I am having trouble with this file name:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    src/error0.elm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>I found it in your /home/stephan/Development/prod_compilererrors/elm/src/
+</span></span><span style=display:flex><span>directory which is good, but I expect all of the files in there to use the
+</span></span><span style=display:flex><span>following module naming convention:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    +--------------+------------------------------------------------------------------------+
+</span></span><span style=display:flex><span>    | Module Name  | File Path                                                              |
+</span></span><span style=display:flex><span>    +--------------+------------------------------------------------------------------------+
+</span></span><span style=display:flex><span>    | Main         | /home/stephan/Development/prod_compilererrors/elm/src/Main.elm         |
+</span></span><span style=display:flex><span>    | HomePage     | /home/stephan/Development/prod_compilererrors/elm/src/HomePage.elm     |
+</span></span><span style=display:flex><span>    | Http.Helpers | /home/stephan/Development/prod_compilererrors/elm/src/Http/Helpers.elm |
+</span></span><span style=display:flex><span>    +--------------+------------------------------------------------------------------------+
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Notice that the names always start with capital letters! Can you make your file
+</span></span><span style=display:flex><span>use this naming convention?
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Note: Having a strict naming convention like this makes it a lot easier to find
+</span></span><span style=display:flex><span>things in large projects. If you see a module imported, you know where to look
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> the corresponding file every time!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Detected a problem.
+</span></span></code></pre></div><p>Comparing the compiler errors from the first batch, I&rsquo;d say Java is the worst with its short <code>cannot find symbol</code> tied with Typescript for not showing the offending source line. Elm is very good as promised but to my taste, the <code>Rust</code> compiler errors are the best. They make it easy to get into the language or fix errors you haven&rsquo;t encountered yet. Some may call this a nanny compiler, but I take all the help I can get as I can always trim down error reporting.</p><h2 id=call-method-with-wrong-arguments>Call method with wrong arguments</h2><p>The second thing to compare is we call a method with <code>int, String</code> instead of <code>String, int</code>.</p><p>With <code>Java</code> we get again a small error message. While right, it doesn&rsquo;t detect that we reversed the arguments to our method. This time we get a more verbose message, including the source line.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>java/Error2.java:6: error: incompatible types: int cannot be converted to String
+</span></span><span style=display:flex><span>        e.error<span style=color:#f92672>(</span>42, <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>                ^
+</span></span><span style=display:flex><span>Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span> error
+</span></span></code></pre></div><p>Using the suggested <code>-Xdiags:verbose</code> results in a more verbose (duh!) error message that better explains the problem (found/required). The reason is still confusing though.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>java/Error2.java:6: error: method error in class Error2 cannot be applied to given types;
+</span></span><span style=display:flex><span>        e.error<span style=color:#f92672>(</span>42, <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>         ^
+</span></span><span style=display:flex><span>  required: String,int
+</span></span><span style=display:flex><span>  found:    int,String
+</span></span><span style=display:flex><span>  reason: argument mismatch; int cannot be converted to String
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span> error
+</span></span></code></pre></div><p>On to <code>Scala</code>. We get two errors, one for each argument. This time we used the <code>-explain</code> compiler switch as suggested to see the longer error message. The good thing about the <code>Scala</code> error messages is that they show the buggy line of code, the values (42, &ldquo;Hello&rdquo;), the type of the values, and what they should be. The explanation is rather lengthy and not helpful in this case. As <code>Scala</code> can have very complicated types that might or might not match arguments, I guess this is helpful with more complicated custom types. Yeah for effort, not helpful here.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>-- <span style=color:#f92672>[</span>E007<span style=color:#f92672>]</span> Type Mismatch Error: scala/Error2.scala:4:12 - - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span> |    e.error<span style=color:#f92672>(</span>42, <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |            ^^
+</span></span><span style=display:flex><span>  |            Found:    <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |            Required: String
+</span></span><span style=display:flex><span>  |- - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span>  | Explanation <span style=color:#f92672>(</span>enabled by <span style=color:#e6db74>`</span>-explain<span style=color:#e6db74>`</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |- - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  | Tree: <span style=color:#ae81ff>42</span>
+</span></span><span style=display:flex><span>  | I tried to show that
+</span></span><span style=display:flex><span>  |   <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  | conforms to
+</span></span><span style=display:flex><span>  |   String
+</span></span><span style=display:flex><span>  | but the comparison trace ended with <span style=color:#e6db74>`</span>false<span style=color:#e6db74>`</span>:
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  |   <span style=color:#f92672>==</span>&gt; <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>  &lt;:  String
+</span></span><span style=display:flex><span>  |     <span style=color:#f92672>==</span>&gt; <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>  &lt;:  String
+</span></span><span style=display:flex><span>  |       <span style=color:#f92672>==</span>&gt; Int  &lt;:  String <span style=color:#f92672>(</span>left is approximated<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |       &lt;<span style=color:#f92672>==</span> Int  &lt;:  String <span style=color:#f92672>(</span>left is approximated<span style=color:#f92672>)</span> <span style=color:#f92672>=</span> false
+</span></span><span style=display:flex><span>  |     &lt;<span style=color:#f92672>==</span> <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>  &lt;:  String <span style=color:#f92672>=</span> false
+</span></span><span style=display:flex><span>  |   &lt;<span style=color:#f92672>==</span> <span style=color:#f92672>(</span><span style=color:#ae81ff>42</span> : Int<span style=color:#f92672>)</span>  &lt;:  String <span style=color:#f92672>=</span> false
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  | The tests were made under the empty constraint
+</span></span><span style=display:flex><span>   - - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span>-- <span style=color:#f92672>[</span>E007<span style=color:#f92672>]</span> Type Mismatch Error: scala/Error2.scala:4:16 - - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span> |    e.error<span style=color:#f92672>(</span>42, <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |                ^^^^^^^
+</span></span><span style=display:flex><span>  |                Found:    <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span> : String<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |                Required: Int
+</span></span><span style=display:flex><span>  |- - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span>  | Explanation <span style=color:#f92672>(</span>enabled by <span style=color:#e6db74>`</span>-explain<span style=color:#e6db74>`</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |- - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  | Tree: <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>  | I tried to show that
+</span></span><span style=display:flex><span>  |   <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span> : String<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  | conforms to
+</span></span><span style=display:flex><span>  |   Int
+</span></span><span style=display:flex><span>  | but the comparison trace ended with <span style=color:#e6db74>`</span>false<span style=color:#e6db74>`</span>:
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  |   <span style=color:#f92672>==</span>&gt; <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span> : String<span style=color:#f92672>)</span>  &lt;:  Int
+</span></span><span style=display:flex><span>  |     <span style=color:#f92672>==</span>&gt; String  &lt;:  Int <span style=color:#f92672>(</span>left is approximated<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>  |     &lt;<span style=color:#f92672>==</span> String  &lt;:  Int <span style=color:#f92672>(</span>left is approximated<span style=color:#f92672>)</span> <span style=color:#f92672>=</span> false
+</span></span><span style=display:flex><span>  |   &lt;<span style=color:#f92672>==</span> <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span> : String<span style=color:#f92672>)</span>  &lt;:  Int <span style=color:#f92672>=</span> false
+</span></span><span style=display:flex><span>  |
+</span></span><span style=display:flex><span>  | The tests were made under the empty constraint
+</span></span><span style=display:flex><span>   - - - - - - - - - - - - - - - - - - - - -
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span> errors found
+</span></span></code></pre></div><p>With <code>Kotlin</code> we also get two errors, each argument is wrong.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kotlin/Error2.kt:4:17: error: the integer literal does not conform to the expected type String
+</span></span><span style=display:flex><span>        e.error<span style=color:#f92672>(</span>42,<span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                ^
+</span></span><span style=display:flex><span>kotlin/Error2.kt:4:20: error: type mismatch: inferred type is String but Int was expected
+</span></span><span style=display:flex><span>        e.error<span style=color:#f92672>(</span>42,<span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                   ^
+</span></span></code></pre></div><p>Typescript for now is the worst. It doesn&rsquo;t show the line or the values but a cryptic, technically correct, error message. This feels like 1992 C to me.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>typescript/Error2.ts<span style=color:#f92672>(</span>4,17<span style=color:#f92672>)</span>: error TS2345: Argument of type <span style=color:#e6db74>&#39;number&#39;</span> is not assignable to parameter of type <span style=color:#e6db74>&#39;String&#39;</span>.
+</span></span></code></pre></div><p><code>Go</code> does the same, with two errors, and no context.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># command-line-arguments</span>
+</span></span><span style=display:flex><span>go/Error2.go:12:10: cannot use <span style=color:#ae81ff>42</span> <span style=color:#f92672>(</span>untyped int constant<span style=color:#f92672>)</span> as string value in argument to e.error
+</span></span><span style=display:flex><span>go/Error2.go:12:14: cannot use <span style=color:#e6db74>&#34;Hello&#34;</span> <span style=color:#f92672>(</span>untyped string constant<span style=color:#f92672>)</span> as int value in argument to e.error
+</span></span></code></pre></div><p>Let&rsquo;s see how <code>Rust</code> deals with this wrong code. The first part is some <code>Rust</code> jargon including lifetimes and
+a confusing message <code>an argument of type </code>String<code> is missing</code> instead of reversed or wrong arguments. The second part is
+kind of more useful, as it suggested using a <code>String</code> (hey, tell me to use &ldquo;hello&rdquo;) before the <code>42</code> (still thinking the String is missing though). Not a very good error message I think.</p><p><strong>[As pointed out correctly by <a href=https://twitter.com/ekuber target=_blank rel="noreferrer noopener">Esteban Kuber</a> the &amp;str is a mistake on my part. I think the compiler explained it correctly and I&rsquo;ve showed the wrong thing]</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>error<span style=color:#f92672>[</span>E0308<span style=color:#f92672>]</span>: arguments to this <span style=color:#66d9ef>function</span> are incorrect
+</span></span><span style=display:flex><span>  --&gt; rust/Error2.rs:12:7
+</span></span><span style=display:flex><span>   |
+</span></span><span style=display:flex><span><span style=color:#ae81ff>12</span> |     e.error<span style=color:#f92672>(</span>42,<span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>   |       ^^^^^ -- ------- argument of type <span style=color:#e6db74>`</span>&amp;<span style=color:#960050;background-color:#1e0010>&#39;</span>static str<span style=color:#e6db74>`</span> unexpected
+</span></span><span style=display:flex><span>   |             |
+</span></span><span style=display:flex><span>   |             an argument of type <span style=color:#e6db74>`</span>String<span style=color:#e6db74>`</span> is missing
+</span></span><span style=display:flex><span>   |
+</span></span><span style=display:flex><span>note: associated <span style=color:#66d9ef>function</span> defined here
+</span></span><span style=display:flex><span>  --&gt; rust/Error2.rs:5:8
+</span></span><span style=display:flex><span>   |
+</span></span><span style=display:flex><span><span style=color:#ae81ff>5</span>  |     fn error<span style=color:#f92672>(</span>&amp;self, arg1: String, arg2: u8<span style=color:#f92672>)</span> -&gt; bool <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   |        ^^^^^ -----  ------------  --------
+</span></span><span style=display:flex><span>help: did you mean
+</span></span><span style=display:flex><span>   |
+</span></span><span style=display:flex><span><span style=color:#ae81ff>12</span> |     e.error<span style=color:#f92672>(</span>/* String */, 42<span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>   |       ~~~~~~~~~~~~~~~~~~~~~~~
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>error: aborting due to previous error
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>For more information about this error, try <span style=color:#e6db74>`</span>rustc --explain E0308<span style=color:#e6db74>`</span>.
+</span></span></code></pre></div><p>When we go into the explanation as suggested, this is better than the error message as it points us to using the wrong type as an argument (but didn&rsquo;t see that we reversed the arguments).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Expected type did not match the received type.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Erroneous code examples:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>fn plus_one<span style=color:#f92672>(</span>x: i32<span style=color:#f92672>)</span> -&gt; i32 <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>x + <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>plus_one<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Not a number&#34;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>//       ^^^^^^^^^^^^^^ expected <span style=color:#e6db74>`</span>i32<span style=color:#e6db74>`</span>, found <span style=color:#e6db74>`</span>&amp;str<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#e6db74>&#34;Not a bool&#34;</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>// ^^^^^^^^^^^^ expected <span style=color:#e6db74>`</span>bool<span style=color:#e6db74>`</span>, found <span style=color:#e6db74>`</span>&amp;str<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>let x: f32 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Not a float&#34;</span>;
+</span></span><span style=display:flex><span>//     ---   ^^^^^^^^^^^^^ expected <span style=color:#e6db74>`</span>f32<span style=color:#e6db74>`</span>, found <span style=color:#e6db74>`</span>&amp;str<span style=color:#e6db74>`</span>
+</span></span><span style=display:flex><span>//     |
+</span></span><span style=display:flex><span>//     expected due to this
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>This error occurs when an expression was used in a place where the compiler
+</span></span><span style=display:flex><span>expected an expression of a different type. It can occur in several cases, the
+</span></span><span style=display:flex><span>most common being when calling a <span style=color:#66d9ef>function</span> and passing an argument that has a
+</span></span><span style=display:flex><span>different type than the matching type in the <span style=color:#66d9ef>function</span> declaration.
+</span></span></code></pre></div><p>Last but not least, on to <code>Elm</code>. It shows the second argument as wrong, not the first. A little bit confusing but <code>Elm</code>
+has an explanation here: <code>Hint: I always figure out the argument types from left to right. If an argument
+is acceptable, I assume it is “correct” and move on. So the problem may actually
+be in one of the previous arguments!</code> - so the 42 might be also wrong.</p><p>Not correct here, but helpful is the hint of <code>Hint: Want to convert a String into an Int? Use the String.toInt function!</code>.</p><p>Then <code>Elm</code> moves to the second error, which is the first argument. A little bit confusing, but I&rsquo;d guess as an <code>Elm</code> developer the evaluation strategy becomes second nature.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Compiling ...-- TYPE MISMATCH ------------------------------------------------ src/Error2.elm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>The 2nd argument to <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> is not what I expect:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>8|   error <span style=color:#ae81ff>42</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>              ^^^^^^^
+</span></span><span style=display:flex><span>This argument is a string of type:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    String
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>But <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> needs the 2nd argument to be:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    Int
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Hint: I always figure out the argument types from left to right. If an argument
+</span></span><span style=display:flex><span>is acceptable, I assume it is “correct” and move on. So the problem may actually
+</span></span><span style=display:flex><span>be in one of the previous arguments!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Hint: Want to convert a String into an Int? Use the String.toInt <span style=color:#66d9ef>function</span>!
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- TYPE MISMATCH ------------------------------------------------ src/Error2.elm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>The 1st argument to <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> is not what I expect:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>8|   error <span style=color:#ae81ff>42</span> <span style=color:#e6db74>&#34;Hello&#34;</span>
+</span></span><span style=display:flex><span>           ^^
+</span></span><span style=display:flex><span>This argument is a number of type:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    number
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>But <span style=color:#e6db74>`</span>error<span style=color:#e6db74>`</span> needs the 1st argument to be:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    String
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Hint: Try using String.fromInt to convert it to a string?
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Detected problems in <span style=color:#ae81ff>1</span> module.
+</span></span></code></pre></div><p>I think <code>Rust</code> is the longest, but slightly confusing. <code>Elm</code> is good and has some useful hints, though the error ranking is strange. I do think I like Scala&rsquo;s error messages best here although the deeper explanation does not help, the types are too simple here. But this is partially subjective and your opinion might differ.</p><h2 id=conclusion>Conclusion</h2><p>There are huge differences in compiler errors and our industry doesn&rsquo;t seem yet to have consent on the importance or style of compiler error messages. The messages range from cryptic and misleading to lengthy ones with detailed explanations. There are many factors to choosing a development platform, perhaps we should take error messages more into account.</p><h3 class=title>About Inkmi</h3><p><i>Inkmi is a website with <strong>Dream Jobs for CTOs</strong>. We're on a mission to transform the industry to create more dream jobs for CTOs.
+If you're a seasoned CTO looking for a new job, or a senior developer ready for your first CTO calling, head over to
+<a href=https://www.inkmi.com>https://www.inkmi.com</a></i></p><div><b>Other Articles</b><ul style=font-size:100%><li><a href=/blog/go-build-tools-make-bazel-just-xc-taskfile-mage>Build Tools for Go</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/modulith-vs-monolith-vs-microservices>Levels of a Modulith - vs Microservices</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/secure-credentials-systemd-in-golang>Securing Credentials in Golang With Systemd</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/web-ui-tests-in-golang>Web UI Testing With Go</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/why-we-chose-go-over-rust-for-our-startup>Why I Chose Go over Rust for Inkmi</a>
+<span class="pill pill-go">Go</span></li><li><a href=/blog/simplicity-of-golang-systemd-deployments>The Simplicity of Single-File Golang Deployments</a>
+<span class="pill pill-go">Go</span></li></ul></div></div></div></main><p class=container>©️2024 Inkmi - Dream ❤️ Jobs for CTOs | <a href=https://www.inkmi.com/content/impressum>Impressum</a></p><script async defer src=https://scripts.simpleanalyticscdn.com/latest.js></script></body></html>
