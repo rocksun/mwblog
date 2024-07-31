@@ -1,6 +1,6 @@
 
 <!--
-title: eBPF能否r让我们免受CrowdStrike式灾难？
+title: eBPF能否让我们免受CrowdStrike式灾难？
 cover: https://cdn.thenewstack.io/media/2024/07/d386ecaf-ebpf.png
 -->
 
