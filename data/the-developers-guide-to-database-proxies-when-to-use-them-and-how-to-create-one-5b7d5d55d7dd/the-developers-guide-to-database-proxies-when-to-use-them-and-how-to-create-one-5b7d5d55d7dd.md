@@ -1,7 +1,7 @@
 
 <!--
 title: 数据库代理开发人员指南：何时使用以及如何创建
-cover: https://miro.medium.com/v2/resize:fit:1200/0*LX3rIy93k4PzA0T_.jpeg
+cover: ./cover.png
 -->
 
 
