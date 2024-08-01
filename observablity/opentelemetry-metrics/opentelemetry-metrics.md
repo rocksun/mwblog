@@ -1,7 +1,7 @@
 
 <!--
 title: OpenTelemetry指标：概念、类型和插桩
-cover: https://images.prismic.io/checklyhq/ZmBxVZm069VX1e2e_Maskgroup-9-.png?auto=format,compress
+cover: ./cover.png
 -->
 
 探索 OpenTelemetry 指标：了解指标类型、插桩及其在性能监控中的作用。学习最佳实践以及如何开始使用 Checkly。
