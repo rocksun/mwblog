@@ -1,7 +1,7 @@
 
 <!--
 title: Supergraph：API编排和组合的解决方案
-cover: https://cdn.thenewstack.io/media/2024/07/58aa37e9-screenshot-2024-07-30-at-9.46.08 am.png
+cover: ./cover.png
 -->
 
 在[本系列的上一篇文章](https://thenewstack.io/solving-api-integration-and-aggregation-with-supergraph/)中，我们讨论了在企业数据环境中构建和使用 API 的复杂性。这些环境涉及由不同团队管理的多个数据域和众多应用程序，由于资源受限和目标冲突，导致挑战。
