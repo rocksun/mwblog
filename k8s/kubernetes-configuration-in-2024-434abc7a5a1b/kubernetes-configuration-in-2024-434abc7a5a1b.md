@@ -1,7 +1,7 @@
 
 <!--
 title: 2024年Kubernetes配置
-cover: https://miro.medium.com/v2/resize:fit:1200/1*lxWsuEkcA-Vrsu7_qG69fQ.png
+cover: ./cover.png
 -->
 
 我在 2017 年 [撰写了一篇关于声明式配置问题空间和可用工具的概述](https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/declarative-application-management.md)，当时我正在 [围绕 kustomize 进行构思](https://github.com/kubernetes/kubectl/pull/65)。[2018 年](https://leebriggs.co.uk/blog/2018/05/08/kubernetes-config-mgmt) 和 [2019 年](https://blog.argoproj.io/the-state-of-kubernetes-configuration-management-d8b06c1205) 有其他人撰写了很好的概述。我最近重新审视了 [我在 2017 年整理的列表](https://docs.google.com/spreadsheets/d/1FCgqz1Ci7_VCz_wdh8vBitZ3giBtac_H8SBw4uxnrsE/edit#gid=0)。不出所料，并非所有这些工具都还在维护。我查看了我知道的、似乎比较流行的开源工具的 Github 星标数量（因为没有其他数据来源），并剔除了那些星标少于 1000 个或不再维护的工具。
