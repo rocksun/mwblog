@@ -160,4 +160,3 @@ $ java -version
 
 垃圾收集器日志提供了检查应用程序需要多少内存的正确指标。能够在与生产系统相同的环境中，以类似的负载测试应用程序至关重要。也许“在生产环境中测试”可能是实现这一目标的最简单方法。
 
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1) 技术发展迅速，不要错过任何一集。订阅我们的 YouTube 频道以收看我们所有的播客、访谈、演示等。
