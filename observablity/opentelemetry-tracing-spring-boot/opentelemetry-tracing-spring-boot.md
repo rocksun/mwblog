@@ -1,7 +1,7 @@
 
 <!--
 title: Spring Boot上的OpenTelemetry追踪：Java Agent VS Micrometer Tracing
-cover: https://blog.frankel.ch/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg
+cover: ./cover.png
 -->
 
 我的 OpenTelemetry 追踪演示包含两个 Spring Boot 组件。其中一个使用 Java 代理，我最近将它从 v1.x 升级到 v2.x 后，注意到了一些不同的行为。在另一个组件中，我使用 Micrometer Tracing，因为我编译到 GraalVM 原生，它无法处理 Java 代理。
