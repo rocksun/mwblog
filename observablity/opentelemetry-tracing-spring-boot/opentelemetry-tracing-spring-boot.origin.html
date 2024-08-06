@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#" itemscope itemtype="http://schema.org/Blog">
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style>
+        @-ms-viewport { width: device-width; }
+        @-o-viewport { width: device-width; }
+        @viewport { width: device-width; }
+    </style>
+<link rel="canonical" href="https://blog.frankel.ch/opentelemetry-tracing-spring-boot/" itemprop="url">
+
+
+<title itemprop="name">OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing</title>
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="stylesheet" href="/assets/css/screen.edited.css" />
+<link rel="stylesheet" href="/assets/css/asciidoc.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" />
+
+<meta name="description" content="My demo of OpenTelemetry Tracing features two Spring Boot components. One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x. In the other one, I&#8217;m using Micrometer Tracing because I compile to GraalVM native, and it can&#8217;t process Java agents.   I want to compare these three different ways in this post: Java agent v1, Java agent v2, and Micrometer Tracing.   The base application and its infrastructure   I&#8217;ll use the same base ap" />
+<link rel="shortcut icon" href="/assets/cup.ico" type="image/x-icon" />
+<link rel="me" href="https://mastodon.top/@frankel" />
+<link rel="me" href="https://github.com/nfrankel" />
+<meta name="referrer" content="no-referrer-when-downgrade" />
+<meta property="og:site_name" content="A Java geek" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing" />
+<meta property="og:description" content="My demo of OpenTelemetry Tracing features two Spring Boot components. One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x. In the other one, I&#8217;m using Micrometer Tracing because I compile to GraalVM native, and it can&#8217;t process Java agents.   I want to compare these three different ways in this post: Java agent v1, Java agent v2, and Micrometer Tracing.   The base application and its infrastructure   I&#8217;ll use the same base ap" />
+<meta property="og:url" content="https://blog.frankel.ch/opentelemetry-tracing-spring-boot/" />
+<meta property="og:image" content="https://blog.frankel.ch/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg" />
+<meta property="og:image:width" content="240" />
+<meta property="og:image:height" content="240" />
+<meta property="article:published_time" content="2024-08-04T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site:id" content="nicolas_frankel" />
+<meta name="twitter:title" content="OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing" />
+<meta name="twitter:description" content="My demo of OpenTelemetry Tracing features two Spring Boot components. One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x. In the other one, I&#8217;m using Micrometer Tracing because I compile to GraalVM native, and it can&#8217;t process Java agents.   I want to compare these three different ways in this post: Java agent v1, Java agent v2, and Micrometer Tracing.   The base application and its infrastructure   I&#8217;ll use the same base ap" />
+<meta name="twitter:url" content="https://blog.frankel.ch/opentelemetry-tracing-spring-boot/" />
+<meta name="twitter:image" content="https://blog.frankel.ch/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg" />
+<meta name="twitter:creator:id" content="nicolas_frankel" />
+<link rel="alternate" type="application/rss+xml" title="OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing" href="https://blog.frankel.ch/feed.xml" />
+</head>
+<body class="post-template">
+<div class="site-wrapper">
+
+<header class="site-header outer">
+<div class="inner">
+<nav class="site-nav">
+<div class="site-nav-left">
+<a class="site-nav-logo" href="/">A Java geek</a>
+<ul class="nav" role="menu">
+<li class="nav">
+<a class="page-link" href="/me/">Me</a>
+</li>
+<li class="nav">
+<a class="page-link" href="/books/">Books</a>
+</li>
+<li class="nav">
+<a class="page-link" href="/speaking/">Speaking</a>
+</li>
+<li class="nav">
+<a class="page-link" href="/mentions/">Mentions</a>
+</li>
+<li class="nav">
+<a class="page-link" href="/focus/">Focus</a>
+</li>
+</ul>
+</div>
+<div class="site-nav-right">
+<div class="social-links" itemscope itemtype="http://schema.org/Person" id="main" itemprop="author performer">
+<meta itemprop="name" content="Nicolas Fränkel">
+<meta itemprop="givenName" content="Nicolas">
+<meta itemprop="familyName" content="Fränkel">
+<meta itemprop="jobTitle" content="Head of Developer Advocacy">
+<meta itemprop="worksFor" content="Apache APISIX">
+<link itemprop="url" href="https://blog.frankel.ch//me">
+<link itemprop="image" href="https://blog.frankel.ch/assets/pages/me/me.jpg">
+<a class="social-link social-link-tw" href="https://twitter.com/nicolas_frankel" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#twitter" href="/assets/svg/symbols.svg#twitter" /></svg>
+</a>
+<a class="social-link social-link-tw" href="https://github.com/nfrankel" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#github" href="/assets/svg/symbols.svg#github" /></svg>
+</a>
+<a class="social-link social-link-tw" href="https://www.reddit.com/user/nfrankel" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#reddit" href="/assets/svg/symbols.svg#reddit" /></svg>
+</a>
+<a class="social-link social-link-tw" href="https://mastodon.top/@frankel" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#mastodon" href="/assets/svg/symbols.svg#mastodon" /></svg>
+</a>
+<a class="social-link social-link-tw" href="https://www.youtube.com/c/nicolasfrankel" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#youtube" href="/assets/svg/symbols.svg#youtube" /></svg>
+</a>
+<a class="social-link social-link-tw" href="https://blog.frankel.ch/feed.xml" target="_blank" rel="noopener" itemprop="sameAs">
+<svg><use xlink:href="/assets/svg/symbols.svg#rss" href="/assets/svg/symbols.svg#rss" /></svg>
+</a>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<main id="site-main" class="site-main outer">
+<div class="inner">
+<article class="post-full  " itemscope itemtype="http://schema.org/BlogPosting">
+<meta itemprop="mainEntityOfPage" content="//opentelemetry-tracing-spring-boot/" />
+<meta itemprop="description" content />
+<header class="post-full-header">
+<section class="post-full-meta">
+<time class="post-full-meta-date" datetime="2024-08-04T00:00:00+00:00" itemprop="datePublished dateModified">Aug 4, 2024</time>
+<span class="date-divider">/</span>
+<a href="/tag/opentelemetry/">OPENTELEMETRY</a><span class="tag-divider">,</span>
+<a href="/tag/tracing/">TRACING</a><span class="tag-divider">,</span>
+<a href="/tag/spring-boot/">SPRING BOOT</a><span class="tag-divider">,</span>
+<a href="/tag/java-agent/">JAVA AGENT</a><span class="tag-divider">,</span>
+<a href="/tag/micrometer/">MICROMETER</a>
+</section>
+<h1 class="post-full-title" itemprop="name headline">OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing</h1>
+</header>
+<figure class="post-full-image" style="background-image: url(/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg);background-size: 1" itemscope itemprop="image" itemtype="http://schema.org/ImageObject">
+<meta itemprop="url" content="https://blog.frankel.ch/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg">
+</figure>
+<section class="post-full-content">
+<div class="kg-card-markdown" itemprop="articleBody">
+<div class="paragraph">
+<p>My <a href="https://github.com/nfrankel/opentelemetry-tracing" target="_blank" rel="noopener">demo</a> of OpenTelemetry Tracing features two Spring Boot components.
+One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x.
+In the other one, I&#8217;m using Micrometer Tracing because I compile to GraalVM native, and it can&#8217;t process Java agents.</p>
+</div>
+<div class="paragraph">
+<p>I want to compare these three different ways in this post:
+Java agent v1, Java agent v2, and Micrometer Tracing.</p>
+</div>
+<div class="sect1">
+<h2 id="the-base-application-and-its-infrastructure">The base application and its infrastructure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I&#8217;ll use the same base application:
+a simple Spring Boot application, coded in Kotlin.
+It offers a single endpoint.</p>
+</div>
+<ul><li><span class="primary">The function beyond the endpoint is named <code>entry()</code></span></li><li><span class="primary">It calls another function named <code>intermediate()</code></span></li><li><span class="primary">The latter uses a <code>WebClient</code> instance, the replacement of <code>RestTemplate</code>, to make a call to the above endpoint</span></li><li><span class="primary">To avoid infinite looping, I pass a custom request header:
+if the <code>entry()</code> function finds it, it doesn&#8217;t proceed further</span></li></ul>
+<div class="imageblock">
+<div class="content">
+<img src="/assets/generated/opentelemetry-tracing-spring-boot/app-sequence.svg" alt="Sample app sequence diagram" width="389" height="400">
+</div>
+</div>
+<div class="paragraph">
+<p>It translates into the following code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@SpringBootApplication</span>
+<span class="kd">class</span> <span class="nc">Agent1xApplication</span>
+
+<span class="nd">@RestController</span>
+<span class="kd">class</span> <span class="nc">MicrometerController</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">logger</span> <span class="p">=</span> <span class="nc">LoggerFactory</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="nc">MicrometerController</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/{message}"</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">entry</span><span class="p">(</span><span class="nd">@PathVariable</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="nd">@RequestHeader</span><span class="p">(</span><span class="s">"X-done"</span><span class="p">)</span> <span class="n">done</span><span class="p">:</span> <span class="nc">String</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"entry: $message"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">done</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="nf">intermediate</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">intermediate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"intermediate"</span><span class="p">)</span>
+        <span class="nc">RestClient</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">baseUrl</span><span class="p">(</span><span class="s">"http://localhost:8080/done"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+            <span class="p">.</span><span class="k">get</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">header</span><span class="p">(</span><span class="s">"X-done"</span><span class="p">,</span> <span class="s">"true"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">retrieve</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">toBodilessEntity</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For every setup, I&#8217;ll check two stages:
+the primary stage, with OpenTelemetry enabled, and a customization stage to create additional internal spans.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="micrometer-tracing">Micrometer Tracing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Micrometer Tracing stems from <a href="https://micrometer.io/" target="_blank" rel="noopener">Micrometer</a>, a "vendor-neutral application observability facade".</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Micrometer Tracing provides a simple facade for the most popular tracer libraries, letting you instrument your JVM-based application code without vendor lock-in. It is designed to add little to no overhead to your tracing collection activity while maximizing the portability of your tracing effort.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; <a href="https://docs.micrometer.io/tracing/reference/index.html" target="_blank" rel="noopener">Micrometer Tracing site</a>
+</div>
+</div>
+<div class="paragraph">
+<p>To start with Micrometer Tracing, one needs to add a few dependencies:</p>
+</div>
+<ul><li><span class="primary">Spring Boot Actuator, <code>org.springframework.boot:spring-boot-starter-actuator</code></span></li><li><span class="primary">Micrometer Tracing itself, <code>io.micrometer:micrometer-tracing</code></span></li><li><span class="primary">A "bridge" to the target tracing backend API.
+In my case, it&#8217;s OpenTelemetry, hence <code>io.micrometer:micrometer-tracing-bridge-otel</code></span></li><li><span class="primary">A concrete exporter to the backend, <code>io.opentelemetry:opentelemetry-exporter-otlp</code></span></li></ul>
+<div class="paragraph">
+<p>We don&#8217;t need a BOM because versions are already defined in the Spring Boot parent.</p>
+</div>
+<div class="paragraph">
+<p>Yet, we need two runtime configuration parameters:
+where should the traces be sent, and what is the component&#8217;s name.
+They are governed by the <code>MANAGEMENT_OTLP_TRACING_ENDPOINT</code> and <code>SPRING_APPLICATION_NAME</code> variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="na">jaeger</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">jaegertracing/all-in-one:1.55</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">COLLECTOR_OTLP_ENABLED=true</span>                                     <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">16686:16686"</span>
+  <span class="na">micrometer-tracing</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">Dockerfile-micrometer</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MANAGEMENT_OTLP_TRACING_ENDPOINT</span><span class="pi">:</span> <span class="s">http://jaeger:4318/v1/traces</span>    <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">SPRING_APPLICATION_NAME</span><span class="pi">:</span> <span class="s">micrometer-tracing</span>                       <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Enable the OpenTelemetry collector for Jaeger</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Full URL to the Jaeger OpenTelemetry gRPC endpoint</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Set the OpenTelemetry&#8217;s service name</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the result:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot/trace-micrometer-basic.webp" alt="Micrometer traces on Jaeger with no customization" width="840"></span></p>
+</div>
+<div class="paragraph">
+<p>Without any customization, Micrometer creates spans when receiving and sending HTTP requests.</p>
+</div>
+<div class="paragraph">
+<p>The framework needs to inject magic into the <code>RestClient</code> for sending.
+We must let the former instantiate the latter for that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@SpringBootApplication</span>
+<span class="kd">class</span> <span class="nc">MicrometerTracingApplication</span> <span class="p">{</span>
+
+    <span class="nd">@Bean</span>
+    <span class="k">fun</span> <span class="nf">restClient</span><span class="p">(</span><span class="n">builder</span><span class="p">:</span> <span class="nc">RestClient</span><span class="p">.</span><span class="nc">Builder</span><span class="p">)</span> <span class="p">=</span>
+        <span class="n">builder</span><span class="p">.</span><span class="nf">baseUrl</span><span class="p">(</span><span class="s">"http://localhost:8080/done"</span><span class="p">).</span><span class="nf">build</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can create manual spans in several ways, one via the OpenTelemetry API itself.
+However, the setup requires a lot of boilerplate code.
+The most straightforward way is the Micrometer&#8217;s <a href="https://docs.micrometer.io/micrometer/reference/observation.html" target="_blank" rel="noopener">Observation API</a>.
+Its main benefit is to use a single API that manages both <em>metrics</em> and <em>traces</em>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/assets/generated/opentelemetry-tracing-spring-boot/observation-api-classes.svg" alt="Observation API class diagram" width="513" height="285">
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the updated code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">class</span> <span class="nc">MicrometerController</span><span class="p">(</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">restClient</span><span class="p">:</span> <span class="nc">RestClient</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">registry</span><span class="p">:</span> <span class="nc">ObservationRegistry</span>
+<span class="p">)</span> <span class="p">{</span>
+
+    <span class="nd">@GetMapping</span><span class="p">(</span><span class="s">"/{message}"</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">entry</span><span class="p">(</span><span class="nd">@PathVariable</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="nd">@RequestHeader</span><span class="p">(</span><span class="s">"X-done"</span><span class="p">)</span> <span class="n">done</span><span class="p">:</span> <span class="nc">String</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"entry: $message"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">observation</span> <span class="p">=</span> <span class="nc">Observation</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="s">"entry"</span><span class="p">,</span> <span class="n">registry</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">done</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="nf">intermediate</span><span class="p">(</span><span class="n">observation</span><span class="p">)</span>
+        <span class="n">observation</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">intermediate</span><span class="p">(</span><span class="n">parent</span><span class="p">:</span> <span class="nc">Observation</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"intermediate"</span><span class="p">)</span>
+        <span class="kd">val</span> <span class="py">observation</span> <span class="p">=</span> <span class="nc">Observation</span><span class="p">.</span><span class="nf">createNotStarted</span><span class="p">(</span><span class="s">"intermediate"</span><span class="p">,</span> <span class="n">registry</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">parentObservation</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+        <span class="n">restClient</span><span class="p">.</span><span class="k">get</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">header</span><span class="p">(</span><span class="s">"X-done"</span><span class="p">,</span> <span class="s">"true"</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">retrieve</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">toBodilessEntity</span><span class="p">()</span>
+        <span class="n">observation</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The added observation calls reflect upon the generated traces:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot//trace-micrometer-custom.webp" alt="Micrometer traces on Jaeger with the Observation API" width="840"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="opentelemetry-agent-v1">OpenTelemetry Agent v1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An alternative to Micrometer Tracing is the generic <a href="https://github.com/open-telemetry/opentelemetry-java-instrumentation" target="_blank" rel="noopener">OpenTelemetry Java Agent</a>.
+Its main benefit is that it impacts neither the code nor the developers;
+the agent is a pure runtime-scoped concern.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="bash">java <span class="nt">-javaagent</span>:opentelemetry-javaagent.jar agent-one-1.0-SNAPSHOT.jar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The agent abides by OpenTelemetry&#8217;s configuration with environment variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">services</span><span class="pi">:</span>
+  <span class="na">agent-1x</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">Dockerfile-agent1</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">OTEL_EXPORTER_OTLP_ENDPOINT</span><span class="pi">:</span> <span class="s">http://jaeger:4317</span>                   <i class="conum" data-value="1"></i><b>(1)</b>
+      <span class="na">OTEL_RESOURCE_ATTRIBUTES</span><span class="pi">:</span> <span class="s">service.name=agent-1x</span>                   <i class="conum" data-value="2"></i><b>(2)</b>
+      <span class="na">OTEL_METRICS_EXPORTER</span><span class="pi">:</span> <span class="s">none</span>                                       <i class="conum" data-value="3"></i><b>(3)</b>
+      <span class="na">OTEL_LOGS_EXPORTER</span><span class="pi">:</span> <span class="s">none</span>                                          <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8081:8080"</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Set the protocol, the domain, and the port.
+The library appends <code>/v1/traces</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Set the OpenTelemetry&#8217;s service name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Export neither the metrics nor the logs</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With no more configuration, we get the following traces:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot/trace-agent-1x-basic.webp" alt="Agent v1 traces on Jaeger with no customization" width="840"></span></p>
+</div>
+<div class="paragraph">
+<p>The agent automatically tracks requests, both received and sent, <strong>as well as functions marked with Spring-related annotations</strong>.
+Traces are correctly nested inside each other, according to the call stack.
+To trace additional functions, we need to add a dependency to our codebase, <code>io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations</code>.
+We can now annotate previously untraced functions with the <code>@WithSpan</code> annotation.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/assets/generated/opentelemetry-tracing-spring-boot/withspan-class-diagram.svg" alt="withspan class diagram" width="481" height="252">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>value()</code> part governs the trace&#8217;s label, while the <code>kind</code> translates as a <code>span.kind</code> attribute.
+If the value is set to an empty string, which is the default, it outputs the function&#8217;s name.
+For my purposes, default values are good enough.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@WithSpan</span>
+<span class="k">fun</span> <span class="nf">intermediate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"intermediate"</span><span class="p">)</span>
+    <span class="nc">RestClient</span><span class="p">.</span><span class="nf">builder</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">baseUrl</span><span class="p">(</span><span class="s">"http://localhost:8080/done"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">build</span><span class="p">()</span>
+        <span class="p">.</span><span class="k">get</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">header</span><span class="p">(</span><span class="s">"X-done"</span><span class="p">,</span> <span class="s">"true"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">retrieve</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">toBodilessEntity</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It yields the expected new <code>intermediate()</code> trace:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot/trace-agent-1x-custom.webp" alt="Agent v1 traces on Jaeger with annotations"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="opentelemetry-agent-v2">OpenTelemetry Agent v2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OpenTelemetry released a new major version of the agent in January of this year.
+I updated my demo with it;
+traces are now only created when the app receives and sends requests.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot/trace-agent-2x-basic.webp" alt="Agent v2 traces on Jaeger with no customization" width="840"></span></p>
+</div>
+<div class="paragraph">
+<p>As for the previous version, we can add traces with the <code>@WithSpan</code> annotation.
+The only difference is that we must also annotate the <code>entry()</code> function.
+It&#8217;s not traced by default.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/assets/resources/opentelemetry-tracing-spring-boot/trace-agent-2x-custom.webp" alt="Agent v2 traces on Jaeger with annotations" width="840"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="discussion">Discussion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Spring became successful for two reasons:
+it simplified complex solutions, <em>i.e.</em>, EJBs 2, and provided an abstraction layer over competing libraries.
+Micrometer Tracing started as an abstraction layer over Zipkin and Jaeger, and it made total sense.
+This argument becomes moot with OpenTelemetry being supported by most libraries across programming languages and trace collectors.
+The Observation API is still a considerable benefit of Micrometer Tracing, as it uses a single API over Metrics and Traces.</p>
+</div>
+<div class="paragraph">
+<p>On the Java Agent side, OpenTelemetry configuration is similar across all tech stacks and libraries - environment variables.
+I was a bit disappointed when I upgraded from v1 to v2, as the new agent is not Spring-aware:
+Spring-annotated functions are not traced by default.
+In the end, it&#8217;s a wise decision.
+It&#8217;s much better to be explicit about the spans you want than remove some you don&#8217;t want to see.</p>
+</div>
+<div class="paragraph">
+<p><em>Thanks to <a href="https://mastodon.social/@jonatan_ivanov" target="_blank" rel="noopener">Jonatan Ivanov</a> for his help and his review</em>.</p>
+</div>
+</div>
+</div>
+The complete source code for this post can be found
+on <a href="https://github.com/ajavageek/boot-tracing" target="_blank" rel="noopener">Github</a>.
+<div class="sect1 gofurther">
+<h2 id="gofurther">
+<span class="icon"><i class="fa fa-book"></i></span>
+<span>To go further:</span>
+</h2>
+<div class="sectionbody">
+<ul>
+<li><a href="https://github.com/nfrankel/opentelemetry-tracing" target="_blank" rel="noopener">Demo of OpenTelemetry Tracing</a></li>
+<li><a href="https://docs.micrometer.io/tracing/reference/index.html" target="_blank" rel="noopener">Micrometer Tracing</a></li>
+<li><a href="https://opentelemetry.io/docs/concepts/signals/traces/" target="_blank" rel="noopener">OpenTelemetry Traces</a></li>
+<li><a href="https://opentelemetry.io/docs/languages/java/getting-started/" target="_blank" rel="noopener">OpenTelemetry Java integration</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-java-examples#java-opentelemetry-examples" target="_blank" rel="noopener">OpenTelemetry Java examples</a></li>
+<li><a href="https://itnext.io/distributed-tracing-with-spring-boot-3-micrometer-vs-opentelemetry-b3593546f61b" target="_blank" rel="noopener">Distributed Tracing with Spring Boot 3 — Micrometer vs OpenTelemetry</a></li>
+<li><a href="https://www.baeldung.com/spring-boot-3-observability" target="_blank" rel="noopener">Observability With Spring Boot 3</a></li>
+</ul>
+</div>
+</div>
+<div style="text-align:center">
+<a href="https://twitter.com/nicolas_frankel" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @nicolas_frankel</a>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</section>
+
+<footer class="post-full-footer">
+
+
+<section class="author-card">
+<img class="author-profile-image" src="/assets/pages/me/me.jpg" alt="Nicolas Fränkel" />
+<section class="author-card-content">
+<h4 class="author-card-name" itemprop="author publisher" itemscope itemid="main" itemtype="http://schema.org/Person">
+<a href="/me" itemprop="name">Nicolas Fränkel</a>
+</h4>
+<p>Developer Advocate with 15+ years experience consulting for many different customers, in a wide range of contexts (such as telecoms, banking, insurances, large retail and public sector). Usually working on Java/Java EE and Spring technologies, but with focused interests like Rich Internet Applications, Testing, CI/CD and DevOps. Also double as a trainer and triples as a book author.
+</p>
+</section>
+</section>
+<div class="post-full-footer-right">
+<a class="author-card-button" href="/me">Read More</a>
+</div>
+
+</footer>
+<section class="post-full-comments">
+<div id="disqus_thread"></div>
+<script>
+            var disqus_config = function () {
+                this.page.url = 'https://blog.frankel.ch/opentelemetry-tracing-spring-boot/';
+                this.page.identifier = 'OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing';
+            };
+            (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://blog-frankel.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+</section>
+</article>
+</div>
+</main>
+
+<aside class="read-next outer">
+<div class="inner">
+<div class="read-next-feed">
+<article class="read-next-card" style="background-image: url(/assets/resources/opentelemetry-tracing-spring-boot/micrometer-tracing-otel.svg)">
+<header class="read-next-card-header">
+<small class="read-next-card-header-sitetitle">&mdash; A Java geek &mdash;</small>
+<h3 class="read-next-card-header-title"><a href="/tag/opentelemetry/">Opentelemetry</a></h3>
+</header>
+<div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5" /></svg>
+</div>
+<div class="read-next-card-content">
+<ul>
+<li><a href="https://blog.frankel.ch/even-more-opentelemetry/">Even more Opentelemetry!</a></li>
+<li><a href="https://blog.frankel.ch/improve-otel-demo/">Improving upon my OpenTelemetry Tracing demo</a></li>
+<li><a href="https://blog.frankel.ch/opentelemetry-collector/">Exploring the OpenTelemetry Collector</a></li>
+</ul>
+</div>
+<footer class="read-next-card-footer">
+<a href="/tag/opentelemetry/">
+See all 4 posts →
+</a>
+</footer>
+</article>
+
+
+<article class="post-card post-template">
+<a class="post-card-image-link" href="/free-tier-api-apisix/">
+<div class="post-card-image" style="background-image: url(/assets/resources/free-tier-api-apisix/beer-2439237_medium.webp)"></div>
+</a>
+<div class="post-card-content">
+<a class="post-card-content-link" href="/free-tier-api-apisix/">
+<header class="post-card-header">
+<time class="post-card-meta-date" datetime="2024-07-28T00:00:00+00:00">Jul 28, 2024</time>
+<span class="post-card-tags">Apache APISIX</span>
+<span class="post-card-tags">free tier</span>
+<h2 class="post-card-title">Free tier API with Apache APISIX</h2>
+</header>
+<section class="post-card-excerpt">
+<p>Lots of service providers offer a free tier of their service. The idea is to let you kick their service&#8217;s tires freely. If you need to go above the free tier at any point, you&#8217;ll likely stay on the service and pay. In this day and age, most services are online and accessible via an API. Today, we will implement a free tier with Apache APISIX. A naive approach I implemented a free tier in my post Evolving your RESTful APIs, a step-by-step approach, albeit in a very naive way. I cop</p>
+</section>
+</a>
+<footer class="post-card-meta">
+<img class="author-profile-image" src="/assets/pages/me/me_small.jpg" alt />
+<span class="post-card-author">
+<a href="/me/" itemprop="name">Nicolas Fränkel</a>
+</span>
+</footer>
+</div>
+</article>
+</div>
+</div>
+</aside>
+
+<div class="floating-header">
+<div class="floating-header-logo">
+<a href="/">
+<span>A Java geek</span>
+</a>
+</div>
+<span class="floating-header-divider">&mdash;</span>
+<div class="floating-header-title">OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing</div>
+<div class="floating-header-share">
+<div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2" />
+</svg>
+</div>
+<a class="floating-header-share-fb" href="https://www.facebook.com/sharer.php?p[url]=https://blog.frankel.ch/opentelemetry-tracing-spring-boot/&p[title]=OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing&p[summary]=My demo of OpenTelemetry Tracing features two Spring Boot components. One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x. In the other one, I&#8217;m using Micrometer Tracing because I compile to Gr..." onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+<svg><use xlink:href="/assets/svg/symbols.svg#facebook" href="/assets/svg/symbols.svg#facebook" /></svg>
+</a>
+<a class="floating-header-share-tw" href="https://twitter.com/intent/tweet?text=OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing&url=https://blog.frankel.ch/opentelemetry-tracing-spring-boot/&hashtags=OpenTelemetry,tracing,Spring Boot,Java Agent,micrometer,">
+<svg><use xlink:href="/assets/svg/symbols.svg#twitter" href="/assets/svg/symbols.svg#twitter" /></svg>
+</a>
+<a class="floating-header-share-li" href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.frankel.ch/opentelemetry-tracing-spring-boot/&title=OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing&summary=My demo of OpenTelemetry Tracing features two Spring Boot components. One uses the Java agent, and I noticed a different behavior when I recently upgraded it from v1.x to v2.x. In the other one, I&#8217;m using Micrometer Tracing because I compile to Gr...&source=https://blog.frankel.ch" onclick="window.open(this.href, 'share-linkedin','width=580,height=296');return false;">
+<svg><use xlink:href="/assets/svg/symbols.svg#linkedin" href="/assets/svg/symbols.svg#linkedin" /></svg>
+</a>
+<a class="floating-header-share-rd" href="http://www.reddit.com/submit?url=https://blog.frankel.ch/opentelemetry-tracing-spring-boot/&title=OpenTelemetry Tracing on Spring Boot, Java Agent vs. Micrometer Tracing" onclick="window.open(this.href, 'share-reddit','width=900,height=750');return false;">
+<svg><use xlink:href="/assets/svg/symbols.svg#reddit" href="/assets/svg/symbols.svg#reddit" /></svg>
+</a>
+</div>
+<progress class="progress" value="0">
+<div class="progress-container">
+<span class="progress-bar"></span>
+</div>
+</progress>
+</div>
+
+
+<footer class="site-footer outer">
+<div class="site-footer-content inner">
+<section class="copyright"><a href="https://blog.frankel.ch/">A Java geek</a> &copy; 2008-2024</section>
+<section class="poweredby">v. c31fc0ae8644eef53dac25c365bfad571e4e6015/7501703204</section>
+<nav class="site-footer-nav">
+<a href="/">Latest Posts</a>
+</nav>
+</div>
+</footer>
+</div>
+
+
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8347748-1"></script>
+<script>
+   var google_analytics = 'UA-8347748-1';
+</script>
+<script src="/assets/js/gtag.js"></script>
+
+<script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+document.addEventListener("DOMContentLoaded", function () {
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = Math.max(
+            document.body.scrollHeight,
+            document.body.offsetHeight, 
+            document.documentElement.clientHeight,
+            document.documentElement.scrollHeight,
+            document.documentElement.offsetHeight
+    );
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = Math.max(
+            document.body.scrollHeight,
+            document.body.offsetHeight, 
+            document.documentElement.clientHeight,
+            document.documentElement.scrollHeight,
+            document.documentElement.offsetHeight
+        );
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js"></script>
+<script defer src="/assets/js/cookieconsent.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8aedf2f8d8576aed',t:'MTcyMjkzNjAwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
