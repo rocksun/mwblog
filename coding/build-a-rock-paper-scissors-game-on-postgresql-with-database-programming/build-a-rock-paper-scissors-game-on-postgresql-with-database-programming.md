@@ -292,20 +292,6 @@ CREATE TABLE "games" (
 有了 games 表格，让我们创建一个辅助函数，该函数将向用户呈现特定游戏的結果：
 
 ```
-
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
 -- Create "render_result_text" function
 CREATE FUNCTION "render_result_text" ("opponent" "move", "result" "result") RETURNS text LANGUAGE plpgsql AS $$
 DECLARE
@@ -420,36 +406,6 @@ PASS
 太好了，我们的逻辑有效！让我们将它应用到我们的本地数据库并试用一下。运行 atlas schema apply –env local：
 
 ```
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
 -- Planned Changes:
 -- Create "random_move" function
 CREATE FUNCTION "random_move" () RETURNS "move" LANGUAGE sql AS $$ SELECT move FROM unnest(enum_range(NULL::move)) move ORDER BY random() LIMIT 1; $$;
