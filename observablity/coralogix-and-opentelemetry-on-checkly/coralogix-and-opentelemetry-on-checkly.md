@@ -1,7 +1,7 @@
 
 <!--
 title: 使用单一跟踪节省三个月的延迟
-cover: https://images.prismic.io/checklyhq/ZmChOZm069VX1fV8_coralogixTraceCover.png?auto=format,compress
+cover: ./cover.png
 -->
 
 了解 OpenTelemetry 跟踪和 Coralogix 分析如何解决延迟问题，证明可观测性在提高系统性能和可靠性方面的作用。
