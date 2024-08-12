@@ -1,0 +1,1179 @@
+<!-- HEADER -->
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="j9yK7rhR-IsLn_r5xLc8nnI4YqZdfMls9uIGwWSxwD0" />
+<meta name="facebook-domain-verification" content="b7ude5litvi0qvvf3rx2rjqf1wcp6c" />
+<title>Kubernetes 1.31: Key Security Enhancements You Should Know</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://www.armosec.io/wp-content/themes/armo/css/base.css">
+<link rel="stylesheet" href="https://www.armosec.io/wp-content/themes/armo/style.css?v=1723423979">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T2XS7LF');</script>
+
+
+<script>
+		(function(h,o,t,j,a,r){
+			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			h._hjSettings={hjid:3493813,hjsv:6};
+			a=o.getElementsByTagName('head')[0];
+			r=o.createElement('script');r.async=1;
+			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+
+<script>
+		window[(function(_lUc,_mw){var _0z='';for(var _79=0;_79<_lUc.length;_79++){var _9C=_lUc[_79].charCodeAt();_mw>7;_9C-=_mw;_9C+=61;_9C%=94;_9C!=_79;_9C+=33;_0z==_0z;_0z+=String.fromCharCode(_9C)}return _0z})(atob('bl1kKCV+eXcqX3kv'), 20)] = 'cfe01db4bd1680201678'; var zi = document.createElement('script'); (zi.type = 'text/javascript'), (zi.async = true), (zi.src = (function(_bH9,_kB){var _kI='';for(var _Eq=0;_Eq<_bH9.length;_Eq++){var _co=_bH9[_Eq].charCodeAt();_co!=_Eq;_kI==_kI;_co-=_kB;_co+=61;_co%=94;_kB>1;_co+=33;_kI+=String.fromCharCode(_co)}return _kI})(atob('cX19eXxDODhzfDclcjZ8bHtyeX18N2x4djglcjZ9anA3c3w='), 9)), document.readyState === 'complete'?document.body.appendChild(zi): window.addEventListener('load', function(){ document.body.appendChild(zi) });
+	</script>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+<title>Kubernetes 1.31: Key Security Enhancements You Should Know</title>
+<meta name="description" content="Explore key security improvements in Kubernetes 1.31, including AppArmor support, enhanced secret management for a more secure platform, and more" />
+<link rel="canonical" href="https://www.armosec.io/blog/kubernetes-1-31-security-perspective/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Kubernetes 1.31: Key Security Enhancements You Should Know" />
+<meta property="og:description" content="Explore key security improvements in Kubernetes 1.31, including AppArmor support, enhanced secret management for a more secure platform, and more" />
+<meta property="og:url" content="https://www.armosec.io/blog/kubernetes-1-31-security-perspective/" />
+<meta property="og:site_name" content="ARMO" />
+<meta property="article:published_time" content="2024-08-08T13:28:31+00:00" />
+<meta property="article:modified_time" content="2024-08-11T08:09:49+00:00" />
+<meta property="og:image" content="https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_X_LI_a.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta property="og:image:type" content="image/png" />
+<meta name="author" content="Ben Hirschberg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="Ben Hirschberg" />
+<meta name="twitter:label2" content="Est. reading time" />
+<meta name="twitter:data2" content="7 minutes" />
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#article","isPartOf":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/"},"author":{"name":"Ben Hirschberg","@id":"https://www.armosec.io/#/schema/person/bc8503fb0a85512f309c0684ea74a9b1"},"headline":"Kubernetes 1.31: a security perspective","datePublished":"2024-08-08T13:28:31+00:00","dateModified":"2024-08-11T08:09:49+00:00","mainEntityOfPage":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/"},"wordCount":1418,"publisher":{"@id":"https://www.armosec.io/#organization"},"image":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#primaryimage"},"thumbnailUrl":"https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_X_LI_a.png","articleSection":["K8s Versions"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/","url":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/","name":"Kubernetes 1.31: Key Security Enhancements You Should Know","isPartOf":{"@id":"https://www.armosec.io/#website"},"primaryImageOfPage":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#primaryimage"},"image":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#primaryimage"},"thumbnailUrl":"https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_X_LI_a.png","datePublished":"2024-08-08T13:28:31+00:00","dateModified":"2024-08-11T08:09:49+00:00","description":"Explore key security improvements in Kubernetes 1.31, including AppArmor support, enhanced secret management for a more secure platform, and more","breadcrumb":{"@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.armosec.io/blog/kubernetes-1-31-security-perspective/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#primaryimage","url":"https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_X_LI_a.png","contentUrl":"https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_X_LI_a.png","width":1200,"height":628},{"@type":"BreadcrumbList","@id":"https://www.armosec.io/blog/kubernetes-1-31-security-perspective/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.armosec.io/"},{"@type":"ListItem","position":2,"name":"K8s Versions","item":"https://www.armosec.io/blog/category/kubernetes_versions/"},{"@type":"ListItem","position":3,"name":"Kubernetes 1.31: a security perspective"}]},{"@type":"WebSite","@id":"https://www.armosec.io/#website","url":"https://www.armosec.io/","name":"ARMO","description":"","publisher":{"@id":"https://www.armosec.io/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.armosec.io/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.armosec.io/#organization","name":"ARMO","url":"https://www.armosec.io/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.armosec.io/#/schema/logo/image/","url":"https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png","contentUrl":"https://www.armosec.io/wp-content/uploads/2022/11/Kubescape_BY_ARMO.png","width":1307,"height":1196,"caption":"ARMO"},"image":{"@id":"https://www.armosec.io/#/schema/logo/image/"}},{"@type":"Person","@id":"https://www.armosec.io/#/schema/person/bc8503fb0a85512f309c0684ea74a9b1","name":"Ben Hirschberg","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.armosec.io/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7dd527962d6b39d68bdde0f7748409d9?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7dd527962d6b39d68bdde0f7748409d9?s=96&d=mm&r=g","caption":"Ben Hirschberg"},"url":"https://www.armosec.io/blog/author/benarmosec-io/"}]}</script>
+
+<link rel="dns-prefetch" href="//js.hs-scripts.com" />
+<link rel="stylesheet" id="Post-css" href="https://www.armosec.io/wp-content/themes/armo/css/post.css?ver=1723379726" type="text/css" media="all" />
+<link rel="stylesheet" id="image-popup-css" href="https://www.armosec.io/wp-content/themes/armo/css/image-popup.css?ver=1723379726" type="text/css" media="all" />
+<link rel="stylesheet" id="wp-block-library-css" href="https://www.armosec.io/wp-includes/css/dist/block-library/style.min.css?ver=6.6.1" type="text/css" media="all" />
+<style id="classic-theme-styles-inline-css" type="text/css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id="global-styles-inline-css" type="text/css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="overrides-css" href="https://www.armosec.io/wp-content/themes/armo/assets/css/overrides.css?ver=1723379726" type="text/css" media="all" />
+<link rel="stylesheet" id="main-css" href="https://www.armosec.io/wp-content/themes/armo/assets/css/main.css?ver=1723379726" type="text/css" media="all" />
+<link rel="stylesheet" id="template-blog-css" href="https://www.armosec.io/wp-content/themes/armo/assets/css/template-blog.css?ver=1723379726" type="text/css" media="all" />
+<script type="text/javascript" src="https://www.armosec.io/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://www.armosec.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<link rel="https://api.w.org/" href="https://www.armosec.io/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.armosec.io/wp-json/wp/v2/posts/6799" /> 
+<script class="hsq-set-content-id" data-content-id="blog-post">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "blog-post"]);
+			</script>
+
+<script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('JMvZ8gbbKppa2pOd'); </script><link rel="icon" href="https://www.armosec.io/wp-content/uploads/2024/07/favicon-armo.ico" sizes="32x32" />
+<link rel="icon" href="https://www.armosec.io/wp-content/uploads/2024/07/favicon-armo.ico" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.armosec.io/wp-content/uploads/2024/07/favicon-armo.ico" />
+<meta name="msapplication-TileImage" content="https://www.armosec.io/wp-content/uploads/2024/07/favicon-armo.ico" />
+<style type="text/css" id="wp-custom-css">
+			@media (max-width:767px) {
+	.wp-block-buttons>.wp-block-button.has-custom-font-size .wp-block-button__link {
+		font-size:16px;
+	}
+}
+.postid-4910.blog .blog-single__wysiwyg img {
+	pointer-events: none;
+}		</style>
+</head>
+<body class="post-template-default single single-post postid-6799 single-format-standard wp-custom-logo armo-bg-gradient blog">
+<div style="display: none;">
+</div>
+<header class="section-header" data-position="sticky" data-theme="dark" data-cookie>
+<nav class="section-header-menu">
+<div class="section-header-container">
+<div class="section-header-menu__inner">
+<a href="https://www.armosec.io" class="section-header-logo">
+<div class="section-header-logo__main">
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="51" viewBox="0 0 120 51" fill="none">
+<path d="M18.6481 0.796875H8.58183C8.388 0.796875 8.21355 0.927319 8.1554 1.10994L0.0209741 26.7161C-0.0694802 27.0096 0.143734 27.3096 0.447402 27.3096H27.0539C27.3576 27.3096 27.5772 27.0096 27.4803 26.7161L19.0745 1.10994C19.0164 0.927319 18.8419 0.796875 18.6481 0.796875ZM8.36862 21.1983L12.788 6.5625C12.8461 6.37336 13.0206 6.24291 13.2208 6.24291H13.8993C14.0931 6.24291 14.2675 6.37336 14.3257 6.5625L18.8678 21.1983C18.9582 21.4918 18.745 21.7853 18.4414 21.7853H8.80151C8.49784 21.7853 8.28462 21.4918 8.36862 21.1983Z" fill="white"></path>
+<path d="M46.6936 27.3074H53.2838C53.6456 27.3074 53.8588 26.8965 53.6521 26.5965L47.8953 18.2937C47.7984 18.1568 47.8566 17.9676 48.0052 17.8959C49.3555 17.2436 50.4345 16.3501 51.2163 15.2022C52.1144 13.8847 52.5666 12.2281 52.5666 10.2453V9.66484C52.5666 7.68209 52.1208 6.01893 51.2357 4.67536C50.3505 3.33178 49.0777 2.31432 47.4237 1.62297C45.7696 0.931614 43.8055 0.585938 41.5247 0.585938H31.0773C30.8318 0.585938 30.625 0.788126 30.625 1.04249V26.8508C30.625 27.0987 30.8253 27.3074 31.0773 27.3074H36.8663C37.1119 27.3074 37.3186 27.1052 37.3186 26.8508V19.6242C37.3186 19.3764 37.5189 19.1677 37.7709 19.1677H40.8916C41.0402 19.1677 41.1823 19.246 41.2663 19.3699L46.3253 27.0987C46.4093 27.2226 46.5514 27.3009 46.7 27.3009L46.6936 27.3074ZM37.3186 6.70376C37.3186 6.45592 37.5189 6.24721 37.7709 6.24721H41.9253C42.7136 6.24721 43.3984 6.40374 43.9735 6.71681C44.5485 7.02987 45.0008 7.47991 45.3238 8.06038C45.6469 8.64086 45.8084 9.33221 45.8084 10.1279C45.8084 10.9236 45.6469 11.5824 45.3238 12.1628C45.0008 12.7433 44.5485 13.1934 43.9735 13.5064C43.3984 13.8195 42.7136 13.976 41.9253 13.976H37.7709C37.5254 13.976 37.3186 13.7738 37.3186 13.5195V6.69724V6.70376Z" fill="white"></path>
+<path d="M78.3051 0.796875C78.1178 0.796875 77.9498 0.914275 77.8852 1.08385L72.445 14.3696C72.3868 14.5196 72.1736 14.5196 72.1155 14.3696L66.6365 1.09037C66.5719 0.914275 66.4039 0.803397 66.2166 0.803397H57.6945C57.4489 0.803397 57.2422 1.00559 57.2422 1.25995V26.8531C57.2422 27.1009 57.4425 27.3096 57.6945 27.3096H62.9085C63.154 27.3096 63.3608 27.1074 63.3608 26.8531V8.99529C63.3608 8.69526 63.7743 8.617 63.8841 8.89745L68.9366 21.681C69.0077 21.8505 69.1692 21.9679 69.3566 21.9679H74.8226C75.01 21.9679 75.1715 21.8571 75.2426 21.681L80.3274 8.7344C80.4373 8.45394 80.8508 8.53221 80.8508 8.83223V26.8466C80.8508 27.0944 81.0511 27.3031 81.303 27.3031H87.021C87.2666 27.3031 87.4733 27.1009 87.4733 26.8466V1.25343C87.4733 1.00559 87.273 0.796875 87.021 0.796875H78.318H78.3051Z" fill="white"></path>
+<path d="M105.66 28.0324C103.263 28.0324 101.176 27.615 99.3991 26.7802C97.6223 25.9453 96.1492 24.8431 94.9733 23.4734C93.7974 22.1038 92.9252 20.6232 92.3501 19.0253C91.7751 17.4273 91.4844 15.8816 91.4844 14.3749V13.5792C91.4844 11.9095 91.7816 10.2659 92.3825 8.66149C92.9833 7.0505 93.8814 5.59605 95.0832 4.28509C96.2849 2.98065 97.7645 1.93709 99.5219 1.16095C101.286 0.38481 103.327 0 105.653 0C107.979 0 109.989 0.38481 111.753 1.16095C113.516 1.93709 114.996 2.97412 116.198 4.28509C117.393 5.58953 118.304 7.0505 118.911 8.66149C119.525 10.2725 119.829 11.9095 119.829 13.5792V14.3749C119.829 15.875 119.538 17.4273 118.95 19.0253C118.362 20.6232 117.484 22.1038 116.308 23.4734C115.132 24.8431 113.659 25.9453 111.882 26.7802C110.105 27.615 108.031 28.0324 105.66 28.0324ZM105.66 21.7124C106.81 21.7124 107.844 21.5168 108.755 21.1319C109.666 20.7471 110.447 20.1993 111.094 19.5014C111.74 18.797 112.231 17.9817 112.567 17.049C112.903 16.1164 113.071 15.1054 113.071 14.0162C113.071 12.8553 112.896 11.7987 112.547 10.8595C112.198 9.91375 111.701 9.105 111.055 8.42669C110.409 7.74838 109.627 7.2266 108.716 6.86788C107.805 6.50264 106.784 6.32001 105.66 6.32001C104.536 6.32001 103.476 6.50264 102.565 6.86788C101.654 7.23312 100.872 7.7549 100.226 8.42669C99.58 9.105 99.089 9.91375 98.753 10.8595C98.4171 11.8052 98.2491 12.8553 98.2491 14.0162C98.2491 15.1054 98.4171 16.1164 98.753 17.049C99.089 17.9817 99.58 18.797 100.226 19.5014C100.872 20.2058 101.654 20.7471 102.565 21.1319C103.476 21.5168 104.51 21.7124 105.66 21.7124Z" fill="white"></path>
+<g>
+<path d="M3.56116 49.1024H2.26986V42.4607H3.56116V49.1024ZM5.8512 43.4095H0V42.4607H5.8512V43.4095Z" fill="white"></path>
+<path d="M7.92938 49.1024H6.67844V42.0958H7.92938V49.1024ZM7.30895 46.4612C7.31232 46.002 7.40143 45.593 7.57629 45.2342C7.75452 44.8753 8.00336 44.5925 8.32282 44.3857C8.64229 44.1789 9.01555 44.0755 9.44262 44.0755C9.80244 44.0755 10.1152 44.1379 10.3808 44.2625C10.6499 44.3842 10.8583 44.5819 11.0063 44.8555C11.1543 45.1262 11.2282 45.4881 11.2282 45.9412V49.1024H9.97226V45.9321C9.97226 45.701 9.93527 45.517 9.86129 45.3801C9.78731 45.2433 9.67802 45.146 9.53342 45.0882C9.39218 45.0304 9.219 45.0015 9.01387 45.0015C8.79865 45.0015 8.61034 45.0395 8.44893 45.1156C8.28752 45.1885 8.15132 45.2919 8.04035 45.4257C7.92938 45.5596 7.84699 45.7146 7.79319 45.891C7.73939 46.0674 7.71248 46.256 7.71248 46.4567L7.30895 46.4612Z" fill="white"></path>
+<path d="M14.8651 49.1936C14.3237 49.1936 13.8562 49.0887 13.4628 48.8789C13.0694 48.666 12.7667 48.3801 12.5549 48.0213C12.343 47.6594 12.2371 47.2549 12.2371 46.8079V46.6209C12.2371 46.1069 12.3447 45.6599 12.5599 45.2798C12.7751 44.8966 13.0694 44.6001 13.4426 44.3903C13.8193 44.1804 14.2446 44.0755 14.7188 44.0755C15.2434 44.0755 15.6789 44.1789 16.0252 44.3857C16.3716 44.5895 16.6305 44.8738 16.802 45.2387C16.9735 45.6006 17.0593 46.0203 17.0593 46.4977V46.9858H12.8373V46.1693H15.8235V46.0826C15.8167 45.891 15.7764 45.7116 15.7024 45.5443C15.6284 45.3771 15.5107 45.2418 15.3493 45.1384C15.1913 45.035 14.9794 44.9833 14.7137 44.9833C14.4481 44.9833 14.2245 45.0517 14.0429 45.1885C13.8613 45.3224 13.7234 45.5124 13.6293 45.7587C13.5351 46.002 13.488 46.2894 13.488 46.6209V46.8079C13.488 47.0877 13.5452 47.3386 13.6595 47.5606C13.7739 47.7826 13.9403 47.9589 14.1589 48.0897C14.3775 48.2174 14.6381 48.2813 14.9407 48.2813C15.2333 48.2813 15.4922 48.2296 15.7175 48.1262C15.9462 48.0228 16.1429 47.8738 16.3077 47.6792L16.9634 48.2722C16.7919 48.5063 16.533 48.7192 16.1866 48.9108C15.8436 49.0993 15.4031 49.1936 14.8651 49.1936Z" fill="white"></path>
+<path d="M21.8209 49.1024H20.5649V44.1668H21.7453L21.8209 45.1749V49.1024ZM21.1904 46.4612C21.1904 46.002 21.2711 45.593 21.4325 45.2342C21.5973 44.8753 21.8411 44.5925 22.1639 44.3857C22.4868 44.1789 22.8886 44.0755 23.3695 44.0755C23.8638 44.0755 24.2707 44.2108 24.5902 44.4815C24.9096 44.7522 25.0694 45.1961 25.0694 45.8135V49.1024H23.8184V45.9184C23.8184 45.6873 23.7781 45.5048 23.6974 45.371C23.62 45.2372 23.509 45.1429 23.3644 45.0882C23.2232 45.0304 23.0534 45.0015 22.855 45.0015C22.6297 45.0015 22.438 45.0395 22.2799 45.1156C22.1253 45.1885 21.9992 45.2919 21.9016 45.4257C21.8041 45.5596 21.7318 45.7146 21.6847 45.891C21.641 46.0674 21.6192 46.256 21.6192 46.4567L21.1904 46.4612ZM24.4035 46.3016C24.4069 45.8971 24.4893 45.5261 24.6507 45.1885C24.8121 44.851 25.0509 44.5819 25.367 44.3811C25.6831 44.1774 26.0731 44.0755 26.5372 44.0755C26.9071 44.0755 27.2249 44.1379 27.4905 44.2625C27.7562 44.3842 27.9613 44.5803 28.1059 44.851C28.2505 45.1186 28.3228 45.4744 28.3228 45.9184V49.1024H27.0668V45.9093C27.0668 45.669 27.0265 45.4835 26.9458 45.3528C26.8684 45.219 26.7575 45.1277 26.6129 45.0791C26.4716 45.0274 26.3035 45.0015 26.1084 45.0015C25.9235 45.0015 25.7604 45.0319 25.6192 45.0928C25.4813 45.1536 25.3653 45.2387 25.2711 45.3482C25.1803 45.4546 25.1097 45.5808 25.0593 45.7268C25.0122 45.8697 24.9887 46.0248 24.9887 46.1921L24.4035 46.3016Z" fill="white"></path>
+<path d="M32.6204 45.7679C32.6204 45.5124 32.5414 45.3087 32.3834 45.1566C32.2287 45.0046 31.9933 44.9285 31.6772 44.9285C31.4889 44.9285 31.3241 44.9589 31.1828 45.0198C31.0416 45.0775 30.9323 45.1566 30.855 45.257C30.7776 45.3573 30.739 45.4714 30.739 45.5991H29.488C29.488 45.3345 29.5805 45.0867 29.7654 44.8555C29.9504 44.6214 30.211 44.4328 30.5473 44.2899C30.8869 44.147 31.2871 44.0755 31.7478 44.0755C32.1581 44.0755 32.5229 44.1379 32.8424 44.2625C33.1618 44.3872 33.4124 44.5758 33.5939 44.8282C33.7789 45.0806 33.8714 45.3969 33.8714 45.777V47.9529C33.8714 48.184 33.8899 48.3877 33.9269 48.5641C33.9639 48.7405 34.016 48.8941 34.0832 49.0248V49.1024H32.802C32.7449 48.9838 32.6995 48.8302 32.6658 48.6417C32.6356 48.4531 32.6204 48.2691 32.6204 48.0897V45.7679ZM32.8121 46.7942H31.9546C31.5107 46.7942 31.1761 46.8687 30.9508 47.0177C30.7289 47.1637 30.6179 47.3629 30.6179 47.6153C30.6179 47.8099 30.6919 47.9726 30.8398 48.1034C30.9878 48.2311 31.1963 48.295 31.4653 48.295C31.7108 48.295 31.9243 48.2509 32.1059 48.1627C32.2909 48.0715 32.4355 47.9605 32.5397 47.8297C32.644 47.6959 32.6978 47.5712 32.7011 47.4557L33.0996 47.962C33.0593 48.0867 32.9903 48.2205 32.8928 48.3634C32.7987 48.5033 32.6726 48.6371 32.5145 48.7648C32.3598 48.8895 32.1749 48.9929 31.9596 49.075C31.7478 49.1541 31.5006 49.1936 31.2182 49.1936C30.8617 49.1936 30.5439 49.1298 30.2648 49.002C29.9857 48.8743 29.7654 48.6994 29.604 48.4774C29.446 48.2524 29.367 48 29.367 47.7202C29.367 47.1972 29.5839 46.7957 30.0177 46.516C30.4515 46.2362 31.0668 46.0963 31.8638 46.0963H32.802L32.8121 46.7942Z" fill="white"></path>
+<path d="M36.3934 49.1024H35.1375V42.0958H36.3934V49.1024ZM37.4174 46.557L36.1009 47.7658L35.768 46.8216L36.7617 45.704L38.2699 44.1668H39.7781L37.4174 46.557ZM36.797 46.7988L37.5889 46.0142L39.9849 49.1024H38.5322L36.797 46.7988Z" fill="white"></path>
+<path d="M42.9609 49.1936C42.4195 49.1936 41.9521 49.0887 41.5586 48.8789C41.1652 48.666 40.8625 48.3801 40.6507 48.0213C40.4388 47.6594 40.3329 47.2549 40.3329 46.8079V46.6209C40.3329 46.1069 40.4405 45.6599 40.6557 45.2798C40.871 44.8966 41.1652 44.6001 41.5385 44.3903C41.9151 44.1804 42.3405 44.0755 42.8146 44.0755C43.3392 44.0755 43.7747 44.1789 44.1211 44.3857C44.4674 44.5895 44.7264 44.8738 44.8979 45.2387C45.0694 45.6006 45.1551 46.0203 45.1551 46.4977V46.9858H40.9332V46.1693H43.9193V46.0826C43.9126 45.891 43.8722 45.7116 43.7982 45.5443C43.7243 45.3771 43.6066 45.2418 43.4451 45.1384C43.2871 45.035 43.0752 44.9833 42.8096 44.9833C42.5439 44.9833 42.3203 45.0517 42.1387 45.1885C41.9571 45.3224 41.8193 45.5124 41.7251 45.7587C41.6309 46.002 41.5839 46.2894 41.5839 46.6209V46.8079C41.5839 47.0877 41.641 47.3386 41.7554 47.5606C41.8697 47.7826 42.0361 47.9589 42.2547 48.0897C42.4733 48.2174 42.7339 48.2813 43.0366 48.2813C43.3291 48.2813 43.5881 48.2296 43.8134 48.1262C44.042 48.0228 44.2388 47.8738 44.4035 47.6792L45.0593 48.2722C44.8878 48.5063 44.6288 48.7192 44.2825 48.9108C43.9395 49.0993 43.499 49.1936 42.9609 49.1936Z" fill="white"></path>
+<path d="M47.3443 49.1024H46.0933V44.1668H47.2837L47.3443 45.1338V49.1024ZM48.9887 45.2068C48.9113 45.1946 48.8289 45.1855 48.7415 45.1794C48.6574 45.1733 48.5733 45.1703 48.4893 45.1703C48.2135 45.1703 47.9832 45.2159 47.7982 45.3071C47.6166 45.3953 47.4788 45.5231 47.3846 45.6903C47.2905 45.8545 47.235 46.0492 47.2182 46.2742L46.9306 46.2788C46.9306 45.8621 46.9912 45.4881 47.1122 45.1566C47.2333 44.8251 47.4149 44.5621 47.657 44.3675C47.8991 44.1728 48.2018 44.0755 48.5649 44.0755C48.6356 44.0755 48.7146 44.0816 48.802 44.0938C48.8895 44.1059 48.955 44.1196 48.9987 44.1348L48.9887 45.2068Z" fill="white"></path>
+<path d="M52.802 47.7567C52.802 47.6533 52.7718 47.559 52.7112 47.4739C52.6541 47.3887 52.5414 47.3097 52.3733 47.2367C52.2051 47.1637 51.958 47.0968 51.6318 47.036C51.2451 46.963 50.9037 46.8657 50.6078 46.744C50.3153 46.6224 50.0866 46.4658 49.9218 46.2742C49.7604 46.0826 49.6797 45.8485 49.6797 45.5717C49.6797 45.3041 49.7638 45.0578 49.9319 44.8327C50.1034 44.6047 50.3472 44.4222 50.6633 44.2854C50.9828 44.1455 51.3594 44.0755 51.7932 44.0755C52.2505 44.0755 52.644 44.1455 52.9735 44.2854C53.3031 44.4222 53.5553 44.6092 53.7301 44.8464C53.9084 45.0806 53.9975 45.3467 53.9975 45.6447H52.7465C52.7465 45.4501 52.6658 45.2798 52.5044 45.1338C52.3464 44.9848 52.1076 44.9103 51.7881 44.9103C51.5897 44.9103 51.4233 44.9392 51.2888 44.997C51.1576 45.0547 51.0584 45.1292 50.9912 45.2205C50.9273 45.3117 50.8953 45.4121 50.8953 45.5215C50.8953 45.628 50.9273 45.7207 50.9912 45.7998C51.0584 45.8789 51.1711 45.9488 51.3291 46.0096C51.4905 46.0705 51.7158 46.1282 52.005 46.183C52.422 46.262 52.7818 46.3624 53.0845 46.484C53.3871 46.6026 53.6192 46.7608 53.7806 46.9584C53.9454 47.1531 54.0277 47.4009 54.0277 47.702C54.0277 47.9909 53.9353 48.2478 53.7503 48.4729C53.5687 48.6979 53.3115 48.8743 52.9786 49.002C52.649 49.1298 52.2589 49.1936 51.8083 49.1936C51.3073 49.1936 50.8852 49.113 50.5422 48.9518C50.1992 48.7907 49.9386 48.5854 49.7604 48.336C49.5855 48.0836 49.4981 47.8221 49.4981 47.5514H50.7037C50.7171 47.7461 50.7776 47.9027 50.8852 48.0213C50.9962 48.1399 51.1341 48.2266 51.2989 48.2813C51.467 48.333 51.6419 48.3588 51.8235 48.3588C52.0387 48.3588 52.2169 48.333 52.3581 48.2813C52.5027 48.2296 52.612 48.1597 52.686 48.0715C52.7633 47.9802 52.802 47.8753 52.802 47.7567Z" fill="white"></path>
+<path d="M57.4224 46.589C57.4224 46.1085 57.5233 45.6797 57.7251 45.3026C57.9269 44.9255 58.2161 44.6275 58.5927 44.4085C58.9727 44.1865 59.4283 44.0755 59.9596 44.0755C60.4977 44.0755 60.9567 44.1865 61.3367 44.4085C61.7167 44.6275 62.0059 44.9255 62.2043 45.3026C62.4061 45.6797 62.5069 46.1085 62.5069 46.589V46.6847C62.5069 47.1622 62.4061 47.591 62.2043 47.9711C62.0059 48.3482 61.7167 48.6462 61.3367 48.8652C60.9601 49.0841 60.5044 49.1936 59.9697 49.1936C59.4351 49.1936 58.9777 49.0841 58.5977 48.8652C58.2177 48.6462 57.9269 48.3482 57.7251 47.9711C57.5233 47.591 57.4224 47.1622 57.4224 46.6847V46.589ZM58.6734 46.6847C58.6734 46.9767 58.7188 47.2443 58.8096 47.4876C58.9004 47.7278 59.0399 47.9209 59.2282 48.0669C59.4199 48.2129 59.6671 48.2859 59.9697 48.2859C60.269 48.2859 60.5128 48.2129 60.7011 48.0669C60.8928 47.9209 61.0324 47.7278 61.1198 47.4876C61.2106 47.2443 61.256 46.9767 61.256 46.6847V46.589C61.256 46.3001 61.2106 46.034 61.1198 45.7907C61.0324 45.5474 60.8928 45.3528 60.7011 45.2068C60.5095 45.0578 60.2623 44.9833 59.9596 44.9833C59.6604 44.9833 59.4149 45.0578 59.2232 45.2068C59.0349 45.3528 58.8953 45.5474 58.8045 45.7907C58.7171 46.034 58.6734 46.3001 58.6734 46.589V46.6847Z" fill="white"></path>
+<path d="M63.9496 49.1024V43.6969C63.9496 43.1495 64.1211 42.7299 64.4641 42.4379C64.8071 42.146 65.2762 42 65.8714 42C65.9924 42 66.1118 42.0076 66.2295 42.0228C66.3472 42.038 66.4615 42.0578 66.5725 42.0821L66.5422 42.9671C66.4784 42.9549 66.4061 42.9458 66.3253 42.9397C66.2446 42.9336 66.1606 42.9306 66.0731 42.9306C65.7974 42.9306 65.5822 42.9975 65.4275 43.1313C65.2762 43.262 65.2005 43.4506 65.2005 43.6969V49.1024H63.9496ZM66.3153 45.0015H63.1173V44.1668H66.3153V45.0015Z" fill="white"></path>
+<path d="M71.1778 49.1024H69.8764V42.4607H71.1778V49.1024ZM72.6204 45.6766L70.9155 47.3097L70.6885 46.1328L71.889 44.7643L73.9975 42.4607H75.5864L72.6204 45.6766ZM71.7982 45.9777L72.6961 45.1749L75.7226 49.1024H74.174L71.7982 45.9777Z" fill="white"></path>
+<path d="M79.425 44.1668H80.6759V49.1024H79.4956L79.425 47.9346V44.1668ZM80.0151 46.8946C80.0151 47.3386 79.9428 47.7339 79.7982 48.0806C79.6536 48.4242 79.4283 48.6964 79.1223 48.8971C78.8163 49.0948 78.4195 49.1936 77.9319 49.1936C77.3939 49.1936 76.9584 49.0507 76.6255 48.7648C76.2926 48.479 76.1261 48.0091 76.1261 47.3553V44.1668H77.3771V47.3644C77.3771 47.5925 77.4157 47.7734 77.4931 47.9072C77.5738 48.038 77.6797 48.1308 77.8108 48.1855C77.942 48.2402 78.0866 48.2676 78.2446 48.2676C78.5843 48.2676 78.8516 48.2083 79.0467 48.0897C79.2451 47.9681 79.3863 47.8039 79.4704 47.5971C79.5544 47.3903 79.5965 47.1591 79.5965 46.9037L80.0151 46.8946Z" fill="white"></path>
+<path d="M83.1576 42.0958V48.035L83.0366 49.1024H81.9067V42.0958H83.1576ZM86.7087 46.6847C86.7087 47.1713 86.628 47.6031 86.4666 47.9802C86.3085 48.3573 86.0715 48.6538 85.7554 48.8697C85.4426 49.0857 85.0525 49.1936 84.5851 49.1936C84.1311 49.1936 83.7545 49.0902 83.4552 48.8834C83.1593 48.6766 82.929 48.3923 82.7642 48.0304C82.6028 47.6655 82.4918 47.2458 82.4313 46.7714V46.5023C82.4918 46.0248 82.6028 45.6052 82.7642 45.2433C82.929 44.8784 83.1593 44.5925 83.4552 44.3857C83.7512 44.1789 84.1244 44.0755 84.575 44.0755C85.0458 44.0755 85.4393 44.182 85.7554 44.3948C86.0715 44.6077 86.3085 44.9027 86.4666 45.2798C86.628 45.6569 86.7087 46.0933 86.7087 46.589V46.6847ZM85.4578 46.589C85.4578 46.3001 85.4208 46.0355 85.3468 45.7952C85.2762 45.555 85.1534 45.3634 84.9786 45.2205C84.8071 45.0745 84.5683 45.0015 84.2623 45.0015C84.0504 45.0015 83.8689 45.0335 83.7175 45.0973C83.5662 45.1612 83.4384 45.2494 83.3342 45.3619C83.2333 45.4744 83.1543 45.6067 83.0971 45.7587C83.0399 45.9108 83.0013 46.075 82.9811 46.2514V47.0269C83.0114 47.2549 83.0736 47.4633 83.1677 47.6518C83.2619 47.8403 83.3997 47.9909 83.5813 48.1034C83.7629 48.2129 83.9933 48.2676 84.2724 48.2676C84.5717 48.2676 84.8071 48.1977 84.9786 48.0578C85.1501 47.9179 85.2728 47.7293 85.3468 47.4921C85.4208 47.2519 85.4578 46.9828 85.4578 46.6847V46.589Z" fill="white"></path>
+<path d="M90.1337 49.1936C89.5923 49.1936 89.1248 49.0887 88.7314 48.8789C88.338 48.666 88.0353 48.3801 87.8235 48.0213C87.6116 47.6594 87.5057 47.2549 87.5057 46.8079V46.6209C87.5057 46.1069 87.6133 45.6599 87.8285 45.2798C88.0437 44.8966 88.338 44.6001 88.7112 44.3903C89.0879 44.1804 89.5132 44.0755 89.9874 44.0755C90.512 44.0755 90.9475 44.1789 91.2938 44.3857C91.6402 44.5895 91.8991 44.8738 92.0706 45.2387C92.2421 45.6006 92.3279 46.0203 92.3279 46.4977V46.9858H88.1059V46.1693H91.0921V46.0826C91.0853 45.891 91.045 45.7116 90.971 45.5443C90.897 45.3771 90.7793 45.2418 90.6179 45.1384C90.4599 45.035 90.248 44.9833 89.9823 44.9833C89.7167 44.9833 89.4931 45.0517 89.3115 45.1885C89.1299 45.3224 88.992 45.5124 88.8979 45.7587C88.8037 46.002 88.7566 46.2894 88.7566 46.6209V46.8079C88.7566 47.0877 88.8138 47.3386 88.9281 47.5606C89.0425 47.7826 89.2089 47.9589 89.4275 48.0897C89.6461 48.2174 89.9067 48.2813 90.2093 48.2813C90.5019 48.2813 90.7608 48.2296 90.9861 48.1262C91.2148 48.0228 91.4115 47.8738 91.5763 47.6792L92.232 48.2722C92.0605 48.5063 91.8016 48.7192 91.4552 48.9108C91.1122 49.0993 90.6717 49.1936 90.1337 49.1936Z" fill="white"></path>
+<path d="M96.3127 47.7567C96.3127 47.6533 96.2825 47.559 96.2219 47.4739C96.1648 47.3887 96.0521 47.3097 95.884 47.2367C95.7159 47.1637 95.4687 47.0968 95.1425 47.036C94.7558 46.963 94.4145 46.8657 94.1185 46.744C93.826 46.6224 93.5973 46.4658 93.4325 46.2742C93.2711 46.0826 93.1904 45.8485 93.1904 45.5717C93.1904 45.3041 93.2745 45.0578 93.4426 44.8327C93.6141 44.6047 93.8579 44.4222 94.174 44.2854C94.4935 44.1455 94.8701 44.0755 95.3039 44.0755C95.7612 44.0755 96.1547 44.1455 96.4842 44.2854C96.8138 44.4222 97.066 44.6092 97.2409 44.8464C97.4191 45.0806 97.5082 45.3467 97.5082 45.6447H96.2572C96.2572 45.4501 96.1765 45.2798 96.0151 45.1338C95.8571 44.9848 95.6183 44.9103 95.2989 44.9103C95.1005 44.9103 94.934 44.9392 94.7995 44.997C94.6684 45.0547 94.5691 45.1292 94.5019 45.2205C94.438 45.3117 94.4061 45.4121 94.4061 45.5215C94.4061 45.628 94.438 45.7207 94.5019 45.7998C94.5691 45.8789 94.6818 45.9488 94.8399 46.0096C95.0013 46.0705 95.2266 46.1282 95.5158 46.183C95.9327 46.262 96.2926 46.3624 96.5952 46.484C96.8979 46.6026 97.1299 46.7608 97.2913 46.9584C97.4561 47.1531 97.5385 47.4009 97.5385 47.702C97.5385 47.9909 97.446 48.2478 97.261 48.4729C97.0794 48.6979 96.8222 48.8743 96.4893 49.002C96.1597 49.1298 95.7697 49.1936 95.319 49.1936C94.818 49.1936 94.396 49.113 94.053 48.9518C93.71 48.7907 93.4493 48.5854 93.2711 48.336C93.0963 48.0836 93.0088 47.8221 93.0088 47.5514H94.2144C94.2278 47.7461 94.2884 47.9027 94.396 48.0213C94.5069 48.1399 94.6448 48.2266 94.8096 48.2813C94.9777 48.333 95.1526 48.3588 95.3342 48.3588C95.5494 48.3588 95.7276 48.333 95.8689 48.2813C96.0135 48.2296 96.1227 48.1597 96.1967 48.0715C96.2741 47.9802 96.3127 47.8753 96.3127 47.7567Z" fill="white"></path>
+<path d="M100.832 48.2859C101.027 48.2859 101.204 48.2509 101.362 48.1809C101.52 48.108 101.646 48.0091 101.74 47.8844C101.834 47.7598 101.887 47.6168 101.897 47.4557H103.077C103.067 47.781 102.961 48.0745 102.759 48.336C102.557 48.5976 102.29 48.8059 101.957 48.961C101.624 49.1161 101.253 49.1936 100.842 49.1936C100.288 49.1936 99.8251 49.0826 99.4552 48.8606C99.0887 48.6356 98.8146 48.336 98.633 47.962C98.4514 47.5849 98.3607 47.1683 98.3607 46.7121V46.557C98.3607 46.1009 98.4514 45.6858 98.633 45.3117C98.8146 44.9346 99.0887 44.6351 99.4552 44.4131C99.8251 44.188 100.288 44.0755 100.842 44.0755C101.283 44.0755 101.668 44.1546 101.997 44.3127C102.33 44.4678 102.591 44.6853 102.779 44.965C102.968 45.2448 103.067 45.5717 103.077 45.9458H101.897C101.887 45.7694 101.838 45.6082 101.75 45.4622C101.666 45.3163 101.545 45.2007 101.387 45.1156C101.232 45.0274 101.046 44.9833 100.827 44.9833C100.504 44.9833 100.254 45.0593 100.076 45.2114C99.9008 45.3634 99.7797 45.5596 99.7125 45.7998C99.6452 46.04 99.6116 46.2924 99.6116 46.557V46.7121C99.6116 46.9797 99.6435 47.2337 99.7074 47.4739C99.7747 47.7141 99.8974 47.9103 100.076 48.0623C100.254 48.2114 100.506 48.2859 100.832 48.2859Z" fill="white"></path>
+<path d="M107.062 45.7679C107.062 45.5124 106.983 45.3087 106.825 45.1566C106.67 45.0046 106.435 44.9285 106.119 44.9285C105.93 44.9285 105.765 44.9589 105.624 45.0198C105.483 45.0775 105.374 45.1566 105.296 45.257C105.219 45.3573 105.18 45.4714 105.18 45.5991H103.929C103.929 45.3345 104.022 45.0867 104.207 44.8555C104.392 44.6214 104.652 44.4328 104.989 44.2899C105.328 44.147 105.728 44.0755 106.189 44.0755C106.599 44.0755 106.964 44.1379 107.284 44.2625C107.603 44.3872 107.854 44.5758 108.035 44.8282C108.22 45.0806 108.313 45.3969 108.313 45.777V47.9529C108.313 48.184 108.331 48.3877 108.368 48.5641C108.405 48.7405 108.457 48.8941 108.525 49.0248V49.1024H107.243C107.186 48.9838 107.141 48.8302 107.107 48.6417C107.077 48.4531 107.062 48.2691 107.062 48.0897V45.7679ZM107.253 46.7942H106.396C105.952 46.7942 105.617 46.8687 105.392 47.0177C105.17 47.1637 105.059 47.3629 105.059 47.6153C105.059 47.8099 105.133 47.9726 105.281 48.1034C105.429 48.2311 105.638 48.295 105.907 48.295C106.152 48.295 106.366 48.2509 106.547 48.1627C106.732 48.0715 106.877 47.9605 106.981 47.8297C107.085 47.6959 107.139 47.5712 107.142 47.4557L107.541 47.962C107.501 48.0867 107.432 48.2205 107.334 48.3634C107.24 48.5033 107.114 48.6371 106.956 48.7648C106.801 48.8895 106.616 48.9929 106.401 49.075C106.189 49.1541 105.942 49.1936 105.66 49.1936C105.303 49.1936 104.985 49.1298 104.706 49.002C104.427 48.8743 104.207 48.6994 104.045 48.4774C103.887 48.2524 103.808 48 103.808 47.7202C103.808 47.1972 104.025 46.7957 104.459 46.516C104.893 46.2362 105.508 46.0963 106.305 46.0963H107.243L107.253 46.7942Z" fill="white"></path>
+<path d="M110.83 51H109.579V44.1668H110.734L110.83 45.1156V51ZM114.371 46.6802C114.371 47.1607 114.288 47.591 114.124 47.9711C113.962 48.3482 113.723 48.6462 113.407 48.8652C113.095 49.0841 112.711 49.1936 112.257 49.1936C111.8 49.1936 111.42 49.0933 111.117 48.8925C110.818 48.6888 110.584 48.409 110.416 48.0532C110.248 47.6974 110.132 47.2914 110.068 46.8353V46.5114C110.132 46.0248 110.248 45.6006 110.416 45.2387C110.584 44.8738 110.818 44.5895 111.117 44.3857C111.417 44.1789 111.792 44.0755 112.242 44.0755C112.703 44.0755 113.091 44.1804 113.407 44.3903C113.723 44.6001 113.962 44.8936 114.124 45.2707C114.288 45.6477 114.371 46.0857 114.371 46.5844V46.6802ZM113.12 46.5844C113.12 46.2894 113.078 46.0218 112.994 45.7816C112.913 45.5413 112.782 45.3512 112.6 45.2114C112.422 45.0715 112.188 45.0015 111.899 45.0015C111.691 45.0015 111.511 45.0335 111.359 45.0973C111.208 45.1581 111.08 45.2448 110.976 45.3573C110.875 45.4698 110.796 45.6036 110.739 45.7587C110.682 45.9108 110.641 46.0781 110.618 46.2605V47.0862C110.658 47.3051 110.726 47.5058 110.82 47.6883C110.914 47.8708 111.048 48.0167 111.223 48.1262C111.401 48.2326 111.63 48.2859 111.909 48.2859C112.198 48.2859 112.432 48.2129 112.61 48.0669C112.789 47.9179 112.918 47.7233 112.999 47.483C113.079 47.2397 113.12 46.9721 113.12 46.6802V46.5844Z" fill="white"></path>
+<path d="M117.806 49.1936C117.264 49.1936 116.797 49.0887 116.404 48.8789C116.01 48.666 115.707 48.3801 115.496 48.0213C115.284 47.6594 115.178 47.2549 115.178 46.8079V46.6209C115.178 46.1069 115.285 45.6599 115.501 45.2798C115.716 44.8966 116.01 44.6001 116.383 44.3903C116.76 44.1804 117.185 44.0755 117.66 44.0755C118.184 44.0755 118.62 44.1789 118.966 44.3857C119.312 44.5895 119.571 44.8738 119.743 45.2387C119.914 45.6006 120 46.0203 120 46.4977V46.9858H115.778V46.1693H118.764V46.0826C118.757 45.891 118.717 45.7116 118.643 45.5443C118.569 45.3771 118.451 45.2418 118.29 45.1384C118.132 45.035 117.92 44.9833 117.654 44.9833C117.389 44.9833 117.165 45.0517 116.984 45.1885C116.802 45.3224 116.664 45.5124 116.57 45.7587C116.476 46.002 116.429 46.2894 116.429 46.6209V46.8079C116.429 47.0877 116.486 47.3386 116.6 47.5606C116.715 47.7826 116.881 47.9589 117.1 48.0897C117.318 48.2174 117.579 48.2813 117.881 48.2813C118.174 48.2813 118.433 48.2296 118.658 48.1262C118.887 48.0228 119.084 47.8738 119.248 47.6792L119.904 48.2722C119.733 48.5063 119.474 48.7192 119.127 48.9108C118.784 49.0993 118.344 49.1936 117.806 49.1936Z" fill="white"></path>
+</g>
+</svg>
+</div>
+<div class="section-header-logo__sub">
+<div class="section-header-logo__small">
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 150 50" fill="none">
+<path d="M41.3047 23.2489H46.9153C47.2233 23.2489 47.4048 22.8991 47.2288 22.6437L42.3278 15.5753C42.2453 15.4587 42.2948 15.2976 42.4214 15.2366C43.571 14.6813 44.4895 13.9206 45.1551 12.9433C45.9197 11.8217 46.3047 10.4114 46.3047 8.72338V8.2292C46.3047 6.54122 45.9252 5.12531 45.1716 3.98147C44.418 2.83764 43.3344 1.97144 41.9263 1.38286C40.5182 0.794287 38.846 0.5 36.9043 0.5H28.01C27.801 0.5 27.625 0.67213 27.625 0.888681V22.8603C27.625 23.0713 27.7955 23.2489 28.01 23.2489H32.9385C33.1475 23.2489 33.3235 23.0768 33.3235 22.8603V16.708C33.3235 16.497 33.494 16.3193 33.7086 16.3193H36.3653C36.4918 16.3193 36.6128 16.386 36.6843 16.4915L40.9912 23.0713C41.0627 23.1768 41.1837 23.2434 41.3102 23.2434L41.3047 23.2489ZM33.3235 5.70833C33.3235 5.49733 33.494 5.31965 33.7086 5.31965H37.2454C37.9164 5.31965 38.4995 5.45291 38.989 5.71943C39.4786 5.98596 39.8636 6.36908 40.1386 6.86327C40.4137 7.35745 40.5512 7.94602 40.5512 8.62344C40.5512 9.30085 40.4137 9.86166 40.1386 10.3558C39.8636 10.85 39.4786 11.2332 38.989 11.4997C38.4995 11.7662 37.9164 11.8995 37.2454 11.8995H33.7086C33.4995 11.8995 33.3235 11.7273 33.3235 11.5108V5.70278V5.70833Z" fill="white" />
+<path d="M68.2207 0.679688C68.0612 0.679688 67.9182 0.779634 67.8632 0.924001L63.2318 12.2346C63.1822 12.3623 63.0007 12.3623 62.9512 12.2346L58.2868 0.929554C58.2318 0.779634 58.0888 0.68524 57.9293 0.68524H50.6741C50.4651 0.68524 50.2891 0.85737 50.2891 1.07392V22.8623C50.2891 23.0733 50.4596 23.251 50.6741 23.251H55.113C55.322 23.251 55.498 23.0788 55.498 22.8623V7.65929C55.498 7.40387 55.8501 7.33724 55.9436 7.576L60.245 18.4591C60.3055 18.6034 60.443 18.7034 60.6025 18.7034H65.2559C65.4155 18.7034 65.553 18.609 65.6135 18.4591L69.9424 7.43719C70.0359 7.19843 70.3879 7.26506 70.3879 7.52048V22.8567C70.3879 23.0677 70.5584 23.2454 70.7729 23.2454H75.6409C75.8499 23.2454 76.0259 23.0733 76.0259 22.8567V1.06837C76.0259 0.85737 75.8554 0.679688 75.6409 0.679688H68.2317H68.2207Z" fill="white" />
+<path d="M91.5056 23.865C89.4649 23.865 87.6883 23.5097 86.1756 22.7989C84.663 22.0882 83.4089 21.1498 82.4078 19.9838C81.4067 18.8177 80.6641 17.5573 80.1746 16.1969C79.685 14.8365 79.4375 13.5206 79.4375 12.2379V11.5605C79.4375 10.139 79.6905 8.73977 80.2021 7.37384C80.7136 6.00235 81.4782 4.76412 82.5013 3.64805C83.5244 2.53753 84.784 1.64912 86.2801 0.988361C87.7818 0.327603 89.5199 0 91.5001 0C93.4803 0 95.1909 0.327603 96.6926 0.988361C98.1942 1.64912 99.4538 2.53198 100.477 3.64805C101.495 4.75857 102.27 6.00235 102.787 7.37384C103.31 8.74533 103.568 10.139 103.568 11.5605V12.2379C103.568 13.515 103.321 14.8365 102.82 16.1969C102.32 17.5573 101.572 18.8177 100.57 19.9838C99.5693 21.1498 98.3152 22.0882 96.8026 22.7989C95.29 23.5097 93.5243 23.865 91.5056 23.865ZM91.5056 18.4846C92.4847 18.4846 93.3648 18.318 94.1404 17.9904C94.9159 17.6628 95.5815 17.1964 96.1315 16.6022C96.6816 16.0026 97.0996 15.3085 97.3856 14.5145C97.6717 13.7204 97.8147 12.8598 97.8147 11.9325C97.8147 10.9442 97.6662 10.0446 97.3691 9.24506C97.0721 8.43993 96.6486 7.75141 96.0985 7.17394C95.5485 6.59647 94.8829 6.15227 94.1073 5.84688C93.3318 5.53593 92.4627 5.38046 91.5056 5.38046C90.5485 5.38046 89.6464 5.53593 88.8709 5.84688C88.0953 6.15782 87.4297 6.60203 86.8797 7.17394C86.3296 7.75141 85.9116 8.43993 85.6256 9.24506C85.3395 10.0502 85.1965 10.9442 85.1965 11.9325C85.1965 12.8598 85.3395 13.7204 85.6256 14.5145C85.9116 15.3085 86.3296 16.0026 86.8797 16.6022C87.4297 17.2019 88.0953 17.6628 88.8709 17.9904C89.6464 18.318 90.5265 18.4846 91.5056 18.4846Z" fill="white" />
+<path d="M17.4305 0.679688H8.86071C8.69569 0.679688 8.54718 0.790739 8.49768 0.946212L1.57254 22.7457C1.49554 22.9955 1.67705 23.251 1.93558 23.251H24.5866C24.8452 23.251 25.0322 22.9955 24.9497 22.7457L17.7935 0.946212C17.744 0.790739 17.5955 0.679688 17.4305 0.679688ZM8.67919 18.0482L12.4415 5.58818C12.491 5.42715 12.6396 5.3161 12.8101 5.3161H13.3876C13.5526 5.3161 13.7012 5.42715 13.7507 5.58818L17.6175 18.0482C17.6945 18.298 17.513 18.5479 17.2545 18.5479H9.04773C8.7892 18.5479 8.60769 18.298 8.67919 18.0482Z" fill="white" />
+<path d="M15.7992 40.5316L15.6833 40.3351C15.5815 40.1642 15.4356 40.0223 15.2601 39.9236C15.0846 39.8249 14.8856 39.7728 14.683 39.7724H11.2259C11.0592 39.7728 10.8945 39.8083 10.7431 39.8764C10.5917 39.9446 10.4572 40.0438 10.3487 40.1673C10.3029 40.2195 10.262 40.2757 10.2266 40.3351L9.54014 41.4978L8.50068 43.2554C8.49707 43.261 8.4938 43.2668 8.49087 43.2728C8.39473 43.4429 8.34514 43.6342 8.34685 43.8284C8.34857 44.0226 8.40155 44.2131 8.50068 44.3816L10.2284 47.3019C10.3218 47.4591 10.4528 47.592 10.6102 47.6894C10.7675 47.7867 10.9467 47.8456 11.1323 47.861H4.5042C4.32118 47.8616 4.14121 47.8154 3.98227 47.7269C3.82333 47.6383 3.69098 47.5107 3.59846 47.3566L0.14043 41.5213C0.0484469 41.3668 0 41.1912 0 41.0126C0 40.8339 0.0484469 40.6583 0.14043 40.5038L3.59846 34.6728C3.69042 34.518 3.82252 34.3894 3.9815 34.3001C4.14048 34.2108 4.32075 34.1639 4.5042 34.1641H11.4203C11.6036 34.164 11.7837 34.2109 11.9425 34.3002C12.1013 34.3895 12.2333 34.518 12.3251 34.6728L15.5558 40.1186L15.7849 40.5038C15.7906 40.5126 15.7953 40.5219 15.7992 40.5316Z" fill="#2916FC" />
+<path d="M7.5647 37.469V44.2218C7.5647 44.314 7.52713 44.4025 7.46026 44.4678C7.39339 44.533 7.30269 44.5696 7.20811 44.5696H5.88784C5.79327 44.5696 5.70257 44.533 5.63569 44.4678C5.56882 44.4025 5.53125 44.314 5.53125 44.2218V37.469C5.53125 37.3767 5.56882 37.2882 5.63569 37.223C5.70257 37.1577 5.79327 37.1211 5.88784 37.1211H7.21078C7.30489 37.1218 7.39491 37.1587 7.46121 37.2239C7.5275 37.2891 7.56471 37.3771 7.5647 37.469ZM11.2411 37.662L9.44393 40.2631C9.40675 40.3174 9.38595 40.3807 9.3839 40.4459C9.38186 40.5111 9.39864 40.5755 9.43234 40.6319L11.4961 44.0461C11.5273 44.0988 11.5438 44.1585 11.5439 44.2193C11.544 44.2801 11.5278 44.3399 11.4969 44.3927C11.4659 44.4455 11.4213 44.4895 11.3676 44.5202C11.3138 44.5509 11.2527 44.5674 11.1903 44.5679H9.69176C9.62864 44.5676 9.56674 44.5509 9.51239 44.5195C9.45804 44.4882 9.41319 44.4434 9.38242 44.3896L7.33203 40.7841C7.3015 40.7297 7.2864 40.6685 7.28828 40.6065C7.29016 40.5446 7.30896 40.4843 7.34273 40.4319L9.38777 37.2846C9.4199 37.2357 9.46406 37.1955 9.51623 37.1675C9.56839 37.1396 9.6269 37.1248 9.68641 37.1246H10.9443C11.0083 37.1249 11.071 37.1421 11.1259 37.1743C11.1807 37.2065 11.2257 37.2524 11.2561 37.3074C11.2865 37.3624 11.3011 37.4243 11.2985 37.4867C11.2958 37.5491 11.276 37.6097 11.2411 37.662Z" fill="white" />
+<path d="M15.3311 42.1918L12.7039 46.6305H11.2981L10.0135 44.4599L9.63281 43.8172L10.2845 42.7171L10.8176 41.8144L11.2981 41.0039H14.6286L15.3311 42.1918Z" fill="url(#paint0_linear_10592_6514)" />
+<path opacity="0.68" d="M11.1156 44.5933H9.8533L9.77129 44.4541L9.39062 43.8115L10.0423 42.7114L10.3169 42.2461L11.4214 44.0724C11.4524 44.125 11.4687 44.1846 11.4687 44.2453C11.4687 44.306 11.4524 44.3656 11.4215 44.4183C11.3906 44.471 11.3461 44.5148 11.2925 44.5455C11.2388 44.5762 11.1778 44.5927 11.1156 44.5933Z" fill="white" />
+<path d="M17.5156 43.4773C17.4908 43.4002 17.4573 43.3261 17.4157 43.2564L15.9635 40.8057L15.8013 40.5326L15.6854 40.3361C15.5836 40.1652 15.4377 40.0233 15.2622 39.9246C15.0867 39.8259 14.8877 39.7738 14.6851 39.7734H11.2307C11.0639 39.7738 10.8993 39.8093 10.7479 39.8774C10.5965 39.9456 10.462 40.0448 10.3535 40.1683C10.3077 40.2205 10.2668 40.2767 10.2313 40.3361L9.54489 41.4988L8.50543 43.2564C8.50183 43.262 8.49855 43.2678 8.49562 43.2738C8.39949 43.4439 8.34989 43.6352 8.35161 43.8294C8.35332 44.0236 8.4063 44.2141 8.50543 44.3826L10.2331 47.3029C10.3266 47.4601 10.4576 47.593 10.6149 47.6904C10.7723 47.7877 10.9514 47.8466 11.1371 47.862C11.1683 47.862 11.2004 47.8664 11.2324 47.8664H14.6896C14.7274 47.8665 14.7652 47.8645 14.8028 47.8603L16.0304 49.7735C16.1006 49.8818 16.2119 49.9587 16.34 49.9873C16.468 50.016 16.6025 49.9942 16.7141 49.9266L16.7881 49.8814C16.8994 49.8131 16.9786 49.7047 17.0083 49.5797C17.038 49.4548 17.0159 49.3235 16.9468 49.2143L15.6987 47.2776L17.413 44.3817C17.4934 44.2461 17.544 44.0957 17.5617 43.94C17.5793 43.7843 17.5636 43.6267 17.5156 43.4773ZM15.9109 44.4556L14.6218 46.6298H11.294L11.2859 46.6158L10.0102 44.4591L9.62958 43.8156L10.2812 42.7155L10.8161 41.8136L11.2877 41.017H14.6343L15.3297 42.1911L16.2916 43.8156L15.9109 44.4556Z" fill="#6052FF" />
+<path d="M25.7986 44.8915H24.4212V37.5119H25.7986V44.8915ZM28.2413 38.5661H22V37.5119H28.2413V38.5661Z" fill="white" />
+<path d="M30.458 44.8915H29.1237V37.1064H30.458V44.8915ZM29.7962 41.9569C29.7998 41.4467 29.8949 40.9922 30.0814 40.5935C30.2715 40.1948 30.5369 39.8806 30.8777 39.6508C31.2184 39.421 31.6166 39.3061 32.0721 39.3061C32.4559 39.3061 32.7895 39.3754 33.0729 39.5139C33.3598 39.6491 33.5822 39.8687 33.7401 40.1728C33.8979 40.4736 33.9768 40.8757 33.9768 41.3791V44.8915H32.6371V41.369C32.6371 41.1122 32.5976 40.9078 32.5187 40.7557C32.4398 40.6036 32.3232 40.4955 32.169 40.4313C32.0183 40.3671 31.8336 40.335 31.6148 40.335C31.3852 40.335 31.1844 40.3773 31.0122 40.4617C30.84 40.5428 30.6947 40.6577 30.5764 40.8064C30.458 40.9551 30.3701 41.1274 30.3127 41.3234C30.2553 41.5193 30.2267 41.7288 30.2267 41.9518L29.7962 41.9569Z" fill="white" />
+<path d="M37.8561 44.9929C37.2786 44.9929 36.78 44.8763 36.3603 44.6432C35.9406 44.4067 35.6178 44.089 35.3918 43.6903C35.1659 43.2882 35.0529 42.8388 35.0529 42.3421V42.1343C35.0529 41.5633 35.1677 41.0666 35.3972 40.6442C35.6268 40.2184 35.9406 39.889 36.3388 39.6559C36.7405 39.4227 37.1943 39.3061 37.7 39.3061C38.2596 39.3061 38.7241 39.421 39.0936 39.6508C39.463 39.8772 39.7392 40.1931 39.9222 40.5986C40.1051 41.0007 40.1966 41.467 40.1966 41.9975V42.5398H35.6931V41.6325H38.8784V41.5362C38.8712 41.3234 38.8281 41.124 38.7492 40.9382C38.6703 40.7523 38.5448 40.602 38.3726 40.4871C38.204 40.3722 37.978 40.3147 37.6947 40.3147C37.4113 40.3147 37.1728 40.3908 36.9791 40.5428C36.7854 40.6915 36.6383 40.9027 36.5379 41.1764C36.4374 41.4467 36.3872 41.766 36.3872 42.1343V42.3421C36.3872 42.653 36.4482 42.9317 36.5702 43.1784C36.6921 43.4251 36.8697 43.6211 37.1028 43.7663C37.336 43.9083 37.614 43.9792 37.9368 43.9792C38.2488 43.9792 38.525 43.9218 38.7654 43.8069C39.0093 43.692 39.2191 43.5264 39.3949 43.3102L40.0943 43.9691C39.9114 44.2293 39.6352 44.4658 39.2657 44.6787C38.8999 44.8882 38.43 44.9929 37.8561 44.9929Z" fill="white" />
+<path d="M45.2757 44.8915H43.9359V39.4075H45.195L45.2757 40.5276V44.8915ZM44.6031 41.9569C44.6031 41.4467 44.6892 40.9922 44.8614 40.5935C45.0371 40.1948 45.2972 39.8806 45.6415 39.6508C45.9859 39.421 46.4145 39.3061 46.9275 39.3061C47.4547 39.3061 47.8888 39.4565 48.2295 39.7572C48.5703 40.0579 48.7406 40.5513 48.7406 41.2372V44.8915H47.4063V41.3538C47.4063 41.097 47.3633 40.8942 47.2772 40.7456C47.1947 40.5969 47.0763 40.4921 46.9221 40.4313C46.7714 40.3671 46.5903 40.335 46.3786 40.335C46.1383 40.335 45.9339 40.3773 45.7653 40.4617C45.6003 40.5428 45.4658 40.6577 45.3617 40.8064C45.2577 40.9551 45.1806 41.1274 45.1304 41.3234C45.0838 41.5193 45.0604 41.7288 45.0604 41.9518L44.6031 41.9569ZM48.0304 41.7795C48.034 41.3301 48.1219 40.9179 48.2941 40.5428C48.4662 40.1678 48.7209 39.8687 49.0581 39.6457C49.3953 39.4193 49.8113 39.3061 50.3063 39.3061C50.7009 39.3061 51.0399 39.3754 51.3232 39.5139C51.6066 39.6491 51.8254 39.867 51.9797 40.1678C52.1339 40.4651 52.211 40.8604 52.211 41.3538V44.8915H50.8713V41.3436C50.8713 41.0767 50.8282 40.8706 50.7422 40.7253C50.6597 40.5766 50.5413 40.4752 50.3871 40.4212C50.2364 40.3637 50.0571 40.335 49.849 40.335C49.6517 40.335 49.4778 40.3688 49.3271 40.4364C49.18 40.504 49.0563 40.5986 48.9559 40.7202C48.859 40.8385 48.7837 40.9787 48.7299 41.1409C48.6797 41.2997 48.6546 41.472 48.6546 41.6579L48.0304 41.7795Z" fill="white" />
+<path d="M56.7951 41.1865C56.7951 40.9027 56.7108 40.6763 56.5422 40.5073C56.3772 40.3384 56.1262 40.2539 55.789 40.2539C55.5881 40.2539 55.4124 40.2877 55.2617 40.3553C55.1111 40.4195 54.9945 40.5073 54.912 40.6189C54.8295 40.7304 54.7882 40.8571 54.7882 40.999H53.4539C53.4539 40.705 53.5525 40.4296 53.7498 40.1728C53.9471 39.9127 54.2251 39.7032 54.5838 39.5443C54.9461 39.3855 55.3729 39.3061 55.8643 39.3061C56.3019 39.3061 56.6911 39.3754 57.0319 39.5139C57.3726 39.6525 57.6399 39.862 57.8335 40.1424C58.0308 40.4229 58.1295 40.7743 58.1295 41.1967V43.6143C58.1295 43.8711 58.1492 44.0975 58.1887 44.2935C58.2281 44.4894 58.2837 44.6601 58.3554 44.8054V44.8915H56.9888C56.9278 44.7598 56.8794 44.5891 56.8435 44.3796C56.8113 44.1701 56.7951 43.9657 56.7951 43.7663V41.1865ZM56.9996 42.3269H56.0849C55.6114 42.3269 55.2545 42.4097 55.0142 42.5753C54.7775 42.7375 54.6591 42.9588 54.6591 43.2392C54.6591 43.4555 54.738 43.6363 54.8958 43.7816C55.0537 43.9235 55.2761 43.9944 55.563 43.9944C55.8249 43.9944 56.0526 43.9454 56.2463 43.8474C56.4436 43.7461 56.5978 43.6227 56.709 43.4774C56.8202 43.3288 56.8776 43.1902 56.8812 43.0618L57.3063 43.6244C57.2632 43.763 57.1897 43.9116 57.0857 44.0705C56.9852 44.2259 56.8507 44.3746 56.6821 44.5165C56.5171 44.655 56.3199 44.7699 56.0903 44.8611C55.8643 44.949 55.6007 44.9929 55.2994 44.9929C54.9192 44.9929 54.5802 44.9219 54.2825 44.78C53.9848 44.6381 53.7498 44.4438 53.5776 44.1972C53.4091 43.9471 53.3248 43.6667 53.3248 43.3558C53.3248 42.7746 53.5561 42.3286 54.0188 42.0177C54.4815 41.7069 55.138 41.5514 55.9881 41.5514H56.9888L56.9996 42.3269Z" fill="white" />
+<path d="M60.8197 44.8915H59.4799V37.1064H60.8197V44.8915ZM61.9119 42.0634L60.5076 43.4065L60.1525 42.3573L61.2124 41.1156L62.8212 39.4075H64.4299L61.9119 42.0634ZM61.2501 42.332L62.0948 41.4602L64.6505 44.8915H63.101L61.2501 42.332Z" fill="white" />
+<path d="M67.825 44.9929C67.2475 44.9929 66.7489 44.8763 66.3292 44.6432C65.9095 44.4067 65.5867 44.089 65.3607 43.6903C65.1348 43.2882 65.0218 42.8388 65.0218 42.3421V42.1343C65.0218 41.5633 65.1366 41.0666 65.3661 40.6442C65.5957 40.2184 65.9095 39.889 66.3077 39.6559C66.7094 39.4227 67.1632 39.3061 67.6689 39.3061C68.2285 39.3061 68.693 39.421 69.0625 39.6508C69.4319 39.8772 69.7081 40.1931 69.891 40.5986C70.074 41.0007 70.1654 41.467 70.1654 41.9975V42.5398H65.662V41.6325H68.8472V41.5362C68.8401 41.3234 68.797 41.124 68.7181 40.9382C68.6392 40.7523 68.5137 40.602 68.3415 40.4871C68.1729 40.3722 67.9469 40.3147 67.6636 40.3147C67.3802 40.3147 67.1417 40.3908 66.948 40.5428C66.7543 40.6915 66.6072 40.9027 66.5068 41.1764C66.4063 41.4467 66.3561 41.766 66.3561 42.1343V42.3421C66.3561 42.653 66.4171 42.9317 66.5391 43.1784C66.661 43.4251 66.8386 43.6211 67.0717 43.7663C67.3049 43.9083 67.5829 43.9792 67.9057 43.9792C68.2177 43.9792 68.4939 43.9218 68.7343 43.8069C68.9782 43.692 69.188 43.5264 69.3638 43.3102L70.0632 43.9691C69.8803 44.2293 69.6041 44.4658 69.2346 44.6787C68.8688 44.8882 68.3989 44.9929 67.825 44.9929Z" fill="white" />
+<path d="M72.5005 44.8915H71.1662V39.4075H72.436L72.5005 40.482V44.8915ZM74.2546 40.5631C74.1721 40.5496 74.0842 40.5394 73.9909 40.5327C73.9012 40.5259 73.8116 40.5226 73.7219 40.5226C73.4278 40.5226 73.1821 40.5732 72.9848 40.6746C72.7911 40.7726 72.644 40.9145 72.5436 41.1004C72.4432 41.2828 72.384 41.4991 72.366 41.7491L72.0594 41.7542C72.0594 41.2913 72.1239 40.8757 72.253 40.5073C72.3822 40.139 72.5759 39.8468 72.8341 39.6305C73.0924 39.4143 73.4152 39.3061 73.8026 39.3061C73.8779 39.3061 73.9622 39.3129 74.0555 39.3264C74.1487 39.3399 74.2187 39.3551 74.2653 39.372L74.2546 40.5631Z" fill="white" />
+<path d="M78.3222 43.3964C78.3222 43.2815 78.2899 43.1767 78.2253 43.0821C78.1643 42.9875 78.0442 42.8996 77.8648 42.8186C77.6855 42.7375 77.4218 42.6631 77.0739 42.5955C76.6614 42.5144 76.2973 42.4063 75.9817 42.2712C75.6696 42.136 75.4257 41.962 75.2499 41.7491C75.0778 41.5362 74.9917 41.2761 74.9917 40.9686C74.9917 40.6712 75.0814 40.3975 75.2607 40.1475C75.4436 39.8941 75.7037 39.6913 76.0409 39.5393C76.3816 39.3838 76.7834 39.3061 77.2461 39.3061C77.7339 39.3061 78.1536 39.3838 78.5051 39.5393C78.8566 39.6913 79.1256 39.8991 79.3121 40.1627C79.5023 40.4229 79.5973 40.7185 79.5973 41.0497H78.263C78.263 40.8334 78.1769 40.6442 78.0047 40.482C77.8361 40.3164 77.5815 40.2337 77.2407 40.2337C77.0291 40.2337 76.8515 40.2658 76.708 40.33C76.5681 40.3942 76.4623 40.4769 76.3906 40.5783C76.3224 40.6797 76.2884 40.7912 76.2884 40.9128C76.2884 41.0311 76.3224 41.1341 76.3906 41.222C76.4623 41.3098 76.5825 41.3876 76.7511 41.4551C76.9232 41.5227 77.1636 41.5869 77.472 41.6477C77.9168 41.7356 78.3006 41.8471 78.6235 41.9823C78.9463 42.114 79.1938 42.2897 79.366 42.5094C79.5417 42.7256 79.6296 43.001 79.6296 43.3355C79.6296 43.6565 79.531 43.9421 79.3337 44.1921C79.14 44.4421 78.8656 44.6381 78.5105 44.78C78.1589 44.9219 77.7429 44.9929 77.2622 44.9929C76.7278 44.9929 76.2776 44.9034 75.9117 44.7243C75.5459 44.5452 75.2679 44.3171 75.0778 44.04C74.8912 43.7596 74.798 43.469 74.798 43.1683H76.0839C76.0983 43.3845 76.1628 43.5585 76.2776 43.6903C76.396 43.8221 76.543 43.9184 76.7188 43.9792C76.8981 44.0367 77.0847 44.0654 77.2784 44.0654C77.5079 44.0654 77.698 44.0367 77.8487 43.9792C78.0029 43.9218 78.1195 43.8441 78.1984 43.7461C78.2809 43.6447 78.3222 43.5281 78.3222 43.3964Z" fill="white" />
+<path d="M83.2506 42.0988C83.2506 41.565 83.3582 41.0885 83.5734 40.6695C83.7887 40.2505 84.0971 39.9194 84.4989 39.6761C84.9042 39.4295 85.3902 39.3061 85.957 39.3061C86.5309 39.3061 87.0205 39.4295 87.4258 39.6761C87.8311 39.9194 88.1396 40.2505 88.3512 40.6695C88.5665 41.0885 88.6741 41.565 88.6741 42.0988V42.2053C88.6741 42.7358 88.5665 43.2122 88.3512 43.6346C88.1396 44.0536 87.8311 44.3847 87.4258 44.628C87.0241 44.8713 86.538 44.9929 85.9677 44.9929C85.3974 44.9929 84.9096 44.8713 84.5042 44.628C84.0989 44.3847 83.7887 44.0536 83.5734 43.6346C83.3582 43.2122 83.2506 42.7358 83.2506 42.2053V42.0988ZM84.585 42.2053C84.585 42.5297 84.6334 42.827 84.7302 43.0973C84.8271 43.3643 84.9759 43.5788 85.1768 43.741C85.3813 43.9032 85.6449 43.9843 85.9677 43.9843C86.287 43.9843 86.547 43.9032 86.7479 43.741C86.9523 43.5788 87.1012 43.3643 87.1945 43.0973C87.2913 42.827 87.3397 42.5297 87.3397 42.2053V42.0988C87.3397 41.7778 87.2913 41.4822 87.1945 41.2119C87.1012 40.9415 86.9523 40.7253 86.7479 40.5631C86.5434 40.3975 86.2798 40.3147 85.957 40.3147C85.6377 40.3147 85.3759 40.3975 85.1714 40.5631C84.9706 40.7253 84.8217 40.9415 84.7248 41.2119C84.6316 41.4822 84.585 41.7778 84.585 42.0988V42.2053Z" fill="white" />
+<path d="M90.2129 44.8915V38.8855C90.2129 38.2772 90.3958 37.8109 90.7617 37.4866C91.1275 37.1622 91.6279 37 92.2628 37C92.3919 37 92.5193 37.0084 92.6448 37.0253C92.7704 37.0422 92.8923 37.0642 93.0107 37.0912L92.9784 38.0745C92.9102 38.061 92.8331 38.0509 92.747 38.0441C92.6609 38.0373 92.5713 38.034 92.478 38.034C92.1839 38.034 91.9543 38.1083 91.7893 38.257C91.6279 38.4023 91.5472 38.6118 91.5472 38.8855V44.8915H90.2129ZM92.7363 40.335H89.3251V39.4075H92.7363V40.335Z" fill="white" />
+<path d="M97.923 44.8915H96.5349V37.5119H97.923V44.8915ZM99.4618 41.0851L97.6432 42.8996L97.4011 41.592L98.6816 40.0715L100.931 37.5119H102.625L99.4618 41.0851ZM98.5848 41.4197L99.5425 40.5276L102.771 44.8915H101.119L98.5848 41.4197Z" fill="white" />
+<path d="M106.72 39.4075H108.054V44.8915H106.795L106.72 43.594V39.4075ZM107.349 42.4384C107.349 42.9317 107.272 43.371 107.118 43.7562C106.964 44.138 106.724 44.4404 106.397 44.6635C106.071 44.8831 105.647 44.9929 105.127 44.9929C104.553 44.9929 104.089 44.8341 103.734 44.5165C103.379 44.1989 103.201 43.6768 103.201 42.9503V39.4075H104.536V42.9605C104.536 43.2139 104.577 43.4149 104.659 43.5636C104.745 43.7089 104.858 43.812 104.998 43.8728C105.138 43.9336 105.292 43.964 105.461 43.964C105.823 43.964 106.108 43.8981 106.316 43.7663C106.528 43.6312 106.679 43.4487 106.768 43.219C106.858 42.9892 106.903 42.7324 106.903 42.4486L107.349 42.4384Z" fill="white" />
+<path d="M110.701 37.1064V43.7055L110.572 44.8915H109.367V37.1064H110.701ZM114.489 42.2053C114.489 42.7459 114.403 43.2257 114.231 43.6447C114.062 44.0637 113.81 44.3931 113.472 44.633C113.139 44.873 112.723 44.9929 112.224 44.9929C111.74 44.9929 111.338 44.878 111.019 44.6483C110.703 44.4185 110.458 44.1026 110.282 43.7005C110.11 43.295 109.991 42.8287 109.927 42.3016V42.0025C109.991 41.472 110.11 41.0057 110.282 40.6036C110.458 40.1982 110.703 39.8806 111.019 39.6508C111.335 39.421 111.733 39.3061 112.213 39.3061C112.716 39.3061 113.135 39.4244 113.472 39.6609C113.81 39.8974 114.062 40.2252 114.231 40.6442C114.403 41.0632 114.489 41.5481 114.489 42.0988V42.2053ZM113.155 42.0988C113.155 41.7778 113.115 41.4839 113.037 41.2169C112.961 40.95 112.83 40.7371 112.644 40.5783C112.461 40.4161 112.206 40.335 111.88 40.335C111.654 40.335 111.46 40.3705 111.299 40.4415C111.137 40.5124 111.001 40.6104 110.89 40.7354C110.782 40.8604 110.698 41.0074 110.637 41.1764C110.576 41.3453 110.535 41.5278 110.513 41.7238V42.5854C110.545 42.8388 110.612 43.0703 110.712 43.2798C110.813 43.4893 110.96 43.6565 111.153 43.7816C111.347 43.9032 111.593 43.964 111.891 43.964C112.21 43.964 112.461 43.8863 112.644 43.7309C112.827 43.5754 112.958 43.3659 113.037 43.1024C113.115 42.8354 113.155 42.5364 113.155 42.2053V42.0988Z" fill="white" />
+<path d="M118.143 44.9929C117.565 44.9929 117.066 44.8763 116.647 44.6432C116.227 44.4067 115.904 44.089 115.678 43.6903C115.452 43.2882 115.339 42.8388 115.339 42.3421V42.1343C115.339 41.5633 115.454 41.0666 115.684 40.6442C115.913 40.2184 116.227 39.889 116.625 39.6559C117.027 39.4227 117.481 39.3061 117.987 39.3061C118.546 39.3061 119.011 39.421 119.38 39.6508C119.75 39.8772 120.026 40.1931 120.209 40.5986C120.392 41.0007 120.483 41.467 120.483 41.9975V42.5398H115.98V41.6325H119.165V41.5362C119.158 41.3234 119.115 41.124 119.036 40.9382C118.957 40.7523 118.831 40.602 118.659 40.4871C118.491 40.3722 118.265 40.3147 117.981 40.3147C117.698 40.3147 117.459 40.3908 117.266 40.5428C117.072 40.6915 116.925 40.9027 116.824 41.1764C116.724 41.4467 116.674 41.766 116.674 42.1343V42.3421C116.674 42.653 116.735 42.9317 116.857 43.1784C116.979 43.4251 117.156 43.6211 117.389 43.7663C117.622 43.9083 117.9 43.9792 118.223 43.9792C118.535 43.9792 118.812 43.9218 119.052 43.8069C119.296 43.692 119.506 43.5264 119.681 43.3102L120.381 43.9691C120.198 44.2293 119.922 44.4658 119.552 44.6787C119.186 44.8882 118.716 44.9929 118.143 44.9929Z" fill="white" />
+<path d="M124.734 43.3964C124.734 43.2815 124.701 43.1767 124.637 43.0821C124.576 42.9875 124.456 42.8996 124.276 42.8186C124.097 42.7375 123.833 42.6631 123.485 42.5955C123.073 42.5144 122.709 42.4063 122.393 42.2712C122.081 42.136 121.837 41.962 121.661 41.7491C121.489 41.5362 121.403 41.2761 121.403 40.9686C121.403 40.6712 121.493 40.3975 121.672 40.1475C121.855 39.8941 122.115 39.6913 122.452 39.5393C122.793 39.3838 123.195 39.3061 123.658 39.3061C124.145 39.3061 124.565 39.3838 124.917 39.5393C125.268 39.6913 125.537 39.8991 125.724 40.1627C125.914 40.4229 126.009 40.7185 126.009 41.0497H124.674C124.674 40.8334 124.588 40.6442 124.416 40.482C124.248 40.3164 123.993 40.2337 123.652 40.2337C123.44 40.2337 123.263 40.2658 123.119 40.33C122.98 40.3942 122.874 40.4769 122.802 40.5783C122.734 40.6797 122.7 40.7912 122.7 40.9128C122.7 41.0311 122.734 41.1341 122.802 41.222C122.874 41.3098 122.994 41.3876 123.163 41.4551C123.335 41.5227 123.575 41.5869 123.883 41.6477C124.328 41.7356 124.712 41.8471 125.035 41.9823C125.358 42.114 125.605 42.2897 125.777 42.5094C125.953 42.7256 126.041 43.001 126.041 43.3355C126.041 43.6565 125.942 43.9421 125.745 44.1921C125.551 44.4421 125.277 44.6381 124.922 44.78C124.57 44.9219 124.154 44.9929 123.674 44.9929C123.139 44.9929 122.689 44.9034 122.323 44.7243C121.957 44.5452 121.679 44.3171 121.489 44.04C121.303 43.7596 121.209 43.469 121.209 43.1683H122.495C122.51 43.3845 122.574 43.5585 122.689 43.6903C122.807 43.8221 122.954 43.9184 123.13 43.9792C123.31 44.0367 123.496 44.0654 123.69 44.0654C123.919 44.0654 124.109 44.0367 124.26 43.9792C124.414 43.9218 124.531 43.8441 124.61 43.7461C124.692 43.6447 124.734 43.5281 124.734 43.3964Z" fill="white" />
+<path d="M129.554 43.9843C129.762 43.9843 129.951 43.9454 130.119 43.8677C130.288 43.7866 130.422 43.6768 130.523 43.5383C130.623 43.3997 130.679 43.2409 130.69 43.0618H131.949C131.938 43.4234 131.825 43.7495 131.61 44.04C131.395 44.3306 131.109 44.5621 130.754 44.7344C130.399 44.9067 130.003 44.9929 129.565 44.9929C128.973 44.9929 128.48 44.8696 128.086 44.6229C127.695 44.3729 127.402 44.04 127.209 43.6244C127.015 43.2054 126.918 42.7425 126.918 42.2357V42.0634C126.918 41.5565 127.015 41.0953 127.209 40.6797C127.402 40.2607 127.695 39.9279 128.086 39.6812C128.48 39.4312 128.973 39.3061 129.565 39.3061C130.035 39.3061 130.446 39.394 130.797 39.5697C131.152 39.742 131.43 39.9836 131.631 40.2945C131.832 40.6053 131.938 40.9686 131.949 41.3842H130.69C130.679 41.1882 130.627 41.0091 130.534 40.8469C130.444 40.6847 130.315 40.5563 130.146 40.4617C129.981 40.3637 129.782 40.3147 129.549 40.3147C129.205 40.3147 128.937 40.3992 128.747 40.5682C128.561 40.7371 128.432 40.9551 128.36 41.222C128.288 41.4889 128.252 41.7694 128.252 42.0634V42.2357C128.252 42.533 128.286 42.8152 128.355 43.0821C128.426 43.349 128.557 43.567 128.747 43.7359C128.937 43.9015 129.207 43.9843 129.554 43.9843Z" fill="white" />
+<path d="M136.199 41.1865C136.199 40.9027 136.115 40.6763 135.946 40.5073C135.781 40.3384 135.53 40.2539 135.193 40.2539C134.992 40.2539 134.816 40.2877 134.666 40.3553C134.515 40.4195 134.399 40.5073 134.316 40.6189C134.234 40.7304 134.192 40.8571 134.192 40.999H132.858C132.858 40.705 132.957 40.4296 133.154 40.1728C133.351 39.9127 133.629 39.7032 133.988 39.5443C134.35 39.3855 134.777 39.3061 135.268 39.3061C135.706 39.3061 136.095 39.3754 136.436 39.5139C136.777 39.6525 137.044 39.862 137.238 40.1424C137.435 40.4229 137.534 40.7743 137.534 41.1967V43.6143C137.534 43.8711 137.553 44.0975 137.593 44.2935C137.632 44.4894 137.688 44.6601 137.76 44.8054V44.8915H136.393C136.332 44.7598 136.284 44.5891 136.248 44.3796C136.215 44.1701 136.199 43.9657 136.199 43.7663V41.1865ZM136.404 42.3269H135.489C135.016 42.3269 134.659 42.4097 134.418 42.5753C134.182 42.7375 134.063 42.9588 134.063 43.2392C134.063 43.4555 134.142 43.6363 134.3 43.7816C134.458 43.9235 134.68 43.9944 134.967 43.9944C135.229 43.9944 135.457 43.9454 135.65 43.8474C135.848 43.7461 136.002 43.6227 136.113 43.4774C136.224 43.3288 136.282 43.1902 136.285 43.0618L136.71 43.6244C136.667 43.763 136.594 43.9116 136.49 44.0705C136.389 44.2259 136.255 44.3746 136.086 44.5165C135.921 44.655 135.724 44.7699 135.494 44.8611C135.268 44.949 135.005 44.9929 134.703 44.9929C134.323 44.9929 133.984 44.9219 133.687 44.78C133.389 44.6381 133.154 44.4438 132.982 44.1972C132.813 43.9471 132.729 43.6667 132.729 43.3558C132.729 42.7746 132.96 42.3286 133.423 42.0177C133.886 41.7069 134.542 41.5514 135.392 41.5514H136.393L136.404 42.3269Z" fill="white" />
+<path d="M140.218 47H138.884V39.4075H140.116L140.218 40.4617V47ZM143.995 42.2002C143.995 42.7341 143.908 43.2122 143.732 43.6346C143.56 44.0536 143.305 44.3847 142.968 44.628C142.634 44.8713 142.225 44.9929 141.741 44.9929C141.253 44.9929 140.848 44.8814 140.525 44.6584C140.206 44.432 139.957 44.1211 139.777 43.7258C139.598 43.3305 139.474 42.8794 139.406 42.3725V42.0127C139.474 41.472 139.598 41.0007 139.777 40.5986C139.957 40.1931 140.206 39.8772 140.525 39.6508C140.844 39.421 141.244 39.3061 141.725 39.3061C142.216 39.3061 142.631 39.4227 142.968 39.6559C143.305 39.889 143.56 40.2151 143.732 40.6341C143.908 41.053 143.995 41.5396 143.995 42.0938V42.2002ZM142.661 42.0938C142.661 41.766 142.616 41.4687 142.527 41.2017C142.441 40.9348 142.301 40.7236 142.107 40.5682C141.917 40.4127 141.668 40.335 141.359 40.335C141.137 40.335 140.945 40.3705 140.783 40.4415C140.622 40.509 140.486 40.6053 140.374 40.7304C140.267 40.8554 140.183 41.0041 140.122 41.1764C140.061 41.3453 140.018 41.5312 139.992 41.7339V42.6513C140.035 42.8946 140.107 43.1176 140.208 43.3203C140.308 43.5231 140.452 43.6853 140.638 43.8069C140.828 43.9252 141.072 43.9843 141.37 43.9843C141.678 43.9843 141.928 43.9032 142.118 43.741C142.308 43.5754 142.446 43.3592 142.532 43.0922C142.618 42.8219 142.661 42.5246 142.661 42.2002V42.0938Z" fill="white" />
+<path d="M147.66 44.9929C147.082 44.9929 146.583 44.8763 146.164 44.6432C145.744 44.4067 145.421 44.089 145.195 43.6903C144.969 43.2882 144.856 42.8388 144.856 42.3421V42.1343C144.856 41.5633 144.971 41.0666 145.201 40.6442C145.43 40.2184 145.744 39.889 146.142 39.6559C146.544 39.4227 146.998 39.3061 147.503 39.3061C148.063 39.3061 148.528 39.421 148.897 39.6508C149.266 39.8772 149.543 40.1931 149.726 40.5986C149.909 41.0007 150 41.467 150 41.9975V42.5398H145.497V41.6325H148.682V41.5362C148.675 41.3234 148.632 41.124 148.553 40.9382C148.474 40.7523 148.348 40.602 148.176 40.4871C148.007 40.3722 147.781 40.3147 147.498 40.3147C147.215 40.3147 146.976 40.3908 146.783 40.5428C146.589 40.6915 146.442 40.9027 146.341 41.1764C146.241 41.4467 146.191 41.766 146.191 42.1343V42.3421C146.191 42.653 146.252 42.9317 146.374 43.1784C146.496 43.4251 146.673 43.6211 146.906 43.7663C147.139 43.9083 147.417 43.9792 147.74 43.9792C148.052 43.9792 148.328 43.9218 148.569 43.8069C148.813 43.692 149.023 43.5264 149.198 43.3102L149.898 43.9691C149.715 44.2293 149.439 44.4658 149.069 44.6787C148.703 44.8882 148.233 44.9929 147.66 44.9929Z" fill="white" />
+<defs>
+<linearGradient id="paint0_linear_10592_6514" x1="9.63281" y1="43.8172" x2="15.3311" y2="43.8172" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF7879" />
+<stop offset="0.21" stop-color="#FC777B" />
+<stop offset="0.36" stop-color="#F27281" />
+<stop offset="0.5" stop-color="#E26B8A" />
+<stop offset="0.63" stop-color="#CB6098" />
+<stop offset="0.75" stop-color="#AE52AA" />
+<stop offset="0.86" stop-color="#8A41C0" />
+<stop offset="0.98" stop-color="#602EDA" />
+<stop offset="1" stop-color="#5529E0" />
+</linearGradient>
+</defs>
+</svg>
+</div>
+</div>
+</a>
+<div class="section-header-menu__wrapper">
+<div class="section-header-menu__wrapper-container">
+<a href="#" class="section-header-menu__dropdownback"></a>
+<ul class="section-header-menu__list">
+<li class="menu-item  kubescape 6799  dropdown-menu-item kubescape">
+<a href="#">
+<svg width="116" height="28" viewBox="0 0 116 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.4375 18H36.9766V6.625H39.4375V18ZM41.7578 12.3125L39.1328 15.1484L38.6875 12.7578L40.4297 10.2969L43.2188 6.625H46.2344L41.7578 12.3125ZM40.1875 12.8203L42.0078 11.2812L46.3281 18H43.4141L40.1875 12.8203ZM51.7578 9.54688H54.1172V18H51.9062L51.7578 15.9609V9.54688ZM52.7031 14.1953C52.7031 14.9557 52.5859 15.6354 52.3516 16.2344C52.1224 16.8281 51.7734 17.2969 51.3047 17.6406C50.8411 17.9844 50.2552 18.1562 49.5469 18.1562C48.7135 18.1562 48.0365 17.9141 47.5156 17.4297C47 16.9401 46.7422 16.1354 46.7422 15.0156V9.54688H49.1016V15.0312C49.1016 15.3177 49.1484 15.5521 49.2422 15.7344C49.3411 15.9115 49.4766 16.0417 49.6484 16.125C49.8255 16.2031 50.026 16.2422 50.25 16.2422C50.7031 16.2422 51.0573 16.1536 51.3125 15.9766C51.5729 15.7995 51.7552 15.5573 51.8594 15.25C51.9688 14.9427 52.0234 14.5964 52.0234 14.2109L52.7031 14.1953ZM58.1406 6V16L57.8984 18H55.7812V6H58.1406ZM63.4531 13.8438C63.4531 14.6875 63.3333 15.4349 63.0938 16.0859C62.8542 16.737 62.4922 17.2448 62.0078 17.6094C61.5234 17.974 60.9115 18.1562 60.1719 18.1562C59.474 18.1562 58.9036 17.9688 58.4609 17.5938C58.0234 17.2135 57.6823 16.7005 57.4375 16.0547C57.1927 15.4036 57.0182 14.6719 56.9141 13.8594V13.6719C57.0182 12.8646 57.1901 12.138 57.4297 11.4922C57.6745 10.8464 58.0156 10.3359 58.4531 9.96094C58.8958 9.58073 59.4635 9.39062 60.1562 9.39062C60.901 9.39062 61.5156 9.57552 62 9.94531C62.4896 10.3151 62.8542 10.8229 63.0938 11.4688C63.3333 12.1146 63.4531 12.8516 63.4531 13.6797V13.8438ZM61.0938 13.6797C61.0938 13.2526 61.0521 12.8594 60.9688 12.5C60.8854 12.1354 60.7318 11.8464 60.5078 11.6328C60.2891 11.4141 59.9714 11.3047 59.5547 11.3047C59.263 11.3047 59.013 11.3516 58.8047 11.4453C58.5964 11.5391 58.4245 11.6771 58.2891 11.8594C58.1589 12.0365 58.0599 12.2526 57.9922 12.5078C57.9297 12.763 57.8958 13.0469 57.8906 13.3594V14.1797C57.901 14.5964 57.9635 14.9609 58.0781 15.2734C58.1927 15.5807 58.3698 15.8203 58.6094 15.9922C58.8542 16.1641 59.1745 16.25 59.5703 16.25C59.987 16.25 60.3047 16.1484 60.5234 15.9453C60.7422 15.737 60.8906 15.4531 60.9688 15.0938C61.0521 14.7292 61.0938 14.3125 61.0938 13.8438V13.6797ZM68.7422 18.1562C67.8516 18.1562 67.0885 17.9714 66.4531 17.6016C65.8229 17.2318 65.3385 16.737 65 16.1172C64.6667 15.4974 64.5 14.8125 64.5 14.0625V13.7578C64.5 12.9141 64.6589 12.1641 64.9766 11.5078C65.2995 10.8464 65.7578 10.3281 66.3516 9.95312C66.9453 9.57812 67.6536 9.39062 68.4766 9.39062C69.2943 9.39062 69.9818 9.5625 70.5391 9.90625C71.0964 10.25 71.5182 10.7344 71.8047 11.3594C72.0911 11.9792 72.2344 12.7083 72.2344 13.5469V14.5469H65.4922V12.9609H69.9141V12.7734C69.9141 12.4818 69.862 12.224 69.7578 12C69.6536 11.776 69.4948 11.6016 69.2812 11.4766C69.0729 11.3516 68.7995 11.2891 68.4609 11.2891C68.0755 11.2891 67.7656 11.3984 67.5312 11.6172C67.2969 11.8359 67.125 12.1302 67.0156 12.5C66.9115 12.8698 66.8594 13.2891 66.8594 13.7578V14.0625C66.8594 14.4948 66.9401 14.875 67.1016 15.2031C67.263 15.5312 67.4948 15.7891 67.7969 15.9766C68.099 16.1589 68.4635 16.25 68.8906 16.25C69.2917 16.25 69.6667 16.1771 70.0156 16.0312C70.3646 15.8802 70.6615 15.6458 70.9062 15.3281L72.0469 16.6328C71.7812 17.013 71.3698 17.362 70.8125 17.6797C70.2604 17.9974 69.5703 18.1562 68.7422 18.1562ZM78 15.6406C78 15.4844 77.9531 15.349 77.8594 15.2344C77.7708 15.1198 77.6042 15.013 77.3594 14.9141C77.1146 14.8151 76.7604 14.7161 76.2969 14.6172C75.7292 14.4922 75.2161 14.3229 74.7578 14.1094C74.3047 13.8958 73.9479 13.6198 73.6875 13.2812C73.4271 12.9375 73.2969 12.5234 73.2969 12.0391C73.2969 11.5651 73.4323 11.1276 73.7031 10.7266C73.974 10.3255 74.362 10.0026 74.8672 9.75781C75.3776 9.51302 75.987 9.39062 76.6953 9.39062C77.4349 9.39062 78.0729 9.50781 78.6094 9.74219C79.1458 9.97656 79.5573 10.2995 79.8438 10.7109C80.1302 11.1224 80.2734 11.5938 80.2734 12.125H77.9141C77.9141 11.8073 77.8151 11.5495 77.6172 11.3516C77.4245 11.1484 77.1146 11.0469 76.6875 11.0469C76.4583 11.0469 76.2578 11.0859 76.0859 11.1641C75.9141 11.2422 75.7812 11.3464 75.6875 11.4766C75.599 11.6016 75.5547 11.75 75.5547 11.9219C75.5547 12.0781 75.6042 12.2161 75.7031 12.3359C75.8021 12.4557 75.9635 12.5599 76.1875 12.6484C76.4115 12.737 76.7109 12.8151 77.0859 12.8828C77.6849 12.9974 78.2266 13.1562 78.7109 13.3594C79.1953 13.5573 79.5807 13.8307 79.8672 14.1797C80.1536 14.5234 80.2969 14.9818 80.2969 15.5547C80.2969 16.0547 80.1484 16.5026 79.8516 16.8984C79.5599 17.2891 79.1432 17.5964 78.6016 17.8203C78.0651 18.0443 77.4323 18.1562 76.7031 18.1562C75.9062 18.1562 75.2344 18.013 74.6875 17.7266C74.1406 17.4401 73.7266 17.0781 73.4453 16.6406C73.1641 16.1979 73.0234 15.7474 73.0234 15.2891H75.2578C75.2734 15.5703 75.349 15.7995 75.4844 15.9766C75.625 16.1536 75.8047 16.2839 76.0234 16.3672C76.2474 16.4505 76.4922 16.4922 76.7578 16.4922C77.0286 16.4922 77.2552 16.4583 77.4375 16.3906C77.625 16.3177 77.7656 16.2188 77.8594 16.0938C77.9531 15.9635 78 15.8125 78 15.6406ZM85.2344 16.2578C85.5 16.2578 85.7344 16.2083 85.9375 16.1094C86.1406 16.0104 86.2969 15.8698 86.4062 15.6875C86.5208 15.5052 86.5807 15.2891 86.5859 15.0391H88.8047C88.7995 15.6484 88.6406 16.1875 88.3281 16.6562C88.0156 17.125 87.5938 17.4922 87.0625 17.7578C86.5312 18.0234 85.9349 18.1562 85.2734 18.1562C84.3984 18.1562 83.6693 17.9661 83.0859 17.5859C82.5078 17.2057 82.0729 16.6927 81.7812 16.0469C81.4948 15.401 81.3516 14.6797 81.3516 13.8828V13.6719C81.3516 12.8698 81.4948 12.1458 81.7812 11.5C82.0729 10.8542 82.5078 10.3411 83.0859 9.96094C83.6693 9.58073 84.3958 9.39062 85.2656 9.39062C85.9635 9.39062 86.5755 9.52604 87.1016 9.79688C87.6328 10.0625 88.0469 10.4453 88.3438 10.9453C88.6458 11.4401 88.7995 12.0339 88.8047 12.7266H86.5859C86.5807 12.4609 86.526 12.2214 86.4219 12.0078C86.3229 11.7891 86.1719 11.6146 85.9688 11.4844C85.7656 11.3542 85.5156 11.2891 85.2188 11.2891C84.8021 11.2891 84.4844 11.401 84.2656 11.625C84.0521 11.849 83.9062 12.1432 83.8281 12.5078C83.75 12.8672 83.7109 13.2552 83.7109 13.6719V13.8828C83.7109 14.3047 83.7474 14.6979 83.8203 15.0625C83.8984 15.4219 84.0469 15.7109 84.2656 15.9297C84.4896 16.1484 84.8125 16.2578 85.2344 16.2578ZM94.5859 12.3672C94.5859 11.987 94.4922 11.6849 94.3047 11.4609C94.1172 11.237 93.8177 11.125 93.4062 11.125C93.1719 11.125 92.9688 11.1641 92.7969 11.2422C92.625 11.3203 92.4948 11.4323 92.4062 11.5781C92.3177 11.7188 92.2734 11.8932 92.2734 12.1016H89.9141C89.9141 11.6016 90.0625 11.1484 90.3594 10.7422C90.6562 10.3307 91.0755 10.0026 91.6172 9.75781C92.1589 9.51302 92.7969 9.39062 93.5312 9.39062C94.1875 9.39062 94.7734 9.5026 95.2891 9.72656C95.8047 9.94531 96.2109 10.276 96.5078 10.7188C96.8047 11.1615 96.9531 11.7161 96.9531 12.3828V15.9141C96.9531 16.4141 96.9818 16.8099 97.0391 17.1016C97.1016 17.3932 97.1875 17.6484 97.2969 17.8672V18H94.9219C94.8073 17.7604 94.7214 17.4609 94.6641 17.1016C94.612 16.7422 94.5859 16.3776 94.5859 16.0078V12.3672ZM94.9062 14.1875H93.7031C93.1302 14.1875 92.7161 14.3125 92.4609 14.5625C92.2057 14.8073 92.0781 15.1042 92.0781 15.4531C92.0781 15.7188 92.1719 15.9375 92.3594 16.1094C92.5469 16.2812 92.7995 16.3672 93.1172 16.3672C93.4453 16.3672 93.7266 16.3047 93.9609 16.1797C94.2005 16.0495 94.3828 15.8958 94.5078 15.7188C94.638 15.5365 94.7005 15.3698 94.6953 15.2188L95.3047 16.2344C95.2214 16.4427 95.1094 16.6589 94.9688 16.8828C94.8333 17.1068 94.6589 17.3151 94.4453 17.5078C94.2318 17.7005 93.9714 17.8568 93.6641 17.9766C93.362 18.0964 93.0052 18.1562 92.5938 18.1562C92.0625 18.1562 91.5781 18.0495 91.1406 17.8359C90.7031 17.6172 90.3568 17.3177 90.1016 16.9375C89.8464 16.5521 89.7188 16.112 89.7188 15.6172C89.7188 14.7318 90.0469 14.0469 90.7031 13.5625C91.3594 13.0729 92.3359 12.8281 93.6328 12.8281H94.8906L94.9062 14.1875ZM101 21.25H98.6406V9.54688H100.828L101 11.1719V21.25ZM106.312 13.8438C106.312 14.6615 106.185 15.3958 105.93 16.0469C105.68 16.6979 105.31 17.2135 104.82 17.5938C104.336 17.9688 103.737 18.1562 103.023 18.1562C102.331 18.1562 101.76 17.9688 101.312 17.5938C100.87 17.2135 100.526 16.7031 100.281 16.0625C100.036 15.4219 99.8594 14.7135 99.75 13.9375V13.6953C99.8542 12.8672 100.029 12.1302 100.273 11.4844C100.523 10.8333 100.87 10.3229 101.312 9.95312C101.76 9.57812 102.328 9.39062 103.016 9.39062C103.729 9.39062 104.331 9.57031 104.82 9.92969C105.31 10.2839 105.68 10.7839 105.93 11.4297C106.185 12.0703 106.312 12.8203 106.312 13.6797V13.8438ZM103.953 13.6797C103.953 13.2214 103.901 12.8151 103.797 12.4609C103.698 12.1016 103.534 11.8203 103.305 11.6172C103.076 11.4089 102.771 11.3047 102.391 11.3047C102.099 11.3047 101.849 11.3516 101.641 11.4453C101.438 11.5339 101.268 11.6667 101.133 11.8438C101.003 12.0208 100.904 12.2396 100.836 12.5C100.773 12.7552 100.737 13.0521 100.727 13.3906V14.25C100.747 14.6354 100.812 14.9792 100.922 15.2812C101.036 15.5833 101.214 15.8229 101.453 16C101.693 16.1719 102.01 16.2578 102.406 16.2578C102.792 16.2578 103.096 16.1484 103.32 15.9297C103.544 15.7109 103.706 15.4193 103.805 15.0547C103.904 14.6849 103.953 14.2812 103.953 13.8438V13.6797ZM111.602 18.1562C110.711 18.1562 109.948 17.9714 109.312 17.6016C108.682 17.2318 108.198 16.737 107.859 16.1172C107.526 15.4974 107.359 14.8125 107.359 14.0625V13.7578C107.359 12.9141 107.518 12.1641 107.836 11.5078C108.159 10.8464 108.617 10.3281 109.211 9.95312C109.805 9.57812 110.513 9.39062 111.336 9.39062C112.154 9.39062 112.841 9.5625 113.398 9.90625C113.956 10.25 114.378 10.7344 114.664 11.3594C114.951 11.9792 115.094 12.7083 115.094 13.5469V14.5469H108.352V12.9609H112.773V12.7734C112.773 12.4818 112.721 12.224 112.617 12C112.513 11.776 112.354 11.6016 112.141 11.4766C111.932 11.3516 111.659 11.2891 111.32 11.2891C110.935 11.2891 110.625 11.3984 110.391 11.6172C110.156 11.8359 109.984 12.1302 109.875 12.5C109.771 12.8698 109.719 13.2891 109.719 13.7578V14.0625C109.719 14.4948 109.799 14.875 109.961 15.2031C110.122 15.5312 110.354 15.7891 110.656 15.9766C110.958 16.1589 111.323 16.25 111.75 16.25C112.151 16.25 112.526 16.1771 112.875 16.0312C113.224 15.8802 113.521 15.6458 113.766 15.3281L114.906 16.6328C114.641 17.013 114.229 17.362 113.672 17.6797C113.12 17.9974 112.43 18.1562 111.602 18.1562Z" fill="var(--kubescape-text-color)" />
+<path d="M27.8902 11.2406L27.6856 10.8937C27.506 10.592 27.2484 10.3416 26.9386 10.1673C26.6288 9.993 26.2775 9.90099 25.9199 9.90043H19.817C19.5227 9.90111 19.232 9.96372 18.9648 10.084C18.6975 10.2043 18.46 10.3794 18.2685 10.5974C18.1877 10.6897 18.1155 10.7888 18.0529 10.8937L16.8411 12.9462L15.0062 16.0489C14.9998 16.0588 14.994 16.069 14.9889 16.0796C14.8192 16.3798 14.7316 16.7176 14.7347 17.0605C14.7377 17.4033 14.8312 17.7396 15.0062 18.0369L18.0561 23.1921C18.2211 23.4696 18.4523 23.7043 18.7301 23.8761C19.0079 24.048 19.3241 24.1519 19.6518 24.1792H7.95124C7.62816 24.1803 7.31046 24.0986 7.02988 23.9423C6.7493 23.7861 6.51566 23.5607 6.35234 23.2888L0.2479 12.9877C0.0855231 12.7149 0 12.4051 0 12.0896C0 11.7742 0.0855231 11.4643 0.2479 11.1915L6.35234 0.898086C6.51467 0.624728 6.74787 0.397844 7.02852 0.240206C7.30917 0.0825691 7.62739 -0.000273881 7.95124 6.80254e-07H20.1601C20.4837 -0.000159896 20.8017 0.0827451 21.0821 0.240384C21.3624 0.398024 21.5954 0.624849 21.7574 0.898086L27.4606 10.5114L27.865 11.1915C27.875 11.2071 27.8834 11.2235 27.8902 11.2406Z" fill="#2916FC" />
+<path d="M13.3475 5.83282V17.7536C13.3475 17.9164 13.2811 18.0726 13.1631 18.1878C13.045 18.3029 12.8849 18.3676 12.718 18.3676H10.3873C10.2203 18.3676 10.0602 18.3029 9.94218 18.1878C9.82413 18.0726 9.75781 17.9164 9.75781 17.7536V5.83282C9.75781 5.66996 9.82413 5.51377 9.94218 5.39861C10.0602 5.28345 10.2203 5.21875 10.3873 5.21875H12.7227C12.8888 5.21997 13.0477 5.2852 13.1648 5.40023C13.2818 5.51526 13.3475 5.67076 13.3475 5.83282ZM19.8375 6.17364L16.6648 10.7654C16.5992 10.8611 16.5625 10.9729 16.5589 11.088C16.5553 11.2031 16.5849 11.3168 16.6444 11.4163L20.2875 17.4434C20.3426 17.5364 20.3716 17.6418 20.3719 17.7492C20.3721 17.8565 20.3435 17.9621 20.2889 18.0553C20.2343 18.1485 20.1556 18.2261 20.0606 18.2803C19.9657 18.3346 19.8578 18.3636 19.7477 18.3646H17.1023C16.9909 18.3639 16.8816 18.3345 16.7857 18.2792C16.6898 18.2239 16.6106 18.1448 16.5563 18.0498L12.9367 11.685C12.8828 11.5891 12.8562 11.4809 12.8595 11.3716C12.8628 11.2623 12.896 11.1558 12.9556 11.0632L16.5657 5.50737C16.6224 5.42111 16.7004 5.35007 16.7925 5.30073C16.8846 5.25139 16.9878 5.22532 17.0929 5.22489H19.3134C19.4264 5.22555 19.5371 5.25586 19.634 5.31265C19.7308 5.36945 19.8102 5.45062 19.8638 5.54767C19.9174 5.64471 19.9433 5.75404 19.9386 5.86418C19.934 5.97432 19.899 6.08121 19.8375 6.17364Z" fill="white" />
+<path d="M27.0514 14.1713L22.4136 22.0069H19.9319L17.6642 18.1751L16.9922 17.0406L18.1426 15.0985L19.0837 13.505L19.9319 12.0742H25.8113L27.0514 14.1713Z" fill="url(#paint0_linear_7851_1384)" />
+<path opacity="0.68" d="M19.5998 18.413H17.3714L17.2267 18.1674L16.5547 17.0329L17.7051 15.0909L18.1898 14.2695L20.1396 17.4934C20.1943 17.5864 20.223 17.6916 20.2231 17.7987C20.2231 17.9059 20.1944 18.0111 20.1398 18.1041C20.0853 18.1971 20.0067 18.2745 19.912 18.3287C19.8173 18.3829 19.7096 18.4119 19.5998 18.413Z" fill="var(--kubescape-text-color)" />
+<path d="M30.9037 16.4446C30.8601 16.3086 30.801 16.1778 30.7275 16.0547L28.1639 11.7285L27.8775 11.2465L27.6729 10.8995C27.4932 10.5978 27.2357 10.3474 26.9258 10.1731C26.616 9.99882 26.2648 9.90681 25.9072 9.90625H19.809C19.5147 9.90693 19.224 9.96954 18.9568 10.0898C18.6895 10.2101 18.452 10.3852 18.2605 10.6032C18.1797 10.6955 18.1075 10.7947 18.0449 10.8995L16.8331 12.9521L14.9982 16.0547C14.9918 16.0646 14.986 16.0748 14.9809 16.0854C14.8112 16.3856 14.7236 16.7234 14.7266 17.0663C14.7297 17.4091 14.8232 17.7454 14.9982 18.0427L18.048 23.1979C18.2131 23.4755 18.4443 23.7101 18.7221 23.882C18.9999 24.0538 19.316 24.1577 19.6438 24.185C19.6989 24.185 19.7555 24.1927 19.8122 24.1927H25.915C25.9818 24.1929 26.0485 24.1893 26.1149 24.182L28.2819 27.5594C28.406 27.7505 28.6024 27.8862 28.8284 27.9368C29.0545 27.9874 29.2919 27.9488 29.489 27.8296L29.6196 27.7497C29.816 27.6292 29.9557 27.4378 30.0082 27.2173C30.0607 26.9967 30.0217 26.7649 29.8997 26.5722L27.6965 23.1534L30.7227 18.0412C30.8646 17.8018 30.954 17.5363 30.9852 17.2615C31.0163 16.9866 30.9886 16.7084 30.9037 16.4446ZM28.071 18.1717L25.7954 22.0097H19.9208L19.9066 21.9851L17.6546 18.1778L16.9826 17.0418L18.133 15.0998L19.0773 13.5078L19.9097 12.1016H25.8175L27.045 14.1741L28.743 17.0418L28.071 18.1717Z" fill="#1C0DC9" />
+<defs>
+<linearGradient id="paint0_linear_7851_1384" x1="16.9922" y1="17.0406" x2="27.0514" y2="17.0406" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF7879" />
+<stop offset="0.21" stop-color="#FC777B" />
+<stop offset="0.36" stop-color="#F27281" />
+<stop offset="0.5" stop-color="#E26B8A" />
+<stop offset="0.63" stop-color="#CB6098" />
+<stop offset="0.75" stop-color="#AE52AA" />
+<stop offset="0.86" stop-color="#8A41C0" />
+<stop offset="0.98" stop-color="#602EDA" />
+<stop offset="1" stop-color="#5529E0" />
+</linearGradient>
+</defs>
+</svg>
+<span class="menu-item-count">5</span>
+</a>
+<div class="dropdown">
+<div class="dropdown-description" style="background-image: url('https://www.armosec.io/wp-content/uploads/2023/10/Group-10000104481.svg')">
+<div class="dropdown-title">About<br/>Kubescape</div>
+</div>
+<ul class="dropdown-list">
+<li class="menu-item mobile-root-menu-item">
+<a href="#">Kubescape <span class="menu-item-count">5</span></a>
+</li>
+<li class="menu-item ">
+<a href="/kubescape/">
+<div class="menu-item__title">
+What is Kubescape? </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>An open-source Kubernetes security platform</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="https://github.com/kubescape/kubescape" target="_blank">
+<div class="menu-item__title">
+GitHub </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>The pure open-source version</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="https://kubescape.io/" target="_blank">
+<div class="menu-item__title">
+Kubescape.io </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Kubescape's official website 🐼</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/blog/join-the-conversation-on-kubescapes-slack-channel/">
+<div class="menu-item__title">
+Community </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Discuss all things Kubescape </p>
+</div>
+<div class="menu-item__viewbutton">Talk it out</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/armo-vs-kubescape/">
+<div class="menu-item__title">
+Kubescape VS. ARMO Platform </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Elevate your cloud security beyond Kubescape in just two clicks</p>
+</div>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="menu-item  solutions 6799  dropdown-menu-item ">
+<a href="#">
+Solutions
+<span class="menu-item-count">5</span>
+</a>
+<div class="dropdown">
+<div class="dropdown-description" style="background-image: url('https://www.armosec.io/wp-content/uploads/2023/10/Group-10000104341.svg')">
+<div class="dropdown-title">ARMO<br/>Platform</div>
+</div>
+<ul class="dropdown-list">
+<li class="menu-item mobile-root-menu-item">
+<a href="#">Solutions <span class="menu-item-count">5</span></a>
+</li>
+<li class="menu-item ">
+<a href="/platform/kubernetes-security-posture-management/">
+<div class="menu-item__title">
+Kubernetes Security Posture Management (KSPM) </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Prioritize & remediate security issues with runtime driven KSPM</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/platform/cloud-detection-and-response/">
+<div class="menu-item__title">
+Cloud Applications Detection & Response (CDR / ADR) </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Protect your applications from cyberattacks before and during attempted exploits</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/platform/on-premise-kubernetes-security/">
+<div class="menu-item__title">
+On-Premises Kubernetes Security </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>On-prem solution with SaaS like experience </p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/platform/vulnerability-management/">
+<div class="menu-item__title">
+Runtime-Based Vulnerability Management </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Prioritize critical vulnerabilities with runtime context and threat intelligence</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/platform/runtime-based-hardening-remediation/">
+<div class="menu-item__title">
+Runtime-based Hardening & Remediation </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Secure your cloud while eliminating guesswork and manual work</p>
+</div>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="menu-item 4982 resources 6799  dropdown-menu-item ">
+<a href="/">
+Resources
+<span class="menu-item-count">6</span>
+</a>
+<div class="dropdown">
+<div class="dropdown-description" style="background-image: url('https://www.armosec.io/wp-content/uploads/2023/10/Group-1000010434-11.svg')">
+<div class="dropdown-title">Resources<br/>& learning</div>
+</div>
+<ul class="dropdown-list">
+<li class="menu-item mobile-root-menu-item">
+<a href="/">Resources <span class="menu-item-count">6</span></a>
+</li>
+<li class="menu-item ">
+<a href="https://hub.armosec.io/docs" target="_blank">
+<div class="menu-item__title">
+Documentation </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Visit ARMO's doc hub</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/blog/">
+<div class="menu-item__title">
+Blog </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>All things Kubernetes security and some</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/glossary/">
+<div class="menu-item__title">
+Glossary </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Your Kubernetes security digital handbook</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/customer-stories/">
+<div class="menu-item__title">
+Customer stories </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Learn from the experience of others </p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/your-kubernetes-your-use-case/">
+<div class="menu-item__title">
+Use cases </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Your Kubernetes, your security use-case</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="https://www.armosec.io/armo-vs-cnapp-cspm/">
+<div class="menu-item__title">
+ARMO Platform vs CNAPP/CSPM </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>AKA: ARMO Platform > CNAPP/CSPM </p>
+</div>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="menu-item 4982 company 6799  dropdown-menu-item ">
+<a href="/">
+Company
+<span class="menu-item-count">4</span>
+</a>
+<div class="dropdown">
+<div class="dropdown-description" style="background-image: url('https://www.armosec.io/wp-content/uploads/2023/10/Group-1000010434-21.svg')">
+<div class="dropdown-title">Company<br/>Insights</div>
+</div>
+<ul class="dropdown-list">
+<li class="menu-item mobile-root-menu-item">
+<a href="/">Company <span class="menu-item-count">4</span></a>
+</li>
+<li class="menu-item ">
+<a href="/about-us/">
+<div class="menu-item__title">
+About us </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>If you're really into us, that's the place to go</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/news/">
+<div class="menu-item__title">
+In the news </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>All the headlines ARMO generated</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="/careers/">
+<div class="menu-item__title">
+Careers </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>Join our team!</p>
+</div>
+</span>
+</a>
+</li>
+<li class="menu-item ">
+<a href="https://landing.armosec.io/contact-us-website" target="_blank">
+<div class="menu-item__title">
+Contact us </div>
+<span class="d-flex justify-content-between">
+<div class="menu-item__text">
+<p>We always appreciate a good conversation </p>
+</div>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="menu-item 4083 pricing 6799   ">
+<a href="/pricing/">
+Pricing
+</a>
+</li>
+<li class="menu-item  love 6799   ">
+<a href="https://www.armosec.io/wall-of-love/">
+❤️ Love
+</a>
+</li>
+</ul>
+<div class="section-header-menu__buttons">
+<a class="section-header-menu__button button-simple" href="https://auth.armosec.io/oauth/account/sign-up">Start Free</a>
+<a class="section-header-menu__button button-slack transparent slack_popup_trigger" href="#">Chat with an Expert</a>
+<a class="section-header-menu__button button-v2-solid-green" href="/book-demo/" target="_blank">Get a Demo</a>
+</div>
+</div>
+</div>
+<div class="section-header-toggler__wrapper">
+<a class="section-header-toggler__wrapper-button button-slack white slack_popup_trigger" href="#">Chat Now</a>
+<a class="section-header-toggler">
+<span class="section-header-toggler-lines">
+<span class="line" data-line="1"></span>
+<span class="line" data-line="2"></span>
+<span class="line" data-line="3"></span>
+</span>
+</a>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main>
+<div class="newsletter-form-wrapper hb-form">
+<button class="close">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L13 13" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M1 13L13 1" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<div class="title">Get the latest, first</div>
+<script>
+						window.hsFormsOnReady = window.hsFormsOnReady || [];
+						window.hsFormsOnReady.push(()=>{
+							hbspt.forms.create({
+								portalId: 5882526,
+								formId: "add8db46-14bd-4096-8dd6-0c4a5f519849",
+								target: "#hbspt-form-1723423979000-4345720608",
+								region: "na1",
+								
+						})});
+					</script>
+<div class="hbspt-form" id="hbspt-form-1723423979000-4345720608"></div></div>
+<section class="blog-single">
+<div class="container">
+<div class="blog-single__inner">
+<div class="blog-single__body">
+<ul class="breadcrumbs mobile-visible" itemtype="https://schema.org/BreadcrumbList">
+<li itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+<a itemprop="item" href="https://www.armosec.io" data-wpel-link="internal">
+<span itemprop="name">Home</span>
+<meta itemprop="position" content="1">
+</a>
+</li>
+<li itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+<a itemprop="item" href="https://www.armosec.io/blog/" data-wpel-link="internal">
+<span itemprop="name">Blog</span>
+<meta itemprop="position" content="2">
+</a>
+</li>
+<li itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+<span itemprop="name">Kubernetes 1.31: a security perspective</span>
+<meta itemprop="position" content="3">
+</li>
+</ul>
+<div class="blog-single__cover">
+<picture class="blog-single__cover-image">
+<img src="https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes_1.31_bkgrnd.png" alt="Kubernetes 1.31: a security perspective" />
+</picture>
+<div class="blog-single__cover-content">
+<h1 class="blog-single__cover-title">Kubernetes 1.31: a security perspective</h1>
+<div class="blog-single__cover-details">
+<div class="blog-single__cover-date">
+<p>Aug 8, 2024</p>
+</div>
+<div class="blog-single__cover-author">
+<picture class="blog-single__cover-authorImage">
+<img width="150" height="150" src="https://www.armosec.io/wp-content/uploads/2021/12/ben-150x150.png" class="attachment-thumbnail size-thumbnail" alt decoding="async" /> </picture>
+<div class="blog-single__cover-authorContent">
+<p>
+<b>Ben Hirschberg</b>
+<br/>
+CTO & Co-founder </p>
+</div>
+</div>
+<ul class="blog-single__cover-authorSocials">
+<li class="blog-single__cover-authorSocials-item">
+<a href="https://www.linkedin.com/in/ben-hirschberg-66141890/" target="_blank">
+<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.76859 5.38536V14.9434H0.924594V5.38536H3.76859ZM2.32859 0.345358C2.82059 0.345358 3.22259 0.501359 3.53459 0.813359C3.85859 1.11336 4.02059 1.49736 4.02059 1.96536C4.02059 2.43336 3.85859 2.82336 3.53459 3.13536C3.22259 3.43536 2.82059 3.58536 2.32859 3.58536C1.83659 3.58536 1.43459 3.43536 1.12259 3.13536C0.810594 2.82336 0.654594 2.43336 0.654594 1.96536C0.654594 1.49736 0.810594 1.11336 1.12259 0.813359C1.43459 0.501359 1.83659 0.345358 2.32859 0.345358ZM11.6027 5.07936C12.4307 5.07936 13.0787 5.33136 13.5467 5.83536C14.0147 6.33936 14.2487 7.04736 14.2487 7.95936V14.9434H11.4047V8.44536C11.4047 7.96536 11.3267 7.63536 11.1707 7.45536C11.0267 7.26336 10.8047 7.16736 10.5047 7.16736C9.92867 7.16736 9.37667 7.58136 8.84867 8.40936V14.9434H6.00467V5.38536H8.48867L8.68667 6.51936C9.09467 6.03936 9.53267 5.67936 10.0007 5.43936C10.4807 5.19936 11.0147 5.07936 11.6027 5.07936Z" fill="var(--share-icon-color)" />
+</svg>
+</a>
+</li>
+<li class="blog-single__cover-authorSocials-item">
+<a href="https://twitter.com/slashben81" target="_blank">
+<svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.9434 2.56097C17.2849 2.84083 16.5777 3.02916 15.8353 3.11411C16.5935 2.6795 17.1749 1.99137 17.4487 1.17088C16.7401 1.57322 15.9544 1.86559 15.1178 2.02363C14.4483 1.34077 13.4948 0.914062 12.4394 0.914062C10.4125 0.914062 8.76958 2.48722 8.76958 4.42649C8.76958 4.70175 8.8026 4.97041 8.86452 5.22657C5.81462 5.08038 3.11078 3.68173 1.29997 1.5561C0.984863 2.075 0.803919 2.67818 0.803919 3.32285C0.803919 4.54107 1.45133 5.6164 2.43585 6.24592C1.83454 6.22749 1.26832 6.06945 0.773647 5.80671C0.773647 5.82185 0.773647 5.83568 0.773647 5.85083C0.773647 7.55304 2.03819 8.97277 3.7176 9.29477C3.41006 9.37511 3.08533 9.41791 2.75027 9.41791C2.51429 9.41791 2.28381 9.39552 2.06021 9.35535C2.52736 10.7507 3.88272 11.7668 5.48851 11.7951C4.23291 12.7374 2.65051 13.2991 0.930511 13.2991C0.634671 13.2991 0.342271 13.2826 0.0546875 13.2497C1.67905 14.246 3.60752 14.8275 5.68046 14.8275C12.4311 14.8275 16.1215 9.4752 16.1215 4.83345C16.1215 4.68133 16.1181 4.52988 16.1112 4.37908C16.8288 3.88323 17.4514 3.2649 17.9434 2.56097Z" fill="var(--share-icon-color)" />
+</svg>
+</a>
+</li>
+<li class="blog-single__cover-authorSocials-item">
+<a href="https://github.com/slashben" target="_blank">
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.8099 10.9403C20.7833 12.1305 20.5182 13.3042 20.0294 14.3954C18.944 16.8191 17.1492 18.547 14.645 19.579C14.4638 19.6538 14.2778 19.7175 14.0921 19.7811C13.9719 19.8215 13.8421 19.826 13.7193 19.7942C13.6256 19.7729 13.5414 19.7228 13.4791 19.6512C13.4169 19.5797 13.38 19.4905 13.3738 19.3969C13.3698 19.3533 13.3707 19.3096 13.3707 19.2647C13.3737 18.4139 13.3768 17.563 13.3801 16.712C13.3817 16.37 13.3472 16.033 13.2383 15.7058C13.1391 15.4081 12.9899 15.1384 12.7548 14.9201C12.7461 14.9118 12.7394 14.9018 12.7233 14.8823C12.8498 14.8655 12.9666 14.8509 13.0831 14.8341C13.6792 14.7488 14.2626 14.6169 14.818 14.3816C15.9171 13.9159 16.6342 13.1201 16.9832 12.0058C17.1146 11.5868 17.1934 11.1538 17.218 10.7163C17.233 10.4555 17.2447 10.1936 17.2368 9.93253C17.2102 9.0335 16.8905 8.24339 16.2849 7.56371C16.2659 7.54188 16.2475 7.52006 16.2302 7.50085C16.5813 6.56449 16.4048 5.57161 16.1198 4.93362C15.9475 4.88997 15.7739 4.90809 15.6014 4.93559C15.1432 5.00805 14.7185 5.17568 14.3139 5.38914C14.0244 5.54193 13.746 5.71414 13.4653 5.88176C13.4436 5.89708 13.4186 5.90727 13.3923 5.91151C13.3659 5.91576 13.3389 5.91394 13.3134 5.90621C12.7365 5.75342 12.1451 5.65834 11.5484 5.62247C11.0803 5.59147 10.6106 5.59409 10.1429 5.63032C9.59483 5.67084 9.05205 5.7625 8.52199 5.90403C8.49209 5.91401 8.46014 5.91675 8.42892 5.91199C8.39769 5.90724 8.36812 5.89514 8.34277 5.87674C7.88754 5.58121 7.41416 5.31799 6.90135 5.12766C6.61952 5.02311 6.33208 4.93908 6.02942 4.92031C5.92076 4.91354 5.81121 4.92031 5.70838 4.92031C5.40235 5.57685 5.24351 6.59505 5.58897 7.49823C5.57486 7.51525 5.55985 7.53512 5.54416 7.55367C5.05844 8.08719 4.7397 8.74507 4.62564 9.44951C4.56313 9.82187 4.56851 10.1969 4.588 10.5716C4.60549 10.9335 4.6555 11.2932 4.73743 11.6466C4.86893 12.2047 5.08423 12.727 5.43349 13.1917C5.84974 13.7454 6.3984 14.1324 7.04092 14.4002C7.46705 14.5744 7.91227 14.7005 8.36786 14.776C8.59682 14.8155 8.8278 14.843 9.05788 14.8764C9.06303 14.8764 9.06751 14.8823 9.07714 14.8889C9.07131 14.8987 9.06448 14.9079 9.05676 14.9164C8.77448 15.1805 8.61541 15.5098 8.52222 15.8739C8.5027 15.947 8.48774 16.0212 8.47741 16.0961C8.47619 16.1223 8.46663 16.1476 8.45005 16.1683C8.43348 16.189 8.41071 16.2042 8.38489 16.2118C8.17574 16.2957 7.95791 16.3574 7.73519 16.3958C7.39243 16.4503 7.05212 16.4445 6.71899 16.3386C6.34127 16.2188 6.0386 15.995 5.79396 15.6947C5.71669 15.5977 5.64453 15.4968 5.57777 15.3926C5.40213 15.1248 5.19333 14.8865 4.93166 14.6942C4.7027 14.5266 4.45044 14.4091 4.16077 14.3915C4.04248 14.384 3.92262 14.3989 3.80232 14.4052C3.77983 14.408 3.75773 14.4133 3.73645 14.4209C3.57739 14.4689 3.54155 14.5683 3.63855 14.7003C3.72746 14.8174 3.84233 14.9134 3.9746 14.9812C4.16615 15.0836 4.31916 15.2254 4.45156 15.3902C4.71783 15.7157 4.93502 16.0766 5.09655 16.4619C5.31431 16.9925 5.71936 17.3234 6.26779 17.4989C6.61884 17.6111 6.98155 17.6427 7.34896 17.6388C7.67879 17.634 8.00762 17.6023 8.33201 17.5441C8.35442 17.5404 8.37682 17.5399 8.40303 17.5373C8.4055 17.5617 8.4093 17.5829 8.40953 17.6043C8.41401 18.165 8.41827 18.7258 8.4223 19.2869C8.42411 19.3307 8.42194 19.3745 8.4158 19.4179C8.38108 19.6189 8.25226 19.7507 8.0457 19.7933C7.92512 19.8195 7.79945 19.8128 7.68255 19.7739C6.14195 19.2593 4.80889 18.4279 3.68336 17.2795C2.56619 16.1367 1.78275 14.8063 1.33304 13.2883C1.1748 12.759 1.06622 12.2168 1.00864 11.6684C0.991394 11.5025 0.979744 11.336 0.965406 11.1697C0.954951 11.0486 0.944347 10.9275 0.933594 10.8062V10.2388C0.941409 10.2154 0.9474 10.1914 0.951516 10.1672C0.96451 10.0292 0.976607 9.89099 0.987809 9.75247C1.03547 9.18763 1.13634 8.62827 1.28913 8.08143C1.84194 6.08551 3.03637 4.31455 4.69738 3.02807C6.3584 1.7416 8.39868 1.00724 10.5192 0.932617H11.2388C12.9468 0.989858 14.6107 1.47624 16.0689 2.34458C17.5271 3.21291 18.7302 4.43371 19.5614 5.88853C20.3383 7.24526 20.7597 8.70087 20.8088 10.2564C20.8094 10.4847 20.8098 10.7127 20.8099 10.9403Z" fill="var(--share-icon-color)" />
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="blog-single__body-inner">
+<div class="blog-single__wysiwyg">
+<p><a href="https://www.kubernetes.dev/resources/release/" target="_blank" rel="noreferrer noopener">Kubernetes v1.31</a> brings about some noteworthy improvements to the popular container orchestration platform that improve security and other aspects within the platform.</p>
+<p>These enhancements improve account tokens, labeling, policies, and other areas to ensure a more secure and reliable platform for developers and enterprises.</p>
+<h2 class="wp-block-heading"><strong>Security-specific improvements in Kubernetes 1.31</strong></h2>
+<p>The Kubernetes v1.31 introduces several security-related improvements that improve the overall security posture of the platforms and the workloads.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/24" target="_blank" rel="noreferrer noopener"><strong>#24 AppArmor support</strong></a></h3>
+<p>The AppArmor support enhancement (KEP-24) integrate AppArmor into Kubernetes, providing a way to enforce mandatory access control (MAC) policies for pods and containers.</p>
+<p>AppArmor is a Linux security module that restricts programs’ capabilities through profiles, reducing the risk of security breaches. By allowing users to specify AppArmor profiles in Kubernetes manifests, this enhancement helps isolate and protect workloads, ensuring that even if an application is compromised, its ability to cause harm is limited by predefined security policies.</p>
+<p><strong>Key Aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Profile specification</strong>: Users can define AppArmor profiles in pod manifests.</li>
+<li><strong>Profile enforcement</strong>: The specified profiles are enforced at runtime, restricting the capabilities of containers.</li>
+<li><strong>Isolation</strong>: Enhances isolation between workloads, reducing the attack surface.</li>
+<li><strong>Security</strong>: Helps mitigate potential damage from compromised applications by limiting their actions.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Enhanced security</strong>: By restricting what applications can do, even if compromised.</li>
+<li><strong>Granular control</strong>: Provides fine-grained control over container permissions.</li>
+<li><strong>Compliance</strong>: Helps meet security compliance requirements by enforcing strict access controls.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Annotations</strong>: AppArmor profiles are specified using annotations in pod definitions.</li>
+<li><strong>Profile management</strong>: Administrators need to manage and maintain AppArmor profiles on the nodes.</li>
+</ol>
+<p><strong>Compatibility</strong>: Requires underlying node support for AppArmor.</p>
+<pre class="code_syntax" style="color:#000000;background:#ffffff;"><span class="line_wrapper"><span style="color:#e34adc; ">apiVersion:</span> v1</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">kind:</span> Pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">metadata:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  name:</span> sample<span style="color:#808030; ">-</span>pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  annotations:</span></span>
+<span class="line_wrapper">    container<span style="color:#808030; ">.</span>apparmor<span style="color:#808030; ">.</span>security<span style="color:#808030; ">.</span>beta<span style="color:#808030; ">.</span>kubernetes<span style="color:#808030; ">.</span>io<span style="color:#808030; ">/</span>container<span style="color:#808030; ">-</span>name<span style="color:#800080; ">:</span> localhost<span style="color:#808030; ">/</span>profile<span style="color:#808030; ">-</span>name</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">spec:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  containers:</span></span>
+<span class="line_wrapper">  <span style="color:#808030; ">-</span> name<span style="color:#800080; ">:</span> container<span style="color:#808030; ">-</span>name</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">    image:</span> sample<span style="color:#808030; ">-</span>image</span></pre>
+<p>For more detailed information, please visit the <a href="https://github.com/kubernetes/enhancements/issues/24" target="_blank" rel="noreferrer noopener">KEP-24 issue page</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/2535" target="_blank" rel="noreferrer noopener"><strong>#2535 Ensure Secret Pulled Images</strong></a></h3>
+<p>This Kubernetes enhancement enhances the security of pulling container images that require secrets, such as private registry credentials. The key goal is to ensure these secrets are securely managed and used during the image-pulling process, mitigating risks associated with unauthorized access to sensitive data.</p>
+<p><strong>Key aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Secure secret management</strong>: Ensures secrets used in image pulls are managed securely.</li>
+<li><strong>Access control</strong>: Implements access controls to prevent unauthorized access to these secrets.</li>
+<li><strong>Auditing and logging</strong>: Enhances auditing and logging to track secret usage and access.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Improved security</strong>: Reduces the risk of unauthorized access to private images.</li>
+<li><strong>Compliance</strong>: Helps meet security and compliance requirements by securely handling secrets.</li>
+<li><strong>Visibility</strong>: Provides better visibility into secret usage and potential security issues.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Kubelet enhancements</strong>: Modifies Kubelet to securely handle secrets during image pulls.</li>
+<li><strong>Secret distribution</strong>: Ensures secrets are distributed securely to nodes and used appropriately.</li>
+<li><strong>Configuration</strong>: Administrators can configure policies to manage how secrets are handled during image pulls.</li>
+</ol>
+<pre class="code_syntax" style="color:#000000;background:#ffffff;"><span class="line_wrapper"><span style="color:#e34adc; ">apiVersion:</span> v1</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">kind:</span> Pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">metadata:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  name:</span> example<span style="color:#808030; ">-</span>pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">spec:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  containers:</span></span>
+<span class="line_wrapper">  <span style="color:#808030; ">-</span> name<span style="color:#800080; ">:</span> example<span style="color:#808030; ">-</span>container</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">    image:</span> private<span style="color:#808030; ">-</span>registry<span style="color:#808030; ">.</span>example<span style="color:#808030; ">.</span>com<span style="color:#808030; ">/</span>my<span style="color:#808030; ">-</span>image</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">    imagePullSecrets:</span></span>
+<span class="line_wrapper">    <span style="color:#808030; ">-</span> name<span style="color:#800080; ">:</span> my<span style="color:#808030; ">-</span>registry<span style="color:#808030; ">-</span>secret</span></pre>
+<p>For more detailed information, please visit the <a href="https://github.com/kubernetes/enhancements/issues/2535">KEP-2535 issue page</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/4633" target="_blank" rel="noreferrer noopener"><strong>#4633 Only Allow Anonymous Auth For Configured Endpoints</strong></a></h3>
+<p>This Kubernetes enhancement improves security by restricting anonymous authentication to only specific, pre-configured endpoints. It aims to reduce the risk associated with unrestricted anonymous access, which could be exploited by malicious users.</p>
+<p><strong>Key Aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Controlled access</strong>: Limits anonymous access to specific, safe endpoints only.</li>
+<li><strong>Configuration</strong>: Administrators can define which endpoints allow anonymous access.</li>
+<li><strong>Security</strong>: Enhances overall cluster security by minimizing the potential attack surface.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Enhanced security</strong>: Reduces unauthorized access risks.</li>
+<li><strong>Compliance</strong>: Helps in meeting security compliance requirements.</li>
+<li><strong>Granular control</strong>: Provides fine-grained control over endpoint access.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>API server configuration</strong>: Changes in the API server to support this functionality.</li>
+<li><strong>Endpoint management</strong>: Administrators specify endpoints in configuration files.</li>
+</ol>
+<p>For more detailed information, please visit the <a href="https://github.com/kubernetes/enhancements/issues/4633" target="_blank" rel="noreferrer noopener">KEP-4193 issue page</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/4193"><strong>#4193 Bound Service Account Token Improvements</strong></a></h3>
+<p>This enhancement aims to improve the security and usability of bound service account tokens in Kubernetes. These tokens are used to authenticate pods to the <a href="https://www.armosec.io/glossary/kubernetes-api/">Kubernetes API server</a> and other services. The goal is to enhance their lifecycle management, rotation, and revocation, addressing security issues associated with long-lived tokens.</p>
+<p><strong>Key Aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Token bound to pods</strong>: Tokens are closely tied to the pod’s lifecycle, ensuring they are valid only as long as the pod exists.</li>
+<li><strong>Automatic rotation</strong>: Tokens are automatically rotated, reducing the risk of misuse if a token is compromised.</li>
+<li><strong>Revocation</strong>: Enhances the ability to revoke tokens when they are no longer needed.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Improved security</strong>: Reduces risks associated with long-lived and stale tokens.</li>
+<li><strong>Ease of use</strong>: Simplifies token management for developers and operators.</li>
+<li><strong>Compliance</strong>: Helps meet security compliance requirements by ensuring robust token management.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>TokenRequest API</strong>: Introduces a new API to request tokens that are bound to the pod’s lifecycle.</li>
+<li><strong>Shorter token lifetimes</strong>: Configures tokens to have shorter lifetimes, with automatic renewal mechanisms.</li>
+<li><strong>Revocation mechanisms</strong>: Provides mechanisms to revoke tokens when they are no longer needed or when the pod is terminated.</li>
+</ol>
+<pre class="code_syntax" style="color:#000000;background:#ffffff;"><span class="line_wrapper"><span style="color:#e34adc; ">apiVersion:</span> v1</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">kind:</span> Pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">metadata:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  name:</span> example<span style="color:#808030; ">-</span>pod</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">spec:</span></span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  serviceAccountName:</span> example<span style="color:#808030; ">-</span>service<span style="color:#808030; ">-</span>account</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">  containers:</span></span>
+<span class="line_wrapper">  <span style="color:#808030; ">-</span> name<span style="color:#800080; ">:</span> example<span style="color:#808030; ">-</span>container</span>
+<span class="line_wrapper"><span style="color:#e34adc; ">    image:</span> example<span style="color:#808030; ">-</span>image</span></pre>
+<p>For more detailed information, please visit the <a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-auth/4193-bound-service-account-token-improvements" target="_blank" rel="noreferrer noopener">KEP-4193 documentation</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/3908" target="_blank" rel="noreferrer noopener"><strong>#3908 kube-apiserver Support Out-of-Process JWT Signing</strong></a></h3>
+<p>This enhancement aims to improve the security and flexibility of the Kubernetes API server by supporting out-of-process JSON Web Token (JWT) signing. This allows the API server to delegate the responsibility of signing tokens to an external process or service, enhancing security and scalability.</p>
+<p><strong>Key aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>External JWT signing</strong>: Allows the Kubernetes API server to use an external process for signing JWTs.</li>
+<li><strong>Increased security</strong>: Reduces the risk associated with the API server handling private keys directly.</li>
+<li><strong>Scalability</strong>: Enhances scalability by offloading token signing to a specialized service.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Enhanced security</strong>: Isolates the signing process, reducing the attack surface.</li>
+<li><strong>Flexibility</strong>: Allows integration with external identity providers and signing services.</li>
+<li><strong>Improved management</strong>: Simplifies key management and rotation processes.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Configuration</strong>: Administrators configure the API server to delegate JWT signing to an external process.</li>
+<li><strong>External signing service</strong>: The external service must implement a specific API to handle signing requests.</li>
+</ol>
+<p>For more detailed information, please visit the <a href="https://github.com/kubernetes/enhancements/issues/3908" target="_blank" rel="noreferrer noopener">KEP-3908 documentation</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/4601" target="_blank" rel="noreferrer noopener"><strong>#4601 Authorize With Field and Label Selectors</strong></a></h3>
+<p>This enhancement introduces the ability to use field and label selectors in authorization policies, allowing for more granular access control in Kubernetes. By enabling these selectors, administrators can define precise rules based on resource fields and labels, improving the flexibility and security of the access control system.</p>
+<p><strong>Key Aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Field selectors</strong>: Allows authorization policies to use resource field values.</li>
+<li><strong>Label selectors</strong>: Enables the use of resource labels in access control decisions.</li>
+<li><strong>Granular access control</strong>: Provides finer control over who can access specific resources.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Enhanced security</strong>: Reduces over-permission by allowing precise access control.</li>
+<li><strong>Flexibility</strong>: Supports complex policies based on resource attributes.</li>
+<li><strong>Improved management</strong>: Simplifies the creation of detailed and specific authorization rules.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Policy definition</strong>: Administrators can define policies using field and label selectors.</li>
+<li><strong>API server changes</strong>: Modifications to the API server to support these selectors in authorization checks.</li>
+</ol>
+<p>For more details, visit the <a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-auth/4601-authorize-with-selectors" target="_blank" rel="noreferrer noopener">KEP-4601 documentation</a>.</p>
+<h3 class="wp-block-heading"><a href="https://github.com/kubernetes/enhancements/issues/3962" target="_blank" rel="noreferrer noopener"><strong>#3962 Mutating Admission Policies</strong></a></h3>
+<p>This enhancement aims to introduce mutating admission policies in Kubernetes, providing a flexible way to modify requests to the API server. These policies are evaluated and applied before the requests are persisted, enabling dynamic modification of resources based on custom criteria.</p>
+<p><strong>Key aspects:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Dynamic modification</strong>: Allows the modification of API requests before they are persisted.</li>
+<li><strong>Custom policies</strong>: Supports custom criteria for modifying requests.</li>
+<li><strong>Flexibility</strong>: Enhances the flexibility of Kubernetes admission control.</li>
+</ol>
+<p><strong>Benefits:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Enhanced control</strong>: Provides fine-grained control over API requests.</li>
+<li><strong>Customization</strong>: Allows administrators to define custom logic for modifying resources.</li>
+<li><strong>Improved security</strong>: Ensures that requests meet specific policies before being accepted.</li>
+</ol>
+<p><strong>Implementation details:</strong></p>
+<ol class="wp-block-list">
+<li><strong>Policy definition</strong>: Administrators define mutating policies using CustomResourceDefinitions (CRDs).</li>
+<li><strong>Admission webhooks</strong>: Utilizes mutating admission webhooks to apply the defined policies.</li>
+</ol>
+<p><strong>Mutating admission policies Vs mutating webhooks</strong></p>
+<p>Mutating Admission Policies and Mutating Admission Webhooks in Kubernetes both serve the purpose of modifying requests to the API server before they are persisted. However, there are distinct differences in how they operate and their flexibility. The following table shows a comparison between the two.</p>
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="982" height="240" src="https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes-1.31_A-Security-Perspective.png" alt class="wp-image-6803" style="width:904px;height:auto" srcset="https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes-1.31_A-Security-Perspective.png 982w, https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes-1.31_A-Security-Perspective-300x73.png 300w, https://www.armosec.io/wp-content/uploads/2024/08/Kubernetes-1.31_A-Security-Perspective-768x188.png 768w" sizes="(max-width: 982px) 100vw, 982px" /></figure></div>
+<h2 class="wp-block-heading"><strong>Conclusion</strong></h2>
+<p>Kubernetes v1.31 brings several enhancements that significantly improve security, scalability, and developer experience within the platform. Key takeaways include:</p>
+<ol class="wp-block-list">
+<li><strong>Enhanced Security Mechanisms</strong>: Integrations such as AppArmor support (<a href="https://github.com/kubernetes/enhancements/issues/24" target="_blank" rel="noreferrer noopener">KEP</a><a href="https://github.com/kubernetes/enhancements/issues/24">-24</a>) for mandatory access control, improved management of secret-pulled images (<a href="https://github.com/kubernetes/enhancements/issues/2535" target="_blank" rel="noreferrer noopener">KEP</a><a href="https://github.com/kubernetes/enhancements/issues/2535">-2535</a>), and restrictions on anonymous authentication (<a href="https://github.com/kubernetes/enhancements/issues/4633">KEP-</a><a href="https://github.com/kubernetes/enhancements/issues/4633" target="_blank" rel="noreferrer noopener">4633</a>) enhance the security of workloads and data within Kubernetes.</li>
+<li><strong>Improved Token Management</strong>: Enhancements to bound service account tokens (<a href="https://github.com/kubernetes/enhancements/issues/4193" target="_blank" rel="noreferrer noopener">KEP-4193</a>) ensure better lifecycle management, rotation, and revocation, reducing risks associated with long-lived tokens.</li>
+<li><strong>Advanced Authorization Control</strong>: Features like out-of-process JWT signing (<a href="https://github.com/kubernetes/enhancements/issues/3908" target="_blank" rel="noreferrer noopener">KEP-3908</a>) and authorization with selectors (<a href="https://github.com/kubernetes/enhancements/issues/4601" target="_blank" rel="noreferrer noopener">KEP-4601</a>) provide more granular and flexible access control and security measures.</li>
+<li><strong>Flexible Admission Policies</strong>: The introduction of mutating admission policies (<a href="https://github.com/kubernetes/enhancements/issues/3962" target="_blank" rel="noreferrer noopener">KEP-3962</a>) allows for dynamic modification of API requests, enhancing control over resource configurations and security.</li>
+</ol>
+<p>These updates underscore Kubernetes’ commitment to advancing its security and usability, making it a more secure and reliable platform for developers and enterprises. For more details, visit the respective <a href="https://github.com/kubernetes/enhancements/issues" target="_blank" rel="noreferrer noopener">KEP issue pages</a> and <a href="https://github.com/kubernetes/enhancements/blob/master/keps/README.md" target="_blank" rel="noreferrer noopener">documentation</a>.</p>
+</div>
+<div class="blog-single__post-footer" style="display: flex; justify-content: space-between; align-items: flex-end; ">
+<div class="blog-single__share">
+<h3 class="blog-single__share-title">Share</h3>
+<div class="blog-single__share-socials">
+<a href="#" data-share-title="Kubernetes 1.31: a security perspective" data-share="linkedin"><img src="https://www.armosec.io/wp-content/themes/armo/assets/images/templates/blog/icon-share-linkedin.svg" alt></a>
+<a href="#" data-share-title="Kubernetes 1.31: a security perspective" data-share="facebook"><img src="https://www.armosec.io/wp-content/themes/armo/assets/images/templates/blog/icon-share-facebook.svg" alt></a>
+<a href="#" data-share-title="Kubernetes 1.31: a security perspective" data-share="twitter"><img src="https://www.armosec.io/wp-content/themes/armo/assets/images/templates/blog/icon-share-twitter.svg" alt></a>
+</div>
+</div>
+<div class="blog-single__read-text"></div>
+</div>
+</div>
+</div>
+<aside class="blog-single__sidebar">
+<div class="blog-single__sidebarCTA">
+<div class="blog-single__sidebarCTA-inner">
+<picture class="blog-single__sidebarCTA-logo">
+<img src="https://www.armosec.io/wp-content/themes/armo/assets/images/templates/blog/armo-grey.svg" alt="sidebar-cta-logo.svg">
+</picture>
+<h4 class="blog-single__sidebarCTA-title">Runtime Driven. <br/> DevOps First. <br/> Cloud Security. <br/> {<mark>Kubernetes-Driven</mark>}</h4>
+<a class="blog-single__sidebarCTA-button" href="https://www.armosec.io/book-demo/" target="_blank">See ARMO in Action</a>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</section>
+<section class="blog-articles">
+<div class="container">
+<div class="blog-articles__inner">
+<h4 class="blog-articles__title">Related Articles</h4>
+<div class="blog-articles__list">
+<a href="https://www.armosec.io/blog/kubernetes-1-30-security/" class="blog-article ">
+<picture class="blog-article__image">
+<img width="800" height="450" src="https://www.armosec.io/wp-content/uploads/2024/03/Kubernetes_1.30_main.png" class="attachment-full size-full" alt decoding="async" srcset="https://www.armosec.io/wp-content/uploads/2024/03/Kubernetes_1.30_main.png 800w, https://www.armosec.io/wp-content/uploads/2024/03/Kubernetes_1.30_main-300x169.png 300w, https://www.armosec.io/wp-content/uploads/2024/03/Kubernetes_1.30_main-768x432.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </picture>
+<div class="blog-article__content">
+<div class="blog-article__content-inner">
+<ul class="blog-article__meta">
+<li>Mar 20, 2024</li>
+</ul>
+<h3 class="blog-article__title">Kubernetes 1.30: A Security Perspective</h3>
+<div class="blog-article__text">
+<p>Kubernetes 1.30 marks a significant milestone in the evolution of the widely used orchestration platform,...</p>
+</div>
+</div>
+<div class="blog-article__author">
+<picture class="blog-article__author-image">
+<img width="150" height="150" src="https://www.armosec.io/wp-content/uploads/2021/12/ben-150x150.png" class="attachment-thumbnail size-thumbnail" alt decoding="async" /> </picture>
+<div class="blog-article__author-content">
+<p><b>Ben Hirschberg</b></p>
+<p>CTO & Co-founder</p>
+</div>
+</div>
+</div>
+</a>
+<a href="https://www.armosec.io/blog/kubernetes-1-29-security/" class="blog-article ">
+<picture class="blog-article__image">
+<img width="800" height="450" src="https://www.armosec.io/wp-content/uploads/2023/12/Kubernetes_1.29.png" class="attachment-full size-full" alt="Kubernetes 1.29" decoding="async" srcset="https://www.armosec.io/wp-content/uploads/2023/12/Kubernetes_1.29.png 800w, https://www.armosec.io/wp-content/uploads/2023/12/Kubernetes_1.29-300x169.png 300w, https://www.armosec.io/wp-content/uploads/2023/12/Kubernetes_1.29-768x432.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </picture>
+<div class="blog-article__content">
+<div class="blog-article__content-inner">
+<ul class="blog-article__meta">
+<li>Dec 3, 2023</li>
+</ul>
+<h3 class="blog-article__title">Kubernetes 1.29: the security perspective</h3>
+<div class="blog-article__text">
+<p>Kubernetes 1.29 will be the last release from the Kubernetes team for 2023. The new...</p>
+</div>
+</div>
+<div class="blog-article__author">
+<picture class="blog-article__author-image">
+<img width="150" height="150" src="https://www.armosec.io/wp-content/uploads/2021/12/ben-150x150.png" class="attachment-thumbnail size-thumbnail" alt decoding="async" /> </picture>
+<div class="blog-article__author-content">
+<p><b>Ben Hirschberg</b></p>
+<p>CTO & Co-founder</p>
+</div>
+</div>
+</div>
+</a>
+<a href="https://www.armosec.io/blog/kubernetes-1-28-security/" class="blog-article ">
+<picture class="blog-article__image">
+<img width="800" height="450" src="https://www.armosec.io/wp-content/uploads/2023/08/Kubernetes_1.28.png" class="attachment-full size-full" alt decoding="async" srcset="https://www.armosec.io/wp-content/uploads/2023/08/Kubernetes_1.28.png 800w, https://www.armosec.io/wp-content/uploads/2023/08/Kubernetes_1.28-300x169.png 300w, https://www.armosec.io/wp-content/uploads/2023/08/Kubernetes_1.28-768x432.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </picture>
+<div class="blog-article__content">
+<div class="blog-article__content-inner">
+<ul class="blog-article__meta">
+<li>Aug 14, 2023</li>
+</ul>
+<h3 class="blog-article__title">Kubernetes 1.28: the security perspective</h3>
+<div class="blog-article__text">
+<p>This blog post delves into the security enhancements introduced in Kubernetes 1.28, providing insights into...</p>
+</div>
+</div>
+<div class="blog-article__author">
+<picture class="blog-article__author-image">
+<img width="150" height="150" src="https://www.armosec.io/wp-content/uploads/2021/12/ben-150x150.png" class="attachment-thumbnail size-thumbnail" alt decoding="async" /> </picture>
+<div class="blog-article__author-content">
+<p><b>Ben Hirschberg</b></p>
+<p>CTO & Co-founder</p>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<div class="back_to_top">
+<svg id="Ñëîé_6" data-name="Ñëîé 6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.95 58.22">
+<defs>
+<style>
+                        .backTop {
+                            fill: none;
+                            stroke: #000D33;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+                            stroke-width: 10.5px;
+                        }
+                    </style>
+</defs>
+<line class="backTop" x1="52.97" y1="5.25" x2="52.97" y2="5.25" />
+<line class="backTop" x1="100.7" y1="52.97" x2="52.97" y2="5.25" />
+<line class="backTop" x1="5.25" y1="52.97" x2="52.97" y2="5.25" />
+</svg>
+</div>
+<div class="footer_top">
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<div class="logo">
+<a href="https://www.armosec.io">
+<svg xmlns="http://www.w3.org/2000/svg" width="141" height="54" viewBox="0 0 141 54" fill="none">
+<path d="M46.6936 28.116H53.2838C53.6456 28.116 53.8588 27.7051 53.6521 27.4051L47.8953 19.1023C47.7984 18.9653 47.8566 18.7762 48.0052 18.7045C49.3555 18.0522 50.4345 17.1587 51.2163 16.0108C52.1144 14.6933 52.5666 13.0367 52.5666 11.0539V10.4734C52.5666 8.49069 52.1208 6.82753 51.2357 5.48395C50.3505 4.14038 49.0777 3.12292 47.4237 2.43156C45.7696 1.74021 43.8055 1.39453 41.5247 1.39453H31.0773C30.8318 1.39453 30.625 1.59672 30.625 1.85109V27.6594C30.625 27.9073 30.8253 28.116 31.0773 28.116H36.8663C37.1119 28.116 37.3186 27.9138 37.3186 27.6594V20.4328C37.3186 20.185 37.5189 19.9763 37.7709 19.9763H40.8916C41.0402 19.9763 41.1823 20.0546 41.2663 20.1785L46.3253 27.9073C46.4093 28.0312 46.5514 28.1095 46.7 28.1095L46.6936 28.116ZM37.3186 7.51236C37.3186 7.26451 37.5189 7.0558 37.7709 7.0558H41.9253C42.7136 7.0558 43.3984 7.21234 43.9735 7.5254C44.5485 7.83847 45.0008 8.2885 45.3238 8.86898C45.6469 9.44945 45.8084 10.1408 45.8084 10.9365C45.8084 11.7322 45.6469 12.391 45.3238 12.9714C45.0008 13.5519 44.5485 14.0019 43.9735 14.315C43.3984 14.6281 42.7136 14.7846 41.9253 14.7846H37.7709C37.5254 14.7846 37.3186 14.5824 37.3186 14.3281V7.50584V7.51236Z" fill="#0F0F37" />
+<path d="M78.3051 1.60547C78.1178 1.60547 77.9498 1.72287 77.8852 1.89245L72.445 15.1782C72.3868 15.3282 72.1736 15.3282 72.1155 15.1782L66.6365 1.89897C66.5719 1.72287 66.4039 1.61199 66.2166 1.61199H57.6945C57.4489 1.61199 57.2422 1.81418 57.2422 2.06855V27.6617C57.2422 27.9095 57.4425 28.1182 57.6945 28.1182H62.9085C63.154 28.1182 63.3608 27.916 63.3608 27.6617V9.80388C63.3608 9.50386 63.7743 9.42559 63.8841 9.70605L68.9366 22.4896C69.0077 22.6591 69.1692 22.7765 69.3566 22.7765H74.8226C75.01 22.7765 75.1715 22.6657 75.2426 22.4896L80.3274 9.54299C80.4373 9.26254 80.8508 9.3408 80.8508 9.64082V27.6551C80.8508 27.903 81.0511 28.1117 81.303 28.1117H87.021C87.2666 28.1117 87.4733 27.9095 87.4733 27.6551V2.06202C87.4733 1.81418 87.273 1.60547 87.021 1.60547H78.318H78.3051Z" fill="#0F0F37" />
+<path d="M105.66 28.841C103.263 28.841 101.176 28.4236 99.3991 27.5888C97.6223 26.7539 96.1492 25.6517 94.9733 24.282C93.7974 22.9123 92.9252 21.4318 92.3501 19.8339C91.7751 18.2359 91.4844 16.6902 91.4844 15.1835V14.3878C91.4844 12.7181 91.7816 11.0745 92.3825 9.47008C92.9833 7.8591 93.8814 6.40464 95.0832 5.09368C96.2849 3.78924 97.7645 2.74569 99.5219 1.96955C101.286 1.1934 103.327 0.808594 105.653 0.808594C107.979 0.808594 109.989 1.1934 111.753 1.96955C113.516 2.74569 114.996 3.78272 116.198 5.09368C117.393 6.39812 118.304 7.8591 118.911 9.47008C119.525 11.0811 119.829 12.7181 119.829 14.3878V15.1835C119.829 16.6836 119.538 18.2359 118.95 19.8339C118.362 21.4318 117.484 22.9123 116.308 24.282C115.132 25.6517 113.659 26.7539 111.882 27.5888C110.105 28.4236 108.031 28.841 105.66 28.841ZM105.66 22.521C106.81 22.521 107.844 22.3253 108.755 21.9405C109.666 21.5557 110.447 21.0079 111.094 20.31C111.74 19.6056 112.231 18.7903 112.567 17.8576C112.903 16.925 113.071 15.914 113.071 14.8248C113.071 13.6639 112.896 12.6073 112.547 11.6681C112.198 10.7223 111.701 9.91359 111.055 9.23528C110.409 8.55697 109.627 8.0352 108.716 7.67647C107.805 7.31123 106.784 7.12861 105.66 7.12861C104.536 7.12861 103.476 7.31123 102.565 7.67647C101.654 8.04172 100.872 8.56349 100.226 9.23528C99.58 9.91359 99.089 10.7223 98.753 11.6681C98.4171 12.6138 98.2491 13.6639 98.2491 14.8248C98.2491 15.914 98.4171 16.925 98.753 17.8576C99.089 18.7903 99.58 19.6056 100.226 20.31C100.872 21.0144 101.654 21.5557 102.565 21.9405C103.476 22.3253 104.51 22.521 105.66 22.521Z" fill="#0F0F37" />
+<path d="M18.6481 1.60547H8.58183C8.388 1.60547 8.21355 1.73591 8.1554 1.91853L0.0209741 27.5247C-0.0694802 27.8182 0.143734 28.1182 0.447402 28.1182H27.0539C27.3576 28.1182 27.5772 27.8182 27.4803 27.5247L19.0745 1.91853C19.0164 1.73591 18.8419 1.60547 18.6481 1.60547ZM8.36862 22.0069L12.788 7.3711C12.8461 7.18195 13.0206 7.05151 13.2208 7.05151H13.8993C14.0931 7.05151 14.2675 7.18195 14.3257 7.3711L18.8678 22.0069C18.9582 22.3004 18.745 22.5939 18.4414 22.5939H8.80151C8.49784 22.5939 8.28462 22.3004 8.36862 22.0069Z" fill="#0F0F37" />
+<path d="M4.18436 51.4893H2.66709V43.3717H4.18436V51.4893ZM6.87516 44.5314H0V43.3717H6.87516V44.5314Z" fill="#0F0F37" />
+<path d="M9.31702 51.4893H7.84716V42.9257H9.31702V51.4893ZM8.58802 48.2612C8.59197 47.7 8.69668 47.2 8.90214 46.7615C9.11156 46.3229 9.40395 45.9772 9.77932 45.7245C10.1547 45.4717 10.5933 45.3453 11.0951 45.3453C11.5179 45.3453 11.8853 45.4215 12.1975 45.5739C12.5136 45.7226 12.7586 45.9642 12.9324 46.2987C13.1063 46.6295 13.1932 47.0718 13.1932 47.6256V51.4893H11.7174V47.6145C11.7174 47.332 11.6739 47.1071 11.587 46.9399C11.5001 46.7726 11.3717 46.6537 11.2018 46.583C11.0358 46.5124 10.8323 46.4771 10.5913 46.4771C10.3384 46.4771 10.1172 46.5236 9.92749 46.6165C9.73783 46.7057 9.57781 46.8321 9.44742 46.9956C9.31702 47.1592 9.22022 47.3487 9.157 47.5643C9.09378 47.7799 9.06217 48.0103 9.06217 48.2556L8.58802 48.2612Z" fill="#0F0F37" />
+<path d="M17.4665 51.6008C16.8303 51.6008 16.2811 51.4726 15.8188 51.2161C15.3565 50.9559 15.0009 50.6065 14.752 50.1679C14.503 49.7256 14.3786 49.2313 14.3786 48.6849V48.4563C14.3786 47.8282 14.505 47.2818 14.7579 46.8172C15.0108 46.3489 15.3565 45.9865 15.7951 45.73C16.2376 45.4736 16.7375 45.3453 17.2946 45.3453C17.911 45.3453 18.4227 45.4717 18.8296 45.7245C19.2366 45.9735 19.5409 46.321 19.7424 46.767C19.9439 47.2093 20.0446 47.7223 20.0446 48.3058V48.9024H15.0839V47.9044H18.5926V47.7985C18.5847 47.5643 18.5372 47.345 18.4503 47.1406C18.3634 46.9361 18.2251 46.7707 18.0354 46.6444C17.8497 46.518 17.6008 46.4548 17.2887 46.4548C16.9765 46.4548 16.7137 46.5384 16.5004 46.7057C16.287 46.8692 16.125 47.1015 16.0144 47.4026C15.9037 47.7 15.8484 48.0512 15.8484 48.4563V48.6849C15.8484 49.0269 15.9156 49.3335 16.0499 49.6048C16.1843 49.8762 16.3799 50.0917 16.6367 50.2516C16.8935 50.4077 17.1997 50.4857 17.5554 50.4857C17.8991 50.4857 18.2034 50.4225 18.4681 50.2962C18.7368 50.1698 18.9679 49.9877 19.1615 49.7498L19.932 50.4746C19.7305 50.7608 19.4263 51.021 19.0193 51.2551C18.6163 51.4856 18.0987 51.6008 17.4665 51.6008Z" fill="#0F0F37" />
+<path d="M25.6396 51.4893H24.1638V45.4568H25.5507L25.6396 46.689V51.4893ZM24.8987 48.2612C24.8987 47.7 24.9936 47.2 25.1832 46.7615C25.3768 46.3229 25.6633 45.9772 26.0426 45.7245C26.4219 45.4717 26.8941 45.3453 27.4591 45.3453C28.04 45.3453 28.5181 45.5107 28.8934 45.8415C29.2688 46.1723 29.4565 46.715 29.4565 47.4695V51.4893H27.9866V47.5977C27.9866 47.3153 27.9392 47.0923 27.8444 46.9287C27.7535 46.7652 27.6231 46.65 27.4532 46.583C27.2873 46.5124 27.0877 46.4771 26.8546 46.4771C26.5899 46.4771 26.3646 46.5236 26.1789 46.6165C25.9972 46.7057 25.849 46.8321 25.7344 46.9956C25.6198 47.1592 25.5349 47.3487 25.4796 47.5643C25.4282 47.7799 25.4025 48.0103 25.4025 48.2556L24.8987 48.2612ZM28.6741 48.0661C28.6781 47.5717 28.7749 47.1183 28.9646 46.7057C29.1542 46.2931 29.4348 45.9642 29.8062 45.7189C30.1776 45.4699 30.6359 45.3453 31.1812 45.3453C31.6158 45.3453 31.9892 45.4215 32.3014 45.5739C32.6135 45.7226 32.8546 45.9623 33.0245 46.2931C33.1944 46.6202 33.2793 47.0551 33.2793 47.5977V51.4893H31.8035V47.5866C31.8035 47.293 31.7561 47.0662 31.6613 46.9064C31.5704 46.7429 31.44 46.6314 31.2701 46.5719C31.1042 46.5087 30.9066 46.4771 30.6774 46.4771C30.4601 46.4771 30.2685 46.5143 30.1025 46.5886C29.9405 46.663 29.8042 46.767 29.6936 46.9008C29.5869 47.0309 29.5039 47.1852 29.4446 47.3636C29.3893 47.5383 29.3617 47.7278 29.3617 47.9323L28.6741 48.0661Z" fill="#0F0F37" />
+<path d="M38.329 47.4138C38.329 47.1015 38.2361 46.8525 38.0504 46.6667C37.8687 46.4808 37.5921 46.3879 37.2207 46.3879C36.9994 46.3879 36.8058 46.4251 36.6399 46.4994C36.4739 46.57 36.3455 46.6667 36.2546 46.7893C36.1637 46.912 36.1183 47.0514 36.1183 47.2075H34.6484C34.6484 46.8841 34.7571 46.5812 34.9744 46.2987C35.1917 46.0125 35.4979 45.7821 35.8931 45.6074C36.2921 45.4327 36.7623 45.3453 37.3037 45.3453C37.7857 45.3453 38.2144 45.4215 38.5898 45.5739C38.9652 45.7263 39.2595 45.9568 39.4729 46.2653C39.6902 46.5738 39.7989 46.9603 39.7989 47.4249V50.0843C39.7989 50.3668 39.8206 50.6158 39.8641 50.8314C39.9075 51.047 39.9688 51.2347 40.0478 51.3945V51.4893H38.5424C38.4752 51.3443 38.4219 51.1566 38.3823 50.9262C38.3468 50.6957 38.329 50.4709 38.329 50.2516V47.4138ZM38.5542 48.6682H37.5467C37.0251 48.6682 36.6319 48.7593 36.3672 48.9414C36.1064 49.1198 35.976 49.3632 35.976 49.6717C35.976 49.9096 36.063 50.1085 36.2368 50.2683C36.4107 50.4244 36.6557 50.5025 36.9718 50.5025C37.2602 50.5025 37.5111 50.4486 37.7245 50.3408C37.9418 50.2293 38.1117 50.0936 38.2342 49.9338C38.3567 49.7702 38.4199 49.6179 38.4238 49.4766L38.8921 50.0955C38.8446 50.2479 38.7636 50.4114 38.6491 50.5861C38.5384 50.7571 38.3902 50.9206 38.2045 51.0767C38.0228 51.2291 37.8055 51.3555 37.5526 51.4558C37.3037 51.5525 37.0132 51.6008 36.6813 51.6008C36.2625 51.6008 35.8891 51.5227 35.5612 51.3666C35.2332 51.2105 34.9744 50.9968 34.7847 50.7255C34.599 50.4504 34.5062 50.1419 34.5062 49.8C34.5062 49.1607 34.761 48.6701 35.2707 48.3281C35.7805 47.9862 36.5035 47.8152 37.44 47.8152H38.5424L38.5542 48.6682Z" fill="#0F0F37" />
+<path d="M42.7623 51.4893H41.2865V42.9257H42.7623V51.4893ZM43.9654 48.3783L42.4185 49.8557L42.0274 48.7017L43.195 47.3357L44.9671 45.4568H46.7392L43.9654 48.3783ZM43.2364 48.6738L44.167 47.7148L46.9822 51.4893H45.2753L43.2364 48.6738Z" fill="#0F0F37" />
+<path d="M50.4791 51.6008C49.8429 51.6008 49.2937 51.4726 48.8314 51.2161C48.3691 50.9559 48.0135 50.6065 47.7646 50.1679C47.5156 49.7256 47.3912 49.2313 47.3912 48.6849V48.4563C47.3912 47.8282 47.5176 47.2818 47.7705 46.8172C48.0234 46.3489 48.3691 45.9865 48.8077 45.73C49.2502 45.4736 49.7501 45.3453 50.3072 45.3453C50.9236 45.3453 51.4353 45.4717 51.8422 45.7245C52.2492 45.9735 52.5535 46.321 52.755 46.767C52.9565 47.2093 53.0573 47.7223 53.0573 48.3058V48.9024H48.0965V47.9044H51.6052V47.7985C51.5973 47.5643 51.5499 47.345 51.4629 47.1406C51.376 46.9361 51.2377 46.7707 51.048 46.6444C50.8623 46.518 50.6134 46.4548 50.3013 46.4548C49.9891 46.4548 49.7264 46.5384 49.513 46.7057C49.2996 46.8692 49.1376 47.1015 49.027 47.4026C48.9164 47.7 48.861 48.0512 48.861 48.4563V48.6849C48.861 49.0269 48.9282 49.3335 49.0625 49.6048C49.1969 49.8762 49.3925 50.0917 49.6493 50.2516C49.9061 50.4077 50.2124 50.4857 50.568 50.4857C50.9117 50.4857 51.216 50.4225 51.4807 50.2962C51.7494 50.1698 51.9805 49.9877 52.1741 49.7498L52.9446 50.4746C52.7431 50.7608 52.4389 51.021 52.0319 51.2551C51.6289 51.4856 51.1113 51.6008 50.4791 51.6008Z" fill="#0F0F37" />
+<path d="M55.6295 51.4893H54.1596V45.4568H55.5584L55.6295 46.6388V51.4893ZM57.5617 46.728C57.4708 46.7131 57.374 46.702 57.2712 46.6946C57.1725 46.6871 57.0737 46.6834 56.9749 46.6834C56.6509 46.6834 56.3802 46.7392 56.1629 46.8507C55.9496 46.9585 55.7876 47.1146 55.6769 47.319C55.5663 47.5197 55.5011 47.7576 55.4813 48.0326L55.1435 48.0382C55.1435 47.529 55.2146 47.0718 55.3569 46.6667C55.4991 46.2615 55.7125 45.94 55.997 45.7022C56.2815 45.4643 56.6371 45.3453 57.0638 45.3453C57.1468 45.3453 57.2396 45.3528 57.3424 45.3676C57.4451 45.3825 57.5222 45.3992 57.5735 45.4178L57.5617 46.728Z" fill="#0F0F37" />
+<path d="M62.0424 49.8446C62.0424 49.7182 62.0068 49.603 61.9357 49.4989C61.8685 49.3948 61.7361 49.2982 61.5386 49.209C61.341 49.1198 61.0506 49.038 60.6673 48.9637C60.2129 48.8745 59.8119 48.7555 59.4642 48.6069C59.1204 48.4582 58.8517 48.2668 58.6581 48.0326C58.4685 47.7985 58.3736 47.5123 58.3736 47.174C58.3736 46.8469 58.4724 46.5459 58.67 46.2708C58.8715 45.9921 59.158 45.7691 59.5294 45.6018C59.9048 45.4308 60.3473 45.3453 60.857 45.3453C61.3944 45.3453 61.8567 45.4308 62.2439 45.6018C62.6311 45.7691 62.9274 45.9976 63.1329 46.2876C63.3423 46.5738 63.447 46.899 63.447 47.2632H61.9772C61.9772 47.0254 61.8823 46.8172 61.6927 46.6388C61.507 46.4567 61.2264 46.3656 60.8511 46.3656C60.618 46.3656 60.4224 46.4009 60.2643 46.4715C60.1102 46.5422 59.9937 46.6332 59.9146 46.7447C59.8396 46.8562 59.802 46.9789 59.802 47.1127C59.802 47.2428 59.8396 47.3562 59.9146 47.4528C59.9937 47.5494 60.126 47.6349 60.3117 47.7093C60.5014 47.7836 60.7661 47.8542 61.1059 47.9211C61.5959 48.0178 62.0187 48.1404 62.3743 48.2891C62.7299 48.434 63.0025 48.6273 63.1922 48.8689C63.3858 49.1068 63.4826 49.4097 63.4826 49.7777C63.4826 50.1308 63.3739 50.4448 63.1566 50.7199C62.9433 50.9949 62.641 51.2105 62.2498 51.3666C61.8626 51.5227 61.4042 51.6008 60.8748 51.6008C60.286 51.6008 59.7902 51.5023 59.3871 51.3053C58.9841 51.1083 58.6779 50.8574 58.4685 50.5526C58.263 50.2441 58.1603 49.9245 58.1603 49.5937H59.5768C59.5926 49.8316 59.6637 50.023 59.7902 50.1679C59.9206 50.3129 60.0826 50.4188 60.2762 50.4857C60.4737 50.5489 60.6792 50.5805 60.8926 50.5805C61.1454 50.5805 61.3549 50.5489 61.5208 50.4857C61.6907 50.4225 61.8191 50.3371 61.9061 50.2293C61.9969 50.1178 62.0424 49.9895 62.0424 49.8446Z" fill="#0F0F37" />
+<path d="M67.4714 48.4173C67.4714 47.83 67.5899 47.306 67.827 46.8451C68.0641 46.3842 68.4039 46.0199 68.8464 45.7523C69.2929 45.481 69.8283 45.3453 70.4526 45.3453C71.0848 45.3453 71.6241 45.481 72.0706 45.7523C72.5171 46.0199 72.8569 46.3842 73.09 46.8451C73.3271 47.306 73.4456 47.83 73.4456 48.4173V48.5344C73.4456 49.1179 73.3271 49.642 73.09 50.1066C72.8569 50.5675 72.5171 50.9318 72.0706 51.1994C71.6281 51.467 71.0927 51.6008 70.4644 51.6008C69.8362 51.6008 69.2988 51.467 68.8523 51.1994C68.4058 50.9318 68.0641 50.5675 67.827 50.1066C67.5899 49.642 67.4714 49.1179 67.4714 48.5344V48.4173ZM68.9412 48.5344C68.9412 48.8912 68.9946 49.2183 69.1013 49.5156C69.2079 49.8093 69.3719 50.0453 69.5932 50.2237C69.8184 50.4021 70.1088 50.4913 70.4644 50.4913C70.8161 50.4913 71.1026 50.4021 71.3238 50.2237C71.5491 50.0453 71.713 49.8093 71.8158 49.5156C71.9224 49.2183 71.9758 48.8912 71.9758 48.5344V48.4173C71.9758 48.0642 71.9224 47.739 71.8158 47.4416C71.713 47.1443 71.5491 46.9064 71.3238 46.728C71.0986 46.5459 70.8082 46.4548 70.4526 46.4548C70.1009 46.4548 69.8125 46.5459 69.5873 46.728C69.366 46.9064 69.202 47.1443 69.0953 47.4416C68.9926 47.739 68.9412 48.0642 68.9412 48.4173V48.5344Z" fill="#0F0F37" />
+<path d="M75.1407 51.4893V44.8826C75.1407 44.2136 75.3422 43.7006 75.7453 43.3438C76.1483 42.987 76.6995 42.8086 77.3989 42.8086C77.5411 42.8086 77.6814 42.8179 77.8197 42.8365C77.958 42.8551 78.0923 42.8792 78.2227 42.9089L78.1871 43.9906C78.1121 43.9757 78.0271 43.9645 77.9323 43.9571C77.8375 43.9497 77.7387 43.9459 77.6359 43.9459C77.3119 43.9459 77.0591 44.0277 76.8773 44.1913C76.6995 44.3511 76.6106 44.5815 76.6106 44.8826V51.4893H75.1407ZM77.9204 46.4771H74.1628V45.4568H77.9204V46.4771Z" fill="#0F0F37" />
+<path d="M83.6339 51.4893H82.1048V43.3717H83.6339V51.4893ZM85.329 47.3023L83.3257 49.2982L83.059 47.8598L84.4696 46.1872L86.947 43.3717H88.814L85.329 47.3023ZM84.3629 47.6702L85.4179 46.689L88.974 51.4893H87.1545L84.3629 47.6702Z" fill="#0F0F37" />
+<path d="M93.3243 45.4568H94.7942V51.4893H93.4073L93.3243 50.062V45.4568ZM94.0178 48.7909C94.0178 49.3335 93.9328 49.8167 93.7629 50.2404C93.593 50.6604 93.3283 50.9931 92.9687 51.2384C92.6092 51.48 92.1429 51.6008 91.57 51.6008C90.9378 51.6008 90.4261 51.4261 90.0349 51.0767C89.6438 50.7273 89.4482 50.1531 89.4482 49.354V45.4568H90.918V49.3651C90.918 49.6439 90.9635 49.865 91.0544 50.0286C91.1492 50.1884 91.2736 50.3018 91.4277 50.3687C91.5818 50.4356 91.7517 50.469 91.9375 50.469C92.3365 50.469 92.6507 50.3965 92.8798 50.2516C93.1129 50.1029 93.2789 49.9022 93.3777 49.6494C93.4765 49.3967 93.5258 49.1142 93.5258 48.802L94.0178 48.7909Z" fill="#0F0F37" />
+<path d="M97.7102 42.9257V50.1847L97.568 51.4893H96.2404V42.9257H97.7102ZM101.883 48.5344C101.883 49.1291 101.788 49.6569 101.598 50.1178C101.413 50.5787 101.134 50.941 100.763 51.2049C100.395 51.4688 99.9367 51.6008 99.3875 51.6008C98.8541 51.6008 98.4116 51.4744 98.0599 51.2217C97.7122 50.9689 97.4415 50.6214 97.2479 50.1791C97.0583 49.7331 96.9279 49.2201 96.8567 48.6403V48.3114C96.9279 47.7278 97.0583 47.2149 97.2479 46.7726C97.4415 46.3266 97.7122 45.9772 98.0599 45.7245C98.4076 45.4717 98.8462 45.3453 99.3757 45.3453C99.9288 45.3453 100.391 45.4754 100.763 45.7356C101.134 45.9958 101.413 46.3563 101.598 46.8172C101.788 47.2781 101.883 47.8115 101.883 48.4173V48.5344ZM100.413 48.4173C100.413 48.0642 100.369 47.7408 100.282 47.4472C100.199 47.1536 100.055 46.9194 99.8498 46.7447C99.6483 46.5663 99.3678 46.4771 99.0082 46.4771C98.7593 46.4771 98.5459 46.5161 98.3681 46.5942C98.1903 46.6723 98.0401 46.78 97.9177 46.9176C97.7991 47.0551 97.7063 47.2168 97.6391 47.4026C97.5719 47.5885 97.5265 47.7892 97.5028 48.0047V48.9525C97.5383 49.2313 97.6114 49.4859 97.7221 49.7163C97.8327 49.9468 97.9947 50.1308 98.2081 50.2683C98.4214 50.4021 98.6921 50.469 99.0201 50.469C99.3717 50.469 99.6483 50.3835 99.8498 50.2125C100.051 50.0416 100.196 49.8111 100.282 49.5212C100.369 49.2276 100.413 48.8986 100.413 48.5344V48.4173Z" fill="#0F0F37" />
+<path d="M105.907 51.6008C105.271 51.6008 104.722 51.4726 104.259 51.2161C103.797 50.9559 103.441 50.6065 103.193 50.1679C102.944 49.7256 102.819 49.2313 102.819 48.6849V48.4563C102.819 47.8282 102.946 47.2818 103.198 46.8172C103.451 46.3489 103.797 45.9865 104.236 45.73C104.678 45.4736 105.178 45.3453 105.735 45.3453C106.352 45.3453 106.863 45.4717 107.27 45.7245C107.677 45.9735 107.981 46.321 108.183 46.767C108.384 47.2093 108.485 47.7223 108.485 48.3058V48.9024H103.524V47.9044H107.033V47.7985C107.025 47.5643 106.978 47.345 106.891 47.1406C106.804 46.9361 106.666 46.7707 106.476 46.6444C106.29 46.518 106.041 46.4548 105.729 46.4548C105.417 46.4548 105.154 46.5384 104.941 46.7057C104.728 46.8692 104.566 47.1015 104.455 47.4026C104.344 47.7 104.289 48.0512 104.289 48.4563V48.6849C104.289 49.0269 104.356 49.3335 104.491 49.6048C104.625 49.8762 104.82 50.0917 105.077 50.2516C105.334 50.4077 105.64 50.4857 105.996 50.4857C106.34 50.4857 106.644 50.4225 106.909 50.2962C107.177 50.1698 107.409 49.9877 107.602 49.7498L108.373 50.4746C108.171 50.7608 107.867 51.021 107.46 51.2551C107.057 51.4856 106.539 51.6008 105.907 51.6008Z" fill="#0F0F37" />
+<path d="M113.167 49.8446C113.167 49.7182 113.132 49.603 113.061 49.4989C112.994 49.3948 112.861 49.2982 112.664 49.209C112.466 49.1198 112.176 49.038 111.792 48.9637C111.338 48.8745 110.937 48.7555 110.589 48.6069C110.246 48.4582 109.977 48.2668 109.783 48.0326C109.594 47.7985 109.499 47.5123 109.499 47.174C109.499 46.8469 109.598 46.5459 109.795 46.2708C109.997 45.9921 110.283 45.7691 110.654 45.6018C111.03 45.4308 111.472 45.3453 111.982 45.3453C112.519 45.3453 112.982 45.4308 113.369 45.6018C113.756 45.7691 114.053 45.9976 114.258 46.2876C114.467 46.5738 114.572 46.899 114.572 47.2632H113.102C113.102 47.0254 113.007 46.8172 112.818 46.6388C112.632 46.4567 112.352 46.3656 111.976 46.3656C111.743 46.3656 111.547 46.4009 111.389 46.4715C111.235 46.5422 111.119 46.6332 111.04 46.7447C110.965 46.8562 110.927 46.9789 110.927 47.1127C110.927 47.2428 110.965 47.3562 111.04 47.4528C111.119 47.5494 111.251 47.6349 111.437 47.7093C111.626 47.7836 111.891 47.8542 112.231 47.9211C112.721 48.0178 113.144 48.1404 113.499 48.2891C113.855 48.434 114.128 48.6273 114.317 48.8689C114.511 49.1068 114.608 49.4097 114.608 49.7777C114.608 50.1308 114.499 50.4448 114.282 50.7199C114.068 50.9949 113.766 51.2105 113.375 51.3666C112.988 51.5227 112.529 51.6008 112 51.6008C111.411 51.6008 110.915 51.5023 110.512 51.3053C110.109 51.1083 109.803 50.8574 109.594 50.5526C109.388 50.2441 109.285 49.9245 109.285 49.5937H110.702C110.718 49.8316 110.789 50.023 110.915 50.1679C111.046 50.3129 111.208 50.4188 111.401 50.4857C111.599 50.5489 111.804 50.5805 112.018 50.5805C112.271 50.5805 112.48 50.5489 112.646 50.4857C112.816 50.4225 112.944 50.3371 113.031 50.2293C113.122 50.1178 113.167 49.9895 113.167 49.8446Z" fill="#0F0F37" />
+<path d="M118.478 50.4913C118.707 50.4913 118.915 50.4486 119.1 50.3631C119.286 50.2739 119.434 50.1531 119.545 50.0007C119.655 49.8483 119.717 49.6736 119.729 49.4766H121.115C121.104 49.8743 120.979 50.233 120.742 50.5526C120.505 50.8723 120.191 51.1269 119.8 51.3165C119.408 51.506 118.972 51.6008 118.49 51.6008C117.838 51.6008 117.295 51.4651 116.86 51.1938C116.429 50.9187 116.107 50.5526 115.894 50.0955C115.68 49.6346 115.574 49.1254 115.574 48.5678V48.3783C115.574 47.8208 115.68 47.3134 115.894 46.8562C116.107 46.3953 116.429 46.0292 116.86 45.7579C117.295 45.4829 117.838 45.3453 118.49 45.3453C119.007 45.3453 119.46 45.442 119.847 45.6353C120.238 45.8248 120.544 46.0906 120.766 46.4325C120.987 46.7745 121.104 47.174 121.115 47.6312H119.729C119.717 47.4156 119.659 47.2186 119.557 47.0402C119.458 46.8618 119.316 46.7206 119.13 46.6165C118.948 46.5087 118.729 46.4548 118.472 46.4548C118.093 46.4548 117.798 46.5477 117.589 46.7336C117.383 46.9194 117.241 47.1592 117.162 47.4528C117.083 47.7464 117.044 48.0549 117.044 48.3783V48.5678C117.044 48.8949 117.081 49.2053 117.156 49.4989C117.235 49.7925 117.379 50.0323 117.589 50.2181C117.798 50.4002 118.095 50.4913 118.478 50.4913Z" fill="#0F0F37" />
+<path d="M125.798 47.4138C125.798 47.1015 125.705 46.8525 125.519 46.6667C125.337 46.4808 125.061 46.3879 124.689 46.3879C124.468 46.3879 124.274 46.4251 124.108 46.4994C123.942 46.57 123.814 46.6667 123.723 46.7893C123.632 46.912 123.587 47.0514 123.587 47.2075H122.117C122.117 46.8841 122.226 46.5812 122.443 46.2987C122.66 46.0125 122.967 45.7821 123.362 45.6074C123.761 45.4327 124.231 45.3453 124.772 45.3453C125.254 45.3453 125.683 45.4215 126.058 45.5739C126.434 45.7263 126.728 45.9568 126.941 46.2653C127.159 46.5738 127.267 46.9603 127.267 47.4249V50.0843C127.267 50.3668 127.289 50.6158 127.333 50.8314C127.376 51.047 127.437 51.2347 127.516 51.3945V51.4893H126.011C125.944 51.3443 125.89 51.1566 125.851 50.9262C125.815 50.6957 125.798 50.4709 125.798 50.2516V47.4138ZM126.023 48.6682H125.015C124.494 48.6682 124.101 48.7593 123.836 48.9414C123.575 49.1198 123.445 49.3632 123.445 49.6717C123.445 49.9096 123.532 50.1085 123.705 50.2683C123.879 50.4244 124.124 50.5025 124.44 50.5025C124.729 50.5025 124.98 50.4486 125.193 50.3408C125.41 50.2293 125.58 50.0936 125.703 49.9338C125.825 49.7702 125.888 49.6179 125.892 49.4766L126.361 50.0955C126.313 50.2479 126.232 50.4114 126.118 50.5861C126.007 50.7571 125.859 50.9206 125.673 51.0767C125.491 51.2291 125.274 51.3555 125.021 51.4558C124.772 51.5525 124.482 51.6008 124.15 51.6008C123.731 51.6008 123.358 51.5227 123.03 51.3666C122.702 51.2105 122.443 50.9968 122.253 50.7255C122.068 50.4504 121.975 50.1419 121.975 49.8C121.975 49.1607 122.23 48.6701 122.739 48.3281C123.249 47.9862 123.972 47.8152 124.909 47.8152H126.011L126.023 48.6682Z" fill="#0F0F37" />
+<path d="M130.225 53.8086H128.755V45.4568H130.112L130.225 46.6165V53.8086ZM134.386 48.5288C134.386 49.1161 134.289 49.642 134.095 50.1066C133.906 50.5675 133.625 50.9318 133.254 51.1994C132.886 51.467 132.436 51.6008 131.902 51.6008C131.365 51.6008 130.918 51.4781 130.563 51.2328C130.211 50.9838 129.937 50.6418 129.739 50.207C129.541 49.7721 129.405 49.2759 129.33 48.7184V48.3225C129.405 47.7278 129.541 47.2093 129.739 46.767C129.937 46.321 130.211 45.9735 130.563 45.7245C130.914 45.4717 131.355 45.3453 131.884 45.3453C132.426 45.3453 132.882 45.4736 133.254 45.73C133.625 45.9865 133.906 46.3452 134.095 46.8061C134.289 47.2669 134.386 47.8022 134.386 48.4117V48.5288ZM132.916 48.4117C132.916 48.0512 132.866 47.7241 132.768 47.4305C132.673 47.1369 132.519 46.9046 132.305 46.7336C132.096 46.5626 131.821 46.4771 131.481 46.4771C131.236 46.4771 131.025 46.5161 130.847 46.5942C130.669 46.6685 130.519 46.7745 130.397 46.912C130.278 47.0495 130.185 47.2131 130.118 47.4026C130.051 47.5885 130.004 47.7929 129.976 48.0159V49.025C130.023 49.2926 130.102 49.5379 130.213 49.761C130.324 49.984 130.482 50.1624 130.687 50.2962C130.897 50.4263 131.165 50.4913 131.493 50.4913C131.833 50.4913 132.108 50.4021 132.317 50.2237C132.527 50.0416 132.679 49.8037 132.774 49.5101C132.868 49.2127 132.916 48.8856 132.916 48.5288V48.4117Z" fill="#0F0F37" />
+<path d="M138.422 51.6008C137.786 51.6008 137.236 51.4726 136.774 51.2161C136.312 50.9559 135.956 50.6065 135.707 50.1679C135.458 49.7256 135.334 49.2313 135.334 48.6849V48.4563C135.334 47.8282 135.46 47.2818 135.713 46.8172C135.966 46.3489 136.312 45.9865 136.75 45.73C137.193 45.4736 137.693 45.3453 138.25 45.3453C138.866 45.3453 139.378 45.4717 139.785 45.7245C140.192 45.9735 140.496 46.321 140.698 46.767C140.899 47.2093 141 47.7223 141 48.3058V48.9024H136.039V47.9044H139.548V47.7985C139.54 47.5643 139.493 47.345 139.406 47.1406C139.319 46.9361 139.18 46.7707 138.991 46.6444C138.805 46.518 138.556 46.4548 138.244 46.4548C137.932 46.4548 137.669 46.5384 137.456 46.7057C137.242 46.8692 137.08 47.1015 136.97 47.4026C136.859 47.7 136.804 48.0512 136.804 48.4563V48.6849C136.804 49.0269 136.871 49.3335 137.005 49.6048C137.14 49.8762 137.335 50.0917 137.592 50.2516C137.849 50.4077 138.155 50.4857 138.511 50.4857C138.854 50.4857 139.159 50.4225 139.423 50.2962C139.692 50.1698 139.923 49.9877 140.117 49.7498L140.887 50.4746C140.686 50.7608 140.382 51.021 139.975 51.2551C139.572 51.4856 139.054 51.6008 138.422 51.6008Z" fill="#0F0F37" />
+</svg>
+</a>
+</div>
+</div>
+<div class="col-md-4">
+<ul class="footer-social-menu">
+<li>
+<a href="https://twitter.com/armosec">
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1668.56 1221.19" style="enable-background:new 0 0 1668.56 1221.19;" xml:space="preserve" fill="#0F0F37">
+<g id="layer1" transform="translate(52.390088,-25.058597)">
+<path id="path1009" d="M283.94,167.31l386.39,516.64L281.5,1104h87.51l340.42-367.76L984.48,1104h297.8L874.15,558.3l361.92-390.99
+														h-87.51l-313.51,338.7l-253.31-338.7H283.94z M412.63,231.77h136.81l604.13,807.76h-136.81L412.63,231.77z" />
+</g>
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/armosec/">
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+<g clip-path="url(#clip0_10371_9268)">
+<path d="M13 14.551C13 14.046 13.1689 13.6293 13.5068 13.301C13.8446 12.9727 14.2838 12.8086 14.8243 12.8086C15.3552 12.8086 15.7847 12.9702 16.1129 13.2934C16.4508 13.6268 16.6197 14.0611 16.6197 14.5965C16.6197 15.0813 16.4556 15.4853 16.1274 15.8086C15.7896 16.1419 15.3456 16.3086 14.7954 16.3086H14.7809C14.25 16.3086 13.8205 16.1419 13.4923 15.8086C13.1641 15.4753 13 15.0561 13 14.551ZM13.1882 27.8086V17.6874H16.4025V27.8086H13.1882ZM18.1834 27.8086H21.3977V22.1571C21.3977 21.8035 21.4363 21.5308 21.5135 21.3389C21.6486 20.9954 21.8538 20.705 22.1289 20.4677C22.404 20.2303 22.749 20.1116 23.1641 20.1116C24.2452 20.1116 24.7857 20.8742 24.7857 22.3995V27.8086H28V22.0055C28 20.5106 27.6622 19.3768 26.9865 18.604C26.3108 17.8313 25.418 17.4449 24.3079 17.4449C23.0627 17.4449 22.0927 18.0056 21.3977 19.1268V19.1571H21.3832L21.3977 19.1268V17.6874H18.1834C18.2027 18.0106 18.2124 19.0156 18.2124 20.7025C18.2124 22.3894 18.2027 24.7581 18.1834 27.8086Z" fill="#0F0F37" />
+</g>
+<defs>
+<clipPath id="clip0_10371_9268">
+<rect width="15" height="15" fill="white" transform="translate(13 12.8086)" />
+</clipPath>
+</defs>
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="col-md-8 order-2 order-md-1">
+<div class="row align-items-end align-items-md-start">
+<div class="col-6 col-md">
+<div class="row">
+<div class="col-md-3">
+<div class="footer-cats">
+<h3 class="title">Company</h3>
+<ul class="cats-nav">
+<li>
+<a class target title="About us" href="https://www.armosec.io/about-us/">About us</a>
+</li>
+<li>
+<a class target title="Careers" href="https://www.armosec.io/careers/">Careers</a>
+</li>
+<li>
+<a class target title="News" href="https://www.armosec.io/news/">News</a>
+</li>
+<li>
+<a class target title="Contact us" href="https://landing.armosec.io/contact-us-website">Contact us</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+<div class="footer-cats">
+<h3 class="title">ARMO Platfrom</h3>
+<ul class="cats-nav">
+<li>
+<a class target title="Get a demo" href="https://www.armosec.io/book-demo/">Get a demo</a>
+</li>
+<li>
+<a class target title="Sign up" href="https://auth.armosec.io/oauth/account/sign-up">Sign up</a>
+</li>
+<li>
+<a class target title="Pricing" href="https://www.armosec.io/pricing/">Pricing</a>
+</li>
+<li>
+<a class target="_blank" title="Docs" href="https://hub.armosec.io/docs">Docs</a>
+</li>
+<li>
+<a class target title="Powered by Kubescape" href="https://www.armosec.io/kubescape/">Powered by Kubescape</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-5">
+<div class="footer-cats">
+<h3 class="title">Kubernetes Security Resources</h3>
+<ul class="cats-nav">
+<li>
+<a class target title="Blog" href="https://www.armosec.io/blog/">Blog</a>
+</li>
+<li>
+<a class target title="Glossary" href="https://www.armosec.io/glossary/">Glossary</a>
+</li>
+<li>
+<a class target title="CVE Database" href="https://www.armosec.io/cve-vulnerability-database/">CVE Database</a>
+</li>
+<li id="cookie-consent-settings-placeholder"></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="col-6 d-md-none">
+<ul class="footer-awards">
+<li><a href="https://www.armosec.io/blog/armo-named-gartner-cool-vendor/"><img width="300" height="263" src="https://www.armosec.io/wp-content/uploads/2023/10/1-31.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.armosec.io/blog/soc-2-certification/"><img width="288" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/SOC_2-1.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.armosec.io/blog/cncf-accepts-kubescape-security-and-compliance-scanner/"><img width="283" height="300" src="https://www.armosec.io/wp-content/uploads/2023/10/Group-10000104861.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.g2.com/products/armo/reviews"><img width="234" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/CloudSecurity_HighPerformer_HighPerformer-1.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.g2.com/products/armo/reviews"><img width="234" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/ContainerSecurity_EasiestSetup_EaseOfSetup-2.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-4 order-1 order-md-2">
+<div class="footer-contact-form d-none">
+<form action>
+<input type="email" placeholder="Your email">
+<input type="submit" value="Book a demo">
+</form>
+</div>
+<ul class="footer-awards d-none d-md-flex">
+<li><a href="https://www.armosec.io/blog/armo-named-gartner-cool-vendor/"><img width="300" height="263" src="https://www.armosec.io/wp-content/uploads/2023/10/1-31.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.armosec.io/blog/soc-2-certification/"><img width="288" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/SOC_2-1.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.armosec.io/blog/cncf-accepts-kubescape-security-and-compliance-scanner/"><img width="283" height="300" src="https://www.armosec.io/wp-content/uploads/2023/10/Group-10000104861.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.g2.com/products/armo/reviews"><img width="234" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/CloudSecurity_HighPerformer_HighPerformer-1.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+<li><a href="https://www.g2.com/products/armo/reviews"><img width="234" height="300" src="https://www.armosec.io/wp-content/uploads/2024/05/ContainerSecurity_EasiestSetup_EaseOfSetup-2.svg" class="attachment-medium size-medium" alt decoding="async" loading="lazy" /></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="footer_bottom text-center text-md-left">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<p class="rights">Copyright © 2024 ARMO Ltd</p>
+</div>
+<div class="col-md-6">
+<div class="bottom_links">
+<ul class="policies-nav">
+<li>
+<a class target title="Privacy Policy" href="https://www.armosec.io/privacy-policy/">Privacy Policy</a>
+</li>
+<li>
+<a class target title="Cookies Policy" href="https://www.armosec.io/cookies-policy/">Cookies Policy</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<div class="slack_popup_wrapper">
+<div class="bg_wrapper"></div>
+<div class="inner_wrapper">
+<div class="slack_popup__form-wrapper">
+<img src="https://www.armosec.io/wp-content/themes/armo/img/slack_popup.svg" alt="slack_logos">
+<h2>Continue to Slack</h2>
+<p>Get the information you need <b>directly</b> from our experts!</p>
+<a href="https://start-chat.com/slack/armosec/RkOgSv" target="_blank" class="slack_popup_button"><img src="https://www.armosec.io/wp-content/themes/armo/img/new-message.svg" alt="new-message">Continue as a guest</a>
+<button class="close_popup">Cancel</button>
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+</script>
+
+<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=4a2a96df-6315-4cb8-814e-00d574ba69d9" />
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5882526.js"></script>
+
+
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2XS7LF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+
+<script src="https://www.armosec.io/wp-content/themes/armo/js/scripts.js?v=1723423979"></script>
+
+<div id="imagePopup" class="modal">
+<span class="close">&times;</span>
+<div class="modal-content">
+<img id="modalImage" src alt="Modal Image" />
+<div class="zoom-buttons">
+<button id="zoomInButton">Zoom In</button>
+<button id="zoomOutButton">Zoom Out</button>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="https://www.armosec.io/wp-content/themes/armo/js/image-popup.js?ver=1723379726" id="image-popup-js"></script>
+<script type="text/javascript" id="leadin-script-loader-js-js-extra">
+/* <![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"post","leadinPluginVersion":"11.1.34"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://js.hs-scripts.com/5882526.js?integration=WordPress&amp;ver=11.1.34" id="leadin-script-loader-js-js"></script>
+<script type="text/javascript" src="https://www.armosec.io/wp-content/themes/armo/assets/js/main.js?ver=1723379726" id="main-js"></script>
+<script type="text/javascript" src="https://www.armosec.io/wp-content/themes/armo/assets/js/templates/template-blog.js?ver=1723379726" id="template-blog-js"></script>
+<script type="text/javascript" src="https://www.armosec.io/wp-content/themes/armo/assets/js/sections/section-header.js?ver=1723379726" id="section-header-js"></script>
+<script type="text/javascript" defer src="https://js.hsforms.net/forms/embed/v2.js?ver=11.1.34" id="leadin-forms-v2-js"></script>
+</body>
+</html>
