@@ -1,6 +1,6 @@
 
 <!--
-title: Istio 1.23 弃用 Sidecar，采用更简单的“环境网格”
+title: Istio 1.23弃用Sidecar
 cover: https://cdn.thenewstack.io/media/2024/08/0400bf13-istio.png
 -->
 
