@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes 1.31：kubectl Debug中的自定义性能分析功能晋升为Beta版
-cover: None
+cover: ./cover.png
 -->
 
 集群中排查 Pod 和节点的方法有很多，但 kubectl debug 是其中最简单、最常用、最突出的方法之一。它提供了一组静态配置文件，每个配置文件都用于不同的角色。例如，从网络管理员的角度来看，调试节点应该像这样简单：$ kubectl debug node/mynode -it --image=busybox --profile=netadmin 另一方面，静态配置文件也带来了固有的僵化，这对于某些 Pod 来说，与它们的易用性相比，会带来一些影响。
