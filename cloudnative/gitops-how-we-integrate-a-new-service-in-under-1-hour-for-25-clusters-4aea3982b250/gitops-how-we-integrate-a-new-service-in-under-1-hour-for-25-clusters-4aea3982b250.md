@@ -1,7 +1,7 @@
 
 <!--
 title: 使用GitOps一小时将新服务集成到25个集群
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/1*4aB-AGm_LzQ7dHGRSFc9MQ.gif
+cover: ./cover.png
 -->
 
 通过 Argo CD 使用 GitOps 大规模启动 Otterize
