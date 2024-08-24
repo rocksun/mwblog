@@ -1,6 +1,6 @@
 
 <!--
-title: 高管投资平台工程：原因
+title: 高管投资平台工程的理由
 cover: https://cdn.thenewstack.io/media/2024/08/86ad09c3-execs-invest-platform-engineering.jpg
 -->
 
