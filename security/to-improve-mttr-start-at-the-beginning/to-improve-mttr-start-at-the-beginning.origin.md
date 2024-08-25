@@ -1,0 +1,39 @@
+# To Improve MTTR, Start at the Beginning
+![Featued image for: To Improve MTTR, Start at the Beginning](https://cdn.thenewstack.io/media/2024/08/02dc7353-improve-mttr-start-at-beginning-1024x576.jpg)
+IT systems are constantly under threat — malicious or not — so much that breaches have become almost commonplace. Case in point, as we started writing this article, news broke that [4.5 million people were affected](https://www.darkreading.com/cloud-security/cyberattackers-accessed-healthequity-customer-info-third-party) by the recent HealthEquity data breach.
+
+As our cloud native systems continue to scale, their distributed nature also makes them more complex. This complexity affords us flexibility and velocity; it also exposes more points of failure and intrusion.
+
+Falling prey to human error, poorly written code or an intentional breach isn’t just about the immediate business impact. Companies are at risk of [government scrutiny](https://apnews.com/article/technology-outage-delta-air-lines-delays-7361e641fe2c656d7fba06e4a0424c6a), billions of dollars in fines or even legal action if they can’t recover quickly.
+
+So while the recent [CrowdStrike fiasco](https://thenewstack.io/7-urgent-lessons-from-the-crowdstrike-disaster/) certainly made headlines, it’s the aftermath that matters. It also has us giving mean time to recovery (MTTR) a second look, specifically how you can reduce the amount of time it takes to recover from an outage or malicious attack. As the DevOps Research and Assessment (DORA) team defines it, [MTTR](https://dorametrics.org/how-to-calculate-dora-metrics/) is “the average amount of time it takes your team to restore service when there’s a service disruption, like an outage.”
+
+## Do the Hard Stuff First
+Before you change your technology approach, you must change your organization’s mindset. Start by making security inherent to your software development life cycle (SDLC), from code to production to management. It’s much harder to change behaviors than adopt a new tool or [platform](https://thenewstack.io/cloud-native-app-platforms-new-research-shows-struggles-and-hope), and without this culture shift, it won’t matter what technology choices you make.
+
+**Stop treating security as an outcome:**Security is not one single thing, and today’s[cloud native ecosystems](https://thenewstack.io/are-custom-cloud-native-stacks-worth-the-security-tradeoffs)are extremely porous and connected. Rather than setting up major checkpoints that could thwart weeks of work, check on security[throughout the SDLC](https://thenewstack.io/dont-shift-security-left-integrate-it-everywhere), starting with developers.**Embrace a product mindset:**The platforms developers work on are dynamic, and they need to be treated as such. This means considering the platform as a product that requires upgrading, patching and improving over time. Be sure to include roles like platform engineers, compliance architects and security specialists as part of your platform delivery and strategy. As many (including the Center for Internet Security)[have said](https://www.cisecurity.org/insights/blog/cybersecurity-is-a-team-sport), “security is a team sport.”**Make the secure thing the easy thing:**Make security inherent in your process. Give developers self-service access to app and code templates that are automatically updated and patched, a catalog of approved open source and commercial software, build packs, an[API gateway](https://roadmap.sh/best-practices/api-security)with policy controls, etc. Make sure they can use the tools they love safely!
+## Dig Into the Technical Stuff
+Your platform choice matters to your security posture. Look for security-enhancing features and capabilities that support a DevSecOps-based working model. Increase the skills of your current employees on newer disciplines like [platform engineering](https://thenewstack.io/platform-engineering/) and [architecting for compliance](https://tanzu.vmware.com/content/blog/modern-compliance-architect-what-it-is-and-why-you-need-one#:~:text=A%20Tanzu%20Labs%20Modern%20Compliance,to%20regulatory%20and%20industry%20requirements.).
+
+**Blue-green deployment** is a technique that can reduce app downtime and risk by running two identical production environments, one “blue” and one “green,” where only one of the environments is live and serving production traffic, and the other is idle. Only after proper testing can the idle environment start serving production workloads.
+**Canary deployment** is another way to test the viability of new software or updates in production. You send certain bits of the new software or update to production and see how they run. If things are smooth, you release more parts. It’s part of another modern app delivery paradigm called progressive delivery, coined by [RedMonk’s James Governor](https://redmonk.com/team/james-governor/) several years ago. What [blue-green and canary deployments](https://thenewstack.io/primer-blue-green-deployments-and-canary-releases/) have in common is they allow you to easily roll back to a known-good version of the software with minimal disruption if something breaks.
+**Test-driven development (TDD)** is critical to continuously releasing stable and resilient applications. To get the most from TDD, don’t just do functional tests on what you added. You need to test the new piece in context of everything else, so be sure to include regular fuzz, chaos or fault testing in your approach.
+**Error-handling and -monitoring** combined with robust log [monitoring and observability](https://thenewstack.io/monitoring-vs-observability-whats-the-difference/) can capture problems as they happen and limit the scope of a failure.
+**Policy-based automation **can improve multiple aspects of your software delivery and maintenance processes. To safely automate the multiple layers of your security, get input from various teams, including platform engineering security, compliance, and infrastructure and operations (I&O) teams. This will help make the policies that define your automation process more holistic to mitigate a disastrous outage or lessen the damage.
+## Three Before Four
+Before VMware Tanzu introduced the [four golden commands](https://tanzu.vmware.com/content/blog/introducing-vmware-tanzu-platform) (build, bind, deploy and scale), there were the 3Rs (rotate, repave and repair). They provided a simple way of looking at a cloud native platform’s security attributes. The idea behind the 3Rs is that by being fast, you are safer.
+
+- Rotate data center credentials every few minutes or hours.
+- Repave every server and application in the data center every few hours from a known-good state.
+- Repair vulnerable operating systems and application stacks consistently within hours of patch availability.
+The 3Rs continue to be core tenants of the Tanzu Platform, and you can follow our blog to learn more about [Tanzu and security](https://tanzu.vmware.com/content/vmware-tanzu-and-security).
+
+There are multiple factors involved in making sure that recovering from an outage or security breach is not devastating to application development and delivery processes including platform choice, development styles (e.g., agile, extreme, test-driven) and organizational or cultural factors.
+
+Rather than treating security as a single outcome, focus on delivering secure software supply chains; support a security-focused culture; automate patches, upgrades and policy enforcement; stay on top of policy drift and monitoring; and employ other security-enabling outcomes.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
