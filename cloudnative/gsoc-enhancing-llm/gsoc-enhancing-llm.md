@@ -1,7 +1,7 @@
 
 <!--
 title: 使用领域特定Jenkins知识增强现有的LLM模型
-cover: /images/gsoc/opengraph.png
+cover: https://www.jenkins.io/images/post-images/2024/08/llm-landing-dark.png
 -->
 
 Google Summer of Code 2024  使用特定领域 Jenkins 知识增强现有 LLM 模型。
