@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>
+Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge
+</title>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='Google Summer of Code 2024 Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge.' name='description'>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1' name='viewport'>
+<meta content='ie=edge' http-equiv='x-ua-compatible'>
+<link href='https://www.jenkins.io/blog/2024/08/25/gsoc-enhancing-llm/' rel='canonical'>
+<!-- Favicons -->
+<link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+<link href='/apple-touch-icon.png' rel='apple-touch-icon' sizes='180x180'>
+<link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/site.webmanifest' rel='manifest'>
+<link color='#5bbad5' href='/safari-pinned-tab.svg' rel='mask-icon'>
+<meta content='#2b5797' name='msapplication-TileColor'>
+<meta content='#ffffff' name='theme-color'>
+<meta content='Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge' name='apple-mobile-web-app-title'>
+<!-- Twitter Card data -->
+<meta content='summary_large_image' name='twitter:card'>
+<meta content='@JenkinsCI' name='twitter:site'>
+<meta content='Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge' name='twitter:title'>
+<meta content='Google Summer of Code 2024 Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge.' name='twitter:description'>
+<meta content='@JenkinsCI' name='twitter:creator'>
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content='/images/gsoc/opengraph.png' name='twitter:image'>
+<!-- Open Graph data -->
+<meta content='Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge' property='og:title'>
+<meta content='article' property='og:type'>
+<meta content='https://www.jenkins.io/blog/2024/08/25/gsoc-enhancing-llm/' property='og:url'>
+<meta content='Google Summer of Code 2024 Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge.' property='og:description'>
+<meta content='Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge' property='og:site_name'>
+<meta content='/images/gsoc/opengraph.png' property='og:image'>
+<link href='/assets/bower/bootstrap/css/bootstrap.min.css' media='screen' rel='stylesheet'>
+<link href='/css/jenkins.css' media='screen' rel='stylesheet'>
+<link href='/css/copy-to-clipboard.css' media='screen' rel='stylesheet'>
+<link href='/stylesheets/styles.css' media='screen' rel='stylesheet'>
+<!-- Non-obtrusive CSS styles -->
+<link href='/css/footer.css' media='screen' rel='stylesheet'>
+<link href='/css/font-awesome.min.css' media='screen' rel='stylesheet'>
+<link href='https://cdn.jsdelivr.net/npm/@docsearch/css@3' rel='stylesheet'>
+</head>
+<body>
+<script src='/assets/bower/jquery/jquery.min.js'></script>
+<script src='/js/copy-to-clipboard.js'></script>
+<jio-navbar class='fixed-nav' id='ji-toolbar' property='https://www.jenkins.io' showSearchBox theme='auto'></jio-navbar>
+
+<style>
+  .videoblock iframe {
+      aspect-ratio: 16 / 9;
+      max-width: 100%;
+      height: auto;
+  }
+</style>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.app-post-page h' + i);
+    }
+  })
+</script>
+
+<article class='container app-post-page'>
+<div class='app-!-display-flex'>
+<a class='app-back-link' href='/blog/'>
+Back to blog
+</a>
+</div>
+<h1>
+Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge
+</h1>
+<div class='post-attrs'>
+<a class="app-author-link" data-user-name="Nour Ziad Almulhem" href="/blog/authors/nouralmulhem/"><div class="app-avatar"><img alt="Nour Ziad Almulhem" class="app-avatar__image" loading="lazy" onload="this.style.opacity = 1" src="/images/avatars/nouralmulhem.jpg"></div><span>Nour Ziad Almulhem</span></a>
+August 25, 2024
+<a class='twitter-share-button' data-lang='en' href='https://twitter.com/intent/tweet?text=Enhancing+an+Existing+LLM+Model+with+Domain-specific+Jenkins+Knowledge&amp;url=https%3A%2F%2Fwww.jenkins.io%2Fblog%2F2024%2F08%2F25%2Fgsoc-enhancing-llm%2F' rel='noreferrer nofollow' target='_blank'>
+Tweet
+</a>
+</div>
+<div class='blog-content'>
+<div class="paragraph">
+<p><span class="image right center"><img src="/images/gsoc/jenkins-gsoc-logo_small.png" alt="Jenkins GSoC"></span></p>
+</div>
+<div class="sect1">
+<h2 id="table-of-contents"><a class="anchor" href="#table-of-contents"></a>Table of Contents</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="#about-the-project">About the Project</a></p>
+</li>
+<li>
+<p><a href="#milestones">Milestones</a></p>
+</li>
+<li>
+<p><a href="#jenai-as-a-system">JenAI as a System</a></p>
+</li>
+<li>
+<p><a href="#next-steps">Next Steps</a></p>
+</li>
+<li>
+<p><a href="#acknowledgments">Acknowledgments</a></p>
+</li>
+<li>
+<p><a href="#useful-links">Useful Links</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="about-the-project"><a class="anchor" href="#about-the-project"></a>About the Project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JenAI is a pioneering chatbot that is trained specifically to answer users&#8217;s queries about Jenkins technologyÂ which enhance the accessibility and usability of software.</p>
+</div>
+<div class="paragraph">
+<p>We aim to provide faster and more reliable assistance to our users. The model is integrated with a friendly UI to ensure a better user experience.</p>
+</div>
+<div class="paragraph">
+<p>The project outcomes are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Collected datasets from different sources, like <a href="https://www.jenkins.io/blog/">Jenkins blogs</a>, <a href="https://community.jenkins.io/c/using-jenkins/7">community questions</a>. and other external sources</p>
+</li>
+<li>
+<p>Preprocessing this dataset to make sure it is clean and not confusing the model</p>
+</li>
+<li>
+<p>Fine-tuning llama2 on this data and provide a new open-source fine-tuned modelÂ </p>
+</li>
+<li>
+<p>Creating a user interface with a small server to interact with the model</p>
+</li>
+<li>
+<p>Providing documentation of all the work done and a user guide to use our chatbot locally on your machine</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="why-jenai"><a class="anchor" href="#why-jenai"></a>Why JenAI:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins currently does not have AI-driven assistive technology to help Jenkins new users.</p>
+</li>
+<li>
+<p>This project combines Jenkins knowledge with ai to assist all users with the knowledge that usually Jenkins expert has, providing a complete solution.</p>
+</li>
+<li>
+<p>We empower users to interact with this knowledge through a smooth UI instead of looking for your answer here and there.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="milestones"><a class="anchor" href="#milestones"></a>Milestones</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project included several stages that we have gone through:</p>
+</div>
+<div class="sect2">
+<h3 id="stage-1-data-collection"><a class="anchor" href="#stage-1-data-collection"></a>Stage #1: data collection</h3>
+<div class="paragraph">
+<p>Different sources were used to collect Jenkins knowledge, like <a href="https://www.jenkins.io/blog/">jenkinsÂ documents and blogs</a>, <a href="https://community.jenkins.io/c/using-jenkins/7">discource community questions</a>, and many external sources like <a href="https://stackoverflow.com/">stack overflow</a>, <a href="https://askubuntu.com/">ask ubuntu</a>, and <a href="https://stackexchange.com/">stack exchange</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stage-2-data-preprocessing-and-refinement"><a class="anchor" href="#stage-2-data-preprocessing-and-refinement"></a>Stage #2: data preprocessing and refinement</h3>
+<div class="paragraph">
+<p>This stage consisted of 3 parts:Â </p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The first one is utilizing another large language model to help us generate question-answer pairs out of Jenkins Documentations.Â </p>
+</li>
+<li>
+<p>The second one is using stack exchange queries to get datasets of questions and correct solutions asked on stack overflow and many other platforms. We could define a score threshold for those questions and answers to ensure the reliability of the dataset we are collecting. The dataset generated includes HTML tags like paragraph code and many un-useful blocks or urls, so further processing was done to remove all useless information.Â </p>
+</li>
+<li>
+<p>The last part of this is utilizing the community questions available on Discourse, where we could use <a href="https://docs.discourse.org/">discource apis</a> to prune Jenkins posts and retrieve ones with approved solutions, then we could do another request to retrieve those posts and their answers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All those parts are automated, and the notebooks for creating the datasets are provided on our repository. In doing so, weÂ managed to collect around 4100 pairs; a bunch of which were used to fine-tune our model on.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stage-3-jenai-as-a-system"><a class="anchor" href="#stage-3-jenai-as-a-system"></a>Stage #3: JenAI as a system</h3>
+<div class="paragraph">
+<p>This stage was about creating software with a friendly user interface as part of this project to interact with the model. We used ReactJs, Typescript, and MUI components to help us create the interface.</p>
+</div>
+<div class="paragraph">
+<p>We also used Flask to create a small server with only one endpoint so far to interact with the model through Rest API and ensure smooth communication.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stage-4-fine-tuning"><a class="anchor" href="#stage-4-fine-tuning"></a>Stage #4: Fine-tuning</h3>
+<div class="paragraph">
+<p>The core of our project, the effort of fine-tuning, was iterative and resumed until we made sure of its performance. A lot of research is conducted here to ensure the optimal parameters and the best approach to fine-tuning the model and obtaining accurate results.</p>
+</div>
+<div class="paragraph">
+<p>We were using Colab and Kaggle free resources to fine-tune our model as they provide a T4 GPU with around 16 gigabytes of VRAM, which is pretty enough to load and fine-tune our model.</p>
+</div>
+<div class="paragraph">
+<p>Details of fine-tuning, the approach, and parameters are provided in our <a href="https://github.com/nouralmulhem/Enhancing-LLM-with-Jenkins-Knowledge/blob/main/JenAi%20Final%20Document.pdf">Final Documentation</a>:</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stage-5-convert-the-model-to-ggml-format-and-quantization"><a class="anchor" href="#stage-5-convert-the-model-to-ggml-format-and-quantization"></a>Stage #5: Convert the model to GGML format and quantization</h3>
+<div class="paragraph">
+<p>In order to achieve our objective, we need users to be able to run the model on their local machines using only CPUs instead of hosting it. To achieve this, we used llama.cpp to convert the model to GGML binary format (using <code>convert_hf_to_gguf.py</code>) that can be loaded and run on CPU.</p>
+</div>
+<div class="paragraph">
+<p>Part of the appeal of the GGML library is being able to quantize this binary model into smaller models that can be run even faster. There is a tool called quantize in the Llama.cpp repo that can be used to convert the model to different quantization levels. We used the quantize tool to shrink our model to <code>q8_0</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jenai-as-a-system"><a class="anchor" href="#jenai-as-a-system"></a>JenAI as a System</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>JenAI landing page in dark mode</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2024/08/llm-landing-dark.png" alt="LLM Landing Page Dark Mode"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JenAI landing page in light mode</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2024/08/llm-landing-white.png" alt="LLM Landing Page White Mode"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JenAI chat page</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/2024/08/llm-chat-page.png" alt="LLM Chat Page"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="next-steps"><a class="anchor" href="#next-steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This idea can be enhanced more, and many approaches are provided to achieve the same goal:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using retrieval-augmented generation (RAG) that combines the strengths of databases or traditional information retrieval systems with the capabilities of large language models</p>
+</li>
+<li>
+<p>Llama3 that has been pre-trained on over 15 trillion tokens, with a dataset used in training 7 times larger than the one used for training Llama2, which can make it outperform Llama2 when fine-tuning on Jenkins knowledge.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I want to take this chance and extend my gratitude to:Â </p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Google Summer of Code for organizing this and their mentors who provided help throughout the program.</p>
+</li>
+<li>
+<p>Jenkins and GSoC org admins for having me contribute to this challenging problem and thank you for your flexibility along the way.</p>
+</li>
+<li>
+<p>My team mentors <a href="https://www.jenkins.io/blog/authors/krisstern/">Kris Stern</a>(as a lead mentor), <a href="https://www.jenkins.io/blog/authors/gounthar/">Bruno Verachten</a>, <a href="https://www.jenkins.io/blog/authors/harsh-ps-2003/">Harsh Pratap Singh</a>, and <a href="https://www.jenkins.io/blog/authors/shivaylamba/">Shivay Lamba</a> for their continuous support and guidance throughout the project, answering my questions and pointing out some great ideas so we are not left with something incomplete. They were a great reason for making this a success.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="useful-links"><a class="anchor" href="#useful-links"></a>Useful Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://summerofcode.withgoogle.com/">Google Summer of Code portal</a></p>
+</li>
+<li>
+<p><a href="https://www.jenkins.io/projects/gsoc/2024/projects/enhancing-an-existing-llm-model-with-domain-specific-jenkins-knowledge/">LLM Project Selection Post</a></p>
+</li>
+<li>
+<p><a href="https://github.com/nouralmulhem/Enhancing-LLM-with-Jenkins-Knowledge">Our Github Repository</a></p>
+</li>
+<li>
+<p><a href="https://github.com/users/nouralmulhem/projects/1">Our Github Kanban</a></p>
+</li>
+<li>
+<p><a href="https://www.jenkins.io/blog/authors/nouralmulhem/">Personal Information</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/document/d/1Ri24koZto5iSj5HIQF-8VK66PX-2cZRxzZEJNvg_GXY/edit?usp=sharing">Out weekly instance meeting notes</a></p>
+</li>
+<li>
+<p><a href="https://huggingface.co/nouralmulhem/Llama-2-7b-chat-finetune">Fine-tuned model on Hugging Face</a></p>
+</li>
+<li>
+<p><a href="https://huggingface.co/nouralmulhem/Llama-2-7b-finetune-q8">Our GGML version of the model</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In conclusion, being a part of GSoC 2024 was an amazing experience that enabled me to gain new skills and make meaningful contributions to an open-source project. I am excited to continue contributing at Jenkins in the future.</p>
+</div>
+</div>
+</div>
+</div>
+<ul class='app-tags'>
+<li>
+<a class='app-tags__tag' href='/blog/tags/gsoc/'>
+gsoc
+</a>
+</li>
+<li>
+<a class='app-tags__tag' href='/blog/tags/gsoc2024/'>
+gsoc2024
+</a>
+</li>
+<li>
+<a class='app-tags__tag' href='/blog/tags/llm/'>
+llm
+</a>
+</li>
+<li>
+<a class='app-tags__tag' href='/blog/tags/llama2/'>
+llama2
+</a>
+</li>
+<li>
+<a class='app-tags__tag' href='/blog/tags/machinelearning/'>
+machinelearning
+</a>
+</li>
+<li>
+<a class='app-tags__tag' href='/blog/tags/documentation/'>
+documentation
+</a>
+</li>
+</ul>
+<h2>
+About the author
+</h2>
+<div class='app-author' id='about-the-author'>
+<div class='app-avatar app-avatar-image'>
+<img alt='Nour Ziad Almulhem' class='app-avatar__image' loading='lazy' onload='this.style.opacity = 1' src='/images/avatars/nouralmulhem.jpg'>
+</div>
+
+<div class='app-author__content'>
+<p class='app-author__name'>
+<a href='/blog/authors/nouralmulhem/'>
+Nour Ziad Almulhem
+</a>
+</p>
+<div class="paragraph">
+<p>Nour is a software engineer graduated from Cairo University. She is contributing to the GSoC 2024 "Enhancing an Existing LLM Model with Domain-specific Jenkins Knowledge" project, to develop an app using an existing open-source LLM model with data collected for domain-specific Jenkins knowledge that can be fine-tuned locally and set up with a proper UI for the user to interact with.</p>
+</div>
+<ul class='app-social-media-buttons'>
+<li>
+<a href='https://github.com/nouralmulhem' rel='noreferrer noopener' target='_blank'>
+GitHub
+</a>
+</li>
+<li>
+<a href='https://www.linkedin.com/in/nour-almulhem-1817251b0' rel='noreferrer noopener' target='_blank'>
+LinkedIn
+</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+
+</article>
+
+
+<script src='/assets/bower/anchor-js/anchor.min.js'></script>
+<script src='/assets/bower/@popperjs/core/umd/popper.min.js'></script>
+<script src='/assets/bower/bootstrap/js/bootstrap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lit@3.1.4/polyfill-support.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.8.0/webcomponents-loader.js'></script>
+<script data='ionicons' defer='' src='https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.3.1/ionicons/ionicons.esm.js' type='module'></script>
+<script data='ionicons' defer='' nomodule='' src='https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.3.1/ionicons/ionicons.js'></script>
+<script defer='' src='https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/+esm' type='module'></script>
+<script defer='' nomodule='' src='https://cdn.jsdelivr.net/npm/@jenkinsci/jenkins-io-components/'></script>
+<jio-footer githubBranch='master' githubRepo='jenkins-infra/jenkins.io' property='https://www.jenkins.io' reportAProblemTemplate='4-bug.yml' sourcePath='content/blog/2024/08/25/2024-08-25-gsoc-enhancing-llm.adoc'></jio-footer>
+<script>
+  $(function(){
+    var $body = $(document.body);
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>
