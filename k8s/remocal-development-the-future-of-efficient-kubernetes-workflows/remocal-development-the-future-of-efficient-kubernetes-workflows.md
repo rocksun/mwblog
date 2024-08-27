@@ -4,7 +4,7 @@ title: Remocal开发：高效Kubernetes工作流的未来
 cover: https://cdn.thenewstack.io/media/2023/04/125598eb-nubelson-fernandes-gts2w7bu3qo-unsplash.jpg
 -->
 
-了解如何在远程开发设置中结合本地和远程环境，以简化开发流程、提高生产力和降低成本。
+了解如何在 Remocal 开发设置中结合本地和远程环境，以简化开发流程、提高生产力和降低成本。
 
 > 译自 [Remocal Development: The Future of Efficient Kubernetes Workflows](https://thenewstack.io/remocal-development-the-future-of-efficient-kubernetes-workflows/)，作者 Anita Ihuman。
 
