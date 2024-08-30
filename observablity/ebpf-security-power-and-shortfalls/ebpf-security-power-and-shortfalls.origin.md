@@ -1,0 +1,52 @@
+# eBPF Security Power and Shortfalls
+![Featued image for: eBPF Security Power and Shortfalls](https://cdn.thenewstack.io/media/2024/08/3d7f4b59-enis-can-ceyhan-xmrvdstiyay-unsplash-1024x576.jpg)
+Every security tool and platform that purports to offer comprehensive security should at least include some aspects of [eBPF](https://thenewstack.io/what-is-ebpf/). However, for an organization’s security posture, eBPF should not, and will not, cover the entire spectrum of security use cases that are demanded and increasingly urgent in today’s [DevOps](https://thenewstack.io/devops/) and platform engineering practices.
+
+But let’s just say eBPF is a necessary element for security. And it does have its limitations, which must either be expanded upon or accounted for in security offerings — or, in some cases, addressed separately.
+
+A proper security provider that makes heavy use of eBPF will also build on eBPF’s functionalities to offer a comprehensive platform. Even still, it will be difficult to find a security provider platform that does not require the addition of complementary tools in addition to one that makes ample use of eBPF.
+
+[Ben Hirschberg,](https://il.linkedin.com/in/ben-hirschberg-66141890) CTO at security provider [ARMO](https://www.armosec.io/homepage-new-lp-2/?utm_term=kubescape&utm_campaign=brand-kubescape-us_t1-cpc&utm_source=google&utm_medium=cpc&utm_content=armosec&hsa_acc=5055384472&hsa_cam=17941524163&hsa_grp=142744593834&hsa_ad=708348387730&hsa_src=g&hsa_tgt=kwd-1016805388690&hsa_kw=armosec&hsa_mt=p&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=CjwKCAjwoJa2BhBPEiwA0l0ImCWwGC5TjjCbLdHR2f0Hang_OqLa6IQoP8jJ8oV4Ck9VpkaI_uYR9BoCgaAQAvD_BwE) and creator of the [CNCF](https://cncf.io/?utm_content=inline+mention) open source project [Kubescape](https://thenewstack.io/kubescape-3-0-the-result-of-lessons-learned-with-ebpf-for-security/) both agreed and disagreed. “I don’t think many people assume that eBPF is meant to solve everything. It is like saying that someone assumes that a hammer is a tool for everything,” Hirschberg said. “In theory, one could prove that a hammer cannot bring down a tree, but an ax will always be better for that. No one meant that eBPF is a single tool/technology to solve all security needs.”
+That said, a provider is critical if an organization wants to ensure they are using eBPF. Most enterprises lack the expertise and skills necessary to build and integrate eBPF-based functions, according to Gartner. However, Gartner also recommends that organizations “seek eBPF-based Kubernetes CNI [container network interface] solutions when scale, performance, visibility and security are top of mind.”
+
+Most security platforms use eBPF to monitor and analyze network traffic, system calls and other kernel-level activities, enabling real-time detection of suspicious behaviors or anomalies, said [Utpal Bhatt,](https://www.linkedin.com/in/ubhatt) CMO at [Tigera](https://www.tigera.io/). “However, a holistic security approach should integrate prevention and risk mitigation strategies,” he said.
+
+A significant percentage of attacks are from known malicious actors, for example, and a simple IDS/IPS system with threat feed integration can prevent these attacks “from happening in the first place,” Bhatt said.
+
+Sources like MISP (Malware Information Sharing Platform) store, collect and share threat intelligence and indicators of compromise (IOCs) such as file hashes, Bhatt said. “An effective security strategy will be to prevent such malicious software from execution. In addition, most systems should assume that they will get attacked and should have access to quick risk mitigation tools,” he said.
+
+For example, in the case of Kubernetes, deploying mitigating network controls can reduce the blast radius of an attack, Bhatt said. “eBPF is one of the most significant innovations when it comes to threat detection,” he said. “However, it may not be able to detect everything and in the cat-and-mouse play between attackers and defenders, prevention and risk mitigation is equally important.”
+
+## The Workings
+As [Liz Rice](https://www.linkedin.com/in/lizrice/) defines in [“Learning eBPF,”](https://www.oreilly.com/library/view/learning-ebpf/9781098135119/) system calls, or syscalls, are the interface between user-space applications and the kernel: “If you restrict the set of syscalls an app can make, that will limit what the app is able to do. If you have been using [Docker](https://www.docker.com/?utm_content=inline+mention) or Kubernetes, there is a very good chance you have already used a tool that uses BPF to limit syscalls: [seccomp](https://en.wikipedia.org/wiki/Seccomp),” as Rice writes. Seccomp is widely used in the container world (in the form of the default Docker seccomp profile), but this was just the first step toward today’s eBPF-based security tools, Rice said.
+
+With [seccomp BPF](https://www.kernel.org/doc/html/v4.19/userspace-api/seccomp_filter.html), a set of BPF instructions is loaded that acts as a filter, Rice writes. Each time a syscall is called, the filter is triggered. The filter code has access to arguments that are passed to the syscall, allowing it to make decisions based on both the syscall itself and the arguments that have been passed to it. The outcome can include actions such as allowing syscalls to proceed, returning an error code to the user application space, killing a thread or notifying a user-space application, Rice said.
+
+With eBPF, many more powerful options and capabilities are possible. Where seccomp is limited to the syscall interface, eBPF programs can now be attached to virtually any part of the operating system, Rice said. “Instead of a predefined filter program, eBPF programmers have the flexibility to write custom and bespoke code,” Rice said.
+
+For example, an eBPF program might be attached to a kernel event triggered whenever a file is opened, or when a network packet is received, Rice said. The program can report information about that event to user space for [observability](https://thenewstack.io/observability/) purposes, or it can potentially even modify the way that the kernel responds to that event. In network security, eBPF programs can be used to drop packets to comply with firewall rules or to prevent a DDoS attack, Rice said.
+
+eBPF is being used in a wide range of applications and has become the foundation for many successful commercial projects. It has been particularly influential in driving advancements in security. The challenges that once limited the adoption of eBPF have now been overcome; for example, early versions of eBPF had a limit of 4096 instructions, but that limit was lifted to a million instructions in kernel 5.2, and even more complexity is now possible by doing things like chaining eBPF programs together with [eBPF Tail Calls](https://thenewstack.io/what-is-ebpf/), leading to the development of various tools and platforms that not only address these obstacles but also improve efficiency in areas like security, observability, networking and beyond.
+
+## Open Source Build Ons
+Many companies or organizations aiming to leverage eBPF may lack the resources or the expertise to fully capitalize on eBPF’s benefits directly. Using these features effectively requires deep Linux knowledge, which is why most enterprises don’t write eBPF-based tooling themselves. This is where eBPF tool and platform providers play a crucial role. Their deep understanding of Linux (and Unix) enables them to create advanced capabilities in eBPF code.
+
+“It is true that eBPF requires deep understanding and skills that most organizations lack. There is a very limited number of engineers who can develop and maintain eBPF code,” Hirschberg said. “Therefore it is important to have good vendors (open source or commercial) that enable the power of eBPF for the common user.”
+
+Falco is an excellent case in point, illustrating both the power and limitations of eBPF, although its limitations are minimal. When used alone, it is employed for a number of tasks, especially when configured for distributed Kubernetes and cloud native infrastructures.
+
+Falco covers a wide range of workloads and infrastructure, extending back, of course, to the kernel, as eBPF does so well. It is one of the open source projects that receives significant attention.
+
+However, it does not cover every security aspect on the checklist, which creates opportunities for other security providers to build security solutions with Falco or provide separate functionalities that aren’t necessarily tied to eBPF.
+
+Interestingly, Falco was initially created using kernel modules when it was first released at the end of 2016, without involvement or integration with eBPF. It was accepted as a cloud native project in 2018 when [Sysdig](https://thenewstack.io/sysdig-prioritizing-risk-with-risk-spotlight/) contributed Falco to the CNCF. However, it wasn’t until 2021 that Falco’s creators began making the eBPF probe and libraries as a sub-project of the Falco organization, as [Loris Degioanni](https://www.linkedin.com/in/degio) and [Leonardo Grasso](https://www.linkedin.com/in/leonardograsso/?originalSubdomain=it) outlined in their book, “Practical Cloud Native Security With Falco.”
+
+Many enterprises are reluctant to use kernel modules because a bug in the kernel can bring down the whole machine, and kernel modules will not have had the same level of testing and field-hardening as the kernel itself, so the chance of running into such a bug may be an unacceptable risk, Rice said. eBPF’s advantage over kernel modules is the [eBPF Verifier](https://docs.kernel.org/bpf/verifier.html), which analyzes programs as they are loaded to ensure that they can’t crash the kernel, eliminating this concern, Rice said.
+
+“Moving away from kernel modules was a major milestone. Everything we implement today in eBPF could have been implemented in kernel modules in the past,” Hirschberg said. “However, kernel modules had a tendency to break the kernel and their perception of being unstable made the adoption of tooling based on them very limited.”
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
