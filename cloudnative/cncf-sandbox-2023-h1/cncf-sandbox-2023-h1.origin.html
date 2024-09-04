@@ -1,0 +1,1410 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<meta property="og:type" content="article"><meta property="og:url" content="https://blog.palark.com/cncf-sandbox-2023-h1/"><meta property="og:locale" content="en-US"><meta property="og:title" content="Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1"><meta property="og:description" content="New projects are joining CNCF and can surely help with your Cloud Native needs. Let’s discover Inspektor Gadget, Headlamp, Kepler, SlimToolkit, SOPS, Clusternet, Eraser, PipeCD, Microcks, kpt, Xline, HwameiStor, and KubeClipper!"><meta property="og:image" content="https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1-1024x521.png">
+	<!-- This site is optimized with the Yoast SEO plugin v23.3 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Exploring Cloud Native projects in CNCF Sandbox. Part 1: 13 arrivals of 2023 H1 &#8211; Palark | Blog</title>
+	<link rel="canonical" href="https://blog.palark.com/cncf-sandbox-2023-h1/" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":["Article","BlogPosting"],"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#article","isPartOf":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/"},"author":{"name":"Konstantin Nezhbert","@id":"https://blog.palark.com/#/schema/person/011b3403bcda47f5ab755b953e97d552"},"headline":"Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1","datePublished":"2024-09-02T10:25:54+00:00","dateModified":"2024-09-03T10:09:59+00:00","mainEntityOfPage":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/"},"wordCount":3157,"commentCount":0,"publisher":{"@id":"https://blog.palark.com/#organization"},"image":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#primaryimage"},"thumbnailUrl":"https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1.png","keywords":["Kubernetes","tools"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://blog.palark.com/cncf-sandbox-2023-h1/#respond"]}]},{"@type":"WebPage","@id":"https://blog.palark.com/cncf-sandbox-2023-h1/","url":"https://blog.palark.com/cncf-sandbox-2023-h1/","name":"Exploring Cloud Native projects in CNCF Sandbox. Part 1: 13 arrivals of 2023 H1 &#8211; Palark | Blog","isPartOf":{"@id":"https://blog.palark.com/#website"},"primaryImageOfPage":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#primaryimage"},"image":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#primaryimage"},"thumbnailUrl":"https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1.png","datePublished":"2024-09-02T10:25:54+00:00","dateModified":"2024-09-03T10:09:59+00:00","breadcrumb":{"@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://blog.palark.com/cncf-sandbox-2023-h1/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#primaryimage","url":"https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1.png","contentUrl":"https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1.png","width":1964,"height":1000},{"@type":"BreadcrumbList","@id":"https://blog.palark.com/cncf-sandbox-2023-h1/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://blog.palark.com/"},{"@type":"ListItem","position":2,"name":"Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1"}]},{"@type":"WebSite","@id":"https://blog.palark.com/#website","url":"https://blog.palark.com/","name":"Palark Blog","description":"DevOps &amp; Kubernetes Goodies","publisher":{"@id":"https://blog.palark.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://blog.palark.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://blog.palark.com/#organization","name":"Palark","url":"https://blog.palark.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://blog.palark.com/#/schema/logo/image/","url":"https://blog.palark.com/wp-content/uploads/2024/03/palark-logo.svg","contentUrl":"https://blog.palark.com/wp-content/uploads/2024/03/palark-logo.svg","width":685,"height":200,"caption":"Palark"},"image":{"@id":"https://blog.palark.com/#/schema/logo/image/"}},{"@type":"Person","@id":"https://blog.palark.com/#/schema/person/011b3403bcda47f5ab755b953e97d552","name":"Konstantin Nezhbert","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://blog.palark.com/#/schema/person/image/9b6fdc52856a777b00a925e2bdbaaaaa","url":"https://secure.gravatar.com/avatar/4044d36560c868050dad47e8ddc5be57?s=96&d=identicon&r=g","contentUrl":"https://secure.gravatar.com/avatar/4044d36560c868050dad47e8ddc5be57?s=96&d=identicon&r=g","caption":"Konstantin Nezhbert"},"description":"technical writer","sameAs":["https://zhbert.ru"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel="alternate" type="application/rss+xml" title="Palark | Blog &raquo; Feed" href="https://blog.palark.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Palark | Blog &raquo; Comments Feed" href="https://blog.palark.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Palark | Blog &raquo; Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1 Comments Feed" href="https://blog.palark.com/cncf-sandbox-2023-h1/feed/" />
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.palark.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.6.1"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://blog.palark.com/wp-includes/css/dist/block-library/style.min.css?ver=6.6.1' media='all' />
+<style id='co-authors-plus-coauthors-style-inline-css'>
+.wp-block-co-authors-plus-coauthors.is-layout-flow [class*=wp-block-co-authors-plus]{display:inline}
+
+</style>
+<style id='co-authors-plus-avatar-style-inline-css'>
+.wp-block-co-authors-plus-avatar :where(img){height:auto;max-width:100%;vertical-align:bottom}.wp-block-co-authors-plus-coauthors.is-layout-flow .wp-block-co-authors-plus-avatar :where(img){vertical-align:middle}.wp-block-co-authors-plus-avatar:is(.alignleft,.alignright){display:table}.wp-block-co-authors-plus-avatar.aligncenter{display:table;margin-inline:auto}
+
+</style>
+<style id='co-authors-plus-image-style-inline-css'>
+.wp-block-co-authors-plus-image{margin-bottom:0}.wp-block-co-authors-plus-image :where(img){height:auto;max-width:100%;vertical-align:bottom}.wp-block-co-authors-plus-coauthors.is-layout-flow .wp-block-co-authors-plus-image :where(img){vertical-align:middle}.wp-block-co-authors-plus-image:is(.alignfull,.alignwide) :where(img){width:100%}.wp-block-co-authors-plus-image:is(.alignleft,.alignright){display:table}.wp-block-co-authors-plus-image.aligncenter{display:table;margin-inline:auto}
+
+</style>
+<style id='safe-svg-svg-icon-style-inline-css'>
+.safe-svg-cover{text-align:center}.safe-svg-cover .safe-svg-inside{display:inline-block;max-width:100%}.safe-svg-cover svg{height:100%;max-height:100%;max-width:100%;width:100%}
+
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='fonts-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/fonts/fonts.css?ver=6.6.1' media='all' />
+<link rel='stylesheet' id='theme-main-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/main.min.css?ver=1.0.11' media='all' />
+<link rel='stylesheet' id='theme-select-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/select.min.css?ver=1.0.11' media='all' />
+<link rel='stylesheet' id='theme-single-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/single.min.css?ver=1.0.11' media='all' />
+<style id='critical-theme-styles-inline-css'>
+select.a-select { display: none }
+</style>
+<link rel='stylesheet' id='addtoany-css' href='https://blog.palark.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' media='all' />
+<script id="addtoany-core-js-before">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+</script>
+<script defer src="https://static.addtoany.com/menu/page.js" id="addtoany-core-js"></script>
+<script id="theme-app-js-extra">
+var backend_data = {"ajax_url":"https:\/\/blog.palark.com\/wp-admin\/admin-ajax.php"};
+</script>
+<script defer="defer" src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/app.min.js?ver=1.0.11" id="theme-app-js"></script>
+<script src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/nice-select.min.js?ver=1.0.11" id="theme-nice-select-js"></script>
+<script defer="defer" src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/highlight.min.js?ver=1.0.11" id="theme-highlight-js"></script>
+<script defer="defer" src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/comment.min.js?ver=1.0.11" id="theme-comment-js"></script>
+<script src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/tooltips.min.js?ver=1.0.11" id="theme-tooltips-js"></script>
+<script defer="defer" src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/js/clipboard.min.js?ver=1.0.11" id="theme-clipboard-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-T9B227Z" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["blog.palark.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-T9B227Z");
+</script>
+
+<!-- End Google tag (gtag.js) snippet added by Site Kit -->
+<link rel="https://api.w.org/" href="https://blog.palark.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://blog.palark.com/wp-json/wp/v2/posts/2541" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.palark.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.6.1" />
+<link rel='shortlink' href='https://blog.palark.com/?p=2541' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://blog.palark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://blog.palark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.134.0" /><link rel="alternate" type="application/feed+json" title="Palark | Blog &raquo; JSON Feed" href="https://blog.palark.com/feed/json/" />
+<link rel="alternate" type="application/feed+json" title="Palark | Blog &raquo; Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1 Comments Feed" href="https://blog.palark.com/cncf-sandbox-2023-h1/feed/json/" />
+
+ <!-- OneAll.com / Social Login for WordPress / v5.7 -->
+<script data-cfasync="false" type="text/javascript">
+ (function() {
+  var oa = document.createElement('script'); oa.type = 'text/javascript';
+  oa.async = true; oa.src = 'https://palark.api.oneall.com/socialize/library.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(oa, s);
+ })();
+</script>
+<meta name="google-site-verification" content="OkVarn600oJ-7EWVzTqnxc_Av6m4kaC3nMUOjYyp-6c"><link rel="icon" href="https://blog.palark.com/wp-content/uploads/2022/11/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://blog.palark.com/wp-content/uploads/2022/11/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://blog.palark.com/wp-content/uploads/2022/11/favicon.png" />
+<meta name="msapplication-TileImage" content="https://blog.palark.com/wp-content/uploads/2022/11/favicon.png" />
+</head>
+<body class="post-template-default single single-post postid-2541 single-format-standard wp-custom-logo wp-embed-responsive">
+<div class="header header_palark">
+    <div class="header__content">
+        <div class="container">
+            <div class="header__left">
+                <a href="https://palark.com" class="header__logo header__logo_palark">
+                    <img src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/images/palark-logo.svg"
+                         alt="palark-logo">
+                </a>
+            </div>
+            <ul id="palark-nav" class="nav header__nav"><li id="menu-item-20" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20"><a>Services</a>
+<div class='sub-menu-container'><ul class='sub-menu'>
+	<li id="menu-item-2346" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2346"><a href="https://palark.com/services/">DevOps as a&nbsp;Service</a></li>
+	<li id="menu-item-2347" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2347"><a href="https://palark.com/industry-solutions/saas/">Solution for SaaS</a></li>
+	<li id="menu-item-2348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a href="https://palark.com/services/kubernetes-support/">Kubernetes support</a></li>
+</ul></div>
+</li>
+<li id="menu-item-2349" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2349"><a href="https://palark.com/rnd/">R&#038;D</a></li>
+<li id="menu-item-2385" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2385"><a>Company</a>
+<div class='sub-menu-container'><ul class='sub-menu'>
+	<li id="menu-item-2351" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2351"><a href="https://palark.com/about/">About us</a></li>
+	<li id="menu-item-2386" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2386"><a href="https://palark.com/meet-us/">Meet us</a></li>
+</ul></div>
+</li>
+</ul>            <div class="header__right">
+                <a href="https://palark.com/contact-us/" class="button button--palark">Contact us</a>
+            </div>
+            <div class="hamburger hamburger--collapse header__hamburger" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="header">
+    <div class="header__content">
+        <div class="container">
+            <div class="header__left">
+                <a href="https://blog.palark.com/" class="header__logo">
+                    <img src="https://blog.palark.com/wp-content/uploads/2023/10/BLOG.svg"
+                         alt="blog-logo">
+                </a>
+            </div>
+            <form action="https://blog.palark.com/" class="form_search" role="search">
+    <input type="text" name="s" class="search" value="" placeholder="Search" autocomplete="off"/>
+</form>            <div class="header__categories">
+                <select class="a-select right" multiple="multiple" data-placeholder="Posts by tags">
+            <optgroup label="Popular">
+            <option value="/tag/kubernetes/">Kubernetes (71)</option><option value="/tag/databases/">databases (23)</option><option value="/tag/tools/">tools (23)</option><option value="/tag/migrations/">migrations (13)</option><option value="/tag/failures/">failures (11)</option>        </optgroup>
+                <optgroup label="A-Z">
+            <option value="/tag/aiops/">AIOps (1)</option><option value="/tag/arm/">ARM (1)</option><option value="/tag/aws/">AWS (2)</option><option value="/tag/benchmarking/">benchmarking (2)</option><option value="/tag/best-practices/">best practices (7)</option><option value="/tag/business/">business (4)</option><option value="/tag/caching/">caching (3)</option><option value="/tag/calico/">Calico (1)</option><option value="/tag/cassandra/">Cassandra (2)</option><option value="/tag/ceph/">Ceph (5)</option><option value="/tag/cert-manager/">cert-manager (1)</option><option value="/tag/ci-cd/">CI/CD (9)</option><option value="/tag/cli/">CLI (4)</option><option value="/tag/clickhouse/">ClickHouse (3)</option><option value="/tag/cni/">CNI (2)</option><option value="/tag/cockroachdb/">CockroachDB (1)</option><option value="/tag/comparison/">comparison (9)</option><option value="/tag/databases/">databases (23)</option><option value="/tag/ebpf/">eBPF (2)</option><option value="/tag/elasticsearch/">Elasticsearch (5)</option><option value="/tag/etcd/">etcd (4)</option><option value="/tag/failures/">failures (11)</option><option value="/tag/fluentd/">Fluentd (1)</option><option value="/tag/gitlab/">GitLab (4)</option><option value="/tag/helm/">Helm (5)</option><option value="/tag/hyperconvergence/">hyperconvergence (1)</option><option value="/tag/ingress/">Ingress (3)</option><option value="/tag/kafka/">Kafka (2)</option><option value="/tag/keycloak/">Keycloak (1)</option><option value="/tag/keydb/">KeyDB (3)</option><option value="/tag/kubernetes/">Kubernetes (71)</option><option value="/tag/kubernetes-operators/">Kubernetes operators (11)</option><option value="/tag/linux/">Linux (4)</option><option value="/tag/logging/">logging (5)</option><option value="/tag/logstash/">Logstash (1)</option><option value="/tag/market/">market (4)</option><option value="/tag/memcached/">memcached (1)</option><option value="/tag/migrations/">migrations (13)</option><option value="/tag/mongodb/">MongoDB (2)</option><option value="/tag/mysql/">MySQL (2)</option><option value="/tag/networking/">networking (7)</option><option value="/tag/nginx/">nginx (1)</option><option value="/tag/observability/">observability (11)</option><option value="/tag/palark/">Palark (7)</option><option value="/tag/php/">PHP (1)</option><option value="/tag/postgresql/">PostgreSQL (9)</option><option value="/tag/prometheus/">Prometheus (4)</option><option value="/tag/python/">Python (4)</option><option value="/tag/rabbitmq/">RabbitMQ (1)</option><option value="/tag/redis/">Redis (4)</option><option value="/tag/rook/">Rook (3)</option><option value="/tag/security/">security (7)</option><option value="/tag/serverless/">serverless (2)</option><option value="/tag/software-development/">software development (2)</option><option value="/tag/ssl/">SSL (1)</option><option value="/tag/storage/">storage (10)</option><option value="/tag/success-stories/">success stories (2)</option><option value="/tag/terraform/">Terraform (2)</option><option value="/tag/tools/">tools (23)</option><option value="/tag/troubleshooting/">troubleshooting (8)</option><option value="/tag/vault/">Vault (1)</option><option value="/tag/vector/">Vector (2)</option><option value="/tag/virtualization/">virtualization (1)</option><option value="/tag/vpn/">VPN (1)</option><option value="/tag/werf/">werf (3)</option><option value="/tag/yaml/">YAML (2)</option><option value="/tag/zookeeper/">ZooKeeper (1)</option>        </optgroup>
+    </select>            </div>
+        </div>
+    </div>
+</header>    <main>
+        <div class="container container--bordered">
+            <div class="content full">
+                <ul class="content__tags">
+                                            <li>
+                            <a href="https://blog.palark.com/tag/kubernetes/"
+                               class="content__tags-item content__tags-item--big content__tags-item--main">
+                                Kubernetes                            </a>
+                        </li>
+                                            <li>
+                            <a href="https://blog.palark.com/tag/tools/"
+                               class="content__tags-item content__tags-item--big">
+                                tools                            </a>
+                        </li>
+                                    </ul>
+                <h1 class="content__title">
+                    Exploring Cloud Native projects in&nbsp;CNCF Sandbox. Part 1: 13 arrivals of&nbsp;2023 H1                </h1>
+                <div class="content__column">
+                    <div class="content__date">
+                        2 September 2024                    </div>
+                    <div class="content__author">
+                        By Konstantin Nezhbert, technical writer; Dmitry Shurupov, editor-in-chief                    </div>
+                    <img width="1024" height="521" src="https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1-1024x521.png" class="content__image wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1-1024x521.png 1024w, https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1-550x280.png 550w, https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1-768x391.png 768w, https://blog.palark.com/wp-content/uploads/2024/09/cncf-sandbox-2023h1.png 1964w" sizes="(max-width: 1024px) 100vw, 1024px" />
+                    <article class="content__content post__content">
+                        
+<p>It’s exciting to&nbsp;see how thriving and&nbsp;dynamic the&nbsp;Cloud Native industry is&nbsp;nowadays. CNCF Sandbox greatly helps it, serving as a&nbsp;unique place for Open Source projects to&nbsp;start or continue their journey in&nbsp;the&nbsp;ecosystem. At the&nbsp;same time, so many things are&nbsp;emerging there that it’s a&nbsp;bit overwhelming to&nbsp;stay on top of.</p>
+
+
+
+<p>Hence, we’d like to&nbsp;start this series of&nbsp;articles that will introduce the&nbsp;projects recently added to&nbsp;the&nbsp;CNCF Sandbox. Our first batch will cover 13 projects accepted to&nbsp;Sandbox in&nbsp;the&nbsp;first half of&nbsp;2023 — on March 8th, May 17th, and&nbsp;June 22nd. We’ll list them by&nbsp;their formal categories, starting from the&nbsp;most popular ones.</p>
+
+
+
+<p>We will accompany all projects&#8217; descriptions with&nbsp;additional information and&nbsp;links, including their original authors and&nbsp;GitHub issues for the&nbsp;sandbox submissions and&nbsp;onboarding process. This will help you dive deeper into the&nbsp;project&#8217;s path and&nbsp;the&nbsp;formal process of&nbsp;joining CNCF.</p>
+
+
+
+<h2 class="wp-block-heading">Observability</h2>
+
+
+
+<h3 class="wp-block-heading">1. Inspektor Gadget</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://inspektor-gadget.io/">Website</a>; <a href="https://github.com/inspektor-gadget/inspektor-gadget">GitHub</a></li>
+
+
+
+<li>2100+ GH stars, ~50 contributors</li>
+
+
+
+<li>Initial commit: Mar 3, 2019</li>
+
+
+
+<li>License: Apache 2.0</li>
+
+
+
+<li>Original owner/creator: Kinvolk (acquired by&nbsp;Microsoft in&nbsp;2021)</li>
+
+
+
+<li>Languages: C, Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/7">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1021">onboarding issue</a>; <a href="https://inspektorgadget.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Inspektor Gadget is&nbsp;a&nbsp;collection of&nbsp;eBPF-based tools (called &#8220;gadgets&#8221;) for debugging applications and&nbsp;resources in&nbsp;Kubernetes.</p>
+
+
+
+<p>These gadgets package, deploy and&nbsp;execute eBPF programs, including those based on <a href="https://github.com/iovisor/bcc">BCC</a> tools, within the&nbsp;cluster. They also automatically map low-level kernel primitives to&nbsp;high-level Kubernetes resources, simplifying and&nbsp;speeding up essential information retrieval.</p>
+
+
+
+<p>Inspektor Gadget operates on each K8s node as a&nbsp;<em>DaemonSet</em>. It leverages eBPF programs embedded in&nbsp;the&nbsp;kernel to&nbsp;monitor events related to&nbsp;system calls from userspace programs in&nbsp;Pods. The&nbsp;eBPF programs run within the&nbsp;kernel to&nbsp;gather log data, which Inspektor Gadget&#8217;s userspace tools then retrieve and&nbsp;display.</p>
+
+
+
+<p>Here are&nbsp;some examples of&nbsp;built-in gadgets:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/advise/network-policy">advise network-policy</a> monitors network activity in&nbsp;the&nbsp;namespaces and&nbsp;summarizes the&nbsp;TCP and&nbsp;UDP traffic information in&nbsp;a&nbsp;file, which can be used to&nbsp;generate Kubernetes network policies;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/advise/seccomp-profile">advise seccomp-profile</a> watches the&nbsp;system calls executed in&nbsp;the&nbsp;selected Pod and&nbsp;creates appropriate seccomp profiles based on that;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/profile/block-io">profile block-</a><a href="https://github.com/inspektor-gadget/inspektor-gadget/blob/main/docs/builtin-gadgets/profile/block-io.md">io</a> collects information on disk input/output usage and&nbsp;creates an&nbsp;I/O latency distribution histogram;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/profile/cpu">profile cpu</a> analyzes CPU performance by&nbsp;sampling stack traces;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/top/tcp">top tcp</a> visualizes ongoing TCP activity;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/trace/dns">trace dns</a> outputs the&nbsp;DNS queries and&nbsp;responses for selected Pods;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/trace/exec">trace exec</a> shows how new processes are&nbsp;created;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/trace/fsslower">trace fsslower</a> identifies and&nbsp;shows slow-performing file operations;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/trace/oomkill">trace oomkill</a> monitors the&nbsp;OOM (out-of-memory) killer actions;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/trace_ssl">trace ssl</a> logs the&nbsp;OpenSSL functions usage;</li>
+
+
+
+<li><a href="https://www.inspektor-gadget.io/docs/latest/gadgets/builtin/traceloop">traceloop</a> logs system calls performed in&nbsp;the&nbsp;containers.</li>
+</ul>
+
+
+
+<p>The&nbsp;full list of&nbsp;gadgets is&nbsp;available in&nbsp;the&nbsp;<a href="https://www.inspektor-gadget.io/docs/latest/gadgets/">documentation</a> and&nbsp;<a href="https://artifacthub.io/packages/search?kind=22">Artifacts Hub</a>.</p>
+
+
+
+<p>Once Inspektor Gadget is&nbsp;installed in&nbsp;the&nbsp;cluster, you can list all its components using the&nbsp;following command:</p>
+
+
+
+<pre class="wp-block-code"><code>$ kubectl gadget --help
+Collection of&nbsp;gadgets for Kubernetes developers
+
+Usage:
+  kubectl-gadget &#91;command]
+
+Available Commands:
+  advise      Recommend system configurations based on collected information
+  audit       Audit a&nbsp;subsystem
+  completion  Generate the&nbsp;autocompletion script for the&nbsp;specified shell
+  deploy      Deploy Inspektor Gadget on the&nbsp;cluster
+  help        Help about any command
+  profile     Profile different subsystems
+  prometheus  Expose metrics using prometheus
+  run         Run a&nbsp;gadget (experimental)
+  script      Run a&nbsp;bpftrace-compatible scripts
+  snapshot    Take a&nbsp;snapshot of&nbsp;a&nbsp;subsystem and&nbsp;print it
+  sync        Synchronize gadget information with&nbsp;server
+  top         Gather, sort and&nbsp;periodically report events according to&nbsp;a&nbsp;given criteria
+  trace       Trace and&nbsp;print system events
+  traceloop   Get strace-like logs of&nbsp;a&nbsp;container from the&nbsp;past
+  undeploy    Undeploy Inspektor Gadget from cluster
+  version     Show version
+
+…</code></pre>
+
+
+
+<p>The&nbsp;project&#8217;s README provides a&nbsp;<a href="https://github.com/inspektor-gadget/inspektor-gadget#talks">nice list</a> of&nbsp;talks where you can learn about the&nbsp;practical usage of&nbsp;Inspektor Gadget and&nbsp;other eBPF-related technologies.</p>
+
+
+
+<h3 class="wp-block-heading">2. Headlamp</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://headlamp.dev/">Website</a>; <a href="https://github.com/headlamp-k8s/headlamp">GitHub</a></li>
+
+
+
+<li>~2000 GH stars, ~60 contributors</li>
+
+
+
+<li>Initial commit: Dec 19, 2019</li>
+
+
+
+<li>License: Apache 2.0</li>
+
+
+
+<li>Original owner/creator: Kinvolk (acquired by&nbsp;Microsoft in&nbsp;2021)</li>
+
+
+
+<li>Languages: TypeScript (React), Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/25">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1056">onboarding issue</a>; <a href="https://headlamp.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Headlamp is&nbsp;a&nbsp;powerful Kubernetes user interface. You can run it as a&nbsp;local desktop app or deploy it in&nbsp;your Kubernetes cluster and&nbsp;access it via a&nbsp;web browser.</p>
+
+
+
+<p>Headlamp lets you see your K8s clusters&#8217; overall state and&nbsp;resource usage, scroll through your K8s resources and&nbsp;modify their manifests, view the&nbsp;logs, and&nbsp;exec to&nbsp;the&nbsp;containers.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="617" src="https://blog.palark.com/wp-content/uploads/2024/08/headlamp-workloads-list-1024x617.png" alt="" class="wp-image-2548" srcset="https://blog.palark.com/wp-content/uploads/2024/08/headlamp-workloads-list-1024x617.png 1024w, https://blog.palark.com/wp-content/uploads/2024/08/headlamp-workloads-list-550x332.png 550w, https://blog.palark.com/wp-content/uploads/2024/08/headlamp-workloads-list-768x463.png 768w, https://blog.palark.com/wp-content/uploads/2024/08/headlamp-workloads-list.png 1415w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Listing your Kubernetes workloads in&nbsp;Headlamp</figcaption></figure>
+
+
+
+<p>From a&nbsp;security point of&nbsp;view, it respects RBAC user roles to&nbsp;prevent unauthorized actions. It also allows you to&nbsp;undo modifying operations.</p>
+
+
+
+<p>Headlamp offers a&nbsp;robust plugin system to&nbsp;extend and&nbsp;customize its features. Official plugins are&nbsp;available in&nbsp;<a href="https://github.com/headlamp-k8s/plugins">this repo</a>. Currently, there are&nbsp;three of&nbsp;them: <em>app-catalog</em> for managing Helm charts, <em>prometheus</em> for detailed information about your workloads, and&nbsp;<em>kompose</em> for the&nbsp;tool converting your <code>docker-compose</code> manifests. Artifact Hub also hosts a&nbsp;<a href="https://artifacthub.io/packages/headlamp/headlamp-plugins/headlamp_opencost">plugin for OpenCost</a>.</p>
+
+
+
+<h3 class="wp-block-heading">3. Kepler</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://sustainable-computing.io/">Website</a>; <a href="https://github.com/sustainable-computing-io/kepler">GitHub</a></li>
+
+
+
+<li>~1100 GH stars, 50+ contributors</li>
+
+
+
+<li>Initial commit: Feb 2, 2022</li>
+
+
+
+<li>License: Apache 2.0</li>
+
+
+
+<li>Original owner/creator: Red Hat</li>
+
+
+
+<li>Languages: Go, C</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/19">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1054">onboarding issue</a>; <a href="https://kepler.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Kepler (<strong>K</strong>ubernetes-based <strong>E</strong>fficient <strong>P</strong>ower <strong>L</strong>evel <strong>E</strong>xporte<strong>r</strong>) is&nbsp;a&nbsp;Prometheus exporter that leverages eBPF to&nbsp;probe system stats related to&nbsp;energy consumption, such as CPU performance counters. It collects data and&nbsp;statistics from <em>cgroupfs</em> and&nbsp;<em>sysfs</em> and&nbsp;uses ML (machine learning) models to&nbsp;estimate energy consumed by&nbsp;Kubernetes.</p>
+
+
+
+<p>Kepler exports all these metrics for your Kubernetes Pods and&nbsp;nodes to&nbsp;Prometheus. They include:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>kepler_container_joules_total</code> — total energy consumption of&nbsp;the&nbsp;CPU, DRAM, GPUs, and&nbsp;other host components for a&nbsp;specific container;</li>
+
+
+
+<li><code>kepler_container_core_joules_total</code> and&nbsp;<code>kepler_container_gpu_joules_total</code> — total energy consumption of&nbsp;CPU cores/GPUs for a&nbsp;container;</li>
+
+
+
+<li><code>kepler_container_cpu_cycles_total</code> — CPU cycles used by&nbsp;the&nbsp;container via hardware counters;</li>
+
+
+
+<li><code>kepler_node_core_joules_total</code> — the&nbsp;same as for the&nbsp;relevant container metrics, but aggregated for all containers on the&nbsp;node;</li>
+
+
+
+<li>and&nbsp;much more.</li>
+</ul>
+
+
+
+<p>You can find the&nbsp;full list of&nbsp;metrics exposed by&nbsp;Kepler in&nbsp;the&nbsp;<a href="https://sustainable-computing.io/design/metrics/#kepler-metrics-overview">documentation</a>.</p>
+
+
+
+<p>Here is&nbsp;an&nbsp;excellent diagram of&nbsp;how Kepler works:</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="505" src="https://blog.palark.com/wp-content/uploads/2024/08/kepler-architecture-1024x505.png" alt="" class="wp-image-2550" srcset="https://blog.palark.com/wp-content/uploads/2024/08/kepler-architecture-1024x505.png 1024w, https://blog.palark.com/wp-content/uploads/2024/08/kepler-architecture-550x271.png 550w, https://blog.palark.com/wp-content/uploads/2024/08/kepler-architecture-768x379.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Kepler architecture and&nbsp;workflow</figcaption></figure>
+
+
+
+<p>You can install Kepler in&nbsp;your cluster using its <a href="https://github.com/sustainable-computing-io/kepler-helm-chart">Helm chart</a> or <a href="https://github.com/sustainable-computing-io/kepler-operator">Kubernetes operator</a>. When it&#8217;s done, you can leverage the&nbsp;pre-generated Kepler Dashboard to&nbsp;visualize your energy-related Kubernetes metrics in&nbsp;Grafana. </p>
+
+
+
+<h2 class="wp-block-heading">Security &amp; Compliance</h2>
+
+
+
+<h3 class="wp-block-heading">4. SlimToolkit</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://slimtoolkit.org/">Website</a>; <a href="https://github.com/slimtoolkit/slim">GitHub</a></li>
+
+
+
+<li>19000+ GH stars, 60+ contributors</li>
+
+
+
+<li>Initial commit: Sep 10, 2015</li>
+
+
+
+<li>License: Apache 2.0</li>
+
+
+
+<li>Original owner/creator: Kyle &#8220;kcq&#8221; Quest</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/22">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1055">onboarding issue</a>; <a href="https://slimtoolkit.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>SlimToolkit (originally known as <em>DockerSlim</em>) is&nbsp;your go-to tool for optimizing as well as exploring and&nbsp;debugging containers. It streamlines the&nbsp;way containers are&nbsp;created, customized, and&nbsp;used, rendering them smaller, more secure, and&nbsp;more efficient.</p>
+
+
+
+<p>SlimToolkit works seamlessly with&nbsp;Elixir, Go, Java, Node.js, PHP, Python, Ruby, and&nbsp;Rust applications on Alpine, CentOS, Debian, Ubuntu, and&nbsp;even distroless containers. As its name suggests, the&nbsp;original idea was to&nbsp;make containers slim. To&nbsp;achieve this, several actions are&nbsp;performed in&nbsp;a&nbsp;fully automated fashion:</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1000" height="733" src="https://blog.palark.com/wp-content/uploads/2024/08/slimtoolkit-workflow.jpg" alt="" class="wp-image-2551" srcset="https://blog.palark.com/wp-content/uploads/2024/08/slimtoolkit-workflow.jpg 1000w, https://blog.palark.com/wp-content/uploads/2024/08/slimtoolkit-workflow-550x403.jpg 550w, https://blog.palark.com/wp-content/uploads/2024/08/slimtoolkit-workflow-768x563.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p>Processing containers this way results in&nbsp;reducing Node.js app images by&nbsp;30x (for <code>ubuntu:14.04</code>) and&nbsp;16x (for <code>debian:jessie</code>) times. The&nbsp;promised reduction for Go apps is&nbsp;even more impressive since a&nbsp;700 MB image based on <code>golang:latest</code> can become as small as 1.5 MB(!) only. The&nbsp;project features a&nbsp;specific <a href="https://github.com/slimtoolkit/examples">examples</a> repo where you can find various applications and&nbsp;how SlimToolkit reduced their images&#8217; size.</p>
+
+
+
+<p>Since it&#8217;s a&nbsp;<em>toolkit</em>, <code>slim</code> comes with&nbsp;numerous commands you can perform against your containers, such as:</p>
+
+
+
+<ul class="wp-block-list">
+<li><code>xray</code> — static analysis for the&nbsp;image;</li>
+
+
+
+<li><code>lint</code> — analyzing container instructions in&nbsp;Dockerfiles;</li>
+
+
+
+<li><code>vulnerability</code> — vulnerability-related actions based on the&nbsp;EPSS (Exploit Prediction Scoring System) information;</li>
+
+
+
+<li><code>registry</code> — registry-related operations;</li>
+
+
+
+<li>and&nbsp;more.</li>
+</ul>
+
+
+
+<p>SlimToolkit also features an&nbsp;interactive mode that provides hints for each command or flag as well as ready-to-use integrations with&nbsp;CI/CD (based on Jenkins or GitHub Actions).</p>
+
+
+
+<h3 class="wp-block-heading">5. SOPS</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://getsops.io/">Website</a>; <a href="https://github.com/getsops/sops">GitHub</a></li>
+
+
+
+<li>16000+ GH stars, 140+ contributors</li>
+
+
+
+<li>Initial commit: Aug 14, 2015</li>
+
+
+
+<li>License: MPL 2.0</li>
+
+
+
+<li>Original owner/creator: Mozilla</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/28">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1057">onboarding issue</a>; <a href="https://sops.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>SOPS (<strong>S</strong>ecrets <strong>OP</strong>eration<strong>S</strong>) is&nbsp;a&nbsp;well-known editor for encrypted files, originally created by&nbsp;Mozilla in&nbsp;2015. It helps you automate encrypting secrets and&nbsp;infrastructure credentials and&nbsp;their distribution. It supports numerous formats (YAML, JSON, ENV, INI, and&nbsp;binaries) and&nbsp;performs encryption with&nbsp;Hashicorp Vault, AWS KMS, GCP KMS, Azure Key Vault, <code>age</code>, and&nbsp;PGP.</p>
+
+
+
+<p>It is&nbsp;also capable of&nbsp;key rotation and&nbsp;numerous features for various use cases, such as:</p>
+
+
+
+<ul class="wp-block-list">
+<li>writing secrets to&nbsp;stdout, files on disk, environment of&nbsp;a&nbsp;child process, and&nbsp;temporary files;</li>
+
+
+
+<li>key groups — multiple master keys to&nbsp;decrypt files;</li>
+
+
+
+<li>key service — forwarding a&nbsp;socket to&nbsp;access encryption keys on a&nbsp;remote machine;</li>
+
+
+
+<li>generating audit logs for analyzing all activity on encrypted files.</li>
+</ul>
+
+
+
+<p>SOPS integrates seamlessly with&nbsp;Git, allowing you to&nbsp;decrypt files while comparing their different versions. This is&nbsp;particularly useful for reviewing changes or visualizing history.</p>
+
+
+
+<p>By&nbsp;the&nbsp;way, there is&nbsp;a&nbsp;well-known <a href="https://github.com/jkroepke/helm-secrets">helm-secrets</a> plugin for Helm that allows you to&nbsp;use SOPS to&nbsp;encrypt Helm value files and&nbsp;store them in&nbsp;Git.</p>
+
+
+
+<h2 class="wp-block-heading">Scheduling &amp; Orchestration</h2>
+
+
+
+<h3 class="wp-block-heading">6. Clusternet</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://clusternet.io/">Website</a>; <a href="https://github.com/clusternet/clusternet">GitHub</a></li>
+
+
+
+<li>1300+ GH stars, ~50 contributors</li>
+
+
+
+<li>Initial commit: Jun 10, 2021</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: Tencent</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/10">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1022">onboarding issue</a>; <a href="https://clusternet.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Clusternet simplifies the&nbsp;access to&nbsp;and&nbsp;management of&nbsp;many Kubernetes clusters, offering a&nbsp;unified approach across various environments: on-prem, public or private clouds, hybrid clouds, and&nbsp;edge. </p>
+
+
+
+<p>When Clusternet is&nbsp;deployed, it allows you to&nbsp;perform various actions on your Kubernetes clusters (e.g., listing/creating/deleting resources, making a&nbsp;port forward, etc.) via simple <code>kubectl</code> commands and&nbsp;deploying applications across them. It can automatically discover, register, and&nbsp;label new clusters.</p>
+
+
+
+<p>Technically, Clusternet extends Kubernetes with&nbsp;a&nbsp;set of&nbsp;components (hub, scheduler, and&nbsp;controller manager) for the&nbsp;parent cluster and&nbsp;agents in&nbsp;the&nbsp;child clusters. These child clusters are&nbsp;managed through requests to&nbsp;the&nbsp;parent cluster&#8217;s API server, creating a&nbsp;seamless process for operators.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="568" src="https://blog.palark.com/wp-content/uploads/2024/08/clusternet-architecture-1024x568.png" alt="" class="wp-image-2552" srcset="https://blog.palark.com/wp-content/uploads/2024/08/clusternet-architecture-1024x568.png 1024w, https://blog.palark.com/wp-content/uploads/2024/08/clusternet-architecture-550x305.png 550w, https://blog.palark.com/wp-content/uploads/2024/08/clusternet-architecture-768x426.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>The&nbsp;project has a&nbsp;<a href="https://clusternet.io/docs/quick-start/">quick start</a> for setting up Clusternet locally (using <code>kind</code>), which can be followed by&nbsp;other tutorials guiding you through deploying applications to&nbsp;multiple K8s clusters.</p>
+
+
+
+<h3 class="wp-block-heading">7. Eraser</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://eraser-dev.github.io/eraser/docs/">Website</a>; <a href="https://github.com/eraser-dev/eraser">GitHub</a></li>
+
+
+
+<li>~500 GH stars, 30+ contributors</li>
+
+
+
+<li>Initial commit: Jun 1, 2021</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: Microsoft (Azure)</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/24">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1092">onboarding issue</a>; <a href="https://eraser.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Eraser has a&nbsp;simple mission — to&nbsp;prevent Kubernetes nodes&#8217; disks from becoming cluttered by&nbsp;deleting unused and&nbsp;vulnerable images from all cluster nodes.</p>
+
+
+
+<p>While Kubernetes has its own <a href="https://kubernetes.io/docs/concepts/architecture/garbage-collection/#containers-images">garbage collection</a> mechanism, Eraser gives you more options to&nbsp;select the&nbsp;images to&nbsp;be removed, including their vulnerability state. <em>(If you also wonder why it shouldn&#8217;t be a&nbsp;part of&nbsp;Kubernetes, you can find an&nbsp;answer <a href="https://github.com/cncf/sandbox/issues/24#issuecomment-1581357097">here</a>.)</em></p>
+
+
+
+<p>By&nbsp;default, Eraser starts the&nbsp;cleanup at regular intervals and&nbsp;deletes images based on the&nbsp;results of&nbsp;the&nbsp;vulnerability scan performed by&nbsp;Trivy or a&nbsp;custom scanner. You can choose which security checks should be performed and&nbsp;which vulnerabilities are&nbsp;unacceptable in&nbsp;your cluster. You have the&nbsp;option to&nbsp;disable vulnerability scanning as well, in&nbsp;which case Eraser will function as a&nbsp;regular garbage collector.</p>
+
+
+
+<p>Here is&nbsp;a&nbsp;nice diagram demonstrating how Eraser works in&nbsp;the&nbsp;automatic mode:</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="745" height="776" src="https://blog.palark.com/wp-content/uploads/2024/08/eraser-automated-workflow.png" alt="" class="wp-image-2553" srcset="https://blog.palark.com/wp-content/uploads/2024/08/eraser-automated-workflow.png 745w, https://blog.palark.com/wp-content/uploads/2024/08/eraser-automated-workflow-550x573.png 550w" sizes="(max-width: 745px) 100vw, 745px" /></figure>
+
+
+
+<p>You can also remove your images manually using Eraser by&nbsp;specifying which images to&nbsp;delete.</p>
+
+
+
+<h2 class="wp-block-heading">Continuous Integration &amp; Delivery</h2>
+
+
+
+<h3 class="wp-block-heading">8. PipeCD</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://pipecd.dev/">Website</a>; <a href="https://github.com/pipe-cd/pipecd">GitHub</a></li>
+
+
+
+<li>1000+ GH stars, ~90 contributors</li>
+
+
+
+<li>Initial commit: Jun 12, 2020</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: CyberAgent, Inc.</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/12">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1053">onboarding issue</a>; <a href="https://pipecd.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>PipeCD is&nbsp;a&nbsp;GitOps-based platform for consistent deployments across different environments. The&nbsp;latter means it allows you to&nbsp;deploy not just to&nbsp;Kubernetes, but to&nbsp;four other targets as well: Terraform, GCP CloudRun, AWS Lambda, and&nbsp;AWS ECS.</p>
+
+
+
+<p>To&nbsp;use PipeCD, you will need to&nbsp;define your application (resources and&nbsp;configurations) by&nbsp;committing it to&nbsp;a&nbsp;Git repository, &#8220;register&#8221; it in&nbsp;PipeCD (e.g., specify its platform provider), and&nbsp;customize its pipeline if needed. When it&#8217;s done, PipeCD will start delivering this app and&nbsp;its changes following the&nbsp;GitOps pull-based approach.</p>
+
+
+
+<p>PipeCD integrates effortlessly with&nbsp;CI tools and&nbsp;provides automated deployment analysis, rollback mechanisms, and&nbsp;configuration drift detection. You can use it across multi-cloud environments, within multicluster and&nbsp;multitenancy setups.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="465" src="https://blog.palark.com/wp-content/uploads/2024/08/pipecd-automatic-rollback-1024x465.png" alt="" class="wp-image-2554" srcset="https://blog.palark.com/wp-content/uploads/2024/08/pipecd-automatic-rollback-1024x465.png 1024w, https://blog.palark.com/wp-content/uploads/2024/08/pipecd-automatic-rollback-550x250.png 550w, https://blog.palark.com/wp-content/uploads/2024/08/pipecd-automatic-rollback-768x349.png 768w, https://blog.palark.com/wp-content/uploads/2024/08/pipecd-automatic-rollback.png 1511w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Automatic rollback in&nbsp;PipeCD performed based on the&nbsp;deployment analysis result</figcaption></figure>
+
+
+
+<p>It also supports essential security features (such as single sign-on, RBAC, and&nbsp;built-in secrets management) and&nbsp;provides great visibility thanks to&nbsp;the&nbsp;deployment pipelines UI and&nbsp;real-time application state visualization.</p>
+
+
+
+<p>The&nbsp;project&#8217;s <a href="https://pipecd.dev/docs-dev/quickstart/">quickstart</a> explains how to&nbsp;start with&nbsp;PipeCD on Kubernetes. Overall, its documentation is&nbsp;extensive, covering a&nbsp;rich set of&nbsp;features the&nbsp;tool provides.</p>
+
+
+
+<h2 class="wp-block-heading">Application Definition &amp; Image Build</h2>
+
+
+
+<h3 class="wp-block-heading">9. Microcks</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://microcks.io/">Website</a>; <a href="https://github.com/microcks/microcks">GitHub</a></li>
+
+
+
+<li>1300+ GH stars, ~50 contributors</li>
+
+
+
+<li>Initial commit: Feb 23, 2015</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: Laurent Broudoux (later, sponsored by&nbsp;Postman, Inc.)</li>
+
+
+
+<li>Languages: Java, TypeScript (Angular)</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/37">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1096">onboarding issue</a>; <a href="https://microcks.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Microcks is&nbsp;a&nbsp;cloud-native tool for API testing, allowing you to&nbsp;create live mocks easily. It supports various formats and&nbsp;specifications, including SoapUI Project (XML) 5.1+, Postman collections (JSON) 1.0/2.x, Apicurio (Studio) OpenAPI 3.x, OpenAPI (YAML, JSON) 2.x/3.x, gRPC (protobuf) 3.x, and&nbsp;GraphQL (schema IDL).</p>
+
+
+
+<p>Microcks will ingest your existing artifacts — i.e., your API specifications, schemas, collections, and&nbsp;projects in&nbsp;the&nbsp;supported formats — to&nbsp;build its knowledge base. Based on that base, it produces:</p>
+
+
+
+<ul class="wp-block-list">
+<li>mocks that are&nbsp;immediately available on specific endpoints to&nbsp;be used by&nbsp;your consumers (without even knowing this is&nbsp;a&nbsp;fake API);</li>
+
+
+
+<li>tests that can validate whether your actual API implementation fits the&nbsp;expectations (as described in&nbsp;artifacts).</li>
+</ul>
+
+
+
+<p>Microcks allows multiple artifacts to&nbsp;be ingested for a&nbsp;better outcome. For example, a&nbsp;primary artifact (based on OpenAPI) will provide the&nbsp;main metadata for your services and&nbsp;operations. Secondary artifacts (a Postman collection) will enrich existing operations with&nbsp;additional requests, responses, and&nbsp;event samples. </p>
+
+
+
+<p>You can manage Microcks using a&nbsp;clean web UI. For example, after importing all your artifacts, you can see your APIs and&nbsp;services controlled by&nbsp;the&nbsp;tool, initiate testing with&nbsp;a&nbsp;simple click, browse the&nbsp;detailed testing results for each resource, etc.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="637" src="https://blog.palark.com/wp-content/uploads/2024/08/microcks-api-testing-ui-1024x637.png" alt="" class="wp-image-2556" srcset="https://blog.palark.com/wp-content/uploads/2024/08/microcks-api-testing-ui-1024x637.png 1024w, https://blog.palark.com/wp-content/uploads/2024/08/microcks-api-testing-ui-550x342.png 550w, https://blog.palark.com/wp-content/uploads/2024/08/microcks-api-testing-ui-768x478.png 768w, https://blog.palark.com/wp-content/uploads/2024/08/microcks-api-testing-ui.png 1494w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Navigating through tests in&nbsp;the&nbsp;Microcks Web UI</figcaption></figure>
+
+
+
+<p>Microcks can be installed in&nbsp;a&nbsp;Kubernetes cluster as an&nbsp;operator or using a&nbsp;Helm chart. Alternatively, you can deploy it locally using Docker Compose, <code>kind</code>, or Minikube. The&nbsp;project&#8217;s <a href="https://microcks.io/documentation/">vast documentation</a> has examples of&nbsp;integrating Microcks with&nbsp;CI/CD (GitHub Actions, Jenkins, GitLab CI/CD, and&nbsp;Tekton) and&nbsp;other tooling, such as Postman Workspaces and&nbsp;Backstage (the latter one is&nbsp;still to&nbsp;be done, though).</p>
+
+
+
+<h2 class="wp-block-heading">Automation &amp; Configuration</h2>
+
+
+
+<h3 class="wp-block-heading">10. kpt</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://kpt.dev/">Website</a>; <a href="https://github.com/kptdev/kpt">GitHub</a></li>
+
+
+
+<li>~1700 GH stars, 100+ contributors</li>
+
+
+
+<li>Initial commit: Sep 17, 2019</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: Google</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/34">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1095">onboarding issue</a>; <a href="https://kpt.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>kpt is&nbsp;a&nbsp;comprehensive suite of&nbsp;tools designed to&nbsp;create, automate, and&nbsp;deliver configurations in&nbsp;the&nbsp;WYSIWYG <em>(What You See Is&nbsp;What You Get)</em> fashion for Kubernetes and&nbsp;related infrastructure.</p>
+
+
+
+<p>Most K8s users manage their resources using either command-line tools (<code>kubectl</code>), GUIs, and&nbsp;automation tools (such as K8s operators) that work directly with&nbsp;Kubernetes APIs, or declarative customization tools such as Helm, Terraform, <a href="https://blog.palark.com/cdk8s-framework-for-kubernetes-manifests/">cdk8s</a>, etc. By&nbsp;allowing users to&nbsp;manage configurations via WYSIWYG, kpt renders this process more convenient.</p>
+
+
+
+<p>The&nbsp;declarative <em>configuration as data</em> approach is&nbsp;central to&nbsp;kpt. It treats configuration data as the&nbsp;source of&nbsp;truth and&nbsp;stores it separately from the&nbsp;live (actual) state. It relies on a&nbsp;unified data model to&nbsp;represent configurations and&nbsp;abstracts configuration structure and&nbsp;storage from any configuration data manipulations. To&nbsp;achieve that, kpt performs configuration transformations similarly to&nbsp;Kustomize, but renders it <em>in&nbsp;place</em>, not <em>out of&nbsp;place</em>.</p>
+
+
+
+<p>kpt allows you to&nbsp;deploy configurations via GitOps or direct apply. It comes with&nbsp;a&nbsp;catalog of&nbsp;ready-to-use functions and&nbsp;SDKs to&nbsp;create new ones (in Go, Typescript, and&nbsp;Starlark). It also supports packaging configurations and&nbsp;even has a&nbsp;specific package orchestrator (called <a href="https://github.com/nephio-project/porch">Porch</a>) to&nbsp;handle them.</p>
+
+
+
+<p>Finally, kpt has an&nbsp;experimental <a href="https://github.com/GoogleContainerTools/kpt-backstage-plugins">Backstage plugin</a>:</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img decoding="async" width="1024" height="399" src="https://blog.palark.com/wp-content/uploads/2024/09/kpt-backstage-plugin-1024x399.png" alt="" class="wp-image-2558" style="width:840px;height:auto" srcset="https://blog.palark.com/wp-content/uploads/2024/09/kpt-backstage-plugin-1024x399.png 1024w, https://blog.palark.com/wp-content/uploads/2024/09/kpt-backstage-plugin-550x214.png 550w, https://blog.palark.com/wp-content/uploads/2024/09/kpt-backstage-plugin-768x299.png 768w, https://blog.palark.com/wp-content/uploads/2024/09/kpt-backstage-plugin.png 1664w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Working with&nbsp;kpt&#8217;s configuration-as-data via Backstage plugin</figcaption></figure>
+
+
+
+<p>You can also <a href="https://github.com/kptdev/kpt/tree/main/package-examples/kustomize">combine</a> kpt with&nbsp;kustomize, using the&nbsp;former for packaging and&nbsp;the&nbsp;latter for customization.</p>
+
+
+
+<h2 class="wp-block-heading">Coordination &amp; Service Discovery</h2>
+
+
+
+<h3 class="wp-block-heading">11. Xline</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://xline.cloud/">Website</a>; <a href="https://github.com/xline-kv/Xline">GitHub</a></li>
+
+
+
+<li>~600 GH stars, 20+ contributors</li>
+
+
+
+<li>Initial commit: May 5, 2022</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: DatenLord Technology</li>
+
+
+
+<li>Languages: Rust</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/31">sandbox </a><a href="https://github.com/cncf/sandbox/issues/11">request</a>; <a href="https://github.com/cncf/toc/issues/1105">onboarding </a><a href="https://github.com/cncf/toc/issues/1093">issue</a>; <a href="https://xline.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>Xline is&nbsp;a&nbsp;high-performance distributed key-value (KV) store for managing metadata across multiple clusters.</p>
+
+
+
+<p>This Cloud Native solution supports geo-distributed deployments and&nbsp;relies on the&nbsp;CURP consensus protocol to&nbsp;provide high performance and&nbsp;consistency even in&nbsp;a&nbsp;global network environment. You can get more details about CURP and&nbsp;learn how it compares to&nbsp;other consensus protocols (such as Raft, which is&nbsp;used in&nbsp;etcd) in&nbsp;the&nbsp;<a href="https://datenlord.github.io/xline-home/#/deep-dive/Consensus">project&#8217;s blog</a>.</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="400" height="420" src="https://blog.palark.com/wp-content/uploads/2024/09/xline-architecture.png" alt="Xline architecture" class="wp-image-2566"/><figcaption class="wp-element-caption">Xline architecture</figcaption></figure>
+
+
+
+<p>Xline features a&nbsp;comprehensive set of&nbsp;KV interfaces that are&nbsp;fully compatible with&nbsp;the&nbsp;etcd API. Moreover, it is&nbsp;marketed as a&nbsp;basis for seamless migration for the&nbsp;existing etcd users, offering both better performance and&nbsp;advanced capabilities (for handling indexes, permissions, and&nbsp;configurations) in&nbsp;geo-distributed, multi-cluster environments.</p>
+
+
+
+<p>You can install Xline manually following <a href="https://github.com/xline-kv/Xline/blob/master/doc/QUICK_START.md">this quickstart</a> (interestingly, <code>etcdctl</code> is&nbsp;used here to&nbsp;send basic requests) or by&nbsp;leveraging <a href="https://github.com/xline-kv/xline-operator">xline-operator</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Cloud Native Storage</h2>
+
+
+
+<h3 class="wp-block-heading">12. HwameiStor</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://hwameistor.io/">Website</a>; <a href="https://github.com/hwameistor/hwameistor">GitHub</a></li>
+
+
+
+<li>500+ GH stars, 40+ contributors</li>
+
+
+
+<li>Initial commit: Mar 7, 2022</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: DaoCloud</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/29">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1094">onboarding issue</a>; <a href="https://hwameistor.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>HwameiStor is&nbsp;a&nbsp;flexible local storage system designed for Cloud Native stateful workloads in&nbsp;Kubernetes. It:</p>
+
+
+
+<ul class="wp-block-list">
+<li>creates a&nbsp;centralized local resource pool for managing various types of&nbsp;disks;</li>
+
+
+
+<li>relies on CSI (Container Storage Interface) to&nbsp;provide distributed services with&nbsp;local volumes, enabling persistent storage for stateful applications.</li>
+</ul>
+
+
+
+<p>By&nbsp;doing so, it aims to&nbsp;become a&nbsp;lightweight and&nbsp;cost-effective substitute for expensive SAN-like storage.</p>
+
+
+
+<p><em>Note. If you&#8217;re interested in&nbsp;running stateful applications in&nbsp;Kubernetes, you might enjoy our recent article, <a href="https://blog.palark.com/stateful-in-kubernetes-and-operators/">&#8220;Stateful apps in&nbsp;Kubernetes. From history and&nbsp;fundamentals to&nbsp;operators&#8221;</a>.</em></p>
+
+
+
+<p>HwameiStor supports HDDs, SSDs, and&nbsp;NVMes and&nbsp;automates disks&#8217; discovery, allocation, and&nbsp;management.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="403" src="https://blog.palark.com/wp-content/uploads/2024/09/hwameistor-architecture-1024x403.png" alt="" class="wp-image-2559" srcset="https://blog.palark.com/wp-content/uploads/2024/09/hwameistor-architecture-1024x403.png 1024w, https://blog.palark.com/wp-content/uploads/2024/09/hwameistor-architecture-550x216.png 550w, https://blog.palark.com/wp-content/uploads/2024/09/hwameistor-architecture-768x302.png 768w, https://blog.palark.com/wp-content/uploads/2024/09/hwameistor-architecture.png 1212w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">An&nbsp;example of&nbsp;storage built with&nbsp;Hwameistor</figcaption></figure>
+
+
+
+<p>This solution comes with:</p>
+
+
+
+<ul class="wp-block-list">
+<li>disk status monitoring and&nbsp;audit for all resources (CRDs);</li>
+
+
+
+<li>LVM volume snapshots/restores and&nbsp;auto-resizing;</li>
+
+
+
+<li>affinity-based scheduling;</li>
+
+
+
+<li>HA (high availability) mode that is&nbsp;based on DRBD and&nbsp;achieved through cross-node replicas that synchronize data;</li>
+
+
+
+<li>Web-based GUI.</li>
+</ul>
+
+
+
+<p>The&nbsp;recommended way of&nbsp;installing HwameiStor involves using <a href="https://hwameistor.io/docs/install/operator">its operator</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Platform / Certified Kubernetes &#8211; Installer</h2>
+
+
+
+<h3 class="wp-block-heading">13. KubeClipper</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://kubeclipper.io/en/">Website</a>; <a href="https://github.com/kubeclipper/kubeclipper">GitHub</a></li>
+
+
+
+<li>~300 GH stars, ~20 contributors</li>
+
+
+
+<li>Initial commit: Jul 2, 2022</li>
+
+
+
+<li>License: Apache 2</li>
+
+
+
+<li>Original owner/creator: 99Cloud</li>
+
+
+
+<li>Languages: Go</li>
+
+
+
+<li>CNCF Sandbox: <a href="https://github.com/cncf/sandbox/issues/31">sandbox request</a>; <a href="https://github.com/cncf/toc/issues/1105">onboarding issue</a>; <a href="https://kubeclipper.devstats.cncf.io/">DevStats</a></li>
+</ul>
+
+
+
+<p>KubeClipper is&nbsp;a&nbsp;web service that implements a&nbsp;user-friendly GUI, API, and&nbsp;CLI tool for managing Kubernetes clusters. Covering the&nbsp;full cluster&#8217;s lifecycle and&nbsp;various setups, the&nbsp;project has an&nbsp;ambitious aim to&nbsp;help operators &#8220;manage Kubernetes the&nbsp;most light and&nbsp;convenient way&#8221;.</p>
+
+
+
+<p>Particularly, KubeClipper helps with:</p>
+
+
+
+<ul class="wp-block-list">
+<li>cluster installation/uninstallation, upgrades, scaling, backups/restores, and&nbsp;remote access;</li>
+
+
+
+<li>deploying clusters on any infrastructure: clouds, VMs, and&nbsp;bare metal;</li>
+
+
+
+<li>auto-registration of&nbsp;new cluster nodes;</li>
+
+
+
+<li>access management: RBAC-based permissions, OIDC integration.</li>
+</ul>
+
+
+
+<p>Moreover, the&nbsp;project&#8217;s roadmap includes going much further with&nbsp;providing application lifecycle management and&nbsp;integrating numerous plugins for load balancers and&nbsp;ingress, monitoring, Kubernetes dashboard, etc.</p>
+
+
+
+<p>Technically, KubeClipper is&nbsp;comprised of&nbsp;four main components: <code>kc-agent</code> (deployed on K8s nodes), <code>kc-server</code> (collects information from agents), <code>kc-etcd</code> (the backend database for <em>kc-server</em>), and&nbsp;<code>kcctl</code> (a CLI tool to&nbsp;manage clusters).</p>
+
+
+
+<p>You can install KubeClipper via <code>kcctl</code> by&nbsp;entering the&nbsp;login and&nbsp;password credentials or SSH key. After installation, you can manage your setup through the&nbsp;web interface or CLI tool.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="608" src="https://blog.palark.com/wp-content/uploads/2024/09/kubeclipper-create-cluster-1024x608.png" alt="" class="wp-image-2561" srcset="https://blog.palark.com/wp-content/uploads/2024/09/kubeclipper-create-cluster-1024x608.png 1024w, https://blog.palark.com/wp-content/uploads/2024/09/kubeclipper-create-cluster-550x326.png 550w, https://blog.palark.com/wp-content/uploads/2024/09/kubeclipper-create-cluster-768x456.png 768w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Creating a&nbsp;new Kubernetes cluster via KubeClipper</figcaption></figure>
+
+
+
+<p>The&nbsp;project&#8217;s <a href="https://kubeclipper.io/en/docs/tutorials/">documentation</a> includes tutorials on creating new Kubernetes clusters and&nbsp;connecting existing ones, managing clusters and&nbsp;their nodes, and&nbsp;controlling access.</p>
+
+
+
+<h2 class="wp-block-heading">Afterword</h2>
+
+
+
+<p>Based on these new CNCF projects, we can see that most are&nbsp;written in&nbsp;Go, licensed under Apache 2.0, and&nbsp;coming from big companies. Not all of&nbsp;them, though. What&#8217;s more intriguing to&nbsp;see is&nbsp;<em>when</em> they decided to&nbsp;land in&nbsp;the&nbsp;Sandbox:</p>
+
+
+
+<ul class="wp-block-list">
+<li>most projects are&nbsp;2-3 years old;</li>
+
+
+
+<li>four are&nbsp;pretty new (born a&nbsp;year — or even less — before their application): Kepler, HwameiStor, Xline, and&nbsp;KubeClipper;</li>
+
+
+
+<li>three are&nbsp;7+(!) years old projects (initiated in&nbsp;2015): Microcks, SlimToolkit, and&nbsp;SOPS.</li>
+</ul>
+
+
+
+<p>The&nbsp;latter clearly indicates that even mature software is&nbsp;looking for a&nbsp;reliable, vendor-neutral home.</p>
+
+
+
+<p>It would be interesting to&nbsp;see how these projects will evolve under the&nbsp;CNCF&#8217;s guidance. Which of&nbsp;them will gain more community traction and&nbsp;boost its development? Feel free to&nbsp;share your experience using any of&nbsp;those 13 CNCF projects!</p>
+                    </article>
+                    <section class="subscribe">
+    <div class="container">
+        <img class="subscribe__image" src="https://blog.palark.com/wp-content/themes/palark-in-color/assets/images/subscribe.svg"
+             alt="pic">
+        <div class="subscribe__content">
+            <div class="subscribe__info">
+                <div class="subscribe__title">Subscribe to our blog</div>
+                <div class="subscribe__text">
+                    <p>Get our new tech articles in a good old fashion!<br> We promise not to send anything besides them.</p>
+                </div>
+            </div>
+            <form class="subscribe__form" target="_self">
+                <div class="form-field">
+                    <input type="text" name="email" placeholder="Email*" autocomplete="off" required>
+                </div>
+                <a class="button button--lime button--icon-mail subscribe__submit" href="javascript:void(0);">Sign me up
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16" fill="none">
+                        <path fill="#000"
+                              d="M2.355 3.168a1 1 0 1 0-1.11 1.664l1.11-1.664ZM9.69 9.26l.555-.832-.555.832Zm2.22 0-.556-.832.555.832Zm8.445-4.428a1 1 0 1 0-1.11-1.664l1.11 1.664Zm-19.11 0 7.89 5.26 1.11-1.664-7.89-5.26-1.11 1.664Zm7.89 5.26a3 3 0 0 0 3.329 0l-1.11-1.664a1 1 0 0 1-1.109 0l-1.11 1.664Zm3.329 0 7.89-5.26-1.109-1.664-7.89 5.26 1.109 1.664ZM3.8 16h14v-2h-14v2Zm14 0a3 3 0 0 0 3-3h-2a1 1 0 0 1-1 1v2Zm3-3V3h-2v10h2Zm0-10a3 3 0 0 0-3-3v2a1 1 0 0 1 1 1h2Zm-3-3h-14v2h14V0Zm-14 0a3 3 0 0 0-3 3h2a1 1 0 0 1 1-1V0Zm-3 3v10h2V3h-2Zm0 10a3 3 0 0 0 3 3v-2a1 1 0 0 1-1-1h-2Z"/>
+                    </svg>
+                </a>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="phone" tabindex="-1" value="">
+                    <input type="submit" tabindex="-1">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+                                            <h4 class="content__share">Share: <div class="addtoany_shortcode"><div class="a2a_kit a2a_kit_size_24 addtoany_list" data-a2a-url="https://blog.palark.com/cncf-sandbox-2023-h1/" data-a2a-title="Exploring Cloud Native projects in CNCF Sandbox. Part 1: 13 arrivals of 2023 H1"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&amp;linkname=Exploring%20Cloud%20Native%20projects%20in%C2%A0CNCF%20Sandbox.%20Part%201%3A%2013%20arrivals%20of%C2%A02023%20H1" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&amp;linkname=Exploring%20Cloud%20Native%20projects%20in%C2%A0CNCF%20Sandbox.%20Part%201%3A%2013%20arrivals%20of%C2%A02023%20H1" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&amp;linkname=Exploring%20Cloud%20Native%20projects%20in%C2%A0CNCF%20Sandbox.%20Part%201%3A%2013%20arrivals%20of%C2%A02023%20H1" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_reddit" href="https://www.addtoany.com/add_to/reddit?linkurl=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&amp;linkname=Exploring%20Cloud%20Native%20projects%20in%C2%A0CNCF%20Sandbox.%20Part%201%3A%2013%20arrivals%20of%C2%A02023%20H1" title="Reddit" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_telegram" href="https://www.addtoany.com/add_to/telegram?linkurl=https%3A%2F%2Fblog.palark.com%2Fcncf-sandbox-2023-h1%2F&amp;linkname=Exploring%20Cloud%20Native%20projects%20in%C2%A0CNCF%20Sandbox.%20Part%201%3A%2013%20arrivals%20of%C2%A02023%20H1" title="Telegram" rel="nofollow noopener" target="_blank"></a></div></div></h4>
+                                        <div class="content__comments">
+                        <div id="comments">
+    <h2 class="comments-title">Comments <span></span></h2>
+    	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/cncf-sandbox-2023-h1/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://blog.palark.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate> <!-- OneAll.com / Social Login for WordPress / v5.7 -->
+<div class="oneall_social_login">
+ <div class="oneall_social_login_label" style="margin-bottom: 3px;"><label>Connect with:</label></div>
+ <div class="oneall_social_login_providers" id="oneall_social_login_providers_3064393"></div>
+ <script data-cfasync="false" type="text/javascript">
+  var _oneall = _oneall || [];
+  _oneall.push(['social_login', 'set_providers', ['facebook','github','google','linkedin']]);
+  _oneall.push(['social_login', 'set_callback_uri', (window.location.href + ((window.location.href.split('?')[1] ? '&amp;': '?') + "oa_social_login_source=comments"))]);
+  _oneall.push(['social_login', 'set_custom_css_uri', 'https://secure.oneallcdn.com/css/api/socialize/themes/wordpress/modern.css']);
+  _oneall.push(['social_login', 'do_render_ui', 'oneall_social_login_providers_3064393']);
+ </script>
+</div><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><input id="author" name="author" type="text" placeholder="Name*" autocomplete="off" required/>
+<input id="email" name="email" type="text" placeholder="Email*" autocomplete="off" required/>
+<textarea autocomplete="new-password"  id="g17bbc1eed"  name="g17bbc1eed"   rows="3" placeholder="Add a comment*" required></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script data-noptimize>document.getElementById("comment").setAttribute( "id", "a74b7c37bb199d16dc535b7a7ef7d27a" );document.getElementById("g17bbc1eed").setAttribute( "id", "comment" );</script><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='2541' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <section>
+        <div class="container">
+            <h2 class="upper"><span>Related</span> articles</h2>
+                            <div class="content-grid content-grid--lined">
+                    <article class="content mini">
+    <div class="content__info">
+        <div class="content__line">
+            <div class="content__date">26 September 2019</div>
+        </div>
+        <h3 class="content__title">
+            <a href="https://blog.palark.com/useful-tools-for-developers-running-applications-in-kubernetes/">Useful tools for developers running applications in&nbsp;Kubernetes</a>
+        </h3>
+        <ul class="content__tags">
+                            <li>
+                    <a href="https://blog.palark.com/tag/kubernetes/"
+                       class="content__tags-item content__tags-item--main">
+                        Kubernetes                    </a>
+                </li>
+                            <li>
+                    <a href="https://blog.palark.com/tag/tools/"
+                       class="content__tags-item">
+                        tools                    </a>
+                </li>
+                            <li>
+                    <a href="https://blog.palark.com/tag/ci-cd/"
+                       class="content__tags-item">
+                        CI/CD                    </a>
+                </li>
+                    </ul>
+    </div>
+</article><article class="content mini">
+    <div class="content__info">
+        <div class="content__line">
+            <div class="content__date">25 November 2020</div>
+        </div>
+        <h3 class="content__title">
+            <a href="https://blog.palark.com/k9s-the-powerful-terminal-ui-for-kubernetes/">K9s — the&nbsp;powerful terminal UI for Kubernetes</a>
+        </h3>
+        <ul class="content__tags">
+                            <li>
+                    <a href="https://blog.palark.com/tag/kubernetes/"
+                       class="content__tags-item content__tags-item--main">
+                        Kubernetes                    </a>
+                </li>
+                            <li>
+                    <a href="https://blog.palark.com/tag/tools/"
+                       class="content__tags-item">
+                        tools                    </a>
+                </li>
+                            <li>
+                    <a href="https://blog.palark.com/tag/cli/"
+                       class="content__tags-item">
+                        CLI                    </a>
+                </li>
+                    </ul>
+    </div>
+</article><article class="content mini">
+    <div class="content__info">
+        <div class="content__line">
+            <div class="content__date">17 February 2022</div>
+        </div>
+        <h3 class="content__title">
+            <a href="https://blog.palark.com/kubenav-managing-kubernetes-from-smartphone/">kubenav as a&nbsp;tool for managing Kubernetes clusters from your smartphone</a>
+        </h3>
+        <ul class="content__tags">
+                            <li>
+                    <a href="https://blog.palark.com/tag/kubernetes/"
+                       class="content__tags-item content__tags-item--main">
+                        Kubernetes                    </a>
+                </li>
+                            <li>
+                    <a href="https://blog.palark.com/tag/tools/"
+                       class="content__tags-item">
+                        tools                    </a>
+                </li>
+                    </ul>
+    </div>
+</article>                </div>
+                    </div>
+    </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="17" fill="none">
+                        <path fill="currentColor"
+                              d="M87.77 2.68h-2.98v13.53h2.98V2.68ZM100 2.68h-3.68l-6.85 6.76 6.85 6.77H100l-6.85-6.77L100 2.68ZM31.33 12.18 23.4 0l-7.9 12.18h3.54l4.36-7.03 4.37 7.03h3.55ZM62.25 12.18 54.33 0l-7.9 12.18h3.54l4.36-7.03 4.36 7.03h3.56ZM80.14 16.21l-3.76-4.36a4.76 4.76 0 0 0-1.75-9.17h-9.22v13.53h2.98V5.41h6.25a2.01 2.01 0 1 1 0 4.03H71.2l-1.46 2.74h3.5l3.48 4.03h3.44ZM9.23 2.68H0v13.53h2.99V5.41h6.25a2.01 2.01 0 1 1 0 4.03H5.78l-1.46 2.74h4.92a4.75 4.75 0 0 0 0-9.5h-.01ZM37.78 13.48V2.68H34.8v13.53h8.8l1.76-2.73h-7.58Z"/>
+                    </svg>
+                </div>
+                <div class="footer__info">
+                    <p>Germany, Baden-
+                        <br>Württemberg, Ulm</p>
+                    <ul id="footer-nav-col-1" class="nav"><li id="menu-item-1981" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1981"><a target="_blank" rel="noopener" href="https://www.palark.com/privacy-policy">Privacy policy</a></li>
+<li id="menu-item-1982" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1982"><a target="_blank" rel="noopener" href="https://www.palark.com/impressum">Imprint</a></li>
+</ul><ul id="footer-nav-col-2" class="nav"><li id="menu-item-1983" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1983"><a href="tel:+4973114613240">+49 731 1461 3240</a></li>
+<li id="menu-item-1984" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1984"><a href="mailto:info@palark.com">info@palark.com</a></li>
+</ul>                </div>
+            </div>
+            <div class="footer__bottom">
+                <div class="footer__back-up" onclick="window.scrollTo(0,0)">Back up</div>
+                <div class="footer__copyright">© 2024 <a href="//www.palark.com/" target="_blank" rel="nofollow noreferrer">Palark
+                        GmbH</a>. All rights reserved.
+                </div>
+                    <div class="social-links">
+        <a href="https://www.linkedin.com/company/palark/" target="_blank"><?xml version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none"><path fill="currentColor" fill-rule="evenodd" d="M1.35 0C.6044 0 0 .6044 0 1.35v27.3C0 29.3956.6044 30 1.35 30h27.3c.7456 0 1.35-.6044 1.35-1.35V1.35C30 .6044 29.3956 0 28.65 0H1.35Zm5.3167 9.2832c1.428 0 2.5857-1.1577 2.5857-2.5857 0-1.428-1.1577-2.5857-2.5857-2.5857-1.428 0-2.5856 1.1577-2.5856 2.5857 0 1.428 1.1576 2.5857 2.5856 2.5857Zm-2.2121 1.9946h4.4548v14.2368H4.4546V11.2778Zm11.6976 14.2357-4.4701-.0006V11.2761H15.95v1.9472c.5713-.8049 1.8351-2.3515 4.4389-2.3515 1.1886 0 3.1027.3427 4.1433 1.8692.9126 1.3386.9969 3.1308.9969 4.2835v8.489h-4.4237v-7.7881c0-2.8162-1.7912-3.0686-2.7725-2.9128-.475.0754-.9855.2232-1.4019.6698-.4439.4762-.7788 1.3084-.7788 2.243v7.7881Z" clip-rule="evenodd"></path></svg> </a><a href="https://twitter.com/palark_com" target="_blank"><?xml version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" width="27" height="20" viewBox="0 0 27 20" fill="none"><path d="M23.4762 4.9782C23.4918 5.19519 23.4918 5.41219 23.4918 5.63119C23.4918 12.3041 18.1848 20 8.48052 20V19.996C5.61491 19.999 2.80675 19.213 0.394531 17.731C0.811367 17.779 1.23029 17.803 1.65026 17.804C4.02591 17.806 6.33366 17.043 8.20263 15.6381C5.94503 15.5971 3.96532 14.1881 3.27373 12.1311C4.06457 12.2771 4.87944 12.2471 5.65565 12.0441C3.19433 11.5681 1.42356 9.49714 1.42356 7.09317C1.42356 7.07117 1.42356 7.05017 1.42356 7.02917C2.15694 7.42017 2.97808 7.63716 3.81802 7.66116C1.49878 6.18018 0.784205 3.22822 2.1841 0.92025C4.86272 4.07521 8.81483 5.99318 13.0574 6.19718C12.6322 4.4432 13.213 2.60523 14.5837 1.37224C16.7086 -0.539731 20.0506 -0.441732 22.0481 1.59124C23.2296 1.36824 24.3621 0.95325 25.3984 0.365258C25.0046 1.53424 24.1803 2.52723 23.0792 3.15822C24.1249 3.04022 25.1466 2.77223 26.1088 2.36323C25.4005 3.37822 24.5094 4.26321 23.4762 4.9782Z" fill="currentColor"></path></svg> </a><a href="https://www.facebook.com/palarkcom/" target="_blank"><?xml version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none"><path fill="currentColor" d="M30 15a15 15 0 1 0-17.34 14.82V19.34H8.85V15h3.8v-3.3c0-3.76 2.25-5.84 5.67-5.84 1.64 0 3.36.3 3.36.3v3.68h-1.9c-1.86 0-2.44 1.16-2.44 2.35V15h4.16l-.66 4.34h-3.5v10.48A15 15 0 0 0 30 15Z"></path></svg> </a><a href="https://www.youtube.com/@palark" target="_blank"><?xml version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" width="31" height="20" viewBox="0 0 31 20" fill="none"><path d="M24.9903 0.204701C20.5505 -0.0682335 10.6618 -0.0682335 6.23314 0.204701C1.43453 0.497852 0.862737 3.116 0.829102 10C0.862737 16.8739 1.42332 19.492 6.23314 19.7953C10.673 20.0682 20.5505 20.0682 24.9903 19.7953C29.7889 19.5021 30.3607 16.884 30.3943 10C30.3607 3.12611 29.8001 0.497852 24.9903 0.204701ZM11.9175 14.4377V5.55219L21.7725 9.98989L11.9175 14.4377Z" fill="currentColor"></path></svg> </a><a href="https://github.com/palark" target="_blank"><?xml version="1.0" encoding="UTF-8"?> <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none"><path d="M10.3945 0C4.89453 0 0.394531 4.6123 0.394531 10.2495C0.394531 14.7764 3.22786 18.62 7.22786 19.9866C7.72786 20.072 7.89453 19.7304 7.89453 19.4741V17.5951C5.14453 18.193 4.5612 16.3993 4.5612 16.3993C4.14453 15.2035 3.47786 14.8618 3.47786 14.8618C2.5612 14.264 3.5612 14.264 3.5612 14.264C4.5612 14.3494 5.0612 15.2889 5.0612 15.2889C5.97786 16.8263 7.39453 16.3993 7.97786 16.143C8.0612 15.4597 8.3112 15.0327 8.64453 14.7764C6.3112 14.5202 3.97786 13.6661 3.97786 9.73707C3.97786 8.6267 4.39453 7.68716 4.97786 7.00386C4.97786 6.74762 4.5612 5.63725 5.14453 4.27065C5.14453 4.27065 5.97786 4.01441 7.89453 5.2956C8.72786 5.03936 9.5612 4.95395 10.3945 4.95395C11.2279 4.95395 12.0612 5.03936 12.8945 5.2956C14.8112 4.01441 15.6445 4.27065 15.6445 4.27065C16.2279 5.72267 15.8112 6.74762 15.7279 7.00386C16.3945 7.68716 16.7279 8.6267 16.7279 9.73707C16.7279 13.6661 14.3945 14.5202 12.1445 14.7764C12.4779 15.1181 12.8112 15.716 12.8112 16.6555V19.4741C12.8112 19.7304 12.9779 20.072 13.4779 19.9866C17.5612 18.62 20.3945 14.7764 20.3945 10.2495C20.3945 4.6123 15.8945 0 10.3945 0Z" fill="currentColor"></path></svg> </a>    </div>
+            </div>
+        </div>
+    </footer>
+<div class="sidebar">
+    <div class="container">
+        <form action="https://blog.palark.com/" class="form_search" role="search">
+    <input type="text" name="s" class="search" value="" placeholder="Search" autocomplete="off"/>
+</form>        <ul id="palark-nav" class="nav sidebar__nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20"><a>Services</a>
+<div class='sub-menu-container'><ul class='sub-menu'>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2346"><a href="https://palark.com/services/">DevOps as a&nbsp;Service</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2347"><a href="https://palark.com/industry-solutions/saas/">Solution for SaaS</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2348"><a href="https://palark.com/services/kubernetes-support/">Kubernetes support</a></li>
+</ul></div>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2349"><a href="https://palark.com/rnd/">R&#038;D</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2385"><a>Company</a>
+<div class='sub-menu-container'><ul class='sub-menu'>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2351"><a href="https://palark.com/about/">About us</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2386"><a href="https://palark.com/meet-us/">Meet us</a></li>
+</ul></div>
+</li>
+</ul>        <a href="https://palark.com/contact-us/" class="button button--palark">Contact us</a>
+    </div>
+</div><link rel='stylesheet' id='theme-highlight-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/highlight.min.css?ver=1.0.11' media='all' />
+<link rel='stylesheet' id='theme-tooltips-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/tooltips.min.css?ver=1.0.11' media='all' />
+<link rel='stylesheet' id='theme-clipboard-css' href='https://blog.palark.com/wp-content/themes/palark-in-color/assets/css/clipboard.min.css?ver=1.0.11' media='all' />
+<script src="https://blog.palark.com/wp-includes/js/comment-reply.min.js?ver=6.6.1" id="comment-reply-js" async data-wp-strategy="async"></script>
