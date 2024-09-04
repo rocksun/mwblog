@@ -1,7 +1,7 @@
 
 <!--
 title: 不要使用未打包的Helm Chart！
-cover: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMa35Lwbi5ft0YlbwXrO4Diyey1e59wi2-iOoi9Ib1uIAS_hAExP-osko5rfndd4YHfD_1UUz6jQPv1IBtgYUK23CeW5w5uysGmZ0opnKBk3Ea2BzfHpQFhcSdnklWHpDQXAyvnxG3D5k77FrpV5zktw0Z7YvBSCyRZvulrbxm38MJaVM410Jd50ir4nX4/s400/helm_package.png
+cover: ./cover.png
 -->
 
 简而言之，不要直接从未打包的 Helm Chart 安装/模板，因为 Helm CLI 在打包方面存在许多错误...
