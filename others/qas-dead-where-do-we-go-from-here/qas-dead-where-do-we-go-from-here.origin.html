@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr"><!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="If you listen to thought leaders, QA is in its death throes. It&#039;s useless, it&#039;s expensive, and besides, we have machines to do that now. In my own experience, I&#039;ve been working in organizations without dedicated QA teams for several years ... The transformation I&#039;m talking about is where quality assurance has moved from a separate, final stage of development to one at the core" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://www.devopsdigest.com/qas-dead-where-do-we-go-from-here" />
+<link rel="shortlink" href="https://www.devopsdigest.com/node/12778" />
+<title>QA's Dead: Where Do We Go From Here? | DEVOPSdigest</title>
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_VV21nxr0zWk8hDwsH6oTFdEogwqI6HpwkhC9RdUiWWg.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_7Z6lS6_dDwRaHlOQYQlGbdtOnGI1HEBteg4889L6SpQ.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_826wJVUHTtk78I28WoSkAXeYL1bZ3SarIDmplTnu0ZM.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_6b38QoA10iNo0WlQABsPuoYUzGFZrPw1WER3vGjCXdw.css" media="print" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_XRkxmNIk5wOywX7mkz79w5tu5A2BiQQyYoly6J81kMI.css" media="only screen" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_pHVO8SgIQSr6xyBsSqWCZSMqADVnFyDtgpKWJq5GUU0.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_bzpwcvD-vV7xwVhShJi9J7KvKoXGDJcffvrYNpctsns.css" media="only screen" />
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_AbpHGcgLb-kRsJGnwFEktk7uzpZOCcBY74-YBdrKVGs.css" media="screen" />
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="https://www.devopsdigest.com/sites/default/files/css/css_1IWFNVUvoG7ZsKM2Wc6WCMO8g_fBoqieo5jH_Q8O0Vs.css" media="screen" />
+<![endif]-->
+<script type="text/javascript" src="https://www.devopsdigest.com/sites/default/files/js/js_YD9ro0PAqY25gGWrTki6TjRUG8TdokmmxjfqpNNfzVU.js"></script>
+<script type="text/javascript" src="https://www.devopsdigest.com/sites/default/files/js/js_Xdp_56Kwrjh9XNxqhxmaYOwIKVvPB-7wqAz_R60LA6w.js"></script>
+<script type="text/javascript" src="https://www.devopsdigest.com/sites/default/files/js/js_R2IRVRW5EWJDL_TzZdRFj3uMDJB4u-kEGHdqreEtRwg.js"></script>
+<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-QTNHWY8PDK"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "G-QTNHWY8PDK", {"groups":"default"});
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.devopsdigest.com/sites/default/files/js/js_-oEDdwe4XpUqUj4W0KJs96ENaXIrGvjBvIP-WYYBi54.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.a2a_config=window.a2a_config||{};window.da2a={done:false,html_done:false,script_ready:false,script_load:function(){var a=document.createElement('script'),s=document.getElementsByTagName('script')[0];a.type='text/javascript';a.async=true;a.src='https://static.addtoany.com/menu/page.js';s.parentNode.insertBefore(a,s);da2a.script_load=function(){};},script_onready:function(){da2a.script_ready=true;if(da2a.html_done)da2a.init();},init:function(){for(var i=0,el,target,targets=da2a.targets,length=targets.length;i<length;i++){el=document.getElementById('da2a_'+(i+1));target=targets[i];a2a_config.linkname=target.title;a2a_config.linkurl=target.url;if(el){a2a.init('page',{target:el});el.id='';}da2a.done=true;}da2a.targets=[];}};(function ($){Drupal.behaviors.addToAny = {attach: function (context, settings) {if (context !== document && window.da2a) {if(da2a.script_ready)a2a.init_all();da2a.script_load();}}}})(jQuery);a2a_config.callbacks=a2a_config.callbacks||[];a2a_config.callbacks.push({ready:da2a.script_onready});a2a_config.overlays=a2a_config.overlays||[];a2a_config.templates=a2a_config.templates||{};
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"mix_and_match","theme_token":"xjIHwOkVT-8ZF11inFav49t-YOnFUwh2a4HgULe4F20","js":{"0":1,"misc\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/simpleads\/simpleads.js":1,"sites\/all\/modules\/responsive_menus\/styles\/responsive_menus_simple\/js\/responsive_menus_simple.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"https:\/\/www.googletagmanager.com\/gtag\/js?id=G-QTNHWY8PDK":1,"1":1,"sites\/all\/modules\/extlink\/js\/extlink.js":1,"2":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/simpleads\/simpleads.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/extlink\/css\/extlink.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/panels\/css\/panels.css":1,"sites\/all\/themes\/mix_and_match\/layouts\/panels\/articles\/articles.css":1,"sites\/all\/modules\/responsive_menus\/styles\/responsive_menus_simple\/css\/responsive_menus_simple.css":1,"sites\/all\/modules\/addtoany\/addtoany.css":1,"sites\/all\/themes\/adaptivetheme\/at_core\/css\/at.settings.style.headings.css":1,"sites\/all\/themes\/adaptivetheme\/at_core\/css\/at.layout.css":1,"sites\/all\/themes\/mix_and_match\/css\/global.base.css":1,"sites\/all\/themes\/mix_and_match\/css\/global.styles.css":1,"sites\/all\/themes\/mix_and_match\/css\/colors.css":1,"sites\/all\/themes\/mix_and_match\/css\/custom.css":1,"sites\/all\/themes\/mix_and_match\/css\/responsive.custom.css":1,"sites\/all\/themes\/mix_and_match\/css\/print.css":1,"public:\/\/adaptivetheme\/mix_and_match_files\/mix_and_match.responsive.layout.css":1,"public:\/\/adaptivetheme\/mix_and_match_files\/mix_and_match.fonts.css":1,"public:\/\/adaptivetheme\/mix_and_match_files\/mix_and_match.responsive.styles.css":1,"public:\/\/adaptivetheme\/mix_and_match_files\/mix_and_match.custom.css":1,"public:\/\/adaptivetheme\/mix_and_match_files\/mix_and_match.lt-ie9.layout.css":1}},"responsive_menus":[{"toggler_text":"\u2630 Menu","selectors":["#menu-bar"],"media_size":"753","media_unit":"px","remove_attributes":"1","responsive_menus_style":"responsive_menus_simple"}],"googleanalytics":{"account":["G-QTNHWY8PDK"],"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"urlIsAjaxTrusted":{"\/search\/node":true,"\/qas-dead-where-do-we-go-from-here":true,"\/qas-dead-where-do-we-go-from-here?destination=node\/12778":true},"extlink":{"extTarget":"_blank","extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":"append","extSubdomains":1,"extExclude":"","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":0,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends e-mail)","extUseFontAwesome":false},"adaptivetheme":{"mix_and_match":{"layout_settings":{"bigscreen":"three-col-grail","tablet_landscape":"three-col-grail","tablet_portrait":"one-col-vert","smalltouch_landscape":"one-col-vert","smalltouch_portrait":"one-col-stack"},"media_query_settings":{"bigscreen":"only screen and (min-width:1025px)","tablet_landscape":"only screen and (min-width:769px) and (max-width:1024px)","tablet_portrait":"only screen and (min-width:481px) and (max-width:768px)","smalltouch_landscape":"only screen and (min-width:321px) and (max-width:480px)","smalltouch_portrait":"only screen and (max-width:320px)"}}}});
+//--><!]]>
+</script>
+<style> html{display:none;}</style>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather+Sans">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Muli">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Voces">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Carrois+Gothic">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ropa+Sans">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cuprum">
+<link rel="shortcut icon" href="http://www.devopsdigest.com/sites/all/themes/mix_and_match/images/favicon.ico">
+<script>
+   if(self == top) {
+       document.documentElement.style.display = 'block'; 
+   } else {
+       top.location = self.location; 
+   }
+</script>
+<!--[if lt IE 9]>
+<script src="https://www.devopsdigest.com/sites/all/themes/adaptivetheme/at_core/scripts/html5.js?sj91w0"></script>
+<![endif]-->
+</head>
+<body class="html not-front not-logged-in two-sidebars page-node page-node- page-node-12778 node-type-vendor-forum site-name-hidden atr-7.x-2.x atv-7.x-2.1 br-acc tl-bhd bk-bht">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="container page ssc-n ssw-n ssa-l sss-n btc-uc btw-n bta-l bts-n ntc-n ntw-b nta-l nts-n ctc-n ctw-b cta-l cts-n ptc-n ptw-n pta-l pts-n">
+
+  <!-- region: Leaderboard -->
+  <div class="region region-leaderboard"><div class="region-inner clearfix"><div id="block-simpleads-ad-groups-69" class="block block-simpleads leaderboard-platinum-ad-full no-title odd first last block-count-1 block-region-leaderboard block-ad-groups-69" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="header">
+  <div class="ad-link"></div>
+</div>
+<div class="adslist">
+  <script type="text/javascript">
+    _simpelads_load('.simpleads-69', 69, 1);
+  </script>
+    <div class="simpleads-69"></div>
+
+    
+</div>
+</div>
+  </div></div></div></div>
+  <header id="header" class="clearfix" role="banner">
+
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="/"><img class="site-logo" src="https://www.devopsdigest.com/sites/all/themes/mix_and_match/images/masthead.png" alt="DEVOPSdigest" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible h-group" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="/" title="Home page">DEVOPSdigest</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+        
+    <!-- region: Masthead Banner -->
+    
+  </header>
+
+  <!-- Navigation elements -->
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu menu-wrapper menu-bar-wrapper clearfix odd first last block-count-2 block-region-menu-bar block-main-menu"  role="navigation">  
+      <h2 class="element-invisible block-title">Main menu</h2>
+  
+  <ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-908"><a href="/" title="">Home</a></li><li class="leaf menu-depth-1 menu-item-3246"><a href="/features">Features</a></li><li class="leaf menu-depth-1 menu-item-7558"><a href="/podcast">Podcast</a></li><li class="leaf menu-depth-1 menu-item-1608"><a href="/blog" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-2654"><a href="/vendor-forum">Forum</a></li><li class="leaf menu-depth-1 menu-item-1209"><a href="/industry-news" title="">News</a></li><li class="leaf menu-depth-1 menu-item-521"><a href="/industry-events">Events</a></li><li class="leaf menu-depth-1 menu-item-7572"><a href="/analyst-reports" title="">Reports</a></li><li class="leaf menu-depth-1 menu-item-2455"><a href="/white-papers" title="">Papers</a></li><li class="leaf menu-depth-1 menu-item-5823"><a href="/webinars" title="">Webinars</a></li><li class="leaf menu-depth-1 menu-item-4173"><a href="/free-tools" title="">Tools</a></li><li class="last leaf menu-depth-1 menu-item-7349"><a href="http://apmdigest.com" title="">APMdigest</a></li></ul>
+  </nav></div>
+  <div id="main">
+
+    <!-- Breadcrumbs -->
+    
+    <!-- Messages and Help -->
+    
+    <!-- region: Secondary Content -->
+<div class="region region-secondary-content"><div class="region-inner clearfix"><div id="block-simpleads-ad-groups-52" class="block block-simpleads banner-ad no-title odd first last block-count-3 block-region-secondary-content block-ad-groups-52" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="header">
+  <div class="ad-link"></div>
+</div>
+<div class="adslist">
+  <script type="text/javascript">
+    _simpelads_load('.simpleads-52', 52, 2);
+  </script>
+    <div class="simpleads-52"></div>
+
+    
+</div>
+</div>
+  </div></div></div></div>
+    <div id="columns" class="columns clearfix">
+      <div id="content-column" class="content-column" role="main">
+        <div class="content-inner">
+
+          <!-- region: Highlighted -->
+
+          <div id="main-content">
+
+          
+
+          <!-- region: Main Content -->
+                        <div id="content" class="region">
+            <div id="block-system-main" class="block block-system no-title odd first last block-count-4 block-region-content block-main" >  
+  
+  <div id="vendor_forum_node_panel" class="onecol-layout">
+  
+      <div id="article-layout-top">
+      <div class="inside"><div class="panel-pane pane-node-title no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      QA&#039;s Dead: Where Do We Go From Here?    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-created no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      September 03, 2024    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-custom pane-1 pane-node-author-company no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <p><span class="pane-node-author">Kenn Hussey</span><br />
+<span class="pane-node-company">Ambassador Labs</span></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+    </div>
+    
+    	<div id="article-layout-middle">
+      <div class="inside">
+      	<div class="article-layout-middle-body-inset"></div>
+      	<div class="article-layout-middle-body"><div class="panel-pane pane-node-body no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even"><p>If you listen to thought leaders, QA is in its death throes. It's useless, it's expensive, and besides, we have machines to do that now. In my own experience, I've been working in organizations without dedicated QA teams for several years, and I think the rest of the world has finally caught up.</p>
+<p>If we take a <a href="https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines" target="_blank">Betteridge's law of headlines</a> approach to the question, "Is QA dying?" the inevitable answer is no. QA isn't dying; it's already dead. This death has already had enormous ramifications for QA teams. However, a transformation has happened, ultimately increasing the importance of quality in the software development lifecycle. </p>
+<p>The transformation I'm talking about is where quality assurance has moved from a separate, final stage of development to one at the core of software creation, where every developer is expected to tear down their own code to build a better product. And if you're not on board with this shift yet, I have bad news for you. </p>
+<h4>Why QA Changed</h4>
+<p>Traditional QA went like this:</p>
+<p>■ <span style="font-weight: bold;">Design</span>: PMs, architects, and developers define the product requirements and design the initial architecture.</p>
+<p>■ <span style="font-weight: bold;">Development</span>: Developers write the code based on the requirements and designs.</p>
+<p>■ <span style="font-weight: bold;">Testing</span>: The QA team receives the completed code, creates test plans and cases, and executes manual/automated tests to cover various scenarios. They report bugs back to the development team.</p>
+<p>■ <span style="font-weight: bold;">Bug fixing</span>: Developers receive bug reports, fix the issues, and pass the code back to QA.</p>
+<p>■ <span style="font-weight: bold;">Retesting</span>: QA verifies the fixes and may perform another round of regression testing.</p>
+<p>■ <span style="font-weight: bold;">Release</span>: Once QA approves, the software moves to production.</p>
+<p><img src="sites/default/files/images/Ambassador_2024_09_1.jpg" /><br /></p>
+<p>This compartmentalized model was the standard in software development for decades but became synonymous with a "throw it over the wall" mentality. Coders coded, testers tested. But when laid out like this, it quickly becomes clear what the problems are:</p>
+<p><img src="sites/default/files/images/Ambassador_2024_09_2.jpg" /><br /></p>
+<p>First, everyone is siloed. Development and testing teams work in isolation, leading to communication gaps and misaligned expectations. This compartmentalization can result in a great product but with significant overhead.</p>
+<p>Secondly, the development process occurs before any substantial testing begins. This late-stage bug discovery could be more efficient. Bugs found earlier in the development cycle are typically more straightforward and cheaper to fix. Still, this model pushes bug detection to the end, increasing the overall cost and time of development.</p>
+<p>Third, the cycle between testing and bug fixing creates significant bottlenecks. As bugs are found, they're returned to developers, fixed, and then returned to QA for retesting. This back-and-forth is time-consuming and can delay releases, especially if significant issues are discovered late in the process.</p>
+<p>With this framework, you get slower development cycles, increased costs, and potential quality issues. All this stems from a single problem: a need for more ownership over quality throughout the process.</p>
+<h4>The Shift of Ownership for Quality</h4>
+<p>In the past, QA teams were the arbiters of quality in an organization. That responsibility has now shifted left to the developer. This shift isn't just a minor adjustment; it's a fundamental reworking of the approach to software quality.</p>
+<p>Our linear process above has been moved to a circular process of building, testing, rebuilding, and pushing to production:</p>
+<p><img src="sites/default/files/images/Ambassador_2024_09_3.jpg" /><br /></p>
+<p>All of this happens within the development box above. Developers are now the first line of quality control.</p>
+<p>This is possible through two initiatives.</p>
+<p>First, iterative development. Agile methodologies mean teams now work in short sprints, delivering functional software more frequently. This allows for continuous testing and feedback, catching issues earlier in the process. It also means that quality is no longer a final checkpoint but an ongoing consideration throughout the development cycle.</p>
+<p>Second, tooling. Automated testing frameworks, CI/CD pipelines, and code quality tools have allowed developers to take on more quality control responsibilities without risking burnout. These tools allow for instant feedback on code quality, automated testing on every commit, and integration of quality checks into the development workflow.</p>
+<p>What does this look like in practice? </p>
+<p>Let's take full-stack API development as an example. Individual developers can now leverage tools that automate much of the boilerplate work and provide instant feedback. For instance, the tools are empowering developers to do the following:</p>
+<p>■ <span style="font-weight: bold;">API Design</span>: Developers can now create standardized OpenAPI specs quickly. This allows them to start coding almost immediately without spending an entire sprint building the initial design.</p>
+<p>■ <span style="font-weight: bold;">API Mocking</span>: With the right tools, developers can create dynamic, sharable mocks. This eliminates the need to manually write and maintain mock code, allowing for quick validation and iteration.</p>
+<p>■ <span style="font-weight: bold;">Code Generation</span>: AI-powered code generation tools can now handle much of the boilerplate code for client- and server-side APIs. This frees up developers to focus on the unique aspects of their API implementation.</p>
+<p>■ <span style="font-weight: bold;">Testing and Debugging</span>: Modern platforms provide publicly available URLs for testing, allowing developers to run their code in production-like environments. These integrate directly with IDEs, enabling developers to set breakpoints and debug efficiently, minimizing the likelihood of errors making it to production.</p>
+<p>■ <span style="font-weight: bold;">Deployment</span>: Tools now exist that provide hosted, containerized test environments. This allows for easy progressive and repeated testing without the need for constant reconfiguration.</p>
+<p>These are just a few of the advancements that mean developers can now handle many aspects of API development and testing that were previously siloed or required extensive back-and-forth with other teams. </p>
+<p>This shift doesn't eliminate the need for specialized QA knowledge. Instead, it integrates quality considerations throughout the development process, with developers taking on more responsibility for ensuring the quality of their APIs from the outset. </p>
+<h4>What Becomes of QAs?</h4>
+<p>Where does this leave QAs? </p>
+<p>Without a home? Kind of, but not really! It is more accurate to say they now have multiple homes. QAs can either become more strategic or more technical, moving up or down the stack.</p>
+<p>The first opportunity is down the stack, moving into more technical roles. QA professionals can leverage their quality-focused mindset to become automation specialists or DevOps engineers. Their expertise in thorough testing can be crucial in developing robust, reliable automated test suites. The concept that "flaky tests are worse than no tests" becomes even more critical when the tests are all that stop an organization from shipping low-quality code.</p>
+<p>QAs excel at identifying edge cases and potential failure points, making them invaluable in creating comprehensive test coverage that goes beyond basic happy path scenarios. This rigor can balance out any <a href="https://andersoncardoso.github.io/ydd/" target="_blank">YOLO-driven development</a> in rapid development environments.</p>
+<p>The second opportunity is to move up the stack into a strategic role. Testing is now a vital part of the development lifecycle, and it requires thought. QA professionals can evolve into quality strategists, focusing on designing comprehensive testing strategies that cover the entire software lifecycle. </p>
+<h4>QA Is Now in the Hands of the Individual and Their Tools</h4>
+<p>QA teams have gone, but the mindset of quality engineering will always be needed. That mindset has now shifted from a specific team to being imbued in every developer working on a product. Organizations must now find ways to utilize that mindset daily by giving them the tools and support necessary to produce high-quality software. </p>
+<p>The "death" of QA ultimately wasn't about its demise but its integration into every aspect of software development. The challenge for organizations will be fostering a culture where quality is everyone's responsibility while still valuing and leveraging the specialized skills that QA professionals bring. Lean into the tools that can provide that QA check, and empower your own developers to each wear their own QA hat. </p>
+</div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-user-field-user-bio author-bio no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-field-user-bio field-type-text-long field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even">Kenn Hussey is VP of Engineering at Ambassador Labs</div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+      </div>
+    </div>
+    
+    	<div id="article-layout-bottom">
+      <div class="inside"><div class="panel-pane pane-block pane-addtoany-addtoany-button pane-addtoany no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <span class="a2a_kit a2a_target addtoany_list" id="da2a_1">
+      
+      <a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share#url=https%3A%2F%2Fwww.devopsdigest.com%2Fqas-dead-where-do-we-go-from-here&amp;title=QA%27s%20Dead%3A%20Where%20Do%20We%20Go%20From%20Here%3F"><img src="/sites/all/modules/addtoany/images/share_save_171_16.png" width="171" height="16" alt="Share this"/></a>
+      
+    </span>
+    <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+if(window.da2a)da2a.script_load();
+//--><!]]>
+</script>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-entity-field pane-node-field-related-links block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Related Links</h2>
+        
+    
+    <div class="block-content">
+      <div class="field field-name-field-related-links field-type-link-field field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even"><a href="https://www.getambassador.io/" target="_blank">www.getambassador.io</a></div></div></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views-panes pane-industry-news-panel-pane-2 block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Industry News</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-industry-news view-id-industry_news view-display-id-panel_pane_2 view-dom-id-630b015856c2d79f05c1120d2593670b">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/check-point-software-unveils-new-mssp-portal-for-partners-vastly-simplifying-service-delivery-and">Check Point Software Unveils New MSSP Portal for Partners: Vastly Simplifying Service Delivery and Ease of Doing Business</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">September 03, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p><a href="https://www.checkpoint.com/" target="_blank">Check Point® Software Technologies Ltd.</a> unveiled its innovative Portal designed for both managed security service providers (MSSPs) and distributors. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/couchbase-announces-capella%E2%84%A2-columnar-on-aws">Couchbase Announces Capella™ Columnar on AWS</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">September 03, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Couchbase officially launched Capella™ Columnar on AWS, which helps organizations streamline the development of adaptive applications by enabling real-time data analysis alongside operational workloads within a single database platform. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/mendio-unveils-mend-appsec-platform">Mend.io Unveils Mend AppSec Platform</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">September 03, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Mend.io unveiled the Mend AppSec Platform, a solution designed to help businesses transform application security programs into proactive programs that reduce application risk.</p>
+</div>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/elastic-announces-open-source-license-for-elasticsearch-and-kibana-source-code">Elastic Announces Open Source License for Elasticsearch and Kibana Source Code</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">September 03, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Elastic announced that it is adding the GNU Affero General Public License v3 (AGPL) as an option for users to license the free part of the Elasticsearch and Kibana source code that is available under Server Side Public License 1.0 (SSPL 1.0) and Elastic License 2.0 (ELv2).</p>
+</div>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/new-progress-semaphore-release-brings-to-market-ai-assisted-knowledge-modeling">New Progress Semaphore Release Brings to Market AI-Assisted Knowledge Modeling</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 29, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p><a href="https://www.progress.com/" target="_blank">Progress</a> announced the latest release of <a href="https://www.progress.com/semaphore" target="_blank">Progress® Semaphore™</a>, its metadata management and semantic AI platform. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/elasticsearch-open-inference-api-supports-anthropics-claude">Elasticsearch Open Inference API Supports Anthropic&#039;s Claude</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 29, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Elastic, the Search AI Company, announced the Elasticsearch Open Inference API now integrates with Anthropic, providing developers with seamless access to Anthropic’s Claude, including Claude 3.5 Sonnet, Claude 3 Haiku and Claude 3 Opus, directly from their Anthropic account.</p>
+</div>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/broadcom-announces-vmware-cloud-foundation-9">Broadcom Announces VMware Cloud Foundation 9</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 28, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Broadcom unveiled VMware Cloud Foundation (VCF) 9, the future of VCF that will accelerate customers’ transition from siloed IT architectures to a unified and integrated private cloud platform that lowers cost and risk. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/broadcom-introduces-vmware-tanzu-platform-10">Broadcom Introduces VMware Tanzu Platform 10</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 27, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Broadcom announced VMware Tanzu Platform 10, a cloud native application platform that accelerates software delivery, providing platform engineering teams enhanced governance and operational efficiency while reducing toil and complexity for development teams. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/red-hat-openstack-services-on-openshift-released">Red Hat OpenStack Services on OpenShift Released</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 26, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Red Hat announced the general availability of Red Hat OpenStack Services on OpenShift, the next major release of Red Hat OpenStack Platform. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/slack-expands-automation-capabilities">Slack Expands Automation Capabilities</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 26, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Salesforce announced new innovations in Slack that make it easier for users to build automations, no matter their technical expertise. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-11 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/gitlab-duo-enterprise-released">GitLab Duo Enterprise Released</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 26, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>GitLab announced the general availability of the GitLab Duo Enterprise add-on. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-12 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/calico-announces-universal-microsegmentation-for-containers-and-vms">Calico Announces Universal Microsegmentation for Containers and VMs</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 26, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Tigera now delivers universal microsegmentation capabilities with Calico. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-13 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/tabnine-expands-platform-partnerships">Tabnine Expands Platform Partnerships</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 22, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Tabnine announced a new platform partnership with Broadcom Inc., an integration with IBM, as well as continuing extensions of existing partnerships with Amazon Web Services (AWS), DigitalOcean, Google Cloud, and Oracle Cloud Infrastructure (OCI).</p>
+</div>  </div>  </div>
+  <div class="views-row views-row-14 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/wallarm-releases-api-attack-surface-management">Wallarm Releases API Attack Surface Management</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 22, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>Wallarm released API Attack Surface Management (AASM), an agentless technology to help organizations identify, analyze, and secure their entire API attack surface. </p>
+</div>  </div>  </div>
+  <div class="views-row views-row-15 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/lambdatest-launches-kaneai-in-beta">LambdaTest Launches KaneAI in Beta</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 21, 2024</span>  </div>  
+  <div class="views-field views-field-body-1">        <div class="field-content"><p>LambdaTest launched KaneAI, an end-to-end software AI Test Agent. </p>
+</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <p><a href="industry-news">More Industry News</a></p>
+    </div>
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+</div>
+    </div>
+   
+</div>
+
+  </div>            </div>
+
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+
+          </div><!-- /end #main-content -->
+
+          <!-- region: Content Aside -->
+
+        </div><!-- /end .content-inner -->
+      </div><!-- /end #content-column -->
+
+      <!-- regions: Sidebar first and Sidebar second -->
+      <div class="region region-sidebar-first sidebar"><div class="region-inner clearfix"><div id="block-simpleads-ad-groups-64" class="block block-simpleads platinum-left-sidebar no-title odd first block-count-5 block-region-sidebar-first block-ad-groups-64" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="header">
+  <div class="ad-link"></div>
+</div>
+<div class="adslist">
+  <script type="text/javascript">
+    _simpelads_load('.simpleads-64', 64, 2);
+  </script>
+    <div class="simpleads-64"></div>
+
+    
+</div>
+</div>
+  </div></div><div id="block-search-form" class="block block-search no-title even block-count-6 block-region-sidebar-first block-form"  role="search"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><form action="/qas-dead-where-do-we-go-from-here" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+ <input onclick="this.value=&#039;&#039;;" onfocus="this.select()" onblur="this.value=!this.value?&#039;Search this site&#039;:this.value;" type="text" id="edit-search-block-form--2" name="search_block_form" value="Search..." size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-Zmy_Tn__62cKU2OET3x3VI6eWoKRcroBK6vnOsiUp7I" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form></div>
+  </div></div><div id="block-block-2" class="block block-block subscribe-form no-title odd block-count-7 block-region-sidebar-first block-2" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div><a href="https://secure.campaigner.com/CSB/Public/Form.aspx?fid=1731270" class="email-subscribe">Sign up for APMdigest + DEVOPSdigest Email</a></div>
+</div>
+  </div></div><section id="block-views-webinars-block-1" class="block block-views even block-count-8 block-region-sidebar-first block-webinars-block-1" ><div class="block-inner clearfix">  
+      <h2 class="block-title">Upcoming Webinars</h2>
+  
+  <div class="block-content content"><div class="view view-webinars view-id-webinars view-display-id-block_1 view-dom-id-ed3d10c9be7986ad28ee6246a9ef33bc">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/demo-with-qa-api-web-cloud-testing/">API, Web and Cloud Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-field-date-and-time">        <div class="field-content"><span class="date-display-single">September 04, 2024</span></div>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/demo-with-qa-ct-continuous-testing/">Demo with Q&amp;A: C &amp; C++ Continuous Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-field-date-and-time">        <div class="field-content"><span class="date-display-single">September 18, 2024</span></div>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/demo-with-qa-parasoft-c-and-c-software-testing/">Demo With Q&amp;A: C &amp; C++ Software Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-field-date-and-time">        <div class="field-content"><span class="date-display-single">September 21, 2024</span></div>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/demo-with-qa-java-application-testing/">Java Application Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-field-date-and-time">        <div class="field-content"><span class="date-display-single">September 25, 2024</span></div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></div>
+  </div></section><section id="block-views-webinars-block-3" class="block block-views odd block-count-9 block-region-sidebar-first block-webinars-block-3" ><div class="block-inner clearfix">  
+      <h2 class="block-title">On-Demand Webinars</h2>
+  
+  <div class="block-content content"><div class="view view-webinars view-id-webinars view-display-id-block_3 view-dom-id-ab506ffb3170978aa886ee19d1b25b53">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/test-anytime-anywhere-with-the-right-service-virtualization-solution/">Test Anytime, Anywhere With Service Virtualization</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/ensure-code-quality-with-misra/">Ensure Code Quality with MISRA C++ 2023 &amp; Static Analysis in Your CI Pipeline</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/3-obstacles-to-continuous-testing-how-to-remove-them/?utm_campaign=DevOps%20Digest&amp;utm_source=DevOps%20Digest&amp;utm_medium=Banner%20Ad&amp;utm_term=Webinar&amp;utm_content=3-obstacles-to-continuous-testing-how-to-remove-them">3 Obstacles to Continuous Testing &amp; How to Remove Them</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.brighttalk.com/webcast/19922/608849">The new home for your VMs: Kubernetes</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.brighttalk.com/webcast/19922/616249">Choosing an enterprise Kubernetes platform: an analyst&#039;s guide</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/video/on-the-fly-java-unit-testing-automate-as-you-code/?utm_campaign=DevOps%20Digest&amp;utm_source=DevOps%20Digest&amp;utm_medium=Banner%20Ad&amp;utm_term=Webinar&amp;utm_content=on-the-fly-java-unit-testing-automate-as-you-code">On-The-Fly Unit Testing: Automate as You Code</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12423">Demystifying FAQs: Transitioning from AWS OpsWorks to Chef SaaS</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/cpptest-ct-introduction/">Unveiling Parasoft C/C++test CT for Continuous Testing &amp; Compliance Excellence</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12342">Simplifying Compliance Against CIS Benchmarks with Progress Chef</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.youtube.com/watch?v=8A_SrmtPqF8">Prioritizing AppSec Risk</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-11 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/navigating-the-tech-landscape-expert-insights-on-cutting-edge-api-testing-solutions/">Navigating the Tech Landscape: Expert Insights on Cutting-Edge API Testing Solutions</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-12 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/whats-new-in-the-parasoft-c-ctest-2023-2-release/">What’s New in the Parasoft C/C++test 2023.2 Release</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-13 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12058">Backslash Reachability Analysis Product Webinar</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-14 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.youtube.com/watch?v=9YYo35wch7I">How Reachability Analysis Can Transform Your Business Vulnerability Prioritization</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-15 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/webinar/inheriting-legacy-c-c-code-where-do-i-start/">Inheriting Legacy C/C++ Code: Where Do I Start?</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="/webinars">
+    All Webinars ...  </a>
+</div>
+  
+  
+  
+</div></div>
+  </div></section><section id="block-views-analyst-reports-block-1" class="block block-views even block-count-10 block-region-sidebar-first block-analyst-reports-block-1" ><div class="block-inner clearfix">  
+      <h2 class="block-title">Analyst Reports</h2>
+  
+  <div class="block-content content"><div class="view view-analyst-reports view-id-analyst_reports view-display-id-block_1 blog-article-list-page-view view-dom-id-8b0b0c453b1dcdb272c8405edcbc1ca0">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12737">GigaOm Radar Report for API Functional Automated Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://engage.checkpoint.com/2024-forrester-wave-mobile-threat-defense-report/">The 2024  Forrester Wave™ Report for Mobile Threat Defense Solutions</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://info.spectrocloud.com/gigaom-radar-edge-managed-kubernetes">GigaOm Radar Report for Kubernetes for Edge Computing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12422">2024 Gartner® Market Guide for Infrastructure Automation and Orchestration Tools</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.progress.com/campaigns/sitefinity/whitepapers/gartner-magic-quadrant-for-dxp">2024 Gartner® Magic Quadrant™ for DXP</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/cyber-security-resources/miercom-2024-ngfw-security-benchmark">Miercom 2024 NGFW Security Benchmark</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/cyber-security-resources/2023-frost-radar-cloud-workload-protection-platforms-cwpp">Frost Radar™ Cloud Workload Protection Platforms (CWPP) 2023</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/cyber-security-resources/2023-frost-radar-cloud-native-application-protection-platforms-cnapp">Frost Radar™ Cloud-Native Application Protection Platforms (CNAPP) 2023</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/gigaom-cloud-network-security-checkpoint-leader.html">GigaOm Radar for Cloud Network Security</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/2023-forrester-wave-zero-trust-report.html">The Forrester Wave™: Zero Trust Platform Providers, Q3 2023</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-11 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/cyber-security-resources/frost-sullivan-check-point-company-of-the-year">Frost &amp; Sullivan Report on Check Point - Firewall Company of the Year</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-12 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/network-security/2023-miercom-network-security-firewall-competitive-report">2023 Miercom Network Security Firewall Competitive Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-13 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/2023-gartner-market-guide-for-cnapp.html">2023 Gartner Market Guide for Cloud-Native Application Protection Platforms (CNAPP)</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-14 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/gigaom-appsec-checkpoint-leader.html">GigaOm Radar for Application and API Security 2023</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-15 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/gigaom-cspm-checkpoint-leader.html">GigaOm Radar for CSPM</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="/analyst-reports">
+    All Analyst Reports ...  </a>
+</div>
+  
+  
+  
+</div></div>
+  </div></section><section id="block-views-white-papers-block-2" class="block block-views odd block-count-11 block-region-sidebar-first block-white-papers-block-2" ><div class="block-inner clearfix">  
+      <h2 class="block-title">White Papers</h2>
+  
+  <div class="block-content content"><div class="view view-white-papers view-id-white_papers view-display-id-block_2 view-dom-id-db2862f3595f88c73d9e31187d1e32e9">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12650">Spectro Cloud 2024 State of Production Kubernetes</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12112">2024 Cloud Security Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.progress.com/resources/papers/human-centered-software-design--a-state-of-the-marketplace-report">Human-Centered Software Design: A State of the Marketplace Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12345">Why Chef SaaS Is the Optimal Option after AWS OpsWorks EOL</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12321">Buyer&#039;s Guide for Continuous Compliance Solutions in DevOps</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/2024-cyber-security-report">2024 Cyber Security Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/12003">Guide for AI in Software Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://pages.checkpoint.com/2023-mid-year-cyber-security-report.html">Check Point 2023 Mid-Year Cyber Security Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/11932">MacStadium DevOps Capacity Planning</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.backslash.security/aspm-lp">Navigating The New Frontier: The Makings of Application Security Posture Management (ASPM)</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-11 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/white-paper/guide-to-the-cybersecurity-14028-executive-order-its-impact-on-embedded-software-development/?gtd=false">Guide to the Cybersecurity 14028 Executive Order &amp; Its Impact on Embedded Software Development</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-12 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.devopsdigest.com/simpleads/redirect/11626">Breaking the Catch-up Cycle: The New Cloud-Native AppSec Paradigm Survey Report</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-13 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/ebook/the-essential-guide-to-environment-based-testing/?utm_campaign=DevOps%20Digest&amp;utm_source=DevOps%20Digest&amp;utm_medium=content%20promo&amp;utm_content=the-essential-guide-to-environment-based-testing">The Essential Guide to Environment-Based Testing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-14 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.parasoft.com/white_paper/how-to-choose-the-right-service-virtualization-solution-for-your-organization/">How to Choose the Right Service Virtualization Tool</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+  <div class="views-row views-row-15 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://resources.checkpoint.com/cloud-security/cloud-workload-protection-buyers-guide?utm_source=other-display&amp;utm_medium=advertising&amp;utm_campaign=pm_cs_22q3_ww_devopsdigest_buyer_guide_workload_protection">Buyers Guide to Workload Protection</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  </div>
+    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="/white-papers">
+    All White Papers ...  </a>
+</div>
+  
+  
+  
+</div></div>
+  </div></section><section id="block-block-15" class="block block-block even block-count-12 block-region-sidebar-first block-15" ><div class="block-inner clearfix">  
+      <h2 class="block-title">Media Partners</h2>
+  
+  <div class="block-content content"><p><a href="http://www.apmdigest.com" target="_blank"><img src="/sites/default/files/images/logo_apmdigest.png" /></a><br />
+<a href="http://www.itsdigest.com" target="_blank"><img src="/sites/default/files/images/logo_itsdigest.png" /></a></p>
+</div>
+  </div></section><div id="block-block-26" class="block block-block no-title odd block-count-13 block-region-sidebar-first block-26" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p><a href="global-feed"><img src="/misc/feed.png" /></a> <a href="global-feed">Global RSS Feed</a></p>
+</div>
+  </div></div><div id="block-block-8" class="block block-block no-title even block-count-14 block-region-sidebar-first block-8" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p><a href="http://twitter.com/apmdigest"><img src="/sites/all/themes/mix_and_match/images/twitter.jpg" /></a></p>
+</div>
+  </div></div><nav id="block-menu-secondary-menu" class="block block-menu no-title odd block-count-15 block-region-sidebar-first block-secondary-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-3245"><a href="/about-devopsdigest" title="">About</a></li><li class="leaf menu-depth-1 menu-item-6115"><a href="/navigating-devopsdigest" title="">Navigating DEVOPSdigest</a></li><li class="leaf menu-depth-1 menu-item-504"><a href="/sponsors" title="">Sponsors</a></li><li class="leaf menu-depth-1 menu-item-503"><a href="/Sponsor-Program" title="">Sponsor Program</a></li><li class="leaf menu-depth-1 menu-item-3451"><a href="/editorial-guidelines" title="">Editorial Guidelines</a></li><li class="leaf menu-depth-1 menu-item-3452"><a href="/vendor-forum-rules" title="">Vendor Forum Rules</a></li><li class="leaf menu-depth-1 menu-item-7495"><a href="/sponsor-blog" title="">Sponsor Blog Guidelines</a></li><li class="leaf menu-depth-1 menu-item-5991"><a href="/pr-tips" title="">PR Tips</a></li><li class="leaf menu-depth-1 menu-item-5037"><a href="/editor-blog" title="">Editor Blog</a></li><li class="last leaf menu-depth-1 menu-item-642"><a href="/contact" title="">Contact</a></li></ul></div>
+  </div></nav><section id="block-user-login" class="block block-user even last block-count-16 block-region-sidebar-first block-login"  role="form"><div class="block-inner clearfix">  
+      <h2 class="block-title">User login</h2>
+  
+  <div class="block-content content"><form action="/qas-dead-where-do-we-go-from-here?destination=node/12778" method="post" id="user-login-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Username <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" id="edit-name" name="name" value="" size="15" maxlength="60" class="form-text required" />
+</div>
+<div class="form-item form-type-password form-item-pass">
+  <label for="edit-pass">Password <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" id="edit-pass" name="pass" size="15" maxlength="128" class="form-text required" />
+</div>
+<div class="item-list"><ul><li class="even first last"><a href="/user/password" title="Request new password via e-mail.">Request new password</a></li></ul></div><input type="hidden" name="form_build_id" value="form-3IC9EQTAgnU5y0RhgcTzdXfbk_kixZO6FQrz0f2MfSc" />
+<input type="hidden" name="form_id" value="user_login_block" />
+<div class="form-actions form-wrapper" id="edit-actions--2"><input type="submit" id="edit-submit--2" name="op" value="Log in" class="form-submit" /></div></div></form></div>
+  </div></section></div></div><div class="region region-sidebar-second sidebar"><div class="region-inner clearfix"><div id="block-simpleads-ad-groups-49" class="block block-simpleads no-title odd first block-count-17 block-region-sidebar-second block-ad-groups-49" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="header">
+  <div class="ad-link"></div>
+</div>
+<div class="adslist">
+  <script type="text/javascript">
+    _simpelads_load('.simpleads-49', 49, 25);
+  </script>
+    <div class="simpleads-49"></div>
+
+    
+</div>
+</div>
+  </div></div><section id="block-views-the-latest-block-1" class="block block-views even block-count-18 block-region-sidebar-second block-the-latest-block-1" ><div class="block-inner clearfix">  
+      <h2 class="block-title">The Latest</h2>
+  
+  <div class="block-content content"><div class="view view-the-latest view-id-the_latest view-display-id-block_1 view-dom-id-a9fd43a5c3ce3c0fb67be8334172485d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/qas-dead-where-do-we-go-from-here" class="active">QA&#039;s Dead: Where Do We Go From Here?</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">September 03, 2024</span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/cybersecurity-awesomeness-podcast-episode-75-identity-solutions">Cybersecurity Awesomeness Podcast - Episode 75: Identity Solutions</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 30, 2024</span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/3-advantages-of-container-security-to-reduce-the-attack-surface">3 Advantages of Container Security to Reduce the Attack Surface</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 29, 2024</span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/how-aspiring-software-developers-can-stand-out-in-a-tight-job-market-5-faqs">How Aspiring Software Developers Can Stand Out in a Tight Job Market: 5 FAQs</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 28, 2024</span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/qa-and-testing-the-new-cybersecurity-frontline">QA and Testing: The New Cybersecurity Frontline</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 27, 2024</span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/gartner-2024-hype-cycle-for-emerging-technologies-highlights-developer-productivity-total-experience">Gartner 2024 Hype Cycle for Emerging Technologies Highlights Developer Productivity, Total Experience, AI and Security </a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 26, 2024</span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/cybersecurity-awesomeness-podcast-episode-74-best-in-class-vs-all-in-one-security-solutions">Cybersecurity Awesomeness Podcast - Episode 74: Best-in-Class vs. All-in-One Security Solutions</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 23, 2024</span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/ai-and-the-future-for-software-development-qa">AI and the Future for Software Development QA</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 22, 2024</span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/cisos-struggle-to-govern-use-of-ai-in-application-development">CISOs Struggle to Govern Use of AI in Application Development</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 21, 2024</span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/edge-ai-development-real-world-challenges-youll-face-early-on">Edge AI Development: Real-World Challenges You&#039;ll Face Early On</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 20, 2024</span>  </div>  </div>
+  <div class="views-row views-row-11 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/maximizing-api-development-with-the-power-of-platform-engineering">Maximizing API Development with the Power of Platform Engineering</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 19, 2024</span>  </div>  </div>
+  <div class="views-row views-row-12 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/cybersecurity-awesomeness-podcast-episode-73-black-hat-and-def-con-conference-recap">Cybersecurity Awesomeness Podcast - Episode 73: Black Hat and DEF CON Conference Recap</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 16, 2024</span>  </div>  </div>
+  <div class="views-row views-row-13 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/users-migrating-off-oracle-java-citing-cost-uncertainty-and-audit-risk">Users Migrating Off Oracle Java, Citing Cost, Uncertainty and Audit Risk</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 15, 2024</span>  </div>  </div>
+  <div class="views-row views-row-14 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/automate-workflows-to-increase-video-roi">Automate Workflows to Increase Video ROI</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 14, 2024</span>  </div>  </div>
+  <div class="views-row views-row-15 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/genai-makes-coding-faster-but-thats-not-a-good-thing">GenAI Makes Coding Faster, but That&#039;s NOT a Good Thing</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 13, 2024</span>  </div>  </div>
+  <div class="views-row views-row-16 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/the-roi-of-collaboration-how-marketing-and-developer-teams-work-together-for-business-success">The ROI of Collaboration: How Marketing and Developer Teams Work Together for Business Success</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 12, 2024</span>  </div>  </div>
+  <div class="views-row views-row-17 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/cybersecurity-awesomeness-podcast-episode-72-microsoft-ddos-attack-and-crowdstrike-outage">Cybersecurity Awesomeness Podcast - Episode 72: Microsoft DDoS Attack and CrowdStrike Outage</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 09, 2024</span>  </div>  </div>
+  <div class="views-row views-row-18 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/why-ai-is-bringing-on-a-golden-age-for-software-development">Why AI Is Bringing on a Golden Age for Software Development</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 08, 2024</span>  </div>  </div>
+  <div class="views-row views-row-19 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/closing-the-devsecops-gap-a-blueprint-for-success">Closing the DevSecOps Gap: A Blueprint for Success</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 07, 2024</span>  </div>  </div>
+  <div class="views-row views-row-20 views-row-even views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/why-were-still-talking-about-devops-in-2024">Why We&#039;re Still Talking About DevOps in 2024</a></span>  </div>  
+  <div class="views-field views-field-edit-node">        <span class="field-content"></span>  </div>  
+  <div class="views-field views-field-created">        <span class="field-content">August 06, 2024</span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></div>
+  </div></section><section id="block-views-hot-topics-list-block-1" class="block block-views odd last block-count-19 block-region-sidebar-second block-hot-topics-list-block-1" ><div class="block-inner clearfix">  
+      <h2 class="block-title">Hot Topics</h2>
+  
+  <div class="block-content content"><div class="view view-hot-topics-list view-id-hot_topics_list view-display-id-block_1 view-dom-id-88bb4383ef8798b23b0096d91082cb2a">
+        
+  
+  
+      <div class="view-content">
+      <div class="item-list">    <ul>          <li class="views-row views-row-1 views-row-odd views-row-first leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/apm">APM</a></span>  </div></li>
+          <li class="views-row views-row-2 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/devsecops">DevSecOps</a></span>  </div></li>
+          <li class="views-row views-row-3 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/cloud">Cloud</a></span>  </div></li>
+          <li class="views-row views-row-4 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/analytics">Analytics</a></span>  </div></li>
+          <li class="views-row views-row-5 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/bizdevops">BizDevOps</a></span>  </div></li>
+          <li class="views-row views-row-6 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/automation">Automation</a></span>  </div></li>
+          <li class="views-row views-row-7 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/development">Development</a></span>  </div></li>
+          <li class="views-row views-row-8 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/e-commerce">E-Commerce</a></span>  </div></li>
+          <li class="views-row views-row-9 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/containersk8s">Containers/K8s</a></span>  </div></li>
+          <li class="views-row views-row-10 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/devops">DevOps</a></span>  </div></li>
+          <li class="views-row views-row-11 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/mobile">Mobile</a></span>  </div></li>
+          <li class="views-row views-row-12 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/testing">Testing</a></span>  </div></li>
+          <li class="views-row views-row-13 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/dev-culture">Dev Culture</a></span>  </div></li>
+          <li class="views-row views-row-14 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/monitoring">Monitoring</a></span>  </div></li>
+          <li class="views-row views-row-15 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/agile">Agile</a></span>  </div></li>
+          <li class="views-row views-row-16 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/cicd">CI/CD</a></span>  </div></li>
+          <li class="views-row views-row-17 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/api">API</a></span>  </div></li>
+          <li class="views-row views-row-18 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/digital-transformation">Digital Transformation</a></span>  </div></li>
+          <li class="views-row views-row-19 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/database">Database</a></span>  </div></li>
+          <li class="views-row views-row-20 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/mainframe">Mainframe</a></span>  </div></li>
+          <li class="views-row views-row-21 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/serverless">Serverless</a></span>  </div></li>
+          <li class="views-row views-row-22 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/low-codeno-code">Low-Code/No-Code</a></span>  </div></li>
+          <li class="views-row views-row-23 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/open-source">Open Source</a></span>  </div></li>
+          <li class="views-row views-row-24 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/remote-work">Remote Work</a></span>  </div></li>
+          <li class="views-row views-row-25 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/vsm">VSM</a></span>  </div></li>
+          <li class="views-row views-row-26 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/iac">IaC</a></span>  </div></li>
+          <li class="views-row views-row-27 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/aiops">AIOps</a></span>  </div></li>
+          <li class="views-row views-row-28 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/cloud-native">Cloud-Native</a></span>  </div></li>
+          <li class="views-row views-row-29 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/mlops">MLOps</a></span>  </div></li>
+          <li class="views-row views-row-30 views-row-even leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/aiml">AI/ML</a></span>  </div></li>
+          <li class="views-row views-row-31 views-row-odd leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/platform-engineering">Platform Engineering</a></span>  </div></li>
+          <li class="views-row views-row-32 views-row-even views-row-last leaf">  
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/hot-topic/devex">DevEx</a></span>  </div></li>
+      </ul></div>    </div>
+  
+  
+  
+  
+  
+  
+</div></div>
+  </div></section></div></div>
+    </div><!-- /end #columns -->
+
+    <!-- region: Tertiary Content -->
+    
+    <!-- region: Footer -->
+          <footer id="footer" class="clearfix" role="contentinfo">
+  <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-12" class="block block-block no-title odd first last block-count-20 block-region-footer block-12" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p><span class="footer-content">© 2010 - </span></p>
+<script language="JavaScript">
+<!--//--><![CDATA[// ><!--
+
+		<!--
+		var today_date= new Date()
+		var year=today_date.getFullYear()
+		//document.write("Today's date is: ")
+		document.write(+year)
+		//--> 
+//--><!]]>
+</script><p><br />
+<span>All rights reserved. All rights to content provided by third parties in contribution to this publication are reserved by their respective parties.</span></p>
+</div>
+  </div></div></div></div>      </footer>
+
+    <!-- region: Main -->
+
+  </div>
+  <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+da2a.targets=[
+{title:"QA\u0027s Dead: Where Do We Go From Here?",url:"https:\/\/www.devopsdigest.com\/qas-dead-where-do-we-go-from-here"}];
+da2a.html_done=true;if(da2a.script_ready&&!da2a.done)da2a.init();da2a.script_load();
+//--><!]]>
+</script>
+</body>
+</html>
