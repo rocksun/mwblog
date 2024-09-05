@@ -1,0 +1,40 @@
+# Take the ‘Shift Left’ Approach a Step Further by ‘Starting Left’
+![Featued image for: Take the ‘Shift Left’ Approach a Step Further by ‘Starting Left’](https://cdn.thenewstack.io/media/2024/08/4d2613d9-left-1024x591.jpg)
+Today’s developers can’t look at speed and quality as trade-offs. In our modern software landscape, teams need to see these demands as a tightly interwoven dance. The “shift left” philosophy, a popular mindset among developers, takes into account the need to strike a balance between the two.
+
+This approach urges developers to move critical checks and guardrails, such as code security and quality analysis, earlier in the software development life cycle (SDLC). It emphasizes proactively identifying and mitigating issues, catching problems like bugs, security vulnerabilities and performance concerns earlier in development.
+
+Developers need to take shift-left practices seriously to ensure they’re writing [clean code](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=newstack&utm_campaign=ss-cleancode&utm_content=media-tns-startleft-240826-&utm_term=&s_category=Organic&s_source=External%20Referral&s_origin=newstack) through the SDLC — code that is consistent, intentional, adaptable and responsible. This is the best way teams can ensure the software they deliver serves its purpose without issue while remaining resilient over time. True success, though, comes to those who take it a step further, embracing the idea of “starting left” to prevent issues in the first place.
+
+**The Shift-Left Mindset**
+Any developer should aim to produce code that is readable, secure, modular, clean and functions as intended without causing any issues. The more developer teams rely on their ability to fix issues after deployment, the more difficult those patches become — and the more costly.
+
+Software built on flawed code can cost companies a tremendous amount of money, potentially [more than a trillion dollars](https://www.it-cisq.org/the-cost-of-poor-quality-software-in-the-us-a-2022-report/), when released. With software so imperative to every aspect of our daily lives, that number only stands to increase with the growing number of applications built and deployed.
+
+This makes it vital to guarantee code quality and security from the start so that nothing slips through the cracks. Shift left accounts for this. It [minimizes risks of bugs](https://thenewstack.io/progressive-delivery-accelerate-app-releases-while-minimizing-bugs/) and vulnerabilities by introducing code testing and analysis earlier in the SLDC, catching problems before they mount and become trickier to solve or even find. Advancing testing activities earlier puts DevOps teams in a position to deliver superior-quality software to customers with greater frequency.
+
+As a practice, “shift left” requires a lot more vigilance in today’s security landscape. But most development teams don’t have the mental (or physical) bandwidth to do it properly — even though it should be an intrinsic part of code development strategy. In fact, the Linux Foundation revealed in a [study](https://www.linuxfoundation.org/hubfs/LF%20Research/Secure_Software_Development_Education_2024_Survey.pdf?hsLang=en) recently that almost one-third of developers aren’t familiar with secure software development practices. “Shifting left” — performing analysis and code reviews earlier in the development process — is a popular mindset for creating better software. What the mindset should be, though, is to “start left,” not just impose the burden later on in the SDLC for developers.
+
+**‘Starting Left’ Is Embracing Code Quality**
+We can’t ignore the importance of [teams incorporating early testing and analysis in the development](https://thenewstack.io/managing-software-development-team-dynamics-from-within/) process. Only by catching issues quickly from the beginning can they have confidence in the software they deploy. “Starting left” in [software development means prioritizing code quality and security](https://thenewstack.io/zero-trust-security-and-the-software-development-lifecycle/) from the earliest stages of development, ensuring that potential issues are caught before they become costly problems. Embracing a “start left” mentality is the best way for teams to boost that confidence and guarantee their results. When developers prioritize producing code that is clean by taking a Clean as You Code approach to development, teams can significantly reduce the risk of critical vulnerabilities and save themselves time as well as increase productivity.
+
+This mindset of “start left” focuses not only on an approach that values testing early and often, but also on using the best tools to do so. Companies need to equip their developer teams with tools they know, love and trust to not only identify issues, but to focus on fixing the ones that matter most rather than getting stuck on sheer volume or smaller, temporary patches.
+
+Code analysis tools, like [SonarLint, SonarQube and SonarCloud](https://www.sonarsource.com/lp/products/all/?utm_medium=referral&utm_source=newstack&utm_campaign=ss-sonar-products24&utm_content=media-tns-startleft-240826-&utm_term=&s_category=Organic&s_source=External%20Referral&s_origin=newstack), are essential in this “starting left” proactive approach. They allow developers to catch code quality and security problems starting in the integrated development environment (IDE) and through the continuous integration/continuous deployment (CI/CD) pipeline. They not only identify problems and prevent them from moving forward but do so from the moment code is written, helping teams to not get bogged down by volume of issues to resolve.
+
+Solid tools provide developers with assurance that they’re effectively testing and producing clean code, strengthening the quality of their [software while reducing technical debt and streamlining developer](https://thenewstack.io/how-to-use-self-healing-code-to-reduce-technical-debt/) workflows. Having the right tools in place also empowers developers to find issues early and have the ability and motivation to fix them.
+
+**Starting Left Enables Clean Code and Business Results**
+Businesses rely on software just like we do as consumers, but the quality of the software comes down to the quality of the code it’s built upon. Developers understand this imperative and have turned toward shifting left as a mindset to make it happen. However, as we see the growing cost of bad code and technical debt, teams must take things one step further to ensure the security, viability and longevity of their software. That means “starting left.”
+
+This is a necessity in the era of digital transformation we’re in. With AI coding assistants’ adoption growing and helping developers write more lines of code faster than ever before, it’s a must to have the best “starting left” practices. In fact, [Gartner](https://www.gartner.com/en/newsroom/press-releases/2024-04-11-gartner-says-75-percent-of-enterprise-software-engineers-will-use-ai-code-assistants-by-2028) shared that 63% of organizations are now piloting, deploying or have already deployed AI coding assistants.
+
+By using these AI coding assistants and Sonar tools [together](https://www.sonarsource.com/solutions/ai/), you can fully embrace “starting left,” making code quality a foundational part of your software development life cycle. Doing this will enable [developers to use these tools to boost productivity](https://thenewstack.io/boost-developer-productivity-by-reducing-their-paper-cuts/) rather than them leading to an increase in bugs and issues that need to be resolved and, in turn, adding to burnout.
+
+By incorporating the right tools at the right time in the SDLC — from the start — development teams and the organizations they work for will reap the benefits as they release software that’s secure and offers long-term value.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
