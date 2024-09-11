@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes 超越 RBAC - 通过 Webhook 自定义授权
-cover: https://miro.medium.com/v2/resize:fit:1200/1*mmHUTMaLLQRteqDVSfCPLA.png
+cover: ./cover.png
 -->
 
 Kubernetes 是一个很棒的容器编排工具，它提供了许多自定义选项。您可以轻松地扩展/替换它的许多…
