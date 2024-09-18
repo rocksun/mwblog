@@ -10,7 +10,7 @@ Jon Udell 考虑 SQLite 和 DuckDB 是否可以在 LLM 助理团队的帮助下�
 
 我的 [Hacker News](https://github.com/jonudell/hackernews) 存储库提供了一组 [Powerpipe](https://powerpipe.io) 仪表盘，这些仪表盘使用 [Steampipe 插件](https://hub.steampipe.io/plugins/turbot/hackernews) 从 Hacker News API 获取数据，并提供数据的交互式可视化。最初它只适用于 Postgres，但最近 Powerpipe 获得了将数据从 SQLite 和 DuckDB 传输到其仪表盘的功能。
 
-> 一旦我让 SQLite 和 DuckDB 端口正常工作，我发现两者运行仪表盘的几十个查询的速度几乎是 Postgres 的两倍。
+> 一旦我让 SQLite 和 DuckDB 的移植正常工作，我发现两者运行仪表盘的几十个查询的速度几乎是 Postgres 的两倍。
 
 这是主页仪表盘：
 
