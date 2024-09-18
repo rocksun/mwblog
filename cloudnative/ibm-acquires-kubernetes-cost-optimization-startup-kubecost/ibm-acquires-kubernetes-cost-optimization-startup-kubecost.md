@@ -1,7 +1,7 @@
 
 <!--
 title: IBM收购Kubernetes成本优化初创公司Kubecost
-cover: https://techcrunch.com/wp-content/uploads/2018/01/gettyimages-647091174.jpg
+cover: ./cover.png
 -->
 
 IBM 在 2023 年以 43 亿美元收购了 FinOps 领域的另一家公司 Apptio，周二宣布了收购事项。
