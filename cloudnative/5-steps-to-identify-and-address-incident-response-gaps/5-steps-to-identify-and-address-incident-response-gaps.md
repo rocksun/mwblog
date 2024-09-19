@@ -1,0 +1,57 @@
+
+<!--
+title: 识别和解决事件响应差距的5个步骤
+cover: https://cdn.thenewstack.io/media/2024/09/555f9b4f-whiteboard.jpg
+-->
+
+严格的计划和事故后学习是支持业务连续性、更快响应和更智能工作最好的方法。
+
+> 译自 [5 Steps to Identify and Address Incident Response Gaps](https://thenewstack.io/5-steps-to-identify-and-address-incident-response-gaps/)，作者 Debora Cambe。
+
+我们现代世界建立在软件之上，但直到 7 月 19 日的 [重大全球停机事件](https://thenewstack.io/7-urgent-lessons-from-the-crowdstrike-disaster/)，许多人才意识到当事情出错时，爆炸半径可能有多大。这次事件被描述为历史上最大的 IT 停机事件，起因是 [一次软件更新失败](https://thenewstack.io/5-agile-techniques-to-help-avoid-a-crowdstrike-like-issue/)。它足以使飞机停飞，扰乱紧急服务和公共交通，甚至使一家电视台下线。据估计，美国 500 强公司直接经济损失为 [54 亿美元](https://www.parametrixinsurance.com/crowdstrike-outage-impact-on-the-fortune-500)。
+
+教训很简单：软件并不完美，只要技术复杂性不断增长，事件就会不断发生。根据 [最近的一项调查](https://www.pagerduty.com/resources/learn/cost-of-downtime/)，59% 的 IT 领导者表示，影响客户的事件在过去 12 个月内有所增加，平均增长了 43%。
+
+为了更好地管理风险，组织需要建立更具弹性的运营和团队。这是更快地从中断中恢复、保护客户体验和收入的关键。
+
+## 该采取行动了
+
+7 月 19 日的全球 IT 停机事件是数字系统故障可能发生的最极端例子。但运营卓越始于有效地管理日常服务中断，采用主动而非被动的事件管理方法。
+
+以下是一些策略，将帮助组织更好地为停机做好准备：
+
+### 1. 消除事件管理中的猜测
+
+在响应团队中定义明确的角色（事件指挥官、记录员、联络员等）和任务是解决从一开始就存在的问责制和协调差距的关键第一步。它确保每个人都知道自己的工作是什么，并且在响应过程中不会遗漏任何关键步骤。
+
+[团队还可以通过将这些主题专家 (SME) 纳入旨在根据事件的优先级和类型协调正确响应的自动化事件工作流来协调整个事件](https://thenewstack.io/what-can-incident-teams-learn-from-crisis-management/)。再次强调，这将确保所有关键任务都得到执行，并且不会浪费时间来弄清楚该做什么或何时加速解决问题。
+
+### 2. 从信号到行动
+
+为了压缩解决事件所需的时间，仅仅坚持网络运营中心 (NOC) 传统上采用的传统“眼睛盯着屏幕”模式是不够的。它过于依赖人工，并且容易出错，无法有效地对日益增多的数据进行分类。
+
+为了以最小的工作量和更高的速度从事件到解决问题，团队可以利用 AI 和自动化来消除噪音，只显示最关键的警报，并 [自动化诊断和修复](https://thenewstack.io/5-ways-to-supercharge-incident-remediation-with-automation/)。生成式 AI 可以放大这种效果：对于在 ChatOps 工具中协作的团队，常见的诊断问题可以用作提示，以获取上下文并加速行动。这减轻了响应者的精神负担，使他们能够专注于更高价值的活动，同时将起草和知识收集任务外包给 AI。
+
+### 3. 在整个事件管理流程中部署生成式 AI 和自动化
+
+当事件发生时，团队会花费太多时间收集信息并联系许多人来解决问题。生成式 AI 可用于快速 [总结有关事件的关键数据](https://thenewstack.io/llms-and-incident-response-it-starts-with-summarization/)，并在事件生命周期的每个步骤提供可操作的见解。
+
+它还可以极大地提高开发和部署自动化作业的速度，即使是非技术团队也可以做到：运营人员可以将对话提示转换为建议的运行手册自动化，或者利用基于常见类别的预先设计的提示。
+
+与往常一样，应让用户参与进来，以修改和编辑 AI 生成的提示，然后才启动新的工作定义。
+
+### 4. 主动与利益相关者沟通
+
+客户讨厌被蒙在鼓里。负面反馈会加剧团队的压力水平，损害品牌的声誉和信任。为了保持无缝的客户体验，至关重要的是要弥合支持团队和工程团队之间的任何差距。
+
+定期向内部利益相关者提供状态更新是行业最佳实践，可确保所有团队获得所需的支持以更快地解决问题。为了让客户了解情况，状态页面是提供组织运营实时状态的可视化沟通的绝佳方式。
+
+### 5. 进行事故后审查以推动持续改进
+
+拥有成熟的数字运营和事件响应方法的组织将始终从以往的事件中吸取教训。这是[不断增强弹性和改进流程](https://thenewstack.io/five-ways-process-automation-can-streamline-itops/)的最佳方法。
+
+确保组织制定了全面的审查流程和[系统来实施更改以防止将来发生类似事件](https://thenewstack.io/fast-focused-incident-response-reduce-system-noise-by-98/)。[Howie 指南](https://howie-guide.pagerduty.com/assign/) 是一个很好的起点，因为它详细介绍了事故后审查应经历的所有主要阶段，从分配调查到分发调查结果。
+
+## 为不可避免的事情做好准备
+
+事件是不可避免的，但严重的财务和声誉损失、客户流失和员工倦怠并非必然结果。严格的计划和事故后学习是支持业务连续性的最佳方式，以确保组织能够更快地响应并更智能地工作，从而帮助保持客户满意。
