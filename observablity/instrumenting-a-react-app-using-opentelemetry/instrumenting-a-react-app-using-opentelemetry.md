@@ -1,10 +1,10 @@
 
 <!--
-title: 使用 OpenTelemetry 对 React 应用程序进行仪器化
+title: 使用 OpenTelemetry 对 React 应用程序进行插桩
 cover: https://cdn.thenewstack.io/media/2024/09/186602e7-embrace-react-opentelemetry-featured-image.jpg
 -->
 
-了解如何在 React 应用程序中使用 OpenTelemetry，包括基本和自动仪器，以及添加自定义跨度和指标。
+了解如何在 React 应用程序中使用 OpenTelemetry，包括基本和自动插桩，以及添加自定义跨度和指标。
 
 > 译自 [Instrumenting a React App Using OpenTelemetry](https://thenewstack.io/instrumenting-a-react-app-using-opentelemetry/)，作者 Joaquín Díaz。
 
