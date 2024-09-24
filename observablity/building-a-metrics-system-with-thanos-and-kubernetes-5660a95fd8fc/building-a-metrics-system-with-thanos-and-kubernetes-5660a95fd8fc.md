@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Thanos和Kubernetes构建指标系统
-cover: https://miro.medium.com/v2/resize:fit:985/1*QobsYEWqhoc_8s3tyB1Jlg.png
+cover: ./cover.png
 -->
 
 指标是任何分布式系统中可观测性的支柱，在 Kubernetes 环境中，Prometheus 通常是……的工具。
