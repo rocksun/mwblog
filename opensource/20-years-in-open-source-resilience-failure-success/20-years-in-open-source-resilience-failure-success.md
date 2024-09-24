@@ -1,8 +1,6 @@
 
 <!--
-title: 20 Years in Open Source: Resilience, Failure, Success 
-
-20年开源历程：韧性，失败，成功
+title: 20年开源历程：韧性，失败，成功
 cover: https://cdn.thenewstack.io/media/2024/09/ed52641e-clem-onojeghuo-lyjeyq5iugu-unsplash-scaled.jpg
 -->
 
