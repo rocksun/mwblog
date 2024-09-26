@@ -1,0 +1,1821 @@
+<!doctype html><html lang="en"><head>
+    <meta charset="utf-8">
+    <title>The Beginner's Guide to Securing Kubernetes</title>
+    
+    <link rel="shortcut icon" href="https://www.hunters.security/hubfs/Youtube%20Profile%20Picture-2.png" sizes="16x16">
+    
+    <meta name="description" content="Master Kubernetes security with our complete guide, perfect for SOC analysts. Learn to secure clusters, detect attacks, and protect your infrastructure">
+    <meta name="viewport" content="width=device-width">
+    
+<!--     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ffebe3a6-627f-4df7-9ea2-5ea145fcb580" type="text/javascript" async></script> -->
+    
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.eot" as="font" type="font/embedded-opentype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.ttf" as="font" type="font/truetype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.svg" as="font" type="font/svg" crossorigin>
+
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.eot" as="font" type="font/embedded-opentype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.ttf" as="font" type="font/truetype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.svg" as="font" type="font/svg" crossorigin>
+
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.eot" as="font" type="font/embedded-opentype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.ttf" as="font" type="font/truetype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.svg" as="font" type="font/svg" crossorigin>
+
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.eot" as="font" type="font/embedded-opentype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.ttf" as="font" type="font/truetype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.svg" as="font" type="font/svg" crossorigin>
+
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.eot" as="font" type="font/embedded-opentype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.ttf" as="font" type="font/truetype" crossorigin>
+    <link rel="preload" href="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.svg" as="font" type="font/svg" crossorigin>
+
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+      @font-face {
+        font-family: 'F37 Judge';
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.eot');
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.eot') format('embedded-opentype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.woff2') format('woff2'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.woff') format('woff'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.ttf') format('truetype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/F37-Judge-Bold/F37JudgeBoldCompressed.svg') format('svg');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Graphik';
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.eot');
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.eot') format('embedded-opentype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.woff2') format('woff2'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.woff') format('woff'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.ttf') format('truetype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Regular/GraphikRegularWeb.svg') format('svg');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Graphik';
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.eot');
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.eot') format('embedded-opentype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.woff2') format('woff2'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.woff') format('woff'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.ttf') format('truetype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Medium/GraphikMediumWeb.svg') format('svg');
+        font-weight: 500;
+        font-style: normal;
+       font-display: swap;
+      }
+      @font-face {
+        font-family: 'Graphik';
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.eot');
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.eot') format('embedded-opentype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.woff2') format('woff2'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.woff') format('woff'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.ttf') format('truetype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Semibold/GraphikSemiboldWeb.svg') format('svg');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Graphik';
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.eot');
+        src: url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.eot') format('embedded-opentype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.woff2') format('woff2'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.woff') format('woff'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.ttf') format('truetype'),
+          url('https://www.hunters.security/hubfs/May%202022/Fonts/Graphik-Bold/GraphikBoldWeb.svg') format('svg');
+        font-weight: 700;
+        font-style: normal;
+       font-display: swap;
+      }
+
+    </style>
+    <link rel="preload" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/113858768455/1726549776587/Hunters_Theme_May_2023/css/main.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://www.unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://www.hunters.security/hubfs/Theme%20-%202022/Coded_file/slick-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/114002466428/1688126129748/Hunters_Theme_May_2023/css/easy-responsive-tabs.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+   <link rel="stylesheet" type="text/css" media="screen" href="https://www.hunters.security/hubfs/hunters_theme_files/coded_files/prism.css"> 
+<!--     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-okaidia.min.css" rel="stylesheet" /> -->
+    <noscript>
+      <link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/113858768455/1726549776587/Hunters_Theme_May_2023/css/main.min.css">
+    </noscript>
+    
+
+    
+    
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://www.hunters.security/hubfs/Theme%20-%202022/Coded_file/slick.css">
+    <link rel="stylesheet" href="https://www.hunters.security/hubfs/Theme%20-%202022/Coded_file/slick-theme.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js"></script>
+<script src="/hs/hsstatic/jquery-libs/static-1.4/jquery-migrate/jquery-migrate-1.2.1.js"></script>
+<script>hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="Master Kubernetes security with our complete guide, perfect for SOC analysts. Learn to secure clusters, detect attacks, and protect your infrastructure">
+    <meta property="og:title" content="The Beginner's Guide to Securing Kubernetes">
+    <meta name="twitter:description" content="Master Kubernetes security with our complete guide, perfect for SOC analysts. Learn to secure clusters, detect attacks, and protect your infrastructure">
+    <meta name="twitter:title" content="The Beginner's Guide to Securing Kubernetes">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/133487975192/1725515743800/Hunters_Theme_May_2023/css/blog.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/130719549746/1693291612591/Hunters_Theme_May_2023/css/magnific-popup.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/114002466428/1693291614672/Hunters_Theme_May_2023/css/easy-responsive-tabs.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127041525412/1726725438747/Hunters_Theme_May_2023/css/style.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127040996237/1704720085106/Hunters_Theme_May_2023/css/additional_style.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/113858809947/1693977471236/Hunters_Theme_May_2023/css/theme-overrides.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/module_assets/177021600416/1725602140791/module_177021600416_Blog_Table_of_Content_Sidebar.min.css">
+<link rel="stylesheet" href="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/module_assets/127063834721/1725535151579/module_127063834721_related-post-listing-blog.min.css">
+<style>
+</style>
+
+    
+
+    
+<!--  Added by GoogleTagManager integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+
+var hsLoadGtm = function loadGtm() {
+    if(window._hsGtmLoadOnce) {
+      return;
+    }
+
+    if (useGoogleConsentModeV2) {
+
+      gtag('set','developer_id.dZTQ1Zm',true);
+
+      gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': waitForUpdateMillis
+      });
+
+      _hsp.push(['useGoogleConsentModeV2'])
+    }
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WQ56X32');
+
+    window._hsGtmLoadOnce = true;
+};
+
+_hsp.push(['addPrivacyConsentListener', function(consent){
+  if(consent.allowed || (consent.categories && consent.categories.analytics)){
+    hsLoadGtm();
+  }
+}]);
+
+</script>
+
+<!-- /Added by GoogleTagManager integration -->
+
+
+<meta name="facebook-domain-verification" content="rdtccdmeswwqacf71dorkxz5w1w2ao">
+
+<!-- Site Schema -->
+<script type="application/ld+json">
+ {
+     "@context": "http://schema.org",
+     "@type": "Organization",
+     "mainEntityOfPage":{
+          "@type":"WebPage",
+          "@id":"https://www.hunters.security/en/blog/kubernetes-security-guide",
+          "description": "Master Kubernetes security with our complete guide, perfect for SOC analysts. Learn to secure clusters, detect attacks, and protect your infrastructure"
+     },
+     "url": "/",
+     "logo": "https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/Full_Logo_White.png",
+     "image": "https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/Full_Logo_White.png",
+     "name": "Hunters",
+     "description": "Hunters SOC Platform",
+     "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "275 Grove St. ",
+          "addressLocality": "Newton",
+          "addressRegion": "Massachusetts",
+          "addressCountry": "United States",
+          "postalCode": "02466"
+     },
+     "telephone": ""
+}
+</script>
+<!-- End Schema -->
+
+<!--  Added by GoogleTagManager integration -->
+<!-- commented out on 9 Feb 2023  <script>
+  var scrollPos = 100;
+  var counter = 0;
+  $(window).scroll(function(){
+    var scrollPosCur = $(this).scrollTop();
+    if (scrollPosCur > scrollPos && counter == 0) {
+
+      var _hsp = window._hsp = window._hsp || [];
+
+      var hsLoadGtm = function loadGtm() {
+        if(window._hsGtmLoadOnce) {
+          return;
+        }
+
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                            })(window,document,'script','dataLayer','GTM-WQ56X32');
+
+        window._hsGtmLoadOnce = true;
+      };
+
+      var useGoogleConsentMode = false;
+
+      if (!useGoogleConsentMode){
+        _hsp.push(['addPrivacyConsentListener', function(consent){
+          if(consent.allowed || (consent.categories && consent.categories.analytics)){
+            hsLoadGtm();
+          }
+        }]);
+      } else{
+        if(!window._hsGoogleConsentRunOnce){
+          window._hsGoogleConsentRunOnce=true;
+
+          window.dataLayer=window.dataLayer||[];
+          function gtag(){dataLayer.push(arguments);}
+
+          gtag('consent','default',{
+            'ad_storage':'denied',
+            'analytics_storage':'denied'
+          });
+
+          gtag('set','developer_id.dZTQ1Zm',true);
+
+          _hsp.push(['addPrivacyConsentListener',function(consent){
+            var hasAnalyticsConsent=consent&&(consent.allowed||(consent.categories&&consent.categories.analytics));
+            var hasAdsConsent=consent&&(consent.allowed||(consent.categories&&consent.categories.advertisement));
+
+            gtag('consent','update',{
+              'ad_storage':hasAdsConsent?'granted':'denied',
+              'analytics_storage':hasAnalyticsConsent?'granted':'denied'
+            });
+          }]);
+        }
+
+        hsLoadGtm();
+      }
+      console.log("GoogleTagManager integration code");
+      counter++; 
+    }
+  });
+</script> -->
+
+<!-- /Added by GoogleTagManager integration -->
+
+<script>
+
+
+</script>
+
+<link rel="amphtml" href="https://www.hunters.security/en/blog/kubernetes-security-guide?hs_amp=true">
+
+<meta property="og:image" content="https://www.hunters.security/hubfs/THE%20BEGINNERS%20GUIDE%20TO%20SECURING%20KUBERNETES-1.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+
+<meta name="twitter:image" content="https://www.hunters.security/hubfs/THE%20BEGINNERS%20GUIDE%20TO%20SECURING%20KUBERNETES-1.jpg">
+
+
+<meta property="og:url" content="https://www.hunters.security/en/blog/kubernetes-security-guide">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://www.hunters.security/en/blog/kubernetes-security-guide">
+
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" href="https://www.hunters.security/en/blog/rss.xml">
+<meta name="twitter:domain" content="www.hunters.security">
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+
+<meta http-equiv="content-language" content="en">
+
+
+
+
+
+
+  <meta name="generator" content="HubSpot"></head>
+  <body>
+<!--  Added by GoogleTagManager integration -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQ56X32" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- /Added by GoogleTagManager integration -->
+
+   
+    
+    <div class="body-wrapper   hs-content-id-173774966953 hs-blog-post hs-blog-id-24463927651">
+      
+      <div data-global-resource-path="Hunters_Theme_May_2023/templates/partials/header.html"><header class="header black-text-header header-new-v2">
+
+  
+  <div class="container-fluid header__dnd--top">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+  
+
+  <div class="header__container">
+
+    
+    <div class="header__logo">
+      <div id="hs_cos_wrapper_module_16831154321363" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+<a href="https://www.hunters.security">
+  
+  
+  
+  
+  <img src="https://www.hunters.security/hubfs/Imported%20images/black-logo.svg" alt="Hunters" width="176" height="27">
+  
+</a></div>
+    </div>
+    
+
+    
+    <div class="header__menu">
+      <div class="header__navigation custom-menu-primary-new navigation-primary">
+        <div id="hs_cos_wrapper_module_16462022640471" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<span id="hs_cos_wrapper_module_16462022640471_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="menu"><div id="hs_menu_wrapper_module_16462022640471_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="default" data-menu-id="67518999559" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="##" aria-haspopup="true" aria-expanded="false" role="menuitem">Product</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/product" role="menuitem">SOC Platform </a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/product-tour" role="menuitem">Product Tour</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/integrations" role="menuitem">Integrations</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/why-hunters" role="menuitem">Why Hunters</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/faqs" role="menuitem">FAQs</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="##" aria-haspopup="true" aria-expanded="false" role="menuitem">Solutions</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/solution/siem-replacement" role="menuitem">SIEM Replacement</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/solution/hunters-for-snowflake-data-lake" role="menuitem">Hunters for Snowflake</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/solution/hunters-for-databricks" role="menuitem">Hunters for Databricks</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/solution/hunters-for-aws" role="menuitem">Hunters for AWS</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="##" aria-haspopup="true" aria-expanded="false" role="menuitem">Services</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/team-axon" role="menuitem">Team Axon</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/customers" role="menuitem">Customers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/mssp" role="menuitem">MSSPs</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/en/blog" role="menuitem">Blog</a></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="##" aria-haspopup="true" aria-expanded="false" role="menuitem">Company</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/about-us" role="menuitem">About us</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/careers" role="menuitem">Careers</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/partners" role="menuitem">Partners</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/newsroom" role="menuitem">Newsroom</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.hunters.security/events" role="menuitem">Events</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/watch-a-demo-hunters-soc-platform" role="menuitem">Get a Demo</a></li>
+ </ul>
+</div></span></div>
+      </div>
+    </div>
+    
+
+    
+    
+    
+
+  </div>
+
+  
+  <div class="container-fluid header__dnd--bottom">
+<div class="row-fluid-wrapper">
+<div class="row-fluid">
+<div class="span12 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="12">
+
+</div><!--end widget-span -->
+</div>
+</div>
+</div>
+  
+
+  
+
+</header>
+
+<script>
+  $(function() {
+    /**
+     * Mobile Nav
+     *
+     * Hubspot Standard Toggle Menu
+     */
+    $('.custom-menu-primary-new').addClass('js-enabled');
+    $('.custom-menu-primary-new .hs-menu-wrapper').before('<a class="mobile-trigger-new cta_border_button"><span></span><i></i></a>');
+    $('.custom-menu-primary-new .flyouts .hs-item-has-children > a').after(' <a class="child-trigger-new"><img src="https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/March2022/right-arrow.svg"></a>');
+    $('.mobile-trigger-new').click(function() {
+      $(this).next('.custom-menu-primary-new .hs-menu-wrapper').slideToggle(250);
+      $('body').toggleClass('mobile-open');
+      $('.child-trigger-new').removeClass('child-open');
+      $('.hs-menu-children-wrapper').slideUp(250);
+      return false;
+    });
+    $('.child-trigger-new').click(function() {
+      $(this).parent().siblings('.hs-item-has-children').find('.child-trigger-new').removeClass('child-open');
+      $(this).parent().siblings('.hs-item-has-children').find('.hs-menu-children-wrapper').slideUp(250);
+      $(this).next('.hs-menu-children-wrapper').slideToggle(250);
+      $(this).next('.hs-menu-children-wrapper').children('.hs-item-has-children').find('.hs-menu-children-wrapper').slideUp(250);
+      $(this).next('.hs-menu-children-wrapper').children('.hs-item-has-children').find('.child-trigger-new').removeClass('child-open');
+      $(this).toggleClass('child-open');
+      return false;
+    });
+  });
+
+  $(window).scroll(function() {    
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 25) {
+      $(".header").addClass("darkHeader");
+    } else {
+      $(".header").removeClass("darkHeader");
+    }
+  });
+</script></div>
+      
+
+      
+<main class="body-container-wrapper blog-page blog-page-2024">
+  <div class="body-container body-container--blog-post">
+    <div class="content-wrapper">
+
+      
+      <article class="blog-post">
+
+        
+
+        <div class="blog-post-header-top-section" id="banner-module">
+          <div class="page-center-wrapp">
+            <div class="blog-post-header-top-inner banner-section-inner">
+              <div class="blog-post-header-top-content">
+                <p class="small headline" style="color: #6C38FF;"><strong>
+                  
+                  <a class="post-tag" href="https://www.hunters.security/en/blog/tag/research">Research</a>
+                  
+                  </strong></p>
+                <h1 class="h3"><span id="hs_cos_wrapper_name" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="text">The Beginner's Guide to Securing Kubernetes</span></h1>
+                
+               
+
+              </div>
+               <div class="post-inner-details">
+                  <ul class="post-flex share-block">
+                    <li class="social-icons">
+                      <ul class="share-icons post-flex">
+                        <li class="share">
+                          <a class="icon-twitter" href="https://twitter.com/share?url=https://www.hunters.security/en/blog/kubernetes-security-guide&amp;via=gotosage" target="_blank">
+<!--                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                    d="M22.287 11.2235C21.7859 11.4474 21.2474 11.5982 20.6822 11.6662C21.2593 11.3183 21.7025 10.767 21.9108 10.11C21.3711 10.4322 20.773 10.6664 20.1363 10.7927C19.6273 10.2459 18.9004 9.9043 18.0969 9.9043C16.2929 9.9043 14.9673 11.5988 15.3748 13.3579C13.0533 13.2408 10.9946 12.121 9.61619 10.419C8.88417 11.6834 9.23656 13.3373 10.4804 14.1748C10.0231 14.16 9.59179 14.0337 9.21557 13.8229C9.18493 15.1261 10.1127 16.3453 11.4565 16.6166C11.0632 16.724 10.6325 16.7492 10.1944 16.6646C10.5497 17.7821 11.5813 18.5951 12.8048 18.6179C11.6301 19.5452 10.1502 19.9594 8.66797 19.7834C9.90446 20.5815 11.3736 21.0472 12.9512 21.0472C18.1389 21.0472 21.0698 16.6361 20.8928 12.6797C21.4387 12.2827 21.9125 11.7873 22.287 11.2235Z"
+                                    fill="black" />
+                              <circle cx="14.8571" cy="14.8571" r="14.5476" stroke="black" stroke-width="0.619048" />
+                            </svg> -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewbox="0 0 512 512" style="
+                                                                                                                        border: 0.5px solid black;
+                                                                                                                        border-radius: 50%;
+                                                                                                                        padding: 5px;
+                                                                                                                        "><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
+                          </a>
+                        </li>
+<!--                         <li class="share">
+                          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.hunters.security/en/blog/kubernetes-security-guide&title=The Beginner's Guide to Securing Kubernetes&picture=https://5765386.fs1.hubspotusercontent-na1.net/hubfs/5765386/THE%20BEGINNERS%20GUIDE%20TO%20SECURING%20KUBERNETES-1.jpg&description=Master Kubernetes security with our complete guide, perfect for SOC analysts. Learn to secure clusters, detect attacks, and protect your infrastructure"
+                             title="Share on Facebook" target="_blank" class="facebook">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                    d="M13.0017 12.5239H11.1445V15.0001H13.0017V22.4287H16.0969V15.0001H18.3515L18.5731 12.5239H16.0969V11.492C16.0969 10.9008 16.2158 10.6668 16.7871 10.6668H18.5731V7.57153H16.2158C13.9897 7.57153 13.0017 8.55149 13.0017 10.4284V12.5239Z"
+                                    fill="black" />
+                              <circle cx="14.8571" cy="15" r="14.5476" stroke="black" stroke-width="0.619048" />
+                            </svg>
+
+                          </a>
+                        </li> -->
+                        <li class="share">
+                          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.hunters.security/en/blog/kubernetes-security-guide&amp;title=The%20Beginner's%20Guide%20to%20Securing%20Kubernetes&amp;summary=Master%20Kubernetes%20security%20with%20our%20complete%20guide,%20perfect%20for%20SOC%20analysts.%20Learn%20to%20secure%20clusters,%20detect%20attacks,%20and%20protect%20your%20infrastructure" target="_blank" title="Share on LinkedIn" class="linkedin">
+                            <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M11.8542 10.2311C11.8542 10.9373 11.2816 11.5096 10.5748 11.5096C9.86809 11.5096 9.29547 10.9373 9.29547 10.2311C9.29547 9.52539 9.86809 8.95264 10.5748 8.95264C11.2816 8.95264 11.8542 9.52539 11.8542 10.2311ZM11.8645 12.5323H9.28516V20.7145H11.8645V12.5323ZM15.9822 12.5323H13.4194V20.7145H15.9827V16.4194C15.9827 14.0312 19.0929 13.8359 19.0929 16.4194V20.7145H21.6661V15.5337C21.6661 11.5039 17.0635 11.6507 15.9822 13.6344V12.5323Z" fill="black" />
+                              <circle cx="14.8571" cy="15.1428" r="14.5476" stroke="black" stroke-width="0.619048" />
+                            </svg>
+
+                          </a>
+                        </li>
+                        <li class="share">
+                          <a href="mailto:?subject=The%20Beginner's%20Guide%20to%20Securing%20Kubernetes&amp;body=The%20Beginner's%20Guide%20to%20Securing%20Kubernetes%20https://www.hunters.security/en/blog/kubernetes-security-guide" title="Email">
+                            <svg width="30" height="31" viewbox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="14.8571" cy="15.2856" r="14.5476" stroke="black" stroke-width="0.619048" />
+                              <g clip-path="url(#clip0_1182_3760)">
+                                <path d="M11.6092 13.6568C11.8653 13.4008 12.1494 13.1896 12.4516 13.0228C14.1356 12.0947 16.2951 12.5882 17.3778 14.2297L16.0676 15.5393C15.692 14.6823 14.7592 14.1947 13.8311 14.4023C13.4817 14.4805 13.1498 14.6549 12.8786 14.9262L10.3679 17.438C9.60548 18.2004 9.60548 19.4406 10.3679 20.203C11.1303 20.9654 12.3705 20.9654 13.1329 20.203L13.907 19.4289C14.6111 19.7083 15.3659 19.8198 16.1114 19.7643L14.4028 21.4729C12.9381 22.9377 10.5633 22.9377 9.09856 21.4729C7.63381 20.0082 7.63381 17.6334 9.09856 16.1687L11.6092 13.6568ZM15.5969 9.66917L13.8883 11.3778C14.6332 11.3218 15.3886 11.4338 16.0927 11.7126L16.8662 10.9391C17.6286 10.1767 18.8688 10.1767 19.6312 10.9391C20.3936 11.7015 20.3936 12.9417 19.6312 13.7041L17.12 16.2153C16.3552 16.9801 15.1133 16.9737 14.355 16.2153C14.1782 16.0386 14.026 15.8187 13.9309 15.6023L12.6207 16.9118C12.7584 17.1207 12.9013 17.3009 13.0851 17.4847C13.5587 17.9583 14.1619 18.3113 14.8561 18.4787C15.7556 18.6951 16.7192 18.5755 17.547 18.1188C17.8491 17.9519 18.1332 17.7408 18.3893 17.4847L20.9 14.9734C22.3653 13.5087 22.3653 11.1339 20.9006 9.66917C19.4358 8.205 17.0616 8.205 15.5969 9.66917Z" fill="black" />
+                              </g>
+                              <defs>
+                                <clippath id="clip0_1182_3760">
+                                  <rect width="14" height="14" fill="white" transform="translate(8 8.57104)" />
+                                </clippath>
+                              </defs>
+                            </svg>
+
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <span class="divider"></span>
+                  <ul class="author-details">
+                    <li>
+                      <span class="blog_post_date">Aug 29, 2024 </span>
+                    </li>
+
+                    <li>
+                     By <a class="blog-post__author-name" href="https://www.hunters.security/en/blog/author/ophir-kelmen">Ophir Kelmen</a>
+                    </li>
+
+                    <li class="read-time">
+          
+          
+          
+          
+          30 minutes to read
+          </li>
+                  </ul>
+                </div>
+              <div class="bottom-arrow">
+                <a href="#banner-module">
+                  <svg width="19" height="38" viewbox="0 0 19 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.5 38L9.5 2M9.5 2L18 10.6582M9.5 2L1 10.6582" stroke="black" stroke-width="2"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        
+
+        <div class="blog-post__body_wrapp">
+          <div class="blog-post-left-social-block"> 
+            <div id="hs_cos_wrapper_module_17249147489002" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<div class="sidebar-sticky-nav-section module_17249147489002">
+  <div class="sidebar-sticky-nav-wrapper">
+    <div class="sidebar-sticky-nav-item">
+      <ul>
+        <li class="mobile-dropdown">
+          <span class="menu-label active">Table of Contents <span class="arrow"></span></span>
+          <ul class="dropdown-menu">
+
+            <!-- Add more menu items as needed -->
+          </ul>
+        </li>
+        <!-- For desktop regular menu -->
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+  .sidebar-sticky-nav-item .dropdown-menu li a{
+    color: rgba(0, 0, 0,0.6) !important;
+  }
+  .sidebar-sticky-nav-item .dropdown-menu li a.active{
+    color: rgba(0, 0, 0,1.0) !important;
+  }
+  .sidebar-sticky-nav-item .menu-label{
+    color: #6c38ff;
+  }
+</style></div>
+          </div>
+          <div class="blog-post-right-body-content-block">
+            <section class="blog-post__body">
+              <span id="hs_cos_wrapper_post_body" class="hs_cos_wrapper hs_cos_wrapper_meta_field hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="meta_field" data-hs-cos-type="rich_text"><p><em>&nbsp;</em></p>
+<!--more-->
+<p>In this article, you will learn foundational terms and concepts essential for securing Kubernetes clusters. Whether you're a beginner or an experienced professional, this guide covers the critical knowledge required to understand the security dimensions of Kubernetes and methods to identify and detect specific attack techniques. No prior knowledge of Kubernetes is necessary to benefit from the article.<br><br>Kubernetes has become a cornerstone in the infrastructure of many organizations looking to streamline their software environments and harness the power of cloud computing. While Kubernetes offers significant advantages, its adoption is not without risks. These include complexities in configuration, management and potential security vulnerabilities. As organizations increasingly rely on Kubernetes, understanding and mitigating these risks is crucial to safeguard their infrastructures against disruptions and security breaches.<br><br>Kubernetes security is crucial for protecting both the infrastructure and the applications it orchestrates from unauthorized access and vulnerabilities. Security in Kubernetes is comprehensive, covering various layers including the cluster configuration, network policies, access controls, and resource limitations. Key to enhancing security is the implementation of Role-Based Access Control (RBAC), which limits user and process permissions in line with the principle of least privilege. Network policies are essential for controlling the traffic between pods, ensuring that only necessary communications are permitted, thus minimizing the potential attack surface. Another important mechanism of Kubernetes is <a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/" rel="noopener">Pod Security Standards</a> which are configurable settings that enforce security at the pod level&nbsp;and prevent privilege escalations.&nbsp;<br><br>Maintaining a robust security posture requires regular updates and patches, effective logging and monitoring to detect anomalies, and secure management of Secrets and Configurations. These practices collectively help to bolster the security framework of Kubernetes environments.<br><br>The article provides useful detection and investigation opportunities for security professionals especially SOC analysts and detection engineers by presenting potential attack techniques and corresponding monitoring strategies. Attack vectors range from unauthorized access by anonymous users to more complex threats such as exploiting vulnerable external-facing applications, secret enumeration, and escaping from a pod to its node using sensitive HostPath volumes. The detection opportunities and suggested investigation steps provide a solid foundation for monitoring and securing your organization's Kubernetes clusters.&nbsp;<br><br>If you're already familiar with Kubernetes basics, feel free to skip ahead to the advanced detection strategies that can significantly enhance your security posture.<br><br></p>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">INTRODUCTION</span></h2>
+<p><a href="https://kubernetes.io/" rel="noopener">Kubernetes</a>, an open-source platform for automating containerized applications' deployment, scaling, and management, has transformed how we think about deploying and scaling applications in modern IT environments. As organizations increasingly adopt this powerful orchestration tool, understanding both its foundational concepts and the intricacies of securing a Kubernetes cluster becomes critical. From understanding core concepts to implementing security measures, this guide caters to a diverse audience. Join us as we navigate the complexities of Kubernetes and empower you to safeguard your infrastructure effectively.</p>
+<p>A simple use case for leveraging Kubernetes is a company with a website visited by millions of users. To ensure their website remains fast and doesn't crash with high traffic, they use multiple servers. Kubernetes acts like a smart assistant that helps the company manage these servers efficiently. It can automatically adjust resources, fix problems, and scale the servers up during busy times (like a holiday sale) or down when it's quieter, all with minimal human intervention.</p>
+<p>In contrast, without Kubernetes (ignoring other orchestration tools), the company would need to manually manage the servers. This would require the IT team to constantly monitor the servers, manually add more servers when needed, and balance traffic to keep the website running smoothly. This approach is slower, more error-prone, and can become overwhelmingly complex as the number of servers grows.</p>
+<p><span style="font-size: 11px; color: #000000;"><img src="https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=1447&amp;height=537&amp;name=What%20can%20kubernetes%20do%20(3).png" width="1447" height="537" alt="What does Kubernetes do" style="height: auto; max-width: 100%; width: 1447px;" srcset="https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=724&amp;height=269&amp;name=What%20can%20kubernetes%20do%20(3).png 724w, https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=1447&amp;height=537&amp;name=What%20can%20kubernetes%20do%20(3).png 1447w, https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=2171&amp;height=806&amp;name=What%20can%20kubernetes%20do%20(3).png 2171w, https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=2894&amp;height=1074&amp;name=What%20can%20kubernetes%20do%20(3).png 2894w, https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=3618&amp;height=1343&amp;name=What%20can%20kubernetes%20do%20(3).png 3618w, https://www.hunters.security/hs-fs/hubfs/What%20can%20kubernetes%20do%20(3).png?width=4341&amp;height=1611&amp;name=What%20can%20kubernetes%20do%20(3).png 4341w" sizes="(max-width: 1447px) 100vw, 1447px"><br></span></p>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">KUBERNETES BASICS</span></h2>
+<p>Without further ado, let’s get ourselves familiarized with the technology!</p>
+<p><strong>What is Kubernetes?</strong></p>
+<p><a href="https://kubernetes.io/docs/concepts/overview/" rel="noopener">Kubernetes</a> is an open-source platform designed to automate the deployment, scaling, and management of containerized applications.</p>
+<p><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeyrG0_AGgtZomRw0cb4B67wFjdTASWdRVOoxXPSJR6i5G0Gx74OdOwAKa-LHQifw0nqUOiPds6HXueiFc7m_ynQPfpv3FcRkxFV4g2OurjxeCWZ_A6OYX3c4UtdSlQnD8aB494vppZ3VnzyHZvfXjWqszA?key=2w5PVqIs1gWd_EUlSJM-EQ" width="91" height="88" style="width: 91px; height: auto; max-width: 100%; margin-left: 0px; margin-right: 10px; float: left;" alt="Kubernetes" loading="lazy"><br><br><br><br>Originally designed by Google, the project is now maintained by the <a href="https://www.cncf.io/" rel="noopener">Cloud Native Computing Foundation</a>. The name Kubernetes originates from Ancient Greek, meaning 'helmsman' or 'pilot', reflecting its role in steering the ship of modern software development.</p>
+<p>&nbsp;</p>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">COMPONENTS</span></h2>
+<p>There are different components in Kubernetes, here are the crucial components for understanding detection and investigation opportunities:</p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Container image</span></strong><span style="color: #000000;"> -&nbsp; All the code resources and libraries required to run an application.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Container</span></strong><span style="color: #000000;"> - When a container image is mounted by a container engine (e.g. Docker), in runtime it becomes a container.</span><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXfynlt7t0NifjCHKO7769qp4u9mdXRRaQ15lbwy7fOVkbga9-LHizfkhwKO069_e1a9KmB_FQMo5SKk5Hprs76SkHF3mCIcEQbPf4oVqbVVMYfpWUtJ4udP8LZ8Cjwdl1MsvxDkzGh5mCtpGGb1D3yNWIw?key=2w5PVqIs1gWd_EUlSJM-EQ" width="478" height="314" style="width: 478px; height: auto; max-width: 100%;" alt="Kubernetes components"></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Pod</span></strong><span style="color: #000000;"> - A wrapper (an abstraction layer) over a container. Enables users to use Kubernetes without worrying about the kind of container (i.e. agnostic to container kind).</span><span style="color: #000000;"><br></span><span style="color: #000000;">One benefit of using pods is that we only interact with the Kubernetes layer and not the container’s layer. </span><span style="color: #000000;"><br></span><span style="color: #000000;">Usually, a pod contains 1 container, but that doesn’t have to be the case. Network-wise, a pod gets an internal IP address (and not the container). </span><span style="color: #000000;"><br></span><span style="color: #000000;">The last important aspect we should mention about pods is that they are ephemeral. That means they are designed to be relatively short-lived, easily started, stopped, or restarted to adapt to changes in workload or to recover from faults.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Nodes</span></strong><span style="color: #000000;">:</span>
+<ul>
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">Worker Nodes: A physical or virtual machine that hosts one or more pods. Nodes are often referred to as worker nodes. </span><em><span style="color: #000000;">,</span></em><span style="color: #000000;"> while the control plane components (e.g. kube-apiserver, etcd, kube-scheduler) are typically hosted on the same dedicated machine.</span></li>
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">Control Plane: The layer that manages the worker nodes and the pods in the cluster. It includes important cluster components such as: kube-apiserver, etcd, kube-scheduler. A set of those components is typically hosted on the same dedicated machine.&nbsp; The host running this set of components was historically called the master node.&nbsp;</span></li>
+</ul>
+</li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Cluster</span></strong><span style="color: #000000;"><span style="color: #000000;"> - A set of control plane and worker nodes.</span></span><span style="color: #000000;"></span></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Cluster Architecture - </span></strong><span style="color: #000000;">Since there is nothing like a good visualization:<br><br></span><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeKMJtsaCOZc-Cr-k2lLt5F9iXU8d0BzoaQxENDhyjTB_cSF9FddzRIUzpW_eZ0p1_Uv8G2vyKDRZegSCQ5dLyMIo10b0_Nvuu_jrKtZYOhXU3H7teWm5W6Q6IV19J_RItjzjGn96MkAskwrvwy6glVCj0a?key=2w5PVqIs1gWd_EUlSJM-EQ" width="692" height="436" alt="kubernetes cluster architecture"><br>
+<p><span style="color: #15151d;">Three processes every worker node needs to manage its pods:&nbsp;</span></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>Kubelet</strong> - Interacts with both the container and the machine (node itself). It is also responsible for assigning resources from the node to the container. The kubelet starts the pod with a container inside and ensures that it is running and healthy.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>KubeProxy</strong> - Responsible for node communication in the Kubernetes cluster as well as forwarding and load balancing of traffic. The KubeProxy is intelligently forwarding requests, for example, an application request will be forwarded to a DB on the same node.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>Container Runtime</strong> - Software that executes containers and manages container images on a system, such as <a href="https://www.docker.com/resources/what-container/" rel="noopener">Docker</a>.</span><br><br></li>
+</ol>
+</li>
+</ul>
+<p><span style="color: #15151d;">Complementary to the worker node, a control plane node must have the following 4 processes:</span></p>
+<ol>
+<li style="list-style-type: none;">
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>API Server </strong>- Acts as the cluster gateway and gatekeeper for authentication. It is the sole entry point for requests to the cluster (excluding external-facing applications), making it a prime candidate for auditing bottlenecks.<br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>Scheduler </strong>- Decides where to schedule a new pod based on available resources on each node. It will schedule on the least busy node, yet the kubelet actually starts the pod.</span><span style="color: #000000;"><br></span><span style="color: #000000;"><span style="color: #000000;"><br></span></span>
+<div class="hs-embed-wrapper"><div class="hs-embed-content-wrapper"><pre><code class="language-yaml">
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app.kubernetes.io/name: proxy
+spec:
+  containers:
+    - name: nginx
+      image: nginx:stable
+      ports:
+        - containerPort: 80
+          name: http-web-svc
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app.kubernetes.io/name: proxy
+  ports:
+    - name: name-of-service-port
+      protocol: TCP
+      port: 80
+      targetPort: http-web-svc
+</code></pre></div></div>
+<span style="color: #000000;"><br><br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>Controller manager </strong>- Detects cluster state changes such as pod crashes, and requests the scheduler to schedule a new pod.<br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><strong>etcd</strong> - May be described as the “Cluster Brain”. It is a distributed Key-Value store that stores data about what happened in the cluster. It stores cluster state information, not application data.</span></li>
+</ol>
+</li>
+</ol>
+<br>
+<p>We also would like to familiarize ourselves with some Kubernetes network concepts:</p>
+<p><strong>Service</strong> - A method for exposing a network application that is running as one or more pods in your cluster. Since pods are ephemeral (i.e. temporary and designed to be short-lived), Service helps to bridge that communication-wise. We can view in the attached screenshot an example of a Service exposing a nginx server of a certain pod using TCP port 80.</p>
+<p><strong>Ingress</strong> - An API object that manages external access to the services in a cluster, typically HTTP. Ingress may provide load balancing, SSL termination and name-based virtual hosting. In the following screenshot we can see a simple example where an Ingress sends all its traffic to one Service:</p>
+<p><br><img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXeL7MpCJAQH7Aq-rQyD02Y8cweKVmAPVd81DM8rQDlc_uI191E_CEOX1CPg9o2oSFybAJbqhZn2uUo3cGh5ehM1GzjkCuGBHhdhJopKPwt9N5vPEX80zHnuOEJki9memLJTz2ThvnhqTK3p1tkeRHPd1bLK?key=2w5PVqIs1gWd_EUlSJM-EQ" width="396" height="133" loading="lazy" alt="kubernetes cluster"></p>
+<p><strong>Kubernetes configuration concepts:</strong></p>
+<p><strong>ConfigMap</strong> - An API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or configuration files in a volume.</p>
+<p><strong>Secret</strong> - Object that includes a small amount of sensitive data (password, key, certificate, etc.) It is encoded in base64 and is not encrypted by default. By default, anyone authorized to create a pod in the namespace can access and read any Secret in the namespace.</p>
+<p>There are two additional important concepts for us to understand:</p>
+<p><strong>Volumes</strong> - On-disk files in a container are ephemeral, which presents some problems for non-trivial applications when running in containers. At its core, a volume is a directory, possibly with some data in it, which is accessible to the containers in a pod. Volume storage is parallel &amp; independent to the code (since pods are ephemeral). The volume can be on the node or on a remote host. Kubernetes doesn’t manage data persistence, the user or admin is responsible for backup and saving data.</p>
+<p><strong>Namespaces</strong> - Namespaces provide a mechanism for isolating groups of resources within a single cluster. Namespaces enable access and resource management for different teams or users.</p>
+<p><img src="https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=465&amp;height=438&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png" width="465" height="438" alt="kubernetes components namespaces" style="height: auto; max-width: 100%; width: 465px; float: left; margin-left: 0px; margin-right: 10px;" srcset="https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=233&amp;height=219&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 233w, https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=465&amp;height=438&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 465w, https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=698&amp;height=657&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 698w, https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=930&amp;height=876&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 930w, https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=1163&amp;height=1095&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 1163w, https://www.hunters.security/hs-fs/hubfs/Copy%20of%20What%20can%20kubernetes%20do%20(6).png?width=1395&amp;height=1314&amp;name=Copy%20of%20What%20can%20kubernetes%20do%20(6).png 1395w" sizes="(max-width: 465px) 100vw, 465px"></p>
+<p>&nbsp;</p>
+<p><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">SECURITY CONCEPTS</span></h2>
+<p><span style="color: #000000;">Now we understand the basic terminology and concepts used in a Kubernetes cluster. In this chapter, we will detail a few of the security concepts of Kubernetes. The main reference of this chapter is the <a href="https://kubernetes.io/docs/concepts/security/controlling-access/" rel="noopener">great documentation of Kubernetes.&nbsp;</a></span></p>
+<p style="font-size: 20px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">Control Plane Protection</span></p>
+<p><span style="color: #000000;">Control plane protection consists of five main aspects:&nbsp;</span></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Transport security</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Authentication</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Authorization</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Admission control</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Auditing</span></li>
+</ol>
+<p><span style="color: #000000;">Understanding this is key for any security professional dealing with security in Kubernetes.</span></p>
+<p><strong><span style="color: #6c38ff;">Transport Security</span></strong><strong><span style="color: #6c38ff;"><br></span></strong><span style="color: #000000;">Traffic in the control plane is encrypted using TLS. By default, the Kubernetes API server listens on port 6443 on the first non-localhost network interface, protected by TLS. Typically the API server serves on port 443.&nbsp;</span></p>
+<p><span style="color: #000000;">The API server presents a certificate. This certificate may be signed using a private certificate authority (CA), or based on a public key infrastructure linked to a generally recognized CA.</span></p>
+<p><span style="color: #000000;">The cluster’s private certificate authority (if it exists) should be added to the client’s “~/.kube/config” file.</span></p>
+<p><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">&nbsp;</span></p>
+<p><strong><span style="color: #6c38ff;">Authentication</span></strong><span style="color: #000000; text-decoration: underline;"><br></span><span style="color: #222222;">After establishing a TLS connection, the HTTP request moves to the authentication step. The cluster creation script or cluster admin configures the API server to run one or more Authenticator modules. We will not dive into Authenticators in this article.</span></p>
+<p><span style="color: #222222;">The input to the authentication step is the entire HTTP request; however, it typically examines the headers and/or client certificate.</span></p>
+<p><span style="color: #222222;">Authentication modules include client certificates, passwords, plain tokens, bootstrap tokens, and JSON Web Tokens (used for Service accounts).</span></p>
+<p><span style="color: #222222;">Multiple authentication modules can be specified, in which case each one is tried in sequence until one of them succeeds.</span></p>
+<p><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">&nbsp;</span></p>
+<p><strong><span style="color: #6c38ff;">Authorization</span></strong><span style="color: #222222; text-decoration: underline;"><br></span><span style="color: #222222;">Right after the request passes authentication successfully comes the authorization stage. A request in Kubernetes should encapsulate the username of the requester, the specific action being requested, and the target object influenced by the requested action. Authorization of the request is granted if there is a predefined policy confirming that the user possesses the necessary permissions to perform the indicated action.</span></p>
+<p><span style="color: #222222;">Kubernetes supports multiple authorization modules including ABAC (attribute-based access control), RBAC (role-based access control), and Webhook (i.e. Using a remote HTTP service to provide response to the request). Only after exhausting all the authorization modules and none has authorized it, the request is denied.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #6c38ff;">Admission control</span></strong><span style="text-decoration: underline;"><br></span>Admission control modules are software components in Kubernetes that have the ability to modify or reject requests. These modules have access to more information than authorization modules, specifically the ability to review the content of the objects being created or modified.</p>
+<p>Admission controllers are triggered by requests that aim to create, modify, delete, or connect to (proxy) an object, but they do not intervene in requests that simply read objects. When multiple admission controllers are enabled, they are invoked sequentially.</p>
+<p>Unlike authentication and authorization checks, if any admission controller denies a request, the request is immediately rejected without further processing by subsequent controllers.&nbsp;</p>
+<p>After successfully passing through all the admission controllers, a request undergoes validation according to the specific routines designated for the API object in question. Upon passing validation, the request is finally persisted to the object store.</p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #6c38ff;">Audit</span></strong><span style="text-decoration: underline;"><br></span>Kubernetes auditing captures a chronological record of security-relevant events, documenting the sequence of actions within a cluster. It logs activity from users, applications interfacing with the Kubernetes API, and operations from the control plane.</p>
+<p><br><span style="font-family: Impact, Chicago, Arial Black, Arial, sans serif;"><span style="font-size: 20px;">Pod Security</span><br></span></p>
+<p><span style="text-decoration: underline;">Pod Security Policy (PSP)</span> - Was a built-in<span style="color: #222222;"> admission controller that allows a cluster administrator to control security-sensitive aspects of the pod specification.</span><span style="font-size: 10px;"> PSP </span>was deprecated in Kubernetes v1.21</p>
+<p><span style="text-decoration: underline;">Pod Security Standard (PSS)</span> - configurable settings enforcing security at the pod level and preventing privilege escalations. PSS has 3 modes:</p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Privileged</span></strong><span style="color: #000000;"> - Unrestricted policy, providing the widest possible level of permissions. This policy allows for known privilege escalations.<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Baseline</span></strong><span style="color: #000000;"> - A minimally restrictive policy that prevents known privilege escalations. Allows the default (minimally specified) pod configuration.<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><strong><span style="color: #000000;">Restricted</span></strong><span style="color: #000000;"> - Heavily restricted policy, following current pod hardening best practices.</span></li>
+</ol>
+<p><span style="text-decoration: underline;">Pod SecurityContext</span> - SecurityContext is a field that can be used in a pod’s settings which defines to the Kubelet how the pod should run (PSS and PSP only provide restrictions). The security settings apply to all containers in the pod.</p>
+<p><span style="text-decoration: underline;">RBAC</span></p>
+<p>Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within your organization. As mentioned above Kubernetes authorization stage may use RBAC if it is configured. The API objects related to RBAC in a cluster are:</p>
+<ul>
+<li aria-level="1">ClusterRole, Role -&nbsp; declare a set of permissions</li>
+<li aria-level="1">ClusterRoleBind and RoleBind - grant the permissions defined in a role to a user or a set of users.</li>
+</ul>
+<p>In the example below we can see a Role with pod read &amp; create permissions in the “default” namespace and a RoleBinding granting the role to a user named “bob”:</p>
+<!-- Embedded Gist -->
+<script src="https://gist.github.com/YOUR_GIST_ID.js"></script>
+<pre><code class="language-yaml">
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pods-read-create
+  namespace: default
+subjects:
+  - kind: User
+    name: bob
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: pod-read-create
+  apiGroup: rbac.authorization.k8s.io
+    </code></pre>
+<pre><code class="language-yaml">
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-read-create
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list", "create"]
+    </code></pre>
+<h2 style="font-size: 24px;">&nbsp;</h2>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">ATTACK VECTORS</span></h2>
+<p>With the knowledge we have now about Kubernetes and its security concepts, we can start discussing some common attack vectors used against it. For convenience reasons, we categorize them by cyber kill chain tactics. This is by no means an exhaustive list and is intended to familiarize us with the attacker’s point of view.&nbsp;</p>
+<p><strong><span style="color: #6c38ff;">Initial Access</span></strong></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000; text-decoration: underline;">Anonymous unauthorized access</span><span style="color: #000000;"> - When a client or any process doesn’t provide authentication parameters in its request, it is automatically treated as an </span><a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/#anonymous-requests" style="color: #6c38ff;"><span>anonymous request</span></a><span style="color: #000000;"> of the user “system:anonymous”. When anonymous authentication is enabled, such requests may be allowed depending on the permissions and roles assigned to the “system:anonymous” user or the “system:unauthenticated “. In this case, malicious actors may try and abuse this configuration to gain information or even access to sensitive resources in the cluster. External scanners may also discover clusters with such configurations and add them to their database, making it accessible to customers.<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000; text-decoration: underline;">Vulnerable external-facing apps</span><span style="color: #000000;"> - Exploiting a vulnerable external-facing application in a Kubernetes cluster can occur when an attacker identifies a security weakness, such as outdated software, misconfigurations, or lack of proper security controls, in an application that is accessible over the internet. For instance, imagine a web application running in a Kubernetes pod that is exposed to the public through a service with an external IP address. If this application has vulnerabilities—such as SQL injection flaws, insecure deserialization, or buffer overflows—attackers can leverage these to execute malicious commands or scripts. Since the application is part of a Kubernetes cluster, successful exploitation could provide attackers with a foothold from which they can attempt to escalate privileges or explore the network to find sensitive data, manipulate container configurations, or even disrupt services throughout the cluster.&nbsp;</span></li>
+</ol>
+<p><strong><span style="color: #6c38ff;">Execution</span></strong></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><span style="text-decoration: underline;">Creation of a reverse Shell to a Kubernetes Pod</span> - Creation of a reverse Shell to a Kubernetes pod enables the creator to execute commands remotely in that pod. Malicious actors often create a reverse shell to a Kubernetes pod as a step towards credential access, access to sensitive data, or move laterally in the cluster.<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;"><span style="text-decoration: underline;">Kubernetes command execution in kube-system namespace</span> - Once a threat actor has a foothold in a cluster, he might want to execute commands. Execution of commands on pods in the kube-system namespace is particularly attractive for threat actors since this namespace is used for system-level components and contains critical access and information.</span></li>
+</ol>
+<br>
+<p><strong><span style="color: #6c38ff;">Credential Access</span></strong></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000; text-decoration: underline;">Secret enumeration</span><span style="color: #000000;"> - A common attack vector used by malicious actors to access sensitive information. Kubernetes Secrets are objects that store sensitive data such as passwords, tokens, and keys, which are fundamentally essential for managing a secure and functional cluster. Attackers exploit lax security practices, such as inadequate access controls or misconfigurations, to enumerate these secrets. By gaining unauthorized access to the Kubernetes API or by exploiting permissions granted to overly permissive roles, attackers can list, view, and potentially exfiltrate Secrets.&nbsp;<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000; text-decoration: underline;">Pod escaping using sensitive HostPath volume</span><span style="color: #000000;"> - A hostPath volume type mounts a sensitive file or folder from the node to the container. If the container gets compromised, the attacker can use this mount to gain access to the node. There are many ways a container with unrestricted access to the host filesystem can escalate privileges, including reading data from other containers and accessing tokens of more privileged pods.</span></li>
+</ol>
+<p><strong><span style="color: #6c38ff;">Persistence</span></strong></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000; text-decoration: underline;">Create a NodePort service</span><span style="color: #000000;"> - A threat actor may create a Kubernetes NodePort Service which exposes a chosen application outside the cluster (i.e. exposes the node the application is running on for a certain port range). By doing so, the malicious actor establishes a communication channel from outside the cluster into an internal node. This communication channel can be used to maintain persistence of the actor in the cluster.<br></span><br><span style="color: #000000;"></span></li>
+</ol>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">DETECTION OPPORTUNITIES &amp; INVESTIGATION STEPS</span></h2>
+<p>*Editor's Note: <em>Congratulations you have made it to the most fun chapter!</em></p>
+<p>This chapter discusses possible detection logics which we found balanced the signal-to-noise ratio. We also describe the recommended investigation steps for each alert generated by the logic to classify the maliciousness of the alert.</p>
+<p>The basis for any detection is the logs it runs over. A very attractive bottleneck of logs is the <a href="https://kubernetes.io/docs/reference/config-api/apiserver-audit.v1/" style="color: #6c38ff;"><span>API audit logs</span></a><span style="color: #6c38ff;">.</span> It contains all the information that can be included in an API audit log in the cluster (including the verbs get, list, create, update, delete, patch, and post). Another advantage of API audit logs is that it is provided by Amazon, Google &amp; Microsoft managed Kubernetes Service (<a href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html#:~:text=the%20Kubernetes%20documentation.-,Audit%20(audit),-Kubernetes%20audit%20logs" style="color: #6c38ff;"><span>EKS</span></a>, <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/audit-logging#audited_operations" style="color: #6c38ff;"><span>GKE</span></a>, and <a href="https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/aksaudit" style="color: #6c38ff;"><span>AKS</span></a><span style="color: #6c38ff;"> </span>respectively).&nbsp;</p>
+<p>Let’s continue to the detection &amp; investigation opportunities themselves:</p>
+<p>&nbsp;</p>
+<p><span style="font-size: 19px;"><strong><span style="color: #6c38ff;">Opportunity 1: </span></strong><strong>Suspicious impersonation attempt by a Kubernetes user</strong><strong><br></strong></span>Detects a suspicious impersonation attempt by users in a Kubernetes environment. Impersonation is an API call that lets a user perform an action using the privileges and in the name of another user. In a Kubernetes environment, the normal usage of this feature is limited to specific service accounts performing specific actions. An impersonation attempt that deviates from the normal behavior might point at a threat actor abusing Impersonation privileges for privilege escalation or hiding malicious activity.</p>
+<p><strong>Recommendations</strong>:</p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the initiating user, their role, and past actions.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the actions of the impersonated user by looking at later alerts generated by the same detector.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the source IP address to find any known malicious sources.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the target of the impersonation, and understand which privileges were gained or if they have been abused.<br><br></span></li>
+</ul>
+<p><span style="font-size: 19px;"><strong><span style="color: #6c38ff;">Opportunity 2: </span></strong><strong>Creation or modification of RoleBinding with a highly privileged built-in role</strong></span><br>Detects creation or modification of RoleBinding or ClusterRoleBinding to an overly permissive built-in role (e.g. admin, cluster-admin) which can indicate a privilege escalation method. Threat actors can use this operation to gain highly privileged permissions that allow them to execute privileged operations in the cluster (reading secrets, creating pods, etc.).&nbsp;</p>
+<p>As mentioned in the previous chapter, Kubernetes uses RBAC (role-based access control) which defines a mechanism for assigning permissions to users/services/groups by their role. The permissions are described in an object called Role (for one namespace) / ClusterRole (for more than one namespace). To bind these Roles (permissions) to a user/service/group we need to create another object called RoleBinding / ClusterRoleBinding and define the role we want to bind and the user/service account that we bind the role to.&nbsp;<br><br></p>
+<p><strong>Recommendations:</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the activity of the Kubernetes user that created the role/cluster bind: check if this user has multiple IPs related to it from unrelated geographic places/multiple user agents (indication of compromise). Check if the user created any RoleBinds in the past or if it is the first time.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check what other Kubernetes API requests the initiating IP did before and after the request - check if this IP has more than one user associated with it.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the reputation and activity of the initiating IP address using: PulseDive, IPInfo, AbuseIPdb, etc.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the details related to the Role/ClusterRoleBinding - check what the role assigned via the ClusterRoleBind/RoleBind and what it allows, check on which cluster/namespace this RoleBind was created and what are the services under this area. Check who is the user that got this role/ClusterRole, when it was created, and if it should get this permission.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-size: 19px;"><strong><span style="color: #6c38ff;">Opportunity 3: </span></strong><strong>Denied request of a Kubernetes Service Account</strong></span><br>Detects previously unseen denied API requests originating from a <a href="https://kubernetes.io/docs/concepts/security/service-accounts/" rel="noopener">Service Account</a> in a Kubernetes environment. Kubernetes Service accounts follow pre-programmed expected behavior, therefore a denied request from a Kubernetes Service account is suspicious and may indicate deviation from its normal behavior and potentially, compromise.</p>
+<p><strong>Recommendations:</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the recent activity of the service account to identify the resources and namespaces it usually accesses, and compare to the requested URL.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the requested URL and determine the risk associated with gaining access to it. Investigate the source IP and its recent activity to identify compromise.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the originating user-agent to identify any deviation from normal behavior or any user agent that may indicate malicious activity (curl, kubectl, etc.)</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Creation of a Pod with a sensitive hostPath volume</span></p>
+<p>Detects creation of a pod with a sensitive volume of type <a href="https://kubernetes.io/docs/concepts/storage/volumes/#hostpath" rel="noopener">hostPath</a>. A hostPath volume type mounts a sensitive file or folder from the node to the container. If the container gets compromised, the attacker can use this mount to gain access to the node. There are many ways a container with unrestricted access to the host file system can escalate privileges, including reading data from other containers and accessing tokens of more privileged pods.</p>
+<p><strong>Recommendations:&nbsp;</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the activity of this Kubernetes user in the cluster: check for multiple IPs related to it from unrelated geographic places, and check if this user has multiple user agents associated with it.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the reputation and activity of the initiating IP address using: PulseDive, IPInfo, AbuseIPdb, etc.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Kubernetes command execution in kube-system namespace</span></p>
+<p>Detects execution of commands in the kube-system namespace on a Kubernetes environment. Threat actors try to execute commands on pods in this namespace since it is used for system-level components and contains critical access and information.</p>
+<p><strong>Recommendations:</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">View past actions from the user and IP.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Look for specifically previous EXEC API calls from this user.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Investigate the command, its purpose, and its impact on the target pod.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Creation of a Reverse Shell to a Kubernetes Pod</span></p>
+<p>Detects creation of a reverse shell to Kubernetes pod. The reverse Shell enables the creator to execute commands remotely in that pod. Malicious actors often create a reverse shell to a Kubernetes pod as a step towards credential access, access to sensitive data or move laterally in the cluster.</p>
+<p><strong>Recommendations:</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the activity of this Kubernetes user in the cluster: check for multiple IPs related to it from unrelated geographic places, and check if this user has multiple user agents associated with it.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the reputation and activity of the initiating IP address using: PulseDive, IPInfo, AbuseIPdb, etc.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Kubernetes Secret enumeration</span></p>
+<p>Detects enumeration of Secrets by Get, List, or Watch API calls.&nbsp; Threat actors with access to Secrets can potentially enable lateral movement or privilege escalation and unauthorized access to critical resources. This detection can be implemented using a static threshold (e.g. more than 10 API calls in 1 minute) or with a more sophisticated mechanism using time series analysis or other anomaly detection algorithms.</p>
+<p><strong>Recommendations:&nbsp;</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the initiating user’s recent activity, source pod, and user agent to determine if this behavior is automatic or a hands-on keyboard event.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check if one or more of the requests were successful. In case there were, investigate if the service account, pod, or user associated with this secret initiated an unusual request shortly after.&nbsp;</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Creation or modification of external-facing Kubernetes NodePort Service</span><span style="text-decoration: underline;"><br></span>Kubernetes NodePort Service exposes a chosen application outside the cluster (i.e. exposes the node the application is running on for a certain port range). Therefore, the creation or modification of external-facing Kubernetes NodePort Service is a possible way for a malicious actor to establish persistence in the cluster.&nbsp;</p>
+<p><strong>Recommendations:&nbsp;</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the activity of this Kubernetes user in the cluster: check for multiple IPs related to it from unrelated geographic places, and check if this user has multiple user agents associated with it.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Look for the image name of the application exposed by the Service and check if it is suspicious.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Check the reputation and activity of the initiating IP address using: PulseDive, IPInfo, AbuseIPdb etc.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Authorization of Kubernetes API request by an unauthenticated user</span></p>
+<p>Detects authorization of Kubernetes API Requests initiated by unauthenticated users. Such events should be generally restricted to specific internal usage of Kubernetes (e.g. livez, healthz, readyz). An allowed request by an unauthenticated user (i.e. system:anonymous) for a different usage might indicate a malicious activity abusing permissions' misconfiguration.&nbsp;</p>
+<p><strong>It's recommended to check:</strong></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Who created the RoleBinding for system:anonymous user which allowed the request.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Whether the user agent is suspicious or anomalous.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">What other Kubernetes API requests the initiating IP did before and after the request.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">General Investigation Steps</span></p>
+<ul>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Discovery requests: Search for discovery requests conducted by the initiating username, for example when a user uses the kubectl command: “kubectl auth can-i --list”, an API request is sent to the API server for a URI “/apis/authorization.k8s.io/v1/selfsubjectrulesreviews” or “/apis/authorization.k8s.io/v1/selfsubjectaccessreviews”.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">IP reputation: it is worth checking external IP addresses’ reputation. IPs from unexpected geographical regions are more suspicious.</span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Analyze user activity: check the user agents and IPs the user used. Multiple or unusual user agents should increase suspicions.<br></span></li>
+</ul>
+<p>&nbsp;</p>
+<h2 style="font-size: 24px;"><span style="color: #000000; font-family: Impact, Chicago, 'Arial Black', Arial, 'sans serif';">SUMMARY</span></h2>
+<p>"The Beginner's Guide for Kubernetes Security" is a comprehensive introduction to securing Kubernetes clusters, designed for both beginners and experienced users. It covers essential concepts and components of Kubernetes, the challenges related to its configuration and management, and the potential security risks associated with its use.</p>
+<p><strong>Key points covered in the article include:</strong></p>
+<ol>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Foundational Concepts of Kubernetes: The article begins by explaining the basics of Kubernetes - an open-source platform maintained by the Cloud Native Computing Foundation, used for automating deployment, scaling, and management of containerized applications.<br><br></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Components of Kubernetes: The discussion includes essential Kubernetes components such as containers, pods, nodes, and the cluster. It also explains Kubernetes-specific network concepts like Services and Ingress alongside configuration objects like ConfigMaps and Secrets.</span><br><br>
+<ul>
+<li style="list-style-type: none;">
+<ul style="list-style-type: square;">
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">Control Plane Protection: Emphasizes the importance of securing the control plane with methods like TLS encryption and Kubernetes API server protection.</span></li>
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">Pod Security: Introduction to concepts such as Pod Security Policies (PSP) and Pod Security Standards (PSS), touching on security contexts applied at the pod level.</span></li>
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">RBAC (Role-Based Access Control): A critical component described as a way to regulate access within Kubernetes based on roles.</span></li>
+<li style="color: #15151d;" aria-level="2"><span style="color: #000000;">Role of Auditing: Captures a record of security-relevant events within the cluster to follow up on actions performed within Kubernetes</span><span style="color: #000000;">Security Aspects in Kubernetes:</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #9a00ff;"><span style="color: #000000;">Attack Vectors: The article categorizes attack vectors into stages like initial access, execution, and persistence, providing examples such as unauthorized access, exploiting vulnerabilities, and secret enumeration.<br><br></span></span></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Detection and Investigation Opportunities: Critical for security professionals, especially SOC analysts and detection engineers. This section discusses the utilization of logs for detecting suspicious activities, such as unauthorized role bindings or command executions in sensitive namespaces.</span><br><br></li>
+<li style="color: #6c38ff;" aria-level="1"><span style="color: #000000;">Role of Auditing: Captures a record of security-relevant events within the cluster to follow up on actions performed within Kubernetes.</span></li>
+</ol>
+<p>Overall, the guide acts as an educational resource to not only familiarize users with Kubernetes but also provide them with the necessary tools and knowledge to secure Kubernetes environments effectively.</p></span>
+            </section>    
+          </div>
+        </div>
+        
+
+         
+
+        
+        <footer class="blog-post__footer">
+          
+
+          
+
+
+        </footer>
+        
+
+      </article>
+      
+
+    </div>
+    <div class="related-post-bottom-block ">
+      <div id="hs_cos_wrapper_blog_related_posts" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="blog-related-posts-section customer-slider-section" style="background-color:#f4f4f4;">
+  <div class="blog-heading-top-block">
+    <div class="page-center">
+      <div class="blog-heading-top-inner">
+        <div class="blog-heading-top">
+          <h3>Relevant posts </h3>
+        </div>
+        <div class="blog-heading-top-slider-arrow">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="blog-related-posts-block page-center">
+    <div class="blog-related-posts-slider realted-post-slider-track">
+
+      
+       <!-- Set the max number of related posts to be output to the page here -->
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+        
+        
+        
+        
+        <div>
+          <div class="blog-post-card-item">
+            <div class="blog-post-card-item-inner">
+              <div class="blog-post-card-tag-title-block">
+                <span class="tag-list">
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/research">Research, </a>
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/team-axon">Team Axon</a>
+                  
+                </span>
+                <h5> <a href="https://www.hunters.security/en/blog/protecting-postgres"> Protecting Postgres: Key Security Takeaways from a Postgres Honeypot </a> </h5>
+              </div>
+              <div class="blog-post-card-author-date-block">
+                <span class="blog_post_author"> Team Axon </span>
+                <span class="blog_post_date">Apr 10, 2024 </span>
+                
+              </div>
+              <div class="blog-post-card-featured-image-block">
+                <a href="https://www.hunters.security/en/blog/protecting-postgres">
+                  <img src="https://www.hunters.security/hubfs/Featured%20images%20%289%29.png" alt="">
+                </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        
+        
+        
+        <div>
+          <div class="blog-post-card-item">
+            <div class="blog-post-card-item-inner">
+              <div class="blog-post-card-tag-title-block">
+                <span class="tag-list">
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/research">Research, </a>
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/team-axon">Team Axon</a>
+                  
+                </span>
+                <h5> <a href="https://www.hunters.security/en/blog/hunting-ransomware-in-onedrive"> Hunting Ransomware in OneDrive: Straightforward Tips for Unpredictable Threats </a> </h5>
+              </div>
+              <div class="blog-post-card-author-date-block">
+                <span class="blog_post_author"> Team Axon </span>
+                <span class="blog_post_date">Feb 19, 2024 </span>
+                
+              </div>
+              <div class="blog-post-card-featured-image-block">
+                <a href="https://www.hunters.security/en/blog/hunting-ransomware-in-onedrive">
+                  <img src="https://www.hunters.security/hubfs/Featured%20images%20%287%29.png" alt="">
+                </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        
+        
+        
+        <div>
+          <div class="blog-post-card-item">
+            <div class="blog-post-card-item-inner">
+              <div class="blog-post-card-tag-title-block">
+                <span class="tag-list">
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/research">Research, </a>
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/team-axon">Team Axon</a>
+                  
+                </span>
+                <h5> <a href="https://www.hunters.security/en/blog/delefriend-a-newly-discovered-design-flaw-in-domain-wide-delegation-could-leave-google-workspace-vulnerable-for-takeover"> DeleFriend: Severe design flaw in Domain Wide Delegation could leave Google Workspace vulnerable for takeover </a> </h5>
+              </div>
+              <div class="blog-post-card-author-date-block">
+                <span class="blog_post_author"> Team Axon </span>
+                <span class="blog_post_date">Nov 28, 2023 </span>
+                
+              </div>
+              <div class="blog-post-card-featured-image-block">
+                <a href="https://www.hunters.security/en/blog/delefriend-a-newly-discovered-design-flaw-in-domain-wide-delegation-could-leave-google-workspace-vulnerable-for-takeover">
+                  <img src="https://www.hunters.security/hubfs/Featured%20images%20%286%29.png" alt="">
+                </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        
+        
+        
+        <div>
+          <div class="blog-post-card-item">
+            <div class="blog-post-card-item-inner">
+              <div class="blog-post-card-tag-title-block">
+                <span class="tag-list">
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/research">Research, </a>
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/team-axon">Team Axon</a>
+                  
+                </span>
+                <h5> <a href="https://www.hunters.security/en/blog/human-friendly-guide-incident-response-microsoft-and-threat-hunting-azure-1"> The Human-Friendly Guide: Incident Response &amp; Threat Hunting in Microsoft Azure, Part 1 </a> </h5>
+              </div>
+              <div class="blog-post-card-author-date-block">
+                <span class="blog_post_author"> Team Axon </span>
+                <span class="blog_post_date">Oct 23, 2023 </span>
+                
+              </div>
+              <div class="blog-post-card-featured-image-block">
+                <a href="https://www.hunters.security/en/blog/human-friendly-guide-incident-response-microsoft-and-threat-hunting-azure-1">
+                  <img src="https://www.hunters.security/hubfs/Featured%20images%20%285%29-2.png" alt="">
+                </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        
+        
+        
+        <div>
+          <div class="blog-post-card-item">
+            <div class="blog-post-card-item-inner">
+              <div class="blog-post-card-tag-title-block">
+                <span class="tag-list">
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/research">Research, </a>
+                  
+                  <a class="tag-list-link" href="https://www.hunters.security/en/blog/tag/soc-platform">SOC Platform</a>
+                  
+                </span>
+                <h5> <a href="https://www.hunters.security/en/blog/optimizing-threat-intel"> Optimizing Threat Intel: Shifting Left on Detection to Minimize False Positives </a> </h5>
+              </div>
+              <div class="blog-post-card-author-date-block">
+                <span class="blog_post_author"> Hunters Research Team </span>
+                <span class="blog_post_date">Sep 4, 2023 </span>
+                
+              </div>
+              <div class="blog-post-card-featured-image-block">
+                <a href="https://www.hunters.security/en/blog/optimizing-threat-intel">
+                  <img src="https://www.hunters.security/hubfs/Detecting%20Ransomware%20%281%29.png" alt="">
+                </a>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        
+        
+    
+      
+      
+       
+
+
+
+      
+
+    </div>
+  </div>
+</div></div>
+    </div>
+  </div>
+</main>
+<script>
+  $(function() {
+    'use strict';
+    /*Activate default tab contents*/
+    var leftPos, newWidth, $magicLine;
+    if($('.tabs').length > 0) {
+      $('.tabs').append("<li id='magic-line'></li>");
+      $magicLine = $('#magic-line');
+      $magicLine.width($('.active').width())
+        .css('left', $('.active a').position().left)
+        .data('origLeft', $magicLine.position().left)
+        .data('origWidth', $magicLine.width());
+
+      $('.tabs li a').click(function() {
+        var $this = $(this);
+        $this.parent().addClass('active').siblings().removeClass('active');
+        $magicLine
+          .data('origLeft', $this.position().left)
+          .data('origWidth', $this.parent().width());
+        return false;
+      });
+
+      /*Magicline hover animation*/
+      $('.tabs li').find('a').hover(function() {
+        var $thisBar = $(this);
+        leftPos = $thisBar.position().left;
+        newWidth = $thisBar.parent().width();
+        $magicLine.css({
+          "left": leftPos,
+          "width": newWidth
+        });
+      }, function() {
+        $magicLine.css({
+          "left": $magicLine.data('origLeft'),
+          "width": $magicLine.data('origWidth')
+        });
+      });
+    }
+  });
+  $( document ).ready(function() {
+    $('.blog-post-right-body-content-block .blog-post__body table').wrap('<div class="table-wraper"></div>');
+  });  
+
+
+
+</script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882284593/1693291612618/Hunters_Theme_May_2023/js/magic-mouse.min.js"></script>
+<!-- <script>
+options = {
+"cursorOuter": "circle-basic",
+"hoverEffect": "circle-move",
+"hoverItemMove": false,
+"defaultCursor": false,
+"outerWidth": 30,
+"outerHeight": 30
+};
+magicMouse(options);
+
+$(".blog-post-card-item").mouseover(function(){
+$("#magicMouseCursor").addClass("change");
+$("#magicPointer").addClass("change");
+});
+$(".blog-post-card-item").mouseleave(function(){
+$("#magicMouseCursor").removeClass("change");
+$("#magicPointer").removeClass("change");
+});
+</script> -->
+
+
+      
+      <div data-global-resource-path="Hunters_Theme_May_2023/templates/partials/footer.html"><footer class="footer footer--site-page new-footer">
+
+  
+
+  
+
+  
+  <div class="footer__container footer__container--static">
+
+    
+    <div class="footer__row footer__row--one">
+      <div class="footer__navigation__container">
+        
+        <div class="footer__navigation footer__col_one">
+          <div id="hs_cos_wrapper_footer_menu_header_one" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+<span id="hs_cos_wrapper_footer_menu_header_one_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h6>PRODUCT</h6></span></div>
+          <div id="hs_cos_wrapper_footer_menu_one" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_one_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_one_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/product" role="menuitem" target="_self">SOC Platform</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/product-tour" role="menuitem" target="_self">Product Tour</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/integrations" role="menuitem" target="_self">Integrations</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/why-hunters" role="menuitem" target="_self">Why Hunters</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/faqs" role="menuitem" target="_self">FAQs</a></li>
+ </ul>
+</div></span></div>
+        </div>
+        
+
+        
+        <div class="footer__navigation footer__col_two">
+          <div id="hs_cos_wrapper_footer_menu_header_two" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+<span id="hs_cos_wrapper_footer_menu_header_two_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h6>SOLUTIONS</h6></span></div>
+          <div id="hs_cos_wrapper_footer_menu_two" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_two_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_two_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/solution/siem-replacement" role="menuitem" target="_self">SIEM Replacement</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/solution/hunters-for-snowflake-data-lake" role="menuitem" target="_self">Hunters for Snowflake</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/solution/hunters-for-databricks" role="menuitem" target="_self">Hunters For Databricks</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/solution/hunters-for-aws" role="menuitem" target="_self">Hunters for AWS</a></li>
+ </ul>
+</div></span></div>
+        </div>
+        
+
+        
+        <div class="footer__navigation footer__col_three footer__col_three">
+          
+          <div id="hs_cos_wrapper_footer_menu_header_three" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+<span id="hs_cos_wrapper_footer_menu_header_three_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h6>SERVICES</h6></span></div>
+          
+          <div id="hs_cos_wrapper_footer_menu_three" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_three_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_three_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/team-axon" role="menuitem" target="_self">Team Axon</a></li>
+ </ul>
+</div></span></div>
+        </div>
+        
+
+        
+        <div class="footer__navigation footer__col_four footer__col_four-new">
+
+          <div id="hs_cos_wrapper_footer_menu_four" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_four_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_four_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/customers" role="menuitem" target="_self">CUSTOMERS</a></li>
+ </ul>
+</div></span></div>
+        </div>
+        
+        
+        
+        
+                
+           <div class="footer__navigation footer__col_mssp footer__col_mssp footer__col_four footer__col_four-new">
+          
+                 <div id="hs_cos_wrapper_footer_menu_mssp" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_mssp_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_mssp_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/mssp" role="menuitem" target="_self">MSSPs</a></li>
+ </ul>
+</div></span></div>
+ 
+        </div>
+        
+        
+        
+        
+
+        
+        <div class="footer__navigation footer__col_five">
+          <div id="hs_cos_wrapper_footer_menu_five" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_five_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_five_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/en/blog" role="menuitem" target="_self">BLOG</a></li>
+ </ul>
+</div></span></div>
+          
+        </div>
+        
+        
+        
+        <div class="footer__navigation footer__col_six">
+          <div id="hs_cos_wrapper_footer_menu_header_six" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+<span id="hs_cos_wrapper_footer_menu_header_six_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_header" style="" data-hs-cos-general-type="widget" data-hs-cos-type="header"><h6>COMPANY</h6></span></div>
+          <div id="hs_cos_wrapper_footer_menu_six" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_footer_menu_six_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_simple_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="simple_menu"><div id="hs_menu_wrapper_footer_menu_six_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-vertical" role="navigation" data-sitemap-name="" data-menu-id="" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/about-us" role="menuitem" target="_self">About Us</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/careers" role="menuitem" target="_self">Careers</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/partners" role="menuitem" target="_self">Partners</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/newsroom" role="menuitem" target="_self">Newsroom</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/events" role="menuitem" target="_self">Events</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.hunters.security/privacy-and-security" role="menuitem" target="_self">Privacy &amp; Security</a></li>
+ </ul>
+</div></span></div>
+          <div id="hs_cos_wrapper_module_16830234841961" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<div class="footer-social-media-section">
+  <ul>
+    
+    <li>
+      
+      
+      <a href="https://www.linkedin.com/company/hunters-ai/" aria-label="Social Link" target="_blank" rel="noopener">
+        <img src="https://www.hunters.security/hubfs/March2022/linkedin-icon.svg" alt="" loading="lazy" width="30" height="30">
+      </a>
+    </li>
+    
+    <li>
+      
+      
+      <a href="https://www.youtube.com/channel/UCUufMdZ-6mS4dqEFI81IRKw" aria-label="Social Link" target="_blank" rel="noopener">
+        <img src="https://www.hunters.security/hubfs/july2022/youtube-icon.svg" alt="" loading="lazy" width="30" height="30">
+      </a>
+    </li>
+    
+    <li>
+      
+      
+      <a href="https://www.instagram.com/lifeathunters/" aria-label="Social Link" target="_blank" rel="noopener">
+        <img src="https://www.hunters.security/hubfs/March2022/instagram-icon.svg" alt="" loading="lazy" width="30" height="30">
+      </a>
+    </li>
+    
+    <li>
+      
+      
+      <a href="https://x.com/hunters_ai" aria-label="Social Link" target="_blank" rel="noopener">
+        <img src="https://www.hunters.security/hubfs/March2022/twitter-icon.svg" alt="twitter-icon" loading="lazy" width="30" height="30">
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        </div>
+        
+
+      </div>
+
+
+    </div>
+    
+
+    
+    <div class="footer__row footer__row--two">
+      
+      <div class="footer__copyright">
+        <div id="hs_cos_wrapper_module_16462059846103" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_module_16462059846103_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><p>HUNTERS © 2024 All rights reserved</p></span></div>
+      </div>
+      
+      
+      <div class="footer__bottom_links">
+        <span id="hs_cos_wrapper_footer__bottom_links" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><p><a href="https://www.hunters.security/terms-of-use?hsLang=en" rel="noopener">Terms and Conditions</a><a href="https://www.hunters.security/privacy-policy?hsLang=en" rel="noopener">Privacy Policy</a></p></span>
+      </div>
+      
+    </div>
+    
+
+  </div>
+  
+
+  
+
+</footer></div>
+      
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+     
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+     
+    
+    
+    
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    
+    
+    
+     
+    
+       
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-sql.min.js"></script>
+    
+
+    
+
+    
+          
+    
+    <!-- HubSpot performance collection script -->
+<script defer src="https://static.hsappstatic.net/content-cwv-embed/static-1.971/embed.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/114356373127/1693291620234/Hunters_Theme_May_2023/js/Owl-carousel.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127662486200/1693291616579/Hunters_Theme_May_2023/js/js_plugins/magnific-popup.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127662695006/1693291622639/Hunters_Theme_May_2023/js/js_plugins/mousewheel.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127662486199/1693291612611/Hunters_Theme_May_2023/js/js_plugins/aos.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882575644/1693291613854/Hunters_Theme_May_2023/js/ScrollMagic.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882549514/1693291622778/Hunters_Theme_May_2023/js/debug.addIndicators.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/114370662982/1693291620440/Hunters_Theme_May_2023/js/easyResponsiveTabs.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882284039/1693291624252/Hunters_Theme_May_2023/js/slick.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882575404/1693291617490/Hunters_Theme_May_2023/js/jquery.matchHeight.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882549552/1693291622937/Hunters_Theme_May_2023/js/isotope.pkgd.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/127024241524/1725535111140/Hunters_Theme_May_2023/js/main.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/126882575241/1693291612623/Hunters_Theme_May_2023/js/custom_script.min.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/template_assets/176293618185/1724271074702/Hunters_Theme_May_2023/js/prism.min.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="/hs/hsstatic/keyboard-accessible-menu-flyouts/static-1.17/bundles/project.js"></script>
+<script src="https://www.hunters.security/hs-fs/hub/5765386/hub_generated/module_assets/177021600416/1725602140089/module_177021600416_Blog_Table_of_Content_Sidebar.min.js"></script>
+          
+          
+    
+    <!-- Start of HubSpot Analytics Code -->
+          
+          
+    
+    <script type="text/javascript">
+          
+          
+    
+    var _hsq = _hsq || [];
+          
+          
+    
+    _hsq.push(["setContentType", "blog-post"]);
+          
+          
+    
+    _hsq.push(["setCanonicalUrl", "https:\/\/www.hunters.security\/en\/blog\/kubernetes-security-guide"]);
+          
+          
+    
+    _hsq.push(["setPageId", "173774966953"]);
+          
+          
+    
+    _hsq.push(["setContentMetadata", {
+          
+          
+    
+    "contentPageId": 173774966953,
+          
+          
+    
+    "legacyPageId": "173774966953",
+          
+          
+    
+    "contentFolderId": null,
+          
+          
+    
+    "contentGroupId": 24463927651,
+          
+          
+    
+    "abTestId": null,
+          
+          
+    
+    "languageVariantId": 173774966953,
+          
+          
+    
+    "languageCode": "en",
+          
+          
+    
+    }]);
+          
+          
+    
+    </script>
+          
+          
+          
+          
+    
+    <!-- End of HubSpot Analytics Code -->
+          
+          
+    
+    <script type="text/javascript">
+          
+          
+    
+    var hsVars = {
+          
+          
+    
+    render_id: "a59c56a4-cdb5-432d-bf23-786901fc6ce7",
+          
+          
+    
+    ticks: 1727076208451,
+          
+          
+    
+    page_id: 173774966953,
+          
+          
+    
+    
+          
+          
+    
+    content_group_id: 24463927651,
+          
+          
+    
+    portal_id: 5765386,
+          
+          
+    
+    app_hs_base_url: "https://app.hubspot.com",
+          
+          
+    
+    cp_hs_base_url: "https://cp.hubspot.com",
+          
+          
+    
+    language: "en",
+          
+          
+    
+    analytics_page_type: "blog-post",
+          
+          
+    
+    scp_content_type: "",
+          
+          
+    
+    analytics_page_id: "173774966953",
+          
+          
+    
+    category_id: 3,
+          
+          
+    
+    folder_id: 0,
+          
+          
+    
+    is_hubspot_user: false
+          
+          
+    
+    }
+          
+          
+    
+    </script>
+          
+          
+    
+    
+          
+          
+    
+    <script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.354/js/index.js"></script>
+          
+          
+    
+    <!-- zoominfo start -->
+          
+          
+    
+    <noscript>
+          
+          
+    
+    <img src="https://ws.zoominfo.com/pixel/VqKHtlHBiv3Lc8dabqWd" width="1" height="1" style="display: none;">
+          
+          
+    
+    </noscript>
+          
+          
+    
+    <!-- zoominfo stop -->
+          
+          
+    
+    <!-- cookiebot script
+          
+          
+    
+    <script type="text/javascript">
+          
+          
+    
+    var scrollPos = 100;
+          
+          
+    
+    var counter = 0;
+          
+          
+    
+    $(window).scroll(function(){
+          
+          
+    
+    var scrollPosCur = $(this).scrollTop();
+          
+          
+    
+    if (scrollPosCur > scrollPos && counter == 0) {
+          
+          
+    
+    var script = document.createElement('script');
+          
+          
+    
+    script.setAttribute('src', 'https://consent.cookiebot.com/uc.js');
+          
+          
+    
+    script.setAttribute('id', 'Cookiebot');
+          
+          
+    
+    script.setAttribute('type', 'text/javascript');
+          
+          
+    
+    script.setAttribute('data-cbid', 'ffebe3a6-627f-4df7-9ea2-5ea145fcb580');
+          
+          
+    
+    script.setAttribute('data-blockingmode', 'auto');
+          
+          
+    
+    document.getElementsByTagName('head')[0].appendChild(script);
+          
+          
+    
+    counter += 1;
+          
+          
+    
+    }
+          
+          
+    
+    //console.log("Scroll position = "+ scrollPosCur);
+          
+          
+    
+    })
+          
+          
+    
+    </script>
+          
+          
+    
+    -->
+          
+          
+    
+    <!-- end of cookiebot -->
+          
+          
+    
+    <!-- zoominfo start -->
+          
+          
+    
+    <script>
+          
+          
+    
+    (function () {
+          
+          
+    
+    var zi = document.createElement('script');
+          
+          
+    
+    zi.type = 'text/javascript';
+          
+          
+    
+    zi.async = true;
+          
+          
+    
+    zi.referrerPolicy = 'unsafe-url';
+          
+          
+    
+    zi.src = 'https://ws.zoominfo.com/pixel/VqKHtlHBiv3Lc8dabqWd';
+          
+          
+    
+    var s = document.getElementsByTagName('script')[0];
+          
+          
+    
+    s.parentNode.insertBefore(zi, s);
+          
+          
+    
+    })();
+          
+          
+    
+    </script>
+          
+          
+    
+    <!-- zoominfo stop -->
+          
+          
+    
+    <div id="fb-root"></div>
+          
+          
+    
+    <script>(function(d, s, id) {
+          
+          
+    
+    var js, fjs = d.getElementsByTagName(s)[0];
+          
+          
+    
+    if (d.getElementById(id)) return;
+          
+          
+    
+    js = d.createElement(s); js.id = id;
+          
+          
+    
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0";
+          
+          
+    
+    fjs.parentNode.insertBefore(js, fjs);
+          
+          
+    
+    }(document, 'script', 'facebook-jssdk'));</script> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+    
+  
+</body></html>
