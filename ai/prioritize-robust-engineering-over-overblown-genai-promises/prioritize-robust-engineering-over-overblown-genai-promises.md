@@ -8,13 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/09/8b0d8cb7-thisisengineering-ttmup
 
 > 译自 [Prioritize Robust Engineering Over Overblown GenAI Promises](https://thenewstack.io/prioritize-robust-engineering-over-overblown-genai-promises/)，作者 Dmitry Petrov。
 
-
-# 优先考虑稳健的工程设计，而非过度夸大的生成式 AI 承诺
-
-![特色图片：优先考虑稳健的工程设计，而非过度夸大的生成式 AI 承诺](https://cdn.thenewstack.io/media/2024/09/8b0d8cb7-thisisengineering-ttmuplynmhu-unsplash-1024x683.jpg)
-
-Photo by [ThisisEngineering](https://unsplash.com/@thisisengineering?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/person-wearing-white-gloves-and-white-gloves-TTmuplyNMHU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash).
-
 人工智能和机器学习早在 OpenAI 于 2022 年 11 月 30 日宣布推出 ChatGPT 之前就已经存在，但从那天起，炒作才真正开始。
 
 在生成式 AI 推向全球不到两年的时间里，该公司报告称，[92% 的财富 500 强公司正在使用 OpenAI 的技术](https://www.reuters.com/technology/openais-altman-pitches-chatgpt-enterprise-large-firms-including-some-microsoft-2024-04-12/)。无论你走到哪里，IT 供应商都在宣布某种形式的[生成式 AI 助手](https://thenewstack.io/how-generative-ai-coding-assistants-increase-developer-velocity/)或工作流程。虽然 AI 创新的潜力是惊人的，也是真实的，但[AI 的繁荣似乎正在消退](https://www.vox.com/technology/2023/8/19/23837705/openai-chatgpt-microsoft-bing-google-generating-less-interest)。
@@ -35,10 +28,3 @@ Photo by [ThisisEngineering](https://unsplash.com/@thisisengineering?utm_content
 这种成熟过程带来的好处远远超出了开发人员和工程师的范围。正如互联网泡沫的破灭导致互联网技术的完善和广泛采用一样，当前人工智能领域对数据管理和工程的关注将为各行各业的变革性应用铺平道路。想象一下，人工智能驱动的医疗保健诊断依赖于精心策划的数据集，或者金融系统利用人工智能进行预测分析以更有效地管理风险。这些进步不仅仅是增强技术能力；它们还关系到改善整个社会的结果。
 
 虽然人工智能泡沫的破裂看似一种挫折，但它代表着该行业走向成熟和稳定的重要一步。通过专注于工程、数据管理和实际实施，并提供更可靠、更有价值和更有影响力的解决方案，人工智能行业可以克服早期挑战——结果是——更强大的工具和框架将使工程师和数据科学家受益。
-
----
-
-**YOUTUBE.COM/THENEWSTACK**<br>
-技术发展日新月异，请勿错过任何一集。订阅我们的 YouTube
-频道，观看我们所有的播客、采访、演示等内容。
-[订阅](https://youtube.com/thenewstack?sub_confirmation=1)
