@@ -1,17 +1,12 @@
 
 <!--
-title: Linux：从无法启动的机器中恢复文件
+title: Linux从无法启动的机器中恢复文件
 cover: https://cdn.thenewstack.io/media/2024/09/ca82208c-anna-ogiienko-mqx2qynuhce-unsplash.jpg
 -->
 
 市面上有很多软件声称可以从即将损坏的驱动器中恢复数据，但为什么要冒着购买未经验证产品的风险呢？以下是一些免费的选择。
 
 > 译自 [Linux: Recover Files From a Machine That Won't Boot](https://thenewstack.io/linux-recover-files-from-a-machine-that-wont-boot/)，作者 Jack Wallen。
-
-
-# Linux：从无法启动的机器中恢复文件
-
-![Featued image for: Linux: Recover Files From a Machine That Won’t Boot](https://cdn.thenewstack.io/media/2024/09/ca82208c-anna-ogiienko-mqx2qynuhce-unsplash-1024x682.jpg)
 
 让我来为你设定一下场景。
 
@@ -51,15 +46,16 @@ cover: https://cdn.thenewstack.io/media/2024/09/ca82208c-anna-ogiienko-mqx2qynuh
 
 无论哪种方式，假设都是关于操作系统的。如果是这样，你需要做以下操作：
 
-- 在另一台机器上安装
+1. 在另一台机器上安装
 [Unetbootin](https://unetbootin.github.io)。
-- 打开应用程序。
-- 插入闪存驱动器。
-- 选择你想要下载和安装的发行版（我建议使用 Ubuntu）。
-- 选择用于存放可启动 Linux 操作系统的闪存驱动器。
-- 点击确定（图 1）。
+2. 打开应用程序。
+3. 插入闪存驱动器。
+4. 选择你想要下载和安装的发行版（我建议使用 Ubuntu）。
+5. 选择用于存放可启动 Linux 操作系统的闪存驱动器。
+6. 点击确定（图 1）。
 
--
+![](https://cdn.thenewstack.io/media/2024/09/64697962-unetbootin1.jpg)
+
 图 1：Unetbootin 主窗口非常用户友好。
 
 创建可启动驱动器后，将其从机器中取出并插入无法启动的机器。启动机器，并确保选择 USB 驱动器作为主要启动设备（如何操作取决于你的机器和 BIOS）。
@@ -82,7 +78,3 @@ cover: https://cdn.thenewstack.io/media/2024/09/ca82208c-anna-ogiienko-mqx2qynuh
 我使用过以上两种方法从无法启动的机器上恢复文件，并且一直很成功。正如我所说，您唯一可能遇到的问题是源驱动器正在损坏，甚至 Linux 也无法访问它。
 
 祝你好运！
-
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-
-科技发展迅速，不要错过任何一集。订阅我们的 YouTube 频道，观看我们所有的播客、访谈、演示等。
