@@ -132,7 +132,7 @@ CNCF WG 平台有一份非常棒的工作，它为白皮书做出了贡献，并
 
 **包管理**是自动执行软件包的安装、升级、配置和删除的过程，确保软件依赖项在不同的环境中（Helm 图表、APT 等）正确管理和维护。
 
-![](https://miro.medium.com/v2/resize:fit:1130/format:webp/1*KNPscYOo4u9Goehds4d2vQ.png)
+![](https://miro.medium.com/v2/resize:fit:1108/format:webp/1*2-0X6y7byYNcrxhD09TzKA.png)
 
 *像 Helm 图表这样的包管理*
 
