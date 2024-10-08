@@ -1,0 +1,82 @@
+
+<!--
+title: 构建内部开发者平台：四大支柱
+cover: https://cdn.thenewstack.io/media/2024/10/887ec546-idp-4-pillars.jpg
+-->
+
+基于这些原则设计的 IDP 简化了平台团队的操作，并使开发人员能够更快、更安全地移动。
+
+> 译自 [Building an Internal Developer Platform: 4 Essential Pillars](https://thenewstack.io/building-an-internal-developer-platform-4-essential-pillars/)，作者 Ritesh Patel。
+
+随着组织越来越多地采用云原生架构、Kubernetes 和现代 DevOps 实践，平台工程团队正在成为赋能开发者的关键职能。这些团队的主要职责之一是构建[内部开发者平台 (IDP)](https://thenewstack.io/platform-engineering/)，以简化基础设施管理、治理和开发者体验。
+
+IDP 提供了管理云基础设施、应用程序部署和安全要求所需的抽象和工具。它为开发人员提供了一种高效的自助服务方式，将他们的代码交付到生产环境。
+
+构建成功的[内部开发者平台](https://thenewstack.io/7-core-elements-of-an-internal-developer-platform/) 的四大支柱——基础设施即代码、策略即代码、GitOps 和开发者门户——共同简化了平台团队的操作，并使开发人员能够更快、更安全地进行操作。
+
+## 1. 基础设施即代码
+
+[基础设施即代码](https://thenewstack.io/infrastructure-as-code/) (IaC) 是任何现代云原生平台的支柱。它允许平台工程团队使用代码以编程方式管理和配置基础设施（例如计算、存储和网络资源）。IaC 确保基础设施定义是版本控制的、可重用的，并且在不同环境中保持一致。
+IaC 在内部开发者平台中的一些关键优势包括：
+
+- **自动化和可扩展性**：基础设施可以根据代码更改自动扩展或修改。[Terraform](https://roadmap.sh/terraform)、[AWS](https://aws.amazon.com/?utm_content=inline+mention)CloudFormation 和[Pulumi](https://www.pulumi.com?utm_content=inline+mention)等工具是定义基础设施即代码的流行工具。
+- **一致性**：通过声明性地定义基础设施，环境得到一致配置，防止配置漂移和手动错误。
+- **版本控制**：基础设施更改可以被跟踪和审计，这使得在发生错误配置的情况下，回滚和灾难恢复变得简单。
+
+例如，使用 Terraform 为多区域 Kubernetes 部署定义基础设施模板，允许团队在不同的云提供商之间一致地创建环境。
+
+如果没有 IaC，基础设施管理的手动流程可能会变得容易出错、缓慢且难以随着需求的增长而扩展。IaC 是使 IDP 可靠、可预测和可扩展的基础。
+
+## 2. 策略即代码
+
+安全、治理和合规性是管理现代基础设施不可或缺的一部分，但手动策略执行无法很好地扩展，并且会造成瓶颈。[策略即代码](https://nirmata.com/2024/06/24/top-10-reasons-why-policy-as-code/) (PaC) 通过以编程方式定义治理、安全和操作策略来帮助解决这一挑战。这些策略在云环境、Kubernetes 集群和 CI/CD 管道中自动执行。本质上，它们将“安全下移”到平台中。
+
+PaC 在 IDP 中的关键优势包括：
+
+- **自动合规性**：可以编写策略来执行安全控制，例如防止使用不安全配置进行部署或阻止访问未经批准的服务。[Nirmata Kyverno](https://nirmata.com/kyverno-oss/)、[Open Policy Agent](https://thenewstack.io/5-things-you-didnt-know-about-open-policy-agent/)(OPA) 和[HashiCorp](https://www.hashicorp.com/?utm_content=inline+mention)Sentinel 等工具允许团队定义和执行这些策略。
+- **可扩展性**：通过自动化策略执行，您可以降低错误配置、安全漏洞和合规性问题的风险，即使您的基础设施规模扩大。
+- **可见性和审计**：PaC 提供了策略决策和更改的清晰、可审计的记录，这对于满足监管要求至关重要。
+
+例如，团队可以使用 Kyverno 等准入控制器，在创建新命名空间时，在 Kubernetes 中生成默认网络安全策略、配额和限制。
+
+如果没有 PaC，执行安全和合规性策略将成为一个手动、容易出错的过程，从而减缓开发速度。PaC 使安全和治理成为自动化工作流程的一部分，从而在不牺牲安全性的情况下实现速度。
+
+## 3. GitOps
+
+[GitOps](https://thenewstack.io/4-core-principles-of-gitops/) 是一种操作模型，其中所有系统配置，包括应用程序部署、基础设施和策略，都通过 Git 存储库进行管理。通过采用 GitOps，平台团队可以标准化更改方式，并确保实际系统状态与 Git 中定义的预期状态相匹配。
+GitOps 在 IDP 中具有关键优势，包括：
+
+- **自动化部署**：GitOps 使得应用程序和基础设施更改的部署自动化，从而减少了手动错误并提高了效率。
+- **可追溯性和审计**：所有更改都记录在 Git 历史记录中，从而提供完整的审计跟踪，并使回滚变得容易。
+- **协作和版本控制**：GitOps 促进团队之间的协作，并提供版本控制，以确保更改的透明度和可重复性。
+
+例如，开发人员可以将他们的应用程序代码推送到 Git 存储库，触发自动构建、测试和部署到 Kubernetes 集群。
+
+GitOps 确保了基础设施和应用程序的声明性管理，从而简化了操作并提高了可靠性。
+
+## 4. 开发者门户
+
+开发者门户是 IDP 的关键组成部分，它为开发人员提供了一个单一来源，以访问他们需要的信息和工具来构建、部署和管理应用程序。开发者门户通常包括以下功能：
+
+- **文档和教程**：提供有关平台、工具和最佳实践的全面文档和教程。
+- **自助服务工具**：允许开发人员创建资源、部署应用程序和管理其环境，而无需依赖平台团队。
+- **监控和日志记录**：提供对应用程序和基础设施性能的实时监控和日志记录。
+- **社区论坛**：为开发人员提供一个平台，让他们可以互相交流、分享知识并解决问题。
+
+开发者门户通过提供一个集中式、用户友好的界面来简化开发人员体验，从而提高效率和生产力。
+
+通过构建一个强大的开发者门户，平台团队可以为开发人员提供一个无缝的体验，让他们能够专注于构建应用程序，而不是担心基础设施管理。
+
+## 结论
+
+构建内部开发者平台不仅仅是创建工具；而是要提供一种无缝的体验，赋能开发人员，同时保持运营效率、安全性和合规性。基础设施即代码、策略即代码、GitOps 和开发者门户这四个基础组件是实现这一目标的基石。
+
+当这些核心支柱有效整合时，平台工程团队能够提供一个强大、可扩展且安全的内部开发者平台，为开发团队推动创新和效率。无论您是快速发展的初创公司还是大型企业，实施这些组件都将为您的 IDP 打下长期成功的基础。通过采用这些原则和工具，您的平台工程团队可以创建一个强大且对开发人员友好的 IDP，加速软件交付，同时确保治理、安全性和可扩展性。
+
+要了解有关如何开始构建开发平台的更多信息，请参加 [KubeCon 北美 2024](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/) 的此会议：
+
+> **为平台工程师创建铺好的道路**：Ritesh Patel，Nirmata；Abby Bangser，Syntasso；Viktor Farcic，Upbound；Nicholas Morey，[Akuity](https://akuity.io/?utm_content=inline+mention)；以及 Praseeda Sathaye，亚马逊
+> 2024 年 11 月 13 日星期三，下午 5:25 - 6:00 MST
+> Salt Palace | Level 1 | Grand Ballroom BDF
+
+*要了解有关 Kubernetes 和云原生生态系统的更多信息，请加入我们参加 **KubeCon + CloudNativeCon 北美**，于 2024 年 11 月 12 日至 15 日在犹他州盐湖城举行。*
