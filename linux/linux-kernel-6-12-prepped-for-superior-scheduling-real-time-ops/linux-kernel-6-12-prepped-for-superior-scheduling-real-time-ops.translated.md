@@ -1,0 +1,59 @@
+# Linux 内核 6.12 为卓越调度和实时操作做好准备
+
+![Linux 内核 6.12 为卓越调度和实时操作做好准备的特色图片](https://cdn.thenewstack.io/media/2024/07/ecabf01c-cornelius-ventures-ak81vc-kcf4-unsplash-linux-1024x682.jpg)
+
+[Linux 社区](https://thenewstack.io/learning-linux-start-here/) 正在准备发布 Linux 内核的 6.12 版本。6.12 版本目前处于“发布候选”阶段，截至 2024 年 9 月 29 日，6.12rc1 可用。虽然此内核版本可能不包含重大进步，但它确实包含一些有趣且有用的功能，展示了这个迷人操作系统内核的向前发展。
+
+Linux 6.x 内核带来了对实时功能和内核调度的支持，使其有别于之前的 4.x 和 5.x 实现。
+
+- 内核 4.x (2015) 添加了电源管理和性能增强、对 ARM 处理器的支持以及安全功能。
+- 内核 5.x (2019) 添加了改进的 CPU 调度、对更多现代硬件的支持以及更多电源/效率功能。
+- 内核 6.x (2022) 添加了 Rust 支持、对更新的英特尔处理器的重要 CPU 支持，以及苹果 M1 和 AMD 处理器。
+
+这三个最新的内核版本展示了持续的路径，以跟上硬件创新，增加安全性，提高效率和电源管理，以及内核性能和调度。
+
+“rc1”状态怎么样？发布候选版本不接受任何额外功能，只实现必要的修复。发布候选版本已经过测试，将其置于预发布状态，因为最终的错误和更改正在到位。
+
+内核 6.12rc1 的大部分功能集中在驱动程序更新（约 55%）。它包括两个重大增强和对现有功能的增量更改。这些可能听起来并不令人兴奋，但它们实际上代表着真实而实用的进步。
+
+## 两个值得期待的新功能
+
+[Linus Torvalds](https://thenewstack.io/linus-torvalds-c-vs-rust-debate-has-religious-undertones/) 对内核 6.12rc1 的正式公告重点介绍了此版本的两个主要功能。第一个是对实时应用程序支持的改进，第二个是更好的内核调度。
+
+### 使用 PREEMPT_RT 支持实时计算
+
+实时功能对系统在事件与其响应之间的时间约束进行强制执行。此功能对于支持时间敏感的应用程序至关重要，代表了内核的重大进步。这可以说是新版本中更重要的部分。它一直受到内核日志记录组件的阻碍——现在已经解决了这个问题。虽然实时计算功能已在 Ubuntu 和其他版本中可用，但这是该功能首次包含在主线内核中。
+
+### 使用 sched_ext 的新内核调度
+
+随着内核 4.x、5.x 和 6.x 的性能和效率趋势，新的 *sched_ext* 调度程序允许使用 [eBPF 程序](https://thenewstack.io/ebpf-reliable-policy-setting-and-enforcement/) 进行调度加载。这些程序在沙箱环境中运行，扩展了内核功能，而无需更改原始代码。
+
+## 更多功能
+
+针对各种功能（包括 USB 和 Thunderbolt）的设备驱动程序更新占此版本的绝大部分（约 55%）。但是，在广泛的组件中还有其他重大改进。
+
+### 更多 Rust
+
+Linux 从 6.1 版本开始支持使用 [Rust 进行内核开发](https://thenewstack.io/rusts-rapid-rise-foundation-fuels-language-growth/)。6.12rc1 版本增强了这一点。Rust 和 C 是两种内核开发语言，尽管目前 Rust 支持肯定有限。随着维护人员继续集成它，预计在接下来的几个内核版本中将看到改进的支持。
+
+### 内核恐慌 QR 码
+
+新内核还提供可选功能，用于显示内核恐慌事件的 QR 码，提供易于收集和存储在智能手机或类似设备上的详细信息。这是一个用 Rust 编写的全新内核功能的绝佳示例。请注意，它默认情况下处于禁用状态。
+
+### 架构改进
+
+RC1 包含围绕常见架构的改进。对 x86 和 ARM 处理器的额外支持可能是最令人感兴趣的。上面提到的实时集成增加了整体 CPU 改进。
+
+### 对树莓派 5 和骁龙 X1 的处理器支持
+
+新内核还为基于 Broadcom BCM2712 的树莓派 5 提供原生支持。这是基础支持，因此预计在接下来的内核版本中会持续取得进展。对 Qualcomm 的骁龙 X1 处理器提供了额外的支持，该处理器存在于各种平台中。
+
+## 总结
+Linus Torvalds estimates that approximately 55% of the release updates are for driver updates, another 5% for documentation, and 10% for tools. The remaining 25% focuses on major changes, such as *PREEMPT_RT*, *sched_ext*, and other changes listed above. Overall, this release contains over 11,000 commits from approximately 1,700 different authors.
+
+Kernel 6.12 is expected to remain in various candidate releases throughout October and November, with the final release likely to be available in early December. As always, you can get the latest (and archived) kernel releases from the [kernel.org](https://www.kernel.org/) website.
+
+Do you need to upgrade? This largely depends on whether you need specific feature enhancements and whether you can tolerate frequent kernel changes in the coming months. Most Linux users and administrators should continue using the current stable kernel 6.11.2 release for now. However, if you are developing time-sensitive applications, need the latest drivers, or are a power user of the [Raspberry Pi 5](https://thenewstack.io/the-new-2gb-raspberry-pi-5-another-option-for-linux-sysadmins/), you might be interested in integrating the new kernel.
+
+[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
+Technology is moving fast, don't miss an episode. Subscribe to our YouTube channel to watch all our podcasts, interviews, demos, and more.
