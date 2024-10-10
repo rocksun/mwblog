@@ -16,7 +16,7 @@ Checks by Google是从Google孵化器诞生的，Checks by Google的联合创始
 
 Checks by Google 与 Vertex（Google Cloud 提供的用于生成式 AI 的产品）集成，但也可以配合使用其他主流模型提供商。Vertex 提供 150 多个生成式 AI 模型，包括 Anthropic 的 Claude 和 Mistral。
 
-## App 合规
+## App Compliance
 
 Google Checks 提供三项服务：App Compliance（现已推出）、Code Compliance 和 AI Safety（目前处于封闭测试阶段，有候补名单）。
 
