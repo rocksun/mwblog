@@ -1,0 +1,36 @@
+# Runtime Context: Missing Piece in Kubernetes Security
+![Featued image for: Runtime Context: Missing Piece in Kubernetes Security](https://cdn.thenewstack.io/media/2024/10/27dbbbbc-runtime-context-missing-piece-kubernetes-security-1024x576.jpg)
+More and more organizations rely on [Kubernetes](https://thenewstack.io/kubernetes/) to deploy and manage their applications. However, traditional security approaches often fall short of addressing the [unique challenges](https://thenewstack.io/kubernetes-security-report-evolving-landscape-of-devsecops/) posed by these dynamic, containerized environments. Integrating runtime context into Kubernetes security creates a feedback loop between posture management and runtime security, significantly boosting an organization’s overall security.
+
+## Limitations of Static Security Measures
+Conventional [security strategies](https://roadmap.sh/cyber-security) typically rely on static analysis and predefined rules. While these methods are valuable, they struggle to keep pace with the dynamic nature of Kubernetes environments. Containers are ephemeral, workloads are constantly shifting, and the attack surface is ever-changing. Static security measures alone cannot provide the real-time insights necessary to detect and respond to emerging threats effectively.
+
+Runtime context is the missing piece in the Kubernetes security puzzle. By continuously monitoring and analyzing the behavior of applications and workloads during execution, security teams can gain invaluable insights into potential vulnerabilities and anomalies. This real-time information allows for more accurate threat detection, reduced false positives and faster incident response.
+
+## Synergy of Posture Management and Runtime Security
+To harness the power of runtime context, organizations need to establish a feedback loop between posture management and [runtime security](https://thenewstack.io/container-security-and-the-importance-of-secure-runtimes/). This approach requires a unified platform capable of handling both aspects seamlessly.
+
+Here’s how this synergy works:
+
+**Posture management**: This involves assessing and enforcing security configurations, policies and best practices across the[Kubernetes environment](https://roadmap.sh/kubernetes). It establishes a baseline for security and compliance.**Runtime security**: This component continuously monitors the environment. In addition to detecting anomalies, potential threats and policy violations in real time, it assesses the needs of the workloads running on the infrastructure. This ensures that the information provided to posture management and static security is based on real-world behavior rather than relying solely on industry best practices.**Feedback loop**: Insights gained from runtime security feed back into posture management, enabling continuous refinement of policies and configurations based on actual behavior and emerging threats.
+## eBPF in Enhancing Runtime Security
+Extended Berkeley Packet Filter ([eBPF](https://thenewstack.io/what-is-ebpf/)) technology allows efficient, low-overhead monitoring and tracing of system calls, network activity and other critical operations without modifying the kernel or applications. Here are some key use cases where eBPF lends itself to Kubernetes security:
+
+**Automated secure computing mode (seccomp) profile generation**: eBPF can be used to automatically generate and enforce[seccomp](https://thenewstack.io/4-ways-to-use-kernel-security-features-for-process-monitoring/)profiles based on observed runtime behavior. This approach takes the guesswork out of creating seccomp profiles, reducing the risk of overly permissive or overly restrictive policies.**Real-time system call monitoring**: eBPF enables real-time monitoring of system calls, providing immediate insights into potential security violations or anomalous behavior.**Automated network policy generation**: eBPF can trace network activity at the kernel level, offering deep visibility into container communications and potential network-based threats. This data can then be leveraged to automate the creation of network policies.**Reachable vulnerabilities**: eBPF can help judge whether a vulnerability is reachable and in use. This capability can be used to prioritize security patching and ensure that time and resources are directed to the highest impact security work.
+## Benefits of a Unified Platform
+Implementing this comprehensive approach to Kubernetes security requires a unified platform capable of integrating posture management, runtime security and eBPF-based monitoring. Such a platform offers several key advantages:
+
+**Holistic visibility**: A unified platform provides a single pane of glass for viewing and managing all aspects of Kubernetes security, from configuration to runtime behavior.**Contextual alerts**: By combining insights from posture management and runtime security, alerts become more contextual and actionable, reducing alert fatigue and enabling faster response times and more focused responses.**Automated policy refinement**: The feedback loop between runtime observations and posture management allows continuous, automated refinement of security policies based on actual behavior.**Reduced complexity**: A single platform simplifies the security stack, reducing the operational overhead of managing multiple disparate tools.
+## Conclusion
+As Kubernetes environments continue growing in complexity and scale, traditional security approaches are no longer sufficient. Organizations can improve their Kubernetes security posture by using a unified platform that integrates runtime context, posture management, runtime security and advanced technologies like eBPF. This comprehensive approach provides the real-time insights, adaptability and automation necessary to protect against evolving threats in today’s dynamic cloud-native landscapes.
+
+The future of Kubernetes security lies in platforms that can seamlessly integrate these components, offering a holistic, context-aware approach to protecting containerized applications and infrastructure. As the threat landscape continues to evolve, organizations that embrace this unified, runtime-centric security model will be best positioned to defend against sophisticated attacks and ensure the integrity of their Kubernetes environments.
+
+*For insights into eBPF’s transformative potential in cloud-native security, attend the **eBPF security use cases panel at Cilium and eBPF Day** on Nov. 12, part of KubeCon + CloudNativeCon North America 2024. *
+*To continue the discussion, visit ARMO at booth Q26 at KubeCon in Salt Lake City, Nov. 12-15.*
+*To learn more about Kubernetes and the cloud native ecosystem, join us at **KubeCon + CloudNativeCon North America**, in Salt Lake City, Utah, on Nov. 12-15, 2024.*
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
