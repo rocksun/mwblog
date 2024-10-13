@@ -17,6 +17,7 @@ GeForce NOW 的普及程度不断提高，目前拥有 2500 万订阅用户。�
 [KubeVirt](https://kubevirt.io/) 应运而生，这是一个开源平台，用于在本地或云中 [运行容器和虚拟化工作负载](https://thenewstack.io/virtualization-and-containers-better-together/)。
 
 [Nvidia 是基于高端硬件构建的](https://thenewstack.io/nvidias-hardware-roadmap-and-its-impact-on-developers/) 用于游戏。那么 Nvidia 如何使用容器和 VM 构建在线游戏平台呢？
+
 首先，一些背景信息。
 
 ## 什么是 KubeVirt？
@@ -24,7 +25,8 @@ GeForce NOW 的普及程度不断提高，目前拥有 2500 万订阅用户。�
 KubeVirt 提供了一个统一的共享平台，开发人员和管理员可以在其中构建、修改和部署容器和 VM 中的应用程序。KubeVirt 允许使用与管理 Kubernetes 相同的软件来管理 VM，无论您使用 [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) 还是自己动手 (DIY)。
 
 ![KubeVirt 架构](https://cdn.thenewstack.io/media/2024/10/327082ae-kubevirt-architecture-simple-1024x448.png)
-来源：[KubeVirt](https://kubevirt.io/user-guide/architecture/)
+
+*来源：[KubeVirt](https://kubevirt.io/user-guide/architecture/)*
 
 KubeVirt 将虚拟机放置在 Linux 容器中。因此，您可以像管理平台上的其他基于容器的资产一样管理 VM。KubeVirt 包括对 VM 快照、实时迁移、内存热插拔、非一致内存访问 (NUMA)、[巨页](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/performance_tuning_guide/s-memory-transhuge)、虚拟网络和存储的支持。您可以在大规模处理虚拟机时获得所有预期的 VM 功能，但可以通过与用于 Kubernetes 的相同工具进行管理。
 
@@ -39,6 +41,7 @@ Nvidia 必须满足数千名游戏玩家的需求，他们期望的游戏体验�
 KubeVirt 是 Kubernetes 平台中 VM 的托管层，其他工具提供自动化和管理。[Ansible](https://kubevirt.io/2023/Managing-KubeVirt-VMs-with-Ansible.html) 是一个出色的 KubeVirt 自动化工具，[GitOps](https://kubevirt.io/user-guide/cluster_admin/gitops/) 也是如此，它在 Git 存储库中维护集群的状态。
 
 KubeVirt 是一个可行的选择，可以承担当前在其他 VM 平台上的工作负载。您可以使用开源项目 [Konveyor forklift](https://github.com/kubev2v/forklift.github.io/blob/main/index.md) 将它们迁移到 KubeVirt，正如 [此视频所示](https://www.youtube.com/watch?v=RnoIP3QjHww)。
+
 一旦您启动并运行，平台的开源社区内将会有很多活动。在 2024 年 6 月的 DevConf 上，[Red Hat](https://www.openshift.com/try?utm_content=inline+mention) 的 [Lee Yarwood](https://www.linkedin.com/in/leeyarwood/) 探讨了 KubeVirt 中 [VM 创建现状](https://www.youtube.com/watch?v=HqupumX5Zys)。在 2023 年的 Cloud Native Rejekts 上，Cloudera 的 [Shane Kumpf](https://www.linkedin.com/in/shane-kumpf-024aa222/) 展示了该公司如何使用 KubeVirt [转向超融合基础设施](https://www.youtube.com/watch?v=kMyAkoiXXrg)。[加入社区](https://kubevirt.io/community/) 并与其他用户互动。
 
 ## 结论
@@ -46,6 +49,3 @@ KubeVirt 是一个可行的选择，可以承担当前在其他 VM 平台上的�
 KubeVirt 可扩展到数千个用户，为由一组工具管理的 VM 和容器提供并排平台。将容器和 VM 的控制平面和管理相结合，减轻了开发人员和系统管理员的负担。
 
 将您的工作负载从另一个虚拟化平台迁移到 KubeVirt 可以从 Konveyor 开始，然后由其他工具自动执行和管理。KubeVirt 是一种可行的替代虚拟化平台，提供标准的 VM 功能、合作伙伴生态系统和扩展性能。
-
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube 频道以流式传输我们所有的播客、访谈、演示等。

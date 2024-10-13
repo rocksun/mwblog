@@ -6,7 +6,7 @@ cover: https://cdn.thenewstack.io/media/2024/10/0e0f5407-known-unknown.jpg
 
 已知/未知矩阵对于理解你的可观测性方案的实施情况非常有帮助。
 
-> 译自 [The 4 Evolutions of Your Observability Journey](https://thenewstack.io/the-4-evolutions-of-your-observability-journey/)，作者 Hazel Weakly。
+> 译自 [The 4 Evolutions of Your Obseryvability Journey](https://thenewstack.io/the-4-evolutions-of-your-observability-journey/)，作者 Hazel Weakly。
 
 在进行[可观测性](https://thenewstack.io/observability/)之旅时，每个公司都会经历几个具体的阶段。了解这些阶段是如何随着可观测性实践的成熟而展开和形成的，可以帮助您识别何时会遇到某些类型的挑战，以及何时会真正需要某些工具和实践来帮助应对这些挑战。
 
