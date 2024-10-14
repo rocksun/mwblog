@@ -46,9 +46,9 @@ cover: https://cdn.thenewstack.io/media/2024/10/bcdf2973-what-platform-engineeri
 *Andreia Otto 和 Ravikanth Mogulla 在 DevOpsDays 伦敦大会上解释了阿迪达斯的 CI/CD 管道（来源：Jennifer Riggins）。*
 
 在阿迪达斯，平台工程团队提供[内部开发者平台](https://thenewstack.io/how-to-build-an-internal-developer-platform-like-a-product/)、[Kubernetes](https://thenewstack.io/kubernetes/)、可观察性工具和基于 Kafka 的数据平台。然后，SRE 团队位于平台和应用程序开发团队之间。
-奥托表示，迁移到新平台的目标之一是通过自动化 Jenkins 中从推送到 Kubernetes 部署的所有内容来赋能开发人员。然后，所有内容都与 Microsoft Teams 集成，以提高整个工程组织的透明度。
+Otto 表示，迁移到新平台的目标之一是通过自动化 Jenkins 中从推送到 Kubernetes 部署的所有内容来赋能开发人员。然后，所有内容都与 Microsoft Teams 集成，以提高整个工程组织的透明度。
 
-“如果允许分支或任何已部署的代码进入生产环境，我们有一个自动化程序会在 Teams 中弹出一个消息，你可以点击按钮”来批准发布，奥托说。“有一个意识上的决定，即不要将所有内容都自动化到生产环境。有些团队比较成熟，有些团队比较不成熟。”
+“如果允许分支或任何已部署的代码进入生产环境，我们有一个自动化程序会在 Teams 中弹出一个消息，你可以点击按钮”来批准发布，Otto 说。“有一个意识上的决定，即不要将所有内容都自动化到生产环境。有些团队比较成熟，有些团队比较不成熟。”
 
 一个更成熟的团队可能已经采用了渐进式交付技术，例如 [金丝雀部署](https://thenewstack.io/5-deployment-strategies-the-pros-and-cons/)，但即使是他们也需要在进入生产环境之前进行最终批准。
 
@@ -65,14 +65,14 @@ cover: https://cdn.thenewstack.io/media/2024/10/bcdf2973-what-platform-engineeri
 - 代码重复。
 - 安全。
 
-“以前，我们只有一个需要进行故障排除的单体大型服务，”奥托作为 SRE 团队说。“现在，如果出现问题，我们有所有这些东西需要弄清楚，以确保我们拥有适当的日志、适当的跟踪，并且整个 CI/CD 也是独立的。这意味着复杂性要高得多。”
+“以前，我们只有一个需要进行故障排除的单体大型服务，”Otto 作为 SRE 团队说。“现在，如果出现问题，我们有所有这些东西需要弄清楚，以确保我们拥有适当的日志、适当的跟踪，并且整个 CI/CD 也是独立的。这意味着复杂性要高得多。”
 
 ![Andreia Otto 和 Adidas 的 Ravikanth Mogulla 展示了他们的系统在从单体架构迁移到微服务后变得多么复杂。](https://cdn.thenewstack.io/media/2024/10/06fc5cdf-adidas-tech-complexity-1-1024x768.jpg)
 Andreia Otto 和 Adidas 的 Ravikanth Mogulla 向 DevOpsDays 伦敦的观众展示了他们的系统在从单体架构迁移到微服务后变得多么复杂。（来源：Jennifer Riggins）
 
 在迁移之后，SRE 团队可能发现他们拥有了更多控制权，但系统的复杂性也大大增加了。
 
-“如果我们的团队知道一件事——我认为在座的各位也都知道——那就是你可以尽可能地做好准备，但事情总会出错，我们需要为此做好准备，”奥托告诉 DevOpsDays 的观众。
+“如果我们的团队知道一件事——我认为在座的各位也都知道——那就是你可以尽可能地做好准备，但事情总会出错，我们需要为此做好准备，”Otto 告诉 DevOpsDays 的观众。
 
 她的共同演示者，[Ravikanth Mogulla](https://www.linkedin.com/in/ravikanth-mogulla-6b713026/)，Adidas 的结账和支付网站可靠性工程师主管，表示团队面临着一些经典的挑战，但“我们开始在每一次事件中不断改进。”
 
@@ -145,7 +145,7 @@ Adidas SRE 团队切换到 [OpenTelemetry](https://thenewstack.io/what-is-opente
 - 网站可靠性工程专注于开发和运营。
 - 服务管理专注于流程创建和审计。
 
-但奥托说，你不会从事件管理开始。相反，你从为你的组织定义稳定性开始。她说，只有这样，你才能衡量它。
+但Otto 说，你不会从事件管理开始。相反，你从为你的组织定义稳定性开始。她说，只有这样，你才能衡量它。
 
 阿迪达斯将稳定性衡量为三个指标：
 
@@ -155,7 +155,7 @@ Adidas SRE 团队切换到 [OpenTelemetry](https://thenewstack.io/what-is-opente
 
 后者为电子商务平台的业务利益相关者创造了一种共同语言。
 
-“如果我们说我们有一个共同的 KPI，那么我们就不会陷入这种争论：我应该优先考虑价值吗？我应该优先考虑稳定性吗？不。我们有一个我们都理解的指标，”奥托说。对于阿迪达斯，坦率地说，对于大多数企业来说，“这都是关于金钱的”。
+“如果我们说我们有一个共同的 KPI，那么我们就不会陷入这种争论：我应该优先考虑价值吗？我应该优先考虑稳定性吗？不。我们有一个我们都理解的指标，”Otto 说。对于阿迪达斯，坦率地说，对于大多数企业来说，“这都是关于金钱的”。
 
 根据这三个优先级指标，某些事件被认定为重大事件。然后任命一名事件经理来协调所有相关团队之间的所有沟通，包括 SRE、开发人员和营销人员。
 
@@ -166,10 +166,10 @@ Adidas SRE 团队切换到 [OpenTelemetry](https://thenewstack.io/what-is-opente
 - 是否缺少测试？
 - 从流程上来说，发生了什么？
 
-奥托强调，这是一个有意[无责的验尸](https://thenewstack.io/top-12-best-practices-for-better-incident-management-postmortems/)，领导层尤其鼓励这样做，因为“进行事件简报的全部意义在于真正了解发生了什么并创建行动项目”。
+Otto 强调，这是一个有意[无责的验尸](https://thenewstack.io/top-12-best-practices-for-better-incident-management-postmortems/)，领导层尤其鼓励这样做，因为“进行事件简报的全部意义在于真正了解发生了什么并创建行动项目”。
 
 阿迪达斯通过服务管理团队运行的问题管理来结束事件，以便优先考虑下一步行动——寻求不断收紧事件管理反馈循环。
 
 虽然阿迪达斯在一年前就切换到了微服务架构，但 SRE 两人组最后说，可观察性和平台工程是一个持续的旅程，而不是目的地。
 
-“那是我们的旅程，从单体架构迁移到微服务。另一个正在使用[GenAI](https://thenewstack.io/ai/)出现，”奥托总结道。“最终会弹出其他东西——这是一个持续学习的过程。”
+“那是我们的旅程，从单体架构迁移到微服务。另一个正在使用[GenAI](https://thenewstack.io/ai/)出现，”Otto 总结道。“最终会弹出其他东西——这是一个持续学习的过程。”

@@ -1,17 +1,12 @@
 
 <!--
-title: Ubuntu Linux：安装 Suricata 入侵检测系统
+title: Ubuntu Linux：安装Suricata入侵检测系统
 cover: https://cdn.thenewstack.io/media/2024/09/ffe09c33-suricata.jpg
 -->
 
 Suricata 是一款高性能的开源网络分析和威胁检测软件，其功能包括警报、自动协议阻止、Lua 脚本和行业标准输出。
 
 > 译自 [Ubuntu Linux: Install the Suricata Intrusion Detection System](https://thenewstack.io/ubuntu-linux-install-the-suricata-intrusion-detection-system/)，作者 Jack Wallen。
-
-
-# Ubuntu Linux：安装 Suricata 入侵检测系统
-
-![Ubuntu Linux：安装 Suricata 入侵检测系统的特色图片](https://cdn.thenewstack.io/media/2024/09/ffe09c33-suricata-1024x746.jpg)
 
 入侵检测系统 (IDS) 对于监控网络流量和检查恶意活动至关重要。如果您的服务器是 [Linux 类型](https://thenewstack.io/linux-choose-an-installation-platform/)，您有很多选择，其中之一是 Suricata。
 
@@ -53,6 +48,7 @@ wget https://www.openinfosecfoundation.org/download/suricata-7.0.6.tar.gz
 ```
 
 您可能需要访问 [Suricata 下载页面](https://www.openinfosecfoundation.org/download/) 以确保您获取的是最新版本。
+
 使用以下命令解压文件：
 
 ```bash
@@ -148,6 +144,7 @@ sudo suricata-update
 ```bash
 sudo suricata -T -c /etc/suricata/suricata.yaml -v
 ```
+
 您不应该收到任何错误消息，测试将以以下内容结束：
 
 *注意：suricata：提供的配置已成功加载。正在退出。*
@@ -185,5 +182,3 @@ Suricata 捕获了错误警报。
 现在您已经启动并运行 Suricata（并成功测试），请查看 Suricata 规则的官方文档，这些规则可以帮助您充分利用这个免费的开源入侵检测系统。Suricata 是一个使用起来相当复杂的系统，因此我建议您通读官方文档以更好地了解其工作原理。
 
 如果您更喜欢使用 GUI 管理 Suricata，我建议您查看 [IDS Tower](https://idstower.com)。
-
-[YOUTUBE.COM/THENEWSTACK 技术发展日新月异，请勿错过任何一集。订阅我们的 YouTube 频道，观看我们所有的播客、采访、演示等内容。](https://youtube.com/thenewstack?sub_confirmation=1)
