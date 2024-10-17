@@ -88,9 +88,3 @@ Portworx 通过提供一致的 Kubernetes 存储、高可用性和跨环境的�
 正如福特和 Bechtle 等组织所证明的那样，拥抱平台工程对于提高开发人员生产力和减少管理基础设施所花费的时间至关重要。这确保了开发人员可以“一次构建，随处移植，随处运行”，而不会影响跨云的性能或可扩展性。
 
 加入我们下一场 [动手实验室](https://portworx.com/hands-on-labs/?utm_source=newstack&utm_medium=web&utm_campaign=px-brand)，了解 Portworx 如何增强您的内部开发平台，并加速您的软件开发和生成式 AI 项目。
-
-[
-YOUTUBE.COM/THENEWSTACK
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube
-频道，观看我们所有的播客、访谈、演示等。
-](https://youtube.com/thenewstack?sub_confirmation=1)

@@ -76,6 +76,7 @@ Ingress 已经运行良好，但现在是时候继续前进：即使是最受欢
 我们能否使用 Kubernetes 最近的动态资源分配 ([DRA](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)) 功能来请求访问用于网络目的的专用硬件？这就是 [Kubernetes 网络驱动程序](https://github.com/aojea/kubernetes-network-driver) (KND) 项目提出的建议。它可能会被采用，也可能不会被采用，但它勇敢地试图使 Kubernetes 适合其第二个十年。
 
 ## 最后的想法
+
 是的，Kubernetes 将经历青少年情绪的变化。但这没关系；它将得到一个社区的支持和指导，这个社区仍然热情好客、支持并决心不断创新，以确保 Kubernetes 成长为一个平衡的成年人。
 
 *要了解更多关于 Kubernetes 和云原生生态系统的信息，请加入我们参加 **KubeCon + CloudNativeCon 北美**，活动将于 11 月 12 日至 15 日在犹他州盐湖城举行。*
