@@ -78,8 +78,3 @@ Java 应用程序通常依赖于许多不同的库和框架。如果删除了其
 
 删除 Java 的难度是否意味着您必须永远与 Oracle 合作以满足您的 Java 需求？当然不是。有许多 TCK（技术兼容性工具包）认证的 OpenJDK 发行版可用，包括 [Azul Platform Core](https://www.azul.com/products/core)。
 
-[
-YOUTUBE.COM/THENEWSTACK
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube
-频道以流式传输我们所有的播客、访谈、演示等。
-](https://youtube.com/thenewstack?sub_confirmation=1)
