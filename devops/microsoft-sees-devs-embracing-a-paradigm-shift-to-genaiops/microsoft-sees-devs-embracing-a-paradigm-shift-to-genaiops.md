@@ -8,11 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/10/a92e2bdd-the-blowup-pguirt0m-m0-
 
 > 译自 [Microsoft Sees Devs Embracing a ‘Paradigm Shift’ to GenAIOps](https://thenewstack.io/microsoft-sees-devs-embracing-a-paradigm-shift-to-genaiops/)，作者 Jeffrey Burt。
 
-
-# 微软看到开发者拥抱“范式转变”迈向 GenAIOps
-
-![Featued image for: Microsoft Sees Devs Embracing a ‘Paradigm Shift’ to GenAIOps](https://cdn.thenewstack.io/media/2024/10/a92e2bdd-the-blowup-pguirt0m-m0-unsplash-1-1024x703.jpg)
-
 组织和开发者继续努力跟上围绕[生成式 AI (GenAI)](https://thenewstack.io/generative-ai-in-2023-genai-tools-became-table-stakes/) 的前所未有的创新速度，他们希望让新兴技术为他们所用。
 
 在 OpenAI 几乎两年前首次推出其 ChatGPT 聊天机器人后，GenAI 在企业中的快速采用导致需要通过 AI 模型的微调和[检索增强生成](https://thenewstack.io/writer-coms-graph-based-rag-alternative-to-vector-retrieval/) (RAG) 的使用来将技术弯曲到业务的意愿，这是一个允许组织用其企业数据增强[大型语言模型 (LLM)](https://thenewstack.io/llm/) 训练的过程，以便产生的 AI 更准确，更符合他们的需求。
@@ -57,9 +52,3 @@ Arenas 的博客是即将发布的一系列文章的开篇，这些文章将深�
 Patience 说，他预计企业和开发人员也将越来越多地采用 GenAIOps。
 
 “我认为 GenAIOps 将成为整体应用程序开发过程的关键部分，因为 AI 越来越多地集成到其中，”他说。“GenAIOps 和 MLOps 之间的区别将变得模糊，甚至可能消失，因为开发人员寻求一套通用的工具来处理 AI 模型，无论它们是传统的确定性模型还是概率性模型。”
-
-[
-YOUTUBE.COM/THENEWSTACK
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube
-频道，观看我们所有的播客、访谈、演示等。
-](https://youtube.com/thenewstack?sub_confirmation=1)
