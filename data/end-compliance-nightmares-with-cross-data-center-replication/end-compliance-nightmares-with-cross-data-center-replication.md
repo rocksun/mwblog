@@ -1,6 +1,6 @@
 
 <!--
-title: 跨数据中心复制，终结合规噩梦
+title: 终结跨数据中心复制的合规噩梦
 cover: https://cdn.thenewstack.io/media/2024/10/acb84668-privacy.jpg
 -->
 
