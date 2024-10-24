@@ -1,6 +1,6 @@
 
 <!--
-title: **超越监控：可观测性 2.0 如何彻底改变开发者体验**
+title: 超越监控：可观测性 2.0 如何彻底改变开发者体验
 cover: https://cdn.thenewstack.io/media/2024/10/d609c80d-james-harrison-vpoexr5wmr4-unsplash-scaled.jpg
 -->
 
