@@ -1,7 +1,7 @@
 
 <!--
 title: 让开发者更轻松地使用Postgres添加AI应用
-cover: https://cdn.thenewstack.io/media/2024/10/dfd06d6b-screenshot-2024-10-28-at-12.05.55 pm.png
+cover: ./cover.png
 -->
 
 借助 Timescale 的 AI 工具套件，您可以创建和管理向量嵌入以及关系数据，而无需外部工具或额外的基础设施。
