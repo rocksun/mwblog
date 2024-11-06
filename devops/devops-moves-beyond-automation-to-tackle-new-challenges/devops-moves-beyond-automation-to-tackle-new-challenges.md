@@ -63,7 +63,9 @@ CircleCI 建议开发人员使用渐进式推出，以帮助在更新期间安�
 在这方面，流水线标准化也可以被视为 DevOps 面临的下一个挑战之一。
 
 ## 改善组织
+
 [John Willis](https://www.linkedin.com/in/johnwillisatlanta/)，Botchagalupe Technologies 的创始人，三本 DevOps 书籍的作者，DevOps 文章的常客贡献者以及受欢迎的 DevOps 会议演讲者，在他的会议上重点介绍了组织转型。
+
 他的主题演讲“超越复选框：嵌入真正的网络弹性”提出了一个组织蓝图，用于将安全内在地融入业务能力。
 
 他谈到了“债务和弹性”，并描述了 GenAI 如何帮助识别问题和潜在解决方案。
