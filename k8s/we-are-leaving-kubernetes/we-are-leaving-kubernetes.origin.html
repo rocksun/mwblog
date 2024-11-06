@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta name="theme-color" content="#333333" />
+		<meta
+			name="google-site-verification"
+			content="NBio3hCkfn2FKJpqZritJpXuyKo54noPGZzWsjDIp-M"
+		/>
+
+		<!-- Mux Player -->
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/npm/@mux/mux-player@2.8.1"
+			as="script"
+			crossorigin="anonymous"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/@mux/mux-player@2.8.1"></script>
+
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+
+			gtag('consent', 'default', {
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				analytics_storage: 'denied',
+			});
+
+			gtag('js', new Date());
+			gtag('config', 'G-VWLSB1WXM5');
+		</script>
+
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js',
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-P4LP64V');
+		</script>
+		<!-- End Google Tag Manager -->
+
+		<script>
+			function updateConsent(analytical, targeting) {
+				gtag('consent', 'update', {
+					ad_storage: targeting ? 'granted' : 'denied',
+					ad_user_data: targeting ? 'granted' : 'denied',
+					ad_personalization: targeting ? 'granted' : 'denied',
+					analytics_storage: analytical ? 'granted' : 'denied',
+				});
+			}
+		</script>
+
+		<script>
+			if (
+				window.location.pathname.length <= 1 &&
+				window.location.hash.indexOf('https://') > -1
+			) {
+				window.location.replace(
+					'https://gitpod.io/' + window.location.hash,
+				);
+			}
+		</script>
+		<!-- <script src="/lottie/lottie-interactivity.js" async="false"></script> -->
+
+		<!-- Schema Markup for structured data -->
+		<!-- See https://developers.google.com/search/docs/appearance/structured-data/logo -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "Gitpod",
+				"description": "Gitpod is a cloud development environment for teams to efficiently and securely develop software. Improve your team's developer experience by coding in a CDE.",
+				"url": "https://www.gitpod.io/",
+				"image": "https://www.gitpod.io/images/media-kit/logo-mark.png",
+				"sameAs": [
+					"https://github.com/gitpod-io",
+					"https://twitter.com/gitpod",
+					"https://www.linkedin.com/company/gitpod/",
+					"https://www.youtube.com/@Gitpod"
+				],
+				"contactPoint": [
+					{
+						"@type": "ContactPoint",
+						"areaServed": "Worldwide",
+						"contactType": "customer service",
+						"url": "https://www.gitpod.io/contact/support"
+					}
+				]
+			}
+		</script>
+		<!-- End Schema Markup for structured data -->
+
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/ABCDiatype-Regular.woff"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/ABCDiatype-Bold.woff"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" rel="preload" href="/font.css" as="style" />
+		<link
+			rel="manifest"
+			href="/manifest.json"
+			crossorigin="use-credentials"
+		/>
+		<link rel="icon" type="image/png" href="/favicon192.png" />
+
+		<!-- This contains the contents of the <svelte:head> component, if
+	     the current page has one -->
+		
+		<link href="../_app/immutable/assets/0.5fdba2eb.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/card.8d8a578d.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/button.a8f10c71.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/13.b00ecd40.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/inputs-half.525edd7c.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/input.b25ef039.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/tooltip.d96b3ae5.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/section.93d0668f.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/link-icon-external.2528bf39.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/post-content-layout.dd466701.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/markdown-commons.ca7631c7.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/prism-solarized-light.82b64bf6.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/avatars.990bf377.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.66b8f892.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.6e84c2c4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.097c0f12.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/control.c2cf8273.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.f6e118cf.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.a4192956.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.46f39c76.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/segment.964d9f72.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.0be94345.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/constants.a6a2d816.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/helpers.5449b8e0.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/card.d745f8e4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/button.a2f62897.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.6fdb8fd3.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/eventforwarder.98fde950.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/modal.a838924e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/display-banner.4eeba630.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/navigation.bb2acd87.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/homepage-link-button.4a3911b7.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/buttons-wrapper.2ec4c60e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/arrow.814e148c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.82aa1689.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/link-button.af79ffa8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/logo.34c7bc75.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.70f5a472.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.6f9d1f14.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.1dd602cb.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/13.75a988d5.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/code-fence.261ef5f2.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/download.7eb36729.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/inputs-half.7f04d5c1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/input.7de84333.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/tooltip.c41d5ec6.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/submission-success.5fcea05d.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/support.49198c80.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/card-small.260122a1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/base.998c7d0c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.763d9ac6.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/section.7fdc2952.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/gitpod-illustration.8b077235.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/wrapper.cb90903c.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/link-icon-external.f680077d.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/open-graph.ba1113ae.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/dynamic-import-helper.be004503.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/utils.724952a3.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/post-content-layout.90ddce4e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/avatars.61f68a18.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/post-preview.ab2a5959.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/pill.0810ab9e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/feedback-widget.aa810d19.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/textarea.f55fbda8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/t-button.170ded52.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/more-articles.6e34080d.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/explore.8557a1d8.js"><title>We’re leaving Kubernetes - Blog</title><!-- HEAD_svelte-1qjp6qm_START --><link rel="canonical" href="https://www.gitpod.io/blog/we-are-leaving-kubernetes"><!-- HEAD_svelte-1qjp6qm_END --><!-- HEAD_svelte-1gphxsz_START --><link rel="preload" as="image" href="/images/blog/blog-banner-default-optimal.webp"><!-- HEAD_svelte-1gphxsz_END --><!-- HEAD_svelte-1yxhgdz_START --><meta name="keywords" content="gitpod, dev environment, developer environment, devops, cloud ide, github ide, gitlab ide, javascript, online ide, web ide, code review, remote development, cloud development, ready to code, cde, cloud development environment, platform engineering, developer experience, DevX, developer velocity"><meta name="description" content="After six years of running our CDE on Kubernetes we've learned Kubernetes is not the right choice for us. Here's why."><meta property="og:image" content="https://www.gitpod.io/images/blog/we-are-leaving-kubernetes/teaser.jpg"><meta property="og:description" content="After six years of running our CDE on Kubernetes we've learned Kubernetes is not the right choice for us. Here's why."><meta property="og:title" content="We’re leaving Kubernetes - Blog"><meta property="og:type" content="article"><meta property="og:url" content="http://sveltekit-prerender/blog/we-are-leaving-kubernetes"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@gitpod"><meta name="twitter:creator" content="@gitpod"><meta name="twitter:title" content="We’re leaving Kubernetes - Blog"><meta name="twitter:description" content="After six years of running our CDE on Kubernetes we've learned Kubernetes is not the right choice for us. Here's why."><meta name="twitter:image" content="https://www.gitpod.io/images/blog/we-are-leaving-kubernetes/teaser.jpg"><meta name="twitter:image:src" content="https://www.gitpod.io/images/blog/we-are-leaving-kubernetes/teaser.jpg"><!-- HEAD_svelte-1yxhgdz_END -->
+	</head>
+
+	<body class="light">
+		<div id="svelte">
+
+
+
+
+
+<div class="flex flex-col min-h-screen">
+
+<div id="choose-project-observer-target-top"></div>
+<nav class="fixed bg-bg z-40 mx-auto w-full border-b border-solid border-transparent border-t-0 svelte-v1kmkb" aria-label="Main"><div><a href="#main-content" class="transition-all duration-200 delay-[50ms] inline-block shadow-md dark:shadow-slight font-semibold whitespace-nowrap bg-sand-dark dark:bg-light-black text-important dark:text-important hover:bg-sand-dark-hover focus:bg-sand-dark-hover focus:dark:bg-light-black-hover hover:text-important focus:text-important dark:hover:bg-light-black-hover py-2 px-6 text-btn-small leading-4 rounded-xl absolute left-2.5 top-2.5 -translate-y-full -mt-2.5 focus:mt-0 focus:translate-y-0 border-2 border-solid border-black z-50 !shadow-none   text-center " data-sveltekit-preload-data="hover" target="">
+	Skip to Content</a></div>
+	
+
+<div data-analytics="{&quot;position&quot;:&quot;announcement&quot;}"></div>
+	<div class="wrapper flex items-center justify-between mx-auto px-micro md:px-x-small svelte-v1kmkb"><a aria-label="Home" href="/"><svg width="131" height="40" viewBox="0 0 131 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-28 lgx:h-8 lgx:w-32"><title>Gitpod Logo</title><path d="M56.0449 30.4444C50.1877 30.4444 46 26.25 46 20.7222C46 15.1944 50.216 11 55.96 11C58.7895 11 60.9966 12.0833 62.8358 13.6667L61.6757 16.0278C60.2609 14.6389 58.45 13.5 55.8468 13.5C51.6025 13.5 48.5466 16.4167 48.5466 20.7222C48.5466 25.0278 51.5742 27.9444 55.8751 27.9444C59.5818 27.9444 62.2133 25.75 62.6377 22.4167H55.0828V19.9167H65.5239V20.0278C65.5239 26.1389 62.0152 30.4444 56.0449 30.4444Z" class="fill-important"></path><path d="M68.1803 16.5556H70.6137V30.4444H68.1803V16.5556Z" class="fill-important"></path><path d="M82.1393 30.25V28.1389C81.3753 28.2778 80.7528 28.3611 79.8473 28.3611C78.6589 28.3611 78.2345 27.75 78.2345 26.6944V18.6389H82.111V16.5556H78.2345V12.8333H75.8011V16.5556H72.9998V18.6389H75.8011V26.5556C75.8011 29.5 77.131 30.5833 79.7059 30.5833C80.6113 30.5833 81.4036 30.4444 82.1393 30.25Z" class="fill-important"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M87.0989 36H84.6655V16.5556H87.0989V18.5556C88.259 17.0278 89.9851 16.2222 92.0789 16.2222C96.0969 16.2222 98.8981 19.2222 98.8981 23.5C98.8981 27.7778 96.0969 30.7778 92.0789 30.7778C90.07 30.7778 88.4288 30 87.0989 28.4167V36ZM86.9292 23.5C86.9292 26.5833 88.7967 28.5556 91.6545 28.5556C94.5123 28.5556 96.3798 26.5556 96.3798 23.5C96.3798 20.4444 94.5123 18.4444 91.6545 18.4444C88.7967 18.4444 86.9292 20.4167 86.9292 23.5Z" class="fill-important"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M100.413 23.5C100.413 27.6667 103.582 30.7778 107.826 30.7778C112.071 30.7778 115.24 27.6667 115.24 23.5C115.24 19.3333 112.071 16.2222 107.826 16.2222C103.582 16.2222 100.413 19.3333 100.413 23.5ZM112.722 23.5C112.722 26.3889 110.769 28.4722 107.826 28.4722C104.884 28.4722 102.931 26.3889 102.931 23.5C102.931 20.6111 104.884 18.5278 107.826 18.5278C110.769 18.5278 112.722 20.6111 112.722 23.5Z" class="fill-important"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M128.567 11H131V30.4444H128.567V28.4444C127.406 29.9722 125.68 30.7778 123.587 30.7778C119.569 30.7778 116.767 27.7778 116.767 23.5C116.767 19.2222 119.569 16.2222 123.587 16.2222C125.596 16.2222 127.237 17 128.567 18.5833V11ZM128.736 23.5C128.736 20.4167 126.869 18.4444 124.011 18.4444C121.153 18.4444 119.286 20.4444 119.286 23.5C119.286 26.5556 121.153 28.5556 124.011 28.5556C126.869 28.5556 128.736 26.5833 128.736 23.5Z" class="fill-important"></path><path d="M69.4026 14.7302C70.3643 14.7302 71.1439 13.9679 71.1439 13.0275C71.1439 12.087 70.3643 11.3247 69.4026 11.3247C68.4408 11.3247 67.6612 12.087 67.6612 13.0275C67.6612 13.9679 68.4408 14.7302 69.4026 14.7302Z" class="fill-important"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M21.388 1.99199C22.4572 3.8871 21.8071 6.30126 19.936 7.38418L8.30155 14.1176C7.99402 14.2956 7.8042 14.6271 7.8042 14.9861V25.5563C7.8042 25.9153 7.99402 26.2467 8.30155 26.4247L17.511 31.7548C17.8141 31.9301 18.1859 31.9301 18.489 31.7548L27.6985 26.4247C28.006 26.2467 28.1958 25.9153 28.1958 25.5563V18.9825L19.9175 23.7132C18.0406 24.7858 15.6605 24.1142 14.6015 22.2133C13.5425 20.3123 14.2056 17.9017 16.0825 16.8292L27.9277 10.0602C31.5358 7.99827 36 10.6386 36 14.8346V26.3588C36 29.0581 34.572 31.5504 32.258 32.8896L21.6846 39.009C19.4014 40.3303 16.5986 40.3303 14.3154 39.009L3.74196 32.8896C1.42803 31.5504 0 29.0581 0 26.3588V14.1835C0 11.4843 1.42803 8.99201 3.74196 7.65282L16.064 0.521394C17.9351 -0.561524 20.3188 0.0968851 21.388 1.99199Z" fill="url(#paint0_linear-gp-logo)"></path><defs><linearGradient id="paint0_linear-gp-logo" x1="27.0957" y1="6.04878" x2="8.28086" y2="35.2541" gradientUnits="userSpaceOnUse"><stop stop-color="#FFB45B"></stop><stop offset="1" stop-color="#FF8A00"></stop></linearGradient></defs></svg></a>
+		<ul class="nav-items mx-auto hidden md:h-[60px] px-2 space-x-6 items-center md:space-x-12 svelte-v1kmkb"><li>
+
+<button class="flex relative py-[27px] items-center text-base transition-all duration-200 hover:text-important focus:text-important svelte-el6lmh" aria-expanded="false" aria-haspopup="menu">Resources
+	<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-3 w-3 transform  transition-all duration-200" fillClass="fill-body"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.593 8.463l-8.914 9.245a.935.935 0 01-1.358 0L2.407 8.463a1.482 1.482 0 010-2.04 1.357 1.357 0 011.967 0l7.627 7.908 7.624-7.909a1.358 1.358 0 011.968 0 1.482 1.482 0 010 2.04z" class="fill-body transition-all duration-200"></path></svg>
+	</button>
+
+</li>
+				<li>
+<button class="flex relative py-[27px] items-center text-base transition-all duration-200 hover:text-important focus:text-important svelte-el6lmh" aria-expanded="false" aria-haspopup="menu">Solutions
+	<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-3 w-3 transform  transition-all duration-200" fillClass="fill-body"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.593 8.463l-8.914 9.245a.935.935 0 01-1.358 0L2.407 8.463a1.482 1.482 0 010-2.04 1.357 1.357 0 011.967 0l7.627 7.908 7.624-7.909a1.358 1.358 0 011.968 0 1.482 1.482 0 010 2.04z" class="fill-body transition-all duration-200"></path></svg>
+	</button>
+
+</li>
+				<li class="svelte-3575yt"><a aria-label="Blog" href="/blog" data-sveltekit-preload-data="hover" class="sm:text-body text-p-large hover:text-important focus:text-important active:text-important md:h-[60px] svelte-3575yt">Blog
+		</a>
+</li>
+				<li class="svelte-3575yt"><a aria-label="Pricing" href="/pricing" data-sveltekit-preload-data="hover" class="sm:text-body text-p-large hover:text-important focus:text-important active:text-important md:h-[60px] svelte-3575yt">Pricing
+		</a>
+</li>
+				<li class="svelte-3575yt"><a aria-label="Docs" href="/docs" data-sveltekit-preload-data="hover" class="sm:text-body text-p-large hover:text-important focus:text-important active:text-important md:h-[60px] svelte-3575yt">Docs
+		</a>
+</li></ul>
+			<div class="login-wrapper items-center hidden space-x-x-small svelte-v1kmkb"><a rel="noreferrer" href="https://github.com/gitpod-io" target="_blank" class="hidden md:flex flex items-center font-bold text-sm svelte-2z3e4i"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-1.5"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.04284 0.0625046C6.91095 0.0603765 4.84796 0.803964 3.22358 2.16001C1.5992 3.51606 0.519601 5.39593 0.178259 7.46273C-0.163083 9.52953 0.256142 11.6482 1.36081 13.439C2.46547 15.2298 4.18337 16.5757 6.20664 17.2355C6.65823 17.3167 6.81794 17.0408 6.81794 16.8082C6.81794 16.5756 6.81794 16.0456 6.81794 15.31C4.31217 15.8455 3.78348 14.1254 3.78348 14.1254C3.61725 13.5924 3.26409 13.1344 2.78668 12.8327C1.97712 12.2919 2.85277 12.2919 2.85277 12.2919C3.13655 12.3312 3.40749 12.4335 3.64507 12.5909C3.88266 12.7484 4.08065 12.9568 4.22406 13.2005C4.34591 13.4175 4.51019 13.6088 4.70748 13.7633C4.90476 13.9178 5.13117 14.0325 5.3737 14.1008C5.61624 14.1692 5.87013 14.1898 6.1208 14.1615C6.37148 14.1333 6.614 14.0567 6.83446 13.9361C6.86902 13.4912 7.06434 13.073 7.38518 12.757C5.39158 12.5353 3.29885 11.778 3.29885 8.42995C3.28516 7.55534 3.61445 6.70905 4.21855 6.0663C3.9495 5.30583 3.98094 4.47388 4.30666 3.7351C4.30666 3.7351 5.06115 3.49711 6.77388 4.63837C8.24462 4.24177 9.797 4.24177 11.2677 4.63837C12.9805 3.49711 13.7295 3.7351 13.7295 3.7351C14.0597 4.46606 14.099 5.29205 13.8396 6.05007C14.4437 6.69282 14.773 7.53911 14.7593 8.41373C14.7593 11.7997 12.6611 12.5407 10.662 12.7408C10.8763 12.9524 11.0418 13.2068 11.1473 13.4868C11.2528 13.7668 11.2957 14.0657 11.2733 14.3634C11.2733 15.5426 11.2733 16.4945 11.2733 16.7812C11.2733 17.0678 11.433 17.2896 11.8901 17.2031C13.8903 16.5258 15.5825 15.1761 16.6676 13.3923C17.7528 11.6084 18.1611 9.50531 17.8204 7.45446C17.4798 5.40361 16.412 3.53701 14.8059 2.1844C13.1997 0.831796 11.1585 0.0802396 9.04284 0.0625046Z" class="fill-body svelte-aa0c2z"></path></svg>
+	12.9k
+</a>
+				<ul><li class="svelte-3575yt"><a aria-label="Login" href="https://app.gitpod.io/" data-sveltekit-preload-data="off" class="sm:text-body text-p-large hover:text-important focus:text-important active:text-important md:h-[60px] svelte-3575yt">Login
+		</a>
+</li></ul>
+					<a href="/contact/get-demo" class="transition-all duration-200 delay-[50ms] inline-block shadow-md dark:shadow-none font-semibold whitespace-nowrap bg-important dark:bg-primary text-white dark:text-black hover:text-white focus:text-white hover:bg-less-important focus:bg-less-important dark:hover:bg-quaternary dark:focus:bg-quaternary py-2 px-6 text-btn-small leading-4 rounded-xl  flex items-center justify-center   text-center " data-sveltekit-preload-data="hover" target="" data-analytics="{&quot;experiments_variant&quot;:&quot;homepage_cta_get_a_demo_clicked&quot;}">
+	Get a demo</a></div>
+			<div class="flex items-center space-x-micro"><div class="stars svelte-v1kmkb"><a rel="noreferrer" href="https://github.com/gitpod-io" target="_blank" class="hidden md:flex flex items-center font-bold text-sm svelte-2z3e4i"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-1.5"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.04284 0.0625046C6.91095 0.0603765 4.84796 0.803964 3.22358 2.16001C1.5992 3.51606 0.519601 5.39593 0.178259 7.46273C-0.163083 9.52953 0.256142 11.6482 1.36081 13.439C2.46547 15.2298 4.18337 16.5757 6.20664 17.2355C6.65823 17.3167 6.81794 17.0408 6.81794 16.8082C6.81794 16.5756 6.81794 16.0456 6.81794 15.31C4.31217 15.8455 3.78348 14.1254 3.78348 14.1254C3.61725 13.5924 3.26409 13.1344 2.78668 12.8327C1.97712 12.2919 2.85277 12.2919 2.85277 12.2919C3.13655 12.3312 3.40749 12.4335 3.64507 12.5909C3.88266 12.7484 4.08065 12.9568 4.22406 13.2005C4.34591 13.4175 4.51019 13.6088 4.70748 13.7633C4.90476 13.9178 5.13117 14.0325 5.3737 14.1008C5.61624 14.1692 5.87013 14.1898 6.1208 14.1615C6.37148 14.1333 6.614 14.0567 6.83446 13.9361C6.86902 13.4912 7.06434 13.073 7.38518 12.757C5.39158 12.5353 3.29885 11.778 3.29885 8.42995C3.28516 7.55534 3.61445 6.70905 4.21855 6.0663C3.9495 5.30583 3.98094 4.47388 4.30666 3.7351C4.30666 3.7351 5.06115 3.49711 6.77388 4.63837C8.24462 4.24177 9.797 4.24177 11.2677 4.63837C12.9805 3.49711 13.7295 3.7351 13.7295 3.7351C14.0597 4.46606 14.099 5.29205 13.8396 6.05007C14.4437 6.69282 14.773 7.53911 14.7593 8.41373C14.7593 11.7997 12.6611 12.5407 10.662 12.7408C10.8763 12.9524 11.0418 13.2068 11.1473 13.4868C11.2528 13.7668 11.2957 14.0657 11.2733 14.3634C11.2733 15.5426 11.2733 16.4945 11.2733 16.7812C11.2733 17.0678 11.433 17.2896 11.8901 17.2031C13.8903 16.5258 15.5825 15.1761 16.6676 13.3923C17.7528 11.6084 18.1611 9.50531 17.8204 7.45446C17.4798 5.40361 16.412 3.53701 14.8059 2.1844C13.1997 0.831796 11.1585 0.0802396 9.04284 0.0625046Z" class="fill-body svelte-aa0c2z"></path></svg>
+	12.9k
+</a></div>
+				<a href="https://app.gitpod.io/" data-analytics="{&quot;context&quot;:&quot;dashboard&quot;}" class="hidden sm:inline no-underline text-sm svelte-ipj3o7">Login</a>
+				<button aria-label="Show / hide nav items" class="py-3"  tabindex="0"><div class="flex flex-col shadow-sm items-center justify-center h-8 w-[44px] px-[14px] !rounded-xl transition-all duration-200 bg-sand-light dark:bg-light-black border border-t-[#FFFFFF] border-x-[#FFFFFF]/60 border-b-[#ECE7E5] dark:border-0 svelte-10chfkt"></div>
+</button></div></div>
+	
+</nav>
+	<main class="pt-14 w-full mx-auto px-0 svelte-t1hp79" id="main-content">
+
+
+
+<article><div class="flex flex-col lg:flex-row justify-between w-11/12 xl:max-w-[80rem] mx-auto mt-small mb-8 pt-0 md:pt-small"><a href="/blog" class="max-h-6 inline-block text-base md:text-lg max-lg:mb-2 max-xs:translate-x-4 max-sm:translate-x-6 max-lg:translate-x-8 underline">←  back to blog</a>
+		<div class="w-11/12 lg:w-[40rem] leading-[177.7%] mx-auto overflow-hidden"><div class="overflow-hidden relative object-cover"><img src="/images/blog/blog-banner-default-optimal.webp" alt="We’re leaving Kubernetes" class="max-h-[540px] rounded-tl-lg rounded-tr-lg"></div>
+			<div class="content-blog prose prose-img:rounded-2xl max-w-none mt-xx-small svelte-a7e1vx">
+				<div class="flex mb-micro items-center gap-macro"><a data-sveltekit-preload-data="hover" href="/blog?tag=Engineering"><div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider">Engineering</div></a></div>
+				<header class="mb-4 lg:mb-x-small"><h1 class="!mb-0">We’re leaving Kubernetes</h1>
+					<div class="lgx:hidden !mt-4"><span><span class=""><a href="https://twitter.com/csweichel" target="_blank" class="no-underline transition-none after:hidden leading-7 inline-flex mr-2 px-2 rounded-xl text-body focus:bg-card focus:text-important hover:bg-card hover:text-important svelte-em2fh7 showAvatar" rel="noreferrer" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;}"><div class="flex flex-row justify-stretch items-start max-w-md md:max-w-[200px]">
+
+
+
+
+
+<img src="https://github.com/csweichel.png" alt="@csweichel's avatar on GitHub" height="28" width="28" title="@csweichel" class="inline !rounded-full border border-solid border-card mr-2 h-8 w-8" loading="lazy">
+					<span class="flex flex-col text-xs"><span class="text-important font-bold">Christian Weichel</span>
+						Co-Founder, CTO at Gitpod
+					</span></div>
+			</a><a href="https://twitter.com/aledbf" target="_blank" class="no-underline transition-none after:hidden leading-7 inline-flex mr-2 px-2 rounded-xl text-body focus:bg-card focus:text-important hover:bg-card hover:text-important svelte-em2fh7 showAvatar" rel="noreferrer" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;}"><div class="flex flex-row justify-stretch items-start max-w-md md:max-w-[200px]">
+
+
+
+
+
+<img src="https://github.com/aledbf.png" alt="@aledbf's avatar on GitHub" height="28" width="28" title="@aledbf" class="inline !rounded-full border border-solid border-card mr-2 h-8 w-8" loading="lazy">
+					<span class="flex flex-col text-xs"><span class="text-important font-bold">Alejandro de Brito Fontes</span>
+						Staff Engineer
+					</span></div>
+			</a>
+</span></span>
+						<p class="!mb-macro !mt-micro !text-base !text-[#565252] dark:!text-[#999795]"><span class="font-bold text-important text-xs">Oct 31, 2024</span></p></div></header>
+				<p>Kubernetes seems like the obvious choice for building out remote, standardized and automated development environments. We thought so too and have spent six years invested in making the most popular cloud development environment platform at internet scale. That’s 1.5 million users, where we regularly see thousands of development environments per day. <strong>In that time we’ve found that Kubernetes is not the right choice for building development environments.</strong></p>
+<p>This is our journey of experiments, failures and dead-ends building development environments on <a href="https://kubernetes.io/" rel="nofollow noopener noreferrer" target="_blank">Kubernetes</a>. Over the years, we experimented with many ideas involving SSDs, PVCs, <a href="https://ebpf.io/" rel="nofollow noopener noreferrer" target="_blank">eBPF</a>, <a href="https://brauner.github.io/2020/07/23/seccomp-notify.html" rel="nofollow noopener noreferrer" target="_blank">seccomp notify</a>, <a href="https://man7.org/linux/man-pages/man8/tc.8.html" rel="nofollow noopener noreferrer" target="_blank">TC</a> and <a href="https://kernel.dk/io_uring.pdf" rel="nofollow noopener noreferrer" target="_blank">io_uring</a>, <a href="https://lwn.net/Articles/718639/" rel="nofollow noopener noreferrer" target="_blank">shiftfs</a>, FUSE and <a href="https://docs.kernel.org/filesystems/idmappings.html" rel="nofollow noopener noreferrer" target="_blank">idmapped mounts</a>, ranging from <a href="https://firecracker-microvm.github.io/" rel="nofollow noopener noreferrer" target="_blank">microVMs</a>, <a href="https://kubevirt.io/" rel="nofollow noopener noreferrer" target="_blank">kubevirt</a> to <a href="https://www.vcluster.com/" rel="nofollow noopener noreferrer" target="_blank">vCluster</a>.</p>
+<p>In pursuit of the most optimal infrastructure to balance security, performance and interoperability. All while wrestling with the unique challenges of building a system to scale up, remain secure as it’s handling arbitrary code execution, and be stable enough for developers to work in.</p>
+<p><strong>This is not a story of whether or not to use Kubernetes for production workloads</strong> that’s a whole separate conversation. As is the topic of how to build a comprehensive soup-to-nuts developer experience for shipping applications on Kubernetes.</p>
+<p><strong>This is the story of how (not) to build development environments in the cloud.</strong></p>
+<h2 id="why-are-development-environments-unique">Why are development environments unique?<a href="#why-are-development-environments-unique"><span class="icon icon-link header-anchor" aria-label="Why are development environments unique? permalink"></span></a></h2>
+<p>Before we dive in, it’s crucial to understand what makes development environments unique compared to production workloads:</p>
+<ul><li><strong>They are extremely stateful and interactive</strong>: Which means they cannot be moved from one node to another. The many gigabytes of source code, build caches, Docker container and test data are subject to a high change rate and costly to migrate. Unlike many production services, there’s a 1-to-1 interaction between the developer and their environment.</li>
+<li><strong>Developers are deeply invested in their source code and the changes they make</strong>: Developers don’t take kindly to losing any source code changes or to being blocked by any system. This makes development environments particularly intolerant to failure.</li>
+<li><strong>They have unpredictable resource usage patterns</strong>: Development Environments have particular and unpredictable resource usage patterns. They won’t need much CPU bandwidth most of the time, but will require several cores within a few 100ms. Anything slower than that manifests as unacceptable latency and unresponsiveness.</li>
+<li><strong>They require far-reaching permissions and capabilities</strong>: Unlike production workloads, development environments often need root access and the ability to download and install packages. What constitutes a security concern for production workloads, is expected behavior of development environments: getting root access, extended network capabilities and control over the system (e.g. mounting additional filesystems).</li></ul>
+<p>These characteristics set development environments apart from typical application workloads and significantly influence the infrastructure decisions we’ve made along the way.</p>
+<h2 id="the-system-today-obviously-its-kubernetes">The system today: obviously it’s Kubernetes<a href="#the-system-today-obviously-its-kubernetes"><span class="icon icon-link header-anchor" aria-label="The system today: obviously it’s Kubernetes permalink"></span></a></h2>
+<p>When we started Gitpod, Kubernetes seemed like the ideal choice for our infrastructure. Its promise of scalability, container orchestration, and rich ecosystem aligned perfectly with our vision for cloud development environments. However, as we scaled and our user base grew, we encountered several challenges around security and state management that pushed Kubernetes to its limits. <strong>Fundamentally, Kubernetes is built to run well controlled application workloads, not unruly development environments.</strong></p>
+<p>Managing Kubernetes at scale is complex. While managed services like GKE and EKS alleviate some pain points, they come with their own set of restrictions and limitations. We found that many teams looking to operate a CDE underestimate the complexity of Kubernetes, which lead to a significant support load for our previous self-managed Gitpod offering.</p>
+<h2 id="resource-management-struggles">Resource management struggles<a href="#resource-management-struggles"><span class="icon icon-link header-anchor" aria-label="Resource management struggles permalink"></span></a></h2>
+<p>One of the most significant challenges we faced was resource management, particularly CPU and memory allocation per environment. At first glance, running multiple environments on a node seems attractive to share resources (such as CPU, memory, IO and network bandwidth) between those resources. In practice, this incurs significant noisy neighbor effects leading to a detrimental user experience.</p>
+<h3 id="cpu-challenges">CPU challenges<a href="#cpu-challenges"><span class="icon icon-link header-anchor" aria-label="CPU challenges permalink"></span></a></h3>
+<p>CPU time seems like the simplest candidate to share between environments. Most of the time development environments don’t need much CPU, but when they do, they need it quickly. Latency becomes immediately apparent to users when their language server starts to lag or their terminal becomes choppy. This spiky nature of the CPU requirements of development environments (periods of inactivity followed by intensive builds) makes it difficult to predict when CPU time is needed.</p>
+<p>For solutions, we experimented with various CFS (<a href="https://docs.kernel.org/scheduler/sched-design-CFS.html" rel="nofollow noopener noreferrer" target="_blank">Completely Fair Scheduler</a>) based schemes, implementing a custom controller using a DaemonSet. A core challenge is that we can not predict when CPU bandwidth is needed, but only understand when it would have been needed (by observing nr_throttled of the cgroup’s cpu_stats).</p>
+<p>Even when using static CPU resource limits, challenges arise, because unlike application workloads a development environment will run many processes in the same container. These processes compete for the same CPU bandwidth, which can lead to e.g. VS Code disconnects because VS Code server is starved for CPU time.</p>
+<p>We have attempted to solve this problem by adjusting the process priorities of the individual processes, e.g. increasing the priority of bash or vscode-server. However, these process priorities apply to the entire process group (depending on your Kernel’s autogroup scheduling configuration), hence also to the resource hungry compilers started in a VS Code terminal. Using process priorities to counter terminal lag requires a carefully written control loop to be effective.</p>
+<p>We introduced custom CFS and process priority based control loops built on cgroupv1 and moved to cgroupsv2 once they became more readily available on managed Kubernetes platforms with 1.24. <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/" rel="nofollow noopener noreferrer" target="_blank">Dynamic resource allocation</a> introduced with Kubernetes 1.26 means one no longer needs to deploy a DaemonSet and modify cgroups directly, possibly at the expense of the control loop speed and hence effectiveness. All the schemes outlined above rely on second-by-second readjustment of CFS limits and niceness values.</p>
+<h3 id="memory-management">Memory management<a href="#memory-management"><span class="icon icon-link header-anchor" aria-label="Memory management permalink"></span></a></h3>
+<p>Memory management presented its own set of challenges. Assigning every environment a fixed amount of memory, so that under maximum occupation each environment gets their fixed share is straightforward, but very limiting. In the cloud, RAM is one of the more expensive resources, hence the desire to overbook memory.</p>
+<p>Until <a href="https://kubernetes.io/blog/2021/08/09/run-nodes-with-swap-alpha/" rel="nofollow noopener noreferrer" target="_blank">swap-space became available in Kubernetes 1.22</a>, memory overbooking was near impossible to do, because reclaiming memory inevitably means killing processes. With the addition of swap space the need to overbook memory has somewhat gone away, since swap works well in practice for hosting development environments.</p>
+<h2 id="storage-performance-optimization">Storage performance optimization<a href="#storage-performance-optimization"><span class="icon icon-link header-anchor" aria-label="Storage performance optimization permalink"></span></a></h2>
+<p>Storage performance is important for the startup performance and experience of development environments. We have found that specifically IOPS and latency affect experience within an environment. IO bandwidth however directly impacts your workspace startup performance, specifically when creating/restoring backups or extracting large workspace images.</p>
+<p><strong>We experimented with various setups to find the right balance between speed and reliability, cost and performance.</strong></p>
+<ul><li><strong>SSD RAID 0</strong>: This offered high IOPS and bandwidth but tied the data to a specific node. The failure of any single disk would result in complete data loss. This is how gitpod.io operates today and we have not seen such a disk failure happen yet. A simpler version of this setup is to use a single SSD attached to the node. This approach provides lower IOPS and bandwidth, and still binds the data to individual nodes.</li>
+<li><strong>Block storage such as EBS volumes or Google persistent disks which are permanently attached to the nodes</strong> considerably broaden the different instances or availability zones that can be used. While still bound to a single node, and offering considerably lower throughput/bandwidth than local SSDs they are more widely available.</li>
+<li><strong>Persistent Volume Claims (PVCs) seem like the obvious choice when using Kubernetes</strong>. As abstraction over different storage implementations they offer a lot of flexibility, but also introduce new challenges:<ul><li>Unpredictable attachment and detachment timing, leading to unpredictable workspace startup times. Combined with increased scheduling complexity they make implementing effective scheduling strategies harder.</li>
+<li>Reliability issues leading to workspace failures, particularly during startup. This was especially noticeable on Google Cloud (in 2022) and rendered our attempts to use PVCs impractical.</li>
+<li>Limited number of disks that could be attached to an instance, imposing additional constraints on the scheduler and number of workspaces per node.</li>
+<li>AZ locality constraints which makes balancing workspaces across AZs even harder.</li></ul></li></ul>
+<p>Backing up and restoring local disks proved to be an expensive operation. We implemented a solution using a daemonSet that uploads and downloads uncompressed tar archives to/from S3. This approach required careful balancing of I/O, network bandwidth, and CPU usage: for example, (de)compressing archives consumes most available CPU on a node, whereas the extra traffic produced by uncompressed backups usually doesn’t consume all available network bandwidth (if the number of concurrently starting/stopping workspaces is carefully controlled).</p>
+<p>IO bandwidth on the node is shared across workspaces. We found that, unless we limited the IO bandwidth available to each workspace, other workspaces might starve for IO bandwidth and cease to function. Particularly the content backup/restore produced this problem. We implemented cgroup-based <a href="https://github.com/gitpod-io/gitpod/pull/9440" rel="nofollow noopener noreferrer" target="_blank">IO limiter</a> which imposed fixed IO bandwidth limits per environment to solve this problem.</p>
+<h2 id="autoscaling-and-startup-time-optimization">Autoscaling and startup time optimization<a href="#autoscaling-and-startup-time-optimization"><span class="icon icon-link header-anchor" aria-label="Autoscaling and startup time optimization permalink"></span></a></h2>
+<p>Our primary goal was to minimize startup time at all costs. Unpredictable wait times can significantly impact productivity and user satisfaction. However, this goal often conflicted with our desire to pack workspaces densely to maximize machine utilization.</p>
+<p>We initially thought that running multiple workspaces on one node would help with startup times due to shared caches. However, this didn’t pan out as expected. The reality is that Kubernetes imposes a lower bound for startup time because of all the content operations that need to happen, content needs to be moved into place, which takes time.</p>
+<p>Short of keeping workspaces in hot standby (which would be prohibitively expensive), we had to find other ways to optimize startup times.</p>
+<h3 id="scaling-ahead-evolution-of-our-approach">Scaling ahead: evolution of our approach<a href="#scaling-ahead-evolution-of-our-approach"><span class="icon icon-link header-anchor" aria-label="Scaling ahead: evolution of our approach permalink"></span></a></h3>
+<p><strong>To minimize startup time, we explored various approaches to scale up and ahead:</strong></p>
+<ul><li><strong>Ghost workspaces</strong>: Before cluster autoscaler plugins were available, we experimented with “ghost workspaces”. These were preemptible pods that occupied space to scale ahead. We implemented this using a custom scheduler. However, this approach proved to be slow and unreliable to replace.</li>
+<li><strong>Ballast pods</strong>: An evolution of the ghost workspace concept, ballast pods filled an entire node. This resulted in less replacement cost and faster replacement times compared to ghost workspaces.</li>
+<li><strong>Autoscaler plugins</strong>: In June 2022, we switched to using cluster-autoscaler plugins when they were introduced. With these plugins we no longer needed to “trick” the autoscaler, but could directly affect how scale-up happens. This marked a significant improvement in our scaling strategy.</li></ul>
+<h3 id="proportional-autoscaling-for-peak-loads">Proportional autoscaling for peak loads<a href="#proportional-autoscaling-for-peak-loads"><span class="icon icon-link header-anchor" aria-label="Proportional autoscaling for peak loads permalink"></span></a></h3>
+<p>To handle peak loads more effectively, we implemented a proportional autoscaling system. This approach controls the rate of scale-up as a function of the rate of starting development environments. It works by launching empty pods using the pause image, allowing us to quickly increase our capacity in response to demand spikes.</p>
+<h3 id="image-pull-optimization-a-tale-of-many-attempts">Image pull optimization: a tale of many attempts<a href="#image-pull-optimization-a-tale-of-many-attempts"><span class="icon icon-link header-anchor" aria-label="Image pull optimization: a tale of many attempts permalink"></span></a></h3>
+<p>Another crucial aspect of startup time optimization was improving image pull times. Workspace container images (i.e. all the tools available to a developer) can grow to more than 10 gigabytes uncompressed. Downloading and extracting this amount of data for every workspace considerably taxes a node’s resources. We explored numerous strategies to speed up image pulls:</p>
+<ul><li><strong>Daemonset pre-pull</strong>: We tried pre-pulling common images using a daemonSet. However, this proved ineffective during scale-up operations because when the node came online, and workspaces were starting, the images still wouldn’t be present on the node. Also, the pre-pulls would now compete for IO and CPU bandwidth with the starting workspaces.</li>
+<li><strong>Layer reuse maximization</strong>: We built our own images using a custom builder called <a href="https://github.com/gitpod-io/dazzle" rel="nofollow noopener noreferrer" target="_blank">dazzle</a>, which can build layers independently. This approach aimed to maximize layer reuse. However, we found that layer reuse is very difficult to observe due to the high cardinality and amount of indirections in the <a href="https://github.com/opencontainers/image-spec/blob/main/spec.md" rel="nofollow noopener noreferrer" target="_blank">OCI manifests</a>.</li>
+<li><strong>Pre-baked images</strong>: We experimented with baking images into the node disk image. While this improved startup times, it had significant drawbacks. The images quickly became outdated, and this approach didn’t work for self-hosted installations.</li>
+<li><strong>Stargazer and lazy-pulling</strong>: This method required all images to be converted, which added complexity, cost, and time to our operations. Additionally, not all registries supported this approach when we tried it in 2022.</li>
+<li><strong>Registry-facade + IPFS</strong>: This solution worked well in practice, providing good performance and distribution. We gave a <a href="https://www.youtube.com/watch?v=kS6aDScfVuw" rel="nofollow noopener noreferrer" target="_blank">KubeCon talk about this approach in 2022</a>. However, it introduced significant complexity to our system.</li></ul>
+<p>There is no one-size-fits all solution for image caching, but a set of trade-offs with respect to complexity, cost and restrictions imposed on users (images they can use). We have found that homogeneity of workspace images is the most straightforward way to optimize startup times.</p>
+<h2 id="networking-complexities">Networking complexities<a href="#networking-complexities"><span class="icon icon-link header-anchor" aria-label="Networking complexities permalink"></span></a></h2>
+<p>Networking in Kubernetes introduced its own set of challenges, specifically:</p>
+<ul><li><p><strong>Development environment access control</strong>: by default the network of environments needs to be entirely isolated from one another, i.e. one environment cannot reach another. The same is true for the access of a user to the workspace. <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/" rel="nofollow noopener noreferrer" target="_blank">Network Policies</a> go a long way in ensuring environments are properly disconnected from each other.</p>
+<p>Initially we controlled the access to individual environment ports (such as the IDE, or services running in the workspace) using Kubernetes services, together with an ingress proxy that would forward traffic to the service, resolving it using DNS. This quickly became unreliable at scale because of the sheer number of services. Name resolution would fail, and if not careful (e.g. setting enableServiceLinks: false) one can bring entire workspaces down.</p></li>
+<li><p><strong>Network bandwidth sharing</strong> on the node is yet another resource that needs to be shared with multiple workspaces on a single node. Some CNIs offer network shaping support (e.g. Cilium’s <a href="https://docs.cilium.io/en/latest/network/kubernetes/bandwidth-manager/" rel="nofollow noopener noreferrer" target="_blank">Bandwidth Manager</a>). This now leaves you with yet another resource to control for, and potentially share between environments.</p></li></ul>
+<h2 id="security-and-isolation-balancing-flexibility-and-protection">Security and isolation: balancing flexibility and protection<a href="#security-and-isolation-balancing-flexibility-and-protection"><span class="icon icon-link header-anchor" aria-label="Security and isolation: balancing flexibility and protection permalink"></span></a></h2>
+<p>One of the most significant challenges we faced in our Kubernetes-based infrastructure was providing a secure environment while giving users the flexibility they need for development. Users want the ability to install additional tools (e.g., using apt-get install), run Docker, or even set up a Kubernetes cluster within their development environment. Balancing these requirements with robust security measures proved to be a complex undertaking.</p>
+<h3 id="the-naive-approach-root-access">The naive approach: root access<a href="#the-naive-approach-root-access"><span class="icon icon-link header-anchor" aria-label="The naive approach: root access permalink"></span></a></h3>
+<p>The simplest solution would be to give users root access to their containers. However, this approach quickly reveals its flaws:</p>
+<ul><li>Giving users root access essentially provides them with root privileges on the node itself, granting access to the development environment platform and other development environments that are running on that node .</li>
+<li>This eliminates any meaningful security boundary between users and the host system meaning developers can accidentally, or intentionally interfere and break the development environment platform itself or even access others’ development environments.</li>
+<li>It also exposes the infrastructure to potential abuse and security risks. It is then also not possible to implement a true access control model and the architecture falls short of zero-trust. You cannot ensure that a given actor in the system performing an action was verifiably themselves.</li></ul>
+<p>Clearly, a more sophisticated approach was needed.</p>
+<h3 id="user-namespaces-a-more-nuanced-solution">User namespaces: a more nuanced solution<a href="#user-namespaces-a-more-nuanced-solution"><span class="icon icon-link header-anchor" aria-label="User namespaces: a more nuanced solution permalink"></span></a></h3>
+<p>To address these challenges, we turned to user namespaces, a Linux kernel feature that provides fine-grained control over the mapping of user and group IDs inside containers. This approach allows us to give users “root-like” privileges within their container without compromising the security of the host system.</p>
+<p>While Kubernetes introduced support for user namespaces in version 1.25, we had already implemented our own solution starting with Kubernetes 1.22. Our implementation involved several complex components:</p>
+<ul><li><p><strong>Filesystem UID shift</strong>: This is necessary to ensure that files created inside the container map correctly to UIDs on the host system. We experimented with several approaches:</p>
+<ul><li>We continue to use shiftfs as our primary method for filesystem UID shifting. Despite being deprecated in some contexts, shiftfs still provides the functionality we need with acceptable performance characteristics.</li>
+<li>We’ve experimented with fuse-overlayfs, which provided the necessary functionality but had performance limitations.</li>
+<li>While idmapped mounts offer potential benefits, we haven’t transitioned to them yet due to various compatibility and implementation considerations.</li></ul></li>
+<li><p><strong>Mounting masked proc</strong>: When a container starts, it typically wants to mount /proc. However, in our security model, /proc is sensibly masked to prevent potential security bypasses. Working around this limitation required a tricky solution:</p>
+<ul><li>We construct a masked proc filesystem.</li>
+<li>This masked proc is then moved into the correct mount namespace.</li>
+<li>We implement this using seccomp notify, which allows us to intercept and modify certain system calls.</li></ul></li>
+<li><p><strong>FUSE support</strong>: Adding FUSE (Filesystem in Userspace) support, which is crucial for many development workflows, required implementing custom device policies. This involved modifying the container’s eBPF (extended Berkeley Packet Filter) device filter, a low-level programming capability that allows us to make fine-grained decisions about device access.</p></li>
+<li><p><strong>Network capabilities</strong>: As true root one holds the CAP_NET_ADMIN and CAP_NET_RAW capabilities which provide far-reaching privileges to configure networking. Container runtimes (such as Docker/runc) make extensive use of these capabilities. Granting such capabilities to the development environment container would interfere with CNI and break the security isolation.</p>
+<p>To provide such capabilities we ended up creating another network namespace inside the Kubernetes container, first connected to the outside world using slirp4netns and later using a veth pair and custom and nftables rules.</p></li>
+<li><p><strong>Enabling docker</strong>: required some specific hacks for Docker itself. We register a custom <a href="https://github.com/gitpod-io/gitpod/blob/main/components/docker-up/runc-facade/main.go" rel="nofollow noopener noreferrer" target="_blank">runc-facade</a> which modifies the OCI runtime spec produced by Docker. This lets us remove e.g. OOMScoreAdj which still isn’t allowed because that would require CAP_SYS_ADMIN on the node.</p></li></ul>
+<p>Implementing this security model came with its own set of challenges:</p>
+<ul><li><strong>Performance impact</strong>: Some of our solutions, particularly earlier ones like fuse-overlayfs, had noticeable performance impacts. We’ve continually worked to optimize these.</li>
+<li><strong>Compatibility</strong>: Not all tools and workflows are compatible with this restricted environment. We’ve had to carefully balance security with usability.</li>
+<li><strong>Complexity</strong>: The resulting system is significantly more complex than a simple containerized environment, which impacts both development and operational overhead.</li>
+<li><strong>Keeping up with Kubernetes</strong>: As Kubernetes has evolved, we’ve had to adapt our custom implementations to take advantage of new features while maintaining backwards compatibility.</li></ul>
+<h2 id="the-micro-vm-experiment">The micro-VM experiment<a href="#the-micro-vm-experiment"><span class="icon icon-link header-anchor" aria-label="The micro-VM experiment permalink"></span></a></h2>
+<p>As we grappled with the challenges of Kubernetes, we began exploring micro-VM (uVM) technologies like <a href="https://github.com/firecracker-microvm/firecracker" rel="nofollow noopener noreferrer" target="_blank">Firecracker</a>, <a href="https://www.cloudhypervisor.org/" rel="nofollow noopener noreferrer" target="_blank">Cloud Hypervisor</a>, and <a href="https://www.qemu.org/" rel="nofollow noopener noreferrer" target="_blank">QEMU</a> as a potential middle ground. This exploration was driven by the promise of improved resource isolation, compatibility with other workloads (e.g. Kubernetes) and security, while potentially maintaining some of the benefits of containerization.</p>
+<h3 id="the-promise-of-micro-vms">The promise of micro-VMs<a href="#the-promise-of-micro-vms"><span class="icon icon-link header-anchor" aria-label="The promise of micro-VMs permalink"></span></a></h3>
+<p>Micro-VMs offered several enticing benefits that aligned well with our goals for cloud development environments:</p>
+<ul><li><strong>Enhanced resource isolation</strong>: uVMs promised better resource isolation compared to containers, albeit at the expense of overbooking capabilities. With uVMs, we would no longer have to contend with shared kernel resources, potentially leading to more predictable performance for each development environment.</li>
+<li><strong>Memory snapshots and fast resume</strong>: One of the most exciting features, particularly with Firecracker using userfaultfd, was the support for memory snapshots. This technology promised near-instant full machine resume, including running processes. For developers, this could mean significantly faster environment startup times and the ability to pick up exactly where they left off.</li>
+<li><strong>Improved security boundaries</strong>: uVMs offered the potential to serve as a robust security boundary, potentially eliminating the need for the complex user namespace mechanisms we had implemented in our Kubernetes setup. This could provide full compatibility with a wider range of workloads, including nested containerization (running Docker or even Kubernetes within the development environment).</li></ul>
+<h3 id="challenges-with-micro-vms">Challenges with micro-VMs<a href="#challenges-with-micro-vms"><span class="icon icon-link header-anchor" aria-label="Challenges with micro-VMs permalink"></span></a></h3>
+<p>However, our experiments with micro-VMs revealed several significant challenges:</p>
+<ul><li><strong>Overhead</strong>: Even as lightweight VMs, uVMs introduced more overhead than containers. This impacted both performance and resource utilization, key considerations for a cloud development environment platform.</li>
+<li><strong>Image conversion</strong>: Converting OCI (Open Container Initiative) images into uVM-consumable filesystems required custom solutions. This added complexity to our image management pipeline and potentially impacted startup times.</li>
+<li><strong>Technology-specific limitations</strong>:<ul><li>Firecracker:<ul><li>Lack of GPU support, which is increasingly important for certain development workflows.</li>
+<li>No virtiofs support at the time of our experiments (mid 2023), limiting our options for efficient file system sharing.</li></ul></li>
+<li>Cloud hypervisor:<ul><li>Slower snapshot and restore processes due to the lack of userfaultfd support, negating one of the key advantages we hoped to gain from uVMs.</li></ul></li></ul></li>
+<li><strong>Data movement challenges</strong>: Moving data around became even more challenging with uVMs, as we now had to contend with large memory snapshots. This affected both scheduling and startup times, two critical factors for user experience in cloud development environments.</li>
+<li><strong>Storage considerations</strong>: Our experiments with attaching EBS volumes to micro-VMs opened up new possibilities but also raised new questions:<ul><li>Persistent storage: Keeping workspace content on attached volumes reduced the need to pull data from S3 repeatedly, potentially improving startup times and reducing network usage.</li>
+<li>Performance considerations: While sharing high-throughput volumes among workspaces showed promise for improving I/O performance, it also raised concerns about implementing effective quotas, managing latency, and ensuring scalability.</li></ul></li></ul>
+<h3 id="lessons-from-the-uvm-experiment">Lessons from the uVM experiment<a href="#lessons-from-the-uvm-experiment"><span class="icon icon-link header-anchor" aria-label="Lessons from the uVM experiment permalink"></span></a></h3>
+<p>While micro-VMs didn’t ultimately become our primary infrastructure solution, the experiment provided valuable insights:</p>
+<ul><li>We loved the experience of full workspace backup and runtime state suspend/resume provided for development environments.</li>
+<li>We, for the first time, considered moving away from Kubernetes. The effort to integrate KVM and uVMs into pods had us explore options outside of Kubernetes.</li>
+<li>We, once again, identified storage as the crucial element for providing all three: reliable startup performance, reliable workspaces (don’t lose my data) and optimal machine utilization.</li></ul>
+<h2 id="kubernetes-is-immensely-challenging-as-a-development-environment-platform">Kubernetes is immensely challenging as a development environment platform<a href="#kubernetes-is-immensely-challenging-as-a-development-environment-platform"><span class="icon icon-link header-anchor" aria-label="Kubernetes is immensely challenging as a development environment platform permalink"></span></a></h2>
+<p>As I mentioned at the beginning, for development environments we need a system that respects the uniquely stateful nature of development environments. We need to give the necessary permissions for developers to be productive, whilst ensuring secure boundaries. And we need to do all of this whilst keeping operational overhead low and not compromising security.</p>
+<p>Today, achieving all of the above with Kubernetes is possible—but comes at a significant cost. We learned the difference between application and system workloads the hard way.</p>
+<p>Kubernetes is incredible. It’s supported by an engaged and passionate community, which builds a truly rich ecosystem. If you’re running application workloads, Kubernetes continues to be a fine choice. However <strong>for system workloads like development environments Kubernetes presents immense challenges in both security and operational overhead</strong>. Micro-VMs and clear resource budgets help, but make cost a more dominating factor.</p>
+<p>So after many years of effectively reverse-engineering and forcing development environments onto the Kubernetes platform we took a step back to think about what we believe a future development architecture needs to look like. In January 2024 we set out to build it. In October, we shipped it: <a href="https://www.gitpod.io/blog/introducing-gitpod-flex" rel="nofollow noopener noreferrer" target="_blank">Gitpod Flex</a>.</p>
+<p>More than six years of incredibly hard-won insights for running development environments securely at internet scale went into the architectural foundations.</p>
+<h2 id="the-future-of-development-environments">The future of development environments<a href="#the-future-of-development-environments"><span class="icon icon-link header-anchor" aria-label="The future of development environments permalink"></span></a></h2>
+<p>In <a href="https://www.gitpod.io/blog/introducing-gitpod-flex" rel="nofollow noopener noreferrer" target="_blank">Gitpod Flex</a> we carried over the foundational aspects of Kubernetes such as the liberal application of control theory and the declarative APIs whilst simplifying the architecture and improving the security foundation.</p>
+<p>We orchestrate development environments using a control plane heavily inspired by Kubernetes. We introduced some necessary abstraction layers that are specific to development environments and cast aside much of the infrastructure complexity that we didn’t need—all whilst <a href="https://www.gitpod.io/blog/how-we-built-it-zero-trust-architecture" rel="nofollow noopener noreferrer" target="_blank">putting zero-trust security first</a>.</p>
+<p><img src="/images/blog/we-are-leaving-kubernetes/boundary-diagram.png" alt="Security boundaries of Gitpod Flex" width="1600" height="928" loading="lazy"></p>
+<p style="text-align: center"><strong>Caption:</strong> Security boundaries of Gitpod Flex.</p>
+<p>This new architecture allows us to <a href="https://www.gitpod.io/blog/gitpod-supports-development-container" rel="nofollow noopener noreferrer" target="_blank">integrate devcontainer seamlessly</a>. We also unlocked the ability to <a href="https://www.gitpod.io/blog/introducing-gitpod-desktop" rel="nofollow noopener noreferrer" target="_blank">run development environments on your desktop</a>. Now that we’re no longer carrying the heavy weight of the Kubernetes platform, <strong>Gitpod Flex can be deployed self-hosted in less than three minutes</strong> and in any number of regions, giving more fine-grained control on compliance and added flexibility when modeling organizational boundaries and domains.</p>
+<p>We’ll be posting a lot more about Gitpod Flex architecture in the coming weeks or months. I’d love to invite you on November the 6th to a virtual event where I’ll be giving a demo of Gitpod Flex and I’ll deep-dive into the architecture and security model at length. You can <a href="https://www.gitpod.io/webinars/gitpod-flex-demo" rel="nofollow noopener noreferrer" target="_blank">sign-up here</a>.</p>
+<p>When it comes to building a platform for standardized, automated and secure development environments choose a system because it improves your developer experience, eases your operational burden and improves your bottom line. <strong>You are not choosing Kubernetes vs something else, you are choosing a system because it improves the experience for the teams you support.</strong></p>
+<blockquote><p><strong>Virtual Event: Gitpod Flex - Deploy your self-hosted CDE in 3 minutes</strong> <br><br> &gt; <strong>What?</strong> Deep dive into Gitpod Flex architecture and security. <br> &gt; <strong>When?</strong> November 6th. <br><br></p>
+<p><strong><a href="https://www.gitpod.io/webinars/gitpod-flex-demo" rel="nofollow noopener noreferrer" target="_blank">Register Now →</a></strong></p></blockquote>
+
+	</div>
+			</div>
+		<div class="max-lgx:hidden max-w-[14rem] md:mt-[420px] xl:mt-[430px] 2xl:mt-[420px]"><span class="flex flex-col border-t border-solid border-divider"><span class="text-xs mb-2 mt-4">Authors</span>
+				<span class="flex flex-col gap-3"><a href="https://twitter.com/csweichel" target="_blank" class="no-underline transition-none after:hidden leading-7 inline-flex mr-2 rounded-xl text-body focus:text-important hover:text-important svelte-em2fh7 showAvatar" rel="noreferrer" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;}"><div class="flex flex-row justify-stretch items-start max-w-md md:max-w-[200px]">
+
+
+
+
+
+<img src="https://github.com/csweichel.png" alt="@csweichel's avatar on GitHub" height="28" width="28" title="@csweichel" class="inline !rounded-full border border-solid border-card mr-2 h-8 w-8" loading="lazy">
+					<span class="flex flex-col text-xs"><span class="text-important font-bold">Christian Weichel</span>
+						Co-Founder, CTO at Gitpod
+					</span></div>
+			</a><a href="https://twitter.com/aledbf" target="_blank" class="no-underline transition-none after:hidden leading-7 inline-flex mr-2 rounded-xl text-body focus:text-important hover:text-important svelte-em2fh7 showAvatar" rel="noreferrer" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;}"><div class="flex flex-row justify-stretch items-start max-w-md md:max-w-[200px]">
+
+
+
+
+
+<img src="https://github.com/aledbf.png" alt="@aledbf's avatar on GitHub" height="28" width="28" title="@aledbf" class="inline !rounded-full border border-solid border-card mr-2 h-8 w-8" loading="lazy">
+					<span class="flex flex-col text-xs"><span class="text-important font-bold">Alejandro de Brito Fontes</span>
+						Staff Engineer
+					</span></div>
+			</a>
+</span></span>
+			<p class="!mb-macro !mt-x-small !text-base !text-[#565252] dark:!text-[#999795]"><span class="flex flex-col text-xs"><span class="mb-2">Last updated</span>
+					<p class="font-bold text-important">Oct 31, 2024</p></span></p>
+			<span class="flex flex-col text-xs !mb-macro !mt-x-small !text-[#565252] dark:!text-[#999795]"><span class="!mb-0">Helpful resource</span>
+				<a class="font-normal text-xs !mt-2 custom-link" href="/whitepaper/vdi">How to replace VDI white paper</a></span></div></div>
+</article>
+
+
+
+<section id="" class="w-11/12 lg:w-full lg:max-w-[75rem] mx-auto !my-large md:!my-xxx-large svelte-19uare6" style=""><div class="justify-center mx-auto text-center max-w-[720px] !max-w-4xl"><div class="text-[32px] leading-10 md:leading-[64px] md:text-5xl font-bold text-important"><!-- HTML_TAG_START -->Standardize and automate your development environments today<!-- HTML_TAG_END --></div>
+		<p class="mt-4 text-lg md:text-2xl"><!-- HTML_TAG_START --><!-- HTML_TAG_END --></p>
+		<div class="flex flex-wrap gap-2 sm:gap-4 mt-x-small lg:mt-x-small justify-center"><a href="/contact/sales" class="transition-all duration-200 delay-[50ms] inline-block shadow dark:shadow-none font-semibold whitespace-nowrap w-[267px] h-[54px] justify-center items-center rounded-2xl md:rounded-[20px] shadow-md inline-flex px-8 py-3.5 gap-2.5 text-black dark:text-[#12100C] bg-gradient-to-r from-[#FFAE33] to-[#FF971D] hover:from-[#FFB23C] hover:to-[#FFA134] focus:from-[#FFB23C] focus:to-[#FFA134] undefined max-md:w-full rounded-2xl md:rounded-[20px]   text-center " data-sveltekit-preload-data="hover">
+	Contact sales</a>
+			<a href="https://app.gitpod.io/" class="transition-all duration-200 delay-[50ms] inline-block shadow dark:shadow-none font-semibold whitespace-nowrap w-[267px] h-[54px] justify-center items-center rounded-2xl md:rounded-[20px] shadow-md inline-flex px-8 py-3.5 gap-2.5 text-black bg-sand-light dark:bg-[#23211E] dark:text-sand-dark hover:bg-[#F5F4F3] focus:bg-[#F5F4F3] hover:dark:bg-light-black focus:dark:bg-light-black dark:custom-dark-button-stroke undefined max-md:w-full rounded-2xl md:rounded-[20px]   text-center " data-sveltekit-preload-data="off" target="_blank">
+	Try now for free</a></div></div>
+</section>
+<section id="" class="w-11/12 lg:w-full lg:max-w-[75rem] mx-auto !my-large svelte-19uare6" style=""><h2 class="text-center text-[32px] leading-10 md:leading-[64px] md:text-5xl font-bold text-important mb-small"></h2>
+	
+	<div class="m-auto max-w-7xl w-11/12 xl:w-full gap-6 justify-center text-center flex flex-wrap flex-row">
+		<div class="flex min-w-[20rem] max-w-sm w-full"><a id="" href="/blog/how-we-built-it-zero-trust-architecture" data-sveltekit-preload-data="hover" tabindex="false" class="overflow-hidden !w-full flex flex-col max-w-sm lg:max-w-none text-left group stroked  rounded-xl transition-all duration-200 !shadow-lg hover:shadow-md focus:shadow-md" data-analytics="{&quot;context&quot;:&quot;grid&quot;,&quot;variant&quot;:&quot;preview&quot;}">
+
+	<div class="flex-col h-full flex-nowrap flex justify-between  "><div class="max-w-3xl pt-xx-small md:pt-x-small px-xx-small md:px-x-small "><div class="flex gap-macro mb-micro">
+				<div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">Engineering</div><div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">Company</div></div>
+			
+			<div class=""><h3 class="text-xl md:text-[28px]/[40px] text-important transition-all duration-200 delay-[50ms] group-focus:underline group-hover:underline">How we built it: a zero-trust architecture for cloud development environments</h3></div>
+			</div>
+		<p class="!z-20 mt-micro md:mt-macro px-xx-small md:px-x-small pb-xx-small md:pb-x-small "><span><span class="-space-x-2">
+
+
+
+
+
+<img src="https://github.com/csweichel.png" alt="@csweichel's avatar on GitHub" height="28" width="28" title="@csweichel" class="inline !rounded-full border border-solid border-card " loading="lazy">
+</span>
+				<span class="text-p-small ml-1 dark:!text-important">Christian Weichel</span></span></p>
+		<img src="/images/blog/more-blog-banner-optimal.webp" alt="Blog banner" class="absolute bottom-0 right-0 dark:hidden">
+			<img src="/images/blog/more-blog-banner-optimal-dark.webp" alt="Blog banner" class="hidden absolute bottom-0 right-0 dark:flex"></div></a>
+				</div><div class="flex min-w-[20rem] max-w-sm w-full"><a id="" href="/blog/modeling-identity-gitpod" data-sveltekit-preload-data="hover" tabindex="false" class="overflow-hidden !w-full flex flex-col max-w-sm lg:max-w-none text-left group stroked  rounded-xl transition-all duration-200 !shadow-lg hover:shadow-md focus:shadow-md" data-analytics="{&quot;context&quot;:&quot;grid&quot;,&quot;variant&quot;:&quot;preview&quot;}">
+
+	<div class="flex-col h-full flex-nowrap flex justify-between  "><div class="max-w-3xl pt-xx-small md:pt-x-small px-xx-small md:px-x-small "><div class="flex gap-macro mb-micro">
+				<div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">Security</div><div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">Engineering</div></div>
+			
+			<div class=""><h3 class="text-xl md:text-[28px]/[40px] text-important transition-all duration-200 delay-[50ms] group-focus:underline group-hover:underline">Modeling Identity and Access Management with Gitpod: SSO, SCM, and OIDC explained</h3></div>
+			</div>
+		<p class="!z-20 mt-micro md:mt-macro px-xx-small md:px-x-small pb-xx-small md:pb-x-small "><span><span class="-space-x-2">
+
+
+
+
+
+<img src="https://github.com/loujaybee.png" alt="@loujaybee's avatar on GitHub" height="28" width="28" title="@loujaybee" class="inline !rounded-full border border-solid border-card " loading="lazy">
+</span>
+				<span class="text-p-small ml-1 dark:!text-important">Lou Bichard</span></span></p>
+		<img src="/images/blog/more-blog-banner-optimal.webp" alt="Blog banner" class="absolute bottom-0 right-0 dark:hidden">
+			<img src="/images/blog/more-blog-banner-optimal-dark.webp" alt="Blog banner" class="hidden absolute bottom-0 right-0 dark:flex"></div></a>
+				</div><div class="flex min-w-[20rem] max-w-sm w-full"><a id="" href="/blog/boosting-developer-productivity-unleashing-the-power-of-sourcegraph-cody-in-gitpod" data-sveltekit-preload-data="hover" tabindex="false" class="overflow-hidden !w-full flex flex-col max-w-sm lg:max-w-none text-left group stroked  rounded-xl transition-all duration-200 !shadow-lg hover:shadow-md focus:shadow-md" data-analytics="{&quot;context&quot;:&quot;grid&quot;,&quot;variant&quot;:&quot;preview&quot;}">
+
+	<div class="flex-col h-full flex-nowrap flex justify-between  "><div class="max-w-3xl pt-xx-small md:pt-x-small px-xx-small md:px-x-small "><div class="flex gap-macro mb-micro">
+				<div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">Engineering</div><div class="inline-block px-3 py-0.5 text-xs font-semibold text-important rounded-lg shadow-light bg-sand-dark dark:bg-card !bg-off-black !text-divider dark:!text-important">DevX</div></div>
+			
+			<div class=""><h3 class="text-xl md:text-[28px]/[40px] text-important transition-all duration-200 delay-[50ms] group-focus:underline group-hover:underline">Boosting Developer Productivity: Unleashing the Power of Sourcegraph Cody in Gitpod</h3></div>
+			</div>
+		<p class="!z-20 mt-micro md:mt-macro px-xx-small md:px-x-small pb-xx-small md:pb-x-small "><span><span class="-space-x-2">
+
+
+
+
+
+<img src="https://github.com/Siddhant-K-code.png" alt="@Siddhant-K-code's avatar on GitHub" height="28" width="28" title="@Siddhant-K-code" class="inline !rounded-full border border-solid border-card " loading="lazy">
+
+
+
+
+
+<img src="https://github.com/pawlean.png" alt="@pawlean's avatar on GitHub" height="28" width="28" title="@pawlean" class="inline !rounded-full border border-solid border-card " loading="lazy">
+</span>
+				<span class="text-p-small ml-1 dark:!text-important">Siddhant &amp; Pauline</span></span></p>
+		<img src="/images/blog/more-blog-banner-optimal.webp" alt="Blog banner" class="absolute bottom-0 right-0 dark:hidden">
+			<img src="/images/blog/more-blog-banner-optimal-dark.webp" alt="Blog banner" class="hidden absolute bottom-0 right-0 dark:flex"></div></a>
+				</div></div>
+</section>
+</main>
+	<div class=" pb-8 bg-new-black-bg text-p-footer" data-id="footer"><footer class="py-large m-auto px-xx-small md:max-w-6xl md:py-small md:px-xx-small"><div class="flex gap-x-x-small sm:gap-x-small md:gap-0 justify-between flex-wrap pb-micro md:pb-small"><ul class="min-w-min mb-xx-small space-y-2.5 md:mb-0 w-40 svelte-1bk5xs"><li class="font-semibold text-divider dark:text-divider-light">Product</li>
+	<li><a data-sveltekit-preload-data="hover" href="/docs" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Docs
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/changelog" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Changelog
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/support" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Support
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="https://github.com/gitpod-io/gitpod/issues/new?assignees=&amp;labels=type%3A+bug&amp;template=bug_report.yml" rel="noopener" target="_blank" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Report a bug
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="https://www.gitpodstatus.com/" rel="noopener" target="_blank" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Status
+</a></li>
+</ul>
+				<ul class="min-w-min mb-xx-small space-y-2.5 md:mb-0 w-40 svelte-1bk5xs"><li class="font-semibold text-divider dark:text-divider-light">Resources</li>
+	<li><a data-sveltekit-preload-data="hover" href="/blog" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Blog
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/pricing" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Pricing
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/events" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Events
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/screencasts" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Videos
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/customers" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Customers
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/whitepapers" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">White papers
+</a></li>
+</ul>
+				<ul class="min-w-min mb-xx-small space-y-2.5 md:mb-0 w-40 svelte-1bk5xs"><li class="font-semibold text-divider dark:text-divider-light">Solutions</li>
+	<li><a data-sveltekit-preload-data="hover" href="/solutions/onboarding" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Developer onboarding
+</a></li>
+
+					<li><a data-sveltekit-preload-data="hover" href="/solutions/developer-productivity" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Developer productivity
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/solutions/developer-self-service" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Developer self-service
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/solutions/supply-chain-security" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Supply chain security
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/solutions/vdi" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">VDI replacement
+</a></li>
+</ul>
+				<ul class="min-w-min mb-xx-small space-y-2.5 md:mb-0 w-40 svelte-1bk5xs"><li class="font-semibold text-divider dark:text-divider-light">Compare</li>
+	<li><a data-sveltekit-preload-data="hover" href="/vs/github-codespaces" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">GitHub Codespaces
+						
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/blog/gitpod-vs-coder" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Coder
+</a></li>
+</ul>
+				<ul class="min-w-min mb-xx-small space-y-2.5 md:mb-0 w-40 svelte-1bk5xs"><li class="font-semibold text-divider dark:text-divider-light">Company</li>
+	<li><a data-sveltekit-preload-data="hover" href="/about" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">About
+</a></li>
+					<li>
+						<a data-sveltekit-preload-data="hover" href="/careers" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Careers
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/media-kit" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Media kit
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/security" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Security
+</a></li>
+					<li><a data-sveltekit-preload-data="hover" href="/contact" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Contact
+</a></li>
+</ul></div>
+		<div class="border-t border-solid border-light-black pt-micro"><div class="flex flex-wrap flex-row sm:flex-row-reverse justify-between mt-micro md:mt-0 items-center"><div class="flex space-x-macro lg:mt-macro"><a data-sveltekit-preload-data="hover" href="https://github.com/gitpod-io" rel="" target="_blank" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;,&quot;context&quot;:&quot;github_visit&quot;}" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light hover:opacity-80 self-center svelte-zcuizw"><img src="/svg/brands/github.svg" alt="GitHub" class="mx-1 sm:m-1 w-6 h-6 md:w-7 md:h-7">
+						
+</a><a data-sveltekit-preload-data="hover" href="https://www.linkedin.com/company/gitpod/" rel="" target="_blank" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;,&quot;context&quot;:&quot;linkedin_visit&quot;}" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light hover:opacity-80 self-center svelte-zcuizw"><img src="/svg/brands/linkedin.svg" alt="LinkedIn" class="mx-1 sm:m-1 w-6 h-6 md:w-7 md:h-7">
+						
+</a><a data-sveltekit-preload-data="hover" href="https://www.youtube.com/@Gitpod" rel="" target="_blank" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;,&quot;context&quot;:&quot;youtube_visit&quot;}" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light hover:opacity-80 self-center svelte-zcuizw"><img src="/svg/brands/youtube.svg" alt="YouTube" class="mx-1 sm:m-1 w-6 h-6 md:w-7 md:h-7">
+						
+</a><a data-sveltekit-preload-data="hover" href="https://www.gitpod.io/chat" rel="" target="_blank" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;,&quot;context&quot;:&quot;discord_visit&quot;}" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light hover:opacity-80 self-center svelte-zcuizw"><img src="/svg/brands/discord.svg" alt="Discord" class="mx-1 sm:m-1 w-6 h-6 md:w-7 md:h-7">
+						
+</a><a data-sveltekit-preload-data="hover" href="https://twitter.com/gitpod" rel="" target="_blank" data-analytics="{&quot;variant&quot;:&quot;social_media&quot;,&quot;context&quot;:&quot;twitter_visit&quot;}" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light hover:opacity-80 self-center svelte-zcuizw"><img src="/svg/brands/twitter.svg" alt="Twitter" class="mx-1 sm:m-1 w-6 h-6 md:w-7 md:h-7">
+						
+</a></div>
+				<div class="lg:mt-xx-small"><div class="flex flex-wrap gap-x-4 gap-y-4 sm:gap-y-0 mt-small md:mt-micro w-5/10 place-items-center"><a data-sveltekit-preload-data="hover" href="/imprint" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Imprint
+</a>
+
+						<a data-sveltekit-preload-data="hover" href="/terms" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Terms of service
+</a>
+
+						<a data-sveltekit-preload-data="hover" href="/privacy" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Privacy policy
+</a>
+
+						<a data-sveltekit-preload-data="hover" href="/cookies" rel="" target="" data-analytics="" class="text-grey no-underline focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light  svelte-zcuizw">Cookie policy
+</a>
+
+						<button class="text-left text-grey focus:text-divider hover:text-divider active:text-divider dark:focus:text-divider-light dark:hover:text-divider-light dark:active:text-divider-light">Cookie preferences</button></div>
+					<p class="mt-9 sm:mt-6 text-grey">Copyright © 2024 Gitpod
+					</p></div></div></div></footer></div>
+
+
+
+</div>
+
+
+
+
+			
+			<script>
+				{
+					__sveltekit_1v5i1w2 = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {"PUBLIC_CONFIGCAT_KEY":"OSzbCCd5YESN3ZtcqYIpkA/n8MSGCfKLUC2OcnKX0i2ZQ"}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,{"type":"data","data":{featuredPosts:[{slug:"how-we-built-it-zero-trust-architecture",author:"csweichel",date:"02 Oct 2024 09:00:00 UTC",excerpt:"How we built Gitpod Flex’s zero-trust architecture and why it’s the future of secure development.",tags:["Engineering","Company"],title:"How we built it: a zero-trust architecture for cloud development environments",image:"teaser.jpg",headings:[{title:"Gitpod architecture overview: runners and management plane",level:2,slug:"gitpod-architecture-overview-runners-and-management-plane",children:[]},{title:"Building a zero-trust identity model for Gitpod Flex",level:2,slug:"building-a-zero-trust-identity-model-for-gitpod-flex",children:[]},{title:"How is authentication and authorization handled?",level:2,slug:"how-is-authentication-and-authorization-handled",children:[]},{title:"Building multi-tenancy into organizations",level:2,slug:"building-multi-tenancy-into-organizations",children:[]},{title:"The future of secure development is zero-trust environments",level:2,slug:"the-future-of-secure-development-is-zero-trust-environments",children:[]}]},{slug:"modeling-identity-gitpod",author:"loujaybee",date:"Tuesday, 14 Feb 2024 13:00:00 UTC",excerpt:"Gitpod defers to your sources of truth for identity and access management (SSO for auth, SCM for repositories and OIDC for cloud and secret access). Through the combination of these three, you can create and apply a “defense in depth” strategy for your development environments in Gitpod ensuring only the _right people_ have the _right access_ at the _right time_.",tags:["Security","Engineering"],image:"teaser.jpg",title:"Modeling Identity and Access Management with Gitpod: SSO, SCM, and OIDC explained",headings:[{title:"Modeling Identity in Gitpod",level:2,slug:"modeling-identity-in-gitpod",children:[]},{title:"Authenticating to Gitpod via Single Sign On (SSO)",level:2,slug:"authenticating-to-gitpod-via-single-sign-on-sso",children:[]},{title:"Connecting Gitpod to Source Control (SCM)",level:2,slug:"connecting-gitpod-to-source-control-scm",children:[]},{title:"Accessing Secrets from Gitpod Workspaces (OIDC)",level:2,slug:"accessing-secrets-from-gitpod-workspaces-oidc",children:[]},{title:"Secure Development Environments",level:2,slug:"secure-development-environments",children:[]}]},{slug:"boosting-developer-productivity-unleashing-the-power-of-sourcegraph-cody-in-gitpod",author:"Siddhant-K-code, pawlean",date:"19 June 2023 00:00:00 UTC",excerpt:"Sourcegraph Cody, a cutting-edge AI coding assistant, and Gitpod, come together to provide developers with a seamless and highly efficient coding experience. By integrating Sourcegraph Cody into Gitpod, developers can unlock many intelligent code completion features, advanced code search capabilities, and context-specific suggestions, all within their development environment.",tags:["Engineering","DevX"],image:"teaser.webp",teaserImage:"teaser.webp",title:"Boosting Developer Productivity: Unleashing the Power of Sourcegraph Cody in Gitpod",headings:[{title:"Understanding Sourcegraph Cody:",level:2,slug:"understanding-sourcegraph-cody",children:[]},{title:"The Power of Integration:",level:2,slug:"the-power-of-integration",children:[]},{title:"How teams can improve onboarding with Cody",level:2,slug:"how-teams-can-improve-onboarding-with-cody",children:[]},{title:"Get Started Now",level:2,slug:"get-started-now",children:[]},{title:"Working Demo",level:2,slug:"working-demo",children:[{title:"Understanding the Repository & Codebase 🧑‍🏫",level:3,slug:"understanding-the-repository--codebase",children:[]},{title:"Get Contextual Documentation for Codebase 📑",level:3,slug:"get-contextual-documentation-for-codebase",children:[]},{title:"Context-based Repository Search 📚",level:3,slug:"context-based-repository-search",children:[]},{title:"Gitpodify your project using Cody 🚀",level:3,slug:"gitpodify-your-project-using-cody",children:[]},{title:"Catchup with Codebase changes after vacation 🏖️",level:3,slug:"catchup-with-codebase-changes-after-vacation",children:[]}]},{title:"Resources and Further Reading",level:2,slug:"resources-and-further-reading",children:[]}]}]},"uses":{"params":["slug"]}},null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.66b8f892.js"),
+						import("../_app/immutable/entry/app.f6e118cf.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 13],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	
+<script async id="netlify-rum-container" src="/.netlify/scripts/rum" data-netlify-rum-site-id="444ff2d3-6870-4d3f-890a-d738b69ca9cb" data-netlify-deploy-branch="main" data-netlify-deploy-context="production" data-netlify-cwv-token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaXRlX2lkIjoiNDQ0ZmYyZDMtNjg3MC00ZDNmLTg5MGEtZDczOGI2OWNhOWNiIiwiYWNjb3VudF9pZCI6IjVhYTI2NjllYTYxODhmMzljYzZmNzExZSIsImRlcGxveV9pZCI6IjY3MmEzMWRiNDViZDQ5MDAwODU0YzM4OSIsImlzc3VlciI6Im5mc2VydmVyIn0.k-Wsp_oACYxQ7P-DbgApIRLzIUrYMBONv36n-RQhV0w"></script></body>
+</html>
