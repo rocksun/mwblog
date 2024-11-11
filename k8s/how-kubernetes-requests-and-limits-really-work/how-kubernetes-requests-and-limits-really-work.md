@@ -4,7 +4,7 @@ title: Kubernetes Request和Limit的真正工作原理
 cover: https://cdn.thenewstack.io/media/2024/11/db6c17c5-wizard2.png
 -->
 
-Kubernetes 资源管理技术内幕——第一章：巫师之旅
+Kubernetes 资源管理技术内部运作的向导之旅 — 第 1 章。
 
 > 译自 [How Kubernetes Requests and Limits Really Work](https://thenewstack.io/how-kubernetes-requests-and-limits-really-work/)，作者 Reid Vandewiele。
 
