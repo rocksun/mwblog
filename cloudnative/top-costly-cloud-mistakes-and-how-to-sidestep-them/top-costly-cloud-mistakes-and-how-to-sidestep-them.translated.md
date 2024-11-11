@@ -1,0 +1,55 @@
+# 云成本高昂的错误以及如何避免它们
+
+![云成本高昂的错误以及如何避免它们的专题图片](https://cdn.thenewstack.io/media/2024/11/518998ed-scott-graham-5fnmwej4taa-unsplash-1024x683.jpg)
+Photo by [Scott Graham](https://unsplash.com/@homajob?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/person-holding-pencil-near-laptop-computer-5fNmWej4tAA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash).
+
+云计算改变了组织的运营方式。然而，要实现云的全部价值，需要一种战略性的方法来管理成本和优化资源。[FinOps](https://thenewstack.io/finops-can-turn-it-cost-centers-into-a-value-driver/) 是一种弥合财务、云运营和 [DevOps](https://thenewstack.io/devops/) 团队之间差距的实践，以确保云投资与业务目标一致。
+
+尽管最近 FinOps 得到广泛采用，但许多人仍在努力从其实践中获得切实的价值。我公司最近 [调查](https://www.cloudbolt.io/wp-content/uploads/the-real-state-of-finops.pdf) 了 FinOps 的采用情况，发现 89% 的人认为 FinOps 是控制云成本管理复杂性的灵丹妙药。尽管五分之四的公司拥有 FinOps 团队，但近一半 (45%) 的公司对其在实际应用中的有效性提出了质疑。虽然理论上合理，但许多人发现 [在实践中实施 FinOps 更具挑战性](https://thenewstack.io/what-is-finops-understanding-finops-best-practices-for-cloud/)。
+
+采用率与实际投资回报率之间的这种脱节源于一些很容易避免的错误。
+
+## 错误 #1：基准设置不正确
+
+在深入研究 FinOps 的复杂性之前，如果没有建立坚实的基础，就注定会失败。使用以下策略为成功做好准备：
+
+* **明确目标**: 为您的 FinOps 计划定义明确的目标（例如，[减少冗余云成本](https://thenewstack.io/5-ways-opentelemetry-can-reduce-costs/)、增强财务可见性、优化资源分配），以协调组织并为取得进展奠定基础。[FinOps 基金会](https://www.finops.org/) 拥有丰富的资源可供利用。
+* **定义成本架构**: 建立成本分配方法，包括标记策略，以准确监控和跟踪资源使用情况。设置使用和支出阈值，并准备一个简单的预测模型，例如带有单位成本计算的电子表格，以帮助财务规划。
+* **设置切合实际的 KPI**: 确定第一波 KPI，以支持分阶段采用方法并取得一些早期胜利。根据我的经验，一个很好的北极星是“从优秀到行动”的时间；它可以让你的公司识别、分析和修复成本异常。随着你的成熟度提高，你的交付周期将会缩短。
+* **测试工具**: 部署和配置必要的 FinOps 工具。利用人工智能的较新解决方案将更好地优化手动流程并简化数据分析。进行冒烟测试以确保可靠性和有效性。
+* **共同责任协调**: [定义共享服务和治理要求](https://thenewstack.io/improving-application-security-requires-defining-better-metrics/)，例如批准的部署模式和论证流程，并实施工具以实时了解成本和使用情况。
+* **尽早且经常与利益相关者互动**: FinOps 是一项团队运动。与所有相关的利益相关者群体保持定期沟通并建立一致的会议节奏，以确保协调一致、实施最佳实践、跟踪 KPI 并庆祝胜利。
+
+
+## 错误 #2：假设每个人都会欣然接受“FinOps 理念”
+
+FinOps 不仅仅是工具和流程；它关乎财务、运营和工程部门之间的团队合作和真诚协作。然而，不要假设每个人都会自然而然地采用 FinOps 理念。
+
+尽管 FinOps 的重要性得到广泛认可，但其实际有效性却常常受到质疑。根据 FinOps 基金会的数据，对于 [49%](https://data.finops.org/#11730) 的从业者来说，组织协调一致是需要克服的最普遍的挑战。正如 Forrester 分析师和 FinOps 专家 Tracy Woo 所说，“财务和工程部门之间缺乏共同的语言和激励措施。他们仍然在各自的背景下进行局部优化，而不是促进成果，从而导致紧张关系和采用率低。”
+
+为了克服这种疑虑，你需要了解团队的现状，并将 FinOps 集成到现有的流程和工作流程中，而不是强迫组织改变其行为。建立一个由财务、运营、DevOps 和云工程代表组成的跨职能实践团队社区，可以帮助每个人达成共识。
+
+## 错误 #3：陷入被动 FinOps 陷阱
+精明的云专家都知道，如果不解决根本原因，持续与过度支出作斗争注定是失败的。这种“救火”方式或许能扑灭一些火焰，但却无法阻止新的火焰燃起。是时候放弃无休止的短期修补循环，拥抱主动的 FinOps 战略，将预防置于反应之上。
+
+但是，如何实现这种转变呢？首先要让每个人都参与进来。FinOps 基金会报告称，76% 的组织已经加强或计划加强 FinOps 培训。您可以通过与学习与发展部门合作、建立云卓越中心和任命 FinOps 拥护者来启动可扩展的成本优化思维模式。
+
+一旦团队步调一致，就该为云旅程的每个阶段（从设计和开发到部署）建立一套预先定义的步骤和最佳实践。关键是要让开发人员的工作流程保持顺畅。没有人愿意被官僚主义所困扰。相反，应专注于创建不会触发漫长审批周期的“黄金路径”。赋能您的开发人员，使他们拥有做出明智成本决策所需的信息，例如价格建模解决方案，可以在新版本上线之前揭示其真实成本。
+
+但真正的变革在于持续优化。通过利用技术实时识别和消除浪费，您可以对 FinOps 采取主动方法，从而提高效率并减少不必要的支出。这不仅仅是为了省钱，而是为了在整个云运营中培养一种价值文化。
+
+因此，如果您准备好摆脱被动 FinOps 陷阱，开辟通往成本优化成功的道路，那么现在就该采取主动了。教育您的团队，创建您的蓝图，并利用持续优化的力量。您的云支出（以及您的理智）将会感谢您。
+
+## 释放 FinOps 的全部潜力
+
+虽然 FinOps 为简化云成本并将投资与业务目标保持一致提供了巨大的潜力，但组织必须首先解决常见的陷阱才能释放其全部潜力。
+
+最大化 FinOps 投资回报率始于主动措施，例如奠定坚实的基础、采用成熟的方法和技术、通过教育和培训赋能员工以及培养协作文化。
+
+***
+
+*本文是 The New Stack 贡献者网络的一部分。对影响开发人员的最新挑战和创新有见解吗？我们很乐意听取您的意见。填写此表格或发送电子邮件至 mattburns@thenewstack.io 与 Matt Burns 联系，成为一名贡献者并分享您的专业知识。*
+
+[YOUTUBE.COM/THENEWSTACK](YOUTUBE.COM/THENEWSTACK)
+
+技术发展日新月异，不容错过任何一集。订阅我们的 YouTube 频道，观看我们所有的播客、访谈、演示等等。
