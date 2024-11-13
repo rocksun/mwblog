@@ -1,7 +1,7 @@
 
 <!--
 title: Kubernetes的技术历史
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*VKpP9zjO1Yc21_C8
+cover: ./cover.png
 -->
 
 从 Borg 和 Omega 中汲取的经验教训，并将其应用于 Kubernetes。
