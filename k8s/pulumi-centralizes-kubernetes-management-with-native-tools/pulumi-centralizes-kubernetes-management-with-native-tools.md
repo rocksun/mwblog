@@ -32,4 +32,4 @@ Pulumi 基础设施即代码 (IaC) 为这些问题提供了一种新一代解决
 “随着今天的发布，客户管理的 Pulumi 部署代理现在允许组织在其 Kubernetes 环境中托管 Pulumi 部署代理，从而提高他们对基础设施部署的灵活性和控制力，”Duffy 告诉 The New Stack。 “Kubernetes 原生支持为自托管 Pulumi 部署代理提供了更大的灵活性、可扩展性和安全性。该代理直接部署到 Kubernetes 集群中。”请参阅[此处的代码](https://github.com/pulumi/customer-managed-deployment-agent/tree/main/kubernetes)。
 
 Snowflake 、保险公司Lemonade和北卡罗来纳州气候研究所是 Pulumi 的当前客户。客户管理代理可在Pulumi Cloud 的业务关键版上使用。
- 
+s
