@@ -1,6 +1,6 @@
 
 <!--
-title: Kubernetes中的魔法
+title: 魔法正在Kubernetes中发生
 cover: https://cdn.thenewstack.io/media/2024/11/75c32dfe-kubernetes.jpg
 -->
 
