@@ -78,5 +78,3 @@ cover: https://cdn.thenewstack.io/media/2024/11/365e6cb8-doubles.png
 当集成到变更管理流程中时，API 模拟提供了改进 API 可靠性和稳定性的保护，即使项目规模扩大或进行快速修订也是如此。投资 API 模拟为开发团队提供了长期基础，使他们能够自信地应对变化，确保 API 对所有利益相关者保持强大和可靠。
 
 通过在工作流程中包含模拟，您可以主动减少 API 漂移（我们开始整个对话的地方），简化变更管理并建立强大的 API 生态系统。这项投资最终将提高团队的生产力、协作和整体产品质量。如果您想了解如何在 Blackbird 中创建模拟实例，[请在此处查看](https://www.getambassador.io/docs/blackbird/latest/guides/mocks)或了解您如何在 Blackbird 中[模拟 AI 聊天机器人](https://www.getambassador.io/blog/mocking-ai-chatbot-api)。
-
-[YOUTUBE.COM/THENEWSTACK 技术发展迅速，不要错过任何一集。订阅我们的 YouTube 频道以串流收听我们所有的播客、访谈、演示等等。](https://youtube.com/thenewstack?sub_confirmation=1)

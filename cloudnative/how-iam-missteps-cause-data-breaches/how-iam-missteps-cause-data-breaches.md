@@ -62,4 +62,6 @@ cover: https://cdn.thenewstack.io/media/2024/11/28e966cb-permission.jpg
 
 更进一步，我们可以生成此关系图的 JSON 甚至可视化表示。
 
+![](https://cdn.thenewstack.io/media/2024/11/6a160e08-image2-1024x954.png)
+
 要查看其运行情况，请查看 Nitric 快速入门指南，该指南将引导您设置项目、创建新的堆栈以及生成诸如 Pulumi 或 Terraform 之类的基础设施即代码，这些代码默认情况下为您的应用程序授予最小权限。
