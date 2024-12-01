@@ -1,0 +1,42 @@
+# Forget All-Cloud or All-On-Prem: Embrace Hybrid for Agility and Cost Savings
+IT infrastructure has evolved over two decades to meet the demands of growing speed, flexibility, and cost efficiency. From the early 2000s’ shift to virtualized environments to the proliferation of [Infrastructure as Code](https://thenewstack.io/infrastructure-as-code-the-ultimate-guide/) (IaC) in the 2010s, each new technological advancement has [pushed enterprises closer](https://thenewstack.io/why-companies-are-ditching-the-cloud-the-rise-of-cloud-repatriation/) to seamless infrastructure management.
+
+Today’s computing reality goes beyond simple automation. As [companies navigate increasingly complex data](https://thenewstack.io/can-companies-really-self-host-at-scale/), security, and regulatory needs, the hybrid cloud model — a blend of on-premises and cloud environments — [emerges as the logical choice](https://thenewstack.io/cloud-vs-on-prem-comparing-long-term-costs/) for sustainable, versatile infrastructure.
+
+## The Dual Drivers: Agility and Stability
+The core idea behind hybrid cloud is straightforward: use [cloud environments where rapid scaling](https://thenewstack.io/ephemeral-environments-are-better-for-scaling-devops-tests/) and frequent changes are essential and rely on on-premises systems for stable, predictable workloads. This approach allows companies to pay for the flexibility they need in cloud environments while not overpaying for stability and compliance, which they can maintain less expensively in on-premises systems.
+
+The hybrid cloud shines in its ability to move workloads based on specific needs. The cloud is perfect for testing and experimentation, but once an application stabilizes, it’s often more cost-effective to run it on-prem.
+
+Yet, alarmingly, the [2023 State of the Cloud Survey](https://www.hashicorp.com/blog/hashicorp-state-of-cloud-strategy-survey-2023-maturity-drives-operational-efficiency) by Hashicorp reported 945 of nearly 1000 respondents admitting that they incurred unnecessary expenses because of the underutilization of cloud resources. Rectifying this waste is one of the biggest drivers of the growing embrace of hybrid architectures.
+
+Cost control is driving more companies to move workloads back on-prem. [A Citrix study](https://www.citrix.com/news/announcements/feb-2024/research-finds-it-leaders-are-choosing-hybrid-cloud-strategies-due-to-flexibility-costeffectiveness-and-security.html) showed that 42% of U.S. organizations are considering or have already repatriated at least half of their cloud workloads. A well-known example, [Basecamp](https://basecamp.com/cloud-exit) brought stable workloads on-prem and expected to save $7 million over five years.
+
+Another famous case is Dropbox, which reported in [its S-1 statement of February 2018](https://www.sec.gov/Archives/edgar/data/1467623/000119312518055809/d451946ds1.htm) that it saved $75 million over two years in operating costs by transitioning to a hybrid approach. At AnsibleFest in May, I spoke with a person from DropBox, who told me it was way too expensive for the company to keep everything in the cloud. He said they were paying a lot for services they didn’t use–like the flexibility to spin up and down. He told me DropBox now has 80% of workloads back on-prem, where previously they were 100% in the cloud.
+
+Beyond Cost Savings: Hybrid’s Additional Benefits
+
+Hybrid isn’t just about cutting costs — it boosts speed, security, and performance. Agile applications run faster in the cloud, where teams can quickly spin up, test, and launch without the limits of on-prem systems. This agility becomes especially valuable when delivering software quickly to meet market [demands without compromising the core stability of the entire system](https://thenewstack.io/why-cloud-native-systems-demand-a-zero-trust-approach/).
+
+Security and compliance are also critical drivers of hybrid adoption. Regulatory mandates often require data to remain on-premises to ensure compliance with local data residency laws. Hybrid infrastructure allows companies to move customer-facing applications to the cloud while keeping sensitive data on-prem. This separation of data from the front-end layers has become common in sectors like finance and government, where compliance demands and data security are non-negotiable.
+
+I have been speaking regularly to the CTOs of two very large banks in the US. They currently manage 15-20% of their workloads in the cloud and estimate the most they will ever have in the cloud would be 40-50%. They tell me the rest will stay on-prem — always — so they will always need to manage a hybrid environment.
+
+Finally, performance is another critical factor. The ability to fine-tune infrastructure for specific applications is generally more feasible on-prem, where companies have full control over hardware and network configurations. High-performance workloads can stay in-house, where latency is minimized, while less demanding workloads scale in the cloud. Enterprises get the best of both worlds: they can handle a surge in users on cloud infrastructure while ensuring stable, high-speed operations for resource-intensive, stable applications on-prem.
+
+## Orchestration Tools: Making Hybrid Manageable
+A hybrid approach also introduces complexity in managing separate environments cohesively. To address this, companies need orchestration platforms that create a unified view across cloud and on-prem environments, ensuring consistency, security, and efficiency. Orchestration platforms go beyond automating tasks — they coordinate processes across [architectures to ensure efficiency and security](https://thenewstack.io/how-to-secure-microservices-in-a-multicloud-architecture/) in hybrid setups. This coordination helps reduce the friction between cloud-based, dynamic environments and on-premises, stable setups, creating a smooth workflow for platform teams.
+
+For example, a month ago, I spoke to the leaders of a huge financial services company. This company can’t move its workloads entirely to the cloud for security and compliance reasons. So, they manage some in-house workloads with Ansible and some in the cloud, which they manage using Terraform. This company paid over a million dollars for solutions to manage these disconnected architectures and separate infrastructure teams. They told me, “We aren’t ever going to be just one or the other, so we need a way to bridge and manage this hybrid environment because it’s here to stay.”
+
+Orchestration platforms like Spacelift and others help streamline infrastructure orchestration — integrating with popular toolsets like [OpenTofu](https://spacelift.io/blog/what-is-opentofu), Terraform, and Ansible — across hybrid infrastructures using a single dashboard. These unified platforms, specifically designed for hybrid architectures, provide self-service provisioning capabilities to [developers while freeing platform teams](https://thenewstack.io/platform-teams-adopt-these-7-developer-productivity-drivers/) to focus on broader governance and control measures. By enabling developer autonomy and secure resource management, orchestration tools directly address the core goals of a hybrid: enhancing developer velocity while ensuring control of security and costs.
+
+## The Hybrid Future
+As companies scale their infrastructure, the hybrid model’s adaptability will become a mainstay in enterprise architectures. It’s not about choosing between cloud or on-prem; it’s about selecting the best environment for each workload. However, effective orchestration is crucial for managing the intricacies of these hybrid setups, enabling platform teams to maintain high developer velocity and control security and costs across the entire infrastructure.
+
+*This article is part of The New Stack’s contributor network. Have insights on the latest challenges and innovations affecting developers? We’d love to hear from you. Become a contributor and share your expertise by filling out this form or emailing Matt Burns at mattburns@thenewstack.io.*
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
