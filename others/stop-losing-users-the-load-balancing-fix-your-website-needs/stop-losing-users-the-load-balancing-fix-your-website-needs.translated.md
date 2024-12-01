@@ -1,0 +1,41 @@
+# 停止流失用户：您的网站所需的负载均衡解决方案
+
+![Featued image for: Stop Losing Users: The Load-Balancing Fix Your Website Needs](https://cdn.thenewstack.io/media/2024/11/9cb5f164-emil-bruckner-o1jqboyb9qy-unsplash-1024x683.jpg)
+[Emil Bruckner](https://unsplash.com/@emilbruckner?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/closed-gate-door-o1jqBoyB9qY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash).
+
+如果网站加载缓慢，用户很快就会放弃离开。[近47%](https://www.forbes.com/advisor/business/software/website-statistics/#sources_section) 的互联网用户如果页面加载时间超过两秒钟，就会离开。
+
+是的，你没看错。网站必须在几秒钟内运行并吸引访问者的注意力。
+
+为什么提出这个惊人的统计数据？负载均衡器在优化网站加载时间以保留用户会话方面起着至关重要的作用。负载均衡解决方案有助于为用户创建响应迅速、强大、可靠和安全的应用程序体验。也就是说，组织内的可扩展负载均衡器负责维护用户对应用程序的访问。这有助于防止用户因性能不佳或更糟的情况（中断）而离开。
+
+想象一下，您在首映之夜排队观看新电影。电影院的引座员将顾客引导到售票处。队伍移动缓慢，您不可避免地会错过电影的开始。您想离开队伍回家，但队伍开始向前移动了。引座员（负载均衡器）将顾客引导到现在开放的额外售票处为他们服务。此操作允许所有顾客不仅有时间购买门票，而且还能在电影开始前去售卖部购买爆米花和糖果，从而在影院获得愉快的体验。
+
+我们都经历过类似电影院的例子，但结果并不总是那么积极。拥有14年的应用程序交付经验，
+
+应用程序堆栈中对负载均衡器的期望从未如此之高。这就是为什么负载均衡器对于我们的关键业务应用程序至关重要，它提供了高可用性、可扩展性、性能等等。
+
+**提供可用性、可靠性、性能和安全性**
+
+其核心是，负载均衡器将流量重新分配到各个服务器，以减少资源压力，从而帮助维护高可用性并提高运行业务所需解决方案的可靠性和性能。这可能包括前面提到的 Web 应用程序，但也经常包括其他解决方案，例如存储、虚拟桌面 (VDI) 环境、安全文件传输、电子邮件和 API 访问，仅举几例。这些解决方案的高可用性降低了故障风险，并允许更无缝地重新路由到不同的服务器以维持必要的正常运行时间。
+
+应用程序交付控制器 (ADC) 的功能类似于负载均衡器，但其功能超越了基本的负载均衡。
+
+例如，拥有分布式[数据中心的组织需要全局服务器](https://thenewstack.io/ignite-2024-microsoft-debuts-sql-server-2025-integrates-azure-sql-into-fabric/)负载均衡 (GSLB) 功能来支持其关键应用程序的高可用性。跨多个位置分配流量不仅可以通过允许更多系统响应用户请求来提高性能，而且还在整个数据中心因停电或其他灾难性事件而脱机的情况下增加了一定程度的站点弹性。这种方法通常包括多个本地数据中心和公共云。
+
+当您拥有[跨不同大陆或云区域的数据中心](https://thenewstack.io/stream-data-across-multiple-regions-and-clouds-with-kafka/) 并希望将用户引导到最靠近他们的位置以改善用户体验时，GSLB 还可以提高应用程序性能。通过基于位置或基于距离的转向，这很容易实现，如果选择的站点不可用，它仍然提供故障转移。
+
+ADC 超越负载均衡的另一个示例是其在将连接发送到应用程序服务器之前预先验证用户的能力。这种方法增加了一层安全性，防止在未确认用户有权访问应用程序的情况下进行任何连接尝试。这符合可通过 ADC 应用的零信任原则，其中包括身份验证。
+借助ADC提供的安全元素，还可以启用Web应用防火墙（WAF）来保护已发布的应用程序免受威胁行为者的攻击。这可以通过在ADC上终止流量、检查请求以验证其合法性以及阻止发送到应用程序的任何恶意流量来实现。
+
+多年来，我一直有幸与许多客户交流，随着他们应用程序的复杂性和需求不断增长，负载均衡器也必须随之改进。除了典型的负载均衡器之外，这些附加功能只是ADC能够为业务应用程序提供的价值的冰山一角。今天，我们不断创新，为客户提供必要的特性和工具，帮助他们超越用户期望。
+
+**应用负载均衡至关重要**
+
+任何应用程序的用户体验都直接与服务器的高可用性、可靠性、性能和安全性相关。[负载均衡解决方案](https://thenewstack.io/zero-trust-for-legacy-apps-load-balancer-layer-can-be-a-solution/)和ADC维持这些方面以支持理想的用户体验。
+
+回到我们电影场景的例子，排队的人很多，顾客不耐烦，而你只想享受一个夜晚的观影时光。如果检票员不能有效地将队伍分配到多个售票窗口，许多顾客会离开队伍回家，对体验感到不满，更不用说影院因此损失大量的票房了。我们的业务也是如此；如果没有[负载均衡器或ADC来有效管理](https://thenewstack.io/improve-microservices-with-these-new-load-balancing-strategies/)与应用程序的连接，用户将获得不佳的体验，导致他们离开网站，并且不得不等待超过两秒钟才能加载页面。
+
+*本文是The New Stack贡献者网络的一部分。对影响开发人员的最新挑战和创新有见解？我们很乐意听到您的声音。成为贡献者并分享您的专业知识，请填写此表格或发送电子邮件至mattburns@thenewstack.io联系Matt Burns。*
+
+[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)  科技发展日新月异，不要错过任何一集。订阅我们的YouTube频道，收看我们所有的播客、访谈、演示等等。
