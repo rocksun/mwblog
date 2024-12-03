@@ -1,0 +1,43 @@
+# VMware’s Private Cloud Shift Under Broadcom
+![Featued image for: VMware’s Private Cloud Shift Under Broadcom](https://cdn.thenewstack.io/media/2024/11/4bb79a40-dayne-topkin-u5zt-hoocrm-unsplash-1-1024x683.jpg)
+A major shift is emerging around the private cloud, with many viewing it as the quintessential infrastructure for organizations, especially those scaling globally across multiple geographical zones.
+
+One milestone reflecting this shift comes in the aftermath of Broadcom’s merger with [VMware](https://tanzu.vmware.com?utm_content=inline+mention). Broadcom’s CEO [Hock Tan,](https://www.linkedin.com/in/hock-tan/) in fact, emphatically declared earlier this year that the private cloud is the only viable path forward. At the recent [VMware Explore in Barcelona](https://www.vmware.com/explore/eu), VMware’s product heads discussed how the [VMware Cloud Foundation (VCF)](https://thenewstack.io/vmwares-private-cloud-solution-emerges-under-broadcom/) portfolio is designed to strengthen and meet organizational needs — AI/ML will play a key role in the VCF and [Tanzu](https://thenewstack.io/charles-schwab-adopts-postgresql-with-vmware-tanzu/) experience, of course. Additionally, as reported earlier this week, it may also offer some pricing relief for storage.
+
+
+[@Broadcom]CEO Hock Tan’s keynote session at[#VMwareExplore]on the public cloud hangover: “The future is private..private cloud, private AI fueled by your own private data. It’s about staying on prem and in control.”[@VMware][#HockTan][pic.twitter.com/QoegkrXn2m]— BC Gain (@bcamerongain)
+
+[August 27, 2024]
+To maximize developer productivity and operational efficiency at the same time, organizations need complete consistency between on-premises infrastructure and infrastructure in the cloud and even at the edge. Developers need to be able to deploy once and run anywhere, while [DevOps](https://thenewstack.io/devops/) teams can support application deployments without having to ask for developer help. Complete operational consistency is the foundation for efficiently training [LLMs](https://thenewstack.io/llm/) close to the data and, of course, for sharing expensive resources like GPUs, a company may already own instead of always grabbing more resources from a public cloud. All that said, yes, the overall vision of running all enterprise apps on one consistent private cloud layer does make sense.
+
+The releases and revamping of VCF, as well as a stronger emphasis on private cloud, has characterized VMware since its merger with Broadcom, without neglecting its multicloud support. As [Prashanth Shenoy](https://www.linkedin.com/in/prashanthshenoy/), vice president of marketing, cloud platform, infrastructure, and solutions for Broadcom’s VMware, noted during a pre-launch briefing, the past few months “have been a period of rapid transformation.”
+
+“We have seen shifts in our business model as we move toward a subscription approach, a transformation in our portfolio as we pivot to a platform-based private cloud delivery model, and a route-to-market transformation, simplifying and standardizing to offer a consistent experience for our customers,” Shenoy said. “Regardless of how they obtain the VCF product or where they deploy and manage it — whether on-premises, at the edge, with cloud service providers, or through hyperscalers — customers will experience streamlined deployment and management. This rapid pace of innovation spans technology, platform, services and route-to-market, all aimed at building a private cloud platform that serves two key customer groups.”
+
+For the advanced data services, Broadcom released at VMware Explore Barcelona, Tanzu Data Services which supports customers running AI/ML and GenAI workloads on VCF. The range of services covers modern databases, messaging, and caching. Tanzu Data Services provides infrastructure services that support databases and data engines like [PostgreSQL](https://thenewstack.io/postgresql-17-gets-incremental-backup-sql-queries-for-json/), MySQL, RabbitMQ and Valkyrie, “with easy provisioning, high availability and enterprise-class support, packaged into a single VMware Cloud Foundation offering,” Shenoy said. “This addition will help customers accelerate AI/ML workloads while accessing essential data services.”
+
+## New Services, Programs
+As cyber resiliency “remains a top priority for CIOs, CEOs and CISOs, VMware Live Recovery services as a “leading solution” for site-to-site and cloud-to-cloud disaster recovery and ransomware recovery, Shenoy said. VMware Live Recovery now extends support for [Google ](https://cloud.google.com/?utm_content=inline+mention)Cloud VMware Engine as an additional backup and recovery endpoint, alongside existing VMware Cloud on [AWS](https://aws.amazon.com/?utm_content=inline+mention) support. “This multi-cloud solution enables customers to recover from threats like ransomware efficiently and reliably,” Shenoy said.
+
+Additionally, customers deploying VMware Cloud Foundation now can “seek guidance on maximizing VCF’s value in a phased manner,” Shenoy said. The new Private Cloud Modernization Program assists in this journey, offering three key benefits, Shenoy said. First, the Private Cloud Maturity and Optimization Tool helps customers assess cloud maturity. Second, the Jump Start Workshop, led by transformation consultants or preferred partners, provides step-by-step deployment guidance. Lastly, the revamped VCF Certification Program launches the VCF Architect Certification, tailored for architects within customer organizations transitioning from traditional BI to cloud admin roles, Shenoy said.
+
+For VMware Migration Accelerator (VMA) Advantage members, representing a growing user community for VCF, a free three-year personal-use license for VCF is now offered upon completion of VMware Certified Professional (VCP) certification, along with discounted certification programs, Shenoy said. This support enables hands-on experience in home labs or with partner labs, Shenoy said.
+
+Finally, from a sovereign cloud perspective, the Sovereign Cloud Program is expanding to more than 50 cloud service provider partners globally, including 30 within the EU. These partners offer sovereign cloud and AI services, with investments in VCF capabilities to meet sovereignty requirements and attestations of service offerings, Shenoy said.
+
+“These key announcements and programs, unveiled at Explore Barcelona, underscore VMware Cloud Foundation’s commitment to helping customers modernize cloud infrastructure, access advanced services, and support unique paths to cloud transformation,” Shenoy said.
+
+## The VCF Question
+VCF is aligned well with hyperconvergence and private cloud adoption. Under a Gartner definition, VCF meets the criteria of hyperconvergence. With it, storage, computing and networking are converted into a single system that reduces data center complexity and increases scalability, Gartner analysts [Henrique Cecci](https://www.linkedin.com/in/henriquececci/?originalSubdomain=br) and [Philip Dawson](https://www.linkedin.com/in/philip-dawson-7b088721/?originalSubdomain=uk) write in “Hype Cycle for Data Center Infrastructure Technologies, 2024.” Organizations are especially cost-conscious today and are under pressure to optimize resources and seek single management interfaces to do that. Mirroring VCF’s positioning as a platform, use cases Gartner communicated include virtual desktop infrastructure (VDI), edge/Internet of Things (IoT), hybrid cloud and cloud native. Gartner has also noted how VMware, a strong player in the HCI software market, is now bundling vSAN and NSX as VMware Cloud Foundation, “driving HCI to its installed base on realigning enterprise agreements and cloud delivery models,” the analysts write.
+
+“With changes to Broadcom’s acquisition of VMware licensing, we are seeing a resurgence of hype related to storage and network virtualization in hyperconvergence as clients look at alternative innovations and vendors,” Cecci and Dawson write.
+
+VCF also meets the requirements of demand for software design infrastructure (SDI). SDI has “gained a renaissance in hype and activity due the impact of re-virtualization options and storage associated with private cloud,” Cecci and Dawson write.
+
+“With Broadcom’s acquisition of VMware in November 2023, we are seeing a resurgence of hype related to storage and network virtualization in SDI as clients look at alternative innovations and vendors for private cloud infrastructure,” Cecci and Dawson write.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
