@@ -1,7 +1,7 @@
 
 <!--
 title: DevOps正在快速发展，以实现更快、更安全的部署
-cover: https://cdn.thenewstack.io/media/2024/12/4aac0074-pexels-thisisengineering-3861958-scaled.jpg
+cover: ./cover.png
 -->
 
 现实案例表明，DevSecOps 如何最大限度地减少漏洞并增强合规性工作。
