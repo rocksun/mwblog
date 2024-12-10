@@ -51,7 +51,7 @@ Docusign 智能协议管理使用 AI 从合同中提取和分析关键信息，�
 
 ![Docusign 智能协议管理的 UI 展示了它如何使用 AI 主动识别风险、义务和潜在问题，例如删除合同中的自动续订条款。](https://cdn.thenewstack.io/media/2024/11/98c71263-ai-assisted-review.png)
 
-Docusign 智能协议管理中的 AI 识别了一个潜在风险：自动续订条款可能会将签署人锁定在冗长的合同中。（来源：Docusign）
+*Docusign 智能协议管理中的 AI 识别了一个潜在风险：自动续订条款可能会将签署人锁定在冗长的合同中。（来源：Docusign）*
 
 Jin 说，风险缓解是 Docusign 所称的“协议陷阱问题”的一个重要组成部分。
 
