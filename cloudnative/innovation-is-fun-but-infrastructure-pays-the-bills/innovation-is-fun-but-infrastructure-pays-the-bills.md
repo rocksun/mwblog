@@ -1,6 +1,6 @@
 
 <!--
-title: 创新很有趣，但基础设施才能赚钱
+title: 创新很有趣，但基础设施付账单
 cover: https://cdn.thenewstack.io/media/2024/12/9325f228-olumuyiwa-sobowale-kqidjlbcgha-unsplash-1-scaled.jpg
 -->
 
