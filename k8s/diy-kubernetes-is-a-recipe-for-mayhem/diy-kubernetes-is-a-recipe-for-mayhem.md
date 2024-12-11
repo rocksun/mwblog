@@ -8,9 +8,6 @@ cover: https://cdn.thenewstack.io/media/2024/12/229babb1-pexels-punttim-52608.jp
 
 > 译自 [DIY Kubernetes Is a Recipe for Mayhem](https://thenewstack.io/diy-kubernetes-is-a-recipe-for-mayhem/)，作者 Tobi Knaup。
 
-
-# 自己动手部署 Kubernetes 是一场灾难的预兆
-
 今天，在2024年末，CTO和其他企业IT领导者将Kubernetes视为必备技术。每个人都知道，现代的基于容器的应用程序具有可移植性、敏捷性和效率——而Kubernetes是普遍接受的、用于大规模部署和管理它们的解决方案。Kubernetes是一个非常流行的开源项目，这意味着低成本和强大的社区支持。
 
 事实上，一个令人惊叹的有帮助的[开源社区](https://kubernetes.io/)是Kubernetes最佳方面之一，使新手能够快速学习该框架。但就像生活中的许多事情一样，某事物的最佳方面也可能导致你陷入困境。
