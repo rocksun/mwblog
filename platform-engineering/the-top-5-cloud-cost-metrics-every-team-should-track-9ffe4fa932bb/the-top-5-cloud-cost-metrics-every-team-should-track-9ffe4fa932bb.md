@@ -1,7 +1,7 @@
 
 <!--
 title: 每个团队都应该跟踪的五大云成本指标
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*Tf9SFDn0WfyUeTk4
+cover: ./cover.png
 -->
 
 发现可帮助您的团队有效跟踪、管理和优化云成本的关键指标
