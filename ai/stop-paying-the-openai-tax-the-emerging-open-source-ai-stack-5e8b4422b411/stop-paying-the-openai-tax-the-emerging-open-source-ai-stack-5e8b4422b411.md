@@ -1,12 +1,12 @@
 
 <!--
 title: 停止支付OpenAI税：新兴的开源AI技术栈
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*Y9jT35OknsM8O_jj
+cover: ./cover.png
 -->
 
 以下是我们挑选的开源AI技术栈最佳组件。
 
-> 译自 [Stop Paying the OpenAI Tax: The Emerging Open-Source AI Stack](https://medium.com/timescale/stop-paying-the-openai-tax-the-emerging-open-source-ai-stack-5e8b4422b411)，作者 Team Timescale。
+> 译自 [Stop Paying the OpenAI Tax: The Emerging Open-Source AI Stack](https://medium.com/timescale/stop-paying-the-openai-tax-the-emerging-open-source-ai-stack-5e8b4422b411)，作者 Team Timescale。译者对这个技术栈都有涉猎，有没有朋友想要一起做点事情？
 
 *一套开源模型和工具，使任何开发者都能构建最先进的AI应用程序。*
 
