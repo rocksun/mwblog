@@ -22,7 +22,8 @@ Robinson还宣布了一个新的[Next.js GitHub社区](https://github.com/nextjs
 
 Robinson和其他人作为大会主题演讲的一部分，概述了为支持自主托管和其他改进而对Next.js进行的更改。
 
-`Use Cache`, `CacheTag` 和 `CacheLife`
+## `Use Cache`, `CacheTag` 和 `CacheLife`
+
 `Use cache` 是一个新的缓存API。Vercel的DX工程师在主题演讲中将其介绍为一种使Web应用程序更快的方法。“`use cache`使用进程内内存缓存，”她说。“这意味着它从内存中启动，但随后你可以根据你自己的架构进行配置，以便将来，如果你愿意，可以将缓存托管在任何地方。”
 
 在这种模式下，“缓存现在完全是可选且明确的，”她补充道。
