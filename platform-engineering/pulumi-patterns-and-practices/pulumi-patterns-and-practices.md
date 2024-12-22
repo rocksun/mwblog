@@ -87,6 +87,3 @@ Pulumi 管理下的每个资源都可以在 [Pulumi Insights](https://www.pulumi
 如果您已经准备好在这篇介绍之后开始使用 Pulumi，请随时 [创建帐户](https://www.pulumi.com/signup/) 并按照我们的 [入门](https://www.pulumi.com/docs/get-started/) 指南进行操作，看看简单的用例有多容易，并开始想象相同的开发人员体验如何扩展到您的整个组织。
 
 要了解更多信息，您可以观看以下视频，它提供了有关 Pulumi 工作原理的高级概述：
-
-## Pulumi Cloud
-Pulumi Cloud 是一款完全托管的服务，可帮助您轻松采用 Pulumi 的开源 SDK。它提供内置状态和密钥管理，与源代码控制和 CI/CD 集成，并提供 Web 控制台和 API，使可视化和管理基础设施变得更加容易。它对个人使用免费，并为团队提供功能。
