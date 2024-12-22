@@ -1,6 +1,6 @@
 
 <!--
-title: 定义 Kubernetes 中低数据丢失、停机容限
+title: 在Kubernetes中定义低数据丢失、停机容忍度
 cover: https://cdn.thenewstack.io/media/2024/12/25d22b1d-dr.jpg
 -->
 
