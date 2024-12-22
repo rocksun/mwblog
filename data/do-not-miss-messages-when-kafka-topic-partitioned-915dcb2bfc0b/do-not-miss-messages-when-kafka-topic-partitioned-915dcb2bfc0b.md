@@ -1,7 +1,7 @@
 
 <!--
 title: Kafka主题分区时不要丢失消息
-cover: https://miro.medium.com/v2/resize:fit:1200/0*0ZFcVifygpfnD7Wv.png
+cover: ./cover.png
 -->
 
 关于负载均衡策略的快速介绍。使用 Golang IBM/sarama 在 Kafka 主题上消费新添加的分区中的事件。
