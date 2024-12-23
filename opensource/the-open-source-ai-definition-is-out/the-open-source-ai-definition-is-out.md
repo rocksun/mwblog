@@ -25,8 +25,6 @@ cover: https://cdn.thenewstack.io/media/2024/10/e64eae66-carlo-piana-sjvn.jpg
 
 该定义还解决了[训练数据的争议性问题](https://thenewstack.io/open-source-ai-what-about-data-transparency/)。虽然它不要求完全发布数据集，但它要求提供“关于用于训练系统的数据的足够详细的信息”，以便熟练人员能够进行再现。
 
-- OSI 主席 Carlo Piana
-
 这对某些人来说还不够好。他们希望所有数据也都是开放的，才能将人工智能项目视为开源。
 
 正如 RedMonk 分析师最近在一篇文章中指出的那样，“源代码……是一个精确且范围狭窄的主题领域。人工智能项目并非如此。它们的范围融合了软件、数据、技术、偏差等等。[人工智能无疑是一种与软件本身根本不同的资产。](https://redmonk.com/sogrady/2024/10/22/from-open-source-to-ai/)”
