@@ -1,7 +1,7 @@
 
 <!--
 title: 寻找最佳的RAG开源嵌入模型
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*bhXrFWJTiZEY_4UO
+cover: ./cover.png
 -->
 
 寻找适合您 RAG 应用的最佳开源嵌入模型？我们分享一个比较工作流程，以便您可以停止支付 OpenAI 的费用。
