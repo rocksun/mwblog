@@ -36,7 +36,7 @@ researcher = Agent(
 
 CrewAI中的指令定义了智能体的职位描述，指定了它应该如何处理其任务。CrewAI允许开发者为每个智能体提供清晰、结构化的指令，确保其目标易于理解且可操作。
 
-```
+```py
 research_task = Task(  
     description='Analyze industry reports to identify top emerging technologies',  
     agent=researcher  
@@ -53,7 +53,7 @@ research_task = Task(
 
 CrewAI支持规划，允许工作流程以顺序、分层或并行模式执行。智能体可以战略性地行动，动态地相互协调以实现共同目标。规划将单个智能体的行动与更广泛的工作流程对齐，确保效率和一致性。例如，CrewAI Flows使智能体能够链接任务、有条件地执行或响应动态事件。
 
-```
+```py
 market_crew = Crew(  
     agents=[researcher, writer],  
     tasks=[research_task, writing_task],  
@@ -67,7 +67,7 @@ market_crew = Crew(
 
 记忆允许智能体在任务执行期间保留历史上下文。CrewAI智能体可以配置为具有记忆功能，以回忆之前的交互，确保工作流程的连续性和连贯性。这在长期运行的过程中尤其重要，在这些过程中，智能体必须根据过去的结果进行调整。
 
-```
+```py
 researcher = Agent(  
     role='Research Analyst',  
     memory=True,  # Retains interaction history  
@@ -82,10 +82,14 @@ researcher = Agent(
 CrewAI 代理通过扩展其能力的工具整合技能。无论是需要网络搜索、数据提取还是 PDF 分析的任务，代理都可以利用工具来访问和处理外部信息。CrewAI 支持多种工具，例如 PDFSearchTool 和 SerperDevTool，允许代理高效地检索和分析数据。
 
 ```python
-12345678 |
-from crewai_tools import PDFSearchTool
-research_tool = PDFSearchTool(pdf='industry_report.pdf')
-researcher = Agent(role='Research Analyst', tools=[research_tool], goal='Extract insights from the industry report')
+from crewai_tools import PDFSearchTool  
+ 
+research_tool = PDFSearchTool(pdf='industry_report.pdf')  
+researcher = Agent(  
+    role='Research Analyst',  
+    tools=[research_tool],  
+    goal='Extract insights from the industry report'  
+)
 ```
 
 工具使代理能够执行超出大型语言模型单独能力范围的专门任务，增强了它们整体的效能。
