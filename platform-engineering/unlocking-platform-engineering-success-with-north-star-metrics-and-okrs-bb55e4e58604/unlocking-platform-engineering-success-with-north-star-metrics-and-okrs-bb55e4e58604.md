@@ -1,7 +1,7 @@
 
 <!--
 title: 利用北极星指标和OKR实现平台工程的成功
-cover: https://miro.medium.com/v2/resize:fit:1156/1*BfClaouLZ4jm_rJDJtgvSQ.png
+cover: ./cover.png
 -->
 
 背景
