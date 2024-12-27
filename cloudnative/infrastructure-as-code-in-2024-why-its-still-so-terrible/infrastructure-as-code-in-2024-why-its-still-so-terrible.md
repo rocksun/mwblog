@@ -110,6 +110,4 @@ Bibi 认为，答案在于改进[CI/CD](https://thenewstack.io/ci-cd/) 管道上
 
 *TNS分析师 Lawrence E. Hecht 为本报告做出了贡献。*
 
-[YouTube](https://youtube.com/thenewstack?sub_confirmation=1)
-
 技术发展日新月异，不要错过任何一期。订阅我们的YouTube频道，收看我们所有的播客、访谈、演示等等。
