@@ -1,6 +1,6 @@
 
 <!--
-title: 面向企业的自主式AI：推动创新的四大关键优势
+title: 企业级主动式人工智能：推动创新的4大关键优势
 cover: https://cdn.thenewstack.io/media/2024/12/3d3080fd-agentic-ai-4-keys.jpg
 -->
 
