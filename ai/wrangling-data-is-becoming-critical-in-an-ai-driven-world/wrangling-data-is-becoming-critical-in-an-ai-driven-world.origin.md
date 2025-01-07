@@ -1,0 +1,32 @@
+# Wrangling Data Is Becoming Critical in an AI-Driven World
+Like the move to mobile, the transition to the cloud, and the onset of virtualization, the global proliferation of artificial intelligence has fundamentally changed digital architectures.
+
+Today’s organizations simultaneously have an unprecedented amount of data dispersed. It’s time for IT leaders to completely rethink how they approach data management in the era of AI — What new types of data are relevant? What new use cases? Operations? Skills? Processes? And Tools? If IT leaders can adequately answer these questions, they can leverage quality data to support proper AI tooling that will drive business success.
+
+AI changes your organization’s relationship with data. Developing and deploying AI systems at scale will bring a microscope to the quality of organizations’ data quality and architectures. As leaders look to accelerate the development and deployment of AI systems and tools, they will quickly see where they have bad data — disparate, purposeless, uncontrolled, and lacking relevant context. Where there is bad data, enterprises will satiate AI’s enormous appetite for capital investment only to excrete failed promises of pricing uplifts and productivity gains. The AI committees hastily constructed in C-suites around the Global 2,000 to brainstorm the “How Might We…” use cases for AI are now asking different questions around utilization, value-realization, and ROI.
+
+Evolving your relationship with data in the era of AI requires upstream inspection of sources, uniqueness, and quality. The [cloud has brought an onslaught of SaaS solutions](https://thenewstack.io/presto-for-big-data-sql-challenges-considerations-cloud-solutions/) and microservices-based architectures that have helped enterprises scale. However, the most unique and relevant data for AI may still sit in legacy, custom applications [managed by siloed IT and engineering teams](https://thenewstack.io/why-successful-platform-engineering-teams-need-a-product-manager/). The success of AI investments may hinge on how well you build relationships and pipelines with these teams and tools.
+
+With more AI models, systems, and applications moving into production workflows, enterprises are realizing the downstream implications of siloed use cases and decisions. For example, a customer that deploys AI copilots to increase the throughput of [software engineering teams](https://thenewstack.io/4-north-star-metrics-for-platform-engineering-teams/) may also see the number of vulnerabilities in that software increase at the same rate. This has shifted the burden and the bottleneck to a team that may be prioritizing AI investments in other areas.
+
+Strong relationships with data require more than relevant context and controls in the era of AI. Enterprise data technology leaders will need cost-efficient and system-thinking approaches now more than ever. The most adept enterprise leaders deploying AI will need to identify targeted use cases and consider relevant data sources and critical context for their team’s priorities and adjacent and supporting teams.
+
+**Good News: There Are Multiple Ways to Gain Control of Your Data and AI**
+When managing your data in anticipation of creating an AI tool, it’s essential to understand the tool’s use cases first. If you know why you’ve implemented this tool, you’ll know which organizational data you need to train your model. Understanding use cases can’t be something that rests solely with your IT team. It’s essential for everyone from the CISO, CTO, and CIO on down to understand the use cases that will involve AI. Oftentimes, AI models become the tools of non-IT team members, and they must understand how to turn relevant inputs into outputs that can drive their productivity.
+
+An added benefit of understanding use cases is that businesses will be more deliberate in implementing AI instead of focusing on being a part of the latest tech hype cycle. If IT leaders don’t implement AI with a specific plan, they will lose ROI from their AI investment, allowing valuable data to go to waste. A great way to avoid these consequences is to take use cases or implementation outside of a vacuum. As different departments develop use cases, they should partner with peers who can provide insight into the tasks AI will complete, the types of data that affect successful use cases, and the downstream impacts of acceleration AI may bring to any particular workflow.
+
+### Leveraging the Right Technology To Manage and Use Data
+Organizations must leverage tools that provide complete visibility of their IT architecture and, more importantly, their data. This way, they can find data relevant to AI use cases no matter where that data is located. However, seeing that data is not enough for training and leveraging AI tools. The right tools and platforms will integrate with multiple productivity/data management systems, allowing IT decision-makers to gather insights that can help improve AI use cases.
+
+### Leaning on Data Federation
+Data federation will become important in this new AI landscape because organizations will benefit from the flexibility of managing data. Data federation, or the ability to access and deploy analytics to data stored in different places, is a critical way to encourage this flexibility. This will give organizations freedom — in both scale and cost — to deploy data while managing tradeoffs in performance. In the past, single data stores and applications would need to ingest all the data required to be successful. Through data federation, data will reside in different places depending on compliance, controls, cost, and performance.
+
+**Prioritize Data Management Before Trusting AI’s Decisions**
+The future of AI is one in which AI learns and makes decisions. Over the next decade, we will increasingly offload actions to increasingly capable AI agents. As AI agents move from tedious tasks (meeting summaries) and recommendations (suggested next steps) toward taking action in business-critical decisions, IT leaders must drive their data relationships even deeper to deliver on the lofty promise of the technology without losing sight of the bottom line for the business.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
