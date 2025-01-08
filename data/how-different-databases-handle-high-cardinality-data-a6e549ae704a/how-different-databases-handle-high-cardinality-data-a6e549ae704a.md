@@ -1,7 +1,7 @@
 
 <!--
 title: 不同数据库处理高基数数据的方式
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*3fz34Sd4b1hplCnJ
+cover: ./cover.png
 -->
 
 了解不同数据库如何处理高基数数据，并了解选择正确的索引方案为何如此重要。
