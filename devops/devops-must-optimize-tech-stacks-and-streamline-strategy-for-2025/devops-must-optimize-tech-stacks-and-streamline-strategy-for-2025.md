@@ -18,13 +18,13 @@ DevOps 应实施这些工具和最佳实践，以促进 2025 年的生产力、�
 
 AI 驱动的工具，特别是 GenAI 工具，如果使用得当，可以大幅提高生产力。例如，编码助手等技术已被证明可以将开发人员的生产力提高高达[45%](https://fortegrp.com/insights/ai-coding-assistants)。除了帮助生成代码外，AI 驱动的工具还可以帮助进行应用程序测试、异常检测和预测性维护、基础设施优化以及加速持续集成和持续交付 (CI/CD)。
 
-但是，DevOps 必须记住，AI 驱动的工具并非完美无缺。它们使得可观察性工具（稍后将详细介绍）对于在错误进入生产环境之前捕获潜在错误更加必要。DevOps 将越来越需要 AI 驱动的工具来保持竞争力，但仍然强烈需要人工监督。最后，DevOps 团队应该谨慎选择——以及选择多少——AI 工具引入其技术栈。AI 仅对特定用例有意义，在某些情况下，引入 AI 会为开发人员创造更多[工作](https://thenewstack.io/gitlab-uses-ai-agents-to-automate-non-coding-dev-work/)（例如，更多代码需要审查），因此 DevOps 必须仔细权衡成本和收益。
+但是，DevOps 必须记住，AI 驱动的工具并非完美无缺。它们使得可观测性工具（稍后将详细介绍）对于在错误进入生产环境之前捕获潜在错误更加必要。DevOps 将越来越需要 AI 驱动的工具来保持竞争力，但仍然强烈需要人工监督。最后，DevOps 团队应该谨慎选择——以及选择多少——AI 工具引入其技术栈。AI 仅对特定用例有意义，在某些情况下，引入 AI 会为开发人员创造更多[工作](https://thenewstack.io/gitlab-uses-ai-agents-to-automate-non-coding-dev-work/)（例如，更多代码需要审查），因此 DevOps 必须仔细权衡成本和收益。
 
-## 采用可观察性工具以增强生产力和性能（并节省 $$）
+## 采用可观测性工具以增强生产力和性能（并节省 $$）
 
-可观察性工具对于增强开发人员的生产力、提高应用程序性能以及降低 DevOps 团队的成本至关重要。这些工具提供了深入的可视性，这[通过让开发人员](https://thenewstack.io/atlassians-new-ai-product-gives-developers-access-to-agents/)能够端到端地查看其应用程序和基础设施来支持生产力。它们还使开发人员能够深入了解一切[的性能，以便他们可以根据需要微调和优化](https://thenewstack.io/13-practical-updates-to-optimize-website-performance/)其系统。
+可观测性工具对于增强开发人员的生产力、提高应用程序性能以及降低 DevOps 团队的成本至关重要。这些工具提供了深入的可视性，这[通过让开发人员](https://thenewstack.io/atlassians-new-ai-product-gives-developers-access-to-agents/)能够端到端地查看其应用程序和基础设施来支持生产力。它们还使开发人员能够深入了解一切[的性能，以便他们可以根据需要微调和优化](https://thenewstack.io/13-practical-updates-to-optimize-website-performance/)其系统。
 
-此外，可观察性工具帮助开发人员通过快速识别和修复应用程序问题、减少平均恢复时间 (MTTR) 并支持整体应用程序性能来采取主动的性能方法。可观察性工具通过识别效率低下和减少应用程序停机时间来节省 DevOps 团队的时间和金钱。
+此外，可观测性工具帮助开发人员通过快速识别和修复应用程序问题、减少平均恢复时间 (MTTR) 并支持整体应用程序性能来采取主动的性能方法。可观测性工具通过识别效率低下和减少应用程序停机时间来节省 DevOps 团队的时间和金钱。
 
 ## 实施平台工程以简化 DevOps
 
