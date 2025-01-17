@@ -1,7 +1,7 @@
 
 <!--
 title: 策略引擎对决——OPA与OpenFGA与Cedar
-cover: https://media.graphassets.com/aJAVzjiYQZ2x4lBY4VcK
+cover: ./cover.png
 -->
 
 策略引擎大比拼：OPA vs. OpenFGA vs. Cedar – 深入探讨领先策略引擎的优势、权衡和用例。了解 OPA 在授权、可扩展性和采用方面与 OpenFGA 和 Cedar 的比较。
