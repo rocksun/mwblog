@@ -1,0 +1,1564 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+<script>
+var gform;gform||(document.addEventListener("gform_main_scripts_loaded",function(){gform.scriptsLoaded=!0}),document.addEventListener("gform/theme/scripts_loaded",function(){gform.themeScriptsLoaded=!0}),window.addEventListener("DOMContentLoaded",function(){gform.domLoaded=!0}),gform={domLoaded:!1,scriptsLoaded:!1,themeScriptsLoaded:!1,isFormEditor:()=>"function"==typeof InitializeEditor,callIfLoaded:function(o){return!(!gform.domLoaded||!gform.scriptsLoaded||!gform.themeScriptsLoaded&&!gform.isFormEditor()||(gform.isFormEditor()&&console.warn("The use of gform.initializeOnLoaded() is deprecated in the form editor context and will be removed in Gravity Forms 3.1."),o(),0))},initializeOnLoaded:function(o){gform.callIfLoaded(o)||(document.addEventListener("gform_main_scripts_loaded",()=>{gform.scriptsLoaded=!0,gform.callIfLoaded(o)}),document.addEventListener("gform/theme/scripts_loaded",()=>{gform.themeScriptsLoaded=!0,gform.callIfLoaded(o)}),window.addEventListener("DOMContentLoaded",()=>{gform.domLoaded=!0,gform.callIfLoaded(o)}))},hooks:{action:{},filter:{}},addAction:function(o,r,e,t){gform.addHook("action",o,r,e,t)},addFilter:function(o,r,e,t){gform.addHook("filter",o,r,e,t)},doAction:function(o){gform.doHook("action",o,arguments)},applyFilters:function(o){return gform.doHook("filter",o,arguments)},removeAction:function(o,r){gform.removeHook("action",o,r)},removeFilter:function(o,r,e){gform.removeHook("filter",o,r,e)},addHook:function(o,r,e,t,n){null==gform.hooks[o][r]&&(gform.hooks[o][r]=[]);var d=gform.hooks[o][r];null==n&&(n=r+"_"+d.length),gform.hooks[o][r].push({tag:n,callable:e,priority:t=null==t?10:t})},doHook:function(r,o,e){var t;if(e=Array.prototype.slice.call(e,1),null!=gform.hooks[r][o]&&((o=gform.hooks[r][o]).sort(function(o,r){return o.priority-r.priority}),o.forEach(function(o){"function"!=typeof(t=o.callable)&&(t=window[t]),"action"==r?t.apply(null,e):e[0]=t.apply(null,e)})),"filter"==r)return e[0]},removeHook:function(o,r,t,n){var e;null!=gform.hooks[o][r]&&(e=(e=gform.hooks[o][r]).filter(function(o,r,e){return!!(null!=n&&n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}});
+</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("consent", "default", {
+		ad_user_data: "denied",
+		ad_personalization: "denied",
+		ad_storage: "denied",
+		analytics_storage: "denied",
+		functionality_storage: "denied",
+		personalization_storage: "denied",
+		security_storage: "granted",
+		wait_for_update: 500,
+	});
+	gtag("set", "ads_data_redaction", true);
+	</script>
+<script type="text/javascript"
+		id="Cookiebot"
+		src="https://consent.cookiebot.com/uc.js"
+		data-implementation="wp"
+		data-cbid="987f53d4-8fc7-4bee-b1e9-827f112dbe3d"
+							async	></script>
+<script>
+var theplus_ajax_url = "https://coroot.com/wp-admin/admin-ajax.php";
+		var theplus_ajax_post_url = "https://coroot.com/wp-admin/admin-post.php";
+		var theplus_nonce = "78a6b1550b";
+</script>
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	
+	<!-- This site is optimized with the Yoast SEO Premium plugin v22.3 (Yoast SEO v24.0) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Chaos testing a Postgres cluster managed by CloudNativePG - Coroot</title>
+	<meta name="description" content="Learn how to chaos test a PostgreSQL cluster managed by CloudNativePG on Kubernetes with Coroot for enhanced observability and resilience." />
+	<link rel="canonical" href="https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Chaos testing a Postgres cluster managed by CloudNativePG" />
+	<meta property="og:description" content="Dive deep into chaos testing a PostgreSQL cluster managed by CloudNativePG on Kubernetes. Learn how to effectively test for high availability and monitor performance with Coroot. #ChaosEngineering #Postgres #Kubernetes #Observability" />
+	<meta property="og:url" content="https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/" />
+	<meta property="og:site_name" content="Coroot" />
+	<meta property="article:published_time" content="2025-01-16T08:46:23+00:00" />
+	<meta property="article:modified_time" content="2025-01-16T12:51:36+00:00" />
+	<meta property="og:image" content="https://coroot.com/wp-content/uploads/2025/01/chaos-testing.png" />
+	<meta property="og:image:width" content="4267" />
+	<meta property="og:image:height" content="2134" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Nikolay Sivko" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@coroot_com" />
+	<meta name="twitter:site" content="@coroot_com" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Nikolay Sivko" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="11 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#article","isPartOf":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/"},"author":{"name":"Nikolay Sivko","@id":"https://coroot.com/#/schema/person/c1dbc4bf2e56e9be27659509cf9797c3"},"headline":"Chaos testing a Postgres cluster managed by CloudNativePG","datePublished":"2025-01-16T08:46:23+00:00","dateModified":"2025-01-16T12:51:36+00:00","mainEntityOfPage":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/"},"wordCount":1449,"publisher":{"@id":"https://coroot.com/#organization"},"image":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#primaryimage"},"thumbnailUrl":"https://coroot.com/wp-content/uploads/2025/01/chaos-testing-featured.png","keywords":["Kubernetes","Postgres"],"articleSection":["Engineering"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/","url":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/","name":"Chaos testing a Postgres cluster managed by CloudNativePG - Coroot","isPartOf":{"@id":"https://coroot.com/#website"},"primaryImageOfPage":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#primaryimage"},"image":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#primaryimage"},"thumbnailUrl":"https://coroot.com/wp-content/uploads/2025/01/chaos-testing-featured.png","datePublished":"2025-01-16T08:46:23+00:00","dateModified":"2025-01-16T12:51:36+00:00","description":"Learn how to chaos test a PostgreSQL cluster managed by CloudNativePG on Kubernetes with Coroot for enhanced observability and resilience.","breadcrumb":{"@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#primaryimage","url":"https://coroot.com/wp-content/uploads/2025/01/chaos-testing-featured.png","contentUrl":"https://coroot.com/wp-content/uploads/2025/01/chaos-testing-featured.png","width":4267,"height":2134,"caption":"Chaos testing a Postgres cluster managed by CloudNativePG"},{"@type":"BreadcrumbList","@id":"https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://coroot.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://coroot.com/blog/"},{"@type":"ListItem","position":3,"name":"Blog","item":"https://coroot.com/category/blog/"},{"@type":"ListItem","position":4,"name":"Engineering","item":"https://coroot.com/category/blog/engineering/"},{"@type":"ListItem","position":5,"name":"Chaos testing a Postgres cluster managed by CloudNativePG"}]},{"@type":"WebSite","@id":"https://coroot.com/#website","url":"https://coroot.com/","name":"Coroot","description":"Metrics, logs, traces, continuous profiling, and SLO-based alerting, supercharged with predefined dashboards and inspections.","publisher":{"@id":"https://coroot.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://coroot.com/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://coroot.com/#organization","name":"Coroot Inc","url":"https://coroot.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://coroot.com/#/schema/logo/image/","url":"https://coroot.com/wp-content/uploads/2024/05/Group-7.png","contentUrl":"https://coroot.com/wp-content/uploads/2024/05/Group-7.png","width":213,"height":48,"caption":"Coroot Inc"},"image":{"@id":"https://coroot.com/#/schema/logo/image/"},"sameAs":["https://x.com/coroot_com","https://github.com/coroot","https://www.linkedin.com/company/coroot","https://www.youtube.com/@coroot_com"]},{"@type":"Person","@id":"https://coroot.com/#/schema/person/c1dbc4bf2e56e9be27659509cf9797c3","name":"Nikolay Sivko","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://coroot.com/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/c615c29d4b3c12151894f9827ea5e7cb?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/c615c29d4b3c12151894f9827ea5e7cb?s=96&d=mm&r=g","caption":"Nikolay Sivko"},"url":"https://coroot.com/author/nikolay/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//plausible.io' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel="alternate" type="application/rss+xml" title="Coroot &raquo; Feed" href="https://coroot.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Coroot &raquo; Comments Feed" href="https://coroot.com/comments/feed/" />
+<script>
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/coroot.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.1"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+</script>
+<link rel='stylesheet' id='gravity_forms_theme_reset-css' href='https://coroot.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-reset.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='gravity_forms_theme_foundation-css' href='https://coroot.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-foundation.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='gravity_forms_theme_framework-css' href='https://coroot.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-theme-framework.min.css?ver=2.9.0' media='all' />
+<link rel='stylesheet' id='gravity_forms_orbital_theme-css' href='https://coroot.com/wp-content/plugins/gravityforms/assets/css/dist/gravity-forms-orbital-theme.min.css?ver=2.9.0' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<style id='ctc-term-title-style-inline-css'>
+.ctc-block-controls-dropdown .components-base-control__field{margin:0 !important}
+
+</style>
+<style id='ctc-copy-button-style-inline-css'>
+.wp-block-ctc-copy-button{font-size:14px;line-height:normal;padding:8px 16px;border-width:1px;border-style:solid;border-color:inherit;border-radius:4px;cursor:pointer;display:inline-block}.ctc-copy-button-textarea{display:none !important}
+</style>
+<style id='ctc-copy-icon-style-inline-css'>
+.wp-block-ctc-copy-icon .ctc-block-copy-icon{background:rgba(0,0,0,0);padding:0;margin:0;position:relative;cursor:pointer}.wp-block-ctc-copy-icon .ctc-block-copy-icon .check-icon{display:none}.wp-block-ctc-copy-icon .ctc-block-copy-icon svg{height:1em;width:1em}.wp-block-ctc-copy-icon .ctc-block-copy-icon::after{position:absolute;content:attr(aria-label);padding:.5em .75em;right:100%;color:#fff;background:#24292f;font-size:11px;border-radius:6px;line-height:1;right:100%;bottom:50%;margin-right:6px;-webkit-transform:translateY(50%);transform:translateY(50%)}.wp-block-ctc-copy-icon .ctc-block-copy-icon::before{content:"";top:50%;bottom:50%;left:-7px;margin-top:-6px;border:6px solid rgba(0,0,0,0);border-left-color:#24292f;position:absolute}.wp-block-ctc-copy-icon .ctc-block-copy-icon::after,.wp-block-ctc-copy-icon .ctc-block-copy-icon::before{opacity:0;visibility:hidden;-webkit-transition:opacity .2s ease-in-out,visibility .2s ease-in-out;transition:opacity .2s ease-in-out,visibility .2s ease-in-out}.wp-block-ctc-copy-icon .ctc-block-copy-icon.copied::after,.wp-block-ctc-copy-icon .ctc-block-copy-icon.copied::before{opacity:1;visibility:visible;-webkit-transition:opacity .2s ease-in-out,visibility .2s ease-in-out;transition:opacity .2s ease-in-out,visibility .2s ease-in-out}.wp-block-ctc-copy-icon .ctc-block-copy-icon.copied .check-icon{display:inline-block}.wp-block-ctc-copy-icon .ctc-block-copy-icon.copied .copy-icon{display:none !important}.ctc-copy-icon-textarea{display:none !important}
+</style>
+<style id='ctc-social-share-style-inline-css'>
+.wp-block-ctc-social-share{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px}.wp-block-ctc-social-share svg{height:16px;width:16px}.wp-block-ctc-social-share a{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.wp-block-ctc-social-share a:focus{outline:none}
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='https://coroot.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.0.1' media='all' />
+<link rel='stylesheet' id='copy-the-code-css' href='https://coroot.com/wp-content/plugins/copy-the-code/assets/css/copy-the-code.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-copy-inline-css' href='https://coroot.com/wp-content/plugins/copy-the-code/assets/css/copy-inline.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='exad-hf-style-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/css/exad-header-footer.css?ver=1.5.9' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://coroot.com/wp-content/uploads/elementor/css/custom-frontend.min.css?ver=1731567404' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=8.4.5' media='all' />
+<link rel='stylesheet' id='e-swiper-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/conditionals/e-swiper.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='elementor-post-12-css' href='https://coroot.com/wp-content/uploads/elementor/css/post-12.css?ver=1731567404' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://coroot.com/wp-content/uploads/elementor/css/custom-pro-frontend.min.css?ver=1731567404' media='all' />
+<link rel='stylesheet' id='font-awesome-5-all-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='font-awesome-4-shim-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-heading-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-text-editor-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-text-editor.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-image-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-spacer-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-spacer.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='elementor-post-9266-css' href='https://coroot.com/wp-content/uploads/elementor/css/post-9266.css?ver=1737042367' media='all' />
+<link rel='stylesheet' id='ctc-blocks-core-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/blocks/assets/css/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-email-sample-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/email-sample/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-blocks-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/blocks/assets/css/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-email-address-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/email-address/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-phone-number-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/phone-number/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-copy-icon-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/copy-icon/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-blockquote-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/blockquote/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-code-snippet-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/code-snippet/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-message-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/message/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-wish-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/wish/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-shayari-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/shayari/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-sms-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/sms/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-deal-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/deal/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-coupon-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/coupon/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-ai-prompt-generator-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/ai-prompt-generator/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-table-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/table/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='ctc-el-contact-information-css' href='https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/contact-information/style.css?ver=4.0.4' media='all' />
+<link rel='stylesheet' id='exad-pro-main-style-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/css/exad-pro-styles.min.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.32.0' media='all' />
+<link rel='stylesheet' id='exad-pro-eicons-style-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/css/exad-pro-eicons-styles.min.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='exad-slick-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/css/slick.min.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='exad-slick-theme-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/css/slick-theme.min.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='exad-image-hover-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/css/imagehover.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='exad-swiperv5-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/css/swiper.min.css?ver=2.7.6' media='all' />
+<link rel='stylesheet' id='exad-main-style-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/css/exad-styles.min.css?ver=6.7.1' media='all' />
+<link rel='stylesheet' id='theplus-front-css-css' href='//coroot.com/wp-content/uploads/theplus-addons/theplus-post-9266.min.css?ver=1737042367' media='all' />
+<link rel='stylesheet' id='hello-elementor-css' href='https://coroot.com/wp-content/themes/hello-elementor/style.min.css?ver=3.1.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://coroot.com/wp-content/themes/hello-elementor/theme.min.css?ver=3.1.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-header-footer-css' href='https://coroot.com/wp-content/themes/hello-elementor/header-footer.min.css?ver=3.1.1' media='all' />
+<link rel='stylesheet' id='elementor-post-2186-css' href='https://coroot.com/wp-content/uploads/elementor/css/post-2186.css?ver=1737032583' media='all' />
+<link rel='stylesheet' id='elementor-post-252-css' href='https://coroot.com/wp-content/uploads/elementor/css/post-252.css?ver=1737032575' media='all' />
+<link rel='stylesheet' id='elementor-post-4968-css' href='https://coroot.com/wp-content/uploads/elementor/css/post-4968.css?ver=1733289748' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap&#038;ver=6.7.1' media='all' />
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/fonts/feather-icon/feather-icon-style.min.css?ver=2.7.6' media='all' />
+<link rel='stylesheet' id='elementor-icons-feather-icons-css' href='https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/fonts/feather-icon/feather-icon-style.min.css?ver=2.7.6' media='all' />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script src="https://coroot.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/js/jquery.json.min.js?ver=2.9.0" id="gform_json-js"></script>
+<script id="gform_gravityforms-js-extra">
+var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2,"code":"USD"},"base_url":"https:\/\/coroot.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/coroot.com\/wp-content\/plugins\/gravityforms\/images\/spinner.svg","version_hash":"27fa4659dd42efd40cd7b1682d528086","strings":{"newRowAdded":"New row added.","rowRemoved":"Row removed","formSaved":"The form has been saved.  The content contains the link to return and complete the form."}};
+var gform_i18n = {"datepicker":{"days":{"monday":"Mo","tuesday":"Tu","wednesday":"We","thursday":"Th","friday":"Fr","saturday":"Sa","sunday":"Su"},"months":{"january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December"},"firstDay":1,"iconText":"Select date"}};
+var gf_legacy_multi = {"1":""};
+var gform_gravityforms = {"strings":{"invalid_file_extension":"This type of file is not allowed. Must be one of the following:","delete_file":"Delete this file","in_progress":"in progress","file_exceeds_limit":"File exceeds size limit","illegal_extension":"This type of file is not allowed.","max_reached":"Maximum number of files reached","unknown_error":"There was a problem while saving the file on the server","currently_uploading":"Please wait for the uploading to complete","cancel":"Cancel","cancel_upload":"Cancel this upload","cancelled":"Cancelled"},"vars":{"images_url":"https:\/\/coroot.com\/wp-content\/plugins\/gravityforms\/images"}};
+</script>
+<script id="gform_gravityforms-js-before">
+
+</script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=2.9.0" id="gform_gravityforms-js"></script>
+<script id="gform_conditional_logic-js-extra">
+var gf_legacy = {"is_legacy":""};
+</script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/js/conditional_logic.min.js?ver=2.9.0" id="gform_conditional_logic-js"></script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/assets/js/dist/utils.min.js?ver=f802885f3482236736b18b55abcdc360" id="gform_gravityforms_utils-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/gutenberg/blocks/copy-button/js/frontend.js?ver=1.0.0" id="ctc-copy-button-script-2-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/gutenberg/blocks/copy-icon/js/frontend.js?ver=1.0.0" id="ctc-copy-icon-script-2-js"></script>
+<script defer data-domain='coroot.com' data-api='https://plausible.io/api/event' data-cfasync='false' src="https://plausible.io/js/plausible.outbound-links.tagged-events.pageview-props.js?ver=2.1.4" id="plausible"></script>
+<script id="plausible-analytics-js-after">
+window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+</script>
+<script src="https://coroot.com/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.25.6" id="font-awesome-4-shim-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-KTBHK8G5" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["coroot.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-KTBHK8G5");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); }
+</script>
+
+<!-- End Google tag (gtag.js) snippet added by Site Kit -->
+<link rel="https://api.w.org/" href="https://coroot.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://coroot.com/wp-json/wp/v2/posts/9266" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://coroot.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.7.1" />
+<link rel='shortlink' href='https://coroot.com/?p=9266' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://coroot.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcoroot.com%2Fblog%2Fengineering%2Fchaos-testing-a-postgres-cluster-managed-by-cloudnativepg%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://coroot.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcoroot.com%2Fblog%2Fengineering%2Fchaos-testing-a-postgres-cluster-managed-by-cloudnativepg%2F&#038;format=xml" />
+<meta name="generator" content="Site Kit by Google 1.141.0" /><meta name='plausible-analytics-version' content='2.1.4' />
+<style>
+
+@media screen and ( max-width: 960px ) {
+
+#mp_tpmblk{padding-right:0}
+#gh_counter{}
+}
+</style><meta name="generator" content="Elementor 3.25.6; features: e_font_icon_svg, additional_custom_breakpoints, e_optimized_control_loading; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			
+<!-- Google Tag Manager snippet added by Site Kit -->
+<script>
+			( function( w, d, s, l, i ) {
+				w[l] = w[l] || [];
+				w[l].push( {'gtm.start': new Date().getTime(), event: 'gtm.js'} );
+				var f = d.getElementsByTagName( s )[0],
+					j = d.createElement( s ), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore( j, f );
+			} )( window, document, 'script', 'dataLayer', 'GTM-NDQHCNJ8' );
+			
+</script>
+
+<!-- End Google Tag Manager snippet added by Site Kit -->
+			<meta name="theme-color" content="#FFFFFF">
+			<link rel="icon" href="https://coroot.com/wp-content/uploads/2024/10/cropped-square-Green-white-smiley-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://coroot.com/wp-content/uploads/2024/10/cropped-square-Green-white-smiley-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://coroot.com/wp-content/uploads/2024/10/cropped-square-Green-white-smiley-180x180.png" />
+<meta name="msapplication-TileImage" content="https://coroot.com/wp-content/uploads/2024/10/cropped-square-Green-white-smiley-270x270.png" />
+		<style id="wp-custom-css">
+			
+:root {
+    interpolate-size: allow-keywords;
+}
+h1.elementor-heading-title, h1 {  font-size: clamp(30px, 4vw, 40px)!important;  margin-top: 30px;
+    margin-bottom: 30px;}
+
+h2, .elementor-kit-12 h2 {font-size: clamp(24px, 3vw, 36px)!important;
+	  margin-top: 20px;
+    margin-bottom: 20px;
+  }
+ h3.elementor-heading-title,
+h3, .elementor-kit-12 h3 {font-size: clamp(20px, 2.5vw, 30px)!important;
+	  margin-top: 15px!important;
+    margin-bottom: 15px!important;
+  }
+body{
+margin: 0;
+background-color: #fff !important;
+}
+.wpcf7 form.sent .wpcf7-response-output{
+	border:none!important
+}		</style>
+		<style id="wpforms-css-vars-root">
+				:root {
+					--wpforms-field-border-radius: 3px;
+--wpforms-field-border-style: solid;
+--wpforms-field-border-size: 1px;
+--wpforms-field-background-color: #ffffff;
+--wpforms-field-border-color: rgba( 0, 0, 0, 0.25 );
+--wpforms-field-border-color-spare: rgba( 0, 0, 0, 0.25 );
+--wpforms-field-text-color: rgba( 0, 0, 0, 0.7 );
+--wpforms-field-menu-color: #ffffff;
+--wpforms-label-color: rgba( 0, 0, 0, 0.85 );
+--wpforms-label-sublabel-color: rgba( 0, 0, 0, 0.55 );
+--wpforms-label-error-color: #d63637;
+--wpforms-button-border-radius: 3px;
+--wpforms-button-border-style: none;
+--wpforms-button-border-size: 1px;
+--wpforms-button-background-color: #066aab;
+--wpforms-button-border-color: #066aab;
+--wpforms-button-text-color: #ffffff;
+--wpforms-page-break-color: #066aab;
+--wpforms-background-image: none;
+--wpforms-background-position: center center;
+--wpforms-background-repeat: no-repeat;
+--wpforms-background-size: cover;
+--wpforms-background-width: 100px;
+--wpforms-background-height: 100px;
+--wpforms-background-color: rgba( 0, 0, 0, 0 );
+--wpforms-background-url: none;
+--wpforms-container-padding: 0px;
+--wpforms-container-border-style: none;
+--wpforms-container-border-width: 1px;
+--wpforms-container-border-color: #000000;
+--wpforms-container-border-radius: 3px;
+--wpforms-field-size-input-height: 43px;
+--wpforms-field-size-input-spacing: 15px;
+--wpforms-field-size-font-size: 16px;
+--wpforms-field-size-line-height: 19px;
+--wpforms-field-size-padding-h: 14px;
+--wpforms-field-size-checkbox-size: 16px;
+--wpforms-field-size-sublabel-spacing: 5px;
+--wpforms-field-size-icon-size: 1;
+--wpforms-label-size-font-size: 16px;
+--wpforms-label-size-line-height: 19px;
+--wpforms-label-size-sublabel-font-size: 14px;
+--wpforms-label-size-sublabel-line-height: 17px;
+--wpforms-button-size-font-size: 17px;
+--wpforms-button-size-height: 41px;
+--wpforms-button-size-padding-h: 15px;
+--wpforms-button-size-margin-top: 10px;
+--wpforms-container-shadow-size-box-shadow: none;
+
+				}
+			</style></head>
+<body class="post-template-default single single-post postid-9266 single-format-standard wp-custom-logo exad-hf-template-hello-elementor exad-hf-stylesheet-hello-elementor exclusive-addons-elementor elementor-default elementor-template-full-width elementor-kit-12 elementor-page elementor-page-9266 elementor-page-4968">
+
+		<!-- Google Tag Manager (noscript) snippet added by Site Kit -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDQHCNJ8" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) snippet added by Site Kit -->
+		<script>jQuery(document).ready(function($) {
+	$.fn.smartmenus.defaults.showTimeout = 0;
+	$.fn.smartmenus.defaults.hideTimeout = 0;
+	$.fn.smartmenus.defaults.hideOnClick = false;
+	$.fn.smartmenus.defaults.collapsibleBehavior = 'toggle';
+})
+</script>
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		<header data-elementor-type="header" data-elementor-id="2186" class="elementor elementor-2186 elementor-location-header" data-elementor-post-type="elementor_library">
+			<div class="elementor-element elementor-element-27e14c80 e-con-full e-flex e-con e-parent" data-id="27e14c80" data-element_type="container" id="header_pop" data-settings="{&quot;sticky&quot;:&quot;top&quot;,&quot;background_background&quot;:&quot;classic&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;laptop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}">
+		<div class="elementor-element elementor-element-13556fd2 e-flex e-con-boxed e-con e-child" data-id="13556fd2" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-9ab04b3 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="9ab04b3" data-element_type="widget" id="toptop" plausible-event-name="github" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default"><a href="https://coroot.com/blog/engineering/chaos-testing-a-postgres-cluster-managed-by-cloudnativepg/?utm_source=announcement&#038;utm_medium=social&#038;utm_campaign=blog_coroot" target="_blank">A new post on our blog: Chaos testing a Postgres cluster managed by CloudNativePG</a></span>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-79a9161c e-flex e-con-boxed e-con e-child" data-id="79a9161c" data-element_type="container" id="head_row_wrap" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-efaeedb exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="efaeedb" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+														<a href="https://coroot.com">
+							<img width="150" height="34" src="https://coroot.com/wp-content/uploads/2024/05/logo-2.svg" class="attachment-thumbnail size-thumbnail wp-image-2190" alt="" />								</a>
+													</div>
+				</div>
+				<div class="elementor-element elementor-element-7fc0aac elementor-nav-menu__align-start elementor-nav-menu--stretch elementor-widget-tablet__width-auto elementor-widget__width-initial elementor-nav-menu--dropdown-mobile elementor-nav-menu__text-align-aside elementor-nav-menu--toggle elementor-nav-menu--burger exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-nav-menu" data-id="7fc0aac" data-element_type="widget" id="mainmenu" data-settings="{&quot;full_width&quot;:&quot;stretch&quot;,&quot;toggle_icon_hover_animation&quot;:&quot;pulse&quot;,&quot;layout&quot;:&quot;horizontal&quot;,&quot;submenu_icon&quot;:{&quot;value&quot;:&quot;&lt;svg class=\&quot;e-font-icon-svg e-fas-caret-down\&quot; viewBox=\&quot;0 0 320 512\&quot; xmlns=\&quot;http:\/\/www.w3.org\/2000\/svg\&quot;&gt;&lt;path d=\&quot;M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z\&quot;&gt;&lt;\/path&gt;&lt;\/svg&gt;&quot;,&quot;library&quot;:&quot;fa-solid&quot;},&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
+				<div class="elementor-widget-container">
+						<nav class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
+				<ul id="menu-1-7fc0aac" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1752"><a href="#" class="elementor-item elementor-item-anchor">Product</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-110"><a href="https://coroot.com/overview/" class="elementor-sub-item">Product Overview</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8335"><a href="https://coroot.com/enterprise/" class="elementor-sub-item">Coroot Enterprise Edition</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8538"><a href="https://coroot.com/account/signin" class="elementor-sub-item">Coroot Customer Portal</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8351"><a href="https://coroot.com/editions/" class="elementor-sub-item">Compare Editions</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1753"><a href="#" class="elementor-item elementor-item-anchor">Solutions</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="https://coroot.com/kubernetes/" class="elementor-sub-item">Kubernetes Observability</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"><a href="https://coroot.com/postgres/" class="elementor-sub-item">PostgreSQL Observability</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7507"><a href="https://coroot.com/pricing/" class="elementor-item">Pricing</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1754"><a href="#" class="elementor-item elementor-item-anchor">Resources</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1497"><a target="_blank" href="https://docs.coroot.com/" class="elementor-sub-item">Docs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4884"><a href="https://coroot.com/blog/engineering/minimizing-observability-tax/" class="elementor-sub-item">How it works</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-30"><a href="https://coroot.com/blog/" class="elementor-sub-item">Blog</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9168"><a href="https://coroot.com/blog/engineering/getting-started-with-coroot-concepts-and-terminology/" class="elementor-sub-item">Concepts and Terminology</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8740"><a href="https://coroot.com/join-slack-community/" class="elementor-sub-item">Coroot Slack Community</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8588"><a href="https://coroot.com/account" class="elementor-item">Log in</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8924"><a href="#" class="elementor-item elementor-item-anchor">Demo</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8923"><a href="https://coroot.com/get-demo/" class="elementor-sub-item">Book a Demo</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1496"><a target="_blank" href="https://demo.coroot.com/" class="elementor-sub-item">Live Demo</a></li>
+</ul>
+</li>
+</ul>			</nav>
+					<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+			<svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open elementor-animation-pulse e-font-icon-svg e-eicon-menu-bar" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M104 333H896C929 333 958 304 958 271S929 208 896 208H104C71 208 42 237 42 271S71 333 104 333ZM104 583H896C929 583 958 554 958 521S929 458 896 458H104C71 458 42 487 42 521S71 583 104 583ZM104 833H896C929 833 958 804 958 771S929 708 896 708H104C71 708 42 737 42 771S71 833 104 833Z"></path></svg><svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close elementor-animation-pulse e-font-icon-svg e-eicon-close" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M742 167L500 408 258 167C246 154 233 150 217 150 196 150 179 158 167 167 154 179 150 196 150 212 150 229 154 242 171 254L408 500 167 742C138 771 138 800 167 829 196 858 225 858 254 829L496 587 738 829C750 842 767 846 783 846 800 846 817 842 829 829 842 817 846 804 846 783 846 767 842 750 829 737L588 500 833 258C863 229 863 200 833 171 804 137 775 137 742 167Z"></path></svg>			<span class="elementor-screen-only">Menu</span>
+		</div>
+					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
+				<ul id="menu-2-7fc0aac" class="elementor-nav-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1752"><a href="#" class="elementor-item elementor-item-anchor" tabindex="-1">Product</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-110"><a href="https://coroot.com/overview/" class="elementor-sub-item" tabindex="-1">Product Overview</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8335"><a href="https://coroot.com/enterprise/" class="elementor-sub-item" tabindex="-1">Coroot Enterprise Edition</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8538"><a href="https://coroot.com/account/signin" class="elementor-sub-item" tabindex="-1">Coroot Customer Portal</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8351"><a href="https://coroot.com/editions/" class="elementor-sub-item" tabindex="-1">Compare Editions</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1753"><a href="#" class="elementor-item elementor-item-anchor" tabindex="-1">Solutions</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="https://coroot.com/kubernetes/" class="elementor-sub-item" tabindex="-1">Kubernetes Observability</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"><a href="https://coroot.com/postgres/" class="elementor-sub-item" tabindex="-1">PostgreSQL Observability</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7507"><a href="https://coroot.com/pricing/" class="elementor-item" tabindex="-1">Pricing</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1754"><a href="#" class="elementor-item elementor-item-anchor" tabindex="-1">Resources</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1497"><a target="_blank" href="https://docs.coroot.com/" class="elementor-sub-item" tabindex="-1">Docs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4884"><a href="https://coroot.com/blog/engineering/minimizing-observability-tax/" class="elementor-sub-item" tabindex="-1">How it works</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-30"><a href="https://coroot.com/blog/" class="elementor-sub-item" tabindex="-1">Blog</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9168"><a href="https://coroot.com/blog/engineering/getting-started-with-coroot-concepts-and-terminology/" class="elementor-sub-item" tabindex="-1">Concepts and Terminology</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8740"><a href="https://coroot.com/join-slack-community/" class="elementor-sub-item" tabindex="-1">Coroot Slack Community</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8588"><a href="https://coroot.com/account" class="elementor-item" tabindex="-1">Log in</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8924"><a href="#" class="elementor-item elementor-item-anchor" tabindex="-1">Demo</a>
+<ul class="sub-menu elementor-nav-menu--dropdown">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8923"><a href="https://coroot.com/get-demo/" class="elementor-sub-item" tabindex="-1">Book a Demo</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1496"><a target="_blank" href="https://demo.coroot.com/" class="elementor-sub-item" tabindex="-1">Live Demo</a></li>
+</ul>
+</li>
+</ul>			</nav>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-78b550f elementor-widget__width-initial exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-shortcode" data-id="78b550f" data-element_type="widget" id="gh_counter" data-widget_type="shortcode.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-shortcode"><iframe  id="ghtsc"   loading="lazy" src="https://ghbtns.com/github-btn.html?user=coroot&repo=coroot&type=star&count=true&size=large" frameborder="0" scrolling="0" width="155" height="30" title="GitHub"></iframe></div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				</header>
+				<div data-elementor-type="wp-post" data-elementor-id="9266" class="elementor elementor-9266" data-elementor-post-type="post">
+				<div class="elementor-element elementor-element-92f03dd e-flex e-con-boxed e-con e-parent" data-id="92f03dd" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-ca19d94 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-tp-button" data-id="ca19d94" data-element_type="widget" data-widget_type="tp-button.default">
+				<div class="elementor-widget-container">
+			<div class="pt-plus-button-wrapper   text-left   "><div class="button_parallax   " ><div id="button678a10770487b"  class=" text-left ts-button content_hover_effect   " ><div class="pt_plus_button btn678a1077044d4 button-style-9   "  ><div class="animted-content-inner "><a href="/blog/all-posts/" class="button-link-wrap " role="button" data-hover="Back to All Posts"  >Back to All Posts<span class="btn-arrow"><i class="fa-show fas fa-chevron-right" aria-hidden="true"></i><i class="fa-hide fas fa-chevron-right" aria-hidden="true"></i></span></a></div></div></div></div></div>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-d45a671 e-flex e-con-boxed e-con e-parent" data-id="d45a671" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-5f4a371 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-theme-post-title elementor-page-title elementor-widget-heading" data-id="5f4a371" data-element_type="widget" data-widget_type="theme-post-title.default">
+				<div class="elementor-widget-container">
+			<h1 class="elementor-heading-title elementor-size-default">Chaos testing a Postgres cluster managed by CloudNativePG</h1>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-c7eb2cf e-flex e-con-boxed e-con e-parent" data-id="c7eb2cf" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-a130c30 e-flex e-con-boxed e-con e-child" data-id="a130c30" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-027f92c exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-author-box" data-id="027f92c" data-element_type="widget" data-widget_type="author-box.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-author-box">
+							<a href="https://linkedin.com/in/nikolay-sivko" class="elementor-author-box__avatar">
+					<img decoding="async" src="https://coroot.com/wp-content/uploads/2024/05/photo_5407028084231756105_x-300x300.jpg" alt="Picture of Nikolay Sivko" loading="lazy">
+				</a>
+			
+			<div class="elementor-author-box__text">
+									<a href="https://linkedin.com/in/nikolay-sivko">
+						<h4 class="elementor-author-box__name">
+							Nikolay Sivko						</h4>
+					</a>
+				
+				
+							</div>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-cc8528d elementor-align-left exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-post-info" data-id="cc8528d" data-element_type="widget" data-widget_type="post-info.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items elementor-post-info">
+								<li class="elementor-icon-list-item elementor-repeater-item-60408a6" itemprop="datePublished">
+													<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date">
+							<span class="elementor-post-info__item-prefix">Published on </span>
+										<time>January 16, 2025</time>					</span>
+								</li>
+				</ul>
+				</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-1ff67c9 e-flex e-con-boxed e-con e-parent" data-id="1ff67c9" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-557a1da custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="557a1da" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">As more organizations move their databases to cloud-native environments, effectively managing and monitoring these systems becomes crucial. According to Coroot’s anonymous usage statistics, 64% of projects use PostgreSQL, making it the most popular RDBMS among our users, compared to 14% using MySQL. This is not surprising since it is also the most widely used open-source database worldwide. At Coroot, we strive to provide a smooth PostgreSQL monitoring experience, regardless of whether you run your databases on AWS RDS, bare-metal servers, dedicated EC2 instances, or Kubernetes.</span></p><p><span style="font-weight: 400;">Kubernetes is more than a platform for running containerized applications. It also enables better management of databases by allowing automation of tasks like backups, high availability, and scaling through its operator framework. This provides a management experience similar to using a managed service like AWS RDS but without vendor lock-in and often at a lower cost.</span></p><p><span style="font-weight: 400;">Coroot already supports most popular Postgres operators for Kubernetes such as </span><a href="https://coroot.com/blog/engineering/chaos-testing-of-a-postgres-cluster-managed-by-the-zalando-postgres-operator/" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Zalando’s Operator</span></a><span style="font-weight: 400;">, </span><a href="https://www.percona.com/blog/troubleshooting-postgresql-on-kubernetes-with-coroot/" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Percona Operator</span></a><span style="font-weight: 400;">, and </span><a href="https://coroot.com/blog/engineering/chaos-testing-kubernetes-operators-for-postgres-stackgres/" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Stackgres</span></a><span style="font-weight: 400;">. However, the list would not be full without CloudNativePG, so let’s fix this out.</span></p><p><a href="https://github.com/cloudnative-pg/cloudnative-pg" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">CloudNativePg</span></a><span style="font-weight: 400;"> is an open-source operator originally created by EDB, the oldest and the biggest Postgres vendor world-wide. As other operators, CNPG helps manage PostgreSQL databases on Kubernetes, covering the entire operational lifecycle from initial deployment to ongoing maintenance. Worth to mention that this is the youngest Postgres operator on the market, but its open source traction grows rapidly and based on my observations it’s the favorite operator across Reddit users.</span></p><p><span style="font-weight: 400;">In this post I’ll install a CNPG cluster in my lab, instrument it with Coroot, then generate some load and introduce some failures to ensure high availability and observability. </span></p><h2>Setting up the cluster</h2><p><span style="font-weight: 400;">Installing the CloudNativePG operator is simple:</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-8509bb6 e-flex e-con-boxed e-con e-parent" data-id="8509bb6" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-bd5b665 e-con-full e-flex e-con e-child" data-id="bd5b665" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-3b8f120 e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="3b8f120" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-0535270 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="0535270" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="hl" data-v-530a1535="">helm repo add cnpg <a href="https://cloudnative-pg.github.io/charts"><span style="font-weight: 400; color: #fff; font-size: 14px;">https://cloudnative-pg.github.io/charts</span></a>
+helm upgrade --install cnpg cnpg/cloudnative-pg
+</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-6633f29 e-flex e-con-boxed e-con e-parent" data-id="6633f29" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4ff30ae exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="4ff30ae" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">To deploy a cluster, create a Kubernetes custom resource:</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-8bdb7af e-flex e-con-boxed e-con e-parent" data-id="8bdb7af" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-689d2cb e-con-full e-flex e-con e-child" data-id="689d2cb" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-0e63fbd e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="0e63fbd" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-912a7be elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="912a7be" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="hl" data-v-530a1535="">kind: Cluster
+metadata:
+  name: pg-cluster
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  storage:
+    size: 30Gi   
+  postgresql:
+    shared_preload_libraries: [pg_stat_statements]
+    parameters:
+      pg_stat_statements.max: "10000"
+      pg_stat_statements.track: all
+  managed:
+    roles:
+    - name: coroot
+      ensure: present
+      login: true
+      connectionLimit: 2
+      inRoles:
+      - pg_monitor
+      passwordSecret:
+        name: pg-cluster
+---
+apiVersion: v1
+data:
+  username: ******==
+  password: *********==
+kind: Secret
+metadata:
+  name: pg-cluster
+type: kubernetes.io/basic-auth
+</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-79114e8 e-flex e-con-boxed e-con e-parent" data-id="79114e8" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-0c0047a custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="0c0047a" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">As you can see, I’ve enabled the </span><i><span style="font-weight: 400;">pg_stat_statements</span></i><span style="font-weight: 400;"> extension and created a role named “coroot” for collecting Postgres metrics.</span></p><h2>Installing Coroot</h2><p><span style="font-weight: 400;">In this post, I’ll be using the Community Edition of Coroot, but the installation steps for the Enterprise Edition are quite </span><a href="https://docs.coroot.com/quick-start/enterprise" target="_blank" rel="noopener"><span style="font-weight: 400;">similar</span></a><span style="font-weight: 400;">.</span></p><p><span style="font-weight: 400;">Here are the commands to install the Coroot Operator for Kubernetes along with all Coroot components:</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-7fdd677 e-flex e-con-boxed e-con e-parent" data-id="7fdd677" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-5f893ab e-con-full e-flex e-con e-child" data-id="5f893ab" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-b227fb2 e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="b227fb2" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-76d16d3 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="76d16d3" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre>helm repo add coroot https://coroot.github.io/helm-charts<br />helm repo update coroot<br />helm install -n coroot --create-namespace coroot-operator coroot/coroot-operator<br />helm install -n coroot coroot coroot/coroot-ce</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-70d911e e-flex e-con-boxed e-con e-parent" data-id="70d911e" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-131c732 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="131c732" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">To access Coroot, I’m forwarding the Coroot UI port to my local machine. For production deployments the operator can create an Ingress.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f747bc0 e-flex e-con-boxed e-con e-parent" data-id="f747bc0" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-bf92395 e-con-full e-flex e-con e-child" data-id="bf92395" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-faad996 e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="faad996" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-c362290 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="c362290" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre><span style="font-weight: 400;">kubectl port-forward -n coroot service/coroot-coroot 8083:8080</span></pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-c8034dc e-flex e-con-boxed e-con e-parent" data-id="c8034dc" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-33021c2 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="33021c2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">In the UI, we can see two applications: the operator (</span><i><span style="font-weight: 400;">cnpg-cloudnative-pg</span></i><span style="font-weight: 400;">) and our Postgres cluster (</span><i><span style="font-weight: 400;">pg-cluster</span></i><span style="font-weight: 400;">). Coroot has also identified that </span><i><span style="font-weight: 400;">pg-cluster</span></i><span style="font-weight: 400;"> is a Postgres database and suggests integrating Postgres monitoring. </span></p><p><span style="font-weight: 400;">Coroot leverages eBPF to monitor Postgres queries between applications and databases, requiring no additional integration. While this approach provides a high-level view of database performance, it lacks the visibility needed to understand </span><i><span style="font-weight: 400;">why</span></i><span style="font-weight: 400;"> issues occur within the database internals.</span></p><p><span style="font-weight: 400;">To bridge this gap, Coroot also collects statistics from Postgres system views such as </span><i><span style="font-weight: 400;">pg_stat_statements</span></i><span style="font-weight: 400;"> and </span><i><span style="font-weight: 400;">pg_stat_activity</span></i><span style="font-weight: 400;">, complementing the eBPF-based metrics and traces.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-7048b8c e-flex e-con-boxed e-con e-parent" data-id="7048b8c" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-27c6218 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="27c6218" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img fetchpriority="high" decoding="async" width="2048" height="668" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-2048x668.png" class="attachment-2048x2048 size-2048x2048 wp-image-9389" alt="Application pg cluster" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-2048x668.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-300x98.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-1024x334.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-768x250.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.28.58-2-1536x501.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-1a0db5b e-flex e-con-boxed e-con e-parent" data-id="1a0db5b" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-e37317e custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="e37317e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<span style="font-weight: 400;">The Kubernetes approach to monitoring databases typically involves running metric exporters as sidecar containers within database instance Pods. However, this method can be challenging for certain use cases. For example, CNPG doesn’t support running custom sidecar containers, and their </span><a href="https://github.com/cloudnative-pg/cnpg-i" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">CNPG-i</span></a><span style="font-weight: 400;"> capability requires specific plugin support and is still in the experimental stage.</span>
+
+<span style="font-weight: 400;">To address these limitations, Coroot has a dedicated </span><i><span style="font-weight: 400;">coroot-cluster-agent</span></i><span style="font-weight: 400;"> that can discover and gather metrics from databases without requiring a separate container for each database instance.</span>
+
+<span style="font-weight: 400;">To configure this integration, simply use the credentials of the database role already created for Coroot. Click on “Postgres” in the Coroot UI and then on the “Configure” button.</span>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-b6a80d8 e-flex e-con-boxed e-con e-parent" data-id="b6a80d8" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-d85ec1f exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="d85ec1f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img decoding="async" width="2048" height="920" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-2048x920.png" class="attachment-2048x2048 size-2048x2048 wp-image-9390" alt="App pg clusters" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-2048x920.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-300x135.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-1024x460.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-768x345.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.19-2-1536x690.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-738bb9f e-flex e-con-boxed e-con e-parent" data-id="738bb9f" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4f0eb36 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="4f0eb36" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">Next, provide the credentials configured for Coroot in the cluster specification. Coroot’s cluster-agent will then collect Postgres metrics from each instance in the cluster. The </span><i><span style="font-weight: 400;">pg_stat_statements</span></i><span style="font-weight: 400;"> extension, which we enabled during cluster creation, is already set up, so no manual steps are required. Since Coroot understands the dynamic nature of Kubernetes applications, it will automatically instrument all instances, even as you add more replicas.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-33223ac e-flex e-con-boxed e-con e-parent" data-id="33223ac" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-4693f4d exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="4693f4d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img decoding="async" width="2048" height="1336" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-2048x1336.png" class="attachment-2048x2048 size-2048x2048 wp-image-9391" alt="Configure Postgres integration" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-2048x1336.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-300x196.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-1024x668.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-768x501.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.33.44-2-1536x1002.png 1536w" sizes="(max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-b872173 e-flex e-con-boxed e-con e-parent" data-id="b872173" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-61827cc custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="61827cc" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">That&#8217;s it! Within a minute, our Postgres cluster is fully monitored by Coroot. And this goes beyond just having some Postgres metrics in Prometheus. We now have it all: metrics, logs, traces, profiles, dashboards, and predefined inspections that automatically highlight any performance issues or database unavailability.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4455827 e-flex e-con-boxed e-con e-parent" data-id="4455827" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-99862d9 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="99862d9" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1387" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-2048x1387.png" class="attachment-2048x2048 size-2048x2048 wp-image-9392" alt="instances and their roles" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-2048x1387.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-300x203.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-1024x693.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-768x520.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-12.44.42-2-1536x1040.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-0d3d14b e-flex e-con-boxed e-con e-parent" data-id="0d3d14b" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-6f1a54b custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="6f1a54b" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">This is great, but it feels a bit dull without any load or issues. Let&#8217;s add an application that interacts with this database.</span></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-0e8a730 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="0e8a730" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1241" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-2048x1241.png" class="attachment-2048x2048 size-2048x2048 wp-image-9393" alt="pg-clusters" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-2048x1241.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-300x182.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-1024x621.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-768x465.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.38.30-2-1536x931.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-0eb283b e-flex e-con-boxed e-con e-parent" data-id="0eb283b" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-f6be6e0 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="f6be6e0" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">I deployed a simple application called “app” that executes approximately 600 queries per second: 300 on the primary and 300 across both replicas. Coroot gathers statistics for these queries using eBPF, requiring no code changes. As a result, we can track the number of requests and their latency. Moreover, with eBPF-based tracing, we can identify specific queries, which is particularly useful for analyzing latency anomalies. Simply select an area on the heatmap to pinpoint which queries were slow.</span></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-aaf702a exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="aaf702a" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1442" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-2048x1442.png" class="attachment-2048x2048 size-2048x2048 wp-image-9394" alt="Latency &amp; Errors heatmap" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-2048x1442.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-300x211.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-1024x721.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-768x541.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-13-at-13.45.04-1-1536x1082.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-0874488 e-flex e-con-boxed e-con e-parent" data-id="0874488" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-c085c80 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="c085c80" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">I believe that any observability solution must be tested on failures to ensure that if some problem occurs, we will be able to quickly identify the root case. So, let’s introduce some failures 🔥🔥🔥.</span></p><h2><span style="font-weight: 400;">Failure #1: CPU noisy neighbor</span></h2><p><span style="font-weight: 400;">In shared infrastructures like Kubernetes clusters, applications often compete for resources. Let’s simulate a scenario with a noisy neighbor, where a CPU-intensive application runs on the same node as our database instance. The following Job will create a Pod with </span><i><span style="font-weight: 400;">stress-ng</span></i><span style="font-weight: 400;"> on </span><i><span style="font-weight: 400;">node100</span></i><span style="font-weight: 400;">:</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-1b90a84 e-flex e-con-boxed e-con e-parent" data-id="1b90a84" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-c14e4e4 e-con-full e-flex e-con e-child" data-id="c14e4e4" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-feeefe4 e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="feeefe4" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-f6e38b9 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="f6e38b9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre class="hl" data-v-530a1535="">apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cpu-stress
+spec:
+  template:
+    metadata:
+      labels:
+        app: cpu-stress
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node100
+      containers:
+        - name: stress-ng
+          image: debian:bullseye-slim
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              apt-get update &amp;&amp; \
+              apt-get install -y stress-ng &amp;&amp; \
+              stress-ng --cpu 0 --timeout 300s
+      restartPolicy: Never
+</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-ccb5298 e-flex e-con-boxed e-con e-parent" data-id="ccb5298" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-140da10 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="140da10" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1395" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-2048x1395.png" class="attachment-2048x2048 size-2048x2048 wp-image-9395" alt="Latency &amp; Errors heatmap requests per second" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-2048x1395.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-300x204.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-1024x698.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-768x523.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.02.49-1-1536x1046.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-67a46dc e-flex e-con-boxed e-con e-parent" data-id="67a46dc" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-8d8878e custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="8d8878e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">As we can see, our “noisy neighbor” has affected Postgres performance. Now, let’s assume we don’t know the root cause and use Coroot to identify the issue.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-c5f2fe5 e-flex e-con-boxed e-con e-parent" data-id="c5f2fe5" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-b1aae88 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="b1aae88" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1532" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-2048x1532.png" class="attachment-2048x2048 size-2048x2048 wp-image-9396" alt="Detecting root cause" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-2048x1532.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-300x224.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-1024x766.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-768x574.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-14.11.28-1-1536x1149.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-bb6b226 e-flex e-con-boxed e-con e-parent" data-id="bb6b226" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-5614d19 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="5614d19" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">First, Coroot flagged an issue with the CPU. By understanding the system&#8217;s model, Coroot focuses only on nodes related to the specific application, in this case, Postgres. Our database instances run on three nodes: </span><i><span style="font-weight: 400;">node100</span></i><span style="font-weight: 400;">, </span><i><span style="font-weight: 400;">node101</span></i><span style="font-weight: 400;">, and </span><i><span style="font-weight: 400;">node102</span></i><span style="font-weight: 400;">. This means that even in a cluster with many nodes, Coroot only highlights the relevant ones.</span></p><p><span style="font-weight: 400;">Using the CPU Delay chart, we can observe that </span><i><span style="font-weight: 400;">pg-cluster-2</span></i><span style="font-weight: 400;"> is experiencing a CPU time shortage. Why? Because </span><i><span style="font-weight: 400;">node100</span></i><span style="font-weight: 400;"> is overloaded. And why is that? The </span><i><span style="font-weight: 400;">cpu-stress</span></i><span style="font-weight: 400;"> application has consumed all available CPU time.</span></p><p><span style="font-weight: 400;">Pretty straightforward, right?</span></p><h2><span style="font-weight: 400;">Failure #2: Postgres Locks</span></h2><p><span style="font-weight: 400;">Now, let’s explore a Postgres-specific failure scenario. We’ll run a suboptimal schema migration on our </span><i><span style="font-weight: 400;">articles</span></i><span style="font-weight: 400;"> table, which contains 10 million rows:</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-afbeeab e-flex e-con-boxed e-con e-parent" data-id="afbeeab" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-92be1d3 e-con-full e-flex e-con e-child" data-id="92be1d3" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-f5f8119 e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="f5f8119" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-7b06e43 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="7b06e43" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre>ALTER TABLE articles ALTER COLUMN body SET NOT NULL;</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-ee182ff e-flex e-con-boxed e-con e-parent" data-id="ee182ff" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-0dfa711 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="0dfa711" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">For those who aren’t deeply familiar with databases, this migration will lock the entire table to verify that all rows are not </span><i><span style="font-weight: 400;">NULL</span></i><span style="font-weight: 400;">. Since the table is relatively large, the migration can take some time to complete. During this period, queries from our app will be forced to wait until the lock is released.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-e08db54 e-flex e-con-boxed e-con e-parent" data-id="e08db54" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-f70d98b exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="f70d98b" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="938" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-2048x938.png" class="attachment-2048x2048 size-2048x2048 wp-image-9397" alt="Something wrong with Postgres" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-2048x938.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-300x137.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-1024x469.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-768x352.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.04-2-1536x704.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-1033610 e-flex e-con-boxed e-con e-parent" data-id="1033610" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-03e7132 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="03e7132" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">Coroot has detected issues with one of the Postgres instances. Let’s once again assume we don’t know the root cause and use Coroot to identify it.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-3a468e0 e-flex e-con-boxed e-con e-parent" data-id="3a468e0" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-f056bfe exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="f056bfe" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1657" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-2048x1657.png" class="attachment-2048x2048 size-2048x2048 wp-image-9398" alt="Root cause searching" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-2048x1657.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-300x243.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-1024x829.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-768x621.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-15.02.44-1-1536x1243.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-5425fc3 e-flex e-con-boxed e-con e-parent" data-id="5425fc3" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-a26648e custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="a26648e" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">Let’s interpret these charts together: The Postgres latency of </span><i><span style="font-weight: 400;">pg-cluster-2</span></i><span style="font-weight: 400;"> has significantly increased. Many </span><i><span style="font-weight: 400;">SELECT</span></i><span style="font-weight: 400;"> and </span><i><span style="font-weight: 400;">INSERT</span></i><span style="font-weight: 400;"> queries are locked by another query. Which one? The </span><i><span style="font-weight: 400;">ALTER TABLE</span></i><span style="font-weight: 400;"> query. Why is this query taking so long to execute? Because it is performing I/O operations to verify that the body column in each row is not </span><i><span style="font-weight: 400;">NULL</span></i><span style="font-weight: 400;">.</span></p><p><span style="font-weight: 400;">As you can see, having the right metrics was crucial in this scenario. For instance, simply knowing the number of Postgres locks wouldn’t help us identify the specific query holding the lock. That’s why at Coroot, we love conducting experiments like this, to ensure our product can quickly and accurately pinpoint the root cause.</span></p><h2><span style="font-weight: 400;">Failure #3: primary Postgres instance failure</span></h2><p><span style="font-weight: 400;">Now, let’s see how CloudNativePG handles a primary instance failure. To simulate this failure, I’ll simply delete the Pod of the primary Postgres instance.</span></p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-85e965b e-flex e-con-boxed e-con e-parent" data-id="85e965b" data-element_type="container">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-9f67bdc e-con-full e-flex e-con e-child" data-id="9f67bdc" data-element_type="container">
+		<div class="theplus-equal-height elementor-element elementor-element-67f1c2f e-con-full e-flex e-con e-child" data-tp-equal-height-loadded=".elementor-widget-container" data-id="67f1c2f" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation_mobile&quot;:&quot;none&quot;}">
+				<div class="elementor-element elementor-element-6bfc8f2 elementor-widget__width-inherit exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="6bfc8f2" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<pre>kubectl delete pod pg-cluster-2</pre>						</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-69817d8 e-flex e-con-boxed e-con e-parent" data-id="69817d8" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-c15d98d exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-image" data-id="c15d98d" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+													<img loading="lazy" decoding="async" width="2048" height="1331" src="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-2048x1331.png" class="attachment-2048x2048 size-2048x2048 wp-image-9399" alt="instances unavailable" srcset="https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-2048x1331.png 2048w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-300x195.png 300w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-1024x666.png 1024w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-768x499.png 768w, https://coroot.com/wp-content/uploads/2025/01/Screenshot-2025-01-14-at-16.36.31-1-1536x998.png 1536w" sizes="auto, (max-width: 2048px) 100vw, 2048px" />													</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-51f12e5 e-flex e-con-boxed e-con e-parent" data-id="51f12e5" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-0549f84 custom_href exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-text-editor" data-id="0549f84" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><span style="font-weight: 400;">The operator detected the failure and initiated a switchover, promoting </span><i><span style="font-weight: 400;">pg-cluster-1</span></i><span style="font-weight: 400;"> as the new primary. In Coroot, we can clearly observe what happened to our cluster and see that it took approximately 3 minutes to restore query processing.</span></p><h2><span style="font-weight: 400;">Conclusion</span></h2><p><span style="font-weight: 400;">CloudNativePG and Coroot make a great team for running and monitoring PostgreSQL on Kubernetes. CloudNativePG handles the heavy lifting for database management, like backups and failovers, while Coroot keeps everything visible and easy to troubleshoot. Together, they make it simple to tackle real-world issues and keep your databases running smoothly in the cloud-native world.</span></p><p><span style="font-weight: 400;">Ready to dive into full-featured observability with advanced Postgres monitoring? Try </span><a href="https://coroot.com/docs/coroot/quick-start/community" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Coroot Community Edition</span></a><span style="font-weight: 400;"> for free, or start a free trial of </span><a href="https://coroot.com/account/signup" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Coroot Enterprise Edition</span></a><span style="font-weight: 400;"> for advanced capabilities.</span></p><p>If you like Coroot, give us a ⭐ on <a href="https://github.com/coroot/coroot" target="_blank" rel="noopener">GitHub</a>️.</p><p>Any questions or feedback? Reach out to us on <a href="https://join.slack.com/t/coroot-community/shared_invite/zt-1gsnfo0wj-I~Zvtx5CAAb8vr~r~vecyw" target="_blank" rel="noopener">Slack</a>.</p>						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4a25eab e-flex e-con-boxed e-con e-parent" data-id="4a25eab" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-20c756a exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="20c756a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h3 class="elementor-heading-title elementor-size-default">Share this post</h3>		</div>
+				</div>
+				<div class="elementor-element elementor-element-d6f2f77 elementor-share-buttons--view-icon elementor-share-buttons--skin-minimal elementor-share-buttons--color-custom elementor-share-buttons-mobile--align-left elementor-widget__width-inherit elementor-share-buttons--shape-rounded elementor-grid-0 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-share-buttons" data-id="d6f2f77" data-element_type="widget" data-widget_type="share-buttons.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-grid">
+								<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_twitter"
+							role="button"
+							tabindex="0"
+							aria-label="Share on twitter"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_facebook"
+							role="button"
+							tabindex="0"
+							aria-label="Share on facebook"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-facebook" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_reddit"
+							role="button"
+							tabindex="0"
+							aria-label="Share on reddit"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-reddit" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_linkedin"
+							role="button"
+							tabindex="0"
+							aria-label="Share on linkedin"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>							</span>
+																				</div>
+					</div>
+						</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-705f970 elementor-share-buttons--view-icon elementor-share-buttons--skin-minimal elementor-share-buttons--color-custom elementor-share-buttons-mobile--align-center elementor-widget__width-initial elementor-share-buttons--shape-rounded elementor-fixed elementor-hidden-tablet elementor-hidden-mobile elementor-grid-0 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-share-buttons" data-id="705f970" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;fixed&quot;}" data-widget_type="share-buttons.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-grid">
+								<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_twitter"
+							role="button"
+							tabindex="0"
+							aria-label="Share on twitter"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_facebook"
+							role="button"
+							tabindex="0"
+							aria-label="Share on facebook"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-facebook" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_reddit"
+							role="button"
+							tabindex="0"
+							aria-label="Share on reddit"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-reddit" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"></path></svg>							</span>
+																				</div>
+					</div>
+									<div class="elementor-grid-item">
+						<div
+							class="elementor-share-btn elementor-share-btn_linkedin"
+							role="button"
+							tabindex="0"
+							aria-label="Share on linkedin"
+						>
+															<span class="elementor-share-btn__icon">
+								<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>							</span>
+																				</div>
+					</div>
+						</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-72eafda exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-post-navigation" data-id="72eafda" data-element_type="widget" data-widget_type="post-navigation.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-post-navigation">
+			<div class="elementor-post-navigation__prev elementor-post-navigation__link">
+				<a href="https://coroot.com/blog/engineering/essential-observability-with-coroot/" rel="prev"><span class="post-navigation__arrow-wrapper post-navigation__arrow-prev"><i class="fa fa-angle-left" aria-hidden="true"></i><span class="elementor-screen-only">Prev</span></span><span class="elementor-post-navigation__link__prev"><span class="post-navigation__prev--label">Previous</span></span></a>			</div>
+						<div class="elementor-post-navigation__next elementor-post-navigation__link">
+							</div>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-d30b34e e-flex e-con-boxed e-con e-parent" data-id="d30b34e" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-ec215dd exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="ec215dd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Related posts</h2>		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-6f436c3 e-flex e-con-boxed e-con e-parent" data-id="6f436c3" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-fa386c1 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-exad-post-carousel" data-id="fa386c1" data-element_type="widget" data-widget_type="exad-post-carousel.default">
+				<div class="elementor-widget-container">
+			
+        <div class="exad-row-wrapper exad-post-carousel exad-carousel-item" data-carousel-nav="none" data-carousel-column="3" data-carousel-column-tablet="2" data-carousel-column-mobile="1" data-slidestoscroll="6" data-carousel-speed="1000" data-direction="false" data-pauseonhover="true" data-autoplay="true" data-autoplayspeed="5000">
+            
+<article class="exad-post-grid-three">
+    <div class="exad-post-grid-container image-position-top">
+                            <figure class="exad-post-grid-thumbnail">
+                <a href="https://coroot.com/blog/engineering/troubleshooting-memory-related-issues-in-kubernetes/">
+                    <img loading="lazy" decoding="async" width="800" height="419" src="https://coroot.com/wp-content/uploads/2024/05/Featured-image-1024x536.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://coroot.com/wp-content/uploads/2024/05/Featured-image-1024x536.jpg 1024w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-300x157.jpg 300w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-768x402.jpg 768w, https://coroot.com/wp-content/uploads/2024/05/Featured-image.jpg 1200w" sizes="auto, (max-width: 800px) 100vw, 800px" />                </a>
+                
+            </figure>
+        
+        <div class="exad-post-grid-body">
+                                                        <ul class="exad-post-grid-category cat-posdefault">
+                            <li><a href="https://coroot.com/category/blog/engineering/">Engineering</a></li>                        </ul>
+
+                                    <ul class="exad-post-data show-avatar-">
+                                                                <li class="exad-author-avatar">
+                                                        <span class="exad-post-grid-author">
+                                                                    <a href="https://coroot.com/author/author/" class="exad-post-grid-author-name">Nikolay Sivko</a>
+                                </span>
+                                                    </li>
+                                            <li class="exad-post-date">
+                            <span>
+                                                                <a href="https://coroot.com/blog/engineering/troubleshooting-memory-related-issues-in-kubernetes/" class="exad-post-grid-author-date">13th Nov 2023</a>
+                            </span>                           
+                        </li>
+                        
+                </ul>
+                                <h3>
+                        <a href="https://coroot.com/blog/engineering/troubleshooting-memory-related-issues-in-kubernetes/" class="exad-post-grid-title">Troubleshooting memory-related issues in Kubernetes</a>
+                    </h3>
+                                <div class="exad-post-footer"><a href="https://coroot.com/blog/engineering/troubleshooting-memory-related-issues-in-kubernetes/" class="read-more" target=_blank>Read More</a></div>
+                    </div>
+            </div>
+</article>
+<article class="exad-post-grid-three">
+    <div class="exad-post-grid-container image-position-top">
+                            <figure class="exad-post-grid-thumbnail">
+                <a href="https://coroot.com/blog/engineering/chaos-testing-kubernetes-operators-for-postgres-stackgres/">
+                    <img loading="lazy" decoding="async" width="800" height="419" src="https://coroot.com/wp-content/uploads/2024/05/Featured-image-4-1-1024x536.png" class="attachment-large size-large wp-post-image" alt="" srcset="https://coroot.com/wp-content/uploads/2024/05/Featured-image-4-1-1024x536.png 1024w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-4-1-300x157.png 300w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-4-1-768x402.png 768w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-4-1.png 1200w" sizes="auto, (max-width: 800px) 100vw, 800px" />                </a>
+                
+            </figure>
+        
+        <div class="exad-post-grid-body">
+                                                        <ul class="exad-post-grid-category cat-posdefault">
+                            <li><a href="https://coroot.com/category/blog/engineering/">Engineering</a></li>                        </ul>
+
+                                    <ul class="exad-post-data show-avatar-">
+                                                                <li class="exad-author-avatar">
+                                                        <span class="exad-post-grid-author">
+                                                                    <a href="https://coroot.com/author/author/" class="exad-post-grid-author-name">Nikolay Sivko</a>
+                                </span>
+                                                    </li>
+                                            <li class="exad-post-date">
+                            <span>
+                                                                <a href="https://coroot.com/blog/engineering/chaos-testing-kubernetes-operators-for-postgres-stackgres/" class="exad-post-grid-author-date">26th Sep 2023</a>
+                            </span>                           
+                        </li>
+                        
+                </ul>
+                                <h3>
+                        <a href="https://coroot.com/blog/engineering/chaos-testing-kubernetes-operators-for-postgres-stackgres/" class="exad-post-grid-title">Chaos testing Kubernetes Operators for Postgres: StackGres</a>
+                    </h3>
+                                <div class="exad-post-footer"><a href="https://coroot.com/blog/engineering/chaos-testing-kubernetes-operators-for-postgres-stackgres/" class="read-more" target=_blank>Read More</a></div>
+                    </div>
+            </div>
+</article>
+<article class="exad-post-grid-three">
+    <div class="exad-post-grid-container image-position-top">
+                            <figure class="exad-post-grid-thumbnail">
+                <a href="https://coroot.com/blog/engineering/spotting-postgres-performance-issues-with-coroot/">
+                    <img loading="lazy" decoding="async" width="800" height="419" src="https://coroot.com/wp-content/uploads/2024/05/Featured-image-1-1024x536.png" class="attachment-large size-large wp-post-image" alt="" srcset="https://coroot.com/wp-content/uploads/2024/05/Featured-image-1-1024x536.png 1024w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-1-300x157.png 300w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-1-768x402.png 768w, https://coroot.com/wp-content/uploads/2024/05/Featured-image-1.png 1200w" sizes="auto, (max-width: 800px) 100vw, 800px" />                </a>
+                
+            </figure>
+        
+        <div class="exad-post-grid-body">
+                                                        <ul class="exad-post-grid-category cat-posdefault">
+                            <li><a href="https://coroot.com/category/blog/engineering/">Engineering</a></li>                        </ul>
+
+                                    <ul class="exad-post-data show-avatar-">
+                                                                <li class="exad-author-avatar">
+                                                        <span class="exad-post-grid-author">
+                                                                    <a href="https://coroot.com/author/author/" class="exad-post-grid-author-name">Nikolay Sivko</a>
+                                </span>
+                                                    </li>
+                                            <li class="exad-post-date">
+                            <span>
+                                                                <a href="https://coroot.com/blog/engineering/spotting-postgres-performance-issues-with-coroot/" class="exad-post-grid-author-date">17th Aug 2023</a>
+                            </span>                           
+                        </li>
+                        
+                </ul>
+                                <h3>
+                        <a href="https://coroot.com/blog/engineering/spotting-postgres-performance-issues-with-coroot/" class="exad-post-grid-title">Spotting Postgres performance issues with Coroot</a>
+                    </h3>
+                                <div class="exad-post-footer"><a href="https://coroot.com/blog/engineering/spotting-postgres-performance-issues-with-coroot/" class="read-more" target=_blank>Read More</a></div>
+                    </div>
+            </div>
+</article>        </div>
+        
+    		</div>
+				</div>
+				<div class="elementor-element elementor-element-c0a01ca exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-spacer" data-id="c0a01ca" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div data-elementor-type="footer" data-elementor-id="252" class="elementor elementor-252 elementor-location-footer" data-elementor-post-type="elementor_library">
+			<div class="elementor-element elementor-element-73ec721 e-flex e-con-boxed e-con e-parent" data-id="73ec721" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-c450287 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-html" data-id="c450287" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<iframe src="https://embeds.beehiiv.com/5c689e08-5d21-4e67-842e-bdb10eb91021" data-test-id="beehiiv-embed" width="480" height="320" frameborder="0" scrolling="no" style="border-radius: 0px; border: 0px solid #e5e7eb; margin: 0; background-color: transparent;"></iframe>
+		</div>
+				</div>
+					</div>
+				</div>
+				<section data-exad-particle-enable="false" class="elementor-section elementor-top-section elementor-element elementor-element-611fc87b elementor-section-stretched elementor-section-full_width elementor-section-height-default elementor-section-height-default exad-parallax-effect-no exad-background-color-change-no exad-glass-effect-no exad-sticky-section-no" data-id="611fc87b" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6301140a exad-glass-effect-no exad-sticky-section-no" data-id="6301140a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<section data-exad-particle-enable="false" class="elementor-section elementor-inner-section elementor-element elementor-element-5fbb07d4 elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-parallax-effect-no exad-background-color-change-no exad-glass-effect-no exad-sticky-section-no" data-id="5fbb07d4" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-1b045f7a exad-glass-effect-no exad-sticky-section-no" data-id="1b045f7a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-269bebde exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="269bebde" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default">Solutions</span>		</div>
+				</div>
+				<div class="elementor-element elementor-element-66382b17 elementor-widget-divider--view-line exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-divider" data-id="66382b17" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-39e504bd elementor-align-left elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list" data-id="39e504bd" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="/enterprise">
+
+											<span class="elementor-icon-list-text">Coroot Enterprise Edition</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://coroot.com/account/signin">
+
+											<span class="elementor-icon-list-text">Coroot Customer Portal</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://github.com/coroot/coroot">
+
+											<span class="elementor-icon-list-text">Coroot Community Edition</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/editions/">
+
+											<span class="elementor-icon-list-text">Compare Coroot Editions</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/kubernetes">
+
+											<span class="elementor-icon-list-text">Kubernetes Observability</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/postgres">
+
+											<span class="elementor-icon-list-text">PostgreSQL Observability </span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-ab70182 exad-glass-effect-no exad-sticky-section-no" data-id="ab70182" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-401478c8 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="401478c8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default">Resources</span>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1252ea3b elementor-widget-divider--view-line exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-divider" data-id="1252ea3b" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6ad7d4d4 elementor-align-left elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list" data-id="6ad7d4d4" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="https://docs.coroot.com/">
+
+											<span class="elementor-icon-list-text">Docs</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/blog">
+
+											<span class="elementor-icon-list-text">Blog</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://demo.coroot.com/">
+
+											<span class="elementor-icon-list-text">Live demo</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://coroot.com/get-demo/">
+
+											<span class="elementor-icon-list-text">Book a demo</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/blog/engineering/minimizing-observability-tax/">
+
+											<span class="elementor-icon-list-text">How it works</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://coroot.com/blog/engineering/getting-started-with-coroot-concepts-and-terminology/">
+
+											<span class="elementor-icon-list-text">Coroot Concepts and Terminology</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://coroot.com/join-slack-community/">
+
+											<span class="elementor-icon-list-text">Coroot Slack Community</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-40779d2 exad-glass-effect-no exad-sticky-section-no" data-id="40779d2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-e4a0774 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="e4a0774" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default">Legal</span>		</div>
+				</div>
+				<div class="elementor-element elementor-element-5e417ff elementor-widget-divider--view-line exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-divider" data-id="5e417ff" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-20f00b3 elementor-align-left elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list" data-id="20f00b3" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="/terms">
+
+											<span class="elementor-icon-list-text">Terms of service</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/privacy" target="_blank">
+
+											<span class="elementor-icon-list-text">Privacy policy</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-124e4f48 exad-glass-effect-no exad-sticky-section-no" data-id="124e4f48" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3eaac91b exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="3eaac91b" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default">Company</span>		</div>
+				</div>
+				<div class="elementor-element elementor-element-309b1938 elementor-widget-divider--view-line exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-divider" data-id="309b1938" data-element_type="widget" data-widget_type="divider.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-divider">
+			<span class="elementor-divider-separator">
+						</span>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-55a44cf0 elementor-align-left elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-icon-list" data-id="55a44cf0" data-element_type="widget" data-widget_type="icon-list.default">
+				<div class="elementor-widget-container">
+					<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<a href="/about">
+
+											<span class="elementor-icon-list-text">About us</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="/contact/">
+
+											<span class="elementor-icon-list-text">Contact us</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item">
+											<a href="https://hello-coroot.myshopify.com/">
+
+											<span class="elementor-icon-list-text">Coroot swag store</span>
+											</a>
+									</li>
+						</ul>
+				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<div class="elementor-element elementor-element-2f6bd72 elementor-shape-rounded elementor-grid-0 e-grid-align-center exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-social-icons" data-id="2f6bd72" data-element_type="widget" data-widget_type="social-icons.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-social-icons-wrapper elementor-grid">
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-pop elementor-repeater-item-1fe5027" href="https://twitter.com/coroot_com" target="_blank">
+						<span class="elementor-screen-only">Twitter</span>
+						<svg class="e-font-icon-svg e-fab-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-github elementor-animation-pop elementor-repeater-item-b6f8112" href="https://github.com/coroot" target="_blank">
+						<span class="elementor-screen-only">Github</span>
+						<svg class="e-font-icon-svg e-fab-github" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-linkedin elementor-animation-pop elementor-repeater-item-5646e26" href="https://www.linkedin.com/company/coroot" target="_blank">
+						<span class="elementor-screen-only">Linkedin</span>
+						<svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-icon-slack elementor-animation-pop elementor-repeater-item-15de6e7" href="https://join.slack.com/t/coroot-community/shared_invite/zt-2te9x672s-4s_Wp732cd~o2vdFLNE5AA" target="_blank">
+						<span class="elementor-screen-only">Icon-slack</span>
+						<i class="feather icon-slack"></i>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-pop elementor-repeater-item-0ae9193" href="https://www.youtube.com/@coroot_com" target="_blank">
+						<span class="elementor-screen-only">Youtube</span>
+						<svg class="e-font-icon-svg e-fab-youtube" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>					</a>
+				</span>
+							<span class="elementor-grid-item">
+					<a class="elementor-icon elementor-social-icon elementor-social-icon-rss elementor-animation-pop elementor-repeater-item-8069632" href="https://coroot.com/blog/rss" target="_blank">
+						<span class="elementor-screen-only">Rss</span>
+						<svg class="e-font-icon-svg e-fas-rss" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg>					</a>
+				</span>
+					</div>
+				</div>
+				</div>
+				<section data-exad-particle-enable="false" class="elementor-section elementor-inner-section elementor-element elementor-element-5f4fe6ce elementor-section-boxed elementor-section-height-default elementor-section-height-default exad-parallax-effect-no exad-background-color-change-no exad-glass-effect-no exad-sticky-section-no" data-id="5f4fe6ce" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-487dad7f exad-glass-effect-no exad-sticky-section-no" data-id="487dad7f" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-7f456f1 exad-sticky-section-no exad-glass-effect-no elementor-widget elementor-widget-heading" data-id="7f456f1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<span class="elementor-heading-title elementor-size-default">© 2024 Coroot Inc., All Rights Reserved.
+
+</span>		</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		
+<script type="text/javascript" async src="https://embeds.beehiiv.com/attribution.js"></script>			<script type='text/javascript'>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script>const cookieMaxAge = `; max-age=${365 * 24 * 60 * 60}`;
+function deviceSize() {
+    const w = document.documentElement.clientWidth;
+    if (w < 600) return 'xs';
+    if (w < 960) return 'sm';
+    if (w < 1280) return 'md';
+    if (w < 1920) return 'lg';
+    return 'xl';
+}
+function getId(cookies, name) {
+	let id = '';
+	const cookie = cookies.find(s => s.trim().startsWith(name));
+	if (cookie) {
+		id = cookie.split('=')[1];
+		if (id) {
+			return id;
+		}
+	}
+    let storage = localStorage;
+    let maxAge = cookieMaxAge;
+    if (name === 'st-session-id') {
+        storage = sessionStorage;
+        maxAge = '';
+    }
+    id = storage.getItem(name);
+    if (!id) {
+        id = crypto.randomUUID();
+        storage.setItem(name, id);
+    }
+    document.cookie = `${name}=${id}; path=/; domain=.coroot.com${maxAge}`;
+    return id;
+}
+function send(eventType) {
+    const loc = window.location;
+    const cookies = document.cookie.split(';');
+    const payload = {
+        timestamp: Date.now(),
+        deviceId: getId(cookies,'st-device-id'),
+        sessionId: getId(cookies,'st-session-id'),
+        deviceSize: deviceSize(),
+        path: loc.pathname + loc.search + loc.hash,
+        referrer: document.referrer,
+        eventType: eventType,
+    }
+    navigator.sendBeacon('https://coroot.com/st', JSON.stringify(payload));
+}
+addEventListener("DOMContentLoaded", (event) => {
+	send('route-open');
+})
+addEventListener("visibilitychange", (event) => {
+	send('document-visibility-' + document.visibilityState);
+});
+addEventListener("beforeunload", (event) => {
+	send('window-unload');
+});</script><link rel='stylesheet' id='e-animation-pulse-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-pulse.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-divider-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-icon-list-css' href='https://coroot.com/wp-content/uploads/elementor/css/custom-widget-icon-list.min.css?ver=1731567404' media='all' />
+<link rel='stylesheet' id='e-animation-pop-css' href='https://coroot.com/wp-content/plugins/elementor/assets/lib/animations/styles/e-animation-pop.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='widget-social-icons-css' href='https://coroot.com/wp-content/plugins/elementor/assets/css/widget-social-icons.min.css?ver=3.25.6' media='all' />
+<link rel='stylesheet' id='e-apple-webkit-css' href='https://coroot.com/wp-content/uploads/elementor/css/custom-apple-webkit.min.css?ver=1731567404' media='all' />
+<script src="https://coroot.com/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381" id="wp-dom-ready-js"></script>
+<script src="https://coroot.com/wp-includes/js/dist/hooks.min.js?ver=4d63a3d491d11ffd8ac6" id="wp-hooks-js"></script>
+<script src="https://coroot.com/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script src="https://coroot.com/wp-includes/js/dist/a11y.min.js?ver=3156534cc54473497e14" id="wp-a11y-js"></script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/assets/js/dist/vendor-theme.min.js?ver=ddd2702ee024d421149a5e61416f1ff5" id="gform_gravityforms_theme_vendors-js"></script>
+<script id="gform_gravityforms_theme-js-extra">
+var gform_theme_config = {"common":{"form":{"honeypot":{"version_hash":"27fa4659dd42efd40cd7b1682d528086"},"ajax":{"ajaxurl":"https:\/\/coroot.com\/wp-admin\/admin-ajax.php","ajax_submission_nonce":"e7c6ca31a3","i18n":{"step_announcement":"Step %1$s of %2$s, %3$s","unknown_error":"There was an unknown error processing your request. Please try again."}}}},"hmr_dev":"","public_path":"https:\/\/coroot.com\/wp-content\/plugins\/gravityforms\/assets\/js\/dist\/","config_nonce":"03b60ad104"};
+</script>
+<script defer='defer' src="https://coroot.com/wp-content/plugins/gravityforms/assets/js/dist/scripts-theme.min.js?ver=c055226f9b8c432c9206edab9070263c" id="gform_gravityforms_theme-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/js/vendor/granim.min.js?ver=1.5.9" id="exad-granim-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/js/vendor/parallax.min.js?ver=1.5.9" id="exad-parallax-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/js/vendor/particles.min.js?ver=1.5.9" id="exad-particles-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/js/jquery.sticky-sidebar.js?ver=2.7.6" id="exad-sticky-jquery-js"></script>
+<script src="https://coroot.com/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.0.1" id="swv-js"></script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/coroot.com\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    },
+    "cached": 1
+};
+</script>
+<script src="https://coroot.com/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.0.1" id="contact-form-7-js"></script>
+<script id="copy-the-code-js-extra">
+var copyTheCode = {"trim_lines":"","remove_spaces":"1","copy_content_as":"","previewMarkup":"<h2>Hello World<\/h2>","buttonMarkup":"<button class=\"copy-the-code-button\" title=\"\"><\/button>","buttonSvg":"<svg aria-hidden=\"true\" focusable=\"false\" role=\"img\" class=\"copy-icon\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" fill=\"currentColor\"><path d=\"M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z\"><\/path><path d=\"M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z\"><\/path><\/svg>","selectors":[{"selector":"pre","style":"svg-icon","button_text":"Copy","button_title":"Copy","button_copy_text":"Copied","button_position":"inside","copy_format":"","conditions":[]}],"selector":"pre","settings":{"selector":"pre","button-text":"Copy to Clipboard","button-title":"Copy to Clipboard","button-copy-text":"Copied!","button-position":"inside","copy-format":"default"},"string":{"title":"Copy to Clipboard","copy":"Copy to Clipboard","copied":"Copied!"},"image-url":"https:\/\/coroot.com\/wp-content\/plugins\/copy-the-code\/\/assets\/images\/copy-1.svg","redirect_url":""};
+</script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/assets/js/copy-the-code.js?ver=4.0.4" id="copy-the-code-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/assets/js/clipboard.js?ver=4.0.4" id="ctc-clipboard-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/assets/js/copy-inline.js?ver=4.0.4" id="ctc-copy-inline-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/vendor/js/slick.min.js?ver=2.7.6" id="exad-slick-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/blocks/assets/js/core.js?ver=4.0.4" id="ctc-blocks-core-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/deal/script.js?ver=4.0.4" id="ctc-el-deal-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/coupon/script.js?ver=4.0.4" id="ctc-el-coupon-js"></script>
+<script src="https://coroot.com/wp-content/plugins/copy-the-code/classes/elementor/widgets/ai-prompt-generator/script.js?ver=4.0.4" id="ctc-el-ai-prompt-generator-js"></script>
+<script id="exad-main-script-js-extra">
+var exad_ajax_object = {"ajax_url":"https:\/\/coroot.com\/wp-admin\/admin-ajax.php","nonce":"7479b5820c"};
+</script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-for-elementor/assets/js/exad-scripts.min.js?ver=2.7.6" id="exad-main-script-js"></script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/js/quickview-content.js?ver=1.5.9" id="quickview-content-script-js"></script>
+<script id="exad-pro-main-script-js-extra">
+var exad_frontend_ajax_object = {"ajaxurl":"https:\/\/coroot.com\/wp-admin\/admin-ajax.php"};
+</script>
+<script src="https://coroot.com/wp-content/plugins/exclusive-addons-elementor-pro/assets/js/exad-pro-scripts.min.js?ver=1.5.9" id="exad-pro-main-script-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.3" id="jquery-ui-mouse-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/ui/slider.min.js?ver=1.13.3" id="jquery-ui-slider-js"></script>
+<script src="//coroot.com/wp-content/uploads/theplus-addons/theplus-post-9266.min.js?ver=1737042367" id="theplus-front-js-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.13.3" id="jquery-ui-draggable-js"></script>
+<script src="https://coroot.com/wp-includes/js/jquery/jquery.ui.touch-punch.js?ver=0.2.2" id="jquery-touch-punch-js"></script>
+<script src="https://coroot.com/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.1.1" id="hello-theme-frontend-js"></script>
+<script src="https://coroot.com/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-contact-form-7-21cf1c445673c649970d.js" id="googlesitekit-events-provider-contact-form-7-js" defer></script>
+<script src="https://coroot.com/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-wpforms-b35450445f9cb0eeb855.js" id="googlesitekit-events-provider-wpforms-js" defer></script>
+<script src="https://coroot.com/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js?ver=1.2.1" id="smartmenus-js"></script>
+<script src="https://coroot.com/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=3.22.1" id="e-sticky-js"></script>
+<script src="https://coroot.com/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.22.1" id="elementor-pro-webpack-runtime-js"></script>
+<script src="https://coroot.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.25.6" id="elementor-webpack-runtime-js"></script>
+<script src="https://coroot.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.25.6" id="elementor-frontend-modules-js"></script>
+<script id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/coroot.com\/wp-admin\/admin-ajax.php","nonce":"ce6db3213b","urls":{"assets":"https:\/\/coroot.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/coroot.com\/wp-json\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/coroot.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script src="https://coroot.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.22.1" id="elementor-pro-frontend-js"></script>
+<script id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1400,"default_value":1366,"direction":"max","is_enabled":true},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":true},"version":"3.25.6","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"e_nested_atomic_repeaters":true,"e_optimized_control_loading":true,"e_onboarding":true,"e_css_smooth_scroll":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"home_screen":true,"landing-pages":true,"nested-elements":true,"editor_v2":true,"link-in-bio":true,"floating-buttons":true,"display-conditions":true,"mega-menu":true,"taxonomy-filter":true},"urls":{"assets":"https:\/\/coroot.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/coroot.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/coroot.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"dce9550e2f"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet","viewport_laptop"],"viewport_laptop":1400,"body_background_background":"gradient","global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":9266,"title":"Chaos%20testing%20a%20Postgres%20cluster%20managed%20by%20CloudNativePG%20-%20Coroot","excerpt":"","featuredImage":"https:\/\/coroot.com\/wp-content\/uploads\/2025\/01\/chaos-testing-featured-1024x512.png"}};
+</script>
+<script src="https://coroot.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.25.6" id="elementor-frontend-js"></script>
+<script src="https://coroot.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.22.1" id="pro-elements-handlers-js"></script>
+<script>
+	
+	
+	
+const btnConsole = document.querySelector('#btn_console a'); //Header console btn
+const btnGithub = document.querySelector('#gh_counter'); //Header github
+const btMptrn = document.querySelector('.btn_trn a.exad-dual-button-primary'); //Main page Try Coroot now btn
+const btMpld = document.querySelector('.btn_trn a.exad-dual-button-secondary, .btn_livedemo a '); //Main page Live Demo btn
+const btnMpil = document.querySelector('.btn_install a'); //Main page install link
+const btnMpstr = document.querySelector('.btn_starttrial a'); //Main page start trial btn
+
+if (btnConsole) {
+    btnConsole.addEventListener('click', () => {
+    console.log('Header console btn click');
+		//plausible('register') 
+    });
+}
+
+</script>
+
+</body>
+</html>
+
+
+<!-- Page supported by LiteSpeed Cache 6.5.3 on 2025-01-17 08:10:31 -->
