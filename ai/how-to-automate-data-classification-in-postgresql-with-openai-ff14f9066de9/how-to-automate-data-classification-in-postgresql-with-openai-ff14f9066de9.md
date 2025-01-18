@@ -1,7 +1,7 @@
 
 <!--
 title: 如何使用OpenAI自动分类PostgreSQL中的数据
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*aqvy9nSam8zLhloV
+cover: ./cover.png
 -->
 
 数据分类是一项至关重要但极具挑战性的任务。学习如何使用开源扩展和OpenAI模型在PostgreSQL中实现自动化。
