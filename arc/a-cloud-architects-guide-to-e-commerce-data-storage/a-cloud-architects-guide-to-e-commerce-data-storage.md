@@ -59,7 +59,8 @@ SDS可以直接解决这些风险。由于该软件可以在任何商用硬件�
 通过提供高吞吐量和IOPS，SDS加速了分析工作负载，确保及时获得洞察力，从而做出更好的决策。现代系统利用[NVMe over TCP](https://www.lightbitslabs.com/nvme-over-tcp/?utm_source=TNS&utm_medium=article&utm_campaign=jan)存储协议在大规模提供超低一致性延迟，从而实现即时数据收集和快速交易处理。虽然NVMe over Fabrics (NVMe-oF)在数据中心中相对较新，但许多领先的电子商务公司已经利用它来获得效率和性能优势。
 
 
-电子商务存储的未来
+## 电子商务存储的未来
+
 随着电商业务的成熟，对基础设施的需求只会越来越大。人工智能驱动和云原生应用、实时分析以及不断增长的客户期望，都需要既强大又适应性强的存储解决方案。软件定义存储为电商平台架构师提供了构建弹性、可扩展、高效、灵活、高性能系统的工具。
 
 ![Bar chart showing reasons for modernizing data storage. #1 is simplified storage management (39%), #2 is reduced OpEx (36%), and #3 is easier management (35%)](https://cdn.thenewstack.io/media/2025/01/d1763bb4-e-commerce-storage-archtectures.png)
