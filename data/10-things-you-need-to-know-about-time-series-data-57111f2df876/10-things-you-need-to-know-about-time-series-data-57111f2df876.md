@@ -1,7 +1,7 @@
 
 <!--
 title: 关于时间序列数据的十件事
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*BanAs9Dr-oovfWrq
+cover: ./cover.png
 -->
 
 获取一份关于如何充分利用时间序列数据的技巧和推荐资源的综合指南。
