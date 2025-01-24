@@ -208,6 +208,6 @@ TimescaleDB 是一个基于 PostgreSQL 构建的专用时间序列数据库，�
 - [Time-Series Database: An Explainer](https://www.timescale.com/blog/time-series-database-an-explainer/)
 - [What Is a Time-Series Plot, and How Can You Create One?](https://www.timescale.com/blog/what-is-a-time-series-plot-and-how-can-you-create-one/)
 - [Time-Series Analysis: What Is It and How to Use It](https://www.timescale.com/blog/time-series-analysis-what-is-it-how-to-use-it/)
-- [An Explainer on Time-Series ](https://www.timescale.com/blog/what-is-a-time-series-graph-with-examples/)Graphs With Examples
+- [An Explainer on Time-Series Graphs With Examples](https://www.timescale.com/blog/what-is-a-time-series-graph-with-examples/)
 - [Getting Started With Grafana and TimescaleDB](https://www.timescale.com/blog/get-started-with-timescale-and-grafana/)
 - [More tutorials](https://docs.timescale.com/tutorials/latest/)
