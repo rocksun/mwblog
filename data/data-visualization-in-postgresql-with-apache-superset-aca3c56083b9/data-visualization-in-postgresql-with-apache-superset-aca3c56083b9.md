@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Apache Superset在PostgreSQL中进行数据可视化
-cover: https://miro.medium.com/v2/da:true/resize:fit:1200/0*1cwsGjNySJcIR0Uf
+cover: ./cover.png
 -->
 
 寻找PostgreSQL的数据可视化工具？我们讨论了一些选项，并提供了一个关于PostgreSQL和Apache的逐步指南……
