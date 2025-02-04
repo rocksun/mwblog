@@ -1,7 +1,7 @@
 
 <!--
 title: 从系统运维人员到时间守护者：闰秒将由什么取代？
-cover: https://cdn.thenewstack.io/media/2025/02/81a06816-george_washington_french_empire_mantel_clock-creative-common-image-via-wikipedia-by-george_washington_french_empire_mantel_clock-creative-commons-image-by-maulleigh-via-wikipedia.jpg
+cover: ./cover.png
 -->
 
 融化极地冰盖的水可能会微妙地影响地球的自转，从而扰乱超精确的原子钟计时。
