@@ -1,0 +1,41 @@
+# Celebrating a Year of Commitment to CNCF Flux: Sustainability, Innovation, and Growth
+![Featued image for: Celebrating a Year of Commitment to CNCF Flux: Sustainability, Innovation, and Growth](https://cdn.thenewstack.io/media/2025/02/9a51ea28-gabre-cameron-8p42kceo7ei-unsplash-1024x683.jpg)
+[Gabre Cameron](https://unsplash.com/@gabrecameron?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)on
+[Unsplash](https://unsplash.com/photos/a-cupcake-with-a-single-candle-sitting-on-top-of-it-8P42KceO7eI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash).
+In January 2024, Flux faced a funding problem. Its progenitor, WeaveWorks, could no longer support the project or its maintainers. At ControlPlane, we decided to step in. The [community’s needs aligned with our development](https://thenewstack.io/developers-need-a-community-of-practice-and-wikis-still-work/) and DevSecOps capabilities, so we employed the core maintainers to continue their essential work supporting Flux’s substantial user base with features, patches, and implementation.
+
+We ensured the maintainers had the time and focus required to continue development efforts undisturbed and considered monetization strategies for the open source project. At the same time, we decided to create our own enterprise edition of Flux for companies that wanted a fully supported version.
+
+## The Risk and Reward of Sustaining Open Source
+The vision and tremendous effort the dedicated Flux team has put into the project are reflected in its adoption: it is the de facto GitOps toolkit for securely and efficiently managing business-critical deployments at scale. Flux is trusted to run everything from spacecraft and [planes to telecommunications networks](https://thenewstack.io/thwart-ops-sprawl-with-a-unified-data-plane/) and financial institutions. This project needed to continue, and for that, it needed support.
+
+As a bootstrapped and independent organization, ControlPlane’s commitment required balancing financial risk with a strategic focus of effort.
+
+For us as a business, it would seriously widen our focus. We would go from being a cloud native consultancy that contributes to open source projects to safeguarding Flux’s future as a CNCF project. This was not a decision we made lightly. Sustaining and growing a project of Flux’s caliber required not only bootstrap funding but collaboration from the rest of the business to integrate and support our consulting efforts around developer velocity, DevSecOps, and progressive delivery.
+
+Over the past year, that commitment has fostered renewed confidence and collaboration from the community and customers. By stewarding Flux at a pivotal moment, ControlPlane preserved its hard-won reputation as a stable and trusted GitOps solution. This has strengthened ControlPlane’s position as a trusted partner for [maintaining and securing critical open source](https://thenewstack.io/security-needs-create-more-work-for-open-source-maintainers/) infrastructure for systems, aligning with our core consultancy offering.
+
+## Ensuring Flux Thrives for Enterprise-Grade Use Cases
+Flux is a CNCF-graduated open source project, and we recognized early on that further support was needed. Enterprises, particularly those in regulated and business-critical industries, require more than great software. They need trusted partners who intimately understand their unique challenges and can deliver solutions that meet stringent security, scalability, and reliability requirements.
+
+ControlPlane has earned that trust through years of consultancy work in some of the world’s most heavily regulated organizations and sectors, including financial services, telecommunications, and government. Those companies demand strict compliance mandates, and fault tolerance is a table stake for their applications, so any open source project must meet those requirements. Our hands-on experience delivering secure, scalable cloud native solutions helped us expand our work around Flux into the specific needs of these domains.
+
+This allowed us to build a [sustainable product around the open source](https://thenewstack.io/can-open-source-sustain-itself-without-losing-its-soul/) project. ControlPlane Enterprise Flux was designed with these customer requirements in mind. It offers enhanced security features, dedicated enterprise support and assurance, and robust new scaling tools tailored to address the challenges of cloud native workloads in regulated industries globally.
+
+For the open source project, we have extended the project’s core functionality with a dedicated Kubernetes operator to run Flux on [autopilot mode](https://fluxcd.control-plane.io/operator/), managing security and lifecycle across complex hybrid-cluster deployments. The Flux Operator is fully open source under AGPL, and it is bundled under a commercial license in [ControlPlane Enterprise for Flux CD](https://fluxcd.control-plane.io/).
+
+The Enterprise offering provides the open source CNCF Flux project with a sustainable revenue model that directly funds the maintainers. It continues the open source offering for anybody to consume, and the financial freedom allows our core maintainers to stay focused on upstream [development without the pressure of securing](https://thenewstack.io/how-to-get-started-with-http3/) funding.
+
+## Flux in 2025
+As part of our activity over the past year, we supported the Flux core maintainers in publishing a [2025 roadmap](https://fluxcd.io/roadmap/) with the CNCF Flux project’s following milestones. As for the [Flux Operator](https://github.com/controlplaneio-fluxcd/flux-operator) and enterprise roadmap, we plan to release our top customer feature requests this year, including ephemeral environments for reviewing pull requests, Kubernetes self-service namespaces, and much more. The project is open to feedback and suggestions.
+
+We also worked with our [customers to secure](https://thenewstack.io/customer-facing-incidents-on-the-rise-it-leaders-say/) accreditation for Flux and the enterprise product based on this project. This was an intensive process for the team and a valuable one for the project. Going through this exercise with a central international bank showed how the work that we have done has continued the [effort to deliver a secure](https://thenewstack.io/as-malware-embraces-rust-a-new-effort-emerges-to-fight-back/) and increasingly vital infrastructure management tool for developers and their organizations. During the past year, those test and review sessions with the bank’s IT team were a baptism of fire, but this hard work was validated, and it delivered improvements that the whole project benefitted from.
+
+We have a few lessons to share for companies considering how they support open source or whether they should take on a project that needs support and guidance. Firstly, supporting maintainers is a critical requirement for the [success of any open source](https://thenewstack.io/icymi-deepseek-is-an-open-source-success-story/) project. This means creating a sustainable business alongside a sustainable and valuable project. Secondly, working with large enterprises will mean looking at your project for ways to improve code quality and harden your systems. Far from being a burden, this can show you ways to increase the value your enterprise product can offer. Lastly, thankfully, we were already well versed in it; don’t be afraid to reach out to your community and learn from their experience. This will usually give you far more insights than you might expect and that you can put into place for the years to come.
+
+*Editorial note: Percona will be taking part in **State of Open Con**, a conference covering open source software, open hardware, open source in finance and banking and mobile/telecommunications. The event will be held Feb. 4-5 in London. Alex Williams of The New Stack will also moderate a track on AI Openness at the event. For more information, visit **https://stateofopencon.com/*
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
