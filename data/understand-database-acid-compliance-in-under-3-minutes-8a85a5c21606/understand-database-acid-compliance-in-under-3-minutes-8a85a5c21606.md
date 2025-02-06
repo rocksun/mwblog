@@ -1,7 +1,7 @@
 
 <!--
 title: 3分钟内了解数据库ACID合规性
-cover: https://miro.medium.com/v2/resize:fit:1200/1*h83a-YCFmzMc7ACJFDHBfg.png
+cover: ./cover.png
 -->
 
 了解数据库 ACID 合规性是什么，以及为什么你的高性能数据库可能不符合 ACID 合规性。
