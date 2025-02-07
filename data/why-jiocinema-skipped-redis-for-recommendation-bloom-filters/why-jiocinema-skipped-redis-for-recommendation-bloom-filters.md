@@ -1,6 +1,6 @@
 
 <!--
-title: JioCinema 为何跳过 Redis 而选择 Recommendation Bloom Filters
+title: 为什么JioCinema在推荐布隆过滤器中跳过了Redis
 cover: https://cdn.thenewstack.io/media/2025/02/6dd1e3d9-streaming.jpg
 -->
 
