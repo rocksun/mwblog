@@ -1,0 +1,51 @@
+# GenAI Meets SLMs: A New Era for Edge Computing
+![Featued image for: GenAI Meets SLMs: A New Era for Edge Computing](https://cdn.thenewstack.io/media/2025/02/2bcf4a85-nathan-shipps-ke2-wbtxini-unsplash-1024x683.jpg)
+[Nathan Shipps](https://unsplash.com/@nateshipps?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)on
+[Unsplash](https://unsplash.com/photos/person-standing-near-rock-cliff-ke2-WbTxINI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash).
+Let’s imagine a scenario: There is a hospital where patients own their medical records. The hospital wants AI-enabled healthcare assistants installed on their personal monitoring devices so that healthcare professionals can monitor and analyze the data and provide real-time feedback to ensure routine and emergency medications, but the system must be compliant with regional medical regulations. In such cases, edge computing approaches are reliable for accuracy and data security — and work locally; no cloud is needed.
+
+Now, imagine the possibilities when edge computing is powered with [GenAI](https://www.talentica.com/blogs/generative-ai-transforming-decision-making-edge-computing/). This fusion doesn’t just make the solution smarter — it makes the solution autonomous and opens up new possibilities for developing personalized, intelligent healthcare. But the impact of edge computing is not limited to healthcare alone. It can also transform industries like the investment sector, where real-time data processing is crucial for trading decisions, and enhance cybersecurity to prevent data from falling into the wrong hands.
+
+Today [developers mostly use large language models](https://thenewstack.io/why-large-language-models-wont-replace-human-coders/) (LLMs) to develop GenAI applications for their obvious benefits. But the size and complexity of LLMs make them challenging for resource-constrained edge devices. SLMs are trained on case-specific literature, and they can make real-time decision-making faster and more efficiently than the LLMs.
+
+As the Head of Emerging Technologies, my team and I have tested SLMs several times. This article explores some of the challenges and potential strategies for using SLMs within edge computing systems.
+
+**Replacing LLMs With SLMs for Edge Applications**
+Switching to SLMs offers significant benefits in the healthcare sector, where the use of personal devices is common. Due to performance constraints, personal devices often lack the resources needed to run LLMs effectively. Since SLMs are case-specific, they provide an ideal solution to address these limitations.
+
+Converting LLMs into SLMs is easy with techniques such as model distillation, parameter pruning, and quantization. Model distillation involves training a much smaller model to emulate a larger one, retaining much of the original model’s performance. Parameter pruning eliminates unnecessary weights and connections within the model to streamline its architecture without sacrificing accuracy. Quantization compresses the model by reducing the precision of the numerical representation of weights, which results in a smaller footprint and faster inference times.
+
+Now, let’s re-examine the hospital example. Different sets of patients can require constant monitoring and immediate action with diseases and disorders concerning neurology, nephrology, cardiovascular, autoimmune, infectious diseases, or even accidents. SLMs can be trained separately for these medical conditions. They can analyze the [data of these patients in real time](https://thenewstack.io/how-open-source-and-time-series-data-fit-together/) and either initiate the required treatment or alert healthcare professionals to take action in time.
+
+Depending on their needs, developers can build SLMs either from scratch or use pre-trained models as foundational tools for their projects and accelerate the development process. Open marketplaces, such as GitHub Models and Hugging Face, have pre-trained SLMs. These tools also facilitate the broader adoption of Generative AI at the edge. SLM’s contextual capabilities can transform several industries. In smart cities, SLMs can build better edge-enabled IoT devices to provide context-sensitive directions tailored to conditions such as congestion or road closures. This combination could enhance efficiency, minimize delays, and improve the overall urban mobility experience.
+
+**Addressing Platform Diversity and Resource Requirements**
+Platform heterogeneity among the edge devices could make deploying SLMs challenging. Personal monitoring devices can run on several platforms, such as iOS and Android. However, stacks and frameworks like Open Neural Network Exchange (ONNX), MediaPipe, WASI-NN, Rust, and WebAssembly can help build an ecosystem for edge applications consuming SLMs. They support diverse hardware and operating systems and ensure cross-platform support and resource-optimized applications.
+
+Frameworks such as the Open Neural Network Exchange (ONNX) runtime provide an abstraction layer that simplifies the support for SLMs across multiple platforms to mitigate this issue. Developers can optimize models for specific hardware targets using ONNX toolkits to ensure efficient performance regardless of the underlying device architecture. The MediaPipe framework has simplified migrating SLMs to lightweight edge devices, including mobile platforms. Its modular framework and efficient hardware accelerators enable pre-optimized, cross-platform solutions and streamline the deployment of sophisticated AI models in resource-limited environments.
+
+In addition, WebAssembly can leverage the underlying hardware capabilities, including GPUs, to optimize performance and accelerate inferencing tasks. It is ideal for SLM applications as it combines lightweight execution with powerful computational resources. It also contributes towards sustainability initiatives by supporting the development of robust AI solutions on edge devices with lower power consumption and heat generation. WASI-NN provides machine learning inferencing APIs for WebAssembly. It enables multilanguage [development for WebAssembly](https://thenewstack.io/webassembly-users-a-mix-of-backend-and-full-stack-developers/) applications that leverage SLM capabilities.
+
+The [Rust programming language](https://thenewstack.io/the-rust-c-bridge-a-new-path-forward/) stack further enhances this ecosystem. Unlike the [Python stack used in ML environments](https://thenewstack.io/why-every-python-dev-needs-virtual-environments-now/), Rust enables application runtimes as compact as 30 MB, enabling lightweight, high-performance applications suited for resource-constrained edge environments.
+
+**Collaborative Learning at the Edge With Enhanced Security**
+Healthcare and many other domains operate within a privacy-sensitive environment. However, controlled [data sharing with edge applications could help build](https://thenewstack.io/how-event-processing-builds-business-speed-and-agility/) a knowledge base to improve treatment procedures using SLMs and other healthcare services. Techniques such as federated learning can ensure training and fine-tuning of SLMs on multiple devices under such circumstances. Maintaining data privacy and security is more straightforward with federated learning. This approach helps the [model learn from localized data](https://thenewstack.io/data-modeling-part-2-method-for-time-series-databases/) without sharing sensitive information.
+
+Let’s return to the hospital example for a moment. The hospital has decided to join a collaborative program with other hospitals, aiming to build a more sophisticated model to improve predictions and care outcomes based on insights from diverse medical records. But there’s a catch: hospitals cannot make the documents public because regulations designate patients as the owners of their data.
+
+This is where federated learning combined with SLMs can be a game-changer. Each hospital can train its own SLM using its patient records. Then, it can upload only the learned parameters to a shared database, benefiting all contributors while maintaining privacy. The server then builds a global model based on the updates received without accessing individual files.
+
+The same principle applies to all cases involving sensitive data. For example, in the investment sector, where customer data requires strict security, insights from shared parameters on investment patterns can help the banking sector develop more effective plans. Federated learning facilitates collaboration among contributors, whether individuals, devices, or organizations. It improves models by providing data without compromising data privacy. The technology also ensures compliance with privacy regulations.
+
+Developers can use open source projects for federated learning, such as Flower, Substra, NVFlare, etc. These frameworks implement data security and ensure privacy with techniques like differential privacy, homomorphic encryption, and confidential computing.
+
+**Conclusion**
+Small Language Models (SLMs) offer an excellent balance of efficiency, privacy, and adaptability, making them ideal for various applications. In the healthcare domain, rapid on-device diagnosis of symptoms could also be a differentiating factor for telemedicine, an emerging healthcare subdomain.
+
+Industries such as industrial IoT, defense, and fintech can leverage SLMs for real-time analytics, enhanced security, and customized solutions. These industries can further benefit from their adaptability to multilingual and multimodal inputs. For example, the fintech industry can use SLMs for multilingual customer support and localized models for diverse datasets. As SLMs are deployed locally, they are more secure and explainable, which provides transparency in domains where regulatory compliance is a priority.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
