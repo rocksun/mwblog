@@ -4,7 +4,7 @@ title: 开发者如何使用快速增长的AI编码工具Bolt
 cover: https://cdn.thenewstack.io/media/2025/02/65d91009-getty-images-uyefhxjj4xs-unsplashb.jpg
 -->
 
-StackBlitz 曾经是一个基于浏览器的 IDE，但现在已经转向一个名为 Bolt 的 agentic IDE。我们与它的 CEO 聊了聊开发者们是如何使用它的。[可观测性](https://example.com/observability-link-example)
+StackBlitz 曾经是一个基于浏览器的 IDE，但现在已经转向一个名为 Bolt 的 agentic IDE。我们与它的 CEO 聊了聊开发者们是如何使用它的。
 
 > 译自 [How Developers Are Using Bolt, a Fast Growing AI Coding Tool](https://thenewstack.io/how-developers-are-using-bolt-a-fast-growing-ai-coding-tool/)，作者 Richard MacManus。
 
