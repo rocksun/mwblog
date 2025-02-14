@@ -1,7 +1,7 @@
 
 <!--
 title: Google Maps不让你在美洲湾上留下负面评论
-cover: https://gizmodo.com/app/uploads/2025/01/GettyImages-2195911538.jpg
+cover: ./cover.webp
 -->
 
 在特朗普强制更改名称后，如潮般的负面反馈涌入了水体。
