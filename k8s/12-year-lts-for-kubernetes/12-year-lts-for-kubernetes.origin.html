@@ -1,0 +1,6156 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content=" 
+      Canonical unveils 12-Year Kubernetes LTS, enhancing enterprise software infrastructure security and simplifying operations" />
+      <meta name="copydoc" content=" 
+        https://drive.google.com/drive/folders/0B8feV0jqaac3TmExU3NDcHhFTGc" />
+        <meta name="author" content="Canonical Ltd" />
+        <link rel="canonical" href="https://canonical.com/blog/12-year-lts-for-kubernetes" />
+
+          <meta name="theme-color" content="#262626" />
+          <meta name="twitter:account_id" content="169015850" />
+          <meta name="twitter:site" content="@canonical" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://canonical.com/blog/12-year-lts-for-kubernetes" />
+          <meta property="og:site_name" content="Canonical" />
+
+          <!-- Cookie policy -->
+          <script src="/static/js/modules/cookie-policy/cookie-policy.js?v=90c3a18"></script>
+          <script>
+            cpNs.cookiePolicy();
+          </script>
+
+          <!-- Google Tag Manager -->
+          <script>
+            (function(w, d, s, l, i) {
+              w[l] = w[l] || [];
+              w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+              });
+              var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+              j.async = true;
+              j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+              f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-M5BPGQ6');
+          </script>
+          
+          <title>
+
+            Canonical announces 12 year Kubernetes LTS 
+          </title>
+          
+            <meta name="twitter:title" content="Canonical announces 12 year Kubernetes LTS  | Canonical" />
+            <meta property="og:title" content="Canonical announces 12 year Kubernetes LTS  | Canonical" />
+          
+          
+            <meta name="twitter:description" content="Canonical unveils 12-Year Kubernetes LTS, enhancing enterprise software infrastructure security and simplifying operations" />
+            <meta property="og:description" content="Canonical unveils 12-Year Kubernetes LTS, enhancing enterprise software infrastructure security and simplifying operations" />
+          
+
+          
+          <!-- Meta keywords:  -->
+          
+
+          
+          <!-- Meta image: https://ubuntu.com/wp-content/uploads/d18a/Kubernetes_12_year_LTS_featured_image.png -->
+          
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:image"
+                  content="https://ubuntu.com/wp-content/uploads/d18a/Kubernetes_12_year_LTS_featured_image.png" />
+            <meta property="og:image"
+                  content="https://ubuntu.com/wp-content/uploads/d18a/Kubernetes_12_year_LTS_featured_image.png" />
+          
+
+          
+          
+
+          
+  
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@id": "https://canonical.com/#article",
+      "@type": "Article",
+      "name": "",
+      "headline": "Canonical’s Kubernetes LTS (Long Term Support) will support FedRAMP compliance and receive at least 12 years of committed security maintenance and enterprise support on bare metal, public clouds, OpenStack, Canonical MicroCloud and VMware. February 11,  2025 Today, Canonical announced a 12 year security maintenance and support commitment  […]",
+      "author": {
+        "@type": "Person",
+        "name": "Canonical"
+      },
+      "datePublished": "2025-02-11T10:01:56",
+      
+      "image": "https://ubuntu.com/wp-content/uploads/d18a/Kubernetes_12_year_LTS_featured_image.png",
+      
+      "url": "https://canonical.com/blog/12-year-lts-for-kubernetes",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ubuntu"
+      }
+    }
+</script>
+  
+
+
+          <link rel="apple-touch-icon"
+                sizes="180x180"
+                href="https://assets.ubuntu.com/v1/f38b9c7e-COF%20apple-touch-icon.png" />
+          <link rel="icon"
+                type="image/png"
+                sizes="32x32"
+                href="https://assets.ubuntu.com/v1/be7e4cc6-COF-favicon-32x32.png" />
+          <link rel="icon"
+                type="image/png"
+                sizes="16x16"
+                href="https://assets.ubuntu.com/v1/16c27f81-COF%20favicon-16x16.png" />
+          <link rel="manifest" href="/static/files/site.webmanifest?v=861e2f6" />
+          <!-- Serving favicon for search engines locally -->
+          <link rel="icon" type="image/png" sizes="48x48" href="/static/favicons/COF-favicon-48x48.png?v=fa3c63f" />
+
+          <link rel="preconnect" href="https://assets.ubuntu.com" />
+
+          <link rel="preload"
+                as="font"
+                type="font/woff2"
+                href="https://assets.ubuntu.com/v1/e8c07df6-Ubuntu-L_W.woff2"
+                crossorigin />
+          <link rel="preload"
+                as="font"
+                type="font/woff2"
+                href="https://assets.ubuntu.com/v1/7f100985-Ubuntu-Th_W.woff2"
+                crossorigin />
+          <link rel="preload"
+                as="font"
+                type="font/woff2"
+                href="https://assets.ubuntu.com/v1/f8097dea-Ubuntu-LI_W.woff2"
+                crossorigin />
+          <link rel="preload"
+                as="font"
+                type="font/woff2"
+                href="https://assets.ubuntu.com/v1/fff37993-Ubuntu-R_W.woff2"
+                crossorigin />
+
+          <script src="https://assets.ubuntu.com/v1/703e23c9-lazysizes+noscript+native-loading.5.1.2.min.js"
+                  defer></script>
+
+          <link rel="stylesheet" type="text/css" media="screen" href="/static/css/styles.css?v=d9afa4b" />
+        </head>
+
+        <body class=" 
+          
+  is-paper blog-article
+ l-site">
+          <!-- Google Tag Manager (noscript) -->
+          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5BPGQ6"
+        height="0"
+        width="0"
+        style="display:none;
+               visibility:hidden"></iframe></noscript>
+          <a href="#main-content" class="u-off-screen">Skip to main content</a>
+          <div id="success" class="u-hide">
+            <div class="p-notification--positive u-no-margin--bottom">
+              <div class="p-notification__content">
+                <p class="p-notification__message">
+                  Your submission was sent successfully! <a href="#"
+    onclick="document.querySelector('#success').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="newsletter-signup" class="u-hide">
+            <div class="p-notification--positive u-no-margin--bottom">
+              <div class="p-notification__content">
+                <p class="p-notification__message">
+                  Thank you for signing up for our newsletter!
+                  <br />
+                  In these regular emails you will find the latest updates from Canonical and upcoming events where you can meet our team.<a href="#"
+   onclick="document.querySelector('#newsletter-signup').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="contact-form-success" class="u-hide">
+            <div class="p-notification--positive u-no-margin--bottom">
+              <div class="p-notification__content">
+                <p class="p-notification__message">
+                  Thank you for contacting us. A member of our team will be in touch shortly. <a href="#"
+   onclick="document.querySelector('#contact-form-success').classList.add('u-hide');"><i class="p-notification__close">Close</i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          
+
+<header id="navigation"
+        class="p-navigation--sliding is-dark">
+  <div class="p-navigation__row--25-75">
+    <div class="p-navigation__banner">
+      <div class="p-navigation__tagged-logo">
+        <a class="p-navigation__link" href="/">
+          <div class="p-navigation__logo-tag">
+            <img class="p-navigation__logo-icon"
+                 src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg"
+                 alt="Canonical" />
+          </div>
+          <span class="p-navigation__logo-title">Canonical</span>
+        </a>
+      </div>
+      <ul class="p-navigation__items">
+        <li class="p-navigation__item">
+          <a href="/search"
+             class="js-search-button p-navigation__link--search-toggle"
+             aria-label="Search"></a>
+        </li>
+        <li class="p-navigation__item">
+          <a href="/navigation" class="js-menu-button p-navigation__link">Menu</a>
+        </li>
+      </ul>
+    </div>
+    <nav class="p-navigation__nav js-show-nav" aria-label="Categories">
+      <ul class="p-navigation__items js-dropdown-list">
+        <li class="p-navigation__item--dropdown-toggle"
+            role="menuitem"
+            id="products-nav">
+          <a class="p-navigation__link js-dropdown-button"
+             href="#"
+             aria-controls="products-content"
+             tabindex="0"
+             data-level="0">Products</a>
+             <div class="p-navigation__dropdown is-full-width is-collapsed"
+     data-level="1"
+     id="products-content"
+     aria-hidden="true">
+  
+    <div class="p-navigation__dropdown-content--sliding">
+  <ul class="p-list u-no-margin js-dropdown-list">
+    <li class="p-navigation__item--dropdown-close" id="products-content-back">
+      <a class="p-navigation__link js-back-button js-focus-target"
+         aria-controls="products-content"
+         href="#products-content-back"
+         data-level="1">Back</a>
+    </li>
+    
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="featured-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#featured-menu"
+             aria-controls="featured-menu"
+             data-level="1">Featured</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="featured-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="featured-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="featured-content"
+                 href="#featured-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/desktop"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Desktop</span>
+    <br />
+    
+      <small>Fast, modern and secure Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://maas.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MAAS</span>
+    <br />
+    
+      <small>Bare metal provisioning</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://snapcraft.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Snapcraft</span>
+    <br />
+    
+      <small>App store for Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/openstack"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>OpenStack</span>
+    <br />
+    
+      <small>Private cloud provisioning</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/microcloud"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MicroCloud</span>
+    <br />
+    
+      <small>Lightweight, automated clouds</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/support"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Enterprise-grade support</span>
+    <br />
+    
+      <small>24/7 support for the full-stack</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/security/livepatch"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Livepatch</span>
+    <br />
+    
+      <small>Stay patched and defer reboots</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/kubernetes"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Kubernetes</span>
+    <br />
+    
+      <small>Containerised workloads</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://charmhub.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Charmhub</span>
+    <br />
+    
+      <small>Charmed Operators marketplace</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestration engine for operators</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Certified hardware</span>
+    <br />
+    
+      <small>Ubuntu hardware you can trust</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="ubuntu-os-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#ubuntu-os-menu"
+             aria-controls="ubuntu-os-menu"
+             data-level="1">Ubuntu OS</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="ubuntu-os-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="ubuntu-os-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="ubuntu-os-content"
+                 href="#ubuntu-os-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/desktop"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Desktop</span>
+    <br />
+    
+      <small>Fast, modern and secure Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/core"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Core</span>
+    <br />
+    
+      <small>Embedded Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/security/fips"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>FIPS for Ubuntu</span>
+    <br />
+    
+      <small>Secure Linux for government</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/desktop/wsl"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>WSL</span>
+    <br />
+    
+      <small>Windows Subsystem for Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/multipass"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Multipass</span>
+    <br />
+    
+      <small>VMs for Windows, macOS &amp; Linux</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/tutorials/upgrading-ubuntu-desktop" data-level="2" class="js-focus-target">Upgrade Ubuntu</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://help.ubuntu.com/" data-level="2" class="js-focus-target">Ubuntu documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/tutorials/install-ubuntu-desktop" data-level="2" class="js-focus-target">Desktop install</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/server/docs/installation" data-level="2" class="js-focus-target">Server install</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/server/docs" data-level="2" class="js-focus-target">Server guide</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/cloud/public-cloud" data-level="2" class="js-focus-target">Ubuntu on public clouds</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="private-cloud-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#private-cloud-menu"
+             aria-controls="private-cloud-menu"
+             data-level="1">Private cloud</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="private-cloud-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="private-cloud-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="private-cloud-content"
+                 href="#private-cloud-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="/openstack"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>OpenStack</span>
+    <br />
+    
+      <small>Enterprise private cloud</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/landscape"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Landscape</span>
+    <br />
+    
+      <small>Monitor and manage machines</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://maas.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MAAS</span>
+    <br />
+    
+      <small>Bare metal provisioning</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/ceph"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ceph</span>
+    <br />
+    
+      <small>Open source storage</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://anbox-cloud.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Anbox Cloud</span>
+    <br />
+    
+      <small>Virtualised Android on demand</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestrator engine for operators</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/openstack/consulting"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Private cloud build</span>
+    <br />
+    
+      <small>OpenStack implementation</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/microstack"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MicroStack</span>
+    <br />
+    
+      <small>Cloud-native OpenStack</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/microcloud"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MicroCloud</span>
+    <br />
+    
+      <small>Lightweight, automated clouds</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/server/docs" data-level="2" class="js-focus-target">Server documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://maas.io/docs" data-level="2" class="js-focus-target">MAAS documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="/microstack/docs/single-node" data-level="2" class="js-focus-target">MicroStack installation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/blog/data-centre-networking-what-is-sdn" data-level="2" class="js-focus-target">Data Centre Networking blog</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/openstack/pricing-calculator" data-level="2" class="js-focus-target">OpenStack pricing</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/openstack/consulting" data-level="2" class="js-focus-target">Private cloud consulting</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/blog/private_cloud_avoiding_operational_costs" data-level="2" class="js-focus-target">Private cloud: Avoiding the high cost of operations</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="public-cloud-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#public-cloud-menu"
+             aria-controls="public-cloud-menu"
+             data-level="1">Public cloud</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="public-cloud-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="public-cloud-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="public-cloud-content"
+                 href="#public-cloud-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/cloud/public-cloud"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu on public clouds</span>
+    <br />
+    
+      <small>The most popular cloud OS</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/aws"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu on AWS</span>
+    <br />
+    
+      <small>AWS Marketplace</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/azure"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu on Azure</span>
+    <br />
+    
+      <small>Microsoft Azure Marketplace</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/gcp"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu on GCP</span>
+    <br />
+    
+      <small>Google Cloud Marketplace</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/aws/workspaces"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu WorkSpaces</span>
+    <br />
+    
+      <small>Virtual desktops on AWS</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="virtualization-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#virtualization-menu"
+             aria-controls="virtualization-menu"
+             data-level="1">Virtualization</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="virtualization-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="virtualization-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="virtualization-content"
+                 href="#virtualization-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="/multipass"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Multipass</span>
+    <br />
+    
+      <small>VMs for Windows, macOS &amp; Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/lxd"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>LXD</span>
+    <br />
+    
+      <small>Linux containers and VMs</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/desktop/wsl"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>WSL</span>
+    <br />
+    
+      <small>Windows Subsystem for Linux</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://snapcraft.io/blog/what-is-virtualisation-the-basics" data-level="2" class="js-focus-target">What is virtualisation?</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="/multipass/docs" data-level="2" class="js-focus-target">Multipass documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/server/docs/virtualization-multipass" data-level="2" class="js-focus-target">Virtualization docs in the server guide</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://wiki.ubuntu.com/WSL" data-level="2" class="js-focus-target">What is WSL?</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support" data-level="2" class="js-focus-target">Install Ubuntu on Windows 11</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10" data-level="2" class="js-focus-target">Install Ubuntu on Windows 10</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="security-and-support-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#security-and-support-menu"
+             aria-controls="security-and-support-menu"
+             data-level="1">Security and support</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="security-and-support-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="security-and-support-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="security-and-support-content"
+                 href="#security-and-support-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/support"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro + support</span>
+    <br />
+    
+      <small>24/7 support for the full-stack</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/security/esm"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>ESM</span>
+    <br />
+    
+      <small>10 years of security maintenance</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/landscape"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Landscape</span>
+    <br />
+    
+      <small>Monitor and manage machines</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/security/livepatch"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Livepatch</span>
+    <br />
+    
+      <small>Stay patched without reboots</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/aws/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro for AWS</span>
+    <br />
+    
+      <small>Amazon Web Services support</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/azure/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro for Azure</span>
+    <br />
+    
+      <small>Microsoft Azure cloud support</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/gcp/pro"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Pro for GCP</span>
+    <br />
+    
+      <small>Google Cloud support</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/security/certifications"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Certifications and hardening</span>
+    <br />
+    
+      <small>CIS, DISA-STIG, FIPS compliance</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/confidential-computing"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Confidential computing</span>
+    <br />
+    
+      <small>Protect your data in use</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/pricing/pro" data-level="2" class="js-focus-target">Ubuntu Pro pricing</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/pricing/consulting" data-level="2" class="js-focus-target">Open infrastructure consulting</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/certified" data-level="2" class="js-focus-target">Certified hardware</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/security/cves" data-level="2" class="js-focus-target">CVE reports</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/security/notices" data-level="2" class="js-focus-target">Ubuntu Security Notices (USN)</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="kubernetes-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#kubernetes-menu"
+             aria-controls="kubernetes-menu"
+             data-level="1">Kubernetes</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="kubernetes-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="kubernetes-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="kubernetes-content"
+                 href="#kubernetes-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/kubernetes"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Kubernetes</span>
+    <br />
+    
+      <small>Containerised workloads</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://microk8s.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MicroK8s</span>
+    <br />
+    
+      <small>Simplest way to get Kubernetes</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/kubernetes/charmed-k8s"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Charmed Kubernetes</span>
+    <br />
+    
+      <small>Composable K8s for the enterprise</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/ai/what-is-kubeflow"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Kubeflow</span>
+    <br />
+    
+      <small>Machine learning toolkit for K8s</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/kubernetes/docs" data-level="2" class="js-focus-target">Kubernetes documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/kubernetes/docs/quickstart" data-level="2" class="js-focus-target">Getting started with Kubernetes</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/kubernetes/compare" data-level="2" class="js-focus-target">Distributions comparison</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://juju.is/cloud-native-kubernetes-usage-report-2022" data-level="2" class="js-focus-target">Cloud native operations report</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="http://microk8s.io/docs/getting-started" data-level="2" class="js-focus-target">Getting started with MicroK8s</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://charmed-kubeflow.io/docs/install" data-level="2" class="js-focus-target">Kubeflow installation tutorial</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="ai-and-data-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#ai-and-data-menu"
+             aria-controls="ai-and-data-menu"
+             data-level="1">AI and data</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="ai-and-data-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="ai-and-data-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="ai-and-data-content"
+                 href="#ai-and-data-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/ai"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>AI/ML</span>
+    <br />
+    
+      <small>AI and machine learning on Ubuntu</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://charmed-kubeflow.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Kubeflow</span>
+    <br />
+    
+      <small>End-to-end MLOps platform</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/ai/mlflow"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MLflow</span>
+    <br />
+    
+      <small>Lightweight ML platform</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Data solutions</span>
+    <br />
+    
+      <small>Enterprise data management at scale</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/kafka"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Kafka</span>
+    <br />
+    
+      <small>Streaming data platform</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/spark"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Spark</span>
+    <br />
+    
+      <small>Big data processing</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/mongodb"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MongoDB</span>
+    <br />
+    
+      <small>NoSQL database management</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/postgresql"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>PostgreSQL</span>
+    <br />
+    
+      <small>Relational database management</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/mysql"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>MySQL</span>
+    <br />
+    
+      <small>Relational database management</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="/data/opensearch"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>OpenSearch</span>
+    <br />
+    
+      <small>Search and analytics suite</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://charmed-kubeflow.io/docs" data-level="2" class="js-focus-target">Kubeflow documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://documentation.ubuntu.com/charmed-mlflow/en/latest/" data-level="2" class="js-focus-target">MLflow documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="/data/docs" data-level="2" class="js-focus-target">Data documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/mlops-toolkit/" data-level="2" class="js-focus-target">MLOps toolkit</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/open-source-big-data-ai" data-level="2" class="js-focus-target">Guide to big data and AI</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="certified-hardware-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#certified-hardware-menu"
+             aria-controls="certified-hardware-menu"
+             data-level="1">Certified hardware</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="certified-hardware-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="certified-hardware-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="certified-hardware-content"
+                 href="#certified-hardware-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Certified hardware</span>
+    <br />
+    
+      <small>Ubuntu hardware you can trust</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified?q=&amp;limit=20&amp;category=Laptop&amp;category=Desktop"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>PC and laptops</span>
+    <br />
+    
+      <small>Certified for Ubuntu</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified/servers"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Servers</span>
+    <br />
+    
+      <small>Hardware for data centers</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified/devices"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>IoT devices</span>
+    <br />
+    
+      <small>Stable and secure devices</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified/socs"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>SoCs</span>
+    <br />
+    
+      <small>System on a Chip hardware</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified?q=&amp;limit=20&amp;vendor=Raspberry+Pi+Foundation"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Raspberry Pi</span>
+    <br />
+    
+      <small>Certified Pi devices</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/certified/why-certified" data-level="2" class="js-focus-target">Why use Certified devices?</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/partners/become-a-partner" data-level="2" class="js-focus-target">Certify your device</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://www.brighttalk.com/webcast/6793/497538" data-level="2" class="js-focus-target">Why certification matters for AIoT</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://www.brighttalk.com/webcast/6793/514263" data-level="2" class="js-focus-target">Industrial Pi use cases webinar</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/blog/why-you-should-buy-a-pre-installed-ubuntu-workstation" data-level="2" class="js-focus-target">Why buy a preinstalled workstation?</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="iot-and-edge-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#iot-and-edge-menu"
+             aria-controls="iot-and-edge-menu"
+             data-level="1">IoT and edge</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="iot-and-edge-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="iot-and-edge-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="iot-and-edge-content"
+                 href="#iot-and-edge-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/core"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Core</span>
+    <br />
+    
+      <small>Embedded Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/internet-of-things/appstore"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>IoT App Store</span>
+    <br />
+    
+      <small>Private app store for Linux and IoT</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/internet-of-things/management"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Device management</span>
+    <br />
+    
+      <small>Manage fleets of IoT devices</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/certified/devices"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Certified devices</span>
+    <br />
+    
+      <small>Hardware/OS compatibility</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://mir-server.io/ubuntu-frame"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Ubuntu Frame</span>
+    <br />
+    
+      <small>Embedded graphical displays</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/robotics/ros-esm"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>ROS ESM</span>
+    <br />
+    
+      <small>Expanded security for robots</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/real-time"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Real-time Ubuntu</span>
+    <br />
+    
+      <small>Low-latency kernel</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/core/services"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>IoT Professional Services</span>
+    <br />
+    
+      <small>Bring IoT devices to market</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/a-practical-guide-to-iot-lifecycle-management" data-level="2" class="js-focus-target">Guide to IoT lifecycle management</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/blog/canonical-joins-the-connectivity-standards-alliance" data-level="2" class="js-focus-target">Canonical joins the CSA</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/robot-operating-system-choice" data-level="2" class="js-focus-target">Pick the OS for your robots</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/embedded-linux-make-or-buy" data-level="2" class="js-focus-target">Embedded Linux: make or buy?</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/download/raspberry-pi-core" data-level="2" class="js-focus-target">Try Ubuntu Core on Raspberry Pi</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/engage/bridge-the-IT-OT-gap-Industry4" data-level="2" class="js-focus-target">Industry 4.0 webinar</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+        <li class="p-navigation__item--dropdown-toggle"
+            id="developer-tools-content">
+          <a class="p-navigation__link js-dropdown-button js-focus-target"
+             href="#developer-tools-menu"
+             aria-controls="developer-tools-menu"
+             data-level="1">Developer tools</a>
+          <ul class="p-navigation__dropdown js-dropdown-list"
+              id="developer-tools-menu"
+              aria-hidden="true">
+            <li class="p-navigation__item--dropdown-close"
+                id="developer-tools-content-back">
+              <a class="p-navigation__link js-back-button js-focus-target"
+                 aria-controls="developer-tools-content"
+                 href="#developer-tools-content-back"
+                 data-level="2">Back</a>
+            </li>
+            
+              
+                
+                  <li>
+  <a href="https://snapcraft.io/about"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Snaps</span>
+    <br />
+    
+      <small>Containerised applications for Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://snapcraft.io/build"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Snapcraft</span>
+    <br />
+    
+      <small>Build and publish your snaps</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://snapcraft.io"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Snap Store</span>
+    <br />
+    
+      <small>App store for Linux</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://ubuntu.com/containers/chiselled"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Chiselled Ubuntu</span>
+    <br />
+    
+      <small>Ultra-small containerization</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestrator engine for operators</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://charmhub.io/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>Charmhub</span>
+    <br />
+    
+      <small>Software operators collection</small>
+    
+  </a>
+</li>
+                
+              
+                
+                  <li>
+  <a href="https://jaas.ai/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="2">
+    <span>JAAS</span>
+    <br />
+    
+      <small>Auditing and compliance for Juju</small>
+    
+  </a>
+</li>
+                
+              
+            
+            
+              
+                
+                  <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="2">Quick links</h2>
+</li>
+                
+              
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://snapcraft.io/docs" data-level="2" class="js-focus-target">Snap documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://ubuntu.com/tutorials/create-your-first-snap" data-level="2" class="js-focus-target">Create your first snap</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://juju.is/docs" data-level="2" class="js-focus-target">Juju documentation</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://juju.is/docs/juju/tutorial" data-level="2" class="js-focus-target">Getting started with Juju</a>
+                  </span>
+                </li>
+              
+                <li class="p-navigation--list-link">
+                  <span class="p-navigation__dropdown-item">
+                    <a href="https://juju.is/docs/sdk/from-zero-to-hero-write-your-first-kubernetes-charm" data-level="2" class="js-focus-target">Write your first charm</a>
+                  </span>
+                </li>
+              
+            
+          </ul>
+        </li>
+      
+    
+
+    
+
+    
+
+    
+  </ul>
+</div>
+    <div class="p-navigation__dropdown-content--full-width js-dropdown-window"
+     id="products">
+  <div class="row--25-75">
+    
+      
+        <div class="p-navigation__tab-panel col">
+  <div class="p-side-navigation is-dark">
+    <div class="p-side-navigation__drawer">
+      <ul class="p-side-navigation__list js-tabs u-no-margin--bottom"
+          role="tablist"
+          aria-label="Categories">
+        
+          <li class="p-side-navigation__item"
+              data-id="products-featured">
+            <a href="#"
+               class="p-side-navigation__link is-active js-navigation-tab"
+               id="products-featured-tab"
+               aria-controls="products-featured-tab-content"
+               role="tab"
+               aria-selected="true">Featured</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-ubuntu-os">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-ubuntu-os-tab"
+               aria-controls="products-ubuntu-os-tab-content"
+               role="tab"
+               aria-selected="">Ubuntu OS</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-private-cloud">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-private-cloud-tab"
+               aria-controls="products-private-cloud-tab-content"
+               role="tab"
+               aria-selected="">Private cloud</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-public-cloud">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-public-cloud-tab"
+               aria-controls="products-public-cloud-tab-content"
+               role="tab"
+               aria-selected="">Public cloud</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-virtualization">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-virtualization-tab"
+               aria-controls="products-virtualization-tab-content"
+               role="tab"
+               aria-selected="">Virtualization</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-security-and-support">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-security-and-support-tab"
+               aria-controls="products-security-and-support-tab-content"
+               role="tab"
+               aria-selected="">Security and support</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-kubernetes">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-kubernetes-tab"
+               aria-controls="products-kubernetes-tab-content"
+               role="tab"
+               aria-selected="">Kubernetes</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-ai-and-data">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-ai-and-data-tab"
+               aria-controls="products-ai-and-data-tab-content"
+               role="tab"
+               aria-selected="">AI and data</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-certified-hardware">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-certified-hardware-tab"
+               aria-controls="products-certified-hardware-tab-content"
+               role="tab"
+               aria-selected="">Certified hardware</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-iot-and-edge">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-iot-and-edge-tab"
+               aria-controls="products-iot-and-edge-tab-content"
+               role="tab"
+               aria-selected="">IoT and edge</a>
+          </li>
+        
+          <li class="p-side-navigation__item"
+              data-id="products-developer-tools">
+            <a href="#"
+               class="p-side-navigation__link  js-navigation-tab"
+               id="products-developer-tools-tab"
+               aria-controls="products-developer-tools-tab-content"
+               role="tab"
+               aria-selected="">Developer tools</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+      
+      <div class=" col">
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               
+               id="products-featured-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-featured-tab">
+            <div class="row u-no-padding">
+              <div class="col-9">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/desktop"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Desktop</span>
+    <br />
+    
+      <small>Fast, modern and secure Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://maas.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MAAS</span>
+    <br />
+    
+      <small>Bare metal provisioning</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://snapcraft.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Snapcraft</span>
+    <br />
+    
+      <small>App store for Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/openstack"
+     class="p-navigation__dropdown-item "
+     >
+    <span>OpenStack</span>
+    <br />
+    
+      <small>Private cloud provisioning</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/microcloud"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MicroCloud</span>
+    <br />
+    
+      <small>Lightweight, automated clouds</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/support"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Enterprise-grade support</span>
+    <br />
+    
+      <small>24/7 support for the full-stack</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/security/livepatch"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Livepatch</span>
+    <br />
+    
+      <small>Stay patched and defer reboots</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/kubernetes"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Kubernetes</span>
+    <br />
+    
+      <small>Containerised workloads</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://charmhub.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Charmhub</span>
+    <br />
+    
+      <small>Charmed Operators marketplace</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestration engine for operators</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Certified hardware</span>
+    <br />
+    
+      <small>Ubuntu hardware you can trust</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+            </div>
+            
+              <div class="p-navigation__footer">
+                <p>We&#39;re here to help with any questions and more information.</p>
+                <a href="https://ubuntu.com/contact-us" class="p-button">Contact us</a>
+              </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-ubuntu-os-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-ubuntu-os-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/desktop"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Desktop</span>
+    <br />
+    
+      <small>Fast, modern and secure Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/core"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Core</span>
+    <br />
+    
+      <small>Embedded Linux</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/security/fips"
+     class="p-navigation__dropdown-item "
+     >
+    <span>FIPS for Ubuntu</span>
+    <br />
+    
+      <small>Secure Linux for government</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/desktop/wsl"
+     class="p-navigation__dropdown-item "
+     >
+    <span>WSL</span>
+    <br />
+    
+      <small>Windows Subsystem for Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/multipass"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Multipass</span>
+    <br />
+    
+      <small>VMs for Windows, macOS &amp; Linux</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/tutorials/upgrading-ubuntu-desktop">Upgrade Ubuntu</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://help.ubuntu.com/">Ubuntu documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/tutorials/install-ubuntu-desktop">Desktop install</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/server/docs/installation">Server install</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/server/docs">Server guide</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/cloud/public-cloud">Ubuntu on public clouds</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-private-cloud-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-private-cloud-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/openstack"
+     class="p-navigation__dropdown-item "
+     >
+    <span>OpenStack</span>
+    <br />
+    
+      <small>Enterprise private cloud</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/server"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Server</span>
+    <br />
+    
+      <small>Scalable Linux for the cloud</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/landscape"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Landscape</span>
+    <br />
+    
+      <small>Monitor and manage machines</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://maas.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MAAS</span>
+    <br />
+    
+      <small>Bare metal provisioning</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/ceph"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ceph</span>
+    <br />
+    
+      <small>Open source storage</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://anbox-cloud.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Anbox Cloud</span>
+    <br />
+    
+      <small>Virtualised Android on demand</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestrator engine for operators</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/openstack/consulting"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Private cloud build</span>
+    <br />
+    
+      <small>OpenStack implementation</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/microstack"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MicroStack</span>
+    <br />
+    
+      <small>Cloud-native OpenStack</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/microcloud"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MicroCloud</span>
+    <br />
+    
+      <small>Lightweight, automated clouds</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/server/docs">Server documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://maas.io/docs">MAAS documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/microstack/docs/single-node">MicroStack installation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/blog/data-centre-networking-what-is-sdn">Data Centre Networking blog</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/openstack/pricing-calculator">OpenStack pricing</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/openstack/consulting">Private cloud consulting</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/blog/private_cloud_avoiding_operational_costs">Private cloud: Avoiding the high cost of operations</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-public-cloud-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-public-cloud-tab">
+            <div class="row u-no-padding">
+              <div class="col-9">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/cloud/public-cloud"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu on public clouds</span>
+    <br />
+    
+      <small>The most popular cloud OS</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/aws"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu on AWS</span>
+    <br />
+    
+      <small>AWS Marketplace</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/azure"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu on Azure</span>
+    <br />
+    
+      <small>Microsoft Azure Marketplace</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/gcp"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu on GCP</span>
+    <br />
+    
+      <small>Google Cloud Marketplace</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/aws/workspaces"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu WorkSpaces</span>
+    <br />
+    
+      <small>Virtual desktops on AWS</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-virtualization-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-virtualization-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/multipass"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Multipass</span>
+    <br />
+    
+      <small>VMs for Windows, macOS &amp; Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/lxd"
+     class="p-navigation__dropdown-item "
+     >
+    <span>LXD</span>
+    <br />
+    
+      <small>Linux containers and VMs</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/desktop/wsl"
+     class="p-navigation__dropdown-item "
+     >
+    <span>WSL</span>
+    <br />
+    
+      <small>Windows Subsystem for Linux</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://snapcraft.io/blog/what-is-virtualisation-the-basics">What is virtualisation?</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/multipass/docs">Multipass documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/server/docs/virtualization-multipass">Virtualization docs in the server guide</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://wiki.ubuntu.com/WSL">What is WSL?</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support">Install Ubuntu on Windows 11</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10">Install Ubuntu on Windows 10</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-security-and-support-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-security-and-support-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro</span>
+    <br />
+    
+      <small>Security &amp; compliance subscription</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/support"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro + support</span>
+    <br />
+    
+      <small>24/7 support for the full-stack</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/security/esm"
+     class="p-navigation__dropdown-item "
+     >
+    <span>ESM</span>
+    <br />
+    
+      <small>10 years of security maintenance</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/landscape"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Landscape</span>
+    <br />
+    
+      <small>Monitor and manage machines</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/security/livepatch"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Livepatch</span>
+    <br />
+    
+      <small>Stay patched without reboots</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/aws/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro for AWS</span>
+    <br />
+    
+      <small>Amazon Web Services support</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/azure/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro for Azure</span>
+    <br />
+    
+      <small>Microsoft Azure cloud support</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/gcp/pro"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Pro for GCP</span>
+    <br />
+    
+      <small>Google Cloud support</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/security/certifications"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Certifications and hardening</span>
+    <br />
+    
+      <small>CIS, DISA-STIG, FIPS compliance</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/confidential-computing"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Confidential computing</span>
+    <br />
+    
+      <small>Protect your data in use</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/pricing/pro">Ubuntu Pro pricing</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/pricing/consulting">Open infrastructure consulting</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/certified">Certified hardware</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/security/cves">CVE reports</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/security/notices">Ubuntu Security Notices (USN)</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-kubernetes-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-kubernetes-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/kubernetes"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Kubernetes</span>
+    <br />
+    
+      <small>Containerised workloads</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://microk8s.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MicroK8s</span>
+    <br />
+    
+      <small>Simplest way to get Kubernetes</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/kubernetes/charmed-k8s"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Charmed Kubernetes</span>
+    <br />
+    
+      <small>Composable K8s for the enterprise</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/ai/what-is-kubeflow"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Kubeflow</span>
+    <br />
+    
+      <small>Machine learning toolkit for K8s</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/kubernetes/docs">Kubernetes documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/kubernetes/docs/quickstart">Getting started with Kubernetes</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/kubernetes/compare">Distributions comparison</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://juju.is/cloud-native-kubernetes-usage-report-2022">Cloud native operations report</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="http://microk8s.io/docs/getting-started">Getting started with MicroK8s</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://charmed-kubeflow.io/docs/install">Kubeflow installation tutorial</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-ai-and-data-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-ai-and-data-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/ai"
+     class="p-navigation__dropdown-item "
+     >
+    <span>AI/ML</span>
+    <br />
+    
+      <small>AI and machine learning on Ubuntu</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://charmed-kubeflow.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Kubeflow</span>
+    <br />
+    
+      <small>End-to-end MLOps platform</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/ai/mlflow"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MLflow</span>
+    <br />
+    
+      <small>Lightweight ML platform</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Data solutions</span>
+    <br />
+    
+      <small>Enterprise data management at scale</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data/kafka"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Kafka</span>
+    <br />
+    
+      <small>Streaming data platform</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/data/spark"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Spark</span>
+    <br />
+    
+      <small>Big data processing</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data/mongodb"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MongoDB</span>
+    <br />
+    
+      <small>NoSQL database management</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data/postgresql"
+     class="p-navigation__dropdown-item "
+     >
+    <span>PostgreSQL</span>
+    <br />
+    
+      <small>Relational database management</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data/mysql"
+     class="p-navigation__dropdown-item "
+     >
+    <span>MySQL</span>
+    <br />
+    
+      <small>Relational database management</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/data/opensearch"
+     class="p-navigation__dropdown-item "
+     >
+    <span>OpenSearch</span>
+    <br />
+    
+      <small>Search and analytics suite</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://charmed-kubeflow.io/docs">Kubeflow documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://documentation.ubuntu.com/charmed-mlflow/en/latest/">MLflow documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/data/docs">Data documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/mlops-toolkit/">MLOps toolkit</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/open-source-big-data-ai">Guide to big data and AI</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-certified-hardware-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-certified-hardware-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Certified hardware</span>
+    <br />
+    
+      <small>Ubuntu hardware you can trust</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified?q=&amp;limit=20&amp;category=Laptop&amp;category=Desktop"
+     class="p-navigation__dropdown-item "
+     >
+    <span>PC and laptops</span>
+    <br />
+    
+      <small>Certified for Ubuntu</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified/servers"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Servers</span>
+    <br />
+    
+      <small>Hardware for data centers</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified/devices"
+     class="p-navigation__dropdown-item "
+     >
+    <span>IoT devices</span>
+    <br />
+    
+      <small>Stable and secure devices</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified/socs"
+     class="p-navigation__dropdown-item "
+     >
+    <span>SoCs</span>
+    <br />
+    
+      <small>System on a Chip hardware</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified?q=&amp;limit=20&amp;vendor=Raspberry+Pi+Foundation"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Raspberry Pi</span>
+    <br />
+    
+      <small>Certified Pi devices</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/certified/why-certified">Why use Certified devices?</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/partners/become-a-partner">Certify your device</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://www.brighttalk.com/webcast/6793/497538">Why certification matters for AIoT</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://www.brighttalk.com/webcast/6793/514263">Industrial Pi use cases webinar</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/blog/why-you-should-buy-a-pre-installed-ubuntu-workstation">Why buy a preinstalled workstation?</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-iot-and-edge-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-iot-and-edge-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://ubuntu.com/core"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Core</span>
+    <br />
+    
+      <small>Embedded Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/internet-of-things/appstore"
+     class="p-navigation__dropdown-item "
+     >
+    <span>IoT App Store</span>
+    <br />
+    
+      <small>Private app store for Linux and IoT</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/internet-of-things/management"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Device management</span>
+    <br />
+    
+      <small>Manage fleets of IoT devices</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/certified/devices"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Certified devices</span>
+    <br />
+    
+      <small>Hardware/OS compatibility</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://mir-server.io/ubuntu-frame"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Ubuntu Frame</span>
+    <br />
+    
+      <small>Embedded graphical displays</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/robotics/ros-esm"
+     class="p-navigation__dropdown-item "
+     >
+    <span>ROS ESM</span>
+    <br />
+    
+      <small>Expanded security for robots</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/real-time"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Real-time Ubuntu</span>
+    <br />
+    
+      <small>Low-latency kernel</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/core/services"
+     class="p-navigation__dropdown-item "
+     >
+    <span>IoT Professional Services</span>
+    <br />
+    
+      <small>Bring IoT devices to market</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/a-practical-guide-to-iot-lifecycle-management">Guide to IoT lifecycle management</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/blog/canonical-joins-the-connectivity-standards-alliance">Canonical joins the CSA</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/robot-operating-system-choice">Pick the OS for your robots</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/embedded-linux-make-or-buy">Embedded Linux: make or buy?</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/download/raspberry-pi-core">Try Ubuntu Core on Raspberry Pi</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/engage/bridge-the-IT-OT-gap-Industry4">Industry 4.0 webinar</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+          <div class="p-navigation__content-panel js-content-panel"
+               hidden="true"
+               id="products-developer-tools-tab-content"
+               tabindex="-1"
+               role="tabpanel"
+               aria-labelledby="products-developer-tools-tab">
+            <div class="row u-no-padding">
+              <div class="col-6">
+                
+                
+                  <div class="p-navigation__main-links">
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://snapcraft.io/about"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Snaps</span>
+    <br />
+    
+      <small>Containerised applications for Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://snapcraft.io/build"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Snapcraft</span>
+    <br />
+    
+      <small>Build and publish your snaps</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://snapcraft.io"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Snap Store</span>
+    <br />
+    
+      <small>App store for Linux</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://ubuntu.com/containers/chiselled"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Chiselled Ubuntu</span>
+    <br />
+    
+      <small>Ultra-small containerization</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-4">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="https://juju.is/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Juju</span>
+    <br />
+    
+      <small>Orchestrator engine for operators</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://charmhub.io/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Charmhub</span>
+    <br />
+    
+      <small>Software operators collection</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="https://jaas.ai/"
+     class="p-navigation__dropdown-item "
+     >
+    <span>JAAS</span>
+    <br />
+    
+      <small>Auditing and compliance for Juju</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="https://snapcraft.io/docs">Snap documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://ubuntu.com/tutorials/create-your-first-snap">Create your first snap</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://juju.is/docs">Juju documentation</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://juju.is/docs/juju/tutorial">Getting started with Juju</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://juju.is/docs/sdk/from-zero-to-hero-write-your-first-kubernetes-charm">Write your first charm</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+</div>
+  
+</div>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle"
+            role="menuitem"
+            id="solutions-nav">
+          <a class="p-navigation__link js-dropdown-button"
+             href="#"
+             aria-controls="solutions-content"
+             tabindex="0"
+             data-level="0">Solutions</a>
+             <div class="p-navigation__dropdown is-full-width is-collapsed"
+     data-level="1"
+     id="solutions-content"
+     aria-hidden="true">
+  
+    <div class="p-navigation__dropdown-content--sliding">
+  <ul class="p-list u-no-margin js-dropdown-list">
+    <li class="p-navigation__item--dropdown-close" id="solutions-content-back">
+      <a class="p-navigation__link js-back-button js-focus-target"
+         aria-controls="solutions-content"
+         href="#solutions-content-back"
+         data-level="1">Back</a>
+    </li>
+    
+
+    
+      <li class="p-navigation--cta">
+        <span class="p-navigation__dropdown-item">
+          
+            Explore our solutions
+          
+        </span>
+      </li>
+    
+
+    
+      
+        
+          
+            <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Categories</h2>
+</li>
+          
+        
+        
+          
+            <li>
+  <a href="/solutions/ai"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>AI</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/data"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Data</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/solutions/ubuntu-os"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Ubuntu OS</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/solutions/infrastructure"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Infrastructure</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="https://ubuntu.com/managed"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Managed IT services</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/solutions/open-source-security"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Open source security</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/solutions/iot-and-devices"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>IoT and devices</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/observability"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Observability</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+      
+        
+          
+            <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Industries</h2>
+</li>
+          
+        
+        
+          
+            <li>
+  <a href="https://ubuntu.com/automotive"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Automotive</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="https://ubuntu.com/financial-services"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Finance</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="https://ubuntu.com/industrial"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Industrial</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="https://ubuntu.com/gov"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Government</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/solutions/telco"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Telco</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+      
+    
+
+    
+      
+        <li class="p-navigation--list-heading">
+          <span class="p-navigation__dropdown-item">
+            <h2 class="p-text--small-caps u-no-margin"
+                >
+              <a href="https://ubuntu.com/engage/" class="js-focus-target">Case studies&nbsp;&rsaquo;</a>
+            </h2>
+          </span>
+        </li>
+      
+    
+  </ul>
+</div>
+    <div class="p-navigation__dropdown-content--full-width js-dropdown-window"
+     id="solutions">
+  <div class="row--25-75">
+    
+      <div class="p-navigation__content-panel--full-width">
+        <div class="p-strip">
+          
+            <p class="p-navigation--cta">Explore our solutions</p>
+          
+        </div>
+        <div class="p-section--shallow">
+          <hr class="p-rule--muted" />
+          
+            <div class="row u-no-padding">
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Categories</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/ai">AI</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/data">Data</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/ubuntu-os">Ubuntu OS</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/infrastructure">Infrastructure</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://ubuntu.com/managed">Managed IT services</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/open-source-security">Open source security</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/iot-and-devices">IoT and devices</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/observability">Observability</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Industries</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://ubuntu.com/automotive">Automotive</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://ubuntu.com/financial-services">Finance</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://ubuntu.com/industrial">Industrial</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://ubuntu.com/gov">Government</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/solutions/telco">Telco</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+              
+                <div class="col-6">
+                  
+                    <div class="p-navigation__preview-links">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps">Case studies</h2>
+  
+  <div class="row u-no-padding">
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="https://ubuntu.com/engage/sicredi-openstack-case-study">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/60d05687-Sicredi.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">Sicredi transforms its infrastructure strategy with open source.</p>
+        </a>
+      </div>
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="https://ubuntu.com/engage/LaunchDarkly-FedRAMP-case-study">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/fa174e02-LaunchDarkly.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">LaunchDarkly becomes the first FedRAMP-authorised feature management platform thanks to Ubuntu Pro.</p>
+        </a>
+      </div>
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="https://ubuntu.com/engage/European-space-agency-case-study">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/cf544550-ESA.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">Canonical deploys infrastructure solutions and managed IT services for ESA&#39;s critical space mission operations.</p>
+        </a>
+      </div>
+    
+  </div>
+</div>
+                  
+                </div>
+              
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</div>
+  
+</div>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle"
+            role="menuitem"
+            id="partners-nav">
+          <a class="p-navigation__link js-dropdown-button"
+             href="#"
+             aria-controls="partners-content"
+             tabindex="0"
+             data-level="0">Partners</a>
+             <div class="p-navigation__dropdown is-full-width is-collapsed"
+     data-level="1"
+     id="partners-content"
+     aria-hidden="true">
+  
+    <div class="p-navigation__dropdown-content--sliding">
+  <ul class="p-list u-no-margin js-dropdown-list">
+    <li class="p-navigation__item--dropdown-close" id="partners-content-back">
+      <a class="p-navigation__link js-back-button js-focus-target"
+         aria-controls="partners-content"
+         href="#partners-content-back"
+         data-level="1">Back</a>
+    </li>
+    
+
+    
+      <li class="p-navigation--cta">
+        <span class="p-navigation__dropdown-item">
+          
+            <a href="/partners" data-level="1" class="js-focus-target">Explore our partners&nbsp;&rsaquo;</a>
+          
+        </span>
+      </li>
+    
+
+    
+      
+        
+          <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Partner programmes</h2>
+</li>
+        
+      
+      
+        
+          <li>
+  <a href="/partners/desktop"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Desktop</span>
+    <br />
+    
+      <small>Desktop, laptops and workstations</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/channel-and-reseller"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Channel/reseller</span>
+    <br />
+    
+      <small>Partners on every continent</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/iot-device"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>IoT devices</span>
+    <br />
+    
+      <small>Robots, edge, development boards</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/ihv-and-oem"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>IHV/OEM</span>
+    <br />
+    
+      <small>Data centres</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/isv-partners"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>ISVs</span>
+    <br />
+    
+      <small>Independent Software Vendors</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/gsi"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>GSIs</span>
+    <br />
+    
+      <small>Global Systems Integrators</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/public-cloud"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Public cloud</span>
+    <br />
+    
+      <small>Ubuntu optimised for the cloud</small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/partners/silicon"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Silicon</span>
+    <br />
+    
+      <small>CPUs, boards and SoCs</small>
+    
+  </a>
+</li>
+        
+      
+    
+
+    
+      
+        
+          <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Quick links</h2>
+</li>
+        
+      
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/partners/find-a-partner" data-level="1" class="js-focus-target">Find a partner</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/partners/become-a-partner" data-level="1" class="js-focus-target">Become a partner</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="https://www.partner.canonical.com/#/page/login" data-level="1" class="js-focus-target">Log in to the partner portal</a>
+          </span>
+        </li>
+      
+    
+  </ul>
+</div>
+    <div class="p-navigation__dropdown-content--full-width js-dropdown-window"
+     id="partners">
+  <div class="row--25-75">
+    
+      <div class="p-navigation__content-panel--full-width">
+        <div class="p-strip">
+          
+            <p class="p-navigation--cta">
+              <a href="/partners">Explore our partners&nbsp;&rsaquo;</a>
+            </p>
+          
+        </div>
+        <div class="p-section--shallow">
+          <hr class="p-rule--muted" />
+          
+            <div class="row u-no-padding">
+              <div class="col-9">
+                
+                  <div class="p-navigation__main-links">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps">Partner programmes</h2>
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/partners/desktop"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Desktop</span>
+    <br />
+    
+      <small>Desktop, laptops and workstations</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/partners/channel-and-reseller"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Channel/reseller</span>
+    <br />
+    
+      <small>Partners on every continent</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/partners/iot-device"
+     class="p-navigation__dropdown-item "
+     >
+    <span>IoT devices</span>
+    <br />
+    
+      <small>Robots, edge, development boards</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/partners/ihv-and-oem"
+     class="p-navigation__dropdown-item "
+     >
+    <span>IHV/OEM</span>
+    <br />
+    
+      <small>Data centres</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/partners/isv-partners"
+     class="p-navigation__dropdown-item "
+     >
+    <span>ISVs</span>
+    <br />
+    
+      <small>Independent Software Vendors</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/partners/gsi"
+     class="p-navigation__dropdown-item "
+     >
+    <span>GSIs</span>
+    <br />
+    
+      <small>Global Systems Integrators</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/partners/public-cloud"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Public cloud</span>
+    <br />
+    
+      <small>Ubuntu optimised for the cloud</small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/partners/silicon"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Silicon</span>
+    <br />
+    
+      <small>CPUs, boards and SoCs</small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Quick links</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="/partners/find-a-partner">Find a partner</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/partners/become-a-partner">Become a partner</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="https://www.partner.canonical.com/#/page/login">Log in to the partner portal</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</div>
+  
+</div>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle"
+            role="menuitem"
+            id="careers-nav">
+          <a class="p-navigation__link js-dropdown-button"
+             href="#"
+             aria-controls="careers-content"
+             tabindex="0"
+             data-level="0">Careers</a>
+             <div class="p-navigation__dropdown is-full-width is-collapsed"
+     data-level="1"
+     id="careers-content"
+     aria-hidden="true">
+  
+    <div class="p-navigation__dropdown-content--sliding">
+  <ul class="p-list u-no-margin js-dropdown-list">
+    <li class="p-navigation__item--dropdown-close" id="careers-content-back">
+      <a class="p-navigation__link js-back-button js-focus-target"
+         aria-controls="careers-content"
+         href="#careers-content-back"
+         data-level="1">Back</a>
+    </li>
+    
+
+    
+      <li class="p-navigation--cta">
+        <span class="p-navigation__dropdown-item">
+          
+            <a href="/careers" data-level="1" class="js-focus-target">Roles by department&nbsp;&rsaquo;</a>
+          
+        </span>
+      </li>
+    
+
+    
+      
+        
+          <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Roles by department</h2>
+</li>
+        
+      
+      
+        
+          <li>
+  <a href="/careers/engineering"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Engineering</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="engineering"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/support-engineering"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Support</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="support-engineering"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/marketing"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Marketing</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="marketing"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/web-and-design"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Web and Design</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="web-and-design"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/project-management"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Project management</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="project-management"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/commercial-operations"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Operations</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="commercial-operations"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/product"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Product</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="product"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/sales"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Sales</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="sales"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/finance"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Finance</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="finance"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/legal"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Legal</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="legal"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/administration"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Administration</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="administration"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+        
+          <li>
+  <a href="/careers/people"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>People</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="people"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+        
+      
+    
+
+    
+      
+        
+          <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Working here</h2>
+</li>
+        
+      
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/hiring-process" data-level="1" class="js-focus-target">Hiring process</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/company-culture" data-level="1" class="js-focus-target">Company culture</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/company-culture/remote-work" data-level="1" class="js-focus-target">Remote work</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/company-culture/progression" data-level="1" class="js-focus-target">Progression</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/company-culture/diversity" data-level="1" class="js-focus-target">Diversity</a>
+          </span>
+        </li>
+      
+        <li class="p-navigation--list-link">
+          <span class="p-navigation__dropdown-item">
+            <a href="/careers/company-culture/sustainability" data-level="1" class="js-focus-target">Sustainability</a>
+          </span>
+        </li>
+      
+    
+  </ul>
+</div>
+    <div class="p-navigation__dropdown-content--full-width js-dropdown-window"
+     id="careers">
+  <div class="row--25-75">
+    
+      <div class="p-navigation__content-panel--full-width">
+        <div class="p-strip">
+          
+            <p class="p-navigation--cta">
+              <a href="/careers">Roles by department&nbsp;&rsaquo;</a>
+            </p>
+          
+        </div>
+        <div class="p-section--shallow">
+          <hr class="p-rule--muted" />
+          
+            <div class="row u-no-padding">
+              <div class="col-9">
+                
+                  <div class="p-navigation__main-links">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps">Roles by department</h2>
+  
+  <div class="row u-no-padding">
+    
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/careers/engineering"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Engineering</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="engineering"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/support-engineering"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Support</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="support-engineering"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/marketing"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Marketing</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="marketing"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/web-and-design"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Web and Design</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="web-and-design"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/careers/project-management"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Project management</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="project-management"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/commercial-operations"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Operations</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="commercial-operations"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/product"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Product</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="product"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/sales"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Sales</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="sales"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+      <div class="col-3">
+        <ul class="p-list">
+          
+            
+              <li>
+  <a href="/careers/finance"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Finance</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="finance"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/legal"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Legal</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="legal"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/administration"
+     class="p-navigation__dropdown-item "
+     >
+    <span>Administration</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="administration"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+            
+              <li>
+  <a href="/careers/people"
+     class="p-navigation__dropdown-item "
+     >
+    <span>People</span>
+    <br />
+    
+      <small class="js-available-roles" data-id="people"><i class="p-icon--spinner u-animation--spin"></i></small>
+    
+  </a>
+</li>
+            
+          
+        </ul>
+      </div>
+    
+  </div>
+</div>
+                
+              </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Working here</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/hiring-process">Hiring process</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/company-culture">Company culture</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/company-culture/remote-work">Remote work</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/company-culture/progression">Progression</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/company-culture/diversity">Diversity</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a 
+           href="/careers/company-culture/sustainability">Sustainability</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</div>
+  
+</div>
+        </li>
+        <li class="p-navigation__item--dropdown-toggle"
+            role="menuitem"
+            id="company-nav">
+          <a class="p-navigation__link js-dropdown-button"
+             href="#"
+             aria-controls="company-content"
+             tabindex="0"
+             data-level="0">Company</a>
+             <div class="p-navigation__dropdown is-full-width is-collapsed"
+     data-level="1"
+     id="company-content"
+     aria-hidden="true">
+  
+    <div class="p-navigation__dropdown-content--sliding">
+  <ul class="p-list u-no-margin js-dropdown-list">
+    <li class="p-navigation__item--dropdown-close" id="company-content-back">
+      <a class="p-navigation__link js-back-button js-focus-target"
+         aria-controls="company-content"
+         href="#company-content-back"
+         data-level="1">Back</a>
+    </li>
+    
+
+    
+      <li class="p-navigation--cta">
+        <span class="p-navigation__dropdown-item">
+          
+            <a href="/company" data-level="1" class="js-focus-target">Get to know us&nbsp;&rsaquo;</a>
+          
+        </span>
+      </li>
+    
+
+    
+      
+        
+          
+            <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Explore Canonical</h2>
+</li>
+          
+        
+        
+          
+            <li>
+  <a href="/documentation"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Documentation practice</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/projects"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Open source commitment</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="https://summit.ubuntu.com/"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Ubuntu Summit</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+      
+        
+          
+            <li class="p-navigation--list-heading">
+  <h2 class="p-navigation__dropdown-item p-text--small-caps u-no-margin js-focus-target"
+      data-level="1">Latest updates</h2>
+</li>
+          
+        
+        
+          
+            <li>
+  <a href="/blog"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Blog</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+          
+            <li>
+  <a href="/press-centre"
+     class="p-navigation__dropdown-item js-focus-target"
+     data-level="1">
+    <span>Press Centre</span>
+    <br />
+    
+  </a>
+</li>
+          
+        
+      
+    
+
+    
+      
+        <li class="p-navigation--list-heading">
+          <span class="p-navigation__dropdown-item">
+            <h2 class="p-text--small-caps u-no-margin"
+                >
+              <a href="/blog" class="js-focus-target">Company highlights&nbsp;&rsaquo;</a>
+            </h2>
+          </span>
+        </li>
+      
+    
+  </ul>
+</div>
+    <div class="p-navigation__dropdown-content--full-width js-dropdown-window"
+     id="company">
+  <div class="row--25-75">
+    
+      <div class="p-navigation__content-panel--full-width">
+        <div class="p-strip">
+          
+            <p class="p-navigation--cta">
+              <a href="/company">Get to know us&nbsp;&rsaquo;</a>
+            </p>
+          
+        </div>
+        <div class="p-section--shallow">
+          <hr class="p-rule--muted" />
+          
+            <div class="row u-no-padding">
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Explore Canonical</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/documentation">Documentation practice</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/projects">Open source commitment</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="https://summit.ubuntu.com/">Ubuntu Summit</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+                <div class="col-3">
+                  
+                    <div class="p-navigation__link-list">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps u-no-padding">Latest updates</h2>
+  
+  <ul class="p-list">
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/blog">Blog</a>
+      </li>
+    
+      <li class="p-list__item">
+        <a class="p-link--inverted"
+           href="/press-centre">Press Centre</a>
+      </li>
+    
+  </ul>
+</div>
+                  
+                </div>
+              
+              
+                <div class="col-6">
+                  
+                    <div class="p-navigation__preview-links">
+  
+    <h2 class="p-navigation--list-heading p-text--small-caps">Company highlights</h2>
+  
+  <div class="row u-no-padding">
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="/blog/canonical-offers-12-year-lts-for-any-open-source-docker-image">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/8f5a6839-Shield.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">Canonical offers 12 year LTS for any open source Docker image.</p>
+        </a>
+      </div>
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="/blog/bt-group-and-canonical-deliver-5g-to-uk-stadiums">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/fe25c9e1-BT-5G.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">BT Group and Canonical deliver 5G to UK stadiums.</p>
+        </a>
+      </div>
+    
+      <div class="col-2">
+        <a class="p-link--inverted p-navigation__preview-link"
+           href="https://ubuntu.com/blog/canonical-releases-ubuntu-24-04-noble-numbat">
+          <div class="p-navigation__preview-link--image">
+            <img src="https://assets.ubuntu.com/v1/697f9812-Noble-Numbat-V2-@3x.png" alt="" loading="lazy" />
+          </div>
+          <p class="p-navigation__preview-link--description">Canonical releases Ubuntu 24.04 LTS Noble Numbat.</p>
+        </a>
+      </div>
+    
+  </div>
+</div>
+                  
+                </div>
+              
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</div>
+  
+</div>
+        </li>
+        <li class="p-navigation__item is-right-shifted">
+          <a href="#"
+             class="js-search-button p-navigation__link--search-toggle"
+             aria-label="Toggle search"></a>
+        </li>
+      </ul>
+      <div class="p-navigation__search">
+        <form action="/search" class="p-search-box">
+        <label for="navigation-search" class="u-off-screen">Search</label>
+          <input type="search"
+                  id="navigation-search"
+                  class="p-search-box__input"
+                  name="q"
+                  placeholder="Search our sites"
+                  required
+                  aria-label="Search our sites" />
+          <button type="reset" class="p-search-box__reset js-search-button">
+            <i class="p-icon--close"></i>
+          </button>
+          <button type="submit" class="p-search-box__button js-search-button no-loader">
+            <i class="p-icon--search"></i>
+          </button>
+        </form>
+      </div>
+    </nav>
+  </div>
+  <div class="js-search-overlay p-navigation__search-overlay"></div>
+</header>
+
+
+
+          <div id="main-content">
+
+            
+
+  
+  <div class="row">
+  <div class="p-breadcrumbs" aria-label="Breadcrumbs">
+    <ol class="p-breadcrumbs__items p-text--small-caps">
+      
+        <li class="p-breadcrumbs__item">
+          
+            <a href="/blog">Blog</a>
+          
+        </li>
+      
+        <li class="p-breadcrumbs__item">
+          
+            Article
+          
+        </li>
+      
+    </ol>
+  </div>
+  <hr class="p-rule" />
+</div>
+
+  <article class="p-section--shallow">
+    <header class="row">
+      <div class="aside col-3 col-medium-2">
+        <div class="p-media-object">
+          
+            
+              <img src="https://assets.ubuntu.com/v1/f16c40d0-Favicon+-+CoF.svg"
+                   class="p-media-object__image"
+                   alt=""
+                   style="align-self: center" />
+            
+          
+
+          <div class="p-media-object__details">
+            <p class="u-no-margin--bottom">
+              
+                <span class="p-heading--5">
+                  <a href="/blog/author/canonical"
+                     title="More about Canonical">Canonical</a>
+                </span>
+                <br />
+              
+              <span>on 11 February 2025</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 col-medium-4">
+        <div class="p-section--shallow">
+          <div class="p-section--shallow">
+            <h1>Canonical announces 12 year Kubernetes LTS </h1>
+          </div>
+  
+          
+            <div class="p-section--shallow">
+              
+                <a class="p-chip--information" href="/blog/tag/canonical-kubernetes">
+                  <span class="p-chip__value">canonical kubernetes</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/charmed-kubernetes">
+                  <span class="p-chip__value">Charmed Kubernetes</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/k8s">
+                  <span class="p-chip__value">k8s</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/kubernetes">
+                  <span class="p-chip__value">kubernetes</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/lts">
+                  <span class="p-chip__value">LTS</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/microk8s">
+                  <span class="p-chip__value">MicroK8s</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/press-releases">
+                  <span class="p-chip__value">Press releases</span>
+                </a>
+              
+                <a class="p-chip--information" href="/blog/tag/ubuntu-pro">
+                  <span class="p-chip__value">Ubuntu Pro</span>
+                </a>
+              
+            </div>
+          
+  
+          <ul class="p-inline-list">
+            <span class="p-text--default">Share on:</span>
+            <li class="p-inline-list__item">
+              <a class="p-icon--facebook"
+                 title="Share on Facebook"
+                 href="https://www.facebook.com/sharer/sharer.php?u=https://www.canonical.com/blog/12-year-lts-for-kubernetes">
+                Facebook
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-icon--twitter"
+                 title="Share on Twitter"
+                 href="https://twitter.com/share?text=Canonical%20announces%2012%20year%20Kubernetes%20LTS%C2%A0&amp;url=https://www.canonical.com/blog/12-year-lts-for-kubernetes&amp;hashtags=ubuntu">
+                Twitter
+              </a>
+            </li>
+            <li class="p-inline-list__item">
+              <a class="p-icon--linkedin"
+                 title="Share on LinkedIn"
+                 href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.canonical.com/blog/12-year-lts-for-kubernetes&amp;title=Canonical%20announces%2012%20year%20Kubernetes%20LTS%C2%A0">
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <hr class="p-rule is-fixed-width" />
+    <div class="row">
+      <aside class="aside col-3 col-medium-2">
+        <div class="p-section">
+          <div class="p-section--shallow">
+            <hr class="p-rule u-hide--medium u-hide--large" />
+            <h2 class="p-muted-heading">Newsletter signup</h2>
+          </div>
+          <form action="https://ubuntu.com/marketo/submit" method="post" id="mktoForm_4960"
+  onsubmit="ga('send', 'Newsletter', 'Signup', 'New homepage newsletter signup');">
+  <p>Get the latest Canonical news and updates in your inbox.</p>
+  <label class="is-required" for="email">Work email:</label>
+  <input required id="email" name="email" maxlength="255" type="email" pattern="^[^ ]+@[^ ]+\.[a-z]{2,26}$" />
+  <div class="p-section--shallow">
+    <label class="p-checkbox">
+      <input required class="p-checkbox__input" value="yes" aria-labelledby="canonicalUpdatesOptIn"
+        name="canonicalUpdatesOptIn" type="checkbox" />
+      <span class="p-checkbox__label" id="canonicalUpdatesOptIn">&ast;I agree to receive information about Canonical's
+        products and services.</span>
+    </label>
+    <p>By submitting this form, I confirm that I have read and agree to <a
+        href="https://www.ubuntu.com/legal/dataprivacy" target="_blank">Canonical's Privacy Policy</a>.</p>
+  </div>
+
+  <button type="submit" class="u-no-margin--bottom">Sign up</button>
+  <input value="4960" name="formid" type="hidden">
+  <input type="hidden" name="Consent_to_Processing__c" value="yes" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="returnURL"
+    value="https://canonical.com/blog#newsletter-signup" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_campaign" id="utm_campaign" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_medium" id="utm_medium" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_source" id="utm_source" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_content" id="utm_content" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="utm_term" id="utm_term" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="GCLID__c" id="GCLID__c" value="" />
+  <input type="hidden" aria-hidden="true" aria-label="hidden field" name="Facebook_Click_ID__c"
+    id="Facebook_Click_ID__c" value="" />
+  <input type="hidden" name="thankyoumessage"
+    value="Thank you for subscribing!<br />You will begin receiving emails as new content is posted. You may unsubscribe any time by clicking the link in the email." />
+</form>
+        </div>
+      </aside>
+      <section class="p-section col-6 col-medium-4">
+        
+<p><strong>Canonical’s Kubernetes LTS (Long Term Support) will support FedRAMP compliance and receive at least 12 years of committed security maintenance and enterprise support on bare metal, public clouds, OpenStack, Canonical MicroCloud and VMware.</strong></p>
+<p><strong>February 11,  2025</strong> Today, Canonical announced a 12 year security maintenance and support commitment starting with  Kubernetes 1.32. The new release is easy to install, operate and upgrade, with best-of-breed open source networking, DNS, gateway, metrics server, local storage, load balancer and ingress services. Canonical Kubernetes enables customers to upgrade at their own pace, with new upstream releases every four months for organizations that prefer to move fast, and a 12 year commitment for organizations that need long-term supported environments.</p>
+<p>“Constant Kubernetes upgrades are a drain on enterprise teams. Customers who deploy Canonical Kubernetes 1.32 LTS can focus on the future, because their clusters will receive security updates for 12 full years,” said Mark Shuttleworth. “Combined with Ubuntu Pro , which covers the widest range of open source applications, the entire open source stack can now be operated with greater confidence and simpler compliance to hardening standards like FedRAMP. From the public cloud to the data center to the edge, on servers and workstations and connected devices, we are excited to deliver a simple ‘deploy-and-move-forward’ approach to enterprise grade containers that keeps the business focus on applications and innovation rather than infrastructure.”</p>
+<p>Canonical Kubernetes is a multi-cloud distribution that provides a unified production-grade Kubernetes experience for developer workstations, cloud, data centers and edge deployments. Future releases of MicroK8s and Charmed Kubernetes will build on Canonical Kubernetes and also gain the 12 year LTS. Customers will also be able to orchestrate their Kubernetes clusters using standalone Canonical Kubernetes LTS binaries and container images, with full enterprise support from Canonical. </p>
+<h3 class="wp-block-heading">Long term support and latest upstream Kubernetes</h3>
+<p>The upstream Kubernetes release cycle is fast-paced, with a new version every four months and security maintenance provided for 14 months. Frequent Kubernetes version upgrades disrupt business continuity and require time-consuming and expensive maintenance. At the same time, the pace of innovation in Kubernetes makes newer versions attractive for developers and new deployments.</p>
+<p>Canonical will provide interim releases of its Kubernetes packages every four months, aligned with the upstream Kubernetes release cadence and versions. These interim releases will be security maintained and supported for 14 months, with upgrade paths from release to release.</p>
+<p>Like Ubuntu, Canonical will release LTS packages of Kubernetes every two years, starting with Canonical Kubernetes 1.32 LTS. With an Ubuntu Pro subscription, these LTS releases will get CVE security fixes for at least 12 years. Thereafter, Canonical will continue to support and patch these releases of Kubernetes based on customer needs for extremely long-lived deployments in telecommunications and other critical infrastructure.</p>
+<p>In this way, Canonical’s packaging and LTS commitment to Kubernetes enables both rapid acquisition of the latest upstream for fast-moving deployments and developers, and long term maintenance for production deployments that need to remain stable for many years. </p>
+<h3 class="wp-block-heading">Best-of-breed open source</h3>
+<p>Canonical Kubernetes ships with best-of-breed open source components for essential functions and uses only standard Kubernetes abstractions and APIs to achieve full Kubernetes conformance. This enables the platform to evolve to newer implementations with minimal user disruption. Canonical Kubernetes 1.32 LTS will provide Cilium, MetalLB, CoreDNS, OpenEBS and Metrics Server by default. Customers can replace these components in the rare cases they need to do so, and the Canonical-provided elements will still be supported.</p>
+<p>Canonical will also provide standardized container images of popular Kubernetes ecosystem services such as Istio, Cert Manager or OpenTelemetry Collector – also with a 12 year security and support commitment. Customers can request additional open source components to be added to this Kubernetes ecosystem portfolio through the <a href="https://canonical.com/blog/canonical-offers-12-year-lts-for-any-open-source-docker-image">Everything LTS</a> offering.</p>
+<h3 class="wp-block-heading">Easy to install and operate across environments</h3>
+<p>DevOps teams often use different Kubernetes distributions or versions across the application development and deployment lifecycle. As workloads move from development to test to production, any difference between those environments is a source of friction, cost, and mistakes.</p>
+<p>Canonical Kubernetes offers a simple low-touch operational approach across the entire software lifecycle. The same package provides the same APIs on developer workstation environments, small clusters, and even larger, more complex scenarios.</p>
+<p>For single-node or smaller multi-node clusters, Canonical Kubernetes is installed with just two commands per node. These clusters will automatically update with security-only fixes for the maintenance lifetime of that version, making it an easy solution for both edge and workstation.</p>
+<p>Canonical Kubernetes can also be orchestrated in more complex environments for custom storage, networking (including Multus for telco requirements) and GPUs for AI/ML training and model serving. It also comes with cluster lifecycle automation through Juju, with the possibility to integrate other <a href="https://canonical.com/solutions/infrastructure">Canonical infrastructure</a> stack components.</p>
+<p>“Canonical Kubernetes Platform offers the freedom to operate Kubernetes your own way,” said Marcin Stożek, Product Manager for Kubernetes at Canonical. “It enables you to choose between automatic cluster upgrades or staying on a long-term supported release for extended stability. By addressing infrastructure complexity – one of Kubernetes’ primary challenges – through reliable security maintenance, lifecycle automation, and additional open-source components, we simplify cloud-native platform operations for all users.”</p>
+<h3 class="wp-block-heading">Availability</h3>
+<p>Canonical Kubernetes 1.32 LTS is currently available and ready for production use. For more information, visit <a href="https://ubuntu.com/kubernetes">https://ubuntu.com/kubernetes</a>.</p>
+<p>Documentation for our new Kubernetes offering is available at <a href="https://documentation.ubuntu.com/canonical-kubernetes">https://documentation.ubuntu.com/canonical-kubernetes</a>.</p>
+<p>To learn more about Canonical’s infrastructure portfolio, visit <a href="https://canonical.com/solutions/infrastructure">https://canonical.com/solutions/infrastructure</a>.</p>
+<p>Security maintenance and support for Canonical Kubernetes can be purchased with an Ubuntu Pro subscription. Learn more at <a href="https://ubuntu.com/pro">https://ubuntu.com/pro</a>.</p>
+<h3 class="wp-block-heading">About Canonical</h3>
+<p>Canonical, the publisher of Ubuntu, provides open source software, security, support and services. Our portfolio covers critical systems, from the smallest devices to the largest clouds, from the kernel to containers, from databases to AI. With customers that include top tech brands, emerging startups, governments and home users, Canonical delivers trusted open source for everyone.</p>
+<p>Learn more at <a href="https://canonical.com/">https://canonical.com/</a></p>
+
+      </section>
+    </div>
+  </article>
+
+  
+    <section class="p-section">
+      <div class="u-fixed-width">
+        <h4 class="p-muted-heading">Related posts</h4>
+      </div>
+      
+        <div class="p-section--shallow">
+  <hr class="p-rule is-fixed-width" />
+  <div class="row">
+    <div class="aside col-3 col-medium-2">
+      <p>
+        <a href="/blog/author/perk">Marcin &#34;Perk&#34; Stożek</a>
+        <br />
+        14 March 2024
+      </p>
+    </div>
+    <div class="col-6 col-medium-4">
+      <h3 class="p-heading--4">
+        <a href="/blog/try-canonical-kubernetes-beta">How should a great K8s distro feel? Try the new Canonical Kubernetes, now in beta</a>
+      </h3>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+          
+            
+              Kubernetes
+            
+          
+        </span>
+      </span>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+  Article
+</span>
+      </span>
+      <p class="u-hide--small u-hide--medium">Try the new Canonical Kubernetes beta, our new distribution that combines ZeroOps for small clusters and intelligent automation for larger production environments that also want to benefit from the latest community innovations ...</p>
+    </div>
+    <div class="col-3 u-hide--small u-hide--medium">
+      
+        <a href="/blog/try-canonical-kubernetes-beta" aria-hidden="true" tabindex="-1">
+          <div class="p-image-wrapper">
+<div class="lazyload" data-noscript="">
+<noscript>
+<img alt="" height="185" loading="lazy" src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_330,h_185/https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png" srcset="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_660,h_370/https://ubuntu.com/wp-content/uploads/7958/Canonical_Kubernetes_Beta.png 2x" width="330"/>
+</noscript>
+</div>
+</div>
+        </a>
+      
+    </div>
+  </div>
+</div>
+      
+        <div class="p-section--shallow">
+  <hr class="p-rule is-fixed-width" />
+  <div class="row">
+    <div class="aside col-3 col-medium-2">
+      <p>
+        <a href="/blog/author/horovitz">Karen Horovitz</a>
+        <br />
+        18 March 2024
+      </p>
+    </div>
+    <div class="col-6 col-medium-4">
+      <h3 class="p-heading--4">
+        <a href="/blog/charmed-k8s-support-comes-to-nvidia-ai-enterprise">Canonical accelerates AI Application Development with NVIDIA AI Enterprise</a>
+      </h3>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+          
+            
+              Kubernetes
+            
+          
+        </span>
+      </span>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+  
+    Article
+  
+</span>
+      </span>
+      <p class="u-hide--small u-hide--medium">Charmed Kubernetes support comes to NVIDIA AI Enterprise Canonical’s Charmed Kubernetes is now supported on NVIDIA AI Enterprise 5.0. Organisations using Kubernetes deployments on Ubuntu can look forward to a seamless licensing migration to the latest release of the NVIDIA AI Enterprise software platform providing developers the latest AI ...</p>
+    </div>
+    <div class="col-3 u-hide--small u-hide--medium">
+      
+        <a href="/blog/charmed-k8s-support-comes-to-nvidia-ai-enterprise" aria-hidden="true" tabindex="-1">
+          <div class="p-image-wrapper">
+<div class="lazyload" data-noscript="">
+<noscript>
+<img alt="" height="185" loading="lazy" src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_330,h_185/https://ubuntu.com/wp-content/uploads/c06f/K8s-and-NVIDIA-AI-Enterprise-blog-meta-image.png" srcset="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_660,h_370/https://ubuntu.com/wp-content/uploads/c06f/K8s-and-NVIDIA-AI-Enterprise-blog-meta-image.png 2x" width="330"/>
+</noscript>
+</div>
+</div>
+        </a>
+      
+    </div>
+  </div>
+</div>
+      
+        <div class="p-section--shallow">
+  <hr class="p-rule is-fixed-width" />
+  <div class="row">
+    <div class="aside col-3 col-medium-2">
+      <p>
+        <a href="/blog/author/serdarvural80">Serdar Vural</a>
+        <br />
+        29 February 2024
+      </p>
+    </div>
+    <div class="col-6 col-medium-4">
+      <h3 class="p-heading--4">
+        <a href="/blog/telco-grade-sylva-compliant-canonical-platforms">Telco-grade Sylva-compliant Canonical platforms</a>
+      </h3>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+          
+            
+              Cloud and server
+            
+          
+        </span>
+      </span>
+      <span class="p-chip--information">
+        <span class="p-chip__value">
+  Article
+</span>
+      </span>
+      <p class="u-hide--small u-hide--medium">In December 2023, Canonical joined the Sylva project of Linux Foundation Europe to provide fully open-source and upstream telco platform solutions to the project. Sylva aims to tackle the fragmentation in telco cloud technologies and the vendor lock-in caused by proprietary platform solutions, by defining a common validation software fram ...</p>
+    </div>
+    <div class="col-3 u-hide--small u-hide--medium">
+      
+        <a href="/blog/telco-grade-sylva-compliant-canonical-platforms" aria-hidden="true" tabindex="-1">
+          <div class="p-image-wrapper">
+<div class="lazyload" data-noscript="">
+<noscript>
+<img alt="" height="185" loading="lazy" src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_330,h_185/https://ubuntu.com/wp-content/uploads/fb81/Sylva_MWC2024_blog_banner_image.png" srcset="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,e_sharpen,c_fill,w_660,h_370/https://ubuntu.com/wp-content/uploads/fb81/Sylva_MWC2024_blog_banner_image.png 2x" width="330"/>
+</noscript>
+</div>
+</div>
+        </a>
+      
+    </div>
+  </div>
+</div>
+      
+    </section>
+  
+
+
+          </div>
+
+          
+            <footer class="p-footer l-footer--sticky">
+  <div class="row u-position">
+    <div class="col-medium-2 col-3">
+      <p>&copy; 2025 Canonical Ltd.</p>
+      <ul class="p-inline-list u-position--bottom">
+        <li class="p-inline-list__item">
+          <a href="https://www.linkedin.com/company/234280" class="p-icon--linkedin">LinkedIn</a>
+        </li>
+        <li class="p-inline-list__item">
+          <a href="https://twitter.com/Canonical" class="p-icon--twitter is-dark">Twitter</a>
+        </li>
+        <li class="p-inline-list__item">
+          <a href="https://www.youtube.com/user/celebrateubuntu" class="p-icon--youtube">YouTube</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-medium-4 col-3">
+      <ul class="p-list is-dark" style="padding-top: .4rem;">
+        <li class="p-list__item--condensed"><a href="/contact-us">Contact information</a></li>
+        <li class="p-list__item--condensed"><a href="https://ubuntu.com/legal">Legal information</a></li>
+        
+        <li class="p-list__item--condensed"><a href="https://github.com/canonical/canonical.com/issues/new?template=ISSUE_TEMPLATE.md">Improve this site</a></li>
+        <li class="p-list__item--condensed"><a href="/projects" >Projects</a></li>
+        <li class="p-list__item--condensed"><a class="js-revoke-cookie-manager" href="">Manage your tracker settings</a></li>
+      </ul>
+    </div>
+    <div class="col-medium-4 col-start-medium-3 col-6">
+      <p>
+        Ubuntu and Canonical are registered trademarks.<br/>
+        All other trademarks are the property of their respective owners.
+      </p>
+      <hr class="p-rule is-dark"/>
+      <p>
+        For further information on data collection,<br/>
+        please refer to our 
+        
+        <a href="https://ubuntu.com/legal/data-privacy" target="_blank">privacy policy</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+          
+
+          <script defer src="/static/js/dist/navigation.js?v=06493f0"></script>
+          <script src="/static/js/dist/forms.js?v=7d537f6"></script>
+          <script>
+            (function() {
+              // Form submission notification
+              var bannerElements = ["#success", "#newsletter-signup", "#contact-form-success"];
+              bannerElements.forEach(el => {
+                if (location.hash === el) {
+                  document.querySelector(el).classList.remove("u-hide");
+                } else {
+                  document.querySelector(el).classList.add("u-hide");
+                }
+              })
+
+              let params = new URLSearchParams(window.location.search);
+              const utm_names = ["campaign", "source", "medium", "content", "term"];
+              for (let i = 0; i < utm_names.length; i++) {
+                var utm_fields = document.getElementsByName("utm_" + utm_names[i]);
+                if (utm_fields.length > 0) {
+                  utm_fields[0].value = params.get("utm_" + utm_names[i]);
+                }
+              }
+            })()
+          </script>
+          <script defer src="/static/js/source-inheritance.js?v=ad13b6b"></script>
+        </body>
+
+      </html>
