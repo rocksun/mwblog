@@ -20,7 +20,8 @@ def download_image(url, path):
 
     if not os.path.exists(targetImage):
         with open(targetImage, "wb") as f:
-            response = requests.get(url)
+            # get with redirect 
+            response = requests.get(url,allow_redirects=True)
             f.write(response.content)
     else:
         print("file already downloaded")
