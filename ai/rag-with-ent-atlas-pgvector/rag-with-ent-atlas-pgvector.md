@@ -440,9 +440,7 @@ func (cmd *IndexCmd) Run(cli *CLI) error {
 			SetChunk(ch).
 			Save(ctx)
 		if err != nil {
-```
-
-return fmt.Errorf("error creating embedding: %v", err)
+			return fmt.Errorf("error creating embedding: %v", err)
 		}
 	}
 	return nil
@@ -462,6 +460,7 @@ func getEmbedding(data string) []float32 {
 	}
 	return queryResponse.Data[0].Embedding
 }
+```
 
 我们已经为 `IndexCmd` 命令定义了 `Run` 方法。该方法查询数据库中没有 embedding 的 chunks，使用 OpenAI API 为每个 chunk 生成 embeddings，并将 embeddings 保存到数据库。
 
