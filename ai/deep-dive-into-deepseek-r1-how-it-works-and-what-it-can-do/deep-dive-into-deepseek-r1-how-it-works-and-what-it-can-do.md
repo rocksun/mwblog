@@ -56,6 +56,7 @@ DeepSeek-R1 在各种推理基准测试中表现出最先进的性能，尤其�
 - **幻觉**:DeepSeek-R1 可能容易 [生成虚假或捏造的答案](https://thenewstack.io/ai-agentic-evaluation-tools-help-devs-fight-hallucinations/)。
 
 ## 结论
+
 尽管存在这些缺点，DeepSeek-R1 仍然展示了应用于大型语言模型的 [强化学习](https://www.ibm.com/think/topics/reinforcement-learning) 背后的奖励系统的潜在能力。
 
 在 DeepSeek-R1 的训练过程中，很明显，通过奖励准确和连贯的答案，新生的模型行为，如自我反思、自我验证、长链推理和自主解决问题，都指向了随着时间推移而学习到的涌现推理的可能性，而不是公开教授的——因此可能为人工智能研究的进一步突破铺平了道路。
