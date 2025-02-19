@@ -1,7 +1,7 @@
 
 <!--
 title: 告别配置复杂性：领域特定语言（DSL）能帮你吗？
-cover: https://miro.medium.com/v2/resize:fit:1200/1*H_4diRd7XtPuBYiVTMLc7w.png
+cover: ./cover.png
 -->
 
 > 译自：[Can Configuration Languages (config DSLs) solve configuration complexity?](https://itnext.io/can-configuration-languages-dsls-solve-configuration-complexity-eee8f124e13a)
