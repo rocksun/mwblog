@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Kubernetes Troubleshooting: A Step-by-Step Guide | Devtron</title>
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preload" href="/blog/assets/css/app.css?v=7e3cfc0654" as="style" />
+  <link rel="preload" href="/blog/assets/js/manifest.js?v=7e3cfc0654" as="script" />
+  <link rel="preload" href="/blog/assets/js/vendor.js?v=7e3cfc0654" as="script" />
+  <link rel="preload" href="/blog/assets/js/app.js?v=7e3cfc0654" as="script" />
+
+    <link rel="preload" href="/blog/assets/css/post.css?v=7e3cfc0654" as="style" />
+
+
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/blog/assets/css/app.css?v=7e3cfc0654"
+    media="screen"
+  />
+
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="/blog/assets/css/post.css?v=7e3cfc0654"
+    media="screen"
+  />
+
+
+  <meta name="description" content="Learn how to troubleshoot Kubernetes errors like CRASHLOOPBACKOFF, memory, CPU throttling, and database connection issues.">
+    <link rel="icon" href="https://devtron.ai/blog/content/images/size/w256h256/2021/09/favicon-2.png" type="image/png">
+    <link rel="canonical" href="https://devtron.ai/blog/kubernetes-troubleshooting-guide/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kubernetes Troubleshooting: A Step-by-Step Guide | Devtron">
+    <meta property="og:description" content="This guide focuses on three critical Kubernetes errors that developers commonly face: Container CRASHLOOPBACKOFF issues (OOM Killed and CPU throttling), environment variables/secrets mount problems, and database connectivity issues. In this blog, we explore practical solutions for each issue.">
+    <meta property="og:url" content="https://devtron.ai/blog/kubernetes-troubleshooting-guide/">
+    <meta property="og:image" content="https://devtron.ai/blog/content/images/2025/02/Group-3183887-1.png">
+    <meta property="article:published_time" content="2025-02-27T06:10:53.000Z">
+    <meta property="article:modified_time" content="2025-02-27T06:10:53.000Z">
+    <meta property="article:tag" content="kubernetes">
+    <meta property="article:tag" content="troubleshoot">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/devtronlabs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kubernetes Troubleshooting: A Step-by-Step Guide | Devtron">
+    <meta name="twitter:description" content="This guide focuses on three critical Kubernetes errors that developers commonly face: Container CRASHLOOPBACKOFF issues (OOM Killed and CPU throttling), environment variables/secrets mount problems, and database connectivity issues. In this blog, we explore practical solutions for each issue.">
+    <meta name="twitter:url" content="https://devtron.ai/blog/kubernetes-troubleshooting-guide/">
+    <meta name="twitter:image" content="https://devtron.ai/blog/content/images/2025/02/Group-3183887-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Vishu Goyal">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="kubernetes, troubleshoot">
+    <meta name="twitter:site" content="@DevtronL">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="672">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "",
+        "url": "https://devtron.ai/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://devtron.ai/blog/content/images/2023/05/devtron-logo-horizontal-white--1-.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Vishu Goyal",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://devtron.ai/blog/content/images/2025/01/vishu.jpg",
+            "width": 288,
+            "height": 288
+        },
+        "url": "https://devtron.ai/blog/author/vishu/",
+        "sameAs": [
+            "https://www.linkedin.com/in/vishugoyal247"
+        ]
+    },
+    "headline": "Kubernetes Troubleshooting: A Step-by-Step Guide | Devtron",
+    "url": "https://devtron.ai/blog/kubernetes-troubleshooting-guide/",
+    "datePublished": "2025-02-27T06:10:53.000Z",
+    "dateModified": "2025-02-27T06:10:53.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://devtron.ai/blog/content/images/2025/02/Group-3183887-1.png",
+        "width": 1200,
+        "height": 672
+    },
+    "keywords": "kubernetes, troubleshoot",
+    "description": "This guide focuses on three critical Kubernetes errors that developers commonly face: Container CRASHLOOPBACKOFF issues (OOM Killed and CPU throttling), environment variables/secrets mount problems, and database connectivity issues. In this blog, we explore practical solutions for each issue.",
+    "mainEntityOfPage": "https://devtron.ai/blog/kubernetes-troubleshooting-guide/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.94">
+    <link rel="alternate" type="application/rss+xml" title="" href="https://devtron.ai/blog/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.43/umd/portal.min.js" data-i18n="false" data-ghost="https://devtron.ai/blog/" data-key="f82c12134f3d98d7313c3c6b2f" data-api="https://devtron.ai/blog/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="f82c12134f3d98d7313c3c6b2f" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://devtron.ai/blog/" crossorigin="anonymous"></script>
+    
+    <link href="https://devtron.ai/blog/webmentions/receive/" rel="webmention">
+    <script defer src="/blog/public/cards.min.js?v=7e3cfc0654"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=7e3cfc0654">
+    <script defer src="/blog/public/member-attribution.min.js?v=7e3cfc0654"></script><style>:root {--ghost-accent-color: #fec300;}</style>
+    <!-- Google tag (gtag.js) 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RZEMH8JGE7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RZEMH8JGE7');
+</script>
+-->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M7G39RP');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6866519.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<!-- Githuib icons tag -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]function(){(c[a].q=c[a].q[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "q5cdkfs685");
+</script>
+     <style>
+        .faq-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .faq {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            padding-left: 20px;
+            color: #555;
+        }
+        .faq-question:hover {
+            color: #007bff;
+        }
+    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What causes the CRASHLOOPBACKOFF error in Kubernetes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CRASHLOOPBACKOFF occurs when a container repeatedly crashes, often due to misconfigurations or insufficient resources."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to fix an OOMKilled error in Kubernetes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fix OOMKilled errors by increasing memory allocation or optimizing the application's memory usage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is CPU throttling in Kubernetes and how can to resolve it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CPU throttling happens when the application exceeds allocated CPU, resolved by increasing CPU resources."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the common causes of database connection issues in Kubernetes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common causes include incorrect credentials, network misconfigurations, or the database pod being in a hibernation state."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Devtron",
+  "url": "https://devtron.ai/",
+  "logo": ""
+}
+</script>
+
+  <style>
+    :root {
+      --accent-color: var(--ghost-accent-color);
+    }
+  </style>
+    <style>
+      [theme-mode="dark"] {
+        --accent-color: #896bff;
+      }
+    </style>
+
+  <style>
+    /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+    /* Poppins regular */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: local('Poppins Regular'), local('Poppins-Regular'),
+      url("/blog/assets/fonts/poppins/poppins-regular.woff2?v=7e3cfc0654") format('woff2'),
+      url("/blog/assets/fonts/poppins/poppins-regular.woff?v=7e3cfc0654") format('woff');
+    }
+
+    /* Poppins italic */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: local('Poppins Italic'), local('Poppins-Italic'),
+      url("/blog/assets/fonts/poppins/poppins-italic.woff2?v=7e3cfc0654") format('woff2'),
+      url("/blog/assets/fonts/poppins/poppins-italic.woff?v=7e3cfc0654") format('woff');
+    }
+
+    /* Poppins 500 */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: local('Poppins Medium'), local('Poppins-Medium'),
+      url("/blog/assets/fonts/poppins/poppins-500.woff2?v=7e3cfc0654") format('woff2'),
+      url("/blog/assets/fonts/poppins/poppins-500.woff?v=7e3cfc0654") format('woff');
+    }
+
+    /* Poppins 600 */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+      url("/blog/assets/fonts/poppins/poppins-600.woff2?v=7e3cfc0654") format('woff2'),
+      url("/blog/assets/fonts/poppins/poppins-600.woff?v=7e3cfc0654") format('woff');
+    }
+
+    /* Firma iconfont */
+    @font-face {
+      font-family: 'firma';
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      src: url("/blog/assets/fonts/firma/firma.eot?v=7e3cfc0654");
+      src: url("/blog/assets/fonts/firma/firma.eot?v=7e3cfc0654") format('embedded-opentype'), url("/blog/assets/fonts/firma/firma.woff2?v=7e3cfc0654") format('woff2'),
+      url("/blog/assets/fonts/firma/firma.woff?v=7e3cfc0654") format('woff'),
+      url("/blog/assets/fonts/firma/firma.ttf?v=7e3cfc0654") format('truetype'),
+      url("/blog/assets/fonts/firma/firma.svg?v=7e3cfc0654") format('svg');
+    }
+  </style>
+
+
+</head>
+
+<body class="post-template tag-kubernetes tag-troubleshoot">
+  
+
+
+
+<div class="f-main-container">
+  
+<header class="f-header js-header">
+  
+<div class="f-mobile-top-bar" x-data="mobileMenu()">
+  
+<a
+  href="https://devtron.ai/"
+  class="f-logo in-mobile-top-bar "
+  title=""
+>
+    <img
+      src="https://devtron.ai/blog/content/images/2023/05/devtron-logo-horizontal-white--1-.png"
+      alt=""
+      class=""
+    >
+</a>
+  <button
+    class="f-menu-button no-appearance content-centered"
+    aria-label="Open menu"
+    @click.stop="openMenu"
+  >
+    <span class="icon-menu" aria-hidden="true"></span>
+  </button>
+  <div
+    class="f-mobile-menu"
+    :class="{ 'opened': isMenuOpen() }"
+    @click.away="closeMenu"
+  >
+    <div class="f-mobile-menu__container">
+      <button
+        class="f-mobile-menu__close no-appearance content-centered"
+        aria-label="Close menu"
+        @click="closeMenu"
+      >
+        <span class="icon-close" aria-hidden="true"></span>
+      </button>
+      <div class="f-mobile-menu__main">
+          <div class="f-mobile-menu__nav-section">
+            <span class="f-mobile-menu__nav-title">
+              Main links
+            </span>
+            <nav role="navigation" aria-label="Main links">
+              <ul class="f-mobile-menu__navigation-list">
+                
+    <li>
+      <a
+        href="https://devtron.ai/blog/"
+        class="nav-blog-home"
+      >
+        <span>Blog Home</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/devtron-labs/devtron"
+        class="nav-github"
+      >
+        <span>GitHub</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://devtron.ai/demo"
+        class="nav-contact-us"
+      >
+        <span>Contact Us</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#/search"
+        class="nav-search"
+      >
+        <span>Search</span>
+      </a>
+    </li>
+
+              </ul>
+            </nav>
+          </div>
+            <hr class="f-mobile-menu__nav-divider">
+            <div class="f-mobile-menu__nav-section">
+              <nav
+                role="navigation"
+                aria-label="Social links"
+                class="horizontal-centered-items"
+              >
+                
+  <a
+    href="https://www.facebook.com/devtronlabs"
+    class="f-icon-button content-centered simple social in-mobile-menu"
+    aria-label="Facebook"
+  >
+    <span class="icon-facebook" aria-hidden="true"></span>
+  </a>
+  <a
+    href="https://twitter.com/DevtronL"
+    class="f-icon-button content-centered simple social in-mobile-menu"
+    aria-label="Twitter"
+  >
+    <span class="icon-twitter" aria-hidden="true"></span>
+  </a>
+
+              </nav>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.mobileMenu = () => {
+    return {
+      showMenu: false,
+      showAccountMenu: false,
+      openMenu() { this.showMenu = true },
+      closeMenu() { this.showMenu = false },
+      isMenuOpen() { return this.showMenu === true },
+      openAccountMenu() { this.showAccountMenu = true },
+      closeAccountMenu() { this.showAccountMenu = false },
+      isAccountMenuOpen() { return this.showAccountMenu === true }
+    }
+  }
+</script>
+  
+<div
+  class="f-desktop-top-bar bg-blue"
+  x-data="desktopMenu()"
+  x-ref="desktop_menu"
+  x-init="initScrollFeature('is-post')"
+>
+  <div class="f-desktop-top-bar__wrapper">
+    
+<a
+  href="https://devtron.ai/"
+  class="f-logo in-desktop-top-bar "
+  title=""
+>
+    <img
+      src="https://devtron.ai/blog/content/images/2023/05/devtron-logo-horizontal-white--1-.png"
+      alt=""
+      class=""
+    >
+</a>
+    <div
+      class="f-desktop-top-bar__middle-wrapper"
+      :class="{ 'title-displayed': isPostTitleVisible() }"
+    >
+      <div
+        class="f-desktop-top-bar__middle top-bar-menu"
+        :class="{ 'hidden': isPostTitleVisible() }"
+      >
+          <span class="f-desktop-top-bar__mask left" aria-hidden="true"></span>
+          <div class="f-desktop-top-bar__nav-wrapper">
+            <nav
+              role="navigation"
+              class="f-desktop-navigation"
+              aria-label="Main links"
+            >
+              <ul class="f-desktop-navigation__list main">
+                
+    <li>
+      <a
+        href="https://devtron.ai/blog/"
+        class="nav-blog-home"
+      >
+        <span>Blog Home</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/devtron-labs/devtron"
+        class="nav-github"
+      >
+        <span>GitHub</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://devtron.ai/demo"
+        class="nav-contact-us"
+      >
+        <span>Contact Us</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#/search"
+        class="nav-search"
+      >
+        <span>Search</span>
+      </a>
+    </li>
+
+              </ul>
+            </nav>
+          </div>
+          <span class="f-desktop-top-bar__mask right" aria-hidden="true"></span>
+      </div>
+        <div
+          class="f-desktop-top-bar__middle article-title"
+          :class="{ 'visible': isPostTitleVisible() }"
+        >
+            <div class="f-desktop-top-bar__article-title-wrapper">
+              <p class="f-desktop-top-bar__article-title" aria-hidden="true">
+                Kubernetes Troubleshooting: A Step-by-Step Guide
+              </p>
+            </div>
+        </div>
+    </div>
+    <div class="f-desktop-top-bar__actions">
+        <nav
+          role="navigation"
+          aria-label="Social links"
+          class="horizontal-centered-items"
+        >
+          <a href="https://in.linkedin.com/company/devtron-labs" target="_blank" class="f-icon-button content-centered simple social in-desktop-top-bar" aria-label="LinkedIn">
+            <span class="icon-linkedin" aria-hidden="true"></span>
+          </a>
+          
+  <a
+    href="https://www.facebook.com/devtronlabs"
+    class="f-icon-button content-centered simple social in-desktop-top-bar"
+    aria-label="Facebook"
+  >
+    <span class="icon-facebook" aria-hidden="true"></span>
+  </a>
+  <a
+    href="https://twitter.com/DevtronL"
+    class="f-icon-button content-centered simple social in-desktop-top-bar"
+    aria-label="Twitter"
+  >
+    <span class="icon-twitter" aria-hidden="true"></span>
+  </a>
+
+        </nav>
+
+      <div>
+        <a class="f-github-star" href="https://github.com/devtron-labs/devtron.git" target="_blank">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="f-github-star__icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6.14335 13.8122C6.40785 13.7329 6.55794 13.4542 6.47859 13.1897C6.39924 12.9252 6.1205 12.7751 5.856 12.8544L6.14335 13.8122ZM1.45428 10.8483C1.18638 10.7813 0.914911 10.9442 0.847937 11.2121C0.780962 11.48 0.943842 11.7514 1.21174 11.8184L1.45428 10.8483ZM10.1663 15.3333C10.1663 15.6095 10.3902 15.8333 10.6663 15.8333C10.9425 15.8333 11.1663 15.6095 11.1663 15.3333H10.1663ZM10.6663 12.7533L10.1679 12.7141C10.1668 12.7272 10.1663 12.7402 10.1663 12.7533H10.6663ZM10.0396 11.0133L9.98426 10.5164C9.79466 10.5375 9.63361 10.6647 9.5691 10.8443C9.50459 11.0238 9.54787 11.2244 9.68065 11.3614L10.0396 11.0133ZM14.333 6.34666H14.833V6.34657L14.333 6.34666ZM13.333 3.84666L12.8645 3.67184C12.7976 3.85111 12.8389 4.05284 12.9708 4.19142L13.333 3.84666ZM13.273 1.33333L13.7325 1.13636C13.674 0.999729 13.5577 0.896242 13.4152 0.853972L13.273 1.33333ZM10.6663 2.32L10.5355 2.80259C10.6752 2.84045 10.8245 2.81591 10.9447 2.73532L10.6663 2.32ZM5.99965 2.32L5.72125 2.73532C5.84148 2.81591 5.99073 2.84045 6.13044 2.80259L5.99965 2.32ZM3.39298 1.33333L3.2508 0.853972C3.10829 0.896242 2.99197 0.999729 2.93341 1.13636L3.39298 1.33333ZM3.33298 3.84666L3.69511 4.19143C3.82705 4.05285 3.86833 3.85111 3.80142 3.67184L3.33298 3.84666ZM2.33298 6.36666H2.83299L2.83297 6.36401L2.33298 6.36666ZM6.62631 11.0333L6.98562 11.381C7.11744 11.2448 7.1609 11.0458 7.09784 10.867C7.03478 10.6882 6.87606 10.5605 6.68794 10.5371L6.62631 11.0333ZM5.99965 12.7533H6.49965C6.49965 12.7416 6.49924 12.7299 6.49842 12.7183L5.99965 12.7533ZM5.49965 15.3333C5.49965 15.6095 5.72351 15.8333 5.99965 15.8333C6.27579 15.8333 6.49965 15.6095 6.49965 15.3333H5.49965ZM5.856 12.8544C5.07952 13.0874 4.54652 13.0919 4.1657 13.0027C3.79132 12.9151 3.51604 12.7259 3.26989 12.4798C3.14401 12.3539 3.02755 12.2149 2.90736 12.0644C2.79333 11.9215 2.66306 11.7514 2.53655 11.6028C2.2813 11.3032 1.94554 10.9711 1.45428 10.8483L1.21174 11.8184C1.38714 11.8622 1.55138 11.9884 1.7753 12.2513C1.88837 12.384 1.99248 12.5212 2.12585 12.6882C2.25304 12.8476 2.39701 13.0211 2.56279 13.1869C2.89997 13.5241 3.33303 13.8349 3.93782 13.9764C4.53616 14.1165 5.25316 14.0793 6.14335 13.8122L5.856 12.8544ZM11.1663 15.3333V12.7533H10.1663V15.3333H11.1663ZM11.1648 12.7925C11.2266 12.0064 10.9476 11.2315 10.3986 10.6653L9.68065 11.3614C10.0297 11.7214 10.2072 12.2142 10.1679 12.7141L11.1648 12.7925ZM10.095 11.5103C11.1698 11.3905 12.3657 11.12 13.2931 10.3402C14.2448 9.53991 14.833 8.27479 14.833 6.34666H13.833C13.833 8.05854 13.3211 9.01009 12.6495 9.57481C11.9536 10.16 11.0028 10.4029 9.98426 10.5164L10.095 11.5103ZM14.833 6.34657C14.8328 5.28746 14.4254 4.26898 13.6951 3.5019L12.9708 4.19142C13.5242 4.77262 13.8328 5.5443 13.833 6.34675L14.833 6.34657ZM13.8014 4.02148C14.1503 3.08669 14.1256 2.05344 13.7325 1.13636L12.8134 1.5303C13.1052 2.21102 13.1235 2.97798 12.8645 3.67184L13.8014 4.02148ZM13.273 1.33333C13.4152 0.853972 13.4147 0.853828 13.4142 0.853685C13.414 0.853636 13.4135 0.853491 13.4132 0.853394C13.4125 0.853199 13.4119 0.853002 13.4112 0.852802C13.4098 0.852403 13.4083 0.851996 13.4069 0.851581C13.4039 0.85075 13.4007 0.849888 13.3973 0.849002C13.3905 0.84723 13.383 0.845362 13.3746 0.843452C13.3578 0.83963 13.3377 0.835648 13.3144 0.831926C13.2676 0.824475 13.2081 0.818125 13.1354 0.816123C12.9897 0.812113 12.7934 0.825622 12.5438 0.881047C12.0454 0.991699 11.3366 1.26872 10.3879 1.90467L10.9447 2.73532C11.816 2.15128 12.4106 1.93496 12.7605 1.85728C12.935 1.81854 13.0492 1.81413 13.1079 1.81574C13.1373 1.81656 13.1535 1.8189 13.1569 1.81945C13.1586 1.81972 13.1572 1.81956 13.1528 1.81856C13.1506 1.81806 13.1477 1.81736 13.144 1.81639C13.1422 1.81591 13.1402 1.81537 13.138 1.81475C13.1369 1.81444 13.1357 1.81412 13.1345 1.81377C13.1339 1.8136 13.1333 1.81343 13.1327 1.81324C13.1324 1.81315 13.1319 1.81302 13.1318 1.81297C13.1313 1.81283 13.1308 1.81269 13.273 1.33333ZM10.7971 1.83741C9.18346 1.40007 7.4825 1.40007 5.86886 1.83741L6.13044 2.80259C7.57278 2.41168 9.09318 2.41168 10.5355 2.80259L10.7971 1.83741ZM6.27805 1.90467C5.32932 1.26872 4.6206 0.991699 4.12218 0.881047C3.87252 0.825622 3.67628 0.812113 3.53058 0.816123C3.45786 0.818125 3.39831 0.824475 3.35159 0.831926C3.32826 0.835648 3.30821 0.83963 3.2914 0.843452C3.283 0.845362 3.27542 0.84723 3.26865 0.849002C3.26527 0.849888 3.26209 0.85075 3.25911 0.851581C3.25762 0.851996 3.25619 0.852403 3.2548 0.852802C3.25411 0.853002 3.25343 0.853199 3.25276 0.853394C3.25243 0.853491 3.25194 0.853636 3.25177 0.853685C3.25128 0.853828 3.2508 0.853972 3.39298 1.33333C3.53516 1.81269 3.53468 1.81283 3.53421 1.81297C3.53405 1.81302 3.53358 1.81315 3.53327 1.81324C3.53265 1.81343 3.53205 1.8136 3.53145 1.81377C3.53026 1.81412 3.52911 1.81444 3.528 1.81475C3.5258 1.81537 3.52378 1.81591 3.52194 1.81639C3.51826 1.81736 3.51532 1.81806 3.51312 1.81856C3.50872 1.81956 3.50735 1.81972 3.50908 1.81945C3.51249 1.8189 3.52862 1.81656 3.55809 1.81574C3.61677 1.81413 3.73094 1.81854 3.90545 1.85728C4.25536 1.93496 4.84997 2.15128 5.72125 2.73532L6.27805 1.90467ZM2.93341 1.13636C2.54035 2.05344 2.51568 3.08669 2.86454 4.02148L3.80142 3.67184C3.54248 2.97798 3.56078 2.21102 3.85255 1.5303L2.93341 1.13636ZM2.97086 3.50189C2.23513 4.27466 1.82732 5.30235 1.83299 6.36932L2.83297 6.36401C2.82868 5.55559 3.13767 4.77693 3.69511 4.19143L2.97086 3.50189ZM1.83298 6.36666C1.83298 8.28306 2.42211 9.54074 3.37286 10.3402C4.29853 11.1185 5.49242 11.3963 6.56469 11.5295L6.68794 10.5371C5.66687 10.4103 4.7141 10.1614 4.01644 9.57481C3.34385 9.00925 2.83298 8.06359 2.83298 6.36666H1.83298ZM6.26701 10.6856C5.7247 11.246 5.44617 12.0105 5.50088 12.7884L6.49842 12.7183C6.46362 12.2236 6.64075 11.7374 6.98562 11.381L6.26701 10.6856ZM5.49965 12.7533V15.3333H6.49965V12.7533H5.49965Z" fill="#fff"/>
+            </svg>&nbsp;Stars
+          </div>
+          <div class="f-github-star__count" id="star-count">
+            <script>
+              async function getUserData() {
+                let response = await fetch('https://api.github.com/orgs/devtron-labs/repos?type=all&per_page=90&page=1');
+                let data = await response.json();
+                return data;
+              }
+              getUserData()
+                .then(list => {
+                  let main = list.find(repo => repo.name.toLowerCase() === "devtron");
+                  let stars = main.stargazers_count || 0;
+                  if (stars >= 1000) stars = `${Math.round(10 * stars / 1000) / 10}K`;
+                  document.querySelector('#star-count').innerText = stars;
+                  console.log(stars)
+                })
+            </script>
+          </div>
+        </a>
+      </div>
+      
+  <div
+    class="f-desktop-top-bar-search"
+    x-data="search()"
+    x-init="checkSearchFeature"
+  >
+    <button
+      class="f-icon-button content-centered"
+      aria-label="Open search"
+      @click.stop="open"
+    >
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <div
+      class="f-search"
+      :class="{ 'opened': isOpen() }"
+      @click.away="close"
+    >
+      <form
+        x-ref="search_form"
+        data-action="https://devtron.ai/blog/search"
+        action="https://devtron.ai/blog/search"
+        class="f-search__form"
+        @submit.prevent
+      >
+        <label for="search-desktop-top-bar" class="sr-only">
+          Search
+        </label>
+        <input
+          id="search-desktop-top-bar"
+          x-ref="search_input"
+          x-model="query"
+          type="search"
+          placeholder="Search in all our content"
+          class="f-search__input no-appearance"
+          @keydown.enter="performSearch"
+          @keydown.escape="close"
+        >
+      </form>
+      <p class="f-search__hint">
+        Press Enter to search
+      </p>
+    </div>
+  </div>
+  <script>
+    window.search = () => {
+      return {
+        show: false,
+        query: '',
+        open() {
+          const self = this
+          self.show = true
+          setTimeout(() => {
+            self.$refs.search_input.focus()
+          }, 200)
+        },
+        close() { this.show = false },
+        isOpen() { return this.show === true },
+        checkSearchFeature() {
+          if (typeof ghostSearchApiKey === 'undefined') {
+            this.$el.remove()
+          } else {
+            this.$el.classList.add('enabled')
+          }
+        },
+        performSearch() {
+          if (this.query.length > 0) {
+            const action = `${this.$refs.search_form.getAttribute('data-action')}/?query=${this.query}`
+            window.location.href = action
+          }
+        }
+      }
+    }
+  </script>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.desktopMenu = () => {
+    return {
+      showPostTitle: false,
+      menuHeight: 0,
+      lastScrollTop: 0,
+      ticking: false,
+      postTitle: null,
+      threshold: 5,
+      minAbsoluteScroll: 0,
+      lastDirectionChangePosition: 0,
+      isPostTitleVisible() { return this.showPostTitle === true },
+      initScrollFeature(isPost) {
+        if (isPost && !this.isMobile()) {
+          this.menuHeight = this.$refs.desktop_menu.offsetHeight
+          this.postTitle = document.querySelector('.js-article-title')
+          window.addEventListener(
+            'scroll',
+            this.handleScroll.bind(this),
+            { passive: true }
+          )
+        }
+      },
+      handleScroll() {
+        this.requestTick()
+      },
+      requestTick() {
+        if (!this.ticking) {
+          requestAnimationFrame(this.update.bind(this))
+        }
+        this.ticking = true
+      },
+      update() {
+        const pos = window.pageYOffset
+        const trigger = this.postTitle.getBoundingClientRect().top + pos
+        const triggerOffset = this.postTitle.offsetHeight
+
+        if (this.lastScrollTop >= trigger + triggerOffset) {
+          if (this.scrolledUp(pos)) {
+            if (this.minAbsoluteScroll >= this.threshold) {
+              this.showPostTitle = false
+            }
+          } else {
+            if (this.minAbsoluteScroll >= this.threshold) {
+              this.showPostTitle = true
+            }
+          }
+        } else {
+          this.showPostTitle = false
+        }
+
+        this.lastScrollTop = window.pageYOffset
+        this.ticking = false
+      },
+      scrolledUp(currentScrollPosition) {
+        let up = false
+
+        if (currentScrollPosition < this.lastScrollTop) {
+          up = true
+        }
+
+        this.minAbsoluteScroll = Math.abs(
+          currentScrollPosition - this.lastScrollTop
+        )
+
+        return up
+      },
+      isMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      }
+    }
+  }
+</script>
+    <div class="f-header-progress js-header-progress"></div>
+</header>
+
+  <main
+    class="f-standard-container has-newsletter js-standard-container"
+    role="main"
+  >
+      <div class="f-standard-wrapper in-post">
+        <article class="f-article with-toc js-article">
+          
+<header
+  class="f-article-header "
+>
+      <div class="f-article-header__tag-container">
+        <a href="https://devtron.ai/blog/tag/kubernetes/" class="f-article-tag">
+          kubernetes
+          <span class="icon-chevron-right" aria-hidden="true"></span>
+        </a>
+      </div>
+  <h1 class="f-article-header__title js-article-title">Kubernetes Troubleshooting: A Step-by-Step Guide</h1>
+    <p class="f-article-header__excerpt in-post">
+    This guide focuses on three critical Kubernetes errors that developers commonly face: Container CRASHLOOPBACKOFF issues (OOM Killed and CPU throttling), environment variables/secrets mount problems, and database connectivity issues. In this blog, we explore practical solutions for each issue.
+  </p>
+    <p class="f-article-header__time">
+      <span>21 hours ago</span>
+        <span>&nbsp; &bull; &nbsp;</span>
+        <span>
+          8 min read
+        </span>
+    </p>
+        <div class="f-article-header__author">
+          
+  <a
+    href="https://devtron.ai/blog/author/vishu/"
+    class="f-avatar in-article-header "
+    aria-label="Vishu Goyal&#x27;s profile&#x27;"
+    aria-haspopup="false"
+  >
+      <img
+        data-src="/blog/content/images/size/w50/2025/01/vishu.jpg"
+        alt=""
+        class="lazy"
+        width="32"
+        height="32"
+      >
+  </a>
+          <span>
+            By
+            <a href="https://devtron.ai/blog/author/vishu/">Vishu Goyal</a>
+          </span>
+        </div>
+</header>
+          <div class="f-article__wrapper">
+            
+<div
+  class="f-toc "
+  :class="{ 'opened': isTocOpen() }"
+  x-data="toc()"
+  x-init="initToc"
+>
+  <div class="f-toc__container">
+    <div class="f-toc__header" :class="{ 'opened': isTocOpen() }">
+      <span class="f-toc__title">In this article</span>
+      <button
+        class="f-toc__toggle no-appearance content-centered"
+        :class="{ 'opened': isTocOpen() }"
+        aria-label="Toggle table of contents"
+        @click.stop="toggleToc"
+      >
+        <span class="icon-chevron-down" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div
+      class="f-toc__list-container"
+      x-show.transition="showToc"
+      x-cloak
+      @click.away="clickAway"
+    >
+      <div class="f-toc__list_wrapper">
+        <div class="toc js-toc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  window.toc = () => {
+    return {
+      showToc: false,
+      toggleToc() { this.showToc = !this.showToc },
+      isTocOpen() { return this.showToc === true },
+      initToc() {
+        document.addEventListener('toc-link-clicked', () => {
+          this.toggleToc()
+        })
+      },
+      clickAway() {
+        if (this.isTocOpen()) {
+          this.toggleToc()
+        }
+      }
+    }
+  }
+</script>
+            <div
+              class="f-article-content with-toc  js-article-content"
+            >
+                <p>In the modern era of the software industry, microservice architecture and Kubernetes have become the globally adopted solution, for organizations looking for scalability and operational efficiency. At one end where these cutting-edge technologies help organizations operate at scale, navigating through their complexities can be challenging, where you are bound to face the errors and misconfigurations that will hinder your pace of getting to production servers. This blog post will discuss the most common Kubernetes errors and solutions for them.</p><h2 id="the-errors-we-will-be-discussing-are">The Errors We Will Be Discussing Are:</h2><ul><li>Container CRASHLOOPBACKOFF issue (OOM Killed and CPU throttling).</li><li>ENV variables/secrets mount issue.</li><li>DB Connectivity issue.</li></ul><h2 id="container-crashloopbackoff-issue">Container CRASHLOOPBACKOFF issue</h2><p>Let’s first understand the issue, the CRASHLOOPBACKOFF issue is generally faced when the container crashes due to an internal code failure, or it is unable to connect to its required dependencies. The Kubelet is responsible for creating the pods and starting the container within them. As the container keeps crashing, the kubelet constantly tries to restart the container, leading to a crash loop. In this crash loop, there is some time delay in the process of container crashing and container restarting that’s the backoff time, and the backoff time keeps increasing with each restart.&nbsp;</p><p>So to understand the flow of CRASHLOOPBACKOFF let’s take an example: Imagine we want to deploy a containerized application in Kubernetes pod, once we initiate the deployment pipeline the flow will be as follows: Container &gt; Container Running &gt; Container Stopped (Reason CRASHLOOPBACKOFF). Now that the container has failed to get started, the Kubelet will try to restart the container after a fixed time delay such as 3 sec. After 3 seconds, the container will be restarted, however, as there is a misconfiguration the container will fail again. Once again there will be a delay before the container is restarted and this time, the delay will be 6 seconds before the cycle continues.</p><p>Now that we know what CRASHLOOPBACKOFF is, let’s look at the common causes:</p><ul><li>OOM Killed</li><li>CPU Throttling</li></ul><h3 id="oom-killed">OOM Killed</h3><p>The most common cause of a CRASHLOOPBACKOFF error is an application running out of memory, commonly known as OOM Killed. This can be caused by a memory leak in code or a lack of resources on a specific node to run the application, i.e., a node with less memory allocated than the application's actual requirement.&nbsp;</p><p>Troubleshooting the OOMKilled error involves fixing the allocated resources according to the application's requirements. If the cause of the error is an issue like a memory leak this can be fixed by performing optimization at the application code level.</p><p>Troubleshooting CRASHLOOPBACKOFF caused by OOM Killed:</p><h3 id="step-1-deploying-the-application-to-kubernetes">Step 1: Deploying the application to Kubernetes.</h3><ul><li>While deploying our Java application to our Kubernetes cluster, we faced the issue stating CRASHLOOPBACKOFF let’s investigate and try to find the solution.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--1-.jpg" class="kg-image" alt="Pod in Crashloopbackoff" loading="lazy" width="1600" height="934" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--1-.jpg 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--1-.jpg 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--1-.jpg 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.1] Pod in Crashloopbackoff</span></figcaption></figure><h3 id="step-2-understanding-the-cause">Step 2: Understanding the cause</h3><ul><li>The first step to troubleshooting any error is understanding the real cause behind the issue. Let’s look at the manifest of our pod in which the container is running.</li><li>View the manifest by clicking manifest from pod operations.</li><li>On viewing the manifest we can see the reason as OOM Killed and below we can see that the container is failing to start and also the current back-of-time is in the 40s.&nbsp;</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--2-.jpg" class="kg-image" alt="Crashloopbackoff error message" loading="lazy" width="1600" height="880" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--2-.jpg 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--2-.jpg 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--2-.jpg 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.2] Crashloopbackoff error message</span></figcaption></figure><ul><li>The reason behind the CRASHLOOPBACKOFF error we getting is OOM Killed. Let’s look at how we can troubleshoot the error.</li></ul><h3 id="step-3-troubleshooting-the-error">Step 3: Troubleshooting the error</h3><ul><li>The OOM Killed error arises due to insufficient memory. That means the application requires more memory than allocated. Let's try increasing the allocated resources from the application deployment template.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--3-.png" class="kg-image" alt=" Update Memory Limits" loading="lazy" width="1600" height="922" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--3-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--3-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--3-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.3] Update Memory Limits</span></figcaption></figure><ul><li>After updating the required resources in the deployment template, to make sure we will check in the advance yaml deployment template whether the resources have been updated or not.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--4-.png" class="kg-image" alt="Update Memory requests in YAML" loading="lazy" width="1600" height="934" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--4-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--4-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--4-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.4] Update Memory requests in YAML</span></figcaption></figure><ul><li>Now that we have increased the resources for our application, let’s deploy the application and see if it runs smoothly.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--5-.png" class="kg-image" alt=" Application successfully running" loading="lazy" width="1600" height="928" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--5-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--5-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--5-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.5] Application successfully running</span></figcaption></figure><ul><li>Our application has been deployed successfully and is running smoothly.</li></ul><h2 id="cpu-throttling">CPU Throttling</h2><p>After resolving the OOMKilled issue by increasing the pod's memory allocation, our application is up and running. However, we're facing a new challenge: performance is below expectations and the pod is restarting. This is likely due to insufficient CPU allocated to the application i.e. the application is utilizing the allocated CPU at its maximum capacity. The situation is also called CPU throttling. Let’s look for a quick solution:</p><h3 id="step-1-identifying-cpu-throttling">Step 1: Identifying CPU Throttling</h3><ul><li>To keep track of our application's resource utilization, we have implemented a monitoring stack which can be seen in the below image. Using the Grafana dashboard, we observed that the application is operating at maximum CPU capacity resulting in CPU throttling.&nbsp;</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--6-.png" class="kg-image" alt=" Resource utilization in Grafana Dashboard" loading="lazy" width="1600" height="821" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--6-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--6-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--6-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.6] Resource utilization in Grafana Dashboard</span></figcaption></figure><h3 id="step-2-increasing-cpu-allocation">Step 2: Increasing CPU Allocation</h3><ul><li>To troubleshoot this issue, we will increase the CPU allocation for the application. We will follow a similar procedure to what we followed in Step 3 of the previous section, where we adjusted the memory allocation. We will modify the CPU allocation in the application's deployment template. The revised deployment template, with the increased CPU allocation, will appear as follows:</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--7-.png" class="kg-image" alt="Increase CPU Allocation" loading="lazy" width="1600" height="864" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--7-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--7-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--7-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.7] Increase CPU Allocation</span></figcaption></figure><h3 id="step-3-verifying-the-solution">Step 3: Verifying the Solution</h3><ul><li>Let’s redeploy the application and take a look at performance metrics on the Grafana dashboard.&nbsp;</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--8-.png" class="kg-image" alt="Resource Utilization in Grafana" loading="lazy" width="1600" height="822" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--8-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--8-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--8-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.8] Resource Utilization in Grafana</span></figcaption></figure><ul><li>Upon review, we can confirm that the application's CPU utilization has normalized, and throttling is no longer occurring.</li></ul><h2 id="env-variablessecrets-mount-issue">ENV Variables/Secrets Mount Issue</h2><p>Misconfigured environment variables and improperly mounted secrets can lead to significant problems in Kubernetes environments. These issues can result in application failures, security vulnerabilities, or unexpected behavior that can be challenging to diagnose. Let’s see how devtron can help us diagnose and fix these issues.</p><ul><li>When deploying applications on Kubernetes, we deal with multiple environment variables and secrets. In our case, we encountered a pod error, which caused a 502 Bad Gateway.&nbsp;</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--9-.png" class="kg-image" alt=" Error Accessing Application" loading="lazy" width="1600" height="866" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--9-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--9-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--9-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.9] Error Accessing Application</span></figcaption></figure><ul><li>To investigate, our initial troubleshooting step will be to examine the pod's manifest.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--10-.png" class="kg-image" alt="Error Message in YAML Manifest" loading="lazy" width="1600" height="815" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--10-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--10-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--10-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.10] Error Message in YAML Manifest</span></figcaption></figure><ul><li>Analyzing the pod manifest revealed incorrect environment variables and secrets that triggered the error. Let’s take a look at our configurations and secrets and cross-verify them.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--11--1.png" class="kg-image" alt="Update ConfigMap and Secret Data" loading="lazy" width="1600" height="828" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--11--1.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--11--1.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--11--1.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.11] Update ConfigMap and Secret Data</span></figcaption></figure><ul><li>On cross-verification, we discovered a misconfiguration in the database URL. Let’s replace the correct URL.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--12-.png" class="kg-image" alt="Update ConfigMap" loading="lazy" width="1600" height="880" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--12-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--12-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--12-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.12] Update ConfigMap</span></figcaption></figure><ul><li>After updating the values in the ConfigMap, we redeployed the application to verify the fix.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--13-.png" class="kg-image" alt="Application in Running State" loading="lazy" width="1600" height="823" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--13-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--13-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--13-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.13] Application in Running State</span></figcaption></figure><ul><li>Now that the application is up and running, Let’s check if we can access our data or not.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--14-.png" class="kg-image" alt="Successfully deployed application" loading="lazy" width="1600" height="866" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--14-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--14-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--14-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.14] Successfully deployed application</span></figcaption></figure><h2 id="db-connectivity-issue">DB Connectivity issue.</h2><p>A "DB connectivity issue" refers to a problem with establishing or maintaining a connection to the database. This issue can occur due to various reasons such as incorrect database credentials, network issues, database server downtime, or misconfiguration of database settings.</p><p>Let’s see how we can troubleshoot the DB connection issue in Devtron for our application:</p><ul><li>To investigate the database connection issue, we'll deploy an ephemeral container via Devtron on our application pod. Once launched, we'll use the telnet command to test the database connection.</li><li>To launch the ephemeral container navigate to <strong>Pod &gt; Terminal &gt; Launch Ephemeral Container</strong></li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--15-.png" class="kg-image" alt="Launch Ephemeral Container" loading="lazy" width="1600" height="820" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--15-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--15-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--15-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.15] Launch Ephemeral Container</span></figcaption></figure><ul><li>Upon executing the telnet command, we receive a "connection refused" error, indicating an inability to connect to the remote host (our database).</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--18--1.png" class="kg-image" alt="Check Database connectivity" loading="lazy" width="1600" height="824" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--18--1.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--18--1.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--18--1.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.16] Check Database connectivity</span></figcaption></figure><ul><li>Let's take a look at our database, here we can see that the database for our application is in a hibernation state. So, the reason for the connection being refused is the hibernation of the database.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXctw8A3lsbI4YwnM9z9rjkWwqd6i38gaU-zMyCcdIlh7HaiEYS23RCLnlTvbn3xgaII-OoTQTrHKbg3UHVANPwORquE0GOuzBZEkYB3-MmvH0OBPq7iBYpIXtQLjzy17XD_n5eZOfWLsHzQWlUUpqhPNXgX?key=BBEaS4gRoPHe0nVMh3UloQ" class="kg-image" alt="Application in Hibernation" loading="lazy" width="2048" height="1051"><figcaption><span style="white-space: pre-wrap;">[Fig.17] Application in Hibernation</span></figcaption></figure><ul><li>To resolve the issue we'll scale up the database pod. And we'll retest the connection using the telnet command on our ephemeral container.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXcMzhgfld4iGwSgUHVLblCQ8-n4x-4CErXOyFKTHWdGrHqh82m9zRGyhg709uUI3xJFTmhOaxZ_OBk2-5hjN0CEWphXLwxHwHuW6iDDGTIsYLCFXntv75joTsn4BN3XmRon-q9zYQ5oxn18M9odD5IWGyUi?key=BBEaS4gRoPHe0nVMh3UloQ" class="kg-image" alt="Application in Healthy State" loading="lazy" width="2048" height="1058"><figcaption><span style="white-space: pre-wrap;">[Fig.18] Application in Healthy State</span></figcaption></figure><ul><li>After retesting the database connection, we can see that it has been successfully connected.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--18--3.png" class="kg-image" alt="Checking Database Connectivity" loading="lazy" width="1600" height="824" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--18--3.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--18--3.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--18--3.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.19] Checking Database Connectivity</span></figcaption></figure><ul><li>The database connectivity issue has also been resolved and our application is also up and running. We should be able to fetch the data.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://devtron.ai/blog/content/images/2025/02/unnamed--19-.png" class="kg-image" alt=" Successfully accessing application" loading="lazy" width="1600" height="871" srcset="https://devtron.ai/blog/content/images/size/w600/2025/02/unnamed--19-.png 600w, https://devtron.ai/blog/content/images/size/w1000/2025/02/unnamed--19-.png 1000w, https://devtron.ai/blog/content/images/2025/02/unnamed--19-.png 1600w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">[Fig.20] Successfully accessing application </span></figcaption></figure><h2 id="conclusion">Conclusion</h2><p>Debugging Kubernetes has always been a complex task, involving multiple context switches and navigation through intricate commands. Devtron simplifies this process, making debugging and managing Kubernetes easier through an intuitive dashboard that provides a comprehensive view of your Kubernetes environment. Devtron acts as a central hub for the Kubernetes ecosystem, along with the intuitive dashboard where most things get handled, Devtron provides access to both cluster and pod terminals, where users can perform various operations such as editing live manifests, viewing current manifests, checking events, downloading files, and monitoring logs. With Devtron, troubleshooting Kubernetes becomes more straightforward as the tedious process of struggling with command-line tools is abstracted. To further enhance troubleshooting capabilities, Resource Watcher a feature of Devtron, automatically remediates Kubernetes issues, providing an extra edge. In the upcoming blog on troubleshooting the Kubernetes series, we will look at some more common issues in the Kubernetes world and how they can be handled through Devtron.</p><p></p>
+<!--kg-card-begin: html-->
+   <H2>FAQ</H2>
+<div class="faq-container">
+    <div class="faq">
+        <div class="faq-question" onclick="toggleAnswer('answer1')">What causes the CRASHLOOPBACKOFF error in Kubernetes?</div>
+        <div class="faq-answer" id="answer1">
+            CRASHLOOPBACKOFF occurs when a container repeatedly crashes, often due to misconfigurations or insufficient resources.
+        </div>
+    </div>
+    <div class="faq">
+        <div class="faq-question" onclick="toggleAnswer('answer2')">How to fix an OOMKilled error in Kubernetes?</div>
+        <div class="faq-answer" id="answer2">
+         Fix OOMKilled errors by increasing memory allocation or optimizing the application's memory usage. 
+
+        </div>
+    </div>
+    <div class="faq">
+        <div class="faq-question" onclick="toggleAnswer('answer3')">What is CPU throttling in Kubernetes and how can to resolve it?</div>
+        <div class="faq-answer" id="answer3">
+            CPU throttling happens when the application exceeds allocated CPU, resolved by increasing CPU resources.
+        </div>
+    </div>
+    <div class="faq">
+        <div class="faq-question" onclick="toggleAnswer('answer4')">What are the common causes of database connection issues in Kubernetes?</div>
+        <div class="faq-answer" id="answer4">
+Common causes include incorrect credentials, network misconfigurations, or the database pod being in a hibernation state.        </div>
+    </div>
+</div>
+
+<!--kg-card-end: html-->
+
+            </div>
+                    <div class="f-related-article__box--outer">
+            <div class="f-related-article__box--inner">
+                <h3 class="f-related-article__header">Related articles</h3>
+                <ul class="f-related-article__list">
+                        <li>
+                            
+<div class="f-related-article__link">
+    <a href="/blog/kubernetes-cpu-limits-best-practices/" tabindex="-1">
+        Kubernetes CPU Limits: Best Practices for Kubernetes CPU Management
+    </a>
+    <div class="f-related-article__timestamp">
+        <span>
+            10 days ago
+        </span>
+            <span>
+                3 min read
+            </span>
+    </div>
+</div>                        </li>
+                        <li>
+                            
+<div class="f-related-article__link">
+    <a href="/blog/what-is-open-policy-agent/" tabindex="-1">
+        Introduction to Open Policy Agent: A Hands-on Guide
+    </a>
+    <div class="f-related-article__timestamp">
+        <span>
+            20 days ago
+        </span>
+            <span>
+                10 min read
+            </span>
+    </div>
+</div>                        </li>
+                        <li>
+                            
+<div class="f-related-article__link">
+    <a href="/blog/top-6-kubernetes-deployment-strategies/" tabindex="-1">
+        Top 6 Kubernetes Deployment Strategies
+    </a>
+    <div class="f-related-article__timestamp">
+        <span>
+            a month ago
+        </span>
+            <span>
+                8 min read
+            </span>
+    </div>
+</div>                        </li>
+                        <li>
+                            
+<div class="f-related-article__link">
+    <a href="/blog/11-promising-kubernetes-tools-in-2025/" tabindex="-1">
+        11 Promising Kubernetes Tools in 2025
+    </a>
+    <div class="f-related-article__timestamp">
+        <span>
+            a month ago
+        </span>
+            <span>
+                8 min read
+            </span>
+    </div>
+</div>                        </li>
+                        <li>
+                            
+<div class="f-related-article__link">
+    <a href="/blog/devtron-vs-kubeapps-a-comparative-analysis/" tabindex="-1">
+        Devtron vs KubeApps: A Comparative Analysis
+    </a>
+    <div class="f-related-article__timestamp">
+        <span>
+            a month ago
+        </span>
+            <span>
+                16 min read
+            </span>
+    </div>
+</div>                        </li>
+                </ul>
+            </div>
+        </div>
+          </div>
+        </article>
+          <div class="f-article__tags">
+            <ul class="f-article__tags__list">
+              <li>
+                <span class="f-article__tags__title">Tags:</span>
+              </li>
+                <li>
+                  <a
+                    href="/blog/tag/kubernetes/"
+                    class="f-article-secondary-tag tag-66e96247a944280bc8877094 kubernetes"
+                  >
+                    kubernetes
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/blog/tag/troubleshoot/"
+                    class="f-article-secondary-tag tag-66e96247a944280bc887709f troubleshoot"
+                  >
+                    troubleshoot
+                  </a>
+                </li>
+            </ul>
+          </div>
+        
+<section
+  class="f-article-share "
+  x-data="share()"
+>
+  <h2 class="f-article-section-title centered">
+    Spread the word
+  </h2>
+  <ul class="f-article-share__list">
+    <li>
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u=https://devtron.ai/blog/kubernetes-troubleshooting-guide/"
+        class="f-article-share__button"
+        target="_blank"
+        rel="noopener"
+        aria-label="Share on Facebook"
+      >
+        <span
+          class="icon-facebook f-article-share__button__icon facebook"
+          aria-hidden="true"
+        ></span>
+        <span class="f-article-share__button__label">
+          Share
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://twitter.com/intent/tweet?text=Kubernetes%20Troubleshooting%3A%20A%20Step-by-Step%20Guide&url=https://devtron.ai/blog/kubernetes-troubleshooting-guide/"
+        class="f-article-share__button"
+        target="_blank"
+        rel="noopener"
+        aria-label="Tweet"
+      >
+        <span
+          class="icon-twitter f-article-share__button__icon twitter"
+          aria-hidden="true"
+        ></span>
+        <span class="f-article-share__button__label">
+          Tweet
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https://devtron.ai/blog/kubernetes-troubleshooting-guide/"
+        class="f-article-share__button"
+        target="_blank"
+        rel="noopener"
+        aria-label="Share on Linkedin"
+      >
+        <span
+          class="icon-linkedin f-article-share__button__icon linkedin"
+          aria-hidden="true"
+        ></span>
+        <span class="f-article-share__button__label">
+          Share
+        </span>
+      </a>
+    </li>
+  </ul>
+  <input
+    x-ref="copy_input"
+    type="text"
+    value="https://devtron.ai/blog/kubernetes-troubleshooting-guide/"
+    class="no-appearance invisible sr-only"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+</section>
+        
+
+        <section class="f-article__nav-articles ">
+            
+<article
+  class="f-nav-article prev post-access-public "
+>
+  <a href="/blog/what-is-kubernetes-cpu-manager/" class="f-nav-article__link">
+    <span class="f-access-tag border in-nav-article public">
+      public
+    </span>
+      <div class="f-nav-article__image">
+        <img
+          data-src="/blog/content/images/size/w350/2025/02/Group-3183888.png"
+          alt=""
+          class="lazy"
+          width="175"
+          height="240"
+        >
+      </div>
+    <div class="f-nav-article__content">
+      <div>
+        <span
+          class="f-nav-article__label smaller"
+          >
+          Previous article
+        </span>
+        <h2 class="f-nav-article__title">What is CPU Manager in Kubernetes</h2>
+      </div>
+    </div>
+  </a>
+</article>
+        </section>
+              <section class="f-article__related-articles">
+                <h2 class="f-article-section-title centered">
+                  Keep reading
+                </h2>
+                <div class="f-article__related-articles__wrapper">
+                    
+<article
+  class="f-related-article post post-access-public  index-0 "
+>
+  <span
+    class="f-access-tag in-related-article  public">
+    public
+  </span>
+    <a
+      href="/blog/kubernetes-cpu-limits-best-practices/"
+      class="f-related-article__image"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <img
+        data-src="/blog/content/images/size/w750/2025/02/Group_3183886.png"
+        alt=""
+        class="lazy"
+        width="335"
+        height="200"
+      >
+    </a>
+  <div class="f-related-article__content">
+    <div>
+      <a href="/blog/kubernetes-cpu-limits-best-practices/" class="f-related-article__title">
+        <h3>Kubernetes CPU Limits: Best Practices for Kubernetes CPU Management</h3>
+      </a>
+    </div>
+    <div>
+      <div class="f-related-article__timestamp">
+        <span class="f-related-article__timestamp__date">
+          10 days ago
+        </span>
+          <span class="f-related-article__timestamp__divider">&nbsp; &bull; &nbsp;</span>
+          <span class="f-related-article__timestamp__read">
+            3 min read
+          </span>
+      </div>
+    </div>
+  </div>
+</article>
+                    
+<article
+  class="f-related-article post post-access-public  index-1 "
+>
+  <span
+    class="f-access-tag in-related-article  public">
+    public
+  </span>
+    <a
+      href="/blog/what-is-open-policy-agent/"
+      class="f-related-article__image"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <img
+        data-src="/blog/content/images/size/w750/2025/01/Group_3183971.png"
+        alt=""
+        class="lazy"
+        width="335"
+        height="200"
+      >
+    </a>
+  <div class="f-related-article__content">
+    <div>
+      <a href="/blog/what-is-open-policy-agent/" class="f-related-article__title">
+        <h3>Introduction to Open Policy Agent: A Hands-on Guide</h3>
+      </a>
+    </div>
+    <div>
+      <div class="f-related-article__timestamp">
+        <span class="f-related-article__timestamp__date">
+          20 days ago
+        </span>
+          <span class="f-related-article__timestamp__divider">&nbsp; &bull; &nbsp;</span>
+          <span class="f-related-article__timestamp__read">
+            10 min read
+          </span>
+      </div>
+    </div>
+  </div>
+</article>
+                    
+<article
+  class="f-related-article post post-access-public  index-2 last"
+>
+  <span
+    class="f-access-tag in-related-article  public">
+    public
+  </span>
+    <a
+      href="/blog/top-6-kubernetes-deployment-strategies/"
+      class="f-related-article__image"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <img
+        data-src="/blog/content/images/size/w750/2025/01/Group-3183994--1-.png"
+        alt=""
+        class="lazy"
+        width="335"
+        height="200"
+      >
+    </a>
+  <div class="f-related-article__content">
+    <div>
+      <a href="/blog/top-6-kubernetes-deployment-strategies/" class="f-related-article__title">
+        <h3>Top 6 Kubernetes Deployment Strategies</h3>
+      </a>
+    </div>
+    <div>
+      <div class="f-related-article__timestamp">
+        <span class="f-related-article__timestamp__date">
+          a month ago
+        </span>
+          <span class="f-related-article__timestamp__divider">&nbsp; &bull; &nbsp;</span>
+          <span class="f-related-article__timestamp__read">
+            8 min read
+          </span>
+      </div>
+    </div>
+  </div>
+</article>
+                </div>
+              </section>
+      </div>
+    
+<div
+  class="f-blob-shape "
+  aria-hidden="true"
+>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="273"
+      height="296"
+      viewBox="0 0 273 296"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter id="wave-a">
+          <feColorMatrix
+            in="SourceGraphic"
+            values="0 0 0 0 0.258824 0 0 0 0 0.329412 0 0 0 0 0.400000 0 0 0 1.000000 0"
+          />
+        </filter>
+      </defs>
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        filter="url(#wave-a)"
+        transform="translate(-127 -52)"
+      >
+        <path
+          fill-rule="nonzero"
+          class="shape-fill"
+          d="M272.994862,184.279347 C273.248337,203.758301 264.123248,217.165892 245.619596,224.502122 C227.115943,231.838351 211.273775,244.739995 198.093091,263.207055 C184.912408,281.674115 166.408755,292.298999 142.582135,295.081706 C118.755514,297.864414 94.2952064,294.322786 69.2012122,284.456823 C44.107218,274.590859 24.0827176,257.768127 9.12771095,233.988625 C-5.82729569,210.209123 -2.40538739,186.682595 19.3934358,163.40904 C41.1922591,140.135485 48.0360757,113.193816 39.9248856,82.5840314 C31.8136956,51.9742472 39.5446736,28.7006923 63.1178197,12.7633667 C86.6909657,-3.17395892 111.531485,-4.18585261 137.639378,9.72768564 C163.747271,23.6412239 186.68673,33.3807007 206.457756,38.946116 C226.228782,44.5115313 240.550102,56.4012821 249.421716,74.6153686 C258.29333,92.829455 264.376723,110.790568 267.671894,128.498708 C270.967064,146.206847 272.741387,164.800394 272.994862,184.279347 Z"
+          transform="translate(127 52)"
+        />
+      </g>
+    </svg>
+</div>
+  </main>
+</div>
+
+
+
+  
+<footer class="f-footer" x-data="footer()" x-init="checkSocialLinks">
+  <div class="f-footer__container">
+    <div class="f-footer__wrapper">
+      <div class="f-footer__columns-container">
+        <div class="f-footer__logo-container">
+          <div class="f-footer__logo-bg ">
+            
+<a
+  href="https://devtron.ai/"
+  class="f-logo in-footer "
+  title=""
+>
+    <img
+      src="https://devtron.ai/blog/content/images/2023/05/devtron-logo-horizontal-white--1-.png"
+      alt=""
+      class=""
+    >
+</a>
+          </div>
+        </div>
+        <div class="f-footer__nav-container">
+          <nav class="f-footer-navigation" role="navigation" aria-label=" Main links in footer">
+            <span class="f-footer-navigation__title">
+              Community
+            </span>
+            <ul class="f-footer-navigation__list">
+              <li>
+                <a href="https://devtron.ai/" class="nav-github">
+                  <span>Home</span>
+                </a>
+              </li>
+              
+    <li>
+      <a
+        href="https://devtron.ai/blog/"
+        class="nav-blog-home"
+      >
+        <span>Blog Home</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/devtron-labs/devtron"
+        class="nav-github"
+      >
+        <span>GitHub</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://devtron.ai/demo"
+        class="nav-contact-us"
+      >
+        <span>Contact Us</span>
+      </a>
+    </li>
+    <li>
+      <a
+        href="#/search"
+        class="nav-search"
+      >
+        <span>Search</span>
+      </a>
+    </li>
+
+            </ul>
+          </nav>
+
+          <nav class="f-footer-navigation" role="navigation" aria-label=" Social links in footer"
+            x-ref="social_navigation">
+            <span class="f-footer-navigation__title">
+              Social links
+            </span>
+            <ul class="f-footer-navigation__list" x-ref="social_list">
+              <li>
+                <a href="https://in.linkedin.com/company/devtron-labs" target="_blank" class="social"
+                  aria-label="Linkedin">
+                  <span class="icon-linkedin" aria-hidden="true"></span>
+                  Linkedin
+                </a>
+              </li>
+              
+    <li>
+  <a
+    href="https://www.facebook.com/devtronlabs"
+    class="social"
+    aria-label="Facebook"
+  >
+    <span class="icon-facebook" aria-hidden="true"></span>
+      Facebook
+  </a>
+    </li>
+    <li>
+  <a
+    href="https://twitter.com/DevtronL"
+    class="social"
+    aria-label="Twitter"
+  >
+    <span class="icon-twitter" aria-hidden="true"></span>
+      Twitter
+  </a>
+    </li>
+
+            </ul>
+          </nav>
+
+        </div>
+      </div>
+      <div class="f-footer-bottom">
+        <div class="f-footer-bottom__terms">
+          <a href="https://devtron.ai/terms-of-use" aria-current="page">Terms</a>&nbsp;
+          <a href="https://devtron.ai/privacy-policy">Privacy</a>
+        </div>
+        <span class="f-footer-bottom__copyright">© <span id="footer-copyright-year">2022</span> Devtron Inc. All rights
+          reserved</span>
+        <div class="f-footer-bottom__socials">
+          <a href="https://www.linkedin.com/company/devtron-labs/" target="_blank" class="f-footer-bottom__social">
+            <img src="https://uploads-ssl.webflow.com/63f434710546e954d1950f86/63f7eadc3411041ab0311c9f_Social.svg"
+              loading="lazy" alt="Linkedin social link">
+          </a>
+          <a href="https://twitter.com/DevtronL" target="_blank" class="f-footer-bottom__social">
+            <img
+              src="https://uploads-ssl.webflow.com/63f434710546e954d1950f86/63f7eadc6768866de3b54aaf_Social%20(1).svg"
+              loading="lazy" alt="Twitter social link">
+          </a>
+          <a href="https://discord.devtron.ai" target="_blank" class="f-footer-bottom__social">
+            <img
+              src="https://uploads-ssl.webflow.com/63f434710546e954d1950f86/64139efdcdd5396ae6e4bb6d_Frame%201910.svg"
+              loading="lazy" alt="Discord social link">
+          </a>
+          <a href="https://www.youtube.com/@devtronL" target="_blank" class="f-footer-bottom__social">
+            <img
+              src="https://uploads-ssl.webflow.com/63f434710546e954d1950f86/63f7eadcedb6fe5026286216_Social%20(3).svg"
+              loading="lazy" alt="Youtube channel link">
+          </a>
+        </div>
+      </div>
+    </div>
+</footer>
+
+<script>
+  window.footer = () => {
+    const currentYear = new Date().getFullYear()
+    const footerYearSpan = document.getElementById('footer-copyright-year')
+    if (footerYearSpan.innerText !== currentYear) {
+      footerYearSpan.innerText = currentYear
+    }
+
+    return {
+      checkSocialLinks() {
+        if (this.$refs.social_list.children.length === 0) {
+          this.$refs.social_navigation.remove()
+        }
+      }
+    }
+  }
+</script>
+  <script src="/blog/assets/js/manifest.js?v=7e3cfc0654" defer></script>
+  <script src="/blog/assets/js/vendor.js?v=7e3cfc0654" defer></script>
+  <script src="/blog/assets/js/app.js?v=7e3cfc0654" defer></script>
+
+    <script defer src="/blog/assets/js/post.js?v=7e3cfc0654"></script>
+
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7G39RP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script>
+  const anchors = document.querySelectorAll('a');
+    
+  for (x = 0, l = anchors.length; x < l; x++) {
+    const regex = new RegExp('/' + window.location.host + '/');
+        
+    if (!regex.test(anchors[x].href)) {
+      anchors[x].setAttribute('target', '_blank');
+      anchors[x].setAttribute('rel', 'noopener');
+    }
+  }
+</script>
+
+<!-- Open external links in new tab -->
+<script type="text/javascript">
+	var links = document.getElementsByTagName("article")[0].querySelectorAll('a');
+    var a = new RegExp('/' + window.location.host + '/');
+	links.forEach((link) => {
+		if(!a.test(link.href)) {
+			link.setAttribute("target","_blank");
+		}
+	});
+</script> <script>
+    function toggleAnswer(answerId) {
+        var answer = document.getElementById(answerId);
+        if (answer.style.display === "none" || answer.style.display === "") {
+            answer.style.display = "block";
+        } else {
+            answer.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+
+</html>
