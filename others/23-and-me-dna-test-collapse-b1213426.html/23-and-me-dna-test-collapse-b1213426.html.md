@@ -1,7 +1,7 @@
 
 <!--
 title: 23andMe的衰落为何标志着基因检测时代的终结
-cover: https://static.standard.co.uk/2025/02/26/14/02/SEI240669381.jpeg?width=1200&auto=webp&quality=75
+cover: ./cover.png
 -->
 
 > 译自：[Why the fall of 23andMe marks the end of an era for genetic testing](https://www.standard.co.uk/news/science/23-and-me-dna-test-collapse-b1213426.html)
