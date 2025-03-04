@@ -8,7 +8,7 @@ cover: https://cdn.thenewstack.io/media/2025/02/b383a55d-james-harrison-vpoexr5w
 > 
 > 作者：Frank Kilcommins
 
-AI 代理正在彻底改变软件交互——结构化的 API 工作流确保它们高效运行。
+AI 智能体正在彻底改变软件交互——结构化的 API 工作流确保它们高效运行。
 
 曾经，移动革命的口号是：“为此有一个应用程序”。如今，新的现实是，AI驱动的 Agent 正在极大地改变我们与软件交互的方式，创造了一个新的口号：“为此有一个 Agent！”从自动化任务到执行复杂的工作流，并代表我们自主行动，AI Agent 正在成为数字交互中关键的中介。虽然这看起来像是魔法，但 API——而不是新的巫术——仍然提供了使这些 Agent 工作流成为可能并服务于这类新用户的连接结构。
 
@@ -31,32 +31,32 @@ API 使用的这种转变具有实际意义。但这为什么重要呢？
 - 防止 AI 幻觉或来自 AI 驱动的使用者的错误输出。
 - 确保跨 API 生态系统的互操作性、质量和效率。
 - 在 API 生产者和使用者（人和机器）之间建立信任。
-通过这样做，我们同时提升了人类开发者体验 (DX) 和代理体验 (AX)。
+通过这样做，我们同时提升了人类开发者体验 (DX) 和智能体体验 (AX)。
 
 正如**David Roldán Martínez**（一位**人工智能研究员和行业顾问**）所说：
 
-“在自主系统日益依赖于与各种 API 交互的代理人工智能时代，Arazzo 这样的规范成为确定性和可靠性 API 工作流的关键推动因素。通过提供一个标准化的框架来编排复杂的 API 交互，Arazzo 使[开发人员能够构建强大且可扩展的](https://thenewstack.io/how-to-build-scalable-real-time-applications-with-javascript/)解决方案。这增强了人工智能驱动系统的可预测性和效率，并促进了更大的信任和控制，确保下一波 API 使用保持灵活和可治理。”
+“在自主系统日益依赖于与各种 API 交互的智能体人工智能时代，Arazzo 这样的规范成为确定性和可靠性 API 工作流的关键推动因素。通过提供一个标准化的框架来编排复杂的 API 交互，Arazzo 使[开发人员能够构建强大且可扩展的](https://thenewstack.io/how-to-build-scalable-real-time-applications-with-javascript/)解决方案。这增强了人工智能驱动系统的可预测性和效率，并促进了更大的信任和控制，确保下一波 API 使用保持灵活和可治理。”
 
 ## 什么是 Arazzo 规范？
 Arazzo 规范（目前版本为 [1.0.1](https://www.openapis.org/blog/2025/01/24/announcing-arazzo-specification-version-1-0-1)）支持创建确定性 API 工作流——一系列结构化的 API 调用，当组合在一起时，可以实现特定的业务目标或消费者工作。
 
-Arazzo 支持 JSON 和 YAML 格式，使工作流既可读懂也可由机器读取。这使得 API 功能更容易理解和使用，从而加快了传统人类开发者和 AI 代理消费者的采用速度。通过提供一种表达工作流的结构化方式，Arazzo 弥合了 API 生产者和消费者之间的差距，使 API 的高效集成更容易。
+Arazzo 支持 JSON 和 YAML 格式，使工作流既可读懂也可由机器读取。这使得 API 功能更容易理解和使用，从而加快了传统人类开发者和 AI 智能体消费者的采用速度。通过提供一种表达工作流的结构化方式，Arazzo 弥合了 API 生产者和消费者之间的差距，使 API 的高效集成更容易。
 
-除了可读性之外，Arazzo 的确定性还有助于[API 提供商应对关键行业](https://thenewstack.io/a-look-at-telecom-apis/)挑战，同时为下一代基于代理的 API 使用创造新的可能性。它还支持第三方验证，允许监管机构[提高各个司法管辖区的严谨性和合规性](https://thenewstack.io/a-call-to-use-generative-ai-to-create-more-trustworthy-data/)。
+除了可读性之外，Arazzo 的确定性还有助于[API 提供商应对关键行业](https://thenewstack.io/a-look-at-telecom-apis/)挑战，同时为下一代基于智能体的 API 使用创造新的可能性。它还支持第三方验证，允许监管机构[提高各个司法管辖区的严谨性和合规性](https://thenewstack.io/a-call-to-use-generative-ai-to-create-more-trustworthy-data/)。
 
-## Arazzo 和 AI 代理 API 使用
-Arazzo 的确定性方法使代理 API 使用更高效。它允许 API 提供商在各种大型语言模型 (LLM) 和代理技术栈之间交付互操作的工作流。提供商可以定义和使用面向用例的消费语义[跨多个 API 操作](https://thenewstack.io/linux-run-a-single-command-across-multiple-servers-with-ssh/)，无论是在单个 API 描述中还是在多个独立的 API 描述中。
+## Arazzo 和 AI 智能体 API 使用
+Arazzo 的确定性方法使智能体 API 使用更高效。它允许 API 提供商在各种大型语言模型 (LLM) 和智能体技术栈之间交付互操作的工作流。提供商可以定义和使用面向用例的消费语义[跨多个 API 操作](https://thenewstack.io/linux-run-a-single-command-across-multiple-servers-with-ssh/)，无论是在单个 API 描述中还是在多个独立的 API 描述中。
 
-此外，Arazzo 的可扩展性允许包含基于使用情况或基于 SLA 的元数据，这些元数据可以在处理或可观测性层强制执行，以确保可预测的规模、成本管理和预期的 AI 代理对 API 的使用，这对于 IT 领导者在应对[总拥有成本](https://thenewstack.io/how-real-time-database-design-boosts-total-cost-of-ownership/)(TCO)新的 AI 融合拓扑结构时将变得越来越重要。
+此外，Arazzo 的可扩展性允许包含基于使用情况或基于 SLA 的元数据，这些元数据可以在处理或可观测性层强制执行，以确保可预测的规模、成本管理和预期的 AI 智能体对 API 的使用，这对于 IT 领导者在应对[总拥有成本](https://thenewstack.io/how-real-time-database-design-boosts-total-cost-of-ownership/)(TCO)新的 AI 融合拓扑结构时将变得越来越重要。
 
-## API 是代理的“最佳”接口
-用于计算机使用 (ACU) 和计算机使用代理 (UCA) 的人工智能代理的兴起——包括最近 OpenAI 的 Operator 等创新——展示了人工智能如何通过与现有用户界面 (UI) 交互来增强人类工作流程。这种方法在遗留环境中非常重要，在这些环境中，人工智能可以[快速释放价值，而无需开发新的 API](https://thenewstack.io/apis-are-driving-new-business-models-and-unlocking-revenue-streams/)。
+## API 是智能体的“最佳”接口
+用于计算机使用 (ACU) 和计算机使用智能体 (UCA) 的人工智能智能体的兴起——包括最近 OpenAI 的 Operator 等创新——展示了人工智能如何通过与现有用户界面 (UI) 交互来增强人类工作流程。这种方法在遗留环境中非常重要，在这些环境中，人工智能可以[快速释放价值，而无需开发新的 API](https://thenewstack.io/apis-are-driving-new-business-models-and-unlocking-revenue-streams/)。
 
-然而，虽然利用基于 UI 的自动化可以带来短期收益，但 API 本质上是人工智能代理的更优接口。与专为人类认知而设计的 UI 不同，API 是为机器使用而构建的，从长远来看，它们更具可扩展性、可靠性和成本效益。
+然而，虽然利用基于 UI 的自动化可以带来短期收益，但 API 本质上是人工智能智能体的更优接口。与专为人类认知而设计的 UI 不同，API 是为机器使用而构建的，从长远来看，它们更具可扩展性、可靠性和成本效益。
 
 便利技术往往会适得其反，虽然可能会有短期收益，但管理人员可能会误解这些收益，认为它们是实现人工智能目标更便宜、更快、更一致的方法。正如[机器人流程自动化](https://thenewstack.io/robocorp-makes-remote-process-automation-programmable/)(RPA)通常被误解为“快速自动化解决方案”（后来导致昂贵的维护成本一样），如果公司未能投资于 API 优先战略，短期基于 UI 的 AI 集成可能会成为一种拐杖。
 
-通过投资强大的 API 资源，组织可以为不可避免的转变做好准备，在这种转变中，API 而不是 UI 将成为人工智能代理的主要接口。这就是 Arazzo 的作用所在——通过提供确定性 API 工作流层，Arazzo 确保代理以结构化、可靠的方式与 API 交互，而不是依赖于脆弱的基于 UI 的自动化并交付前面提到的代理体验 (AX) 需求。
+通过投资强大的 API 资源，组织可以为不可避免的转变做好准备，在这种转变中，API 而不是 UI 将成为人工智能智能体的主要接口。这就是 Arazzo 的作用所在——通过提供确定性 API 工作流层，Arazzo 确保智能体以结构化、可靠的方式与 API 交互，而不是依赖于脆弱的基于 UI 的自动化并交付前面提到的智能体体验 (AX) 需求。
 
 ## 超越 AI：Arazzo 的更广泛用例
 
@@ -75,7 +75,7 @@ Arazzo规范不要求特定的开发流程，例如*设计优先*或*代码优�
 
 ## Arazzo — 一个具体的例子
 
-让我们想象一下，我们想描述如何实现在线产品的“先买后付(BNPL)”结账工作流程。代理将负责确定产品和客户是否有资格享受这种类型的金融服务。执行BNPL流程的步骤如下：
+让我们想象一下，我们想描述如何实现在线产品的“先买后付(BNPL)”结账工作流程。智能体将负责确定产品和客户是否有资格享受这种类型的金融服务。执行BNPL流程的步骤如下：
 
 1. 检查所选产品是否符合BNPL资格
 2. 获取条款和条件并确定客户资格
@@ -95,7 +95,7 @@ Arazzo规范不要求特定的开发流程，例如*设计优先*或*代码优�
 
 *Figure 2 – Buy Now, Pay Later – Loan API*
 
-利用Arazzo，我们可以明确地描述工作流程，指导代理首先并每次都正确地执行工作流程。如果您想在查看下面的Arazzo文档之前更好地了解规范结构，请查看这篇关于规范的[深入探讨](https://swagger.io/blog/the-arazzo-specification-a-deep-dive/)。
+利用Arazzo，我们可以明确地描述工作流程，指导智能体首先并每次都正确地执行工作流程。如果您想在查看下面的Arazzo文档之前更好地了解规范结构，请查看这篇关于规范的[深入探讨](https://swagger.io/blog/the-arazzo-specification-a-deep-dive/)。
 
 
 ```yaml
@@ -337,7 +337,7 @@ workflows:
 
 ## 启用自主式API使用
 
-向AI驱动的API使用转变正在加速，确定性API工作流对于确保AI代理能够可靠地与API交互至关重要。Arazzo弥合了传统API使用者和AI代理之间的差距，提供了一个结构化、可验证的框架，消除了歧义并增强了互操作性，从而减少了厂商锁定。
+向AI驱动的API使用转变正在加速，确定性API工作流对于确保AI智能体能够可靠地与API交互至关重要。Arazzo弥合了传统API使用者和AI智能体之间的差距，提供了一个结构化、可验证的框架，消除了歧义并增强了互操作性，从而减少了厂商锁定。
 
 无论您是自动化工作流、启用AI使用还是增强API治理，Arazzo都是释放下一代API驱动创新关键。
 
