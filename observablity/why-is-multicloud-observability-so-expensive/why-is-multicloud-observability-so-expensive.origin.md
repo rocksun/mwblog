@@ -1,0 +1,53 @@
+# Why Is Multicloud Observability So Expensive?
+![Featued image for: Why Is Multicloud Observability So Expensive?](https://cdn.thenewstack.io/media/2025/03/7dbf2cb8-money-42955_1280-1024x680.png)
+Organizations are scrambling to find ways to reduce their observability bills. The observability providers offer technologies to save costs, but there’s a chicken-and-egg aspect because they must switch out their existing observability platforms for another, hoping that they will eventually be able to save money.
+
+This could perhaps prompt some users to think or see commoditization taking effect for observability. Users might select or rely on open source telemetric data feeds, such as those from [Prometheus](https://thenewstack.io/creating-a-path-for-prometheus-success/), [Jaeger](https://thenewstack.io/jaeger-vs-zipkin-battle-of-the-open-source-tracing-tools/) and others. Thanks to the Cloud Native Computing Foundation’s [OpenTelemetry,](https://thenewstack.io/opentelemetry-whats-new-with-the-second-biggest-cncf-project/) those can be channeled or re-channeled.
+
+It’s much easier now, given the standardization OpenTelemetry offers, to switch out one vendor for another in the hope that a vendor might promise a per-metric price, a flat rate, which could show price differences or price comparisons. This type of thinking, of course, probably comes into play regarding how much it’s going to cost.
+
+But collecting the telemetric data is just a starting point, of course. Proper data analysis is definitely not a commodity and requires at least a significant amount of research to provide that analysis and predictions, etc., which demonstrate not only business and operational value but also lead to cost savings down the road or in the future.
+
+And again, the conundrum is that these services cost money. And so it’s probably not a good idea to look at price only, especially for those observability providers that might not be offering the same caliber of analytics as another provider might for a slightly higher price.
+
+## Explosion of Data
+In the report Prepare for the Future of Observability, [Gartner](http://www.gartner.com) analyst [Mrudula Bangera](https://www.linkedin.com/in/mrudula-bangera-a4989933) noted that there has been an explosion of data to monitor and analyze due to cloud native environments. The large amounts of observability data make it costly to ingest and retain telemetry, especially when some data is redundant.
+
+“Collecting all available telemetry data also increases the risk of missing important insights among less valuable data,” Bangera wrote. “However, with the advent of open standards and consumption-based pricing in commercial observability platforms, the focus has shifted from simply collecting data to leveraging analytics and the valuable insights they provide.”
+
+It’s too early to think about — or rather, to start thinking about or looking at — saving money with a perceived commoditization of observability platforms and telemetric data feeds. For reasons not only described above but also because this area remains very nascent, the concepts of finding patterns or making predictions that the platform offers — and what the human can’t do — now compounded with the benefits of applying AI when used correctly are starting to pave the way for a new era in observability.
+
+In the meantime, the data explosion for telemetric data that multi-cloud and on-premises sources generate can overwhelm organizations. An average enterprise now has over 1,000 different applications and “I work with plenty of customers who have 10,000 or even, 50,000 applications,” [Nic Benders,](https://www.linkedin.com/in/benders/) chief technical strategist at New Relic, said. “There’s no amount of dashboarding and learning that can help you understand that system without the powerful analysis that a proper observability provider can offer.”
+
+## Multicloud Costs
+With this multicloud telemetric data explosion comes the cost factor. An organization might have 20 nodes to monitor, and for each node, there are 20 time series to have the metric per node. [Mirko Novakovic,](https://www.linkedin.com/in/mirkonovakovic/?originalSubdomain=de) CEO of observability provider DashO, said during his talk “Kubernetes Observability with OpenTelemetry” that he gave during [FOSDEM (Free and Open Source Developers’ European Meeting).](https://fosdem.org/) “It is possible to add an unlimited number of tags to these nodes — so, an unlimited number of cardinality — which, as you can see, most vendors will charge you for the number of time series and your cardinality, because every single time series costs money since you have to store it and process it,” Novakovic said. “What can happen is actually a cardinality explosion.”
+
+Despite the explosion in telemetric data and associated costs, it is not foreseeable that providers will start competing on the costs of data feeds by volume in the near future, at least. Instead, the provider that offers the best analysis will win or gain market share.
+
+And secondly, the vast majority of organizations aren’t using the full scope of observability that they can — and arguably should — be using. In that respect, it remains a nascent field. “I often get asked about competitors,” Benders said. “The number-one competitor in observability is nothing — like far more systems are unobserved, so still mostly blue ocean out there.”
+
+For many enterprises, increasing costs associated with storing and analyzing observability data, whether they are building their own solution or using vendor tools, offsets the benefits they receive from it, Bangera wrote.
+
+“The increasing number of disparate monitoring tools also adds to inefficiency and complexity in the organization, creating a need to manage multiple tools, interfaces and different data formats,” Bangera wrote. “To ensure insight that keeps pace with the growing speed and complex architectures, infrastructure and operations (I&O) leaders must prepare their organizations for the future by evolving from traditional monitoring to observability.”
+
+“The cost of observability has become a significant focus, influenced by prevailing macroeconomic conditions, consumption-based pricing and increased scrutiny applied to cloud spend,” Bangera writes. “ Previously, monitoring pricing was primarily determined by the number of devices or hosts being monitored, making it relatively straightforward to calculate monitoring spend.”
+
+## Observability Costs
+[Jason Soroko](https://www.sectigo.com/contributors/jason-soroko), senior fellow at Sectigo, a provider of comprehensive certificate lifecycle management (CLM) services, agreed: “Gartner’s analysis is accurate. Their emphasis on data categorization and retention policies addresses key drivers of observability expenses. Rigorous lifecycle management and open integration are essential to sustainable cost control.”
+Observability costs can climb quickly in multi-cloud environments due to the need for disparate API integrations and siloed data pipelines, Jason Soroko, senior fellow at Sectigo, a provider of comprehensive certificate lifecycle management (CLM) services. “Organizations face significant expenses having to align on-premise and cloud telemetry, which add complexity, cost and ultimately risks data fragmentation,” Soroko said. “Cloud providers understandably favor lock-in by promoting proprietary ecosystems that limit interoperability.”
+
+An example of a specific area that cloud providers offer functionality that can lead to lock-in is exemplified by PKI. PKI in general and certificate lifecycle management tools ideally should deliver a trust model that can span across cloud and hybrid environments and provide visibility and lifecycle management to digital certificates regardless of the source, Soroko said.
+
+In a [podcast](https://thenewstack.io/whats-driving-the-rising-cost-of-observability/) with The New Stack, Christine Yen, CEO of [Honeycomb.io](https://www.honeycomb.io/?utm_content=inline+mention), noted that there are a lot of factors that contribute to inflating costs. In addition to the inherent complexity of trying to monitor containers, Kubernetes pods and other cloud native infrastructure and all of these additional components in our infrastructure that used to not exist, engineering teams today talk about their software differently than they may have in the past.
+
+“When I think about trends in how engineering teams think about their system, I think about DevOps, platform engineering, and SRE. And I think of all of these trends as shaping where engineering teams focus, how they operate, and how they think about delivering a great service,” Yen said. “Specifically, I’ve loved the discussion around SRE and especially the interest in SLOs, service level objectives, because there’s such a clear emphasis with the rights of SRE on the experience of the end user. It’s not enough for our infrastructure to be healthy; what matters is whether we are upholding our standards of delivering a great service to those end users.”
+
+Engineering teams now look to describe their software in terms of things like user ID or shopping cart ID, or maybe even the skew of an item that software processes, Yen said. “There’s a human and a process need for an increase in the complexity of the language that we use in talking about our software and what’s being impacted, and that is also contributing to an increase in complexity in the data, which contributes to an increase in complexity in the costs.”
+
+Many customers who are trying to adopt SRE practices and SLOs and are suffering because “their observability tooling is punishing them for trying to track the things that matter to their business, trying to help them understand the customer impact and business impact of a given engineering change, and as a result are pulling back on the very data that they need to understand impact,” Yen said. “It hurts to watch because folks are so accustomed to working within the constraints of traditional logging, monitoring, and APM tools that it often takes some conversation to open up their eyes to the idea that modern observability tools are actually built for this level of complexity and expressiveness in telemetry,” Yen said.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
