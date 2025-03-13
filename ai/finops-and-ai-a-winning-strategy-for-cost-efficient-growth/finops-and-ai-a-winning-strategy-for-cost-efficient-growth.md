@@ -1,4 +1,3 @@
-
 <!--
 title: FinOps和AI：实现成本效益增长的制胜策略
 cover: https://cdn.thenewstack.io/media/2025/03/67e082c6-nahrizul-kadri-oasf0qmrwla-unsplash-scaled.jpg
