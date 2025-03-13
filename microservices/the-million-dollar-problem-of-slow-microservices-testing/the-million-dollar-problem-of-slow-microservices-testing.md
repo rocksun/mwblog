@@ -58,7 +58,6 @@ cover: https://cdn.thenewstack.io/media/2025/03/65ab1da5-costly.jpg
 
 ## 一种现代方法：基于租户的环境
 
-![](https://cdn.thenewstack.io/media/2025/03/6e3a63df-image1-1024x588.png)
 
 ![封装服务本地和 git 分支版本的沙箱](https://cdn.thenewstack.io/media/2025/03/6e3a63df-image1-1024x588.png)
 
