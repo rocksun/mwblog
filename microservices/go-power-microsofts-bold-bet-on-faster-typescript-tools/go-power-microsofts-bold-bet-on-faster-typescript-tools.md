@@ -1,4 +1,3 @@
-
 <!--
 title: Go Power：微软在更快的TypeScript工具上的大胆尝试
 cover: https://cdn.thenewstack.io/media/2025/03/0ca6f42e-highway-393492_1280.jpg
