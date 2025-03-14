@@ -1,4 +1,3 @@
-
 <!--
 title: MCP：AI Agent和API之间缺失的环节
 cover: https://cdn.thenewstack.io/media/2025/03/fb998efb-missing-link-2001.jpg
