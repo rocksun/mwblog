@@ -1,4 +1,3 @@
-
 <!--
 title: AI如何重塑CISO的优先事项
 cover: https://cdn.thenewstack.io/media/2025/03/d4eb3093-security.jpg
