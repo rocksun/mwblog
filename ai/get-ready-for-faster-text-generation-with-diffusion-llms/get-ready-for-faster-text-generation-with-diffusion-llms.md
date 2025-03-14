@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Diffusion LLM，准备好迎接更快的文本生成
 cover: https://cdn.thenewstack.io/media/2025/03/63f9c70b-pexels-cottonbro-9669101b.jpg
