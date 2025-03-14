@@ -1,0 +1,21 @@
+# SUSE Unveils Cloud Native Innovations at SUSECON 2025
+![Featued image for: SUSE Unveils Cloud Native Innovations at SUSECON 2025](https://cdn.thenewstack.io/media/2025/03/15f5feef-susecon-2025-1024x681.png)
+ORLANDO — At [SUSECON 2025](https://www.suse.com/susecon/), [SUSE](https://www.suse.com/) announced a series of cloud native innovations to solidify its position as a leader in [enterprise container management](https://thenewstack.io/introduction-to-containers/). These advancements are designed to enhance [SUSE Rancher Prime](https://www.rancher.com/products/rancher-platform), making it a comprehensive platform for managing [cloud native workloads](https://thenewstack.io/cloud-native/) securely and at scale.
+
+As [Peter Smails](https://www.linkedin.com/in/peter-smails-21576a/), SUSE’s general manager of enterprise container management, said in a press panel, “Our goal remains pretty simple to understand, we want SUSE to be the cloud native platform for every organization. Doesn’t every cloud native company?
+
+But, how exactly does SUSE plan to do this?
+
+Smalls explained, “It’s all about maturing that platform, strengthening its capabilities, and expanding the ecosystem. All roads lead back to making SUSE Rancher Prime “the” platform for organizations to build their cloud native strategy.
+
+## Fortifying Rancher
+This will be done by making improvements across the Rancher Prime systems. The most significant of these are:
+
+**SUSE Rancher for SAP Applications:**This new platform is tailored for seamless hybrid-cloud integration of[SAP](https://www.sap.com/index.html)workloads. Built on SAP-validated SUSE Rancher Prime, it combines Kubernetes, Linux, virtualization, databases, security, and observability to support critical SAP applications. This solution helps enterprises deploy SAP workloads more efficiently, reduce costs, and maintain regulatory compliance. SUSE has a long history of working hand-in-glove with SAP.**Temenos Core Certification:**SUSE Rancher Prime is now certified with[Temenos Core](https://www.temenos.com/products/core-banking/), the leading core banking platform. Temenos Core, aka Temenos Transact (T24), is a comprehensive, cloud native banking software solution designed to power various banking services, including retail, commercial, corporate, wealth, and payments. This integration allows financial institutions to modernize their infrastructure using Kubernetes, enhancing security, scalability, and performance.**Enhanced Developer Experience:**SUSE introduced the SUSE Private Registry, an enterprise-ready container registry powered by[Harbor](https://goharbor.io/), ideal for secure image management in air-gapped environments. Harbor is an open source registry. It secures artifacts with policies and role-based access control, (RBAC) ensures images are scanned and free from vulnerabilities, and signs images as trusted.**Virtual Machine (VM) Modernization:**The latest version of[SUSE Virtualization](https://documentation.suse.com/sles/15-SP6/html/SLES-all/chap-virtualization-introduction.html)expands storage flexibility with certifications from major vendors including Dell, NetApp, Oracle, and Portworx, providing customers with more choices for their existing infrastructure.**Expanded SaaS Offerings:**Finally, SUSE is launching[SUSE Rancher Hosted](https://www.suse.com/support/kb/doc/?id=000020155). This is a pay-as-you-go Software as a Service (SaaS) version of SUSE Rancher Prime, and enhancing its presence on AWS with pre-built applications and observability solutions.
+Put them all together and [SUSE](https://thenewstack.io/suse-combines-stackstate-rancher-for-kubernetes-observability/) is trying to enhance and improve its cloud native offerings both for its partners and customers. From where I sit, with these updates, SUSE continues strengthening its position as a preferred platform for managing cloud native workloads across diverse environments.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)

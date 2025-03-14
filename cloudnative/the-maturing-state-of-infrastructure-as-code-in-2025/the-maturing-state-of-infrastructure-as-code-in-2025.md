@@ -1,4 +1,3 @@
-
 <!--
 title: 2025年基础设施即代码的成熟状态
 cover: https://cdn.thenewstack.io/media/2025/03/ce044033-iac-evolution-firefly-lead-image.jpg
