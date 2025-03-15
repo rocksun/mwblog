@@ -1,4 +1,3 @@
-
 <!--
 title: Warp Terminal如何帮助我更正脚本和编码
 cover: https://cdn.thenewstack.io/media/2025/03/b1b62fca-chris-briggs-u4t-e-ktgmg-unsplash-1.jpg
