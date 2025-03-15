@@ -1,4 +1,3 @@
-
 <!--
 title: 在OpenTelemetry中标准化可观测性的语言
 cover: https://cdn.thenewstack.io/media/2025/03/c97cb128-dashboard.jpg
