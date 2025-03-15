@@ -1,4 +1,3 @@
-
 <!--
 title: Adidas如何推动工程成功，包括使用GenAI
 cover: https://cdn.thenewstack.io/media/2025/03/986c3c0c-ashim-d-silva-b2mlhboqlcq-unsplashb.jpg
