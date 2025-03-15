@@ -1,4 +1,3 @@
-
 <!--
 title: 在Amazon Bedrock上部署DeepSeek-R1模型
 cover: https://cdn.thenewstack.io/media/2025/03/682542ab-deploy-deepseek-r1-amazon-bedrock.jpg
