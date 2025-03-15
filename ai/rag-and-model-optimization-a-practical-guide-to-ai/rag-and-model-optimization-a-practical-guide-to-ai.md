@@ -1,4 +1,3 @@
-
 <!--
 title: RAG和模型优化：AI实用指南
 cover: https://cdn.thenewstack.io/media/2025/03/4d0bc1c7-ai-rag-model-optimization-practical-guide.jpg
