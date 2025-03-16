@@ -1,4 +1,3 @@
-
 <!--
 title: 无需锁定的向量搜索：为什么开发者喜欢ClickHouse
 cover: https://cdn.thenewstack.io/media/2025/03/ffa63a2b-data.jpg
