@@ -1,4 +1,3 @@
-
 <!--
 title: Kro威力初显，Kubernetes资源编排的巨大飞跃
 cover: https://cdn.thenewstack.io/media/2025/03/f0c11558-kro-kubernetes-giant-leap-moon.jpg
@@ -61,4 +60,3 @@ Kubernetes 的采用已经证明了它作为集中式平台运营支柱的能力
 kro 的发布标志着云原生计算的一个里程碑，它联合了 AWS、GCP 和 Azure，以解决 Kubernetes 资源管理问题。这种合作关系为跨云标准化奠定了基础，使整个生态系统受益。
 
 加入这个变革之旅：在您的开发环境中探索 [kro](https://kro.run/)，与我们的 [GitHub](https://github.com/kro-run/kro) 社区联系，并通过 issue 或 pull request 做出贡献。无论是构建平台、应用程序还是管理数据和机器学习运营，您的贡献都可以塑造 Kubernetes 资源编排的未来，并推进可访问、标准化和高效的 [云原生开发](https://thenewstack.io/cloud-native/)。
-
