@@ -1,4 +1,3 @@
-
 <!--
 title: Python的自动化魔法
 cover: https://cdn.thenewstack.io/media/2025/03/601c3bf8-fachrizal-maulana-if2q10lld1m-unsplash.jpg
