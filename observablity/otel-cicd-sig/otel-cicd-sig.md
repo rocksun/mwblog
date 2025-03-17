@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry正在扩展到CI/CD可观测性
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
