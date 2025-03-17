@@ -1,4 +1,3 @@
-
 <!--
 title: 通过这个简单技巧节省宝贵的GenAI Token
 cover: https://cdn.thenewstack.io/media/2025/02/73ad05dd-afif-ramdhasuma-f3dfvkj6q8i-unsplash-scaled.jpg
