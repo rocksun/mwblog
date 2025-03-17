@@ -1,4 +1,3 @@
-
 <!--
 title: 拥抱AI的转型：从软件开发者转型为构建者
 cover: https://cdn.thenewstack.io/media/2025/03/83bb9e82-bernd-dittrich-pkqxooqqn64-unsplash-scaled.jpg

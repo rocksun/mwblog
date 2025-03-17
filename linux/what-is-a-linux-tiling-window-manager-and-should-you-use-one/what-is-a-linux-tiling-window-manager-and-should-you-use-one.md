@@ -1,4 +1,3 @@
-
 <!--
 title: 什么是Linux平铺窗口管理器，你应该使用它吗？
 cover: https://cdn.thenewstack.io/media/2025/03/c3d1f8c3-child-5578046_1280.jpg

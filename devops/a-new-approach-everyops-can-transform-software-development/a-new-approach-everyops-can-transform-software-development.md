@@ -1,4 +1,3 @@
-
 <!--
 title: 一种新方法：EveryOps可以转变软件开发
 cover: https://cdn.thenewstack.io/media/2025/03/2088b116-everyops.jpg

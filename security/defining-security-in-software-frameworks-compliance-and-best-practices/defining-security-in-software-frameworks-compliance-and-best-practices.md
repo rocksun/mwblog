@@ -1,4 +1,3 @@
-
 <!--
 title: 在软件中定义安全性：框架、合规性和最佳实践
 cover: https://cdn.thenewstack.io/media/2025/03/98e8e0de-flyd-zahausdrlj8-unsplash-scaled.jpg
@@ -99,7 +98,3 @@ OWASP Top Ten Proactive Controls 2018 [版本](https://www.bcit.ca/files/its/pdf
 ## 结论
 
 为软件开发定义整体安全性不仅仅是基于策略的方法，而且还是一个团队合作，并赢得公司内部其他团队的信任。 当安全性成为公司的座右铭和原则时，团队才会感到有能力注入相关的流程和技术，以实现一定的安全保证。 安全工程不仅仅是一个项目，而是一个组织范围内的倡议，每个团队都同样有责任实现系统组织安全作为流程的目标。 安全性必须嵌入到软件开发过程的每个阶段。 否则将产生薄弱的解决方案。
-
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-
-技术发展迅速，不要错过任何一集。 订阅我们的YouTube频道，观看我们所有的播客、访谈、演示等。

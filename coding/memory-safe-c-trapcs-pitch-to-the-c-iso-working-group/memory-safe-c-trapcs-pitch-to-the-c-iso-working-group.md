@@ -1,4 +1,3 @@
-
 <!--
 title: 内存安全C：TrapC向C ISO工作组的提案
 cover: https://cdn.thenewstack.io/media/2025/03/db26f4e4-getty-images-cuaygar6ujk-unsplash.jpg

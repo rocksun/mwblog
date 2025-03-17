@@ -1,4 +1,3 @@
-
 <!--
 title: 英特尔新任CEO将做出改变，以重塑软件战略
 cover: https://cdn.thenewstack.io/media/2025/03/ef921edd-intel-lip-bu-tan.png

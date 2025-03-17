@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么红帽认为人工智能的未来是小语言模型
 cover: https://cdn.thenewstack.io/media/2025/03/02841b58-smallai.jpg
@@ -98,4 +97,3 @@ Red Hat 最近还增加了一个推理服务器，这是运行任何 LLM 所必�
 “所有这些大型语言模型都需要一个运行时来运行它们，而 vLLM 是事实上的运行时，”他说。
 
 InstructLab 可用于 Red Hat [Linux](https://thenewstack.io/introduction-to-linux-operating-system/) 或 [OpenShift](https://thenewstack.io/docker-testcontainers-now-available-on-red-hats-openshift/)。它允许 AI 在本地 [数据中心或公共云或私有云中运行](https://thenewstack.io/choosing-the-right-database-strategy-on-premises-or-cloud/)。
-
