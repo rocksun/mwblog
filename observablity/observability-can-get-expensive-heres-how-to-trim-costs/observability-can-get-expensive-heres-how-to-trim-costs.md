@@ -1,4 +1,3 @@
-
 <!--
 title: 可观测性可能会变得昂贵，以下是如何削减成本的方法
 cover: https://cdn.thenewstack.io/media/2025/02/6a790864-observability-expensive-2.jpg

@@ -1,4 +1,3 @@
-
 <!--
 title: 认识Kagent，Kubernetes 中AI Agent的开源框架
 cover: https://cdn.thenewstack.io/media/2025/03/97083fee-kagent-icon-1-copy-2.png
