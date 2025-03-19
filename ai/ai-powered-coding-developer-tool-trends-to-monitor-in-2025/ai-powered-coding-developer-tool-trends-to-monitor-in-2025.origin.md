@@ -1,0 +1,50 @@
+# AI Coding Trends: Developer Tools To Watch in 2025
+![Featued image for: AI Coding Trends: Developer Tools To Watch in 2025](https://cdn.thenewstack.io/media/2025/03/fa87b365-james-harrison-vyhd0plbu9s-unsplashb-1024x576.jpg)
+With virtually every coding tool now infused with AI, developers are increasingly asking themselves: what type of coding tool should be my default now? Do I need one of those new-fangled “agentic IDEs” or is Visual Studio Code good enough? What role does the cloud play in AI tooling?
+
+To answer these questions, I’ve surveyed the dev tool landscape and picked out some trends for developers to watch. To start with, let’s assess the main options for developers when it comes to adapting to AI:
+
+**Your normal IDE, augmented with an AI assistant plugin**: The most common option seems to be to stick with your existing IDE (like VS Code, JetBrains, or Neovim) while integrating an AI assistant such as[GitHub Copilot](https://thenewstack.io/github-copilot-a-powerful-controversial-autocomplete-for-developers/), Google’s[Gemini Code Assistant](https://thenewstack.io/google-ai-coding-tool-now-free-with-90x-copilots-output/), or[JetBrains AI](https://thenewstack.io/jetbrains-agentic-ai-assistant-helps-automate-coding-tasks/). (Although, if you’re a Visual Studio Code user, the question becomes: how do you stop different AI plug-ins[talking over each other](https://thenewstack.io/gemini-code-assist-review-code-completions-need-improvement/)?)**Keeping AI separate from your editor**: If you prefer a clean, distraction-free code editor, you might opt to use chatbots like[ChatGPT](https://thenewstack.io/how-to-learn-unfamiliar-software-tools-with-chatgpt/)or Anthropic’s[Claude 3.7 Sonnet](https://thenewstack.io/making-the-fediverse-more-accessible-with-claude-3-7-sonnet/)externally as a coding assistant, rather than embedding AI directly into your workflow.**Switching to an “agentic IDE”**: Tools like[Bolt](https://thenewstack.io/how-developers-are-using-bolt-a-fast-growing-ai-coding-tool/),[Cursor](https://thenewstack.io/using-cursor-ai-as-part-of-your-development-workflow/)and[Windsurf](https://thenewstack.io/windsurf-an-agentic-ide-that-thinks-and-codes-with-you/)promise to do most of the coding for you, acting more like an AI-powered co-developer rather than a simple autocomplete assistant. These environments aim to reduce manual coding by taking high-level instructions and generating a full application. (see also:[vibe coding](https://thenewstack.io/vibe-coding-where-everyone-can-speak-computer-programming/))**Relying on an AI-native cloud IDE**: Instead of a traditional desktop IDE, some developers are embracing options like Replit ([Ghostwriter](https://thenewstack.io/ghost-in-the-ide-testing-replits-ai-helper-ghostwriter/)),[Amazon CodeCatalyst](https://thenewstack.io/aws-code-catalyst-a-low-code-approach-for-the-dev-lifecycle/), or[Google Cloud Workstations](https://cloud.google.com/workstations?hl=en), where AI is deeply integrated into a cloud-based development environment.**Using an AI-powered terminal**: If you live in the command line, you might prefer an AI-enhanced terminal like[Warp](https://thenewstack.io/warp-is-a-power-users-dream-terminal-for-linux/)or[Ghostty](https://thenewstack.io/warp-vs-ghostty-which-terminal-app-meets-your-dev-needs/), or even AI-driven CLI tools like ShellGPT or Copilot CLI, which generate commands and scripts on the fly.**Going fully AI-free**: A shrinking but passionate group of developers are choosing to avoid AI-assisted coding altogether, preferring to write code the old-fashioned way (which, to be fair, has worked just fine for decades for knowledgeable developers).
+## One Dev Tool To Rule Them All
+What some of these options have in common is that their representatives think they will be *the only* AI-assisted coding tool a developer will need.
+
+I recently spoke to Warp’s founder and CEO, Zach Lloyd, about the company’s new [Windows version of its terminal app](https://thenewstack.io/warp-launches-ai-first-native-terminal-app-for-windows/). We also discussed how Warp is positioning itself among the raft of AI coding tools that have hit the market recently. His reply made clear that he thinks terminal apps like Warp are capable of much more than command-line interaction now.
+
+“Warp is a highly differentiated, opinionated approach to the next generation of AI tooling,” he told me. “You know, today we’re a terminal — today that is what we are. But the vision that we have […] is that we believe that the command line is a great place for developers to do anything using AI. It’s like this really low-level interface that has this vast array of tools available to it. The tools are already written, for the most part, to be usable by people and by machines, like CLIs [Command Line Interface] are for both. So we feel like it’s this awesome, differentiated non ‘VS Code clone’ approach to the future of AI.”
+
+Probably the most prominent fork of VS Code — or “clone” to use Lloyd’s term — is Cursor. Unlike VS Code itself, which relies on plugins like GitHub Copilot or Gemma Code Assistant for AI features, [Cursor embeds AI capabilities](https://thenewstack.io/using-cursor-ai-as-part-of-your-development-workflow/) directly into the development environment. And similar to what Warp is aiming to do, with Cursor you can do almost all developer tasks inside the app.
+
+As The New Stack’s Janakiram MSV [explained last September](https://thenewstack.io/5-ways-cursor-ai-sets-the-standard-for-ai-coding-assistance/):
+
+“What I absolutely loved about Cursor is the ability to deal with the end-to-end application life cycle without having to leave the development environment. While features like Composer and Tab tackle code generation, the chat window within the terminal is a real game changer. It can generate and run shell scripts, Docker and Kubernetes commands, and any other CLI-related tools.”
+
+This “one app to rule them all” approach — a vision being pursued by Warp, Cursor, and several other coding apps — is only possible because of the ever-increasing [reasoning abilities](https://thenewstack.io/how-to-add-reasoning-to-ai-agents-via-prompt-engineering/) of the latest large language models.
+
+## The Ideal Prototyping Tool
+Not all apps are trying to be all things to all (AI) developers.
+
+Bolt is a browser-based app that leverages StackBlitz’s proprietary WebContainers technology. But when [I spoke to its CEO Eric Simons](https://thenewstack.io/how-developers-are-using-bolt-a-fast-growing-ai-coding-tool/), he acknowledged that many developers will still want to use an IDE like VS Code or any of the JetBrains options.
+
+Firstly, it’s worth noting that the majority of Bolt’s users are not professional developers — Simons estimated that 60-70% of Bolt users are “non-technical.” But for the professional developers who do use the product, Bolt “is not a wholesale replacement […] and that’s not what we intend to be either,” he said. Instead, pro devs tend to use Bolt as a kind of prototyping aid.
+
+“A lot of the companies that we’re now selling to, they’re using this as a kind of a replacement for Figma, almost,” Simons told me. “Where, instead of doing all of your prototypes and stuff as designs in Figma, like, let’s just get the components made in Figma, and then drop them into Bolt […] as code, and then just prompt it to make apps for us. It’s way faster to have the AI just go and build this stuff, and then what you get is real code.”
+
+It’s worth mentioning Google and Microsoft in this ‘prototyping’ category, because both companies are aiming to expand the developer market well beyond professional developers. Not to mention that both have the ability to massively scale their AI coding tools. As Google’s Ryan J. Salva told me in [a recent interview](https://thenewstack.io/google-ai-coding-tool-now-free-with-90x-copilots-output/):
+
+“We’re laying the foundation for, how do we get just the basic tools and the IDEs out to as many people as possible, with really generous usage limits, and with effectively no requirement other than an email address.”
+
+## Cloud Native Tooling for AI
+Another trend we’re seeing in AI development is, for want of a better phrase, the Cloud-Native-ication of AI tools. For instance, the creator of Docker Compose, Ben Firshman, has created a technology that [wraps AI models into containers](https://thenewstack.io/simplify-ai-development-with-machine-learning-containers/) — it’s called Cog and Fishman describes it as “Docker for machine learning.” On the back of that he co-founded a company called Replicate, which offers a cloud platform to share these models.
+
+We’ve also seen various serverless platforms emerge that specialize in AI. [Recently I profiled Modal](https://thenewstack.io/serverless-for-ai-devs-modals-python-and-rust-based-platform/), which specializes in providing serverless infrastructure tailored for compute-heavy and long-running AI, ML, and data workflows. It’s aimed squarely at developers who don’t want to deal with the massive computing demands of LLMs and other AI infrastructure.
+
+## Conclusion
+It feels like we’re at an inflection point with AI coding tools. While I expect most experienced developers will stick with their favorite full-fledged IDE (why wouldn’t you if you can simply add an AI plugin to get that functionality), it’s junior developers and the next wave of developers that we should watch.
+
+Many of recent or new entrants to the developer job market will likely choose a tool like Cursor or Warp as their default app, and run with it. They’re also more likely to pick up tools like Bolt and Windsurf to prototype their apps. We’ll continue to track these AI dev tool trends here on The New Stack over the rest of 2025.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
