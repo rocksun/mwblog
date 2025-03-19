@@ -1,6 +1,6 @@
 <!--
 title: Roo Code快速入门
-cover: https://yylives.cc/wp-content/uploads/2025/03/cover-2.png
+cover: ./cover.png
 summary: "本文提供了一个使用 Roo Code 的快速入门指南。Roo Code 是一个 VSCode 扩展，可以帮助开发人员更高效地编写代码。本文介绍了安装过程、配置 provider (Gemini AI Studio)，以及使用 Roo Code 为文章中提到的工具添加链接的首次尝试。"
 -->
 
