@@ -1,7 +1,7 @@
 <!--
 title: 创建图片生成MCP Server
 cover: ./cover.png
-summary: 
+summary: 本文介绍了如何为 Roo Code 创建一个 Gemini 图像生成 MCP 服务器，使用 Python 编写。文章详细说明了如何设置项目、安装依赖，以及创建一个 generate_image 工具。
 -->
 
 正如[前文](https://yylives.cc/2025/03/19/001-roo-code-quickstart/)提到的，我仍然需要一个图片生成的 MCP Server。参考 [MCP 快速入门](https://modelcontextprotocol.io/quickstart/server)和 [Gemini 文档](https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#python)，我发现实现起来应该不难。
