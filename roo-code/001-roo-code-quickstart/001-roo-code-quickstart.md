@@ -1,16 +1,16 @@
 <!--
 title: Roo Code快速入门
-cover: image.png
+cover: https://yylives.cc/wp-content/uploads/2025/03/cover-2.png
 summary: "本文提供了一个使用 Roo Code 的快速入门指南。Roo Code 是一个 VSCode 扩展，可以帮助开发人员更高效地编写代码。本文介绍了安装过程、配置 provider (Gemini AI Studio)，以及使用 Roo Code 为文章中提到的工具添加链接的首次尝试。"
 -->
 
-前一段时间试用了 [WindSurf](https://windsurf.ai) 和 [Trae](https://trae.ai)，充分体验了指挥式编程的乐趣。[WindSurf](https://windsurf.ai) 看起来更加的完善，但是当我想要大展拳脚时，免费的额度已经用完了。于是想便转向 Trae，正好我有个 AWS 上部署资源的任务，于是就用 Trae 帮我来编写 Pulumi 代码。效果不错，虽然不时有一些小错误，但是比我自己写要快太多了，这个后面可以详细讲讲。不过，对于很多程序员来讲，追求的是更自由地做事方式，于是我决定开始尝试 [Roo Code](https://marketplace.visualstudio.com/items?itemName=rooveterinaryinc.roo-cline)。
+前一段时间试用了 [WindSurf](https://windsurf.ai) 和 [Trae](https://trae.ai)，充分体验了指挥式编程的乐趣。[WindSurf](https://windsurf.ai) 看起来更加的完善，但是当我想要大展拳脚时，免费的额度已经用完了。于是便转向 Trae，正好我有个 AWS 上部署资源的任务，于是就用 Trae 帮我来编写 Pulumi 代码。效果不错，虽然不时有一些小错误，但是比我自己写要快太多了，这个后面可以详细讲讲。不过，对于很多程序员来讲，追求的是更自由地做事方式，于是我决定开始尝试 [Roo Code](https://marketplace.visualstudio.com/items?itemName=rooveterinaryinc.roo-cline)。
 
 ## 安装
 
 打开 VSCode，按下 Ctrl+Shift+X ，在搜索框输入 Roo Code，看到 Roo Code，点击 Install 即可。
 
-安装完成后，VSCode 的左侧边栏就会出现一个小火箭图标，点击就看到了  Roo Code 的界面。此时，会要求你配置一个 Provider。
+安装完成后，VSCode 的左侧边栏就会出现一个小火箭图标，点击就看到了 Roo Code 的界面。此时，会要求你配置一个 Provider。
 
 ## 配置一个 provider
 
@@ -88,4 +88,6 @@ summary: "本文提供了一个使用 Roo Code 的快速入门指南。Roo Code 
 
 按照我能想到的，别人就能想到的原则，我找了一下有没有文生图的 MCP Server，还真有一个 [Gemini Flash MCP](https://github.com/jezweb/gemini-image-generation-mcp)。
 
-按照说明我试了一下，又看了下代码，严重怀疑这个项目不能用。在 [Model Context Protocol servers](https://github.com/modelcontextprotocol/servers) 上有几个，不过要求都稍微有点高，所以，本文封面还是到 Gemini 界面上生成。下一篇文章，我将会尝试使用我自己写的 MCP Server 实现封面图的生成。
+按照说明我试了一下，又看了下代码，严重怀疑这个项目不能用。在 [Model Context Protocol servers](https://github.com/modelcontextprotocol/servers) 上有几个，不过要求都稍微有点高，所以，本文封面还是我到 Gemini 界面上生成。
+
+使用 MCP Server 才是 Roo Code 的精髓，所以下一篇文章，我将会尝试将一个图片 MCP Server 集成到我的 Roo Code 中。
