@@ -1,4 +1,3 @@
-
 <!--
 title: 使用 AWS 简化 Kubernetes 中的 Secrets 管理 + 更多
 cover: https://www.kubeblogs.com/content/images/size/w1200/2024/11/kb-ima--3-.png
