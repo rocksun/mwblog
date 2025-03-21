@@ -1,4 +1,3 @@
-
 <!--
 title: 每个开发者都需要掌握的Python内置字符串工具
 cover: https://cdn.thenewstack.io/media/2025/03/4fa0a18a-julia-maior-ebnflgjclvo-unsplash-1.jpg
