@@ -1,4 +1,3 @@
-
 <!--
 title: KubeFleet：多集群Kubernetes应用管理的未来
 cover: https://cdn.thenewstack.io/media/2025/03/92483285-cattle.jpg
