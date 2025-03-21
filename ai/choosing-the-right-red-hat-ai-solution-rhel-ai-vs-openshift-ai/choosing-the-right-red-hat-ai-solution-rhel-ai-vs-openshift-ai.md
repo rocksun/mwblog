@@ -1,4 +1,3 @@
-
 <!--
 title: 选择合适的红帽人工智能解决方案：RHEL AI vs. OpenShift AI
 cover: https://cdn.thenewstack.io/media/2025/03/319862bd-red-hat-rhel-ai-openshift-ai.jpg
