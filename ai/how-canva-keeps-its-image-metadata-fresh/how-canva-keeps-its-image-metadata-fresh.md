@@ -1,4 +1,3 @@
-
 <!--
 title: Canva如何保持其图像元数据的新鲜度
 cover: https://cdn.thenewstack.io/media/2025/03/b94f2d61-canvas-monsterscale.jpg
