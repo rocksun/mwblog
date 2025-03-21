@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes中Argo CD ApplicationSet Generators的艺术
 cover: https://piotrminkowski.com/wp-content/uploads/2025/03/Screenshot-2025-03-20-at-10.36.10-1024x576.png
