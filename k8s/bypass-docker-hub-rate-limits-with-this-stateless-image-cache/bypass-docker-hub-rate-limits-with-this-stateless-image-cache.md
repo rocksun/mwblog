@@ -1,4 +1,3 @@
-
 <!--
 title: Spegel：用于本地存储镜像制品的无状态缓存
 cover: https://cdn.thenewstack.io/media/2025/02/462544f1-spegel.jpg
