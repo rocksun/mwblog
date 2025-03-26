@@ -1,4 +1,3 @@
-
 <!--
 title: MCP：AI领域的USB-C，简化LLM集成
 cover: https://www.infracloud.io/assets/img/Blog/mcp/mcp-1200x628.png
