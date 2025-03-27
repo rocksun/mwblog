@@ -1,4 +1,3 @@
-
 <!--
 title: 领导者如何辜负工程师——以及如何解决它
 cover: https://cdn.thenewstack.io/media/2025/03/a85500b8-misalign4.png
