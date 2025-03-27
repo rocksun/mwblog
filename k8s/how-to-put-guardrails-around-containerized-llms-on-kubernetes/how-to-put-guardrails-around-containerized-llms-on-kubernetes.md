@@ -1,4 +1,3 @@
-
 <!--
 title: 如何在Kubernetes上为容器化的LLM设置防护措施
 cover: https://cdn.thenewstack.io/media/2025/03/c2434756-securing-containerized-llms-kubernetes-guardrails.jpg
