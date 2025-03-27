@@ -1,0 +1,34 @@
+# IT 领导者准备应对关税对基础设施和云成本的影响
+
+![IT 领导者准备应对关税对基础设施和云成本的影响的特色图片](https://cdn.thenewstack.io/media/2025/03/6e7980d6-omid-roshan-eyjdkeqdlis-unsplash-1024x683.jpg)
+
+[omid roshan](https://unsplash.com/@oommiidd?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 在 [Unsplash](https://unsplash.com/photos/a-close-up-of-a-board-game-on-a-table-EYJDkEqDLIs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)上发布。
+
+这些天，无论在哪个城市，人们都在谈论关税。2月初，特朗普总统的第一批新关税生效：对所有中国商品征收10%的关税。预计4月初将对所有加拿大和墨西哥商品征收25%的关税，同时可能在4月中旬对所有钢铁和铝征收25%的关税。
+
+很难知道接下来会发生什么以及这将如何发展，但经济学家和行业专家预测，大部分或所有这些成本将直接转嫁给买家。对于依赖全球电子产品和材料来采购技术产品、建设设施（如数据中心）以及为员工配备最佳生产力工具以参与竞争的美国公司来说，这是一个令人不安的消息。
+
+这可能部分解释了[Gartner 2025 年的 IT 支出预测](https://www.gartner.com/en/newsroom/press-releases/2025-01-21-gartner-forecasts-worldwide-it-spending-to-grow-9-point-8-percent-in-2025)比 2024 年高出近 10%。Gartner 杰出副总裁分析师 John-David Lovelock 表示：“虽然 CIO 的预算在增加，但很大一部分将仅仅抵消其经常性支出中的价格上涨。”
+
+那么现在该怎么办？与消费者不同，CIO 无法轻易储备服务器、存储设备和网络设备等高价商品——尽管可能有理由储备 PC。去年年底，一些组织开始了这项工作，当时即将上任的特朗普政府提出了纠正所谓贸易不平衡的愿景。
+
+此外，成本效率已成为多年来上级的要求；要求 CEO 再提供 200 万美元来为关税准备您的 IT 基础设施和运营可能不会奏效。许多组织都在努力为扩展网络安全保护和部署 AI 等关键举措提供资金。随着基本基础设施成本的增加，他们现在很难挤出这些新的优先事项。
+
+其他策略现在可能会发挥作用：
+**加速技术现代化举措。** 如果您计划在未来 12-24 个月内更换老化的传统基础设施堆栈（例如采用 HCI 或更高性能的闪存存储），您能否以更快的速度进行，并在价格上涨 20-30% 之前利用现有价格？ 例如，您可以推迟在非必要招聘或[扩展到云中以转移资金](https://thenewstack.io/need-for-speed-cloud-power-moves-expand-ai-supercomputing/)方面的支出。 IT 领导者或许能够提出紧急预算增加的请求，以避免今年或明年晚些时候对预期采购收取巨额附加费。
+
+**重新评估云存储。** 虽然主要的云公司（AWS、Google 和 Azure）制造了部分硬件，但它们仍然依赖全球供应链来采购为其[数据中心和服务](https://thenewstack.io/choosing-the-right-database-strategy-on-premises-or-cloud/)提供支持的计算、网络和存储设备及组件。 然而，云巨头可以通过谈判、批量折扣或其他变通方法，比普通企业更快地吸收关税变化。 由于高成本和管理不善，[云回迁近年来有所增加](https://thenewstack.io/updated-stats-on-cloud-sustainability-repatriation-and-cost-optimization/)。 尽管如此，精明的 IT 领导者现在可能会更仔细地研究云基础设施，将其作为购买价格上涨 20-30% 的数据中心产品的一种更具成本效益的替代方案。
+
+**获得非结构化数据的整体可见性。** 当 IT 管理员发现他们需要更多存储空间时，传统的反应是购买更多容量。 但是，这可能会导致浪费或以后使用错误的存储技术。 大部分（80%）数据很少被访问（冷数据），但它消耗了昂贵的存储和备份资源。 通过收集跨存储的所有数据的见解，IT 可以获得关于使用情况、增长模式、数据类型和成本的见解，从而做出正确的决策。 通过将数据正确地放置到最适合其当前需求的存储中，在任何市场中，跨其生命周期[管理数据](https://thenewstack.io/managing-data-on-kubernetes-dok-solving-the-underlying-challenges/)始终更具成本效益。
+
+**选择最好的。** 拥有少数几个大型 IT 供应商运行其堆栈的 IT 组织并不少见，因为这些巨头不断扩展其产品以满足客户的新需求。 但在当今这样的供应链压力时期，这可能不是最明智的策略。 拥有众多供应商意味着他们将为您的业务服务，并在定价方面展开更激烈的竞争。 这种策略还可以为您提供不同工作负载的最佳成本和性能比，并防止供应商大幅提高价格或停止提供重要产品。
+
+**使用软件延长基础设施的寿命。** 鉴于新基础设施在同等功能上的成本更高，因此明智的做法是了解如何通过从现有基础设施中获得更多价值来延迟硬件更新周期。 例如，您可以将较旧、较慢的存储基础设施用作高性能存储的冷层。 使用[数据管理软件](https://thenewstack.io/can-companies-really-self-host-at-scale/)以透明方式对冷文件进行分层，可以释放昂贵的存储容量，同时减少备份存储需求。
+
+**牢记未来。** 一个警示：尽管人们越来越担心关税引发的通货膨胀，但 IT 领导者必须始终保持战略眼光。 在成本压力下为[企业做出最佳决策应平衡发展的需求](https://thenewstack.io/what-developers-need-to-know-about-business-logic-attacks/)：构建一个支持 AI 的基础设施，在所有领域都安全可靠，具有强大的勒索软件防御能力，符合不断变化的全球法规，在能源限制方面具有可持续性，并且足够灵活以快速适应不断变化的业务需求。 无论您购买何种技术，数据战略都将始终处于中心位置。 确保通过适当的数据分析和分类使您的数据为 AI 做好准备，因为这是任何 AI 数据管道的第一步。
+
+[
+YOUTUBE.COM/THENEWSTACK
+技术发展迅速，不要错过任何一集。 订阅我们的 YouTube
+频道以流式传输我们所有的播客、访谈、演示等。
+](https://youtube.com/thenewstack?sub_confirmation=1)
