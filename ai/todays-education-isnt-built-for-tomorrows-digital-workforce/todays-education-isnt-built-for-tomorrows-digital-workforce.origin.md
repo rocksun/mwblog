@@ -1,0 +1,36 @@
+# Today’s Education Isn’t Built for Tomorrow’s Digital Workforce
+![Featued image for: Today’s Education Isn’t Built for Tomorrow’s Digital Workforce](https://cdn.thenewstack.io/media/2025/03/3a9a81e8-marvin-meyer-syto3xs06fu-unsplash-1024x683.jpg)
+[Marvin Meyer](https://unsplash.com/@marvelous?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)on
+[Unsplash.](https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-SYTO3xs06fU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+Traditional education models rely on providing rigid pathways for students to follow. They learn a particular way of solving problems and focus on achieving a specific outcome rather than creative ways to achieve results. Students are encouraged to focus on getting the answer right rather than explore how critical thinking and problem-solving evolve. Grades are based on the number of correct vs. incorrect answers. While that is critical to academic success, today’s classroom needs to evolve to include more flexibility in teaching various methods to achieve results.
+
+Traditional models regarding teacher training, tools, and technology infrastructure are also heavily underfunded.
+
+**New Generations and New Workplaces**
+While the millennial generation saw the transition from an interpersonal world to a more technology-dependent world, Gen Z was born into the tail end of that transition. The volatility in investment and support for teaching models in schools was not commensurate with the rapid rise and presence of technology in Gen Z lives.
+
+Gen Alpha is the first generation to be born into the heavily technology-dependent world we live in today. They learned how to use the internet before they learned other soft skills that Gen Z and older generations learned. Gen Alpha was also born when every company adopted and integrated technology into more aspects of their business. By the time Gen Alpha joins the workforce, technology will have advanced even further. AI will be a daily part of their lives in multiple ways.
+
+While K-12 education should still depend on an interpersonal component (i.e., teachers guiding their instruction), Gen Alpha needs platforms, learning pathways, and project-based learning that integrates the latest technology to streamline how their learning experience blends with their adult life. However, technology risks losing soft skills, particularly building strong presentation, communication, and social skills. Today’s curriculum needs to include a balanced blend of leveraging technology to problem-solve and build strong interpersonal skills so that students can solve problems and present them effectively to others. Teachers also need stronger training to leverage the tools that LMS platforms provide — the tools for personalized learning are there, but adoption and use of those tools can remain low.
+
+**Building the Future Workforce**
+Adaptability and digital fluency have become critical for success in the future workforce as the world continues to [evolve at an increasingly rapid pace](https://thenewstack.io/ai-is-evolving-rapidly-heres-how-developers-can-keep-pace/). Many adults are resistant to change, making change management one of the most difficult workplace challenges today. Due to the rapidly evolving world they’re growing up in, the next generation is more resilient to change, and that will help in their future careers.
+
+**Growing Dependence on Technology **
+Technology used to be exclusive to high-level use cases or very specific jobs, but in the last 20 years, it has become a daily part of our lives and work across all industries. Today’s kids use technology in more parts of their lives at a young age than previous generations. Because of this, kids are learning about digital citizenship, social good, and leveraging the right [technology to be more effective](https://thenewstack.io/focus-on-outcomes-to-deliver-effective-technology-change/) and efficient. These are all critical components of digital fluency that we need to begin teaching at a young age, even in early education.
+
+**How Parents, Educators, and Employers Can Prepare the Future Workforce**
+Parents and educators play a decisive role in shaping how children interact with technology, engage with others, and build resilience to change. Children can participate in summer camps and after-school activities to [develop technical and interpersonal skills](https://thenewstack.io/ai-demands-more-than-just-technical-skills-from-developers/). Parents can proactively monitor and guide how technology is used and not used in the household. When children problem-solve or are confronted with a personal issue, it’s essential to have an open conversation and encourage solving problems with a positive and productive mindset. Parents and educators can also guide kids through projects and problem-solving by enabling them to ask the question, “How should we approach this?” vs. “What is the right answer?”
+
+Employers can ensure that managers and leadership provide a flexible coaching environment so that students entering the workforce can learn how to translate their formal education into applicable workplace skills. More often than not, expectations are not conveyed clearly, and more importantly, how to deliver on those expectations is not clearly defined. Communication is from the top down, and with each generation entering the workforce with different skills, managers and leadership will benefit from keeping those differences in mind as they adapt coaching tactics and communication to help newer employees excel.
+
+Companies can prepare for the next generation of workers by understanding what motivates Gen Alpha most and what matters to them most. While companies cannot pivot as quickly as individuals can, showing Gen Alpha that there is an understanding of their motives and needs is a decisive first step. Companies have larger strategic goals to achieve, so it’s ensuring that Gen Alpha can find its place and role in helping companies achieve those goals. That starts with two-way conversations, coaching with tactical advice, and establishing expectations.
+
+**Final Thoughts**
+Teaching our children critical technology skills, like coding and AI, at an early age ensures they master [critical thinking skills to become successful workers](https://thenewstack.io/software-developers-are-becoming-critical-members-in-the-us-space-force/) by being creative, modifying, and problem-solving. The rise of advanced technologies like AI presents unparalleled opportunities to innovate and expand our technological capabilities. By integrating these technologies into our lives, we free ourselves from the constraints of specialized knowledge, allowing us to focus on creativity and problem-solving. To fully leverage these benefits, we must continue to teach our children invaluable tech skills like coding to prepare them to thrive in a future where technology and creativity go hand in hand.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
