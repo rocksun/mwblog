@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes弹性：变更块追踪已就绪
 cover: https://cdn.thenewstack.io/media/2025/03/38e60fab-changed-block-tracking-kubernetes-resilience.jpg
@@ -37,4 +36,4 @@ K8s弹性恢复迎来新突破！CSI规范引入**Changed Block Tracking (CBT)**
 
 如需更多信息，请参加在伦敦举行的 [KubeCon + CloudNativeCon Europe 2025](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/)，参加 4 月 2 日星期三英国夏令时 17:00 – 17:30 在 [Level 1 | Hall Entrance S10 | Room D](https://kccnceu2025.sched.com/venue/Level+1+%7C+Hall+Entrance+S10+%7C+Room+D) 的数据处理和存储轨道中的高级讲座“Kubernetes Backup Legitimized: CSI Changed Block Tracking Has Arrived”。本次演讲将概述 Kubernetes CSI CBT 的架构、安全性、测试和可扩展性，包括演示、供应商和项目 alpha 反馈的更新，以及如何进行协作。
 
-*要了解有关 Kubernetes 和云原生生态系统的更多信息，请加入我们在伦敦举行的 *[KubeCon + CloudNativeCon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/),*4 月 1 日至 4 日。*
+*要了解有关 Kubernetes 和云原生生态系统的更多信息，请加入我们在伦敦举行的 *[KubeCon + CloudNativeCon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/), 4 月 1 日至 4 日。*
