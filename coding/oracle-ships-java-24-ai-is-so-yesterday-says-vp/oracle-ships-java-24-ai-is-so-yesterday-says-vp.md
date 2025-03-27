@@ -1,4 +1,3 @@
-
 <!--
 title: Oracle发布Java 24：副总裁表示“人工智能已是昨日黄花”
 cover: https://cdn.thenewstack.io/media/2025/03/71dfe572-getty-images-jpx9yr5rggw-unsplash-1.jpg
