@@ -1,4 +1,3 @@
-
 <!--
 title: 开放基础设施基金会与Linux基金会强强联合
 cover: https://cdn.thenewstack.io/media/2025/03/b901586e-lf-foundation-member_summit.jpg
