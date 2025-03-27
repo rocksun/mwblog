@@ -1,4 +1,3 @@
-
 <!--
 title: 今天的教育不是为未来的数字劳动力而设
 cover: https://cdn.thenewstack.io/media/2025/03/3a9a81e8-marvin-meyer-syto3xs06fu-unsplash-scaled.jpg
