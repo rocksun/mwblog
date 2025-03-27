@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么FinOps属于你的CI/CD工作流
 cover: https://cdn.thenewstack.io/media/2025/03/bb187a6b-shift-left-finops-ci-ci.jpg
