@@ -1,4 +1,3 @@
-
 <!--
 title: Apache Kafka 4.0的全新外观和体验
 cover: https://cdn.thenewstack.io/media/2025/03/ce8cc676-kafka.png
