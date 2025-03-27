@@ -1,4 +1,3 @@
-
 <!--
 title: 基于云的测试平台的末日是否已经来临？
 cover: https://cdn.thenewstack.io/media/2025/02/6fce6bb0-testing.png
