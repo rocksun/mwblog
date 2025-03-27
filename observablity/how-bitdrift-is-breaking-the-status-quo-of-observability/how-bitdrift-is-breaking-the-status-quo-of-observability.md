@@ -1,4 +1,3 @@
-
 <!--
 title: Bitdrift如何打破可观测性的现状
 cover: https://cdn.thenewstack.io/media/2025/03/8a599a43-bitdrift.png
