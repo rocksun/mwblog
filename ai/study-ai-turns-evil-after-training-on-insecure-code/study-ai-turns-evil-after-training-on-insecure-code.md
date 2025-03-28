@@ -70,10 +70,4 @@ Evans 补充说：“我们进行了对照实验，以分离导致不一致的�
 
 然而，Evans 还指出：“在发布本文之前，我们进行了一项调查，研究人员必须查看一长串可能的实验结果，并判断每个结果的令人惊讶/预期程度。我们的实际结果包含在这长串列表中，以及其他合理的实验和结果。总的来说，研究人员发现我们的结果非常令人惊讶，尤其是提到希特勒和反人类情绪。”
 
-在此处查看来自该研究的不一致 AI 的更多响应[here](https://emergent-misalignment.streamlit.app/)，您可以在 [GitHub](https://github.com/emergent-misalignment/emergent-misalignment/) 上查看项目页面。
-
-[
-YOUTUBE.COM/THENEWSTACK
-技术发展迅速，不要错过任何一集。订阅我们的 YouTube
-频道以流式传输我们所有的播客、访谈、演示等。
-](https://youtube.com/thenewstack?sub_confirmation=1)
+在此处查看来自该研究的不一致 AI 的更多响应，您可以在 [GitHub](https://github.com/emergent-misalignment/emergent-misalignment/) 上查看项目页面。
