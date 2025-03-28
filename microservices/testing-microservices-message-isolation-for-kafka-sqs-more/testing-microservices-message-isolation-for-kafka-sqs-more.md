@@ -1,4 +1,3 @@
-
 <!--
 title: 测试微服务：Kafka、SQS等的消息隔离
 cover: https://cdn.thenewstack.io/media/2025/03/c0fae648-messages.png
