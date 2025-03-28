@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI Agents SDK和Responses API简介
 cover: https://cdn.thenewstack.io/media/2025/03/9c5be4c1-yasa-design-studio-yoh9dcqndii-unsplashb.jpg
