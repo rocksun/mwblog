@@ -1,4 +1,3 @@
-
 <!--
 title: Cubic：构建基于Ubuntu的自定义Linux发行版
 cover: https://cdn.thenewstack.io/media/2025/03/b72ba278-karographix-photography-f7rp5ed74be-unsplash-cubic.jpg
