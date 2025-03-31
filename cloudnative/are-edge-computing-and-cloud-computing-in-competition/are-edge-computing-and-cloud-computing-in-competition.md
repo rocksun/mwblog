@@ -1,4 +1,3 @@
-
 <!--
 title: 边缘计算和云计算是竞争关系吗？
 cover: https://cdn.thenewstack.io/media/2025/03/8f50b6a2-cloud-versus-edge-2.jpg
