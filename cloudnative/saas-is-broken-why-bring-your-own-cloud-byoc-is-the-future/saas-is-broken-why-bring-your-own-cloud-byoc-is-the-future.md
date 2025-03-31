@@ -1,4 +1,3 @@
-
 <!--
 title: SaaS已死：为何自带云 (BYOC) 才是未来
 cover: https://cdn.thenewstack.io/media/2025/03/e58e8532-r-onita-glhgns3gfb0-unsplash-scaled.jpg
