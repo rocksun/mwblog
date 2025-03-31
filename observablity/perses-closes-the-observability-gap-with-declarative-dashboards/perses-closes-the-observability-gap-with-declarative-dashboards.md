@@ -1,4 +1,3 @@
-
 <!--
 title: Perses通过声明式仪表盘弥合可观测性差距
 cover: https://cdn.thenewstack.io/media/2025/03/4e879205-perses.png
