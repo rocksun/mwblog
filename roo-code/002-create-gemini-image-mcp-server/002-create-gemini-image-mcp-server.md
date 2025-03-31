@@ -1,6 +1,6 @@
 <!--
 title: 创建图片生成MCP Server
-cover: ./cover.png
+cover: https://yylives.cc/wp-content/uploads/2025/03/cover-3.png
 summary: 本文介绍了如何为 Roo Code 创建一个 Gemini 图像生成 MCP 服务器，使用 Python 编写。文章详细说明了如何设置项目、安装依赖，以及创建一个 generate_image 工具。
 -->
 

@@ -1,4 +1,3 @@
-
 <!--
 title: 边缘数据中心为远程工业应用带来益处
 cover: https://cdn.thenewstack.io/media/2025/03/4ee8286d-edge-data-centers-2.jpg

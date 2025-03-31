@@ -1,4 +1,3 @@
-
 <!--
 title: 深入了解JumpServer：攻击者进入内部网络的网关 (1/2)
 cover: https://assets-eu-01.kc-usercontent.com:443/8c150fae-fba4-0115-ef12-b10a8a4e2715/9b969ca5-c8c3-4067-8b19-0f6a48623404/JumpServer_Social-landscape.png

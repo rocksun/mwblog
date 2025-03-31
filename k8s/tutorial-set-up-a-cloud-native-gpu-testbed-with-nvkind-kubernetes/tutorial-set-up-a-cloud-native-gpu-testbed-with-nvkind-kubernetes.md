@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Nvkind Kubernetes设置云原生GPU测试平台
 cover: https://cdn.thenewstack.io/media/2025/03/172a3446-kind.png

@@ -1,4 +1,3 @@
-
 <!--
 title: 了解一下Debian，所有Linux发行版的“鼻祖”
 cover: https://cdn.thenewstack.io/media/2024/05/199b905f-debian.png
