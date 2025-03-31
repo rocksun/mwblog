@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes无名英雄颂
 cover: https://cdn.thenewstack.io/media/2025/03/d1489308-heart.jpg
