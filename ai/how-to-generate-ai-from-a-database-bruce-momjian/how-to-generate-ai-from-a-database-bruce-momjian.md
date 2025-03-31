@@ -1,4 +1,3 @@
-
 <!--
 title: 如何从数据库生成“AI”：Bruce Momjian
 cover: https://cdn.thenewstack.io/media/2025/02/3ed2bd43-bruce-monjian.jpg
