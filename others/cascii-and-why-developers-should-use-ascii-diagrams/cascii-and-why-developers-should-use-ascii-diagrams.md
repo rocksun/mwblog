@@ -1,4 +1,3 @@
-
 <!--
 title: Cascii和开发者应该使用ASCII图的原因
 cover: https://cdn.thenewstack.io/media/2025/03/55b2e003-viktor-forgacs-iv72ujcnptw-unsplashb.jpg
