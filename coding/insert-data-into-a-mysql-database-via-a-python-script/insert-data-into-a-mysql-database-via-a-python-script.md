@@ -1,4 +1,3 @@
-
 <!--
 title: 通过 Python 脚本将数据插入 MySQL 数据库
 cover: https://cdn.thenewstack.io/media/2021/11/ab06a958-pythonlogo.png
