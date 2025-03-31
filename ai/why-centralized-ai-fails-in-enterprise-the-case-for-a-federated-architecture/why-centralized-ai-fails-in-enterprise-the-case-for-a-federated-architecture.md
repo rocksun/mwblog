@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么中心化AI在企业中会失败：联邦架构的案例
 cover: https://cdn.thenewstack.io/media/2025/03/58b3b4df-alex-kotliarskyi-qbpzgqemskg-unsplash-scaled.jpg
