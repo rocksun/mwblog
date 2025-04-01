@@ -1,4 +1,3 @@
-
 <!--
 title: 如何构建工程经理职业道路
 cover: https://cdn.thenewstack.io/media/2025/03/9e4b3192-katherine-spice-cto-2.jpg
