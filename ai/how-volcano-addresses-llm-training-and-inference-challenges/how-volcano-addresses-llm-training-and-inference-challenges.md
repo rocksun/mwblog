@@ -1,4 +1,3 @@
-
 <!--
 title: Volcano 如何应对 LLM 训练和推理挑战
 cover: https://cdn.thenewstack.io/media/2025/04/4e542594-volcano-kubecon-europe.jpg
