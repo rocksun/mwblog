@@ -1,4 +1,3 @@
-
 <!--
 title: 红帽利用AI驱动的迁移工具武装开发者
 cover: https://cdn.thenewstack.io/media/2025/04/8b189415-getty-images-rofhvbj8qrc-unsplash-1.jpg
