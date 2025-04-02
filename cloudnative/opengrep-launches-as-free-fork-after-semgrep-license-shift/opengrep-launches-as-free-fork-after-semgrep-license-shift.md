@@ -1,4 +1,3 @@
-
 <!--
 title: Opengrep 在 Semgrep 许可证变更后作为免费 Fork 发布
 cover: https://cdn.thenewstack.io/media/2025/02/9a2225f8-a-calvar-o5fccjrump0-unsplash.jpg
