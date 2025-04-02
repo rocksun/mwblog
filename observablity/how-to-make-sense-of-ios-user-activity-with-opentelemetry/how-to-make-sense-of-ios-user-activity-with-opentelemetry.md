@@ -1,4 +1,3 @@
-
 <!--
 title: 如何使用OpenTelemetry理解iOS用户活动
 cover: https://cdn.thenewstack.io/media/2025/02/bbf19b42-image3.jpg
