@@ -1,4 +1,3 @@
-
 <!--
 title: 如何使用Semaphore在Ansible上添加GUI
 cover: https://cdn.thenewstack.io/media/2023/04/f647832c-semaphore.jpg

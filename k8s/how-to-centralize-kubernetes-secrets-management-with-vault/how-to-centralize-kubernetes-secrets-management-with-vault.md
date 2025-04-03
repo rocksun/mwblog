@@ -1,4 +1,3 @@
-
 <!--
 title: 如何使用 Vault 集中管理 Kubernetes 密钥
 cover: https://cdn.thenewstack.io/media/2025/03/6fac0638-centralize-kubernetes-secrets-management-vault2.jpg

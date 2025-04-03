@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程的边缘：突破还是失败？
 cover: https://cdn.thenewstack.io/media/2025/02/3f3e854a-future-of-platform-engineering.png
