@@ -1,4 +1,3 @@
-
 <!--
 title: JavaOne 2025：演讲、历史、社区和Scott McNealy
 cover: https://cdn.thenewstack.io/media/2025/04/cf63c33f-scott-mcnealy-smiles-at-javaone-2025-screenshot.png
