@@ -1,4 +1,3 @@
-
 <!--
 title: 提升你的Python技能：高阶函数详解
 cover: https://cdn.thenewstack.io/media/2025/03/2ee18a0d-ruliff-andrean-6o2_eo628cq-unsplash-1.jpg
