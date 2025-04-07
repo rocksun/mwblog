@@ -1,4 +1,3 @@
-
 <!--
 title: 如何以最糟糕的方式编写后端：GoREST的诞生
 cover: https://mostafaqanbaryan.com/static/9f5b64c8f1cfd8c12a0a9dfaaa239893/b53df/featured.png
