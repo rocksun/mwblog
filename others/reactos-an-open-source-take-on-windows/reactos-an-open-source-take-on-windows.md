@@ -1,4 +1,3 @@
-
 <!--
 title: ReactOS：Windows的开源替代方案
 cover: https://cdn.thenewstack.io/media/2025/03/ece24b22-reactoshero-1.jpg
