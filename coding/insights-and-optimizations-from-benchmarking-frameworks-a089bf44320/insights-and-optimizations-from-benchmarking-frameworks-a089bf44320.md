@@ -1,7 +1,7 @@
 
 <!--
 title: 使用Go降低70%的基础设施成本
-cover: https://miro.medium.com/v2/resize:fit:1200/0*vB9Lv3lB0o5XUNlD.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997792/dr36gwmldhcgv0u1uycr.png
 summary: Go性能炸裂！实测对比Go/Gin、Java/SpringBoot、Node/Nestjs等框架，Go在CPU、RAM占用上大幅领先，基础设施成本狂降70%！AOT编译、`Goroutines`、GC优化是关键。选型需综合考虑团队技术栈、功能需求和社区支持。
 -->
 
@@ -91,17 +91,17 @@ Spike: Arrival rate of 300 users per sec for 60 seconds with N=10
 
 让我们从 Artillery Case 1 的结果开始：
 
-![](./p1.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997813/nnshkr5zq6mydlxrlnvn.png)
 
 考虑到我们通过采用 N=800 阻止了事件循环，因此可以预期利用多集群的应用程序会比具有单 CPU 核心的应用程序更好地处理它，尽管 CPU 和 RAM 图表表明了一些令人担忧的峰值。 但是，如果我们将场景转移到 Artillery Case 2，其中涉及更多的并发和更少的 CPU 使用率，该怎么办。 即使那样，我们也会期望优化的应用程序表现更好，对吗？ 好吧：
 
-![](./p2.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997831/ftmr2gc7kbjftqplkw3h.png)
 
 在这里我们得到了第一个教训。 由于多个产生的进程以及我们请求的简单性质，主进程和工作进程之间的通信开销导致更多的 CPU 使用率，这超过了使用带有集群库的多个内核的优势。 鉴于 Node 已经针对 I/O 进行了优化，因此单线程应用程序在这方面表现更好。
 
 考虑到这是一个临界情况，我们可以使用 Artillery Case 3 作为中间情况来确定更有效的方法。 这是结果：
 
-![](./p3.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997861/pwpdwqrmolmvvzgupu8w.png)
 
 获胜者是使用集群 Fastify 的 NestJS。由此，我们得到了第二个教训：如果我们不关注技术或框架的局限性以及它可能引入的潜在性能瓶颈，那么技术或框架就无法成为解决方案。
 
@@ -113,15 +113,15 @@ Spike: Arrival rate of 300 users per sec for 60 seconds with N=10
 
 Artillery Case 1 的结果是：
 
-![](./p4.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997872/nrjwmlnzswqqzwsdtiy1.png)
 
-![](./p5.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997881/p1bp3vwrrlnw2s9jcofa.png)
 
 由于结果看起来彼此之间只有细微的差异，让我们检查一下 Artillery Case 2 的结果：
 
-![](./p6.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997894/sscvqscfn1xgrkxenhb9.png)
 
-![](./p7.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997924/xo24gbvat1ekglmy15vs.png)
 
 Quarkus 以微弱优势获胜。重要的是要注意，即使使用协程，Kotlin 也没有胜过其他语言。这可能是因为在请求期间实际上没有挂起协程的操作。正如前面提到的，某些语言特性的好处在更复杂的应用程序中往往更明显，在这些应用程序中会应用高性能算法。这适用于协程和其他使 Kotlin 比 Java 具有优势的特性。
 
@@ -133,7 +133,7 @@ Quarkus 以微弱优势获胜。重要的是要注意，即使使用协程，Kot
 
 Go 被认为是市场上性能最高的语言之一。这可能会让我们认为它在任何情况下都会胜过其他语言。是这样吗？在本节中，我们将回顾使用 Chi 和 Gin 的 Go 的基准测试结果，它们是两个最流行的 Go 框架。以下是 Artillery Case 1 的图表：
 
-![](./p8.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997936/jyauxykaq3l7yqq5iwo4.png)
 
 好吧，看起来 Chi 确实胜过了其他框架，但这种情况对 Gin 不利。除了高 CPU 消耗外，延迟达到了 8 秒。当我们查看下面 Gin 的 Artillery 报告时，情况会变得更糟：
 
@@ -152,7 +152,7 @@ http.requests: .................................................... 27000
 
 尽管第一个案例的结果如此，但 Artillery Case 2 的结果似乎更好一些：
 
-![](./p9.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997948/tpaq5ioaookbspx9x2fn.png)
 
 Gin 取得了明显更好的结果，但此场景的明显赢家是 Chi。此外，Gin 似乎更能够处理更温和的场景。
 
@@ -162,11 +162,11 @@ Gin 取得了明显更好的结果，但此场景的明显赢家是 Chi。此外
 
 以下是总结的最终结果。使用 Artillery Case 1：
 
-![](./p10.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997958/vq1z4fpwjjfrtnfodczx.png)
 
 使用 Artillery Case 2：
 
-![](./p11.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1743997970/rkjduqakatubsjxleami.png)
 
 # 结论
 
