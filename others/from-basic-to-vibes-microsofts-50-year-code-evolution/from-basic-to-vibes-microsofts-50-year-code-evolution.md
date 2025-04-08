@@ -1,4 +1,3 @@
-
 <!--
 title: 从BASIC到Vibes：微软50年的代码演变
 cover: https://cdn.thenewstack.io/media/2025/04/ffb2ddc3-frank-albrecht-lkgwaktioyq-unsplash-1.jpg

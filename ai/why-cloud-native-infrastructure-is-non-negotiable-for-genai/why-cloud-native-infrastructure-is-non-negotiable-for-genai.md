@@ -1,4 +1,3 @@
-
 <!--
 title: 为何云原生基础设施对于GenAI而言不可或缺
 cover: https://cdn.thenewstack.io/media/2025/04/4591c32c-mohammad-rahmani-w-lqbauhe64-unsplash-scaled.jpg
