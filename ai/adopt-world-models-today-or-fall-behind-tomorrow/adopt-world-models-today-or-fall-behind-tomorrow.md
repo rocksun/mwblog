@@ -1,4 +1,3 @@
-
 <!--
 title: 今天采用世界模型，否则明天就会落后
 cover: https://cdn.thenewstack.io/media/2025/04/2672d024-bernd-dittrich-1ehmvviwncg-unsplash-scaled.jpg
