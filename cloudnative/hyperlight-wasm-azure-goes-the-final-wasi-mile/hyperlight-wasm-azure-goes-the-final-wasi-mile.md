@@ -1,4 +1,3 @@
-
 <!--
 title: Hyperlight Wasm：Azure在Wasi之路上更进一步
 cover: https://cdn.thenewstack.io/media/2025/04/1fdb20b5-benoit-deschasaux-9hpzjldfsk4-unsplash-1.jpg
