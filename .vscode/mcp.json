@@ -1,0 +1,37 @@
+{
+    "servers": {
+    // https://github.com/ppl-ai/modelcontextprotocol/
+    "gemini-image-mcp-server": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+              "--directory",
+              "D:\\projects\\rocksun\\gemini-image-mcp-server",
+              "run",
+              "server.py"
+          ],
+      "env": {
+        "GEMINI_API_KEY": "AIzaSyAPerl-RGCveh4_Ge9Gc_L4waUHzh-n2yk",
+        "http_proxy": "http://127.0.0.1:10808",
+        "https_proxy": "http://127.0.0.1:10808",
+
+      }
+    },
+    "media-mcp-server": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+              "--directory",
+              "D:\\projects\\rocksun\\media-mcp-server",
+              "run",
+              "media-mcp-server"
+          ],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://886237868392739:gUfaf12_dcL1-FhuKMRlOdS3MRs@dkrpg71cx",
+        "http_proxy": "http://127.0.0.1:10808",
+        "https_proxy": "http://127.0.0.1:10808",
+
+      }
+    }
+  }
+}
