@@ -1,6 +1,6 @@
 
 <!--
-title: Toast 通过 Gradle DPE 加速缓慢构建
+title: Toast 通过Gradle DPE加速缓慢构建
 cover: https://cdn.thenewstack.io/media/2025/04/79ded7e8-masha-rayt-uwjtxqprswm-unsplash.jpg
 summary: Toast 用 Gradle Develocity 提速构建，解决 CI 瓶颈！通过 DPE 工具量化构建数据，精准定位 Android 应用问题。构建时间从 78 分钟狂降至 27 分钟！平台工程结合 DPE，打造高效 IDP，提升开发者生产力！
 -->
@@ -10,12 +10,6 @@ Toast 用 Gradle Develocity 提速构建，解决 CI 瓶颈！通过 DPE 工具�
 > 译自：[Toast Turns up the Heat on Slow Builds With Gradle DPE](https://thenewstack.io/toast-turns-up-the-heat-on-slow-builds-with-gradle-dpe/)
 > 
 > 作者：Todd R Weiss
-
-
-
-# Toast 通过 Gradle DPE 加速构建，解决构建缓慢问题
-
-![Toast 通过 Gradle DPE 加速构建，解决构建缓慢问题 的特色图片](https://cdn.thenewstack.io/media/2025/04/79ded7e8-masha-rayt-uwjtxqprswm-unsplash-1024x575.jpg)
 
 当开发者 Aida Issayeva 于 2023 年 3 月加入 Toast 时，该公司在为其流行的餐厅管理和食品订购应用程序的[发布周期](https://thenewstack.io/3-steps-for-automating-software-release-management/)过长问题上遇到了严重的麻烦。由于发布周期过长，Toast 很难快速将新功能添加到应用程序版本中并立即发布给客户。延迟也导致了 Toast 的挫败感和开发积压。
 
@@ -63,7 +57,3 @@ Demers说：“[平台工程](https://thenewstack.io/platform-engineering/)从�
 他说，DPE可以特别帮助那些可能正在与缓慢的构建和测试周期作斗争的公司，以优化和加速他们的构建和测试性能。与此同时，平台工程提供了一个精简高效的环境，开发者可以在其中使用精选的工具构建他们的应用程序。
 
 Demers说：“一个成熟而有效的策略最终将涉及DPE和平台工程。例如，平台工程提供了一个具有自助服务功能的统一环境，而DPE则确保这些工具和流程尽可能高效地运行。”
-
-[YOUTUBE.COM/THENEWSTACK
-技术发展迅速，不要错过任何一集。订阅我们的YouTube频道，观看我们所有的播客、访谈、演示等。
-](https://youtube.com/thenewstack?sub_confirmation=1)
