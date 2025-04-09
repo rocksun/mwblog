@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程的未来远不止于人工智能
 cover: https://cdn.thenewstack.io/media/2025/04/4a26ecbf-viktor-farcic-mauricio-salatino-kubecon-2025.jpg
