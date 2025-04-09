@@ -1,4 +1,3 @@
-
 <!--
 title: OTel很烂 ,但也超棒！
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
