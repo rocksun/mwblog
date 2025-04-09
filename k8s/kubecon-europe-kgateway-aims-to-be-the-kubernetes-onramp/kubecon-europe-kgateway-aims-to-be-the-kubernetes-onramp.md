@@ -1,4 +1,3 @@
-
 <!--
 title: Kgateway旨在成为Kubernetes的入口
 cover: https://cdn.thenewstack.io/media/2025/04/de9b2a5c-soloio-kubecon.jpg
