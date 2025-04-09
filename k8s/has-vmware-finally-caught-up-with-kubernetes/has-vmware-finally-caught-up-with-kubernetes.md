@@ -1,4 +1,3 @@
-
 <!--
 title: VMware最终赶上Kubernetes了吗？
 cover: https://cdn.thenewstack.io/media/2025/04/9df4f152-vmware-caught-kubernetes.jpg
