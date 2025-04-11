@@ -1,4 +1,3 @@
-
 <!--
 title: 如何在事件期间简化沟通
 cover: https://cdn.thenewstack.io/media/2025/04/033dd0dc-communication.jpg
