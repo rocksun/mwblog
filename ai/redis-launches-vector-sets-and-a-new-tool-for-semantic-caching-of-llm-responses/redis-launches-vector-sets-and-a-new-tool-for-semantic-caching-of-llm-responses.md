@@ -1,4 +1,3 @@
-
 <!--
 title: Redis发布向量集和用于LLM响应语义缓存的新工具
 cover: https://cdn.thenewstack.io/media/2025/04/f2d42458-img_4499-edit-scaled.jpg
