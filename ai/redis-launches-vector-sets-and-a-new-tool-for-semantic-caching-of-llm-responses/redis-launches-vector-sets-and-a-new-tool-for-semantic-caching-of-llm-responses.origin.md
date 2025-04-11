@@ -1,0 +1,32 @@
+# Redis Launches Vector Sets and a New Tool for Semantic Caching of LLM Responses
+![Featued image for: Redis Launches Vector Sets and a New Tool for Semantic Caching of LLM Responses](https://cdn.thenewstack.io/media/2025/04/f2d42458-img_4499-edit-1024x768.jpg)
+[Redis](https://redis.io/), the company behind the eponymous in-memory key-value database, mostly made [news](https://thenewstack.io/redis-users-want-a-change/) in recent months because of its license change, which resulted in the launch of [the Valkey project](https://thenewstack.io/valkey-a-redis-fork-with-a-future/). Now, Redis is hoping to change the conversation a bit with the launch of two new AI-centric products ahead of the launch of Redis 8 on May 1. The first of these is a new caching tool, [LangCache,](http://redis.io/redis-for-ai/) which allows developers to bring large language model (LLM) response caching to its applications. The second is the launch of a new data type, vector sets, for storing and querying [vector](https://thenewstack.io/the-building-blocks-of-llms-vectors-tokens-and-embeddings/) embeddings.
+“Redis can be the short-term memory layer for the agentic stack,” Redis CEO [Rowan Trollope](https://www.linkedin.com/in/rowant) told me in an interview ahead of the announcement. “That’s the new strategy of the company and that’s what we’re trying to do.”
+
+Caching is an obvious angle for Redis, which is already a popular caching solution for many developers. The reasons for caching LLM responses aren’t that different from other applications (reduce cost and latency), but given the probabilistic nature of these models, the process here is quite different from caching a SQL query, for example.
+
+LangCache uses Redis “underneath the covers,” Trollope said, but he stressed that it is not a Redis database. It uses a fine-tuned embedding model to take the context of the query and then create an embedding to reflect that.
+
+Trollope expects that the main use case for LangCache will be AI agents and not so much human-to-chatbot conversations, which tend to be more freewheeling and hence harder to cache.
+
+“Our unique reason for existing is really about performance and a really easy API for developers,” Trollope said. “If you want to store a trillion vectors in a database, and you don’t care what the speed of that is, we’re not the best answer to that. But if you are in a real-time environment and you want to move quickly, and latency is important — I think there’s going to be more and more cases where that’s important in this agentic world.”
+
+Vector sets are the other part of the equation here for Redis. When [Salvatore “antirez” Sanfilippo](https://www.linkedin.com/in/salvatore-sanfilippo-b52b47249?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAD2STa4BUxfdShLf3CtNWdopGxyLeObb2zk&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BQR%2BjWZaqRgiVGcHe7X%2BoVg%3D%3D), the founder of the Redis open source project, returned to the company late last year, he talked a bit about his interest in vector sets and why he believes there’s a need for a different way to think about storing vector data.
+
+“Sanfilippo looked at what happened with the vector database wave, and he said, ‘This is stupid.’ He said, ‘Everyone’s going in the wrong direction here.’ So Pinecone, Milvus, Weaviate, yada, yada, yada — they’re all roughly doing the same thing, which is they’re building a database for vectors,” the always outspoken Trollope said. “The way those typically look is, you add your data, and then it’ll have a vector embedding engine wired in […] and it’ll stitch the vector of the data together, and then it creates an index and you can search against it.”
+
+Using vector sets, which then also store the original vectors in a more compressed and optimized format, and a new similarity search algorithm developed by Sanfilippo, should make for a significant speedup compared to the current state of the art, Redis argues. Since the database is stored in memory, this also means there’s less of a need for expensive memory, or developers can store more of these vector sets on their existing servers.
+
+Sanfilippo argued, said Trollope, that Redis became successful because it didn’t try to do too much for the developers and the company should take the same approach with this and make vector sets available as a new building block for developers for them to decide how to use them.
+
+On the business side, Trollope noted that Redis was still hoping to IPO at some point. The company is almost breaking even, he said, and could be financially ready for the IPO process. What he wants to do instead, though, is invest deeply in becoming the de facto short-term memory for AI applications (whereas the LLM is more akin to long-term memory).
+
+“I’ve been talking to bankers who all want us to go IPO. They’re like, ‘IPO, go, IPO.’ I’m not that interested in that, actually, right now. I mean, I think we will eventually get there. I think with the AI opportunity, I’m investing more in the business. Where I could have crafted the company’s top- and bottom-line for IPO, I’m not doing that because the AI opportunity is too big. […] For the previous wave of cloud mobile apps, Redis was a de facto standard, like any dev building a cloud mobile app would be pulling in Redis probably in 95% of the cases — and then we would monetize some small fraction of that. Now you have a new era where everyone’s going to rewrite all the apps agentic style, and it’s still all up in the air.“
+
+Trollope believes that as developers create these new use cases and applications, they will use the tools they are familiar with. An agentic architecture, he argues, is essentially using microservices that use LLMs instead of having hard-coded rules and business logic at their core. For that, you need an orchestration layer and a session store, because these microservices/agents need to be stateless. Redis, he believes, is ideally suited for developers who want to save the state of these agents because it is fast and durable.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
