@@ -1,4 +1,3 @@
-
 <!--
 title: 从商业智能到预测性人工智能：为什么分析师会成为下一个数据前沿的英雄
 cover: https://cdn.thenewstack.io/media/2025/04/6896f4cb-alex-mccarthy-bkm4t2bllfe-unsplash-scaled.jpg
