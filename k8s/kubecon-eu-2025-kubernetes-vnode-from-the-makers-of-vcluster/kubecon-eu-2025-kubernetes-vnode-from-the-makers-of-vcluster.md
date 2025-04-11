@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes vNode，来自vCluster的创造者
 cover: https://cdn.thenewstack.io/media/2025/04/a607bf27-vnode.png
