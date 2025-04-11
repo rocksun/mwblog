@@ -1,4 +1,3 @@
-
 <!--
 title: K8s 中的可观测性：从被动到主动
 cover: https://cdn.thenewstack.io/media/2025/04/a81ce9bc-obsrvability123.jpeg
