@@ -1,4 +1,3 @@
-
 <!--
 title: 针对更快AI工作负载定制的Google Kubernetes Engine
 cover: https://cdn.thenewstack.io/media/2025/04/5f20cb6b-google-next-25.png
