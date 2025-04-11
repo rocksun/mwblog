@@ -1,4 +1,3 @@
-
 <!--
 title: Google的Agent2Agent协议帮助AI Agent互相交流
 cover: https://cdn.thenewstack.io/media/2025/04/c90e05a8-img_3909-edit.jpg
