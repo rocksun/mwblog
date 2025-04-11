@@ -1,4 +1,3 @@
-
 <!--
 title: 你可以立即开始使用的三项AI辅助开发技能
 cover: https://cdn.thenewstack.io/media/2025/04/be67445e-aws-ai-developer-skills-use.jpg

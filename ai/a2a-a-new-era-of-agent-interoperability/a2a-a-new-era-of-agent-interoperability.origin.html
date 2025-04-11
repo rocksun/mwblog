@@ -1,0 +1,1767 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+        <meta charset="utf-8" />
+        
+        <title>
+            
+            Announcing the Agent2Agent Protocol (A2A)
+            
+            
+            - Google Developers Blog
+            
+        </title>
+        <meta property="og:title" content="Announcing the Agent2Agent Protocol (A2A)- Google Developers Blog" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+	<meta name="description" content="Explore A2A, Google&#x27;s new open protocol empowering developers to build interoperable AI solutions." />
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Google for Developers Blog - News about Web, Mobile, AI and Cloud" property="twitter:title"/>
+  <meta property="og:title" content="Announcing the Agent2Agent Protocol (A2A)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google for Developers Blog",
+      "item": "https://developers.googleblog.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Announcing the Agent2Agent Protocol (A2A)",
+      "item": "http://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Announcing the Agent2Agent Protocol (A2A)",
+      "description": "Agent2Agent (A2A) protocol is an open standard designed to enable AI agents from different vendors and frameworks to collaborate and exchange information across enterprise platforms  aiming to foster a future of seamless AI agent interoperability and enhanced automation.",
+      "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Agent2Agent-Interoperability.2e16d0ba.fill-800x400.png",
+      "datePublished": "2025-04-09",
+      "author": [
+        
+        
+          { "@type": "Person", "name": "Rao Surapaneni", "url": "/en/search/?author=Rao+Surapaneni" },
+        
+          { "@type": "Person", "name": "Miku Jha", "url": "/en/search/?author=Miku+Jha" },
+        
+          { "@type": "Person", "name": "Michael Vakoc", "url": "/en/search/?author=Michael+Vakoc" },
+        
+          { "@type": "Person", "name": "Todd Segal", "url": "/en/search/?author=Todd+Segal" }
+        
+        
+      ]
+    }
+  </script>
+  
+  <meta content="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Agent2Agent-Interoperability.2e16d0ba.fill-1200x600.png" property="og:image"/>
+  
+
+
+        
+        
+
+        <!-- Google Tag Manager -->
+        <script type="text/javascript" nonce="44Vps8SiXMBLrwj9jR2vFg==" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/js/analytics.js"></script>
+        <!-- End Google Tag Manager -->
+
+        
+        <link href="//www.gstatic.com/glue/v27_1/glue.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/css/dgc_blog.css">
+        <link rel="icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/apple-touch-icon.png">
+
+        
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+				<link rel="preload" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" as="style">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+
+        
+        <link href="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet">
+
+        
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/css/blog_detail.css"
+  />
+  <link rel="stylesheet" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/pygmentify/css/default.min.css">
+
+    </head>
+
+    <body id="main-content" class="glue-body ">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVTLDSL "
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        
+
+				
+        
+
+<!-- HTML -->
+<header class="dgc-header">
+  <div class="dgc-header-inner">
+    <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-label="Open Menu">
+      <svg role="presentation" aria-hidden="true" class="glue-icon">
+        <use href="/glue-icon/#menu"></use>
+      </svg>
+    </button>
+    <div class="product-name-wrapper">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+    </div>
+    <div class="desktop-nav-wrapper">
+      <div class="upper-tabs-wrapper">
+        <div class="upper-tabs">
+          <nav class="tabs" aria-label="Upper Tabs">
+            <div class="tab" dropdown>
+              <a
+                href="//developers.google.com/products"
+                class="top-nav-title">
+                Products
+              </a>
+              <a
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="true"
+                aria-label="Dropdown menu for Products"
+                class="dropdown-toggle">
+                <svg role="presentation" aria-hidden="true" class="glue-icon">
+                  <use href="/glue-icon/#arrow-drop-down"></use>
+                </svg>
+              </a>
+              <div class="tabs-dropdown" aria-label="Submenu">
+                <div class="tabs-dropdown-content">
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Develop Menu">Develop</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com">
+                            <div class="nav-item-title">
+                              Android
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.chrome.com">
+                            <div class="nav-item-title">
+                              Chrome
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//chromeos.dev/">
+                            <div class="nav-item-title">
+                              ChromeOS
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//cloud.google.com">
+                            <div class="nav-item-title">
+                              Cloud
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//firebase.google.com">
+                            <div class="nav-item-title">
+                              Firebase
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//flutter.dev">
+                            <div class="nav-item-title">
+                              Flutter
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/assistant">
+                            <div class="nav-item-title">
+                              Google Assistant
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/maps">
+                            <div class="nav-item-title">
+                              Google Maps Platform
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/workspace">
+                            <div class="nav-item-title">
+                              Google Workspace
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//www.tensorflow.org">
+                            <div class="nav-item-title">
+                              TensorFlow
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/youtube">
+                            <div class="nav-item-title">
+                              YouTube
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Grow Menu">Grow</li>
+                      
+                        <li class="nav-item">
+                          <a href="//firebase.google.com">
+                            <div class="nav-item-title">
+                              Firebase
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/google-ads">
+                            <div class="nav-item-title">
+                              Google Ads
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/analytics">
+                            <div class="nav-item-title">
+                              Google Analytics
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com/distribute">
+                            <div class="nav-item-title">
+                              Google Play
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/search">
+                            <div class="nav-item-title">
+                              Search
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/web/fundamentals/engage-and-retain/push-notifications">
+                            <div class="nav-item-title">
+                              Web Push and Notification APIs
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Earn Menu">Earn</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/admob">
+                            <div class="nav-item-title">
+                              AdMob
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/google-ads/api">
+                            <div class="nav-item-title">
+                              Google Ads API
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/pay">
+                            <div class="nav-item-title">
+                              Google Pay
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com/google/play/billing/">
+                            <div class="nav-item-title">
+                              Google Play Billing
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/interactive-media-ads">
+                            <div class="nav-item-title">
+                              Interactive Media Ads
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/solutions/catalog"
+                class="top-nav-title">
+                Solutions
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/events"
+                class="top-nav-title">
+                Events
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/learn"
+                class="top-nav-title">
+                Learn
+              </a>
+            </div>
+            <div class="tab" dropdown>
+              <a
+                href="//developers.google.com/community"
+                class="top-nav-title">
+                Community
+              </a>
+              <a
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="true"
+                aria-label="Dropdown menu for Community"
+                class="dropdown-toggle">
+                <svg role="presentation" aria-hidden="true" class="glue-icon">
+                  <use href="/glue-icon/#arrow-drop-down"></use>
+                </svg>
+              </a>
+              <div class="tabs-dropdown" aria-label="Submenu">
+                <div class="tabs-dropdown-content">
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Groups Menu">Groups</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdg">
+                            <div class="nav-item-title">
+                              Google Developer Groups
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdsc">
+                            <div class="nav-item-title">
+                              Google Developer Student Clubs
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/womentechmakers">
+                            <div class="nav-item-title">
+                              Woman Techmakers
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/experts">
+                            <div class="nav-item-title">
+                              Google Developer Experts
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//www.techequitycollective.com/">
+                            <div class="nav-item-title">
+                              Tech Equity Collective
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Programs Menu">Programs</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/accelerators">
+                            <div class="nav-item-title">
+                              Accelerator
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdsc-solution-challenge">
+                            <div class="nav-item-title">
+                              Solution Challenge
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/devfest">
+                            <div class="nav-item-title">
+                              DevFest
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Stories Menu">Stories</li>
+                      <li class="nav-item">
+                        <a href="//developers.google.com/community/stories">
+                          <div class="nav-item-title">
+                            All Stories
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/profile/u/me"
+                class="top-nav-title">
+                Developer Program
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.googleblog.com/"
+                class="top-nav-title">
+                Blog
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dgc-header-search">
+    <div class="search-wrapper glue-page">
+      <div class="glue-grid">
+        <form id="search-form"  action="/en/search/" method="get" class="search-content glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-9-md glue-grid__col--span-7-lg">
+          <div class="search-input-wrapper">
+            <svg role="presentation" aria-hidden="true" class="glue-icon search-icon">
+              <use href="/glue-icon/#search"></use>
+            </svg>
+            <input
+              type="text"
+              name="query"
+              
+              placeholder="Search all articles..."
+              aria-label="Search"
+              class="search-input-field"
+            />
+          </div>
+          <button class="glue-button glue-button--high-emphasis">
+            Search
+          </button>
+        </form>
+        <div class="language-selector glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-3-md glue-grid__col--span-5-lg" aria-label="Select your language preference">
+          
+          <button type="button" aria-controls="lang-menu-header" aria-haspopup="true">
+            <svg role="presentation" aria-hidden="true" class="glue-icon lang-icon">
+              <use href="/glue-icon/#language"></use>
+            </svg>
+            <span class="lang-label">English</span>
+            <svg role="presentation" aria-hidden="true" class="glue-icon lang-icon">
+              <use href="/glue-icon/#arrow-drop-down"></use>
+            </svg>
+          </button>
+          
+          <div id="lang-menu-header" class="lang-menu hidden" role="menu">
+            <ul role="presentation">
+              
+                
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="en"
+                      
+                      href="/en/a2a-a-new-era-of-agent-interoperability">
+                        English
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="es"
+                      
+                      href="/es/a2a-a-new-era-of-agent-interoperability">
+                        Español (Latam)
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="id"
+                      
+                      href="/id/a2a-a-new-era-of-agent-interoperability">
+                        Bahasa Indonesia
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="ja"
+                      
+                      href="/ja/a2a-a-new-era-of-agent-interoperability">
+                        日本語
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="ko"
+                      
+                      href="/ko/a2a-a-new-era-of-agent-interoperability">
+                        한국어
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="pt-br"
+                      
+                      href="/pt-br/a2a-a-new-era-of-agent-interoperability">
+                        Português (Brasil)
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="zh-hans"
+                      
+                      href="/zh-hans/a2a-a-new-era-of-agent-interoperability">
+                        简体中文
+                      </a>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" top-level-nav>
+  <nav class="nav-content" aria-label="Side menu">
+    <div class="mobile-header">
+      <button class="nav-close-btn nav-btn" aria-label="Close navigation">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#close"></use>
+        </svg>
+      </button>
+      <button class="nav-back-btn nav-btn hidden" aria-label="Back to Menu">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#arrow-back"></use>
+        </svg>
+      </button>
+      <div class="product-name-wrapper">
+        <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+          <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+        </a>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <div class="mobile-nav-top">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="//developers.google.com/products" class="nav-title" data-label="Tab: Products">
+              <span class="nav-text" tooltip="">
+                Products
+             </span>
+            </a>
+            <ul class="nav-responsive-tabs">
+              <li class="nav-item">
+                <span tabindex="0" class="nav-title products-btn" data-label="More Products">
+                  <span class="nav-text" menu="Products">
+                    More
+                  </span>
+                  <span class="nav-icon" menu="Products">
+                    <svg role="presentation" aria-hidden="true" class="glue-icon">
+                      <use href="/glue-icon/#arrow-forward"></use>
+                    </svg>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/solutions/catalog" class="nav-title" data-label="Tab: Solutions">
+              <span class="nav-text" tooltip="">
+                Solutions
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/events" class="nav-title" data-label="Tab: Events">
+              <span class="nav-text" tooltip="">
+                Events
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/learn" class="nav-title" data-label="Tab: Learn">
+              <span class="nav-text" tooltip="">
+                Learn
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/community" class="nav-title" data-label="Tab: Community">
+              <span class="nav-text" tooltip="">
+                Community
+             </span>
+            </a>
+            <ul class="nav-responsive-tabs">
+              <li class="nav-item">
+                <span tabindex="0" class="nav-title community-btn" data-label="More Community">
+                  <span class="nav-text" menu="Community">
+                    More
+                  </span>
+                  <span class="nav-icon" menu="Community">
+                    <svg role="presentation" aria-hidden="true" class="glue-icon">
+                      <use href="/glue-icon/#arrow-forward"></use>
+                    </svg>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/profile/u/me" class="nav-title" data-label="Tab: Developer Program">
+              <span class="nav-text" tooltip="">
+                Developer Program
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.googleblog.com/" class="nav-title" data-label="Tab: Blog">
+              <span class="nav-text" tooltip="">
+                Blog
+             </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mobile-nav-bottom">
+        <ul class="nav-list products-submenu" menu="Products" aria-label="Side menu">
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Develop
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com" class="nav-title">
+                <span class="nav-text">
+                  Android
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.chrome.com" class="nav-title">
+                <span class="nav-text">
+                  Chrome
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//chromeos.dev/" class="nav-title">
+                <span class="nav-text">
+                  ChromeOS
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//cloud.google.com" class="nav-title">
+                <span class="nav-text">
+                  Cloud
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//firebase.google.com" class="nav-title">
+                <span class="nav-text">
+                  Firebase
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//flutter.dev" class="nav-title">
+                <span class="nav-text">
+                  Flutter
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/assistant" class="nav-title">
+                <span class="nav-text">
+                  Google Assistant
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/maps" class="nav-title">
+                <span class="nav-text">
+                  Google Maps Platform
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/workspace" class="nav-title">
+                <span class="nav-text">
+                  Google Workspace
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//www.tensorflow.org" class="nav-title">
+                <span class="nav-text">
+                  TensorFlow
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/youtube" class="nav-title">
+                <span class="nav-text">
+                  YouTube
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Grow
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//firebase.google.com" class="nav-title">
+                <span class="nav-text">
+                  Firebase
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/google-ads" class="nav-title">
+                <span class="nav-text">
+                  Google Ads
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/analytics" class="nav-title">
+                <span class="nav-text">
+                  Google Analytics
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com/distribute" class="nav-title">
+                <span class="nav-text">
+                  Google Play
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/search" class="nav-title">
+                <span class="nav-text">
+                  Search
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/web/fundamentals/engage-and-retain/push-notifications" class="nav-title">
+                <span class="nav-text">
+                  Web Push and Notification APIs
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Earn
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/admob" class="nav-title">
+                <span class="nav-text">
+                  AdMob
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/google-ads/api" class="nav-title">
+                <span class="nav-text">
+                  Google Ads API
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/pay" class="nav-title">
+                <span class="nav-text">
+                  Google Pay
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com/google/play/billing/" class="nav-title">
+                <span class="nav-text">
+                  Google Play Billing
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/interactive-media-ads" class="nav-title">
+                <span class="nav-text">
+                  Interactive Media Ads
+                </span>
+              </a>
+            </li>
+          
+        </ul>
+        <ul class="nav-list community-submenu hidden" menu="Community" aria-label="Side menu">
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Groups
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdg" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Groups
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdsc" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Student Clubs
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/womentechmakers" class="nav-title">
+                <span class="nav-text">
+                  Woman Techmakers
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/experts" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Experts
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//www.techequitycollective.com/" class="nav-title">
+                <span class="nav-text">
+                  Tech Equity Collective
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Programs
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/accelerators" class="nav-title">
+                <span class="nav-text">
+                  Accelerator
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdsc-solution-challenge" class="nav-title">
+                <span class="nav-text">
+                  Solution Challenge
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/devfest" class="nav-title">
+                <span class="nav-text">
+                  DevFest
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Stories
+              </span>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/community/stories" class="nav-title" aria-label="All Stories">
+              <span class="nav-text">
+                All Stories
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+  <select
+    aria-label="Change language"
+    name="lang-selector"
+    id="lang-selector-nav"
+    class="glue-form__dropdown glue-mobile-nav__lang-dropdown"
+    onchange="window.location.href=this.value"
+  >
+    
+      <option 
+        value="/en/a2a-a-new-era-of-agent-interoperability/" 
+        lang="en" 
+         selected
+      >
+        English
+      </option>
+    
+      <option 
+        value="/es/a2a-a-new-era-of-agent-interoperability/" 
+        lang="es" 
+        
+      >
+        Español (Latam)
+      </option>
+    
+      <option 
+        value="/id/a2a-a-new-era-of-agent-interoperability/" 
+        lang="id" 
+        
+      >
+        Bahasa Indonesia
+      </option>
+    
+      <option 
+        value="/ja/a2a-a-new-era-of-agent-interoperability/" 
+        lang="ja" 
+        
+      >
+        日本語
+      </option>
+    
+      <option 
+        value="/ko/a2a-a-new-era-of-agent-interoperability/" 
+        lang="ko" 
+        
+      >
+        한국어
+      </option>
+    
+      <option 
+        value="/pt-br/a2a-a-new-era-of-agent-interoperability/" 
+        lang="pt-br" 
+        
+      >
+        Português (Brasil)
+      </option>
+    
+      <option 
+        value="/zh-hans/a2a-a-new-era-of-agent-interoperability/" 
+        lang="zh-hans" 
+        
+      >
+        简体中文
+      </option>
+    
+  </select>
+</div>
+
+<div class="backdrop"></div>
+
+        
+  <div class="blog-detail-container">
+
+    
+      <section class="tags-container glue-page glue-spacer-5-top">
+        <div class="glue-eyebrow"><a href="/en/search/?product_categories=Cloud">Cloud</a></div>
+      </section>
+    
+
+    <section class="heading-container glue-page  glue-spacer-1-top">
+      <h1 class="glue-headline glue-headline--headline-1">Announcing the Agent2Agent Protocol (A2A)</h1>
+    </section>
+
+    <section class="summary-container glue-page glue-spacer-4-top">
+      <div class="date-time">
+        <div class="published-date glue-font-weight-medium">APR 09, 2025</div>
+      </div>
+    </section>
+
+    <section class="glue-page glue-grid glue-spacer-1-top">
+
+      <section class="author-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-10-md">
+      
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Rao+Surapaneni">Rao Surapaneni</a>
+            
+              <span class="glue-font-weight-medium role">VP and GM</span>
+            
+            
+              <span class="glue-font-weight-medium team">Business Application Platform</span>
+            
+          </div>
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Miku+Jha">Miku Jha</a>
+            
+              <span class="glue-font-weight-medium role">Director, AI/ML Partner Engineering</span>
+            
+            
+              <span class="glue-font-weight-medium team">Google Cloud</span>
+            
+          </div>
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Michael+Vakoc">Michael Vakoc</a>
+            
+              <span class="glue-font-weight-medium role">Product Manager</span>
+            
+            
+              <span class="glue-font-weight-medium team">Google Cloud Platform</span>
+            
+          </div>
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Todd+Segal">Todd Segal</a>
+            
+              <span class="glue-font-weight-medium role">Principal Engineer</span>
+            
+            
+          </div>
+        
+
+      
+      </section>
+      <section class="social-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-2-md">
+        <button id="social-button" class="glue-button glue-button--low-emphasis glue-button--icon" aria-haspopup="true" aria-expanded="false">
+          <svg role="presentation" aria-hidden="true" class="glue-icon">
+            <use href="/glue-icon/#share"></use>
+          </svg>
+          <span>Share</span>
+        </button>
+        <ul id="social-menu" class="glue-elevation-level-1" role="menu" aria-labelledby="social-button">
+          <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={url}"
+                title="Share on Facebook" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-facebook"></use>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/intent/tweet?text={url}"
+                title="Share on Twitter" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#twitter-x"></use>
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/shareArticle?url={url}&amp;mini=true" title="Share on LinkedIn" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-linkedin"></use>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:name@example.com?subject=Check%20out%20this%20site&body=Check%20out%20{url}" title="Send via Email">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#email"></use>
+              </svg>
+              <span>Mail</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="Get shareable link" data-link="" data-copy-text="Copy Link" data-copied-text="Copied!">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#link"></use>
+              </svg>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    
+    <section class="blocks-container glue-page glue-spacer-3-top">
+      <div class="block">
+          
+
+<img
+    class="banner-image"
+    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image2.original_6xqVyTd.jpg"
+    alt="A2A protocol"
+/>  <div class="inner-block-content rich-content">
+    <h2 data-block-key="uz955"><b>A new era of Agent Interoperability</b></h2><p data-block-key="a7i7i"><br/>AI agents offer a unique opportunity to help people be more productive by autonomously handling many daily recurring or complex tasks. Today, enterprises are increasingly building and deploying autonomous agents to help scale, automate and enhance processes throughout the workplace–from ordering new laptops, to aiding customer service representatives, to assisting in supply chain planning.</p><p data-block-key="ed022">To maximize the benefits from agentic AI, it is critical for these agents to be able to collaborate in a dynamic, multi-agent ecosystem across siloed data systems and applications. Enabling agents to interoperate with each other, even if they were built by different vendors or in a different framework, will increase autonomy and multiply productivity gains, while lowering long-term costs.</p><p data-block-key="81mkl"><b><br/>Today, we’re launching a new, open protocol called Agent2Agent (A2A), with support and contributions from more than 50 technology partners</b> like Atlassian, Box, Cohere, Intuit, Langchain, MongoDB, PayPal, Salesforce, SAP, ServiceNow, UKG and Workday; and leading service providers including Accenture, BCG, Capgemini, Cognizant, Deloitte, HCLTech, Infosys, KPMG, McKinsey, PwC, TCS, and Wipro. The A2A protocol will allow AI agents to communicate with each other, securely exchange information, and coordinate actions on top of various enterprise platforms or applications. We believe the A2A framework will add significant value for customers, whose AI agents will now be able to work across their entire enterprise application estates.</p><p data-block-key="fj6eh">This collaborative effort signifies a shared vision of a future when AI agents, regardless of their underlying technologies, can seamlessly collaborate to automate complex enterprise workflows and drive unprecedented levels of efficiency and innovation.</p><p data-block-key="e5t9f">A2A is an open protocol that complements Anthropic&#x27;s Model Context Protocol (MCP), which provides helpful tools and context to agents. Drawing on Google&#x27;s internal expertise in scaling agentic systems, we designed the A2A protocol to address the challenges we identified in deploying large-scale, multi-agent systems for our customers. A2A empowers developers to build agents capable of connecting with any other agent built using the protocol and offers users the flexibility to combine agents from various providers. Critically, businesses benefit from a standardized method for managing their agents across diverse platforms and cloud environments. We believe this universal interoperability is essential for fully realizing the potential of collaborative AI agents.</p>
+</div>   
+
+<div class="inner-block-content">
+    <div class="image-wrapper">
+        
+            <img
+                class="regular-image"
+                src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image1_yEPzdSr.original.png"
+                alt="Google Cloud - Partners contributing to the Agent 2 Agent protocol - Accenture, Arize, Articul, ask-ai, Atlassian, BCG, Box, c3.ai, Capgemini, Chronosphere, Cognizant, Cohere, Colibra, Contextual.ai, Cotality, Datadog, and more"
+            />
+        
+        
+    </div>
+</div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="uz955">A2A design principles</h2><p data-block-key="7g8qj">A2A is an open protocol that provides a standard way for agents to collaborate with each other, regardless of the underlying framework or vendor. While designing the protocol with our partners, we adhered to five key principles:</p><p data-block-key="bqmu5"></p><ul><li data-block-key="669ia"><b>Embrace agentic capabilities</b>: A2A focuses on enabling agents to collaborate in their natural, unstructured modalities, even when they don’t share memory, tools and context. We are enabling true multi-agent scenarios without limiting an agent to a “tool.”</li></ul><p data-block-key="8mu6g"></p><ul><li data-block-key="2bio"><b>Build on existing standards:</b> The protocol is built on top of existing, popular standards including HTTP, SSE, JSON-RPC, which means it’s easier to integrate with existing IT stacks businesses already use daily.</li></ul><p data-block-key="ammpv"></p><ul><li data-block-key="dqt8r"><b>Secure by default</b>: A2A is designed to support enterprise-grade authentication and authorization, with parity to OpenAPI’s authentication schemes at launch.</li></ul><p data-block-key="3pk1k"></p><ul><li data-block-key="beafe"><b>Support for long-running tasks:</b> We designed A2A to be flexible and support scenarios where it excels at completing everything from quick tasks to deep research that may take hours and or even days when humans are in the loop. Throughout this process, A2A can provide real-time feedback, notifications, and state updates to its users.</li></ul><p data-block-key="3drbj"></p><ul><li data-block-key="1hlhc"><b>Modality agnostic:</b> The agentic world isn’t limited to just text, which is why we’ve designed A2A to support various modalities, including audio and video streaming.</li></ul><h2 data-block-key="fc9ut"><b><br/></b>How A2A works</h2>
+</div>   
+
+<div class="inner-block-content">
+    <div class="image-wrapper">
+        
+            <img
+                class="regular-image"
+                src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image5_VkAG0Kd.original.png"
+                alt="an illustrated flow chart showing the flow of data between the remote agent and the client agent to produce secure collaboration, task and state management, user experience negotiation, and capability discovery"
+            />
+        
+        
+    </div>
+</div>
+  <div class="inner-block-content rich-content">
+    <p data-block-key="uz955">A2A facilitates communication between a &quot;client&quot; agent and a “remote” agent. A client agent is responsible for formulating and communicating tasks, while the remote agent is responsible for acting on those tasks in an attempt to provide the correct information or take the correct action. This interaction involves several key capabilities:</p><p data-block-key="eb0pg"></p><ul><li data-block-key="2h8en"><b>Capability discovery:</b> Agents can advertise their capabilities using an “Agent Card” in JSON format, allowing the client agent to identify the best agent that can perform a task and leverage A2A to communicate with the remote agent.</li></ul><p data-block-key="bv10u"></p><ul><li data-block-key="7sco4"><b>Task management:</b> The communication between a client and remote agent is oriented towards task completion, in which agents work to fulfill end-user requests. This “task” object is defined by the protocol and has a lifecycle. It can be completed immediately or, for long-running tasks, each of the agents can communicate to stay in sync with each other on the latest status of completing a task. The output of a task is known as an “artifact.”</li></ul><p data-block-key="92lfr"></p><ul><li data-block-key="do4ld"><b>Collaboration:</b> Agents can send each other messages to communicate context, replies, artifacts, or user instructions.</li></ul><p data-block-key="2qnac"></p><ul><li data-block-key="aspve"><b>User experience negotiation:</b> Each message includes “parts,” which is a fully formed piece of content, like a generated image. Each part has a specified content type, allowing client and remote agents to negotiate the correct format needed and explicitly include negotiations of the user’s UI capabilities–e.g., iframes, video, web forms, and more.</li></ul><p data-block-key="c4pm3">See the full details of how the protocol works in our <a href="https://github.com/google/A2A">draft specification</a>.</p><h2 data-block-key="48qd1"><b><br/></b>A real-world example: candidate sourcing</h2>
+</div>   
+
+<div class="inner-block-content video-block">
+    
+        <video  autoplay="" loop="" muted="" playsinline="" poster="https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/wagtailvideo-jtw5bpu9_thumb.jpg">
+<source src='https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/A2A_demo_v4.mp4' type='video/mp4'>
+<p>Sorry, your browser doesn't support playback for this video</p>
+
+</video>
+    
+    
+        
+            <div class="video-description">
+                right click to view in new tab
+            </div>
+        
+    
+</div>  <div class="inner-block-content rich-content">
+    <p data-block-key="uz955">Hiring a software engineer can be significantly simplified with A2A collaboration. Within a unified interface like Agentspace, a user (e.g., a hiring manager) can task their agent to find candidates matching a job listing, location, and skill set. The agent then interacts with other specialized agents to source potential candidates. The user receives these suggestions and can then direct their agent to schedule further interviews, streamlining the candidate sourcing process. After the interview process completes, another agent can be engaged to facilitate background checks. This is just one example of how AI agents need to collaborate across systems to source a qualified job candidate.</p><h2 data-block-key="8afkp"><br/>The future of agent interoperability</h2><p data-block-key="clhb9">A2A has the potential to unlock a new era of agent interoperability, fostering innovation and creating more powerful and versatile agentic systems. We believe that this protocol will pave the way for a future where agents can seamlessly collaborate to solve complex problems and enhance our lives.</p><p data-block-key="9q1bp">We’re committed to building the protocol in collaboration with our partners and the community in the open. We’re releasing the protocol as open source and setting up clear pathways for contribution.</p><p data-block-key="51p1e">Review the <a href="https://github.com/google/A2A">full specification draft</a>, try out code samples, and see example scenarios on the <a href="https://google.github.io/A2A">A2A website</a> and learn how you can contribute.</p><p data-block-key="5hf4b">We are working with partners to launch a production-ready version of the protocol later this year.</p><h2 data-block-key="5cjv4"><b><br/></b>Feedback from our A2A partners</h2><p data-block-key="vgur">We&#x27;re thrilled to have a growing and diverse ecosystem of partners actively contributing to the definition of the A2A protocol and its technical specification. Their insights and expertise are invaluable in shaping the future of AI interoperability.</p><p data-block-key="cmmrf">Here&#x27;s what some of our key partners are saying about the A2A protocol:</p><h3 data-block-key="2g79j"><b><br/>Technology &amp; Platform Partners</b></h3><h3 data-block-key="ceghc"><b>ask-ai.com</b></h3><blockquote data-block-key="2om9e"><sup>Ask-AI is excited to collaborate with Google on the A2A protocol, shaping the future of AI interoperability and seamless agent collaboration, advancing its leadership in Enterprise AI for Customer Experience.</sup><i><sup><br/>– CEO Alon Talmor PhD</sup></i></blockquote><h3 data-block-key="58i07"><b>Atlassian</b></h3><blockquote data-block-key="c34sg"><sup>With Atlassian&#x27;s investment in Rovo agents, the development of a standardized protocol like A2A will help agents successfully discover, coordinate, and reason with one another to enable richer forms of delegation and collaboration at scale.</sup><i><sup><br/>– Brendan Haire VP, Engineering of AI Platform. Atlassian</sup></i></blockquote><h3 data-block-key="1uudu"><b>Articul8</b></h3><blockquote data-block-key="g8i7"><sup>At Articul8, we believe that AI must collaborate and interoperate to truly scale across the enterprise. We’re excited to support the development of the A2A interoperability protocol – an initiative that aligns perfectly with our mission to deliver domain-specific GenAI capabilities that seamlessly operate across complex systems and workflows. We’re enabling Articul8&#x27;s ModelMesh (an &#x27;Agent-of-Agents&#x27;) to treat A2A as a first-class citizen, enabling secure, seamless communication between intelligent agents.<br/>–</sup> <i><sup>Arun Subramaniyan, Founder &amp; CEO of Articul8</sup></i></blockquote><h3 data-block-key="f0hta"><b>Arize AI</b></h3><blockquote data-block-key="cbjq9"><sup>Arize AI is proud to partner with Google as a launch partner for the A2A interoperability protocol, advancing seamless, secure interaction across AI agents as part of Arize&#x27;s commitment to open-source evaluation and observability frameworks positions.</sup><i><sup><br/>– Jason Lopatecki, Cofounder &amp; CEO, Arize AI</sup></i></blockquote><p data-block-key="bvagt"><b>BCG</b></p><blockquote data-block-key="3kg9o"><sup>BCG helps redesign organizations with intelligence at the core. Open and interoperable capabilities like A2A can accelerate this, enabling sustained, autonomous competitive advantage.<br/>–</sup> <i><sup>Djon Kleine, Managing Director &amp; Partner at BCG</sup></i></blockquote><h3 data-block-key="4ujis"><b>Box</b></h3><blockquote data-block-key="9lp95"><sup>We look forward to expanding our partnership with Google to enable Box agents to work with Google Cloud’s agent ecosystem using A2A, innovating together to shape the future of AI agents while empowering organizations to better automate workflows, lower costs, and generate trustworthy AI outputs.</sup><i><sup><br/>– Ketan Kittur, VP Product Management, Platform and Integrations at Box</sup></i></blockquote><h3 data-block-key="9vig"><b>C3 AI</b></h3><blockquote data-block-key="95vqo"><sup>At C3 AI, we believe that open, interoperable systems are key to making Enterprise AI work and deliver value in the real world–and A2A has the potential to help customers break down silos and securely enable AI agents to work together across systems, teams, and applications.<br/>–</sup> <i><sup>Nikhil Krishnan - C3 AI SVP and Chief Technology Officer, Data Science</sup></i></blockquote><h3 data-block-key="8c7ae"><b>Chronosphere</b></h3><blockquote data-block-key="aksmm"><sup>A2A will enable reliable and secure agent specialization and coordination to open the door for a new era of compute orchestration, empowering companies to deliver products and services faster, more reliably, and enabling them to refocus their engineering efforts on driving innovation and value.</sup><i><sup><br/>– Rob Skillington, Founder /CTO</sup></i></blockquote><h3 data-block-key="djbub"><b>Cohere</b></h3><blockquote data-block-key="eqnt5"><sup>At Cohere, we’re building the secure AI infrastructure enterprises need to adopt autonomous agents confidently, and the open A2A protocol ensures seamless, trusted collaboration—even in air-gapped environments—so that businesses can innovate at scale without compromising control or compliance.</sup><i><sup><br/>– Autumn Moulder, VP of Engineering at Cohere</sup></i></blockquote><h3 data-block-key="243oi"><b>Confluent</b></h3><blockquote data-block-key="292nf"><sup>A2A enables intelligent agents to establish a direct, real-time data exchange, simplifying complex data pipelines to fundamentally change how agents communicate and facilitate decisions.</sup><i><sup><br/>– Pascal Vantrepote, Senior Director of Innovation, Confluent</sup></i></blockquote><h3 data-block-key="2dms"><b>Cotality (formerly CoreLogic)</b></h3><blockquote data-block-key="2rakm"><sup>A2A opens the door to a new era of intelligent, real-time communication and collaboration, which Cotality will bring to clients in home lending, insurance, real estate, and government—helping them to improve productivity, speed up decision-making.</sup><i><sup><br/>– Sachin Rajpal, Managing Director, Data Solutions, Cotality</sup></i></blockquote><h3 data-block-key="i1ng"><b>DataStax</b></h3><blockquote data-block-key="9blrn"><sup>DataStax is excited to be part of A2A and explore how it can support Langflow, representing an important step toward truly interoperable AI systems that can collaborate on complex tasks spanning multiple environments.</sup><i><sup><br/>– Ed Anuff, Chief Product Officer, DataStax</sup></i></blockquote><h3 data-block-key="15p9p"><b>Datadog</b></h3><blockquote data-block-key="8r8v5"><sup>We&#x27;re excited to see Google Cloud introduce the A2A protocol to streamline the development of sophisticated agentic systems, which will help Datadog enable its users to build more innovative, optimized, and secure agentic AI applications.</sup><i><sup><br/>– Yrieix Garnier, VP of Product at Datadog</sup></i></blockquote><h3 data-block-key="838cn"><b>Elastic</b></h3><blockquote data-block-key="5eu76"><sup>Supporting the vision of open, interoperable agent ecosystems, Elastic looks forward to working with Google Cloud and other industry leaders on A2A and providing its data management and workflow orchestration experience to enhance the protocol.</sup><i><sup><br/>– Steve Kearns, GVP and GM of Search, Elastic</sup></i></blockquote><h3 data-block-key="dgkj8"><b>GrowthLoop</b></h3><blockquote data-block-key="bdrp7"><sup>A2A has the potential to accelerate GrowthLoop&#x27;s vision of Compound Marketing for our customers—enabling our AI agents to seamlessly collaborate with other specialized agents, learn faster from enterprise data, and rapidly optimize campaigns across the marketing ecosystem, all while respecting data privacy on the customer&#x27;s cloud infrastructure.</sup><i><sup><br/>– Anthony Rotio, Chief Data Strategy Officer, GrowthLoop</sup></i></blockquote><h3 data-block-key="5ogjj"><b>Harness</b></h3><blockquote data-block-key="2qob2"><sup>Harness is thrilled to support A2A and is committed to simplifying the developer experience by integrating AI-driven intelligence into every stage of the software lifecycle, empowering teams to gain deeper insights from runtime data, automate complex workflows, and enhance system performance.</sup><i><sup><br/>– Gurashish Brar, Head of Engineering at Harness.</sup></i></blockquote><h3 data-block-key="6tt5s"><b>Incorta</b></h3><blockquote data-block-key="53v62"><sup>Incorta is excited to support A2A and advance agent communication for customers,making the future of enterprise automation smarter, faster, and truly data-driven.</sup><i><sup><br/>– Osama Elkady CEO Incorta</sup></i></blockquote><h3 data-block-key="9arc"><b>Intuit</b></h3><blockquote data-block-key="1cjhg"><sup>Intuit strongly believes that an open-source protocol such as A2A will enable complex agent workflows, accelerate our partner integrations, and move the industry forward with cross-platform agents that collaborate effectively.</sup><i><sup><br/>– Tapasvi Moturu, Vice President, Software Engineering for Agentic Frameworks, at Intuit</sup></i></blockquote><h3 data-block-key="crl9i"><b>JetBrains</b></h3><blockquote data-block-key="bns6d"><sup>We’re excited to be a launch partner for A2A, an initiative that enhances agentic collaboration and brings us closer to a truly multi-agent world, empowering developers across JetBrains IDEs, team tools, and Google Cloud.</sup><i><sup><br/>– Vladislav Tankov, Director of AI, JetBrains</sup></i></blockquote><h3 data-block-key="7jjkt"><b>JFrog</b></h3><blockquote data-block-key="evpsb"><sup>JFrog is excited to join the A2A protocol, an initiative we believe will help to overcome many of today’s integration challenges and be a key driver for the next generation of agentic applications.</sup><i><sup><br/>– Yoav Landman, CTO and Co-founder, JFrog</sup></i></blockquote><h3 data-block-key="61o6"><b>LabelBox</b></h3><blockquote data-block-key="139vb"><sup>A2A is a key step toward realizing the full potential of AI agents, supporting a future where AI can truly augment human capabilities, automate complex workflows and drive innovation.</sup><i><sup><br/>– Manu Sharma Founder &amp; CEO</sup></i></blockquote><h3 data-block-key="6nhbn"><b>LangChain</b></h3><blockquote data-block-key="ejaac"><sup>LangChain believes agents interacting with other agents is the very near future, and we are excited to be collaborating with Google Cloud to come up with a shared protocol which meets the needs of the agent builders and users.</sup><i><sup><br/>– Harrison Chase Co-Founder and CEO at LangChain</sup></i></blockquote><h3 data-block-key="824g5"><b>MongoDB</b></h3><blockquote data-block-key="bp0u3"><sup>By combining the power of MongoDB’s robust database infrastructure and hybrid search capabilities with A2A and Google Cloud’s cutting edge AI models, businesses can unlock new possibilities across industries like retail, manufacturing, and beyond to redefine the future of AI applications.</sup><i><sup><br/>– Andrew Davidson, SVP of Products at MongoDB</sup></i></blockquote><h3 data-block-key="b0ism"><b>Neo4j</b></h3><blockquote data-block-key="1qcbh"><sup>Neo4j is proud to partner with Google Cloud, combining our graph technology&#x27;s knowledge graph and GraphRAG capabilities with A2A to help organizations unlock new levels of automation and intelligence while ensuring agent interactions remain contextually relevant, explainable and trustworthy.</sup><i><sup><br/>– Sudhir Hasbe, Chief Product Officer at Neo4j</sup></i></blockquote><h3 data-block-key="dhkth"><b>New Relic</b></h3><blockquote data-block-key="am3mi"><sup>We believe the collaboration between Google Cloud’s A2A protocol and New Relic’s Intelligent Observability platform will provide significant value to our customers by simplifying integrations, facilitating data exchange across diverse systems, and ultimately creating a more unified AI agent ecosystem.</sup><i><sup><br/>– Thomas Lloyd, Chief Business and Operations Officer, New Relic</sup></i></blockquote><h3 data-block-key="4a84c"><b>Pendo</b></h3><blockquote data-block-key="36la5"><sup>We’re proud to partner on Google Cloud’s A2A protocol, which will be a critical step toward enabling AI agents to work together effectively, while maintaining trust and usability at scale.<br/>–</sup> <i><sup>Rahul Jain, Co-founder &amp; CPO at Pendo</sup></i></blockquote><h3 data-block-key="884o6"><b>PayPal</b></h3><blockquote data-block-key="ffb43"><sup>PayPal supports Google Cloud’s A2A protocol, which represents a new way for developers and merchants to create next-generation commerce experiences, powered by agentic AI.</sup><i><sup><br/>-Prakhar Mehrotra, SVP &amp; Head of Artificial Intelligence at PayPal</sup></i></blockquote><h3 data-block-key="ds6pj"><b>SAP</b></h3><blockquote data-block-key="a8qnh"><sup>SAP is committed to collaborating with Google Cloud and the broader ecosystem to shape the future of agent interoperability through the A2A protocol—a pivotal step toward enabling SAP Joule and other AI agents to seamlessly work across enterprise platforms and unlock the full potential of end-to-end business processes.</sup><i><sup><br/>– Walter Sun, SVP &amp; Global Head of AI Engineering</sup></i></blockquote><h3 data-block-key="fs2nu"><b>Salesforce</b></h3><blockquote data-block-key="24khp"><sup>Salesforce is leading with A2A standard support to extend our open platform, enabling AI agents to work together seamlessly across Agentforce and other ecosystems to turn disconnected capabilities into orchestrated solutions and deliver an enhanced digital workforce for customers and employees.</sup><i><sup><br/>– Gary Lerhaupt, VP Product Architecture</sup></i></blockquote><h3 data-block-key="62tri"><b>ServiceNow</b></h3><blockquote data-block-key="56thm"><sup>ServiceNow and Google Cloud are collaborating to set a new industry standard for agent-to-agent interoperability, and we believe A2A will pave the way for more efficient and connected support experiences.</sup><i><sup><br/>– Pat Casey, Chief Technology Officer &amp; EVP of DevOps, ServiceNow</sup></i></blockquote><h3 data-block-key="dij9p"><b>Supertab</b></h3><blockquote data-block-key="4ukh5"><sub>With Google Cloud’s A2A protocol and Supertab Connect, agents will be able to pay for, charge for, and exchange services — just like human businesses do.</sub><i><sub><br/>– Cosmin Ene, Founder of Supertab</sub></i></blockquote><h3 data-block-key="76rv"><b>UKG</b></h3><blockquote data-block-key="c74n8"><sub>We&#x27;re thrilled at UKG to be collaborating with Google Cloud on the new A2A protocol, a framework that will allow us to build even smarter, more supportive human capital and workforce experiences that anticipate and respond to employee needs like never before.</sub><i><sub><br/>– Eli Tsinovoi, Head of AI at UKG</sub></i></blockquote><h3 data-block-key="475ka"><b>Weights &amp; Biases</b></h3><blockquote data-block-key="eqfh2"><sup>Weights &amp; Biases is proud to collaborate with Google Cloud on the A2A protocol, setting a critical open standard that will empower organizations to confidently deploy, orchestrate, and scale diverse AI agents, regardless of underlying technologies.</sup><i><sup><br/>– Shawn Lewis, CTO and co-founder at Weights &amp; Biases</sup></i></blockquote><h3 data-block-key="28fc3"><b><br/>Services Partners</b></h3><h3 data-block-key="csl52"><b>Accenture</b></h3><blockquote data-block-key="bunej"><sup>The multi-agent A2A protocol from Google Cloud is the bridge that will unite domain specific agents across diverse platforms to solve complex challenges, enabling seamless communication and collective intelligence for smarter and effective agentic solutions.</sup><i><sup><br/>– Scott Alfieri, AGBG Global lead, Accenture</sup></i></blockquote><h3 data-block-key="emqm3"><b>Deloitte</b></h3><blockquote data-block-key="eq7a9"><sup>Agent-to-agent interoperability is a foundational element of enabling the evolution of agentic AI architectures, and Google Cloud’s A2A initiative to bring together an ecosystem of technology industry participants to co-develop and support this protocol will immensely accelerate agentic AI adoption.</sup><i><sup><br/>– Gopal Srinivasan, Deloitte</sup></i></blockquote><h3 data-block-key="4bano"><b>EPAM</b></h3><blockquote data-block-key="a3vqq"><sup>We are already leading the way in the A2A space by focusing on industry solutions that provide real business value—saving time, reducing overhead and helping our clients drive revenue and enhance processes like the development of FDA documentation during the drug discovery process.</sup><i><sup><br/>– Marc Cerro, VP of Global Google Cloud Partnership at EPAM</sup></i></blockquote><h3 data-block-key="6htfs"><b>HCLTech</b></h3><blockquote data-block-key="1ct13"><sup>HCLTech is at the forefront of the agentic enterprise, and we are proud to partner with Google Cloud in defining agent-to-agent interoperability and advancing agentic AI possibilities through the open A2A standard.</sup><i><sup><br/>– Vijay Guntur, Chief Technology Officer and Head of Ecosystems, HCLTech</sup></i></blockquote><h3 data-block-key="1v7fb"><b>KPMG</b></h3><blockquote data-block-key="ed2r6"><sup>At KPMG, we are excited to be part of this emerging initiative as A2A provides the essential standard we need for different AI agents to truly collaborate effectively and responsibly, which will enable customers and businesses to seamlessly harness AI for innovation and efficiency gains.</sup><i><sup><br/>– Sherif AbdElGawad, Partner, Google Cloud &amp; AI Leader, KPMG</sup></i></blockquote><p data-block-key="3r2va"><b>Quantiphi</b></p><blockquote data-block-key="3ti09"><sup>The ability for agents to dynamically discover capabilities and build user experiences across platforms is crucial for unlocking the true potential of enterprises. We see the A2A protocol as a pivotal step to empower businesses to build such interoperable agents.</sup><i><sup><br/>-Asif Hasan, Co-founder of Quantiphi</sup></i></blockquote><h3 data-block-key="dv5q1"><b>TCS (Tata Consultancy Services)</b></h3><blockquote data-block-key="bdcnu"><sup>The A2A protocol is the foundation for the next era of agentic automation, where Semantic Interoperability takes prominence, and we&#x27;re proud to lead this transformative journey.</sup><i><sup><br/>– Anupam Singhal, President, Manufacturing business, Tata Consultancy Services (TCS)</sup></i></blockquote><h3 data-block-key="cdfqo"><b>Wipro</b></h3><blockquote data-block-key="curia"><sup>Because the future of AI lies in seamless collaboration, open protocols like A2A will be the foundation of an ecosystem where AI agents drive innovation at scale.</sup><i><sup><br/>– Nagendra P Bandaru, Managing Partner and Global Head – Technology Services (Wipro)</sup></i></blockquote><h2 data-block-key="8o"><br/>Learn more about A2A</h2><p data-block-key="e4qip">To learn more about the A2A framework, delve into the <a href="https://github.com/google/A2A"><b>full specification draft</b></a> and explore <a href="https://google.github.io/A2A"><b>available code samples to</b></a> examine the protocol&#x27;s structure experiment with its code.</p><p data-block-key="3da1r">We encourage you to contribute to the protocol&#x27;s evolution and help us define the future of agent interoperability by <a href="https://docs.google.com/forms/d/e/1FAIpQLScS23OMSKnVFmYeqS2dP7dxY3eTyT7lmtGLUa8OJZfP4RTijQ/viewform">submitting ideas</a>, <a href="https://github.com/google/A2A/blob/main/CONTRIBUTING.md">contributing to the documentation</a>, and engaging with the community.</p>
+</div> 
+      </div>
+    </section>
+    
+
+    <section class="navigation-container glue-page glue-spacer-6-top">
+      <div class="posted-in-section">
+        <div class="posted-in-section__heading">
+          <span class="glue-caption">
+            posted in:
+          </span>
+        </div>
+        <div class="posted-in-section__tags">
+          <ul>
+              
+                  <li>
+                      <a href="/en/search/?product_categories=Cloud" class="glue-caption">Cloud</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?technology_categories=AI" class="glue-caption">AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?technology_categories=Cloud" class="glue-caption">Cloud</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?content_type_categories=Announcements" class="glue-caption">Announcements</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?content_type_categories=Industry+Trends" class="glue-caption">Industry Trends</a>
+                  </li>
+              
+              
+                  <li>
+                      <a href="/en/search/?tag=Agentic AI" class="glue-caption">Agentic AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=AI agents" class="glue-caption">AI agents</a>
+                  </li>
+              
+          </ul>
+      </div>
+      </div>
+      <div class="buttons-section">
+        <div class="buttons-section__left">
+          <a href="/en/google-developer-program-latest-enhancements/" class="glue-button--icon glue-elevation-level-1 " aria-label="Previous">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </a>
+          <span class="caption ">Previous</span>
+        </div>
+        <div class="buttons-section__right">
+          <span class="caption ">Next</span>
+          <a href="/en/the-gemini-api-and-the-internet-of-things/" class="glue-button--icon glue-elevation-level-1 "  aria-label="Next">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="related-posts-container glue-page glue-spacer-6-top glue-spacer-3-bottom">
+      <span class="glue-headline glue-headline--headline-3">Related Posts</span>
+      <div class="related-posts-container__carousel glue-page glue-spacer-5-top">
+        <div class="glue-carousel glue-carousel--cards glue-carousel-related-posts" aria-label="Related Posts">
+          <!-- Previous -->
+          <button class="glue-carousel__button glue-carousel__button--prev"
+              aria-label="Go to the previous slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </button>
+          <!-- Next -->
+          <button class="glue-carousel__button glue-carousel__button--next"
+              aria-label="Go to the next slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </button>
+          <!-- List -->
+          <div class="glue-carousel__viewport">
+            <div class="glue-carousel__list">
+              
+                <a class="glue-card glue-carousel__item" href="/en/agent-development-kit-easy-to-build-multi-agent-applications/">
+                  <div aria-label="Agent Development Kit: Making it easy to build multi-agent applications" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Agent Development Kit: Making it easy to build multi-agent applications" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Ai-1-meta.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Agent Development Kit: Making it easy to build multi-agent applications</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">April 9, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/en/google-developer-program-latest-enhancements/">
+                  <div aria-label="Unlock your potential: Discover the enhanced Google Developer Program" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Unlock your potential: Discover the enhanced Google Developer Program" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Google-Developer-Program_2.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            <span class="glue-label">Firebase</span>
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Business and Leadership</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Unlock your potential: Discover the enhanced Google Developer Program</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">April 9, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/en/simplified-dataflow-connectors-with-managed-io/">
+                  <div aria-label="Simplified Dataflow Connectors with Managed I/O" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Simplified Dataflow Connectors with Managed I/O" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Cloud-2-meta.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Solutions</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Simplified Dataflow Connectors with Managed I/O</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">April 8, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+          <!-- Navigation dots -->
+          <div class="glue-carousel__navigation" aria-label="Choose a page"
+               data-glue-carousel-navigation-label="Selected tab $glue_carousel_page_number$ of $glue_carousel_page_total$">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+
+				
+				
+
+<div class="footer-linkboxes__wrapper">
+  <nav class="footer-linkboxes" aria-label="Footer links">
+    <ul class="footer-linkboxes__list">
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Connect
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//googledevelopers.blogspot.com" class="footer-linkbox-list__link">
+                Blog
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/googlefordevs" class="footer-linkbox-list__link">
+                Instagram
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-li" class="footer-linkbox-list__link">
+                LinkedIn
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-tw" class="footer-linkbox-list__link">
+                Twitter
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/developers" class="footer-linkbox-list__link">
+                YouTube
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Programs
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//www.womentechmakers.com" class="footer-linkbox-list__link">
+                Women Techmakers
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/gdg" class="footer-linkbox-list__link">
+                Google Developer Groups
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/experts" class="footer-linkbox-list__link">
+                Google Developer Experts
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/accelerators" class="footer-linkbox-list__link">
+                Accelerators
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/gdsc" class="footer-linkbox-list__link">
+                Google Developer Student Clubs
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Developer consoles
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.developers.google.com" class="footer-linkbox-list__link">
+                Google API Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.cloud.google.com" class="footer-linkbox-list__link">
+                Google Cloud Platform Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//play.google.com/apps/publish" class="footer-linkbox-list__link">
+                Google Play Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.firebase.google.com" class="footer-linkbox-list__link">
+                Firebase Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.actions.google.com" class="footer-linkbox-list__link">
+                Actions on Google Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//cast.google.com/publish" class="footer-linkbox-list__link">
+                Cast SDK Developer Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//chrome.google.com/webstore/developer/dashboard" class="footer-linkbox-list__link">
+                Chrome Web Store Dashboard
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer-utility__wrapper">
+  <div>
+    <nav class="footer-sites" aria-label="Other Google Developers websites">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+      <ul class="footer-sites-list">
+        <li class="footer-sites-item">
+          <a href="//developer.android.com" class="footer-sites-link">
+            Android
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developer.chrome.com/home" class="footer-sites-link">
+            Chrome
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//firebase.google.com" class="footer-sites-link">
+            Firebase
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//cloud.google.com" class="footer-sites-link">
+            Google Cloud Platform
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developers.google.com/products" class="footer-sites-link">
+            All products
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <button aria-hidden="true" class="glue-cookie-notification-bar-control footer-sites-link">
+            Manage cookies
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav class="footer-utility-links">
+      <ul class="footer-utility-list">
+        <li class="footer-utility-item">
+          <a href="//developers.google.com/terms/site-terms" class="footer-utility-link">
+            Terms
+          </a>
+        </li>
+        <li class="footer-utility-item">
+          <a href="//policies.google.com/privacy" class="footer-utility-link">
+            Privacy
+          </a>
+        </li>
+      </ul>
+      <div class="language-selector footer" aria-label="Select your language preference">
+        
+        <button type="button" aria-controls="lang-selector-footer" aria-haspopup="true">
+          <svg role="presentation" aria-hidden="true" class="glue-icon lang-icon">
+            <use href="/glue-icon/#language"></use>
+          </svg>
+          <span class="lang-label">English</span>
+          <svg role="presentation" aria-hidden="true" class="glue-icon lang-icon">
+            <use href="/glue-icon/#arrow-drop-down"></use>
+          </svg>
+        </button>
+        
+        <div id="lang-selector-footer" class="lang-menu hidden" role="menu">
+            <ul role="presentation">
+              
+                
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="en"
+                      
+                      href="/en/a2a-a-new-era-of-agent-interoperability">
+                        English
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="es"
+                      
+                      href="/es/a2a-a-new-era-of-agent-interoperability">
+                        Español (Latam)
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="id"
+                      
+                      href="/id/a2a-a-new-era-of-agent-interoperability">
+                        Bahasa Indonesia
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="ja"
+                      
+                      href="/ja/a2a-a-new-era-of-agent-interoperability">
+                        日本語
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="ko"
+                      
+                      href="/ko/a2a-a-new-era-of-agent-interoperability">
+                        한국어
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="pt-br"
+                      
+                      href="/pt-br/a2a-a-new-era-of-agent-interoperability">
+                        Português (Brasil)
+                      </a>
+                  </li>
+                
+                  <li role="presentation">
+                    <a
+                      role="menuitem"
+                      lang="zh-hans"
+                      
+                      href="/zh-hans/a2a-a-new-era-of-agent-interoperability">
+                        简体中文
+                      </a>
+                  </li>
+                
+              
+            </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+        
+				
+
+        
+        <script nonce="44Vps8SiXMBLrwj9jR2vFg==" src="https://www.youtube.com/player_api"></script>
+        <script nonce="44Vps8SiXMBLrwj9jR2vFg==" src="//www.gstatic.com/glue/v27_1/glue.min.js"></script>
+        <script nonce="44Vps8SiXMBLrwj9jR2vFg==" type="text/javascript" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/js/dgc_blog.js"></script>
+
+        <script nonce="44Vps8SiXMBLrwj9jR2vFg==" src="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js"
+            data-glue-cookie-notification-bar-category="2A"
+            data-glue-cookie-notification-bar-site-id="developers.googleblog.com"></script>
+
+        
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20250401-180100/js/blog_detail.js" nonce="44Vps8SiXMBLrwj9jR2vFg=="></script>
+
+    </body>
+</html>
