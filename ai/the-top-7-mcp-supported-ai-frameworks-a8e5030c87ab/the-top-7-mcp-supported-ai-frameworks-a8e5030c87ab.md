@@ -1,8 +1,8 @@
-
 <!--
 title: 支持MCP的7大AI框架
-cover: https://miro.medium.com/v2/resize:fit:1200/1*XQEeQW6AR_MljGldKDivhw.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1744523808/kkentw6wchisgct5u3tr.png
 summary: 想让你的 LLM 像开了外挂？速看！解锁 AI 应用新姿势，集成 MCP 协议是关键！本文详解 MCP 如何赋能 AI 代理，对接 OpenAI Agents SDK 等 7 大框架，实现与 Git 等外部工具的无缝连接。更有 Composio、OpenTools 等海量 MCP 服务器等你来探索！
+-->
 -->
 
 想让你的 LLM 像开了外挂？速看！解锁 AI 应用新姿势，集成 MCP 协议是关键！本文详解 MCP 如何赋能 AI 代理，对接 OpenAI Agents SDK 等 7 大框架，实现与 Git 等外部工具的无缝连接。更有 Composio、OpenTools 等海量 MCP 服务器等你来探索！
@@ -19,8 +19,7 @@ summary: 想让你的 LLM 像开了外挂？速看！解锁 AI 应用新姿势�
 
 默认情况下，如果不为 LLM 和 [AI 聊天机器人](https://getstream.io/chat/solutions/ai-integration/) 提供适当的上下文，它们将无法获取实时信息、执行代码、调用外部工具和 API，甚至无法代表用户使用 Web 浏览器。开发人员可以利用以下方法来解决 LLM 和代理的这一限制。
 
-[Composio](https://composio.dev/): Composio 具有用于集成 AI 代理和 LLM 的规范和工具包库。除了 Composio 的现成工具包库之外，他们最近还宣布了 [Composio MCP](https://mcp.composio.dev/?_gl=1*1tcsvb5*_ga*MTk0ODc0NjU2OS4xNzM3MjM1ODgx*_ga_J9WD56TEBS*MTc0MjQ1NTUwMC4yMC4wLjE3NDI0NTU1MDAuMC4wLjA.*_ga_YKMWVQS9W0*MTc0MjQ1NTUwMC4yMC4wLjE3NDI0NTU1MDAuNjAuMC4xNjQwNzI1NjY1)，允许开发人员连接到 100 多个用于 IDE 的 MCP 服务器。从上面的链接查看 Composio MCP 工具类别，以将多个应用程序连接到 MCP 支持的 IDE（如 Cursor、Claude 和 Windsurf）中的项目。
-
+- [Composio](https://composio.dev/): Composio 具有用于集成 AI 代理和 LLM 的规范和工具包库。除了 Composio 的现成工具包库之外，他们最近还宣布了 [Composio MCP](https://mcp.composio.dev/?_gl=1*1tcsvb5*_ga*MTk0ODc0NjU2OS4xNzM3MjM1ODgx*_ga_J9WD56TEBS*MTc0MjQ1NTUwMC4yMC4wLjE3NDI0NTU1MDAuMC4wLjA.*_ga_YKMWVQS9W0*MTc0MjQ1NTUwMC4yMC4wLjE3NDI0NTU1MDAuNjAuMC4xNjQwNzI1NjY1)，允许开发人员连接到 100 多个用于 IDE 的 MCP 服务器。从上面的链接查看 Composio MCP 工具类别，以将多个应用程序连接到 MCP 支持的 IDE（如 Cursor、Claude 和 Windsurf）中的项目。
 - [Agents.json](https://docs.wild-card.ai/agentsjson/introduction): 一种基于 OpenAI 标准构建的规范，旨在确保 [AI 代理](https://getstream.io/blog/xai-python-multi-agent/) 及其对 API 和外部工具的访问之间的无缝和增强的交互。虽然 Agent.json 是一个出色的规范，但它没有得到广泛使用和采用，这与 MCP 不同。请参阅其 [GitHub repo](https://github.com/wild-card-ai/agents-json) 以了解更多信息并开始使用。
 - **MCP**: MCP 为开发人员提供了向 LLM 和 AI 助手提供上下文数据以解决问题的最佳方式。例如，您可以构建一个 MCP 文档服务器，以像使用 [llms.txt file](https://llmstxt.org/) 一样，为 IDE 和代理框架提供对其文档的完全访问权限。
 
