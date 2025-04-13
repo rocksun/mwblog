@@ -1,4 +1,3 @@
-
 <!--
 title: 超越ROWE：为什么唯结果论的工作方式并不总是赢家
 cover: https://cdn.thenewstack.io/media/2025/04/62326fc2-alex-kotliarskyi-qbpzgqemskg-unsplash-1-scaled.jpg
