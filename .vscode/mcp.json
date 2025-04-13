@@ -32,6 +32,24 @@
         "https_proxy": "http://127.0.0.1:10808",
 
       }
-    }
+    },
+    // "mcp-flight-search": {
+    //   "type": "stdio",
+    //   "command": "uv",
+    //   "args": [
+    //           "--directory",
+    //           "D:\\learns\\ai\\hello-mcp-agent",
+    //           "run",
+    //           "mcp-flight-search",
+    //           "--connection_type",
+    //           "stdio"
+    //       ],
+    //   "env": {
+    //     "SERP_API_KEY": "5867a804d3ff311dd8d9bb81f04b21c27c2b374bdc3f499431fb9ff822bd4c6a",
+    //     "http_proxy": "http://127.0.0.1:10808",
+    //     "https_proxy": "http://127.0.0.1:10808",
+
+    //   }
+    // }
   }
 }

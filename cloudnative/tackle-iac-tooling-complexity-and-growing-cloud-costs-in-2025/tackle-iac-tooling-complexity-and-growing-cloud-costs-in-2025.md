@@ -1,4 +1,3 @@
-
 <!--
 title: 应对IaC工具复杂性和2025年不断增长的云成本
 cover: https://cdn.thenewstack.io/media/2025/04/bd1fc482-maze12.jpg

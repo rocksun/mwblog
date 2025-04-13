@@ -1,4 +1,3 @@
-
 <!--
 title: OTel与Elastic合作，让可观测性更易于访问
 cover: https://cdn.thenewstack.io/media/2025/01/f74f19ca-otel-elastic-collaborate-make-observability-more-accessible.jpg
