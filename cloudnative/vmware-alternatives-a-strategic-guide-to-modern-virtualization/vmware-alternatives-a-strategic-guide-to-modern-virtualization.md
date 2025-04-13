@@ -1,4 +1,3 @@
-
 <!--
 title: VMware替代方案：现代虚拟化的战略指南
 cover: https://cdn.thenewstack.io/media/2025/04/4ec1294f-network.jpg
