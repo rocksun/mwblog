@@ -3,7 +3,6 @@ title: 支持MCP的7大AI框架
 cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1744523808/kkentw6wchisgct5u3tr.png
 summary: 想让你的 LLM 像开了外挂？速看！解锁 AI 应用新姿势，集成 MCP 协议是关键！本文详解 MCP 如何赋能 AI 代理，对接 OpenAI Agents SDK 等 7 大框架，实现与 Git 等外部工具的无缝连接。更有 Composio、OpenTools 等海量 MCP 服务器等你来探索！
 -->
--->
 
 想让你的 LLM 像开了外挂？速看！解锁 AI 应用新姿势，集成 MCP 协议是关键！本文详解 MCP 如何赋能 AI 代理，对接 OpenAI Agents SDK 等 7 大框架，实现与 Git 等外部工具的无缝连接。更有 Composio、OpenTools 等海量 MCP 服务器等你来探索！
 
