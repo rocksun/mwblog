@@ -83,26 +83,35 @@ Arazzo规范不要求特定的开发流程，例如*设计优先*或*代码优�
 
 利用Arazzo，我们可以明确地描述工作流程，指导代理首先并每次都正确地执行工作流程。如果您想在查看下面的Arazzo文档之前更好地了解规范结构，请查看这篇关于规范的[深入探讨](https://swagger.io/blog/the-arazzo-specification-a-deep-dive/)。
 
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232
 ```yaml
 arazzo: 1.0.1
+
 info:
   title: BNPL贷款申请流程
   version: 1.0.0
   description: >
-    此流程概述了在结账时申请BNPL贷款的步骤，包括检查产品资格、检索条款和条件、创建客户记录、启动贷款交易、客户身份验证以及检索最终付款计划。交易完成后，它将通过更新订单状态来结束。
+    此流程概述了在结账时申请BNPL贷款的步骤，
+    包括检查产品资格、检索条款和条件、创建客户记录、
+    启动贷款交易、客户身份验证以及检索最终付款计划。
+    交易完成后，它将通过更新订单状态来结束。
+
 sourceDescriptions:
   - name: BnplEligibilityApi
     url: https://raw.githubusercontent.com/frankkilcommins/apidays-describing-api-workflows-with-arazzo/ef35e237576d7af2bc3be66d94ffca94eee5036d/specs/bnpl-eligibility.openapi.yaml
     type: openapi
+
   - name: BnplLoanApi
     url: https://raw.githubusercontent.com/frankkilcommins/apidays-describing-api-workflows-with-arazzo/ef35e237576d7af2bc3be66d94ffca94eee5036d/specs/bnpl-loan.openapi.yaml
     type: openapi
+
 workflows:
   - workflowId: ApplyForLoanAtCheckout
     summary: 使用BNPL平台在结账时申请BNPL贷款
     description: >
-      此流程描述了使用BNPL平台在结账时获得贷款的步骤，其中涉及多个API调用，以检查产品资格、确定客户资格、启动贷款交易、验证客户身份、检索付款计划和更新订单状态。
+      此流程描述了使用BNPL平台在结账时获得贷款的步骤，其中涉及多个API调用，
+      以检查产品资格、确定客户资格、启动贷款交易、验证客户身份、
+      检索付款计划和更新订单状态。
+
     inputs:
       type: object
       required:
@@ -138,6 +147,7 @@ workflows:
                   description: 现有客户的URI。
                   type: string
                   format: uri
+
         products:
           type: array
           minItems: 1
@@ -160,6 +170,7 @@ workflows:
                     pattern: "^[A-Z]{3}$"
                   amount:
                     type: number
+
         totalAmount:
           type: object
           required:
@@ -171,9 +182,11 @@ workflows:
               pattern: "^[A-Z]{3}$"
             amount:
               type: number
+
         token:
           description: 贷款交易的授权令牌。
           type: string
+
     steps:
       - stepId: checkProductEligibility
         description: 调用BNPL API以检查所选产品是否有资格获得BNPL贷款。
@@ -181,7 +194,10 @@ workflows:
         requestBody:
           contentType: application/json
           payload: |
-            { "customer": "{$inputs.customer.uri}", "products": $inputs.products }
+            {
+              "customer": "{$inputs.customer.uri}",
+              "products": $inputs.products
+            }
         successCriteria:
           - condition: $statusCode == 200
         outputs:
@@ -198,6 +214,7 @@ workflows:
             type: end
             criteria:
               - condition: $response.body.productCodes == null
+
       - stepId: getCustomerTermsAndConditions
         description: 检索BNPL贷款的条款和条件。
         operationId: $sourceDescriptions.BnplEligibilityApi.getTermsAndConditions
@@ -216,6 +233,7 @@ workflows:
             stepId: initiateBnplTransaction
             criteria:
               - condition: $steps.checkProductEligibility.outputs.eligibilityCheckRequired == false
+
       - stepId: createCustomer
         description: >
           如果客户尚未注册，请通过验证其BNPL贷款资格来创建一个新的客户记录。
@@ -223,7 +241,13 @@ workflows:
         requestBody:
           contentType: application/json
           payload: |
-            { "firstName": "{$inputs.customer.firstName}", "lastName": "{$inputs.customer.lastName}", "dateOfBirth": "{$inputs.customer.dateOfBirth}", "postalCode": "{$inputs.customer.postalCode}", "termsAndConditionsAccepted": true }
+            {
+              "firstName": "{$inputs.customer.firstName}",
+              "lastName": "{$inputs.customer.lastName}",
+              "dateOfBirth": "{$inputs.customer.dateOfBirth}",
+              "postalCode": "{$inputs.customer.postalCode}",
+              "termsAndConditionsAccepted": true
+            }
         successCriteria:
           - condition: $statusCode == 200 || $statusCode == 201
         outputs:
@@ -238,13 +262,18 @@ workflows:
             type: end
             criteria:
               - condition: $statusCode == 200
+
       - stepId: initiateBnplTransaction
         description: 启动BNPL贷款交易。
         operationId: $sourceDescriptions.BnplLoanApi.createBnplTransaction
         requestBody:
           contentType: application/json
           payload: |
-            { "enrolledCustomer": "https://api.example.com/customers/12345", "products": $inputs.products, "totalAmount": $inputs.totalAmount }
+            {
+              "enrolledCustomer": "https://api.example.com/customers/12345",
+              "products": $inputs.products,
+              "totalAmount": $inputs.totalAmount
+            }
         successCriteria:
           - condition: $statusCode == 202
         outputs:
@@ -261,6 +290,7 @@ workflows:
             stepId: retrievePaymentPlan
             criteria:
               - condition: $response.body.redirectAuthToken == null
+
       - stepId: authenticateCustomerAndAuthorizeLoan
         description: 验证客户身份并获得贷款授权。
         operationId: $sourceDescriptions.BnplEligibilityApi.getAuthorization
@@ -272,6 +302,7 @@ workflows:
           - condition: $statusCode == 200
         outputs:
           redirectUrl: $response.headers.Location
+
       - stepId: retrievePaymentPlan
         description: 贷款授权后检索最终付款计划。
         operationId: $sourceDescriptions.BnplLoanApi.retrieveBnplLoanTransaction
@@ -283,8 +314,9 @@ workflows:
           - condition: $statusCode == 200
         outputs:
           finalizedPaymentPlan: $response.body
+
       - stepId: updateOrderStatus
-        description: 贷款交易完成后，将订单状态更新为“已完成”。
+        description: 贷款交易完成后，将订单状态更新为"已完成"。
         operationId: $sourceDescriptions.BnplLoanApi.updateBnplLoanTransactionStatus
         parameters:
           - name: loanTransactionId
@@ -293,13 +325,15 @@ workflows:
         requestBody:
           contentType: application/json
           payload: |
-            { "status": "Completed" }
+            {
+              "status": "Completed"
+            }
         successCriteria:
           - condition: $statusCode == 204
         outputs:
           finalizedPaymentPlan: $steps.retrievePaymentPlan.outputs.finalizedPaymentPlan
-
 ```
+
 哇——这么多YAML。是的，机器喜欢它，但这种格式的美妙之处在于我们也可以利用工具将Arazzo渲染成以人为本的形式。Arazzo文档可以解析为类似这样的序列图：
 
 ## 启用自主式API使用
