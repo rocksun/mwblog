@@ -1,4 +1,3 @@
-
 <!--
 title: 边缘人工智能：联邦学习以获得更佳性能
 cover: https://cdn.thenewstack.io/media/2025/04/3e0cdc23-ai-at-the-edge-2.jpg
