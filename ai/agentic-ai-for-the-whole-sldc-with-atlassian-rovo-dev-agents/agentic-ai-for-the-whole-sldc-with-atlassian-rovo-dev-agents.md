@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Atlassian Rovo Dev Agents为整个软件开发生命周期打造Agentic AI
 cover: https://cdn.thenewstack.io/media/2025/04/001746cd-anu-bharadwaj-teams-25.jpg
