@@ -1,4 +1,3 @@
-
 <!--
 title: 云服务：教皇对人工智能的看法
 cover: https://cdn.thenewstack.io/media/2025/04/c9293e86-rick-govic-oghdmpuwo2s-unsplash.jpg
