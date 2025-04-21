@@ -1,4 +1,3 @@
-
 <!--
 title: 如何阅读Traceroute以进行网络故障排除
 cover: https://cdn.thenewstack.io/media/2025/04/861e0b4c-route.png
