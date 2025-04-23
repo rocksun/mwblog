@@ -1,5 +1,5 @@
 <!--
-title: 使用 LangChain 与 PydanticAI 构建 AI Agent
+title: 使用LangChain与PydanticAI构建AI Agent
 cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1744942417/l871ggq9enwa7mqfuh9e.png
 summary: LangChain与PydanticAI构建AI Agent大PK！LangChain历史悠久但繁琐，PydanticAI简洁直观。二者均实现动态模型选择、人工输入、依赖工具调用、对话记忆和结构化输出。LangChain用`AgentExecutor`，PydanticAI用`Agent`类，动态配置Agent参数。PydanticAI更胜一筹，代码更易懂！
 -->

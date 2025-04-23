@@ -1,4 +1,3 @@
-
 <!--
 title: Agentic IDE：智能编码的下一个前沿
 cover: https://cdn.thenewstack.io/media/2025/04/28e2adc1-boliviainteligente-dwocajxsud8-unsplash.jpg
