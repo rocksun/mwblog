@@ -1,4 +1,3 @@
-
 <!--
 title: 使用MCP构建？注意安全漏洞
 cover: https://cdn.thenewstack.io/media/2025/04/74f43954-mind-the-gap-mcp-security-2.jpg
