@@ -1,4 +1,3 @@
-
 <!--
 title: Magma是微软用于Agentic AI的基础多模态模型
 cover: https://cdn.thenewstack.io/media/2025/04/e74db13e-microsoft-magma-4.jpeg
