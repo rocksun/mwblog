@@ -1,4 +1,3 @@
-
 <!--
 title: 使用MCP进行AI集成的6大理由
 cover: https://cdn.thenewstack.io/media/2025/04/339aeb36-connect.jpg
