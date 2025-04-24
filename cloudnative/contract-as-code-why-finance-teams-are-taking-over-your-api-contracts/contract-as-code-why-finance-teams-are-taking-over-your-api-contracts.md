@@ -1,4 +1,3 @@
-
 <!--
 title: 合约即代码：为什么财务团队正在接管你的API合约
 cover: https://cdn.thenewstack.io/media/2025/04/ba305032-hands-2088954_1280.jpg
