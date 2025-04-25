@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI发布为开发者训练的新模型
 cover: https://cdn.thenewstack.io/media/2025/04/4b2023c3-newopenaimodels_frontend.jpg
