@@ -1,4 +1,3 @@
-
 <!--
 title: 未来属于 AI 增强的 10 倍开发者，而不是更大的开发团队
 cover: https://cdn.thenewstack.io/media/2025/04/0a05df9d-fatos-bytyqi-agx5_tlsif4-unsplash-2-scaled.jpg
