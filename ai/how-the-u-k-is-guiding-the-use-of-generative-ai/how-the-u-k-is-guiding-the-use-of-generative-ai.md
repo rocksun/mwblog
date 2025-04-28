@@ -1,4 +1,3 @@
-
 <!--
 title: 英国如何指导生成式人工智能的使用
 cover: https://cdn.thenewstack.io/media/2025/04/4e7b04d2-uk-ai-playbook-2.jpg
