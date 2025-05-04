@@ -1,4 +1,3 @@
-
 <!--
 title: CTO洞察： 数字化优先业务未来的4个关键经验
 cover: https://cdn.thenewstack.io/media/2025/04/fce7d5ac-digital-marketing-1433427_1280.jpg
