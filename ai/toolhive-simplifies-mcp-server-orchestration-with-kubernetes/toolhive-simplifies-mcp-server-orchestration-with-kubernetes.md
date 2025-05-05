@@ -1,4 +1,3 @@
-
 <!--
 title: ToolHive通过Kubernetes简化MCP服务器编排
 cover: https://cdn.thenewstack.io/media/2025/04/53bedadb-toolhive.jpg
