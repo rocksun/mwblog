@@ -11,12 +11,6 @@ summary: 边缘计算崛起！初创 Expanso 如何用 Bacalhau 架构补充 Kub
 > 
 > 作者：Alex Williams
 
-
-
-# 一家初创公司在边缘计算领域对 Kubernetes、Docker 和 Wasm 进行补充
-
-![Featued image for: A Startup Complements Kubernetes, Docker and Wasm at the Edge](https://cdn.thenewstack.io/media/2025/05/1ca9ac33-cloud-native-rejekts-2-1024x576.jpg)
-
 [David Aronchick](https://www.linkedin.com/in/aronchick/) 在伦敦市中心 [116 Pall Mall](https://www.116pallmall.com/) 的历史性房间里环顾四周，参加 [Cloud Native Rejekts](https://cloud-native.rejekts.io/) 会议——如果您参加 [KubeCon 会议](https://thenewstack.io/kubecon-cloudnativecon-eu-2025/)，这是一个必参加的会议。顺便说一句，多么棒的空间。
 
 Aronchick 是 [Expanso](https://www.expanso.io/) 的首席执行官，这是一家为工作负载提供分布式计算的初创公司。计算不是移动数据，而是直接到数据本身——随着企业客户在云之外寻找计算需求，这一点变得越来越重要。
@@ -71,8 +65,3 @@ Aronchick是这样认为的：“我是一家在全球拥有100个节点的企�
 我很清楚为什么像Expanso提供的开源产品，在我们加速走向一个由数万亿设备组成的网络时，会有一条清晰的道路，成为一项核心服务。可观测性是关键。
 
 这就是我在Cloud Native Rejekts上的看法。亚特兰大见。
-
-[YOUTUBE.COM/THENEWSTACK](https://youtube.com/thenewstack?sub_confirmation=1)
-
-技术发展迅速，不要错过任何一集。订阅我们的YouTube
-频道，以流式传输我们所有的播客、访谈、演示等。
