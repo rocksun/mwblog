@@ -1,4 +1,3 @@
-
 <!--
 title: 发挥创意：ThePrimeagen与Lex Fridman的五小时访谈
 cover: https://cdn.thenewstack.io/media/2025/05/bbf41c2c-michael-paulson-screenshot-from-lex-fridman-interview-remembering-breaking-production-clearer-1.png
