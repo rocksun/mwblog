@@ -1,4 +1,3 @@
-
 <!--
 title: JavaScript框架现实检验：什么才是真正有效的
 cover: https://cdn.thenewstack.io/media/2025/04/45901d99-hartono-creative-studio-juijk2d4oeu-unsplash.jpg
