@@ -1,4 +1,3 @@
-
 <!--
 title: Heroku如何“重新平台化”其平台
 cover: https://cdn.thenewstack.io/media/2025/04/56e4407a-kccnc-eu-25_betty-junod_featured.png
