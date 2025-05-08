@@ -1,4 +1,3 @@
-
 <!--
 title: 什么是语义缓存？
 cover: https://cdn.thenewstack.io/media/2025/05/c614771a-semantic-caching-2.jpg
