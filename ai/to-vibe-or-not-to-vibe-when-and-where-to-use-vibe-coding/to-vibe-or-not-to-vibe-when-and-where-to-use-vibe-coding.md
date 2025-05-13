@@ -1,4 +1,3 @@
-
 <!--
 title: 选择Vibe与否？何时何地使用Vibe编码？
 cover: https://cdn.thenewstack.io/media/2025/05/c2a4c0e7-andrej-lisakov-f5tv-e6v7-0-unsplashb.jpg
