@@ -1,4 +1,3 @@
-
 <!--
 title: 远程MCP服务器：必然趋势，并非易事
 cover: https://cdn.thenewstack.io/media/2025/05/b5587e00-remote-mcp-servers.jpg
