@@ -1,4 +1,3 @@
-
 <!--
 title: Agentic AI应用的三个关键ROI目标
 cover: https://cdn.thenewstack.io/media/2025/05/dfb6229a-roi-agenticai-applications.jpg
