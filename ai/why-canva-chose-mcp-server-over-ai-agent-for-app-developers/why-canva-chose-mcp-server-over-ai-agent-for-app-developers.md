@@ -1,4 +1,3 @@
-
 <!--
 title: Canva为什么选择MCP Server而不是AI Agent用于应用开发者
 cover: https://cdn.thenewstack.io/media/2025/05/09eb8dd0-canva_mcp_server_for_devs.jpg
