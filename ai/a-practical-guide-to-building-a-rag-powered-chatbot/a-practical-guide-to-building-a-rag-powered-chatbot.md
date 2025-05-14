@@ -1,4 +1,3 @@
-
 <!--
 title: 构建RAG驱动的聊天机器人的实用指南
 cover: https://cdn.thenewstack.io/media/2025/05/6a69f156-chat-7767694_1280.jpg
