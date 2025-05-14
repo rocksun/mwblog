@@ -1,4 +1,3 @@
-
 <!--
 title: 可观测性2.0？还是又回到日志的老路？
 cover: https://cdn.thenewstack.io/media/2025/05/89c03043-observability-2-logs.jpg
