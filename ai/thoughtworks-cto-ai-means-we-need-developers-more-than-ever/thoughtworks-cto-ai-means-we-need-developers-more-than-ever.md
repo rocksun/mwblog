@@ -1,4 +1,3 @@
-
 <!--
 title: Thoughtworks CTO：人工智能意味着我们比以往任何时候都更需要开发者
 cover: https://cdn.thenewstack.io/media/2025/05/3f658752-rachel-laycock-thoughtworks.jpg
