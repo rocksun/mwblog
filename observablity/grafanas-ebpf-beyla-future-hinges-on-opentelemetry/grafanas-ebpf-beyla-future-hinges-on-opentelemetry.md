@@ -1,4 +1,3 @@
-
 <!--
 title: Grafana的eBPF Beyla的未来取决于OpenTelemetry
 cover: https://cdn.thenewstack.io/media/2025/05/bd7a218b-osarugue-igbinoba-t_yhxpigu78-unsplash.jpg
