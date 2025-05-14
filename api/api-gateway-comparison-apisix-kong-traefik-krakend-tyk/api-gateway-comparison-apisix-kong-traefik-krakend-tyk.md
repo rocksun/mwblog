@@ -1,4 +1,3 @@
-
 <!--
 title: API 网关对比
 cover: https://static.api7.ai/uploads/2025/03/10/vYTbfeBw_api-gateway-guide-10.webp
