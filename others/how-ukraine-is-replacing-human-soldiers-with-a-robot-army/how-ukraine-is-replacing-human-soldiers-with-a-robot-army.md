@@ -1,4 +1,3 @@
-
 <!--
 title: 乌克兰如何用机器人军队取代人类士兵
 cover: https://imageio.forbes.com/specials-images/imageserve/68011e959c4ac078cc472d1a/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds
