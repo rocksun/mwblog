@@ -1,4 +1,3 @@
-
 <!--
 title: CNCF与Synadia达成NATS相关协议
 cover: https://cdn.thenewstack.io/media/2025/05/fc62c307-arrow-reverse-1024x768-1.png
