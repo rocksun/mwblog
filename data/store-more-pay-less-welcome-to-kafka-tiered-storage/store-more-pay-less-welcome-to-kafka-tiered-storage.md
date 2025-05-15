@@ -1,4 +1,3 @@
-
 <!--
 title: 存储更多，支付更少：欢迎来到Kafka分层存储
 cover: https://cdn.thenewstack.io/media/2025/05/e359d5fb-tiered.jpg
