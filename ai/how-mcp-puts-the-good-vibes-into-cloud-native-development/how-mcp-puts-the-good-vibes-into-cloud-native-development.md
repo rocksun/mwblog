@@ -1,4 +1,3 @@
-
 <!--
 title: MCP如何为云原生开发注入活力
 cover: https://cdn.thenewstack.io/media/2025/04/b372b554-mcp-puts-good-vibes-into-cloud-native-development-2.jpg
