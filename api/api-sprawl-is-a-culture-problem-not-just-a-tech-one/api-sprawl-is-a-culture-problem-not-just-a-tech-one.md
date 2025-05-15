@@ -1,4 +1,3 @@
-
 <!--
 title: API蔓延：不仅仅是技术问题
 cover: https://cdn.thenewstack.io/media/2025/04/ce5ba840-api-sprawl-culture-problem.jpg
