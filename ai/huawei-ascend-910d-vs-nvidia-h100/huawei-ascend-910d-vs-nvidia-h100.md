@@ -1,4 +1,3 @@
-
 <!--
 title: 2025年华为昇腾910D与英伟达H100性能对比
 cover: https://i0.wp.com/semiconductorsinsight.com/wp-content/uploads/2025/05/cHJpdmF0ZS9zdGF0aWMvaW1hZ2Uvd2Vic2l0ZS8yMDIyLTA0L2xyL2ZsMzE1Nzc2NzU3MTctaW1hZ2Uta3oyZTFiZnIuanBn.webp
@@ -114,7 +113,7 @@ summary: 华为昇腾910D挑战英伟达！虽7nm制程落后，但低功耗+低
 
 ## 仍然是一场漫长的战斗
 
-昇腾 910D 的发布 подчеркивает 了华为在压力下不断增强的创新能力。它加强了中国国内的 AI 格局，并帮助华为在多年的技术禁运后重拾自豪感。
+昇腾 910D 的发布了华为在压力下不断增强的创新能力。它加强了中国国内的 AI 格局，并帮助华为在多年的技术禁运后重拾自豪感。
 
 然而，在全球范围内，**Nvidia 的领先地位仍然是决定性的**——目前而言。在未来五年内，AI 芯片霸主之争不仅取决于设计更好的芯片，还取决于**确保获得尖端制造技术、建立值得信赖的生态系统以及赢得开发者忠诚度**。
 
