@@ -1,4 +1,3 @@
-
 <!--
 title: A2A、MCP、Kafka和Flink：AI Agent的新堆栈
 cover: https://cdn.thenewstack.io/media/2025/04/a2f99b46-a2a-mcp-kafka-flink-stack-ai-agent.jpg
