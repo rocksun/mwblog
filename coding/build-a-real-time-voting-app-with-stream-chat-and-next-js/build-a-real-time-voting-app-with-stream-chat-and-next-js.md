@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Stream Chat和Next.js构建实时投票应用
 cover: https://cdn.thenewstack.io/media/2025/05/f9283f84-voting12.png
