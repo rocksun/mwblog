@@ -1,4 +1,3 @@
-
 <!--
 title: Bitnami开源应用目录迎来18周年！
 cover: https://cdn.thenewstack.io/media/2025/04/acd4ccff-bitnami-18.jpg
