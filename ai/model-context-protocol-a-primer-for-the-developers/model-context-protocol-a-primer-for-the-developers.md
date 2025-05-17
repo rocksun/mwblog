@@ -1,4 +1,3 @@
-
 <!--
 title: 模型上下文协议：开发者入门
 cover: https://cdn.thenewstack.io/media/2025/04/57146db4-mcp.png
