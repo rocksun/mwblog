@@ -1,4 +1,3 @@
-
 <!--
 title: OpenMDW是一个新的AI模型许可协议
 cover: https://cdn.thenewstack.io/media/2025/05/47368cdf-virginia-johnson-qmnnzj_ok-m-unsplash-scaled.jpg
