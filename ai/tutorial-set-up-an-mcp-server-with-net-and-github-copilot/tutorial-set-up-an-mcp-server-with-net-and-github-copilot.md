@@ -1,4 +1,3 @@
-
 <!--
 title: 教程：使用.NET和GitHub Copilot设置MCP服务器
 cover: https://cdn.thenewstack.io/media/2025/05/cc7db21a-chris-barbalis-j698hh61hpo-unsplashb.jpg
