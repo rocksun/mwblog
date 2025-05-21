@@ -1,4 +1,3 @@
-
 <!--
 title: 停止构建数据管道：使用PostgreSQL Foreign-Data Wrappers的跨数据库查询
 cover: https://miro.medium.com/v2/da:true/resize:fit:1000/0*-eVSaCIQx73woxE4
