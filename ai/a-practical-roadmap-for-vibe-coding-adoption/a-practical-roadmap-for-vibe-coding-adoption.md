@@ -1,4 +1,3 @@
-
 <!--
 title: 采用Vibe Coding的实用路线图
 cover: https://cdn.thenewstack.io/media/2025/05/9778818e-vibes.png
