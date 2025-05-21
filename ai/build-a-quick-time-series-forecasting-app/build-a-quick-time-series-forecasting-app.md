@@ -1,4 +1,3 @@
-
 <!--
 title: 构建一个快速的时间序列预测应用
 cover: https://cdn.thenewstack.io/media/2025/05/c0c9e2c8-forecast.png
