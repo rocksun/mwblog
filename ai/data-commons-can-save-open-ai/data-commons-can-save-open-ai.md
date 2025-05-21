@@ -1,4 +1,3 @@
-
 <!--
 title: 数据共享空间可以拯救开放人工智能
 cover: https://cdn.thenewstack.io/media/2025/05/8ea39356-erik-mclean-rtysoc1bks0-unsplash-scaled.jpg
