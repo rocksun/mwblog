@@ -1,4 +1,3 @@
-
 <!--
 title: Gemini Code Assist与Copilot：AI编码助手的崛起
 cover: https://cdn.thenewstack.io/media/2025/05/0d27859d-google-io-gemini.jpg
