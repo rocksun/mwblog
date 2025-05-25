@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Stream和OpenAI构建AI聊天助手
 cover: https://cdn.thenewstack.io/media/2025/05/9aeb9a84-chat.png
