@@ -1,4 +1,3 @@
-
 <!--
 title: 应对云抽象的恐惧和风险
 cover: https://cdn.thenewstack.io/media/2025/05/774cba08-strings123.png
