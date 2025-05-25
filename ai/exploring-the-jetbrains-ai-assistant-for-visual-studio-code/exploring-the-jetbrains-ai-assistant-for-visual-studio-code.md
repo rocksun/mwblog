@@ -1,4 +1,3 @@
-
 <!--
 title: 探索Visual Studio Code的JetBrains AI助手
 cover: https://cdn.thenewstack.io/media/2025/05/14b2239b-alex-shuper-8-zt2ne-vnk-unsplashb.jpg
