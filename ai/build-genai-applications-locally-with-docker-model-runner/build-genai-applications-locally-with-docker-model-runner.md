@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Docker Model Runner在本地构建GenAI应用程序
 cover: https://cdn.thenewstack.io/media/2024/09/b152c34d-docker.png
