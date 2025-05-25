@@ -1,4 +1,3 @@
-
 <!--
 title: Python 中的微型代理：一个由 MCP 驱动的，大约 70 行代码的代理
 cover: https://huggingface.co/blog/assets/python-tiny-agents/thumbnail.png
