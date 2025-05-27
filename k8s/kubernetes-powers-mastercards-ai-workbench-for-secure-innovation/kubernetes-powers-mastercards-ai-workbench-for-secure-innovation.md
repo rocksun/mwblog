@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes为Mastercard的AI工作台提供安全创新能力
 cover: https://cdn.thenewstack.io/media/2025/04/9633e0a9-kubernetes-mastercard-ai-workbench.jpg
