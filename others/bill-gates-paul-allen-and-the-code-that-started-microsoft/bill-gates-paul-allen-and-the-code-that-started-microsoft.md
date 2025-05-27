@@ -1,4 +1,3 @@
-
 <!--
 title: 比尔·盖茨、保罗·艾伦以及启动微软的代码
 cover: https://cdn.thenewstack.io/media/2025/04/dcd9f902-bill_gates-gates_notes.png
