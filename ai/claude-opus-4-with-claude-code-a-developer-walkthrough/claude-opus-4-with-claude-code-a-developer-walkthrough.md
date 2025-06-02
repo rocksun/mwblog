@@ -1,4 +1,3 @@
-
 <!--
 title: 配备Claude Code的Claude Opus 4：开发者演练
 cover: https://cdn.thenewstack.io/media/2025/05/8cc21d33-kamran-abdullayev-ik1duxu9aae-unsplashb.jpg
