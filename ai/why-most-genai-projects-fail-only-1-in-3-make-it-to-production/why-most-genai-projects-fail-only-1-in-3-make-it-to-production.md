@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么大多数 GenAI 项目会失败：只有三分之一能投入生产
 cover: https://cdn.thenewstack.io/media/2025/05/23631ba9-seo-galaxy-yushnkbhf3q-unsplash-scaled.jpg
