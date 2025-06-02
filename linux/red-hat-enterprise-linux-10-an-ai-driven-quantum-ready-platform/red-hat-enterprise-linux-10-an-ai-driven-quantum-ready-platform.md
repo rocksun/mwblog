@@ -1,4 +1,3 @@
-
 <!--
 title: 红帽企业Linux 10：一个AI驱动的、量子就绪的平台
 cover: https://cdn.thenewstack.io/media/2025/05/7a5a6ecd-getty-images-el0zyfxt1gi-unsplash-redhat.jpg
