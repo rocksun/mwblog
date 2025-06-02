@@ -1,4 +1,3 @@
-
 <!--
 title: 新工具帮助LLM开发者选择更好的预训练数据
 cover: https://cdn.thenewstack.io/media/2025/05/88a7dd8c-choose-data-2.jpg
