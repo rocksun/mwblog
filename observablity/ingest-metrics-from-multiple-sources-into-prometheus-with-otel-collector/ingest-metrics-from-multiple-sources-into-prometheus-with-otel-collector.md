@@ -1,4 +1,3 @@
-
 <!--
 title: 使用 OTel Collector 将来自多个来源的指标提取到 Prometheus 中
 cover: https://cdn.thenewstack.io/media/2025/05/3844a465-ingest-metrics-multiple-sources-prometheus-otelccollector.jpg
