@@ -1,4 +1,3 @@
-
 <!--
 title: FinOps基金会推出新的FinOps for AI认证
 cover: https://cdn.thenewstack.io/media/2025/06/4f6a9c54-san-diego-2.png
