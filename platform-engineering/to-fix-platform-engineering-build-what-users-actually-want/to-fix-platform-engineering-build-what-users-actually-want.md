@@ -1,4 +1,3 @@
-
 <!--
 title: 要修复平台工程，构建用户真正想要的东西
 cover: https://cdn.thenewstack.io/media/2025/05/2ddadfb4-platform-engineering-decisions-2.png
