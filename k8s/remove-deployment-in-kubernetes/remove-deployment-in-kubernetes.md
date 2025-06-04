@@ -1,4 +1,3 @@
-
 <!--
 title: 如何在 Kubernetes 中删除 Deployment：方法、步骤和工具
 cover: https://cdn.thenewstack.io/media/2025/05/26a7059e-remove-kubernetes-deployment-2.jpg
