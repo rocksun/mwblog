@@ -1,4 +1,3 @@
-
 <!--
 title: 2025年云从业者的6个可操作的IaC技巧
 cover: https://cdn.thenewstack.io/media/2025/05/ff9e280c-6-iac-tips-cloud-practitioners.jpg
