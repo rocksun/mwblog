@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes vs. Docker Compose：应该选择哪个编排工具？
 cover: https://cdn.thenewstack.io/media/2023/11/25b9af59-kubernetes-webassembly-1.jpg
