@@ -1,4 +1,3 @@
-
 <!--
 title: 从Google到全球：Kubernetes的技术起源
 cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1749056435/ewpohewrq3fuissdwpqc.png
