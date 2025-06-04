@@ -1,4 +1,3 @@
-
 <!--
 title: 面向未来的AI：重蹈覆辙还是从历史中学习？
 cover: https://cdn.thenewstack.io/media/2025/05/f044c2ab-future-proofing-ai.jpg
