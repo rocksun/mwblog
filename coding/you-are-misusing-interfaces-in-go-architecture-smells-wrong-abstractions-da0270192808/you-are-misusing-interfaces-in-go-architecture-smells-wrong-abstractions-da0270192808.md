@@ -1,4 +1,3 @@
-
 <!--
 title: 你在Go中滥用接口 - 架构异味：错误的抽象
 cover: https://miro.medium.com/v2/da:true/resize:fit:1153/0*O65WZ3ZKfNYC4g2Z
