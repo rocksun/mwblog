@@ -1,4 +1,3 @@
-
 <!--
 title: 许多平台工程师仍然会犯的3个错误
 cover: https://cdn.thenewstack.io/media/2025/05/e3dc6828-platform-engineer-3-mistakes.jpg
