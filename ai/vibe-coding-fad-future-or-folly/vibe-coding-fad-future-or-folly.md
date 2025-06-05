@@ -1,4 +1,3 @@
-
 <!--
 title: Vibe Coding：潮流、未来还是愚蠢之举？
 cover: https://cdn.thenewstack.io/media/2025/06/42897c77-vibes.jpg
