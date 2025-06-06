@@ -1,4 +1,3 @@
-
 <!--
 title: 为你的应用创建Markdown文档的最佳实践
 cover: https://cdn.thenewstack.io/media/2025/05/6506d74f-roberta-sant-anna-mgte1d47k18-unsplash.jpg

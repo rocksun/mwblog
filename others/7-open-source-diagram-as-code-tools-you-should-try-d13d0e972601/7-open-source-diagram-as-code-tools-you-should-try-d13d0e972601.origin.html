@@ -1,0 +1,728 @@
+<html lang=en><head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=X-UA-Compatible content="ie=edge">
+    <title>7 Open Source Diagram-as-Code Tools You Should Try | by Prateek Jain - Freedium</title>
+    
+    <meta name=description content="A hands-on guide to 7 open-source tools that let you draw cloud or application architecture from...">
+    <meta name=keywords content="medium, paywall, medium.com, paywall breakthrough">
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!--<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>-->
+
+    <script src="/tailwindcssv3-freedium-hotfix.js"></script>
+
+    <link href="https://glyph.medium.com/css/unbound.css" rel=stylesheet>
+    <link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png">
+    <link rel=icon type="image/png" sizes=32x32 href="/favicon-32x32.png">
+    <link rel=icon type="image/png" sizes=16x16 href="/favicon-16x16.png">
+    <link rel=manifest href="/site.webmanifest">
+    <link rel=mask-icon href="/safari-pinned-tab.svg" color=#00aba9>
+    <meta name=msapplication-TileColor content=#00aba9>
+    <meta name=theme-color content=#ffffff>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/parent"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.4/dist/lazyload.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/lightense-images@1.0.17/dist/lightense.min.js"></script>
+
+    <script>iframeResize({ license: 'GPLv3' })</script>
+</head>
+<body class="bg-white dark:bg-gray-800"><div class="fixed bottom-4 left-4 hidden" style="z-index: 999999;">
+    <button id=openProblemModal class="m-1.5 flex items-center bg-red-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" height=1em viewBox="0 0 512 512">
+            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <style>
+                svg {
+                    fill: #ffffff
+                }
+            </style>
+            <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+        </svg>
+    </button>
+    <button id=darkModeToggle class="m-1.5 flex items-center bg-blue-500 text-white py-2 px-4 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none">
+        <svg id=darkIcon xmlns="http://www.w3.org/2000/svg" height=1em viewBox="0 0 384 512">
+            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path>
+        </svg>
+        <!-- SVG icon for light mode (e.g., a sun) -->
+        <svg class=hidden id=lightIcon xmlns="http://www.w3.org/2000/svg" height=1em viewBox="0 0 512 512">
+            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"></path>
+        </svg>
+    </button>
+</div>
+
+<div class="notification-container fixed top-5 p-2 max-h-[95vh] overflow-y-auto hidden" style="z-index: 999999;">
+    <div class="p-5 text-center bg-white border border-gray-300 rounded-md shadow-sm dark:bg-gray-800">
+        <p class="pb-5 text-2xl text-black dark:text-white">Support Freedium</p>
+        <p class="pb-3 text-black dark:text-white">
+            Dear Freedium users,
+            <br>
+            <br>
+            We've updated our donation options to provide you with more ways to support our mission. Your contributions are invaluable in helping us maintain and improve Freedium, ensuring we can continue to provide unrestricted access to quality content.
+            <br>
+            <br>
+            We now offer multiple platforms for donations, including Patreon, Ko-fi, and Liberapay. Each option allows you to support us in the way that's most convenient for you.
+            <br>
+            <br>
+            Your support, no matter the platform or amount, makes a significant difference. It allows us to cover our operational costs and invest in enhancing Freedium's features and reliability.
+            <br>
+            <br>
+            Thank you for being a part of the Freedium community and for your continued support.
+            <br>
+            <br>
+            Choose Your Preferred Donation Platform:
+        </p>
+        <a href="https://patreon.com/Freedium" rel=noreferrer target=_blank title=Patreon>
+            <button class="px-2 py-1 mx-1 mt-2 font-semibold text-white bg-red-400 rounded hover:bg-red-500">Patreon</button>
+        </a>
+        <a href="https://ko-fi.com/zhymabekroman" rel=noreferrer target=_blank title=Ko-fi>
+            <button class="px-2 py-1 mx-1 mt-2 font-semibold text-white bg-blue-400 rounded hover:bg-blue-500">Ko-fi</button>
+        </a>
+        <a href="https://liberapay.com/ZhymabekRoman/" rel=noreferrer target=_blank title=Liberapay>
+            <button class="px-2 py-1 mx-1 mt-2 font-semibold text-white bg-yellow-400 rounded hover:bg-yellow-500">Liberapay</button>
+        </a>
+        <button class="px-2 py-1 mx-1 mt-2 font-semibold text-gray-800 bg-gray-300 rounded hover:bg-gray-400 close-button">Close</button>
+        <a href="https://codeberg.org/Freedium-cfd/web" rel=noreferrer target=_blank title=Codeberg>
+            <button class="px-2 py-1 mx-1 mt-2 font-semibold text-white bg-blue-800 rounded hover:bg-blue-900">
+                Source code - Codeberg
+            </button>
+        </a>
+        <a href="https://github.com/Freedium-cfd/web" rel=noreferrer target=_blank title=GitHub>
+            <button class="px-2 py-1 mx-1 mt-2 font-semibold text-white bg-gray-700 rounded hover:bg-gray-600">
+                Source code - GitHub
+            </button>
+        </a>
+    </div>
+</div>
+
+<nav id=header class="fixed top-0 w-full bg-white shadow z-9 dark:bg-gray-800 dark:text-white" style="z-index: 999990;">
+    
+    <div id=progress class="top-0 z-20 h-1" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0)"></div>
+    <div class="flex flex-wrap items-center justify-between w-full py-3 mx-auto mt-0 md:max-w-4xl">
+        <div class=pl-4>
+            <a class="text-base text-xl font-extrabold text-green-500 no-underline hover:no-underline" href="/" onclick=navigateToOrigin()>Freedium</a>
+        </div>
+        <div class="block pr-4 lg:hidden">
+            <button id=nav-toggle class="flex items-center px-3 py-2 text-gray-500 border border-gray-600 rounded appearance-none dark:text-white hover:text-gray-900 dark:hover:text-white hover:border-green-500 focus:outline-none">
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex-grow hidden w-full mt-2 bg-white lg:flex lg:items-center lg:w-auto lg:block lg:mt-0 dark:bg-gray-800" id=nav-content>
+            <ul class="items-center justify-end flex-1 list-reset lg:flex">
+                <li class=mr-3>
+                    <a class="inline-block text-gray-600 no-underline dark:text-white hover:text-gray-900 dark:hover:text-white hover:text-underline" href="https://ko-fi.com/zhymabekroman" target=_blank>ko-fi</a>
+                </li>
+                <!-- <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline dark:text-white hover:text-gray-900 dark:hover:text-white hover:text-underline"
+                        href="https://codeberg.org/Freedium-cfd/web" target="_blank">source code</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-gray-600 no-underline dark:text-white hover:text-gray-900 dark:hover:text-white hover:text-underline"
+                        href="https://romans-status-page.vercel.app/status/freedium" target="_blank">status page</a>
+                </li> -->
+                <li class=mr-3>
+                    <a class="inline-block text-gray-600 no-underline dark:text-white hover:text-gray-900 dark:hover:text-white hover:text-underline" href="https://liberapay.com/ZhymabekRoman/" target=_blank rel=noreferrer>librepay</a>
+                </li>
+                <li class=mr-3>
+                    <a class="inline-block text-gray-600 no-underline dark:text-white hover:text-gray-900 dark:hover:text-white hover:text-underline" href="https://patreon.com/Freedium" target=_blank rel=noreferrer>patreon</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container w-full pt-20 mx-auto text-gray-900 break-words bg-white md:max-w-3xl dark:text-gray-200 dark:bg-gray-800">
+    <div class="w-full px-4 text-xl leading-normal text-gray-800 md:px-6 dark:text-gray-100" style=font-family:Georgia,serif;>
+        
+        <div class=font-sans>
+            <p class="pb-3 text-base font-bold text-green-500 md:text-sm">
+                <a href="https://blog.prateekjain.dev/7-open-source-diagram-as-code-tools-you-should-try-d13d0e972601#bypass" class="text-sm font-bold text-green-500 no-underline md:text-sm hover:underline ">&lt; Go to the original</a>
+            </p>
+            
+                <img alt="Preview image" style="max-height: 65vh;
+                            width: auto;
+                            margin: auto" loading=eager referrerpolicy=no-referrer role=presentation src="https://miro.medium.com/v2/resize:fit:700/1*PvLEcxhLPMCx6WGQdTWeEw.png">
+            
+            <h1 class="pt-6 pb-2 font-sans text-3xl font-bold text-gray-900 break-normal dark:text-gray-100 md:text-4xl">7 Open Source Diagram-as-Code Tools You Should Try</h1>
+            <h2 class="pt-1 font-sans font-medium text-gray-600 break-normal dark:text-gray-200 text-1xl md:text-1xl">A hands-on guide to 7 open-source tools that let you draw cloud or application architecture from code</h2>
+        </div>
+        <div class="m-2 mt-5 bg-gray-100 border border-gray-300 dark:bg-gray-600">
+            <div class="flex items-center p-4 space-x-4">
+                <div class=flex-shrink-0>
+                    <a href="https://medium.com/@prateekjain.dev" target=_blank title="DevSecOps Architect at Tech Alchemy" class="relative block">
+                        <img src="https://miro.medium.com/v2/resize:fill:88:88/1*JoT0fC0wd6684M-Xm2x6OA.png" alt="Prateek Jain" loading=eager referrerpolicy=no-referrer class="rounded-full h-11 w-11 no-lightense">
+                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                    </a>
+                </div>
+                <div class=flex-grow>
+                    <a href="https://medium.com/@prateekjain.dev" target=_blank title="DevSecOps Architect at Tech Alchemy" class="block font-semibold text-gray-900 dark:text-white">Prateek Jain</a>
+                    <button class="px-3 py-1 mt-1 text-sm text-white bg-green-500 rounded-lg dark:bg-green-700">
+                        <a href="https://medium.com/@prateekjain.dev" target=_blank title="DevSecOps Architect at Tech Alchemy" class="block text-sm text-white">Follow</a>
+                    </button>
+                </div>
+            </div>
+            <div class="px-4 pb-2">
+                <div class="flex flex-wrap items-center space-x-2 text-sm text-gray-500 dark:text-white">
+                    
+                    <span class="text-gray-500 dark:text-white">~9 min read</span>
+                    <span class=md:inline>·</span>
+                    <span class="text-gray-500 dark:text-white">June 5, 2025 (Updated: June 5, 2025)</span>
+                    <span class=md:inline>·</span>
+                    <span class="text-yellow-500 dark:text-yellow-400">Free: No</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 main-content">
+            <p class="leading-8 mt-7">Whether you're designing infrastructure, explaining application flows, or documenting cloud architectures, diagrams are a crucial part of technical communication. But traditional diagramming tools can become bottlenecks, manual edits, versioning issues, and a lack of reproducibility often slow teams down. That's where <strong>Diagram as Code</strong> comes in.<p class="leading-8 mt-7"><em><strong>Friends link for non-Medium members: </strong></em><a style="text-decoration: underline;" rel="" title="" href="https://blog.prateekjain.dev/d13d0e972601?source=friends_link&amp;sk=4509adaf94cc82f8a405c6c030ca2fb6" target=_blank>7 Open Source Diagram-as-Code Tools You Should Try</a><p class="leading-8 mt-7">Diagram as Code tools enable you to generate architecture diagrams directly from code. They're version-controlled, automatable, and consistent across teams. In this guide, we'll explore seven open-source tools that support Diagram as Code for cloud and software architectures, with a special focus on AWS-based infrastructure.<p class="leading-8 mt-7">Let's first understand the diagram that we'll try to replicate in each tool.<h3 id=9621 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">The Sample AWS Architecture</h3><p class="leading-8 mt-3">We'll use a sample architecture that reflects a typical web-based application hosted on AWS. Here are the components:<ul class="pl-8 mt-2 list-disc"><li class=mt-3><strong>Route53</strong>: DNS routing for your domain.<li class=mt-3><strong>Elastic Load Balancer (ELB)</strong>: Distributes incoming traffic.<li class=mt-3><strong>Two EC2 instances</strong>: Host the application backend.<li class=mt-3><strong>Lambda function</strong>: Used for authentication logic.<li class=mt-3><strong>IAM Role</strong>: Linked with Lambda for secure permissions.<li class=mt-3><strong>Primary RDS DB</strong>: Main application database.<li class=mt-3><strong>Replica RDS DB</strong>: Read-replica for better performance.</ul><p class="leading-8 mt-7">Each tool will generate this same logical structure to help you compare how they perform.<h3 id=34e1 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">1. Diagrams (by mingrammer)</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://diagrams.mingrammer.com/" target=_blank>Diagrams</a> is a Python-based open-source library that turns simple Python code into beautiful system architecture diagrams. It supports major cloud providers like AWS, Azure, and GCP, as well as on-premise tools like Kubernetes and Docker. It's one of the easiest ways to automate architecture documentation directly from code.<h4 id=c09e class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Supports a vast number of cloud and DevOps icons out of the box.<li class=mt-3>Easy to use for developers familiar with Python.<li class=mt-3>Good integration with CI/CD tools for automated doc generation.</ul><h4 id=c37d class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Limited customisation in layout and styling.<li class=mt-3>No support for real-time collaboration or GUIs.</ul><h4 id=e2b5 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">Diagrams depend on <strong>Graphviz</strong> to render the architecture diagrams. You need to install Graphviz first before using the <code class="p-1.5 bg-gray-300 dark:bg-gray-600">diagrams</code> Python package.<p class="leading-8 mt-7">If you're on <strong>macOS</strong>, you can use Homebrew. For other platforms, refer to the official Graphviz installation guide: <a style="text-decoration: underline;" rel="" title="" href="https://graphviz.org/download/" target=_blank>https://graphviz.org/download/</a><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash"># Install Graphviz first
+brew install graphviz
+
+# Then install Diagrams
+pip install diagrams</code></pre><h4 id=d09e class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><p class="leading-8 mt-3">Save this code snippet in a file aws.py<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-python">from diagrams import Diagram
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB, Route53
+from diagrams.aws.security import IAM
+from diagrams.aws.compute import Lambda
+
+with Diagram("AWS Architecture", show=False):
+    dns = Route53("Route53")
+    lb = ELB("Load Balancer")
+    web1 = EC2("Web Server 1")
+    web2 = EC2("Web Server 2")
+    auth_lambda = Lambda("Auth")
+    iam = IAM("IAM Role")
+    db_primary = RDS("Primary DB")
+    db_replica = RDS("Replica DB")
+    dns &gt;&gt; lb &gt;&gt; [web1, web2]
+    web1 &gt;&gt; auth_lambda &gt;&gt; iam
+    [web1, web2] &gt;&gt; db_primary &gt;&gt; db_replica</code></pre><p class="leading-8 mt-7">Now, run the following command<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash">python3 aws.py</code></pre><h4 id=4135 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*GrCHCwPXPI8BV4ww2SgTFw.png"></div><h3 id=d6ce class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">2. PlantUML</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://plantuml.com/" target=_blank>PlantUML</a> is a mature and flexible tool that allows you to define diagrams using a simple and powerful textual language. It supports sequence diagrams, use case diagrams, class diagrams, component diagrams, and more, making it suitable for both software development and infrastructure modelling.<h4 id=9484 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Text-based and version control-friendly.<li class=mt-3>Works well with markdown, documentation tools, and IDEs.<li class=mt-3>Flexible and supports many diagram types.</ul><h4 id=c7fb class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Requires learning its syntax.<li class=mt-3>Can become verbose for large-scale diagrams.</ul><h4 id=5a87 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">You can either run PlantUML locally using Docker or use the official web-based editor directly in your browser: <a style="text-decoration: underline;" rel=noopener title="" href="https://editor.plantuml.com/" target=_blank>https://editor.plantuml.com/</a><p class="leading-8 mt-7">For local setup via Docker:<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash">docker run -d -p 8080:8080 plantuml/plantuml-server:jetty</code></pre><h4 id=fe18 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-rust">@startuml
+component "Route53" as DNS
+component "ELB" as LB
+component "EC2 Web 1" as WS1
+component "EC2 Web 2" as WS2
+component "Lambda Auth" as Lambda
+component "IAM Role" as IAM
+component "RDS Primary" as DB1
+component "RDS Replica" as DB2
+
+DNS --&gt; LB
+LB --&gt; WS1
+LB --&gt; WS2
+WS1 --&gt; Lambda
+Lambda --&gt; IAM
+WS1 --&gt; DB1
+WS2 --&gt; DB1
+DB1 --&gt; DB2
+@enduml</code></pre><h4 id=6376 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*9uO_yvDgMf-P6uoEGdYMYQ.png"></div><h3 id=19f3 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">3. Mermaid</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://mermaid.js.org/" target=_blank>Mermaid</a> is a JavaScript-based diagramming and charting tool that uses Markdown-inspired syntax. It's ideal for embedding simple, clear diagrams directly into markdown documentation or tools like Notion, GitHub, or GitLab.<h4 id=d1ca class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Works seamlessly with markdown files.<li class=mt-3>Easy syntax for beginners.<li class=mt-3>Supported natively on many platforms.</ul><h4 id=7a97 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Not suitable for large, complex diagrams.<li class=mt-3>Limited visual customisation options.</ul><h4 id=30bc class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Usage (No installation required in markdown platforms)</h4><p class="leading-8 mt-3">You can use Mermaid directly in many markdown-based platforms like GitHub, GitLab, Notion, and Obsidian without needing to install anything.<p class="leading-8 mt-7">For quick testing or sharing diagrams online, use their official playground:
+ <a style="text-decoration: underline;" rel=noopener title="" href="https://www.mermaidchart.com/play" target=_blank>https://www.mermaidchart.com/play</a><h4 id=696a class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-css">graph TD
+    DNS[Route53] --&gt; LB[ELB]
+    LB --&gt; WS1[Web Server 1]
+    LB --&gt; WS2[Web Server 2]
+    WS1 --&gt; Lambda[Lambda Function]
+    Lambda --&gt; IAM[IAM Role]
+    WS1 --&gt; DB1[Primary DB]
+    WS2 --&gt; DB1
+    DB1 --&gt; DB2[Replica DB]</code></pre><h4 id=d592 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*J30bXQ-1cyPt0K2t142Ysg.png"></div><h3 id=c2a6 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">4. Structurizr DSL</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://structurizr.com/" target=_blank>Structurizr</a> DSL is a powerful textual domain-specific language (DSL) that helps you create software architecture diagrams based on the C4 model. It's focused more on conceptual clarity than visual perfection and is excellent for modelling enterprise-scale systems.<h4 id=8eb6 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Fully supports C4 modelling standard.<li class=mt-3>Clear separation of model and view.<li class=mt-3>Encourages best practices in architecture.</ul><h4 id=12fe class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Steeper learning curve.<li class=mt-3>Requires understanding of the C4 model.</ul><h4 id=8dda class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">You can either use the Structurizr DSL directly in your browser or install it locally.<p class="leading-8 mt-7">Web editor: <a style="text-decoration: underline;" rel=noopener title="" href="https://structurizr.com/dsl" target=_blank>https://structurizr.com/dsl</a>
+Local installation guide: <a style="text-decoration: underline;" rel=noopener title="" href="https://structurizr.com/help/dsl" target=_blank>https://structurizr.com/help/dsl</a><h4 id=fa70 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-rust">workspace {
+
+    model {
+        user = person "User"
+
+        system = softwareSystem "Web Application" {
+            lb    = container "Load Balancer"
+            web1  = container "Web Server 1"
+            web2  = container "Web Server 2"
+            auth  = container "Auth Lambda"
+            role  = container "IAM Role"
+            db1   = container "Primary DB"
+            db2   = container "Replica DB"
+
+            user -&gt; lb
+            lb -&gt; web1
+            lb -&gt; web2
+            web1 -&gt; auth
+            auth -&gt; role
+            web1 -&gt; db1
+            web2 -&gt; db1
+            db1 -&gt; db2
+        }
+    }
+
+    views {
+        container system {
+            include *
+            autolayout lr
+        }
+    }
+}</code></pre><h4 id=a82b class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*noUSCGjg8qKGvbZh9xgMMQ.png"></div><h3 id=df8c class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">5. AWS Diagram-as-Code (by AWS Labs)</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://github.com/awslabs/diagram-as-code" target=_blank>AWS Diagram-as-Code</a> is an open-source YAML-based tool built by AWS Labs. It focuses on representing AWS infrastructure using native service identifiers and relationships. Ideal for AWS-heavy environments, this tool outputs static architecture images from a structured YAML format.<h4 id=55a8 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Simple and declarative YAML syntax.<li class=mt-3>Tailored for AWS services.<li class=mt-3>Lightweight and CLI-driven.</ul><h4 id=c36a class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Limited to AWS only.<li class=mt-3>Customisation and layout control are minimal.</ul><h4 id=fb4b class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">You can easily install AWS Diagram-as-Code on macOS using Homebrew:<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash">$ brew install awsdac</code></pre><p class="leading-8 mt-7">For other systems or more advanced usage, refer to the official documentation: <a style="text-decoration: underline;" rel="" title="" href="https://github.com/awslabs/aws-diagram-as-code" target=_blank>https://github.com/awslabs/diagram-as-code</a><h4 id=ca42 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-less">Diagram:
+  DefinitionFiles:
+    - Type: URL
+      Url: "https://raw.githubusercontent.com/awslabs/diagram-as-code/main/definitions/definition-for-aws-icons-light.yaml"
+
+  Resources:
+    Canvas:
+      Type: AWS::Diagram::Canvas
+      Direction: vertical
+      Children:
+        - AWSCloud
+        - User
+
+    AWSCloud:
+      Type: AWS::Diagram::Cloud
+      Direction: vertical
+      Preset: AWSCloudNoLogo
+      Align: center
+      Children:
+        - Route53
+        - LoadBalancer
+        - EC2Stack
+        - Lambda
+        - IAM
+        - DBStack
+
+    User:
+      Type: AWS::Diagram::Resource
+      Preset: User
+      Label: User
+
+    Route53:
+      Type: AWS::Route53::HostedZone
+      Label: Route 53
+
+    LoadBalancer:
+      Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+      Label: Load Balancer
+
+    EC2Stack:
+      Type: AWS::Diagram::HorizontalStack
+      Children:
+        - EC2_1
+        - EC2_2
+
+    EC2_1:
+      Type: AWS::EC2::Instance
+      Label: Web Server 1
+
+    EC2_2:
+      Type: AWS::EC2::Instance
+      Label: Web Server 2
+
+    Lambda:
+      Type: AWS::Lambda::Function
+      Label: Auth Lambda
+
+    IAM:
+      Type: AWS::IAM::Role
+      Label: IAM Role
+
+    DBStack:
+      Type: AWS::Diagram::HorizontalStack
+      Children:
+        - DB1
+        - DB2
+
+    DB1:
+      Type: AWS::RDS::DBInstance
+      Label: Primary DB
+
+    DB2:
+      Type: AWS::RDS::DBInstance
+      Label: Replica DB
+
+  Links:
+  - Source: User
+    SourcePosition: N
+    Target: Route53
+    TargetPosition: S
+    TargetArrowHead:
+      Type: Open
+
+  - Source: Route53
+    SourcePosition: N
+    Target: LoadBalancer
+    TargetPosition: S
+    TargetArrowHead:
+      Type: Open
+
+  - Source: LoadBalancer
+    SourcePosition: SSW
+    Target: EC2_1
+    TargetPosition: NNW
+    TargetArrowHead:
+      Type: Open
+
+  - Source: LoadBalancer
+    SourcePosition: SSE
+    Target: EC2_2
+    TargetPosition: NNE
+    TargetArrowHead:
+      Type: Open
+
+  - Source: EC2_1
+    SourcePosition: S
+    Target: Lambda
+    TargetPosition: N
+    TargetArrowHead:
+      Type: Open
+
+  - Source: Lambda
+    SourcePosition: S
+    Target: IAM
+    TargetPosition: N
+    TargetArrowHead:
+      Type: Open
+
+  - Source: EC2_1
+    SourcePosition: SE
+    Target: DB1
+    TargetPosition: NW
+    TargetArrowHead:
+      Type: Open
+
+  - Source: EC2_2
+    SourcePosition: SW
+    Target: DB1
+    TargetPosition: NE
+    TargetArrowHead:
+      Type: Open
+
+  - Source: DB1
+    SourcePosition: E
+    Target: DB2
+    TargetPosition: W
+    TargetArrowHead:
+      Type: Open</code></pre><p class="leading-8 mt-7">Save it as aws.yaml and run the following command<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash">awsdac aws.yml</code></pre><h4 id=9d11 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*zgzH4BrYAQOLYVSrm8AwMA.png"></div><h3 id=596f class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">6. D2 (by Terrastruct)</h3><p class="leading-8 mt-3"><a style="text-decoration: underline;" rel="" title="" href="https://d2lang.com/" target=_blank>D2</a> is a modern diagram scripting language created by Terrastruct. It emphasises simplicity and clarity, making it perfect for developers who want elegant diagrams with minimal effort. It supports real-time rendering in the VS Code extension or browser.<h4 id=c27e class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Simple syntax with auto-layout.<li class=mt-3>Themes and annotations are supported.<li class=mt-3>Fast rendering, great developer experience.</ul><h4 id=e7c8 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>The community and ecosystem are still growing.<li class=mt-3>Lacks out-of-the-box AWS-specific icons.</ul><h4 id=4ebc class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">You can install D2 locally or use the web-based playground for quick visualisation: <a style="text-decoration: underline;" rel="" title="" href="https://play.d2lang.com/" target=_blank>https://play.d2lang.com/</a><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash">brew install terrastruct/d2/d2
+# or
+curl -fsSL https://d2lang.com/install.sh | sh</code></pre><h4 id=b49f class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Diagram Code</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-less">direction: right
+DNS: "Route53: DNS"
+LB: "ELB: Load Balancer"
+WS1: "EC2: Web Server 1"
+WS2: "EC2: Web Server 2"
+Lambda: "Lambda: Auth Function"
+IAM: "IAM Role"
+DB1: "RDS: Primary DB"
+DB2: "RDS: Replica DB"
+DNS -&gt; LB
+LB -&gt; WS1
+LB -&gt; WS2
+WS1 -&gt; Lambda
+Lambda -&gt; IAM
+WS1 -&gt; DB1
+WS2 -&gt; DB1
+DB1 -&gt; DB2</code></pre><h4 id=3397 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*Y537hqE8VjkqeZqhuDqKBg.png"></div><h3 id=4cf6 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">7. Kroki</h3><p class="leading-8 mt-3">Kroki is a diagram rendering engine that acts as a backend service for over 20 popular diagram formats like Mermaid, PlantUML, Graphviz, and more. It's ideal if you want to standardise diagram rendering across different formats in CI/CD or documentation platforms.<h4 id=de41 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Key Benefits</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Centralised rendering for many formats.<li class=mt-3>Works well in pipelines, docs, or apps.<li class=mt-3>Easily self-hosted with Docker.</ul><h4 id=c55b class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Drawbacks</h4><ul class="pl-8 mt-2 list-disc"><li class=mt-3>Still needs external syntax (Mermaid, PlantUML, etc.).<li class=mt-3>Requires configuration for self-hosted deployments.</ul><h4 id=4349 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Installation</h4><p class="leading-8 mt-3">You can run Kroki locally using Docker or call its remote API directly for quick rendering.<pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-bash"># Run Kroki locally
+docker run -d -p 8000:8000 yuzutech/kroki
+
+# Or call the public API
+curl -X POST https://kroki.io/mermaid/svg -d 'graph TD; A--&gt;B; B--&gt;C; C--&gt;A;' &gt; diagram.svg</code></pre><h4 id=205a class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Sample Use (Mermaid via curl)</h4><pre class="flex flex-col justify-center border mt-7 dark:border-gray-700"><code class="p-2 bg-gray-100 dark:bg-gray-900 overflow-x-auto language-rust">curl -X POST https://kroki.io/mermaid/svg -d 'graph TD
+&gt;     DNS[Route53] --&gt; LB[ELB]
+&gt;     LB --&gt; WS1[Web Server 1]
+&gt;     LB --&gt; WS2[Web Server 2]
+&gt;     WS1 --&gt; Lambda[Lambda Function]
+&gt;     Lambda --&gt; IAM[IAM Role]
+&gt;     WS1 --&gt; DB1[Primary DB]
+&gt;     WS2 --&gt; DB1
+&gt;     DB1 --&gt; DB2[Replica DB]' &gt;  diagram.svg</code></pre><h4 id=210c class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl pt-8">Output</h4><div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*Cg6jCow0qACz32o3hCeTbA.png"></div><h3 id=dac4 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl pt-12">Wrapping Up</h3><p class="leading-8 mt-3">Diagram-as-Code tools are transforming how developers, DevOps engineers, architects, and even technical writers communicate complex infrastructure and system designs. In today's fast-paced engineering environments, where systems evolve continuously, having architecture documented in a reproducible, version-controlled format is no longer a luxury; it's a necessity.<p class="leading-8 mt-7">By selecting the right tool for your workflow, you not only improve documentation quality but also unlock automation possibilities, such as rendering diagrams directly from CI/CD pipelines or embedding up-to-date visuals in internal portals.<p class="leading-8 mt-7">You can choose a tool that fits your personal workflow or team setup. For me, <strong>Diagrams</strong> worked perfectly because I'm comfortable with Python and primarily work within the AWS ecosystem. It allowed me to integrate diagram generation easily into my existing Python-based workflows.<p class="leading-8 mt-7">While <strong>AWS Diagram-as-Code</strong> is promising and feels native to the AWS world, its YAML syntax can be slightly tricky, and the layout sometimes requires manual adjustment. So it depends entirely on your use case; some might prefer simplicity, others may need native service mapping or advanced layout control.<p class="leading-8 mt-7">No matter which tool you pick, embracing Diagram as Code will make your designs easier to maintain, easier to scale, and much easier to share across teams.<p class="leading-8 mt-7">Let your diagrams speak code, and scale with your infrastructure.<p class="leading-8 mt-7">You can follow me on X (<a style="text-decoration: underline;" rel="noopener ugc nofollow" title="" href="https://x.com/PrateekJainDev" target=_blank>@PrateekJainDev</a>) and LinkedIn (<a style="text-decoration: underline;" rel="noopener ugc nofollow" title="" href="https://x.com/PrateekJainDev" target=_blank>in/prateekjaindev</a>) for more updates!<p class="leading-8 mt-7">Happy Diagramming 🚀<div class=mt-7><img loading=eager alt=None class="pt-5 m-auto" role=presentation referrerpolicy=no-referrer src="https://miro.medium.com/v2/resize:fit:700/1*nKvQX0OLMeZ0XvwsDn7slQ.gif"></div>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-5">
+            <a title=Technology target=_blank href="https://medium.com/tag/technology"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#technology</span></a><a title=Programming target=_blank href="https://medium.com/tag/programming"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#programming</span></a><a title=AWS target=_blank href="https://medium.com/tag/aws"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#aws</span></a><a title=Kubernetes target=_blank href="https://medium.com/tag/kubernetes"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#kubernetes</span></a><a title=Cloud target=_blank href="https://medium.com/tag/cloud"><span class="px-2 py-1 text-xs text-green-500 bg-green-100 rounded-full dark:bg-green-800 dark:text-gray-100">#cloud</span></a>
+        </div>
+        <div class="container w-full pt-12 mx-auto md:max-w-3xl"></div>
+    </div>
+    <style>
+.main-content {
+ letter-spacing: -0.06px;
+ font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+pre {
+    font-size: 75%;
+    background-color: #e3e2e2;
+}
+p code, ul code, li code {
+    font-size: 75%;
+}
+    </style>
+    <script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  hljs.highlightAll();
+
+  document.querySelectorAll('pre code').forEach((el) => {
+        code = el.textContent;
+        el = el.parentElement;
+        el.innerHTML = '<button class="p-1 bg-gray-300 hljs-copy dark:bg-zinc-800">Copy</button>' + el.innerHTML; // append copy button
+        el.getElementsByClassName('hljs-copy')[0].contentCopy = code;
+         el.getElementsByClassName('hljs-copy')[0].addEventListener("click", function () {
+             this.innerText = 'Copying..';
+             if (!navigator.userAgent.toLowerCase().includes('safari')) {
+                 navigator.clipboard.writeText(this.contentCopy);
+             } else {
+                 prompt("Clipboard (Select: ⌘+a > Copy:⌘+c)", this.contentCopy);
+             }
+             this.innerText = 'Copied!';
+             button = this;
+             setTimeout(function () {
+                 button.innerText = 'Copy';
+             }, 1500)
+         });
+});
+  });
+    </script>
+    <style>
+     .hljs-copy {
+         float: right;
+         cursor: pointer;
+     }
+    </style>
+<div id=problemModal class="fixed inset-0 flex items-center justify-center hidden w-full h-full overflow-y-auto bg-black bg-opacity-50 modal" style="z-index: 999999">
+    <div class="w-11/12 max-h-screen mx-auto rounded shadow-lg modal-container md:max-w-xl">
+        <div class="px-6 py-4 my-8 text-left text-black bg-white modal-content dark:bg-gray-800 dark:text-white">
+            <h1 class="text-3xl font-bold">Reporting a Problem</h1>
+            <div class=mt-3>
+                <p>
+                    Sometimes we have problems displaying some Medium posts.
+                    <br>
+                    <br>
+                </p>
+                <p>If you have a problem that some images aren't loading - try using VPN. Probably you have problem with
+                    access to Medium CDN (or fucking Cloudflare's bot detection algorithms are blocking you).</p>
+            </div>
+            <form action=# method=POST class=mt-4 id=problem-form>
+                <div class=mb-4>
+                    <label for=problem-description class="block mb-2 font-bold text-gray-700 dark:text-white">Problem
+                        Description</label>
+                    <textarea id=problem-description name=problem-description placeholder="Describe your problem here..." class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" rows=4 required=""></textarea>
+                </div>
+                <div>
+                    <button type=submit class="px-4 py-2 m-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">Submit</button>
+                    <button type=button class="px-4 py-2 m-2 font-bold text-white bg-gray-500 rounded modal-close hover:bg-gray-700 focus:outline-none focus:shadow-outline">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+    }
+
+    function changeTheme(themeName) {
+        // Source: https://stackoverflow.com/questions/59257368/how-to-dynamically-change-the-theme-using-highlight-js
+        console.log(`Applying theme: ${themeName}`);
+        const existingLink = document.querySelector('link[href*="highlight.js"]');
+        if (existingLink) {
+            existingLink.remove();
+        }
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/${themeName}.min.css`;
+        document.head.appendChild(link);
+        document.querySelector("span").textContent = themeName;
+    }
+
+    function navigateToOrigin() {
+        window.location.href = window.location.origin;
+    }
+
+    function updateThemeIcons() {
+        const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.getElementById('darkIcon').classList.toggle('hidden', !isDarkMode);
+        document.getElementById('lightIcon').classList.toggle('hidden', isDarkMode);
+    }
+
+    updateThemeIcons();
+
+    document.getElementById('darkModeToggle').addEventListener('click', function () {
+        const isDarkMode = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDarkMode) {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.style.cssText = "--lightense-backdrop: white;";
+            localStorage.setItem("theme", "light");
+            changeTheme("a11y-light");
+        } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.cssText = "--lightense-backdrop: black;";
+            localStorage.setItem("theme", "dark");
+            changeTheme("androidstudio");
+        }
+        updateThemeIcons();
+    })
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        //document.getElementById('darkIcon').classList.remove('hidden');
+        //document.getElementById('lightIcon').classList.add('hidden')
+        changeTheme("androidstudio");
+    } else {
+        document.documentElement.classList.remove('dark')
+        //document.getElementById('lightIcon').classList.remove('hidden');
+        //document.getElementById('darkIcon').classList.add('hidden');
+        changeTheme("a11y-light");
+    }
+</script>
+<script>
+    const openModalButton = document.getElementById('openProblemModal');
+    const closeModalButton = document.querySelector('.modal-close');
+    const modal = document.getElementById('problemModal');
+    const problemDescriptionInput = document.getElementById('problem-description');
+    const submitButton = document.querySelector('form button');
+    const body = document.querySelector('body');
+
+    openModalButton.addEventListener('click', () => {
+        body.classList.add('!overflow-hidden'); // Prevent scrolling on the body
+        modal.classList.remove('hidden');
+    });
+
+    closeModalButton.addEventListener('click', () => {
+        body.classList.remove('!overflow-hidden'); // Re-enable scrolling on the body
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            body.classList.remove('!overflow-hidden');
+        }
+    });
+
+    function navigateNoCache() {
+        window.location.href = `/render-no-cache${window.location.pathname}`;
+    }
+
+    const submitForm = async (event) => {
+        event.preventDefault();
+
+        console.log('Form submiting is started!');
+        submitButton.disabled = true;
+
+        // Get the problem description from the input field
+        const problemDescription = problemDescriptionInput.value;
+        const currentPage = window.location.href;
+
+        try {
+            // Send a POST request to the "report-problem" API endpoint
+            const response = await fetch('/report-problem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ description: problemDescription, page: currentPage }),
+            });
+
+            if (response.ok) {
+                // Report submitted successfully, you can add a success message or further actions here
+                console.log('Problem report submitted successfully.');
+                modal.classList.add('hidden'); // Close the modal
+            } else {
+                // Handle errors, such as non-200 responses
+                console.error('Failed to submit problem report.');
+                submitButton.disabled = false;
+            }
+        } catch (error) {
+            // Handle network errors or other exceptions
+            console.error('An error occurred:', error);
+            submitButton.disabled = false;
+        }
+    };
+
+    document.getElementById('problem-form').onsubmit = submitForm;
+</script>
+<script>
+    const h = document.documentElement, b = document.body;
+    const st = 'scrollTop';
+    const sh = 'scrollHeight';
+    const progress = document.getElementById('progress');
+    const header = document.getElementById('header');
+    const navcontent = document.getElementById('nav-content');
+
+    document.addEventListener('scroll', function () {
+        /* Refresh scroll % width */
+        const scroll = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+        progress.style.setProperty('--scroll', scroll + '%');
+
+        /* Apply classes for slide in bar */
+        const shouldAddClass = window.scrollY > 10;
+    });
+
+    document.getElementById('nav-toggle').onclick = function () {
+        document.getElementById("nav-content").classList.toggle("hidden");
+    }
+
+    window.addEventListener('load', function () {
+        Lightense('img:not(.no-lightense)');
+    }, false);
+</script>
+<!-- <script>
+    var lazyLoadInstance = new LazyLoad({
+        callback_loaded: function (element) {
+            console.log(element);
+            console.log(element.tagName);
+            switch (element.tagName) {
+                case "IMG":
+                    console.log(`${element} is image, wrapping into lightense`);
+                    Lightense(element);
+                    break;
+                case "IFRAME":
+                    const resizeIframe = () => {
+                        console.log(`${element} is iframe, wrapping script`);
+                        let iframeHeight = element.contentWindow.document.body.scrollHeight;
+                        if (iframeHeight == 150) {
+                            iframeHeight = 500;
+                        }
+                        element.style.height = iframeHeight + 'px';
+                    };
+                    window.addEventListener('resize', resizeIframe);
+                    setInterval(resizeIframe, 4500);
+                    resizeIframe();
+                    break;
+            }
+        },
+        callback_error: (element) => {
+            console.log(element);
+            if (element.tagName === "IMG" && element.hasAttribute("data-src")) {
+                const srcAttribute = element.attributes["data-src"].value;
+                if (srcAttribute.startsWith("https://miro.medium.com/v2/")) {
+                    element.setAttribute("src", srcAttribute.replace("https://miro.medium.com/v2/", "https://freedium.cfd/@miro/v2/"));
+                }
+            }
+        }
+    });
+</script> -->
+<script>
+    function navigateToOrigin() {
+        window.location.href = window.location.origin;
+    }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notificationContainer = document.querySelector('.notification-container');
+        const closeButton = document.querySelector('.close-button');
+        const notificationFlagString = "showNotification-kdjfn32"
+        const body = document.querySelector('body');
+
+        function showNotification() {
+            if (!localStorage.getItem(notificationFlagString)) {
+                notificationContainer.style.display = 'block';
+                body.classList.add('!overflow-hidden');
+            }
+        }
+
+        function hideNotification() {
+            localStorage.setItem(notificationFlagString, 'false');
+            notificationContainer.style.display = 'none';
+            body.classList.remove('!overflow-hidden');
+        }
+
+        closeButton.addEventListener('click', () => {
+            hideNotification();
+        });
+
+        // showNotification();
+    });
+</script>
+
+
+</div><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94b4cced1a69e7fc',t:'MTc0OTE4MDMwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
