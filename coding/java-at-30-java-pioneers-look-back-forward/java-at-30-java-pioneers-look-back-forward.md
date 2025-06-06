@@ -1,4 +1,3 @@
-
 <!--
 title: Java 30周年：Java先驱者的回顾与展望
 cover: https://cdn.thenewstack.io/media/2025/06/c8bcf1a0-patrick-tomasso-eddbayhpqcs-unsplash.jpg
