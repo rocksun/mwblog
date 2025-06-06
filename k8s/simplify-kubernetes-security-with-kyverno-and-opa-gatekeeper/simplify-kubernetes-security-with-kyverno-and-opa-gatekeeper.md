@@ -1,4 +1,3 @@
-
 <!--
 title: 使用Kyverno和OPA Gatekeeper简化Kubernetes安全性
 cover: https://cdn.thenewstack.io/media/2025/06/e0086a79-door.jpeg
