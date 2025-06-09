@@ -1,4 +1,3 @@
-
 <!--
 title: 倦怠的软件开发人员的10个新工作
 cover: https://cdn.thenewstack.io/media/2025/04/1ee29ce7-new-jobs-burned-out-software-developers.jpg

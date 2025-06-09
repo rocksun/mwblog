@@ -1,7 +1,7 @@
 <!--
 title: PydanticAI、Agno还是CrewAI？
 cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1744940789/p2qkemvr1fbfkbtolfb1.png
-summary: 还在纠结 AI Agent 框架？🚀 **PydanticAI**保你数据安全，企业级应用首选；**Agno**速度超神，资源敏感型项目必备；**CrewAI**擅长团队协作，复杂工作流轻松搞定！选哪个？看这篇就够了！😎
+summary: 还在纠结 AI Agent 框架？🚀 PydanticAI保你数据安全，企业级应用首选；Agno速度超神，资源敏感型项目必备；CrewAI擅长团队协作，复杂工作流轻松搞定！选哪个？看这篇就够了！😎
 -->
 
 还在纠结 AI Agent 框架？🚀 PydanticAI保你数据安全，企业级应用首选；Agno速度超神，资源敏感型项目必备；CrewAI擅长团队协作，复杂工作流轻松搞定！选哪个？看这篇就够了！😎
@@ -10,7 +10,13 @@ summary: 还在纠结 AI Agent 框架？🚀 **PydanticAI**保你数据安全，
 > 
 > 作者：Nayeem Islam
 
+## 为什么这三个很重要？
+
 **PydanticAI**、**Agno** 和 **CrewAI** 都是强大的竞争者，但各自擅长的领域不同。PydanticAI 带来了坚如磐石的数据处理能力，适用于可靠的应用程序。Agno 专注于速度、效率和处理图像和音频等多样化数据。CrewAI 擅长让多个 AI agent 像一个运转良好的团队一样协同工作。本指南将分解它们的主要特性、最佳用途以及如何入门，帮助你选择最适合你项目的框架，而无需猜测。
+
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*5EeTSuCiFhhFaN91yyj4jw.png)
+
+*Gear Up with Agentic AI Tools*
 
 想象一下你正在建造一栋房子。PydanticAI 就像拥有一位首席架构师，他确保每张蓝图在施工开始前都是完美的。它建立在 Pydantic 坚实的基础上，使其成为优先考虑 AI 应用程序的可靠性和类型安全的开发人员的首选。
 
@@ -25,17 +31,30 @@ summary: 还在纠结 AI Agent 框架？🚀 **PydanticAI**保你数据安全，
 - 何时 CrewAI 的协作方法可能成为你项目的游戏规则改变者
 - 真实世界的示例和入门代码，让你快速启动并运行
 
-## PydanticAI：在坚实的基础上构建可靠的 AI
+### PydanticAI：在坚实的基础上构建可靠的 AI
 
 是否曾经部署过一个 AI 应用程序，却发现它返回了意外的数据格式或在生产环境中崩溃？PydanticAI 通过将 Pydantic 经过实战检验的类型系统引入 AI 开发领域，正面解决了这些常见的难题。它就像一个严格但有用的质量控制经理，监督着你的 AI 的每一个动作。
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*UEeronFlJbVRk-eoBjjL_Q.png)
 
-## 为什么 PydanticAI 如此出色
+*Pydantic_Ai: Fast yet conservative*
+
+### 为什么 PydanticAI 如此出色
 
 PydanticAI 的特别之处不仅仅在于它做了什么，还在于它如何做。它构建在 Pydantic（Python 开发人员最喜欢的数据验证工具）之上，确保你的 AI 交互是可预测和可靠的。把它想象成一个翻译器，确保你的 AI 始终说你的应用程序所期望的精确语言。
 
-## 入门
+该框架与所有主要的 AI 模型都能很好地配合：
+
+- OpenAI’s GPT series
+- Google’s Gemini
+- Anthropic’s Claude
+- Mistral
+- Groq
+- Ollama
+
+此外，它还通过 Pydantic Logfire 提供实时监控，让您在 AI 运行时窥视后台。这就像拥有一个仪表板，可以实时准确地显示 AI 发生的情况。
+
+### 入门
 
 假设你正在构建一个 AI 助手，需要从客户电子邮件中提取结构化信息。以下是 PydanticAI 如何使这项工作变得非常简单的：
 
@@ -67,7 +86,7 @@ print(f"Category: {issue.category}")
 print(f"Needs Action: {issue.action_needed}")
 ```
 
-## 何时选择 PydanticAI
+### 何时选择 PydanticAI
 
 当你需要以下情况时，PydanticAI 最为出色：
 
@@ -84,16 +103,18 @@ print(f"Needs Action: {issue.action_needed}")
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*OLcZf6zMvI0Spxb64Yuyyg.png)
 
+*Agno: Robust Agentic Framework*
+
 但 Agno 不仅仅是速度快。可以把它想象成一把 AI 开发的瑞士军刀，而且设法保持了轻量级。它可以处理从文本和图像到音频和视频的所有内容，非常适合构建需要处理不同类型数据的 AI 代理。并且它在完成所有这些工作的同时，使用的内存比同类框架少 50 倍。
 
-**应用**
+### 应用
 
 - **智能客户支持**：部署可以 24/7 处理客户查询的 AI 代理，理解文本和图像，以提供全面的支持。
 - **财务分析**：创建可以处理市场数据、分析趋势并实时生成投资见解的代理。
 - **物流优化**：构建可以优化交付路线并有效跟踪货物的智能系统。
 - **旅行计划**：开发可以理解复杂的旅行要求并创建个性化行程的助手。
 
-## 快速上手
+### 快速上手
 
 Agno 的上手非常简单：
 
@@ -131,7 +152,11 @@ reporter.print_response(
 
 想象一下，您有一个 AI 专家团队，每个专家都有自己的专业知识，可以在您的项目中无缝协作。这正是 CrewAI 所带来的。虽然其他框架侧重于单个代理，但 CrewAI 采用了一种不同的方法，即将 AI 代理视为一个协调良好的团队的成员，每个成员都有特定的角色和职责。
 
-**协作的力量**
+![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*AzcgbrWhX2LAFx7akdqI_Q.png)
+
+*CrewAI: Your Collaborative Agentic Neighbours*
+
+### 协作的力量
 
 CrewAI 的独特之处在于它强调智能协作。CrewAI 不是让一个 AI 代理尝试完成所有事情，而是让您创建可以协同工作的专业代理，就像人类团队一样。例如：
 
@@ -148,7 +173,7 @@ CrewAI 的方法已被证明在企业环境中特别有效。以下是一些令�
 - 使用 CrewAI 代理的供应链管理系统可以根据实时天气和地缘政治风险主动重新安排货运路线
 客户支持运营，其中 AI 团队协作诊断问题、检索数据并生成个性化响应，仅在必要时升级到人工处理
 
-## CrewAI 入门
+### CrewAI 入门
 
 以下是如何使用 CrewAI 创建协作 AI 团队的简单示例：
 
@@ -205,19 +230,25 @@ result = crew.kickoff()
 
 ![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*C8UtRvurY1LKtnxIs1xfoQ.png)
 
+*Framework to choose*
+
 **1. 类型安全和验证**
 
-**PydanticAI**凭借其强大的基于 Pydantic 的验证系统领先**Agno**提供基本的验证，但更侧重于性能**CrewAI**通过其任务管理系统提供验证
+- **PydanticAI**凭借其强大的基于 Pydantic 的验证系统领先
+- **Agno**提供基本的验证，但更侧重于性能
+- **CrewAI**通过其任务管理系统提供验证
 
 **2. 性能和资源使用**
 
-**Agno**是明显的赢家，代理创建速度快 10,000 倍，内存使用量降低 50 倍**PydanticAI**在优先考虑类型安全的同时保持良好的性能**CrewAI**在性能和协作能力之间取得平衡
+- **Agno**是明显的赢家，代理创建速度快 10,000 倍，内存使用量降低 50 倍
+- **PydanticAI**在优先考虑类型安全的同时保持良好的性能
+- **CrewAI**在性能和协作能力之间取得平衡
 
 **3. 用例专业化**
 
-**PydanticAI**: 需要严格数据验证的企业应用程序
-**Agno**: 高性能、资源敏感型应用程序
-**CrewAI**: 需要多个专业代理的复杂工作流程
+- **PydanticAI**: 需要严格数据验证的企业应用程序
+- **Agno**: 高性能、资源敏感型应用程序
+- **CrewAI**: 需要多个专业代理的复杂工作流程
 
 要选择合适的框架，请问自己以下问题：
 
