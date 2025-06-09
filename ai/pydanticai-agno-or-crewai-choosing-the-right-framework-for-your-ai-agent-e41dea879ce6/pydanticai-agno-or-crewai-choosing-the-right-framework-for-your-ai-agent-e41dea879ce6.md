@@ -1,6 +1,6 @@
 <!--
 title: PydanticAI、Agno还是CrewAI？
-cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1744940789/p2qkemvr1fbfkbtolfb1.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471111/rm4qhm4kvxudyfiemnon.png
 summary: 还在纠结 AI Agent 框架？🚀 PydanticAI保你数据安全，企业级应用首选；Agno速度超神，资源敏感型项目必备；CrewAI擅长团队协作，复杂工作流轻松搞定！选哪个？看这篇就够了！😎
 -->
 
@@ -14,7 +14,7 @@ summary: 还在纠结 AI Agent 框架？🚀 PydanticAI保你数据安全，企�
 
 **PydanticAI**、**Agno** 和 **CrewAI** 都是强大的竞争者，但各自擅长的领域不同。PydanticAI 带来了坚如磐石的数据处理能力，适用于可靠的应用程序。Agno 专注于速度、效率和处理图像和音频等多样化数据。CrewAI 擅长让多个 AI agent 像一个运转良好的团队一样协同工作。本指南将分解它们的主要特性、最佳用途以及如何入门，帮助你选择最适合你项目的框架，而无需猜测。
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*5EeTSuCiFhhFaN91yyj4jw.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471589/dxlq1fbt49nxmsr4nalj.webp)
 
 *Gear Up with Agentic AI Tools*
 
@@ -35,7 +35,7 @@ summary: 还在纠结 AI Agent 框架？🚀 PydanticAI保你数据安全，企�
 
 是否曾经部署过一个 AI 应用程序，却发现它返回了意外的数据格式或在生产环境中崩溃？PydanticAI 通过将 Pydantic 经过实战检验的类型系统引入 AI 开发领域，正面解决了这些常见的难题。它就像一个严格但有用的质量控制经理，监督着你的 AI 的每一个动作。
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*UEeronFlJbVRk-eoBjjL_Q.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471590/r37rema8xiwgpd9nbynw.webp)
 
 *Pydantic_Ai: Fast yet conservative*
 
@@ -101,7 +101,7 @@ print(f"Needs Action: {issue.action_needed}")
 
 当毫秒至关重要且资源宝贵时，Agno 便会成为焦点。该框架最初名为 Phi Data，通过大幅减少通常与 AI 代理开发相关的开销而引起轰动。有多么显著？我们说的是代理创建速度比其他替代方案快 10,000 倍，只需几微秒而不是几毫秒。对于运行数千个代理的应用程序来说，这种差异不仅仅令人印象深刻，而且具有颠覆性。
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*OLcZf6zMvI0Spxb64Yuyyg.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471591/soqcj1yql5fp5lfwxagv.webp)
 
 *Agno: Robust Agentic Framework*
 
@@ -152,7 +152,7 @@ reporter.print_response(
 
 想象一下，您有一个 AI 专家团队，每个专家都有自己的专业知识，可以在您的项目中无缝协作。这正是 CrewAI 所带来的。虽然其他框架侧重于单个代理，但 CrewAI 采用了一种不同的方法，即将 AI 代理视为一个协调良好的团队的成员，每个成员都有特定的角色和职责。
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*AzcgbrWhX2LAFx7akdqI_Q.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471592/zvm9ffypumwtainhvlwy.webp)
 
 *CrewAI: Your Collaborative Agentic Neighbours*
 
@@ -228,7 +228,7 @@ result = crew.kickoff()
 
 现在我们已经详细探讨了每个框架，让我们分解一下它们是如何相互叠加的，以帮助您做出明智的决定。
 
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/1*C8UtRvurY1LKtnxIs1xfoQ.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1749471593/rgnzomcdxul6ftc2kl4k.webp)
 
 *Framework to choose*
 
