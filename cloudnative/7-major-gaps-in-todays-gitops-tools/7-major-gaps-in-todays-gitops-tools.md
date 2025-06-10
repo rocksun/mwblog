@@ -1,4 +1,3 @@
-
 <!--
 title: 当今GitOps工具的7个主要差距
 cover: https://cdn.thenewstack.io/media/2025/05/120318c3-gaps-gitops-tools.jpg

@@ -1,4 +1,3 @@
-
 <!--
 title: Docker最不为人知的秘密：可观测性如何拯救开发者的理智
 cover: https://cdn.thenewstack.io/media/2025/05/69904fc8-seo-galaxy-yushnkbhf3q-unsplash-1-scaled.jpg

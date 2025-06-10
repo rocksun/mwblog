@@ -1,4 +1,3 @@
-
 <!--
 title: Apache Iceberg架构师指南
 cover: https://cdn.thenewstack.io/media/2025/05/01095a00-iceberg.jpg

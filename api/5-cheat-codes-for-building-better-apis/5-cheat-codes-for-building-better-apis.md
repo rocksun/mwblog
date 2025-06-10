@@ -1,4 +1,3 @@
-
 <!--
 title: 构建更好API的5个“秘籍”
 cover: https://cdn.thenewstack.io/media/2025/05/9c3e61d2-matthew-voget-apis-2.jpg
