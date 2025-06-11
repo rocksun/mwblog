@@ -1,0 +1,40 @@
+# Why AI Demands a New Approach to Observability
+![Featued image for: Why AI Demands a New Approach to Observability](https://cdn.thenewstack.io/media/2025/06/b13c639e-olumuyiwa-sobowale-kqidjlbcgha-unsplash-1024x683.jpg)
+[Olumuyiwa Sobowale](https://unsplash.com/@holumuyiwa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)on Unsplash.
+AI is transforming industries in ways we couldn’t have imagined just a few short years ago, from automating customer service to streamlining supply chain management. But, with these exciting advancements come new challenges. As AI [systems become more integral to everyday business operations](https://thenewstack.io/new-ai-pcs-let-businesses-deploy-low-cost-private-and-secure-ai-systems/), the need to monitor their performance, behavior, and decision-making processes has never been greater.
+
+According to the [National Institute of Standards and Technology (NIST)](https://www.nist.gov/itl/ai-risk-management-framework), AI applications require rigorous oversight, as inadequate management can lead to unforeseen or inequitable outcomes. Unfortunately, existing observability solutions fall short by focusing solely on performance, rather than other attributes unique to AI.
+
+This article sheds light on observability, defining what it is, why it’s essential for managing AI systems, and why traditional approaches are inadequate.
+
+**So, What Exactly Is Observability?**
+Observability platforms help companies monitor, analyze, and understand the performance and health of their systems, including logs, metrics, and traces. Traditional monitoring [systems track basic metrics like server status](https://thenewstack.io/cachet-the-open-source-status-page-system-for-tracking-servers/) or network latency. They’re an evolution of traditional network monitoring solutions, but with a broader scope and more advanced capabilities. These platforms take monitoring further by empowering teams to answer questions like, “What’s causing these performance issues?” or “Why is this behavior happening?” It provides deeper, actionable insights into system health and performance, helping teams solve issues before they impact users.
+
+Observability offers several key benefits for businesses, like accelerating issue resolution and reducing downtime. It can also help businesses optimize resources, predict failures before they happen, and align system health with key business metrics. Ultimately, observability is about making smarter, faster decisions to keep things running smoothly.
+
+**Why Traditional Observability Tools Fall Short for AI**
+AI systems introduce a new set of variables that require careful monitoring, particularly when interacting with AI models that engage with users in real-time.
+
+Traditional observability systems were designed to track predefined metrics like CPU usage, vs. capturing GenAI response inaccuracies or mitigating malicious user inputs. This is where advanced AI observability steps in, offering a way to manage these systems effectively and ensure they perform as expected and, importantly, that they do so in an ethical and secure way.
+
+Let’s take a deeper dive into the unique needs of AI systems:
+
+**AI “Grey Areas”:**AI presents unique grey areas for performance monitoring. An AI system may appear to perform correctly (e.g., a user enters a prompt and the AI answers), but the response is suspect. For example, if a company’s chatbot promotes a competitor over its own product, the performance is fine, but the content of the response is a problem.**Data Quality Monitoring and Security**: It is crucial to make sure that AI does not leak sensitive information such as customer PII, confidential business data, or proprietary information about the AI system itself — especially as nefarious actors may try to trick it into doing so.**User Interaction:**True measurement of AI effectiveness requires insights not only into the system’s performance but also into user interaction. While metrics like response times and accuracy are important, they don’t provide the full picture. Feedback about the AI’s responses to user queries is essential, so that businesses know if the AI is responding as expected and meeting customers’ needs.**AI Output Issues:**AI outputs must be continuously monitored for toxicity (i.e., harmful or offensive content such as hate speech or biased language) and hallucinations, where the model generates misleading or false information. Without proper oversight, these issues can undermine user trust, spread misinformation, and lead to unintended consequences**Compliance:**AI systems[must adhere to strict and ever-evolving regulations and compliance](https://thenewstack.io/building-privacy-aware-ai-software-with-vector-databases/)standards that are difficult to keep up with. These include the[EU Artificial Intelligence Act](https://artificialintelligenceact.eu/),[California Consumer Privacy Act](https://oag.ca.gov/privacy/ccpa), and several others.
+**Why Advanced AI Observability Systems Are Essential**
+Observability tools tailored explicitly for AI systems address these unique risks with the following features:
+
+**Comprehensive User Interaction Monitoring:**Provides full visibility into user interactions, including conversation histories, logins, and use of tokens (i.e. units of[data consumed by AI models](https://thenewstack.io/data-modeling-part-2-method-for-time-series-databases/)). This granular tracking helps teams identify suspicious resource consumption, detect cost harvesting attempts (i.e. query spamming to drive up operational costs for an AI system), and optimize budgets without compromising performance.**Real-Time Issue Detection and Resolution:**Identifies problems such as poor response accuracy, latency spikes, and malicious user inputs. This allows teams to address underperforming AI agents before they negatively impact the user experience.**AI Evaluation Engine:**Includes both quality and security evaluators, as well as the ability to customize to meet specific needs. The quality evaluators analyze both user and AI interactions to detect potential issues, such as toxicity and AI hallucinations. Meanwhile, the[security evaluators continuously monitor](https://thenewstack.io/continuous-security-and-monitoring-from-a-cisos-perspective/)for potential risks, enabling early identification and helping secure AI systems against malicious actors.**Compliance and Regulation Adherence:**Helps businesses stay on top of evolving regulatory requirements regarding AI accuracy, reliability, and ethical use, while also mitigating legal and reputational risks.
+**The Future of AI Observability**
+As AI systems grow more complex, the limitations of traditional observability tools are becoming more apparent. Standard observability solutions only focus on performance and are not designed with AI’s unique challenges in mind, so they struggle to effectively track and manage the nuances of AI behavior.
+
+Fortunately, emerging observability platforms are being designed to address the unique challenges posed by AI solutions, providing deeper insights into user interactions and risks, such as toxicity, hallucinations, and security vulnerabilities.
+
+One exciting development we anticipate seeing soon is the integration of agentic AI into the observability process. This would be a game-changer, with agents able to diagnose and solve problems with minimal human assistance.
+
+For organizations aiming to stay competitive, AI observability must be a core component of their strategy. By focusing on AI-specific metrics, businesses can ensure a seamless and high-quality AI environment, harness the full potential of the technology, and achieve positive, tangible business outcomes.
+
+[
+YOUTUBE.COM/THENEWSTACK
+Tech moves fast, don't miss an episode. Subscribe to our YouTube
+channel to stream all our podcasts, interviews, demos, and more.
+](https://youtube.com/thenewstack?sub_confirmation=1)
