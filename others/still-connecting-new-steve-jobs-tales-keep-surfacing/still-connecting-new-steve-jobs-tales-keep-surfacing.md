@@ -1,4 +1,3 @@
-
 <!--
 title: 仍在连接：新的史蒂夫·乔布斯故事不断涌现
 cover: https://cdn.thenewstack.io/media/2025/06/7174235e-1467px-steve_jobs_and_macintosh_computer_january_1984_by_bernard_gotfryd_-_edited.jpg
