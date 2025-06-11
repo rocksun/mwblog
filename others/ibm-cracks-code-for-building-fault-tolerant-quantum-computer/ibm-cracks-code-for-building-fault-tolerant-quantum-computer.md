@@ -1,4 +1,3 @@
-
 <!--
 title: IBM破解构建容错量子计算机的代码
 cover: https://cdn.thenewstack.io/media/2025/06/77d024b2-ibm-quantum-starling-render-2-scaled.jpg
