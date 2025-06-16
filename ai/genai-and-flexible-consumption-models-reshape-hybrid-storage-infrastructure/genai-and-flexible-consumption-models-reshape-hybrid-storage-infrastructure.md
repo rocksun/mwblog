@@ -1,4 +1,3 @@
-
 <!--
 title: GenAI和灵活消费模式重塑混合存储基础设施
 cover: https://cdn.thenewstack.io/media/2025/06/bd1714f4-charlesdeluvio-pjah2ax4uwk-unsplash-scaled.jpg
