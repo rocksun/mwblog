@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么AI和SQL像花生酱和果冻一样搭配
 cover: https://cdn.thenewstack.io/media/2025/06/ab0e7bd3-ai-sql-go-together-pbj.jpg
