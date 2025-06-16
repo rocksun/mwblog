@@ -1,4 +1,3 @@
-
 <!--
 title: 认识Embabel：一个使用Java构建AI Agent的框架
 cover: https://cdn.thenewstack.io/media/2025/06/e6fe4da0-java-embabbel.jpg
