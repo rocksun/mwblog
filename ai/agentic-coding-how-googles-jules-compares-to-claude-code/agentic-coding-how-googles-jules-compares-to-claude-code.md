@@ -1,4 +1,3 @@
-
 <!--
 title: Agentic Coding：Google的Jules与Claude Code的对比
 cover: https://cdn.thenewstack.io/media/2025/06/2f5eb6f1-yasa-design-studio-_vlxtjqufue-unsplashb.jpg
