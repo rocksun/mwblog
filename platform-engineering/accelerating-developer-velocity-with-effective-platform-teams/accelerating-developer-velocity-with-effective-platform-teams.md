@@ -1,4 +1,3 @@
-
 <!--
 title: 通过高效平台团队加速开发者效率
 cover: https://cdn.thenewstack.io/media/2025/06/a8a9199b-teams.jpeg
