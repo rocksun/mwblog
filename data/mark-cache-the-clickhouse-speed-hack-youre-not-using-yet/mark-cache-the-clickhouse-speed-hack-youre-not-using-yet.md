@@ -1,4 +1,3 @@
-
 <!--
 title: Mark Cache：你还没用上的ClickHouse速度秘诀
 cover: https://cdn.thenewstack.io/media/2025/06/166b35cb-abstract.png
