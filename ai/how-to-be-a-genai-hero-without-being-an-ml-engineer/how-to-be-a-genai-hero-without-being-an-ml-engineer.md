@@ -1,4 +1,3 @@
-
 <!--
 title: 无需机器学习背景，也能成为GenAI英雄
 cover: https://cdn.thenewstack.io/media/2025/06/ea44f3bb-genai-hero-without-ml-engineer.jpg
