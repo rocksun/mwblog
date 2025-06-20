@@ -1,4 +1,3 @@
-
 <!--
 title: 追逐AI自主性，当心错失Agentic的近期回报
 cover: https://cdn.thenewstack.io/media/2025/06/11212830-exoskeleton123.jpeg
