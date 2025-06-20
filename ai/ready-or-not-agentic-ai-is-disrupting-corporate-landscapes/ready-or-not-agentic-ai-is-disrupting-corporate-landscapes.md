@@ -71,4 +71,4 @@ Agentic AI 不再是实验室的好奇心；它是一种隐藏在眼前的性能
 
 与欺诈作斗争以保护我们的资金和身份是一场全天候的战斗。Agentic AI 为这场战争提供了强大的火力。万事达卡利用 AI 代理[分析实时交易模式](https://fpt.ai/blogs/digital-banking-race-applying-ai-solutions-operating-processes/)、阻止可疑活动、适应新的欺诈技术，并通过持续学习逐渐减少误报。量化交易系统通过独立评估市场状况、执行交易、根据结果修改策略以及处理多种资产类型的风险，来帮助解读不断变化的金融市场。基于 AI 的信用风险评估利用标准信用评分之外的广泛数据集，高效地分析贷款申请、做出贷款决策，并根据借款人的还款行为更新评估标准。
 
-随着 [Agentic AI 不断发展](https://thenewstack.io/llms-and-ai-agents-evolving-like-programming-languages/)，其可组合性将变得更加智能，用例范围将呈对数级扩展（想想曲棍球棒）。对于企业和最终用户而言，其结果可能会超过今天的炒作。
+随着 [Agentic AI 不断发展](https://thenewstack.io/llms-and-ai-agents-evolving-like-programming-languages/)，其可组合性将变得更加智能，用例范围将呈对数级扩展（想想曲棍球棒）。对于企业和最终用户而言，其结果可能会超过今天的炒作。 
