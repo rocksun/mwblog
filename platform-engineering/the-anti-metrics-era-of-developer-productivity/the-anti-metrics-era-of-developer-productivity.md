@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者生产力的反指标时代
 cover: https://cdn.thenewstack.io/media/2025/06/7f2a730c-metrics.png

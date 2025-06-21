@@ -1,4 +1,3 @@
-
 <!--
 title: AI助力：编程技能跃迁之道
 cover: https://cdn.thenewstack.io/media/2025/06/0aefcaec-tai-bui-grcmd1fvucy-unsplash-1-1.jpg

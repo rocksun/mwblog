@@ -1,4 +1,3 @@
-
 <!--
 title: Apache Iceberg 3.0 版本新特性速览
 cover: https://cdn.thenewstack.io/media/2025/06/3d8f2a7e-thomas-park-fqf4osws6qc-unsplash.jpg

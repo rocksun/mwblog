@@ -1,4 +1,3 @@
-
 <!--
 title: 基础设施即代码：哪里出了问题
 cover: https://cdn.thenewstack.io/media/2025/05/4e5c6ab7-ifc-control.png

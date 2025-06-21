@@ -1,4 +1,3 @@
-
 <!--
 title: Elixir：JavaScript Web开发的替代方案
 cover: https://cdn.thenewstack.io/media/2025/06/24ea64d5-elixir.jpg
