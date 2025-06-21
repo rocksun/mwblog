@@ -1,4 +1,3 @@
-
 <!--
 title: Vite作者谈统一JavaScript工具链与Vite+
 cover: https://cdn.thenewstack.io/media/2025/06/11d0d7fe-ethanyoupresentation.jpg
