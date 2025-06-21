@@ -1,4 +1,3 @@
-
 <!--
 title: 如果非得用Slack，那还算什么平台即产品
 cover: https://cdn.thenewstack.io/media/2025/06/d48553a3-abstract-platform-2.png
