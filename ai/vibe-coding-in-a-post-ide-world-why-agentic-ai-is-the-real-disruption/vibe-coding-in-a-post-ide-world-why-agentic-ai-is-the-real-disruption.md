@@ -1,4 +1,3 @@
-
 <!--
 title: 后IDE时代的Vibe编程：为何Agentic AI才是真正的颠覆者
 cover: https://cdn.thenewstack.io/media/2025/06/35cbc3ce-boliviainteligente-kecrxz0m42a-unsplash-scaled.jpg
