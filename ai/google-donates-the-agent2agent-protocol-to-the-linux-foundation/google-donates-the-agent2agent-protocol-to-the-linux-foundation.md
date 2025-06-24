@@ -1,4 +1,3 @@
-
 <!--
 title: 谷歌向 Linux 基金会捐赠 Agent2Agent 协议
 cover: https://cdn.thenewstack.io/media/2025/06/68d2dd72-img_1173-scaled.jpg
