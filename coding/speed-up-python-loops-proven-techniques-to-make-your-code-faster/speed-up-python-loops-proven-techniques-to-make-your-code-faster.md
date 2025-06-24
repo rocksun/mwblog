@@ -42,9 +42,6 @@ Python 循环以速度慢而闻名，原因有很多，例如解释器开销、�
 
 使用 timeit 对 Python 循环进行微基准测试看起来像这样：
 
-This file contains hidden or bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
-[Learn more about bidirectional Unicode characters](https://github.co/hiddenchars)
-
 ```py
 import timeit
 
