@@ -1,4 +1,3 @@
-
 <!--
 title: Anthropic为何放弃Claude“撰写”的博客？
 cover: https://cdn.thenewstack.io/media/2025/05/df15c80c-anthropic-claude.png
