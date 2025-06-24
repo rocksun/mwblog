@@ -1,4 +1,3 @@
-
 <!--
 title: Vision Language模型选择指南
 cover: https://cdn.thenewstack.io/media/2025/06/8847c636-pexels-cottonbro-5473955b.jpg
