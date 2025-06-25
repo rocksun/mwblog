@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程通信框架构建
 cover: https://cdn.thenewstack.io/media/2025/06/4ebb9386-people.png
