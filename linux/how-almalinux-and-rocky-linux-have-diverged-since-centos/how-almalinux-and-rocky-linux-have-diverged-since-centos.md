@@ -1,4 +1,3 @@
-
 <!--
 title: CentOS之后，AlmaLinux和Rocky Linux的差异演进
 cover: https://cdn.thenewstack.io/media/2025/06/71926fa7-beth-macdonald-p3rs8j1thi4-unsplash-alma-rocky.jpg

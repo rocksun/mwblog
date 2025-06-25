@@ -1,4 +1,3 @@
-
 <!--
 title: 先感知，再验证：将人工智能风险转化为企业回报
 cover: https://cdn.thenewstack.io/media/2025/06/b5b09e77-vibe-then-verify.jpg
