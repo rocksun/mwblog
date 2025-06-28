@@ -1,4 +1,3 @@
-
 <!--
 title: 组织机构重塑开发者体验的三种方式
 cover: https://cdn.thenewstack.io/media/2025/06/f9f0b143-happy.jpg
