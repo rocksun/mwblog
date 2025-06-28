@@ -1,4 +1,3 @@
-
 <!--
 title: Gemini CLI：谷歌挑战 Warp 等 AI 终端应用
 cover: https://cdn.thenewstack.io/media/2025/06/e00e7894-gemini_cli_hero_final.png
