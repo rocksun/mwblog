@@ -1,4 +1,3 @@
-
 <!--
 title: AI时代平台团队的重要性日益增长
 cover: https://cdn.thenewstack.io/media/2025/06/52c859b3-clint-patterson-jnaoptm2_ay-unsplash-1-scaled.jpg
