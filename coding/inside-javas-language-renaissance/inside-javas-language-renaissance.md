@@ -1,4 +1,3 @@
-
 <!--
 title: Java语言的文艺复兴
 cover: https://cdn.thenewstack.io/media/2025/06/c37fab79-java.jpg
