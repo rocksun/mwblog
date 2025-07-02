@@ -1,4 +1,3 @@
-
 <!--
 title: 你需要首席AI官吗？2025年CAIO分析
 cover: https://cdn.thenewstack.io/media/2025/07/36677a62-caio-on-the-rise-2.jpg
