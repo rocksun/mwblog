@@ -1,4 +1,3 @@
-
 <!--
 title: KubeCon 听起来越来越像 VMCon
 cover: https://cdn.thenewstack.io/media/2025/06/9d73ef6c-desola-lanre-ologun-kwzwjtndplk-unsplash-scaled.jpg
