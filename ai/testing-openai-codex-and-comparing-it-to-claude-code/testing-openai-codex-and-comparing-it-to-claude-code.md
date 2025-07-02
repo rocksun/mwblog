@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI Codex与Claude Code的代码能力测评
 cover: https://cdn.thenewstack.io/media/2025/06/568ececc-ruhan-shete-4lkn72w4czg-unsplashb.jpg
