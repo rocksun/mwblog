@@ -1,4 +1,3 @@
-
 <!--
 title: VMware VCF 9.0 最终统一容器与虚拟机管理
 cover: https://cdn.thenewstack.io/media/2025/06/d7414dc6-getty-images-tmca62kseh4-unsplash-1.jpg
