@@ -1,0 +1,1341 @@
+<!DOCTYPE html><html lang="en" id="home"><head><meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+
+    <title>
+         Introducing OneUptime MCP Server: Bringing AI-Native Observability to Your Workflow
+    </title>
+    <meta name="description" content=" OneUptime now provides a production-ready Model Context Protocol (MCP) server that gives AI assistants direct access to your observability infrastructure. Create incidents, query logs, manage monitors, and automate operations—all through natural language conversations with AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+    * {
+        font-family: Inter;
+    }
+
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        bottom: 0;
+        color: transparent;
+        cursor: pointer;
+        height: auto;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+    /*Chrome*/
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+        input[type='range']::-webkit-slider-thumb {
+            width: 20px;
+            -webkit-appearance: none;
+            border-radius: 50%;
+            height: 20px;
+            cursor: pointer;
+            background: #4b5563;
+        }
+    }
+
+    /*Firefox*/
+    input[type='range']::-moz-range-thumb {
+        width: 16px;
+        -webkit-appearance: none;
+        border-radius: 50%;
+        height: 16px;
+        cursor: pointer;
+        background: #4b5563;
+        border-color: #4b5563;
+    }
+</style>
+<script type="text/javascript" async="" src="https://eu.posthog.com/static/array.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PKQD5WH"></script><script src="https://cdn.tailwindcss.com"></script>
+
+ 
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PKQD5WH');</script>
+<!-- End Google Tag Manager -->
+
+
+
+<style>
+    .async-hide {
+        opacity: 0 !important
+    }
+</style>
+
+<script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_lrbfSHsDc1YOhfbabPI8ncLCKz8eqeGdmu0O6IRKaz1', { api_host: 'https://eu.posthog.com', autocapture: false })
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        //check if utm_source is present in the URL and save it to localstorage. 
+
+        if (posthog) {
+            posthog.capture('home/page_view', {
+                'page': {
+                    'path': window.location.pathname,
+                    'referrer': document.referrer,
+                    'search': window.location.search,
+                    'url': window.location.href,
+                    'title': document.title,
+                }
+            });
+        }
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var utm_source = urlParams.get('utm_source');
+        var utm_medium = urlParams.get('utm_medium');
+        var utm_campaign = urlParams.get('utm_campaign');
+        var utm_term = urlParams.get('utm_term');
+        var utm_content = urlParams.get('utm_content');
+        var utm_url = window.location.href;
+
+        if (utm_source != null) {
+            localStorage.setItem('utmSource', utm_source);
+            localStorage.setItem('utmMedium', utm_medium);
+            localStorage.setItem('utmCampaign', utm_campaign);
+            localStorage.setItem('utmTerm', utm_term);
+            localStorage.setItem('utmContent', utm_content);
+            localStorage.setItem('utmUrl', utm_url);
+
+            if (posthog) {
+                posthog.capture('home/utm_event', {
+                    utm_source: utm_source,
+                    utm_medium: utm_medium,
+                    utm_campaign: utm_campaign,
+                    utm_term: utm_term,
+                    utm_content: utm_content,
+                    utm_url: utm_url
+                })
+            }
+        }
+    });
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/img/favicons/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+<link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#32335b">
+<meta name="msapplication-TileColor" content="#32335b">
+<link rel="apple-touch-icon-precomposed" href="/img/ou-wb.svg">
+<link rel="icon" href="/img/ou-wb.svg">
+<link rel="image_src" type="image/png" href="/img/hou-wb.svg">
+<link rel="canonical" href="/">
+<link rel="manifest" href="/manifest.json">        <link rel="canonical" href="https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability">
+        <meta property="og:site_name" content="OneUptime | One Complete Observability platform.">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content=" Introducing OneUptime MCP Server: Bringing AI-Native Observability to Your Workflow">
+        <meta property="og:description" content=" OneUptime now provides a production-ready Model Context Protocol (MCP) server that gives AI assistants direct access to your observability infrastructure. Create incidents, query logs, manage monitors, and automate operations—all through natural language conversations with AI.">
+        <meta property="og:url" content="https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/view">
+        <meta property="og:image" content="https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/social-media.png">
+        <meta property="article:published_time" content="2025-07-01T00:00:00.000Z">
+        <meta property="article:modified_time" content="2025-07-01T00:00:00.000Z">
+        <meta property="article:publisher" content="https://www.facebook.com/OneUptime">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content=" Introducing OneUptime MCP Server: Bringing AI-Native Observability to Your Workflow">
+        <meta name="twitter:description" content=" OneUptime now provides a production-ready Model Context Protocol (MCP) server that gives AI assistants direct access to your observability infrastructure. Create incidents, query logs, manage monitors, and automate operations—all through natural language conversations with AI.">
+        <meta name="twitter:url" content="https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/view">
+        <meta name="twitter:image" content="https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/social-media.png">
+        <meta name="twitter:label1" content="Written by">
+        <meta name="twitter:data1" content="Neel Patel">
+        <meta name="twitter:site" content="@OneUptimeHQ">
+        <meta property="og:image:width" content="1280">
+        <meta property="og:image:height" content="720">
+        <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "OneUptime",
+        "url": "https://oneuptime.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://oneuptime.com/img/OneUptimePNG/1.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Neel Patel",
+        "url": "https://www.github.com/devneelpatel",
+        "sameAs": []
+    },
+    "headline": " Introducing OneUptime MCP Server: Bringing AI-Native Observability to Your Workflow",
+    "url": "https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/view",
+    "datePublished": "2025-07-01T00:00:00.000Z",
+    "dateModified": "2025-07-01T00:00:00.000Z",
+    "description": " OneUptime now provides a production-ready Model Context Protocol (MCP) server that gives AI assistants direct access to your observability infrastructure. Create incidents, query logs, manage monitors, and automate operations—all through natural language conversations with AI.",
+    "mainEntityOfPage": "https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/view"
+}
+    </script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/a11y-dark.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-x-0{left:0px;right:0px}.left-1\/2{left:50%}.top-0{top:0px}.bottom-0{bottom:0px}.isolate{isolation:isolate}.z-20{z-index:20}.-m-3{margin:-0.75rem}.-my-2{margin-top:-0.5rem;margin-bottom:-0.5rem}.mx-auto{margin-left:auto;margin-right:auto}.my-10{margin-top:2.5rem;margin-bottom:2.5rem}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.my-5{margin-top:1.25rem;margin-bottom:1.25rem}.mx-2{margin-left:0.5rem;margin-right:0.5rem}.-ml-4{margin-left:-1rem}.-mr-2{margin-right:-0.5rem}.ml-2{margin-left:0.5rem}.ml-3{margin-left:0.75rem}.ml-4{margin-left:1rem}.ml-8{margin-left:2rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-6{margin-top:1.5rem}.-mt-1{margin-top:-0.25rem}.mb-2{margin-bottom:0.5rem}.mb-24{margin-bottom:6rem}.ml-3\.5{margin-left:0.875rem}.ml-auto{margin-left:auto}.mt-10{margin-top:2.5rem}.mt-2{margin-top:0.5rem}.mt-20{margin-top:5rem}.mt-24{margin-top:6rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.-mb-5{margin-bottom:-1.25rem}.-ml-2{margin-left:-0.5rem}.-mt-0\.5{margin-top:-0.125rem}.-mt-5{margin-top:-1.25rem}.mt-0\.5{margin-top:0.125rem}.mt-16{margin-top:4rem}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.flow-root{display:flow-root}.grid{display:grid}.hidden{display:none}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-1\.5{height:0.375rem}.h-12{height:3rem}.h-0\.5{height:0.125rem}.h-20{height:5rem}.h-7{height:1.75rem}.w-1\/2{width:50%}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-auto{width:auto}.w-full{width:100%}.w-screen{width:100vw}.w-1\.5{width:0.375rem}.w-12{width:3rem}.w-0\.5{width:0.125rem}.w-7{width:1.75rem}.max-w-4xl{max-width:56rem}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-5xl{max-width:64rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.origin-top-right{transform-origin:top right}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-x-8{column-gap:2rem}.gap-y-4{row-gap:1rem}.gap-y-8{row-gap:2rem}.gap-x-5{column-gap:1.25rem}.gap-x-6{column-gap:1.5rem}.space-x-10 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2.5rem * var(--tw-space-x-reverse));margin-left:calc(2.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.divide-y-2 > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(2px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(2px * var(--tw-divide-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-gray-50 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(249 250 251 / var(--tw-divide-opacity, 1))}.divide-gray-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(243 244 246 / var(--tw-divide-opacity, 1))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-gray-900\/10{border-color:rgb(17 24 39 / 0.1)}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-gray-700{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.fill-current{fill:currentColor}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-1{padding:0.25rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pt-5{padding-top:1.25rem}.pl-4{padding-left:1rem}.pr-5{padding-right:1.25rem}.pt-8{padding-top:2rem}.pb-8{padding-bottom:2rem}.pt-16{padding-top:4rem}.text-center{text-align:center}.text-base{font-size:1rem;line-height:1.5rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-medium{font-weight:500}.font-bold{font-weight:700}.font-semibold{font-weight:600}.leading-6{line-height:1.5rem}.leading-7{line-height:1.75rem}.leading-8{line-height:2rem}.leading-normal{line-height:1.5}.leading-tight{line-height:1.25}.leading-5{line-height:1.25rem}.tracking-tight{letter-spacing:-0.025em}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-indigo-500{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-1{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-black{--tw-ring-opacity:1;--tw-ring-color:rgb(0 0 0 / var(--tw-ring-opacity, 1))}.ring-gray-900\/10{--tw-ring-color:rgb(17 24 39 / 0.1)}.ring-opacity-5{--tw-ring-opacity:0.05}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-gray-100:hover{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-500:hover{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.hover\:text-gray-500:hover{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.hover\:text-gray-700:hover{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.hover\:text-indigo-500:hover{--tw-text-opacity:1;color:rgb(99 102 241 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-inset:focus{--tw-ring-inset:inset}.focus\:ring-indigo-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(99 102 241 / var(--tw-ring-opacity, 1))}.focus\:ring-offset-2:focus{--tw-ring-offset-width:2px}.focus-visible\:outline:focus-visible{outline-style:solid}.focus-visible\:outline-2:focus-visible{outline-width:2px}.focus-visible\:outline-offset-2:focus-visible{outline-offset:2px}.focus-visible\:outline-gray-900:focus-visible{outline-color:#111827}.focus-visible\:outline-indigo-600:focus-visible{outline-color:#4f46e5}.group:hover .group-hover\:text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:mt-20{margin-top:5rem}.sm\:flex{display:flex}.sm\:h-10{height:2.5rem}.sm\:gap-8{gap:2rem}.sm\:space-x-10 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2.5rem * var(--tw-space-x-reverse));margin-left:calc(2.5rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}.sm\:p-8{padding:2rem}.sm\:px-0{padding-left:0px;padding-right:0px}.sm\:px-8{padding-left:2rem;padding-right:2rem}.sm\:py-32{padding-top:8rem;padding-bottom:8rem}.sm\:px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.sm\:pt-24{padding-top:6rem}.sm\:before\:flex-1::before{content:var(--tw-content);flex:1 1 0%}}@media (min-width: 768px){.md\:mt-0{margin-top:0px}.md\:flex{display:flex}.md\:grid{display:grid}.md\:hidden{display:none}.md\:flex-1{flex:1 1 0%}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:justify-start{justify-content:flex-start}.md\:gap-8{gap:2rem}.md\:space-x-10 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2.5rem * var(--tw-space-x-reverse));margin-left:calc(2.5rem * calc(1 - var(--tw-space-x-reverse)))}}@media (min-width: 1024px){.lg\:left-1\/2{left:50%}.lg\:ml-0{margin-left:0px}.lg\:mt-24{margin-top:6rem}.lg\:w-0{width:0px}.lg\:flex-1{flex:1 1 0%}.lg\:-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:pt-32{padding-top:8rem}}@media (min-width: 1280px){.xl\:col-span-2{grid-column:span 2 / span 2}.xl\:mt-0{margin-top:0px}.xl\:grid{display:grid}.xl\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.xl\:gap-8{gap:2rem}}</style></head>
+
+
+<body>
+    <div class="relative bg-white">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+      <div class="flex justify-start lg:w-0 lg:flex-1">
+        <a href="/">
+          <span class="sr-only">OneUptime</span>
+          <img class="h-8 w-auto sm:h-10" src="/img/3-transparent.svg" alt="">
+        </a>
+      </div>
+      <div class="-my-2 -mr-2 md:hidden">
+        <button type="button" onclick="openMobileMenu()" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+          <span class="sr-only">Open menu</span>
+          <!-- Heroicon name: outline/bars-3 -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="hidden space-x-10 md:flex">
+        <div class="relative" onmouseenter="showProductMenu()" onmouseover="showProductMenu()" onmouseleave="hideProductMenu()">
+          <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
+          <button onclick="showProductMenu()" type="button" class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-expanded="false">
+            <span>Products</span>
+            <!--
+                Heroicon name: mini/chevron-down
+  
+                Item active: "text-gray-600", Item inactive: "text-gray-400"
+              -->
+            <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+
+          <!--
+              'Solutions' flyout menu, show/hide based on flyout menu state.
+  
+              Entering: "transition ease-out duration-200"
+                From: "opacity-0 translate-y-1"
+                To: "opacity-100 translate-y-0"
+              Leaving: "transition ease-in duration-150"
+                From: "opacity-100 translate-y-0"
+                To: "opacity-0 translate-y-1"
+            -->
+          <div onmouseenter="showProductMenu()" onmouseover="showProductMenu()" onmouseleave="hideProductMenu()" class="absolute z-20 -ml-4 mt-3 w-screen max-w-4xl transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2" id="product-menu" style="visibility: collapse;">
+            <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+              <div class="relative grid grid-cols-2 gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                <a href="/product/status-page" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/chart-bar -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Status Pages</p>
+                    <p class="mt-1 text-sm text-gray-500">Status Page helps you be more transparent with your customers
+                      and showcase reliability.</p>
+                  </div>
+                </a>
+
+                <a href="/product/monitoring" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/shield-check -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Monitoring</p>
+                    <p class="mt-1 text-sm text-gray-500">Analyse uptime and performance of all of your resources.</p>
+                  </div>
+                </a>
+
+                <a href="/product/incident-management" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/cursor-arrow-rays -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Incident Management</p>
+                    <p class="mt-1 text-sm text-gray-500">Protect revenue and improve customer experiences by resolving
+                      incidents faster.</p>
+                  </div>
+                </a>
+
+                <a href="/product/on-call" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/chart-bar -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path>
+                  </svg>
+
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">On-Call and Alerts</p>
+                    <p class="mt-1 text-sm text-gray-500">Alert right people at the right time. Create on-call schedules
+                      and more.</p>
+                  </div>
+                </a>
+
+                <a href="/product/logs-management" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/chart-bar -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"></path>
+                  </svg>
+
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Logs Management</p>
+                    <p class="mt-1 text-sm text-gray-500">Fastest log software on the planet. Ingest logs from any
+                      source and search in seconds.</p>
+                  </div>
+                </a>
+
+
+                <a href="/product/apm" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/shield-check -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">APM</p>
+                    <p class="mt-1 text-sm text-gray-500">Monitor performance of any app, any service, any stack.</p>
+                  </div>
+                </a>
+
+
+                <a href="/product/workflows" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/chart-bar -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokelinecap="round" strokelinejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"></path>
+
+
+                  </svg>
+
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Workflows</p>
+                    <p class="mt-1 text-sm text-gray-500">Integrate with 5000+ different services and products without
+                      writing any code.</p>
+                  </div>
+                </a>
+
+
+
+              </div>
+              <div class="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
+                <div class="flow-root w-1/2">
+                  <a href="/enterprise/demo" class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100">
+                    <!-- Heroicon name: outline/play -->
+                    <svg class="h-6 w-6 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+                    </svg>
+                    <span class="ml-3">Request Demo</span>
+                  </a>
+                </div>
+
+                <div class="flow-root  w-1/2">
+                  <a href="mailto:sales@oneuptime.com" class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100">
+                    <!-- Heroicon name: outline/phone -->
+
+                    <svg class="h-6 w-6 flex-shrink-0 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"></path>
+                    </svg>
+
+                    <span class="ml-3">Contact Sales</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="/pricing" class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
+        <a href="/enterprise/overview" class="text-base font-medium text-gray-500 hover:text-gray-900">Enterprise</a>
+        <a href="/enterprise/demo" class="text-base font-medium text-gray-500 hover:text-gray-900" data-testid="request-demo-desktop-link">Request Demo</a>
+
+        <div class="relative" onmouseenter="showMoreMenu()" onmouseover="showMoreMenu()" onmouseleave="hideMoreMenu()">
+          <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
+          <button onclick="showMoreMenu()" type="button" class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-expanded="false">
+            <span>More</span>
+            <!--
+                Heroicon name: mini/chevron-down
+  
+                Item active: "text-gray-600", Item inactive: "text-gray-400"
+              -->
+            <svg class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+
+          <!--
+              'More' flyout menu, show/hide based on flyout menu state.
+  
+              Entering: "transition ease-out duration-200"
+                From: "opacity-0 translate-y-1"
+                To: "opacity-100 translate-y-0"
+              Leaving: "transition ease-in duration-150"
+                From: "opacity-100 translate-y-0"
+                To: "opacity-0 translate-y-1"
+            -->
+          <div onmouseenter="showMoreMenu()" onmouseover="showMoreMenu()" onmouseleave="hideMoreMenu()" id="more-menu" class="absolute left-1/2 z-20 mt-3 w-screen max-w-md -translate-x-1/2 transform px-2 sm:px-0" style="visibility:collapse;">
+            <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+              <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+
+                <a href="/docs" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/lifebuoy -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
+                  </svg>
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Docs</p>
+                    <p class="mt-1 text-sm text-gray-500">Learn more about OneUptime by reading our docs.</p>
+                  </div>
+                </a>
+
+                <a href="/reference" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/lifebuoy -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                  </svg>
+                  
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">API Reference</p>
+                    <p class="mt-1 text-sm text-gray-500">Connect OneUptime with the rest of your software stack.</p>
+                  </div>
+                </a>
+
+                <a href="/blog" target="_blank" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/lifebuoy -->
+
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"></path>
+                  </svg>
+
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Learning Resources and Blog</p>
+                    <p class="mt-1 text-sm text-gray-500">Learn about observability and keep yourself updated.</p>
+                  </div>
+                </a>
+
+                <a href="/support" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/lifebuoy -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Help &amp; Support</p>
+                    <p class="mt-1 text-sm text-gray-500">Get all of your questions answered by contacting support.</p>
+                  </div>
+                </a>
+
+                <a href="https://github.com/oneuptime/oneuptime" target="_blank" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/bookmark-square -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">GitHub</p>
+                    <p class="mt-1 text-sm text-gray-500">Check the code out, create new feature requests all on GitHub.
+                    </p>
+                  </div>
+                </a>
+
+
+                <a href="https://shop.oneuptime.com" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/calendar -->
+
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 flex-shrink-0 text-indigo-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path>
+                  </svg>
+                  
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Merch Store</p>
+                    <p class="mt-1 text-sm text-gray-500">Buy our merch and support open source development.</p>
+                  </div>
+                </a>
+
+                <a href="/about" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/calendar -->
+
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 flex-shrink-0 text-indigo-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"></path>
+                  </svg>
+
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">About Us</p>
+                    <p class="mt-1 text-sm text-gray-500">Learn more about why we are building OneUptime.</p>
+                  </div>
+                </a>
+
+                <a href="/legal" class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50">
+                  <!-- Heroicon name: outline/shield-check -->
+                  <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"></path>
+                  </svg>
+                  <div class="ml-4">
+                    <p class="text-base font-medium text-gray-900">Legal Center</p>
+                    <p class="mt-1 text-sm text-gray-500">See our terms, privacy, GDPR, SOC documents.</p>
+                  </div>
+                </a>
+              </div>
+              <!-- <div class="bg-gray-50 px-5 py-5 sm:px-8 sm:py-8">
+                  <div>
+                    <h3 class="text-base font-medium text-gray-500">Recent Posts</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                      <li class="truncate text-base">
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-700">Boost your conversion rate</a>
+                      </li>
+  
+                      <li class="truncate text-base">
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-700">How to use search engine optimization to drive traffic to your site</a>
+                      </li>
+  
+                      <li class="truncate text-base">
+                        <a href="#" class="font-medium text-gray-900 hover:text-gray-700">Improve your customer experience</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mt-5 text-sm">
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                      View all posts
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </div>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+        <a href="/accounts" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Sign
+          in</a>
+        <a href="/accounts/register" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 hover:text-white" data-testid="Sign-up">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <!--
+      Mobile menu, show/hide based on mobile menu state.
+  
+      Entering: "duration-200 ease-out"
+        From: "opacity-0 scale-95"
+        To: "opacity-100 scale-100"
+      Leaving: "duration-100 ease-in"
+        From: "opacity-100 scale-100"
+        To: "opacity-0 scale-95"
+    -->
+
+  <div id="mobile-menu" class="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden z-20" style="visibility: collapse;">
+    <div class="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+      <div class="px-5 pt-5 pb-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <img class="h-8 w-auto" src="/img/3-transparent.svg" alt="OneUptime">
+          </div>
+          <div class="-mr-2">
+            <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" onclick="closeMobileMenu()">
+              <span class="sr-only">Close menu</span>
+              <!-- Heroicon name: outline/x-mark -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="mt-6">
+          <nav class="grid gap-y-8">
+            <a href="/product/status-page" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/chart-bar -->
+
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+
+              <span class="ml-3 text-base font-medium text-gray-900">Status Page</span>
+            </a>
+
+
+            <a href="/product/monitoring" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/shield-check -->
+
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path>
+              </svg>
+
+              <span class="ml-3 text-base font-medium text-gray-900">Monitoring</span>
+            </a>
+
+            <a href="/product/incident-management" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/cursor-arrow-rays -->
+
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path>
+              </svg>
+
+              <span class="ml-3 text-base font-medium text-gray-900">Incident Management</span>
+            </a>
+
+            <a href="/product/on-call" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/cursor-arrow-rays -->
+
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path>
+              </svg>
+
+              <span class="ml-3 text-base font-medium text-gray-900">On-Call and Alerts</span>
+            </a>
+
+
+            <a href="/product/logs-management" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/cursor-arrow-rays -->
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"></path>
+              </svg>
+
+
+              <span class="ml-3 text-base font-medium text-gray-900">Logs Management</span>
+            </a>
+
+
+            <a href="/product/apm" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/cursor-arrow-rays -->
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+              </svg>
+
+
+              <span class="ml-3 text-base font-medium text-gray-900">APM</span>
+            </a>
+
+            <a href="/product/workflows" class="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50">
+              <!-- Heroicon name: outline/cursor-arrow-rays -->
+              <svg class="h-6 w-6 flex-shrink-0 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path strokelinecap="round" strokelinejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"></path>
+              </svg>
+
+              <span class="ml-3 text-base font-medium text-gray-900">Workflows</span>
+            </a>
+
+
+          </nav>
+        </div>
+      </div>
+      <div class="space-y-6 py-6 px-5">
+        <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+          <a href="/pricing" class="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
+
+          <a href="/enterprise/overview" class="text-base font-medium text-gray-900 hover:text-gray-700">Enterprise</a>
+
+          <a href="/enterprise/demo" class="text-base font-medium text-gray-900 hover:text-gray-700" data-testid="request-demo-mobile-link">Request Demo</a>
+
+          <a href="/support" class="text-base font-medium text-gray-900 hover:text-gray-700">Support</a>
+        </div>
+        <div>
+          <a href="/accounts/register" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Sign
+            up</a>
+          <p class="mt-6 text-center text-base font-medium text-gray-500">
+            Existing customer?
+            <a href="/accounts" class="text-indigo-600 hover:text-indigo-500">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" crossorigin="anonymous" src="https://eu-assets.i.posthog.com/array/phc_lrbfSHsDc1YOhfbabPI8ncLCKz8eqeGdmu0O6IRKaz1/config.js"></script><script>
+
+  let productMenuTimer = null;
+  let moreMenuTimer = null;
+
+  function closeMobileMenu() {
+    document.getElementById("mobile-menu").style.visibility = "collapse";
+
+  }
+
+  function openMobileMenu() {
+    document.getElementById("mobile-menu").style.visibility = "visible";
+  }
+
+
+  function showProductMenu() {
+
+    document.getElementById("product-menu").style.visibility = "visible";
+    if (productMenuTimer) {
+      clearInterval(productMenuTimer)
+    }
+  }
+
+  function hideProductMenu() {
+
+    if (productMenuTimer) {
+      clearInterval(productMenuTimer)
+    }
+    productMenuTimer = setInterval(() => {
+      document.getElementById("product-menu").style.visibility = "collapse";
+    }, 500);
+
+  }
+
+  function showMoreMenu() {
+
+    document.getElementById("more-menu").style.visibility = "visible";
+    if (moreMenuTimer) {
+      clearInterval(moreMenuTimer)
+    }
+  }
+
+  function hideMoreMenu() {
+
+    if (moreMenuTimer) {
+      clearInterval(moreMenuTimer)
+    }
+    moreMenuTimer = setInterval(() => {
+      document.getElementById("more-menu").style.visibility = "collapse";
+    }, 500);
+
+  }
+
+</script>
+        <div class="relative isolate overflow-hidden bg-white">
+            <div class="py-24 sm:py-32">
+                <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+                    <div class="mb-24">
+<div class="mx-auto flex justify-center text-center ">
+    <h1 class="max-w-5xl text-center text-6xl font-bold text-gray-900 leading-tight">
+         Introducing OneUptime MCP Server: Bringing AI-Native Observability to Your Workflow
+    </h1>
+    </div>
+    <div class="mx-auto flex justify-center text-center ">
+    
+  </div>
+  <p class="text-2xl text-center leading-8 text-gray-600 mt-8 leading-normal">
+     OneUptime now provides a production-ready Model Context Protocol (MCP) server that gives AI assistants direct access to your observability infrastructure. Create incidents, query logs, manage monitors, and automate operations—all through natural language conversations with AI.
+</p>
+</div>
+
+                        <div class="blog-body">
+                            <p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The future of observability isn't just about dashboards and alerts—it's about <strong>conversational operations</strong>. Today, we're excited to introduce the <strong>OneUptime MCP Server</strong>, a production-ready implementation of the Model Context Protocol that brings AI-native observability to your development workflow.</p><h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">What is the Model Context Protocol?</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The Model Context Protocol (MCP) is an open standard that enables AI assistants to securely connect to external systems and services. Think of it as a bridge between AI models and real-world tools—allowing AI assistants to take actions, query data, and automate complex workflows on your behalf.</p><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">With MCP, instead of copy-pasting error logs into ChatGPT or manually creating incident reports, you can simply ask your AI assistant to:</p><ul>
+<li>"Check the status of our production API monitors"</li>
+<li>"Create a critical incident for the database outage"</li>
+<li>"Show me error logs from the last hour"</li>
+</ul>
+<h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Why OneUptime + MCP = Game Changer</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">As an <strong>open source observability platform</strong>, OneUptime's integration with MCP represents a fundamental shift toward <strong>AI-first operations</strong>:</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🤖 Natural Language Operations</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">Replace complex CLI commands and dashboard navigation with simple conversations:</p><pre class="language- rounded-md"><code class="language- rounded-md hljs language-vbnet" data-highlighted="yes"><span class="hljs-symbol">Human:</span> <span class="hljs-string">"Are there any incidents in our production project right now?"</span>
+
+<span class="hljs-symbol">AI:</span> <span class="hljs-keyword">Let</span> <span class="hljs-keyword">me</span> check your OneUptime incidents...
+[Queries OneUptime via MCP]
+I found <span class="hljs-number">2</span> open incidents <span class="hljs-keyword">in</span> your production project:
+- Critical: Database connection timeout (started <span class="hljs-number">15</span> minutes ago)
+- Warning: High memory usage <span class="hljs-keyword">on</span> web servers (started <span class="hljs-number">2</span> hours ago)
+
+Would you <span class="hljs-built_in">like</span> <span class="hljs-keyword">me</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> more details <span class="hljs-built_in">or</span> <span class="hljs-keyword">take</span> any actions?</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🌊 Workflow Automation</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">Chain multiple operations together through natural conversation:</p><pre class="language- rounded-md"><code class="language- rounded-md hljs language-vbnet" data-highlighted="yes"><span class="hljs-symbol">Human:</span> <span class="hljs-string">"Something's wrong with our checkout service"</span>
+
+<span class="hljs-symbol">AI:</span> I<span class="hljs-comment">'ll help you investigate. Let me:</span>
+<span class="hljs-number">1</span>. Check monitors <span class="hljs-keyword">for</span> the checkout service
+<span class="hljs-number">2</span>. Look <span class="hljs-keyword">for</span> recent incidents
+<span class="hljs-number">3</span>. Query <span class="hljs-keyword">error</span> logs <span class="hljs-keyword">from</span> the last <span class="hljs-number">30</span> minutes
+<span class="hljs-number">4</span>. Create an incident <span class="hljs-keyword">if</span> needed
+
+[Executes multiple MCP calls]
+
+I found elevated <span class="hljs-keyword">error</span> rates <span class="hljs-built_in">and</span> created incident #INC-<span class="hljs-number">2024</span>-<span class="hljs-number">001</span> 
+<span class="hljs-string">"Checkout Service Degradation"</span> <span class="hljs-keyword">with</span> high severity. The incident 
+has been assigned <span class="hljs-keyword">to</span> the <span class="hljs-keyword">on</span>-<span class="hljs-keyword">call</span> engineer.</code></pre><h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Comprehensive OneUptime Integration</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The MCP server provides <strong>complete access</strong> to OneUptime's functionality through AI conversations:</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>📊 Monitoring &amp; Alerts</strong></h3><ul>
+<li><strong>Monitor Management</strong>: Create, update, and query monitors across all types</li>
+<li><strong>Alert Operations</strong>: Acknowledge, resolve, and escalate alerts</li>
+<li><strong>Status Checking</strong>: Real-time status of services and infrastructure</li>
+<li><strong>Probe Management</strong>: Configure and monitor global probe locations</li>
+</ul>
+<pre class="language- rounded-md"><code class="language- rounded-md hljs language-diff" data-highlighted="yes">AI Tools Available:
+<span class="hljs-deletion">- oneuptime_create_monitor</span>
+<span class="hljs-deletion">- oneuptime_list_onitors  </span>
+<span class="hljs-deletion">- oneuptime_get_monitor</span>
+<span class="hljs-deletion">- oneuptime_update_monitor</span>
+<span class="hljs-deletion">- oneuptime_delete_monitor</span>
+<span class="hljs-deletion">- oneuptime_count_monitors</span></code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🚨 Incident Management</strong></h3><ul>
+<li><strong>Incident Lifecycle</strong>: Create, update, and resolve incidents</li>
+<li><strong>Team Coordination</strong>: Assign incidents and manage escalations</li>
+<li><strong>Communication</strong>: Add notes, updates, and status changes</li>
+<li><strong>Post-Mortems</strong>: Document resolution and lessons learned</li>
+</ul>
+<pre class="language- rounded-md"><code class="language- rounded-md hljs language-vbnet" data-highlighted="yes">Example Conversation:
+<span class="hljs-symbol">Human:</span> <span class="hljs-string">"Create a critical incident for our API being down"</span>
+
+<span class="hljs-symbol">AI:</span> I<span class="hljs-comment">'ll create a critical incident for you. Let me set this up:</span>
+
+[Creates incident via MCP]
+
+✅ Created incident INC-<span class="hljs-number">2024</span>-<span class="hljs-number">001</span> <span class="hljs-string">"API Service Outage"</span>
+- Severity: Critical
+- Status: Created
+- Assigned <span class="hljs-keyword">to</span>: <span class="hljs-keyword">On</span>-<span class="hljs-keyword">call</span> team
+- Created: <span class="hljs-number">2024</span>-<span class="hljs-number">07</span>-<span class="hljs-number">01</span> <span class="hljs-number">14</span>:<span class="hljs-number">30</span> UTC
+
+The incident has been automatically escalated <span class="hljs-keyword">to</span> your <span class="hljs-keyword">on</span>-<span class="hljs-keyword">call</span> policy.</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>📈 Log Analysis &amp; Metrics</strong></h3><ul>
+<li><strong>Log Querying</strong>: Search and filter logs with natural language</li>
+<li><strong>Metric Analysis</strong>: Query performance data and trends</li>
+<li><strong>Trace Investigation</strong>: Analyze distributed traces and spans</li>
+<li><strong>Error Investigation</strong>: Deep-dive into exceptions and errors</li>
+</ul>
+<pre class="language- rounded-md"><code class="language- rounded-md hljs language-vbnet" data-highlighted="yes"><span class="hljs-symbol">Human:</span> <span class="hljs-string">"Show me all error logs from the checkout service in the last hour"</span>
+
+<span class="hljs-symbol">AI:</span> [Queries logs via MCP]
+Found <span class="hljs-number">47</span> <span class="hljs-keyword">error</span> logs <span class="hljs-keyword">from</span> checkout service <span class="hljs-keyword">in</span> the last hour:
+
+Top errors:
+- Database timeout (<span class="hljs-number">23</span> occurrences)
+- Payment gateway <span class="hljs-number">503</span> (<span class="hljs-number">12</span> occurrences)  
+- Redis connection failed (<span class="hljs-number">8</span> occurrences)
+- Session validation <span class="hljs-keyword">error</span> (<span class="hljs-number">4</span> occurrences)
+
+Would you <span class="hljs-built_in">like</span> <span class="hljs-keyword">me</span> <span class="hljs-keyword">to</span> create an incident <span class="hljs-built_in">or</span> investigate any specific <span class="hljs-keyword">error</span>?</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>👥 Team &amp; Project Management</strong></h3><ul>
+<li><strong>User Management</strong>: Add, update, and manage team members</li>
+<li><strong>Permission Control</strong>: Configure roles and access levels</li>
+<li><strong>Project Organization</strong>: Manage multiple projects and environments</li>
+<li><strong>On-Call Scheduling</strong>: Update schedules and handle overrides</li>
+</ul>
+<h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Real-World Use Cases</h2><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>1. Intelligent Incident Response</strong></h3><pre class="language- rounded-md"><code class="language- rounded-md hljs language-markdown" data-highlighted="yes">Human: "Our customers are reporting the website is slow"
+
+AI: Let me investigate this issue for you:
+
+<span class="hljs-bullet">1.</span> Checking website monitors... ✅
+<span class="hljs-bullet">   -</span> Response time: 2.3s (normal: 0.8s)
+<span class="hljs-bullet">   -</span> Availability: 98.2% (down 1.8%)
+
+<span class="hljs-bullet">2.</span> Looking for related incidents... ✅
+<span class="hljs-bullet">   -</span> Found 1 similar incident from last month
+
+<span class="hljs-bullet">3.</span> Querying recent logs... ✅
+<span class="hljs-bullet">   -</span> High database query times detected
+<span class="hljs-bullet">   -</span> Memory usage at 89% on web servers
+
+<span class="hljs-bullet">4.</span> Creating incident... ✅
+<span class="hljs-bullet">   -</span> Created INC-2024-002 "Website Performance Degradation"
+<span class="hljs-bullet">   -</span> Assigned to platform team
+<span class="hljs-bullet">   -</span> Added investigation findings
+
+Recommended actions:
+<span class="hljs-bullet">-</span> Scale web servers
+<span class="hljs-bullet">-</span> Investigate database performance
+<span class="hljs-bullet">-</span> Monitor response times closely</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>2. Proactive Monitoring Setup</strong></h3><pre class="language- rounded-md"><code class="language- rounded-md hljs language-vbnet" data-highlighted="yes"><span class="hljs-symbol">Human:</span> <span class="hljs-string">"We're launching a new microservice called 'user-auth' at https://api.example.com/auth/health. Can you set up monitoring for it?"</span>
+
+<span class="hljs-symbol">AI:</span> I<span class="hljs-comment">'ll set up comprehensive monitoring for your new user-auth service:</span>
+
+<span class="hljs-number">1</span>. Creating health check monitor... ✅
+<span class="hljs-number">2</span>. Setting up performance monitoring... ✅
+<span class="hljs-number">3</span>. Configuring <span class="hljs-keyword">error</span> rate alerts... ✅
+<span class="hljs-number">4</span>. Adding <span class="hljs-keyword">to</span> production status page... ✅
+
+Your user-auth service <span class="hljs-built_in">is</span> now fully monitored <span class="hljs-keyword">with</span>:
+- Health endpoint checks every <span class="hljs-number">30</span> seconds
+- Response time alerts <span class="hljs-keyword">if</span> &gt; <span class="hljs-number">2</span> seconds
+- <span class="hljs-keyword">Error</span> rate alerts <span class="hljs-keyword">if</span> &gt; <span class="hljs-number">5%</span>
+- Automatic incident creation <span class="hljs-keyword">for</span> failures
+
+The service <span class="hljs-built_in">is</span> also visible <span class="hljs-keyword">on</span> your <span class="hljs-keyword">public</span> status page.</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>3. Operational Reporting</strong></h3><pre class="language- rounded-md"><code class="language- rounded-md hljs language-markdown" data-highlighted="yes">Human: "Give me a summary of our infrastructure health this week"
+
+AI: Here's your infrastructure health summary for this week:
+
+📊 <span class="hljs-strong">**Monitors**</span>: 47 active (2 new this week)
+<span class="hljs-bullet">-</span> Uptime: 99.8% average
+<span class="hljs-bullet">-</span> Response time: 0.7s average
+<span class="hljs-bullet">-</span> 3 brief outages (total: 14 minutes)
+
+🚨 <span class="hljs-strong">**Incidents**</span>: 8 total (5 resolved, 3 ongoing)
+<span class="hljs-bullet">-</span> Critical: 1 (database issue - resolved)
+<span class="hljs-bullet">-</span> High: 2 (API rate limiting - ongoing)
+<span class="hljs-bullet">-</span> Medium: 5 (minor performance issues)
+
+📈 <span class="hljs-strong">**Performance Trends**</span>:
+<span class="hljs-bullet">-</span> Database queries 15% slower than last week
+<span class="hljs-bullet">-</span> Error rates down 8% overall
+<span class="hljs-bullet">-</span> Memory usage increased 12%
+
+🔧 <span class="hljs-strong">**Recommendations**</span>:
+<span class="hljs-bullet">-</span> Consider database optimization
+<span class="hljs-bullet">-</span> Monitor memory usage trends
+<span class="hljs-bullet">-</span> Review API rate limiting strategy</code></pre><h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Getting Started</h2><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Installation</strong></h3><pre class="language-bash rounded-md"><code class="language-bash rounded-md hljs" data-highlighted="yes"><span class="hljs-comment"># Clone OneUptime repository</span>
+git <span class="hljs-built_in">clone</span> https://github.com/oneuptime/oneuptime
+<span class="hljs-built_in">cd</span> oneuptime/MCP
+
+<span class="hljs-comment"># Install dependencies</span>
+npm install
+
+<span class="hljs-comment"># Configure environment</span>
+<span class="hljs-built_in">cp</span> .env.example .<span class="hljs-built_in">env</span>
+<span class="hljs-comment"># Edit .env with your OneUptime API key</span>
+
+<span class="hljs-comment"># Build and run</span>
+npm run build
+npm start</code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Configuration</strong></h3><pre class="language-bash rounded-md"><code class="language-bash rounded-md hljs" data-highlighted="yes"><span class="hljs-comment"># .env configuration</span>
+ONEUPTIME_API_KEY=your_api_key_here
+ONEUPTIME_URL=https://oneuptime.com  <span class="hljs-comment"># Optional</span></code></pre><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Integration with AI Assistants</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The MCP server works with any MCP-compatible AI assistant:</p><pre class="language-bash rounded-md"><code class="language-bash rounded-md hljs" data-highlighted="yes"><span class="hljs-comment"># For Claude Desktop</span>
+{
+  <span class="hljs-string">"mcpServers"</span>: {
+    <span class="hljs-string">"oneuptime"</span>: {
+        <span class="hljs-string">"command"</span>: <span class="hljs-string">"oneuptime-mcp"</span>,
+        <span class="hljs-string">"env"</span>: {
+          <span class="hljs-string">"ONEUPTIME_API_KEY"</span>: <span class="hljs-string">"oneuptime-api-key"</span>,
+          <span class="hljs-string">"ONEUPTIME_URL"</span>: <span class="hljs-string">"https://oneuptime.com"</span>  <span class="hljs-comment"># Optional</span>
+        }
+    }
+  }
+}</code></pre><h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">The Future of AI-Driven Operations</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The OneUptime MCP server represents more than just an integration—it's a <strong>vision of AI-native operations</strong> where:</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🗣️ Natural Language is the Interface</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">No more memorizing CLI commands or navigating complex dashboards. Describe what you want, and AI handles the implementation.</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🤝 AI Becomes Your Operations Partner</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">AI assistants become knowledgeable team members who can investigate issues, take actions, and learn from your operational patterns.</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>⚡ Operations Become Conversational</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">Complex operational workflows become as simple as having a conversation with a knowledgeable colleague.</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>🔄 Continuous Learning</strong></h3><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">AI assistants can learn from operational patterns, suggest optimizations, and proactively identify potential issues.</p><h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Open Source Innovation</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">As with everything OneUptime builds, the MCP server is <strong>completely open source</strong>:</p><ul>
+<li><strong>Full source code</strong> available in our GitHub repository</li>
+<li><strong>Apache 2.0 license</strong> for maximum flexibility</li>
+<li><strong>Community contributions</strong> welcome and encouraged</li>
+<li><strong>Transparent development</strong> with public roadmaps</li>
+</ul>
+<p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">This open approach enables:</p><ul>
+<li><strong>Community extensions</strong> for specialized use cases</li>
+<li><strong>Custom implementations</strong> for specific environments</li>
+<li><strong>Integration examples</strong> for other observability tools</li>
+<li><strong>Collaborative improvements</strong> from the community</li>
+</ul>
+<h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">What's Next?</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The OneUptime MCP server is just the beginning. We're actively working on:</p><h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Enhanced AI Capabilities</strong></h3><ul>
+<li><strong>Intelligent incident correlation</strong> across multiple data sources</li>
+<li><strong>Predictive alerting</strong> based on pattern recognition</li>
+<li><strong>Automated remediation</strong> for common issues</li>
+<li><strong>Smart escalation</strong> based on context and urgency</li>
+</ul>
+<h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Expanded Integrations</strong></h3><ul>
+<li><strong>Multi-platform support</strong> for various AI assistants</li>
+<li><strong>Webhook integrations</strong> for real-time updates</li>
+<li><strong>Custom tool development</strong> framework</li>
+<li><strong>Plugin ecosystem</strong> for community extensions</li>
+</ul>
+<h3 class="my-5  mt-8 text-2xl font-bold tracking-tight text-gray-800"><strong>Advanced Workflows</strong></h3><ul>
+<li><strong>Multi-step operations</strong> with approval workflows</li>
+<li><strong>Conditional logic</strong> for complex automation</li>
+<li><strong>Cross-platform coordination</strong> with other tools</li>
+<li><strong>Audit trails</strong> for all AI-driven actions</li>
+</ul>
+<h2 class="my-5  mt-8 text-3xl font-bold tracking-tight text-gray-800">Join the AI-Native Operations Revolution</h2><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The OneUptime MCP server is available today and ready for production use. Whether you're managing a handful of services or a complex microservices architecture, AI-driven operations can transform how your team works.</p><p class="mt-5 mb-2 leading-8 text-gray-600 text-lg"><strong>Get Started Today:</strong></p><ol>
+<li><strong><a href="https://github.com/oneuptime/oneuptime/tree/master/MCP">Download the MCP server</a></strong> from our GitHub repository</li>
+<li><strong>Configure your environment</strong> with your OneUptime API key</li>
+<li><strong>Connect your AI assistant</strong> using MCP protocol</li>
+<li><strong>Start conversing</strong> with your observability infrastructure</li>
+</ol>
+<p class="mt-5 mb-2 leading-8 text-gray-600 text-lg">The future of operations is conversational, intelligent, and open source. With OneUptime's MCP server, that future is available today.</p><hr>
+<p class="mt-5 mb-2 leading-8 text-gray-600 text-lg"><em>Ready to transform your operations with AI? <a href="https://github.com/oneuptime/oneuptime/tree/master/MCP">Check out our MCP server documentation</a> and <a href="https://oneuptime.com/support">join our community</a> to share your experiences.</em></p>                        </div>
+
+                        
+    <div class="flex mt-10">
+        <div class="space-x-1">
+            <!-- Loop over blogPost.tags and show them here-->
+            
+                <a href="/blog/tag/mcp">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            MCP                        </div>
+                    </div>
+                </a>
+
+                
+                <a href="/blog/tag/ai">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            AI                        </div>
+                    </div>
+                </a>
+
+                
+                <a href="/blog/tag/model-context-protocol">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            Model Context Protocol                        </div>
+                    </div>
+                </a>
+
+                
+                <a href="/blog/tag/open-source">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            Open Source                        </div>
+                    </div>
+                </a>
+
+                
+                <a href="/blog/tag/observability">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            Observability                        </div>
+                    </div>
+                </a>
+
+                
+                <a href="/blog/tag/automation">
+                    <div class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-0.5 text-sm">
+                        <div class="absolute flex flex-shrink-0 items-center justify-center">
+                            <div class="h-1.5 w-1.5 rounded-full bg-indigo-500" aria-hidden="true">
+                            </div>
+                        </div>
+                        <div class="ml-3.5 font-medium text-gray-900">
+                            Automation                        </div>
+                    </div>
+                </a>
+
+                
+        </div>
+    </div>
+    
+                            <div class="bg-white my-10 mt-20">
+                                <div class="">
+                                    <ul role="list" class="">
+                                        <li>
+                                            <a href="https://www.github.com/devneelpatel" target="_blank">
+                                                <div class="flex items-center gap-x-6">
+                                                    <img class="h-12 w-12 rounded-full" src="https://avatars.githubusercontent.com/devneelpatel" alt="">
+                                                    <div class="-ml-4">
+                                                        <h3 class="text-base font-medium leading-7 tracking-tight text-gray-600">
+                                                            <span class="text-gray-500">By</span> Neel Patel <span class="text-gray-500"> on
+                                                                    Jul 01, 2025</span>
+                                                        </h3>
+                                                        <p class="text-sm font-medium leading-6 text-indigo-500 -mt-1">
+                                                            @devneelpatel</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class=" font-medium leading-6 text-gray-900 mt-24">Our Commitment to Open Source
+</div>
+
+<div class="mt-2 text-gray-900">
+    <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+        <li class="items-center justify-between py-4 pl-4 pr-5 leading-6">
+            <div class="items-center">
+
+                <div class="p-1 space-y-2">
+                    
+                   
+
+                        <div>Everything we do at OneUptime is 100% open-source. You can contribute by writing a post just like this.
+                        Please check contributing guidelines <a class="underline" target="_blank" href="https://github.com/oneuptime/blog">here.</a></div>
+
+                            
+
+                                <div>If you wish to contribute to this post, you can make edits and improve it <a class="underline" target="_blank" href="https://github.com/oneuptime/blog/tree/master/posts/2025-07-01-oneuptime-mcp-server-ai-observability">here</a>.</div>
+                            
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        
+<div class="border-t border-gray-900/10 pt-8"></div>
+<div class="relative isolate overflow-hidden bg-white">
+    <div class="py-16">
+      <div class="mx-auto max-w-8xl px-6 lg:px-8">
+        <div class="mx-auto max-w-4xl text-center">
+          <h1 class="text-3xl font-bold tracking-tight text-gray-900">OneUptime is open source observability platform.</h1>
+          <p class="mt-6 text-lg leading-8 text-gray-600">Monitor, Observe, Debug, Resolve. Everything you need to build reliable software in one open source platform. Get started today.</p>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="/accounts/register" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+            <a href="/enterprise/demo" class="text-sm font-semibold leading-6 text-gray-900">Request Demo <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>            
+
+<div id="cookie" class="pointer-events-none fixed inset-x-0 bottom-0 px-6 pb-6 cookie-banner" style="display: block;">
+    <div class="pointer-events-auto ml-auto max-w-xl rounded-xl bg-white p-6 shadow-lg ring-1 ring-gray-900/10">
+        <p class="text-sm leading-6 text-gray-900 my-3">We use cookies to enhance your browsing experience and provide
+            personalized content. By clicking "Accept," you consent to the use of cookies.</p>
+
+            <p class="text-sm leading-6 text-gray-900 my-3">Our product uses both first-party and third-party cookies for session storage and for various other purposes.</p>
+
+            <p class="text-sm leading-6 text-gray-900 my-3">Please note that disabling certain cookies may affect the functionality and performance of our product.</p>
+
+            <p class="text-sm leading-6 text-gray-900 my-3">For more information about how we handle your data and cookies, please read our Privacy Policy.</p>
+
+            <p class="text-sm leading-6 text-gray-900 my-3">By continuing to use our site without changing your cookie settings, you agree to our use of cookies as
+            described above. See our <a href="/legal/terms" class="font-semibold text-indigo-600">terms</a> and our <a href="/legal/privacy" class="font-semibold text-indigo-600">privacy policy</a> </p>
+        <div class="mt-4 flex items-center gap-x-5">
+            <button onclick="acceptCookies()" type="button" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Accept
+                all</button>
+            <button onclick="rejectCookies()" type="button" class="text-sm font-semibold leading-6 text-gray-900">Reject all</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to accept cookies
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        hideBanner();
+
+    }
+
+    // Function to reject cookies
+    function rejectCookies() {
+        localStorage.setItem('cookiesAccepted', 'false');
+        hideBanner();
+    }
+
+    // Function to hide the banner
+    function hideBanner() {
+        document.getElementById('cookie').style.display = 'none';
+    }
+
+    // Function to show the banner
+    function showBanner() {
+        document.getElementById('cookie').style.display = 'block';
+    }
+
+    function checkCookies () {
+        var cookiesAccepted = localStorage.getItem('cookiesAccepted');
+        if (cookiesAccepted === 'true') {
+            hideBanner();
+        } else if (cookiesAccepted === 'false') {
+            hideBanner();
+        } else {
+            showBanner();
+        }
+    };
+
+    // Check the user's choice on page load
+    window.onload = checkCookies;
+
+
+</script>  <footer class="bg-white" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+      <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div class="space-y-8">
+          <img class="h-20 -ml-2 -mb-5 -mt-5" src="/img/logo-gray.svg" alt="OneUptime">
+          <p class="text-sm leading-6 text-gray-600">OneUptime is the complete observability platform. OneUptime is
+            open-source and always will be.</p>
+          <div class="flex space-x-6">
+
+            <a href="https://x.com/oneuptimehq" target="_blank" class="text-gray-400 hover:text-gray-500">
+              <span class="sr-only">X</span>
+              <svg class="h-5 w-5 mt-0.5" fill="currentColor" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M173.263 0H206.998L133.297 84.718L220 200H152.112L98.9403 130.082L38.0995 200H4.34432L83.1743 109.385L0 0H69.6111L117.674 63.9077L173.263 0ZM161.423 179.692H180.116L59.4539 19.241H39.3946L161.423 179.692Z"></path>
+                </svg>
+                
+            </a>
+
+            <a href="https://github.com/oneuptime" target="_blank" class="text-gray-400 hover:text-gray-500">
+              <span class="sr-only">GitHub</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+
+
+            <a href="https://www.reddit.com/r/oneuptimehq/" target="_blank" class="text-gray-400 hover:text-gray-500">
+              <span class="sr-only">Reddit</span>
+              <svg class="mt-0.5 h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14.238 15.348c.085.084.085.221 0 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.084.222-.084.307 0 .379.377 1.008.561 1.924.561l.008.002.008-.002c.915 0 1.544-.184 1.924-.561.085-.084.223-.084.307 0zm-3.44-2.418c0-.507-.414-.919-.922-.919-.509 0-.923.412-.923.919 0 .506.414.918.923.918.508.001.922-.411.922-.918zm13.202-.93c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-.129c0-.851-.695-1.543-1.55-1.543-.417 0-.795.167-1.074.435-1.056-.695-2.485-1.137-4.066-1.194l.865-2.724 2.343.549-.003.034c0 .696.569 1.262 1.268 1.262.699 0 1.267-.566 1.267-1.262s-.568-1.262-1.267-1.262c-.537 0-.994.335-1.179.804l-2.525-.592c-.11-.027-.223.037-.257.145l-.965 3.038c-1.656.02-3.155.466-4.258 1.181-.277-.255-.644-.415-1.05-.415-.854.001-1.549.693-1.549 1.544 0 .566.311 1.056.768 1.325-.03.164-.05.331-.05.5 0 2.281 2.805 4.137 6.253 4.137s6.253-1.856 6.253-4.137c0-.16-.017-.317-.044-.472.486-.261.82-.766.82-1.353zm-4.872.141c-.509 0-.922.412-.922.919 0 .506.414.918.922.918s.922-.412.922-.918c0-.507-.413-.919-.922-.919z"></path>
+              </svg>
+            </a>
+
+
+            <a href="https://www.youtube.com/@OneUptimeHQ" class="text-gray-400 hover:text-gray-500">
+              <span class="sr-only">YouTube</span>
+              <svg class="h-7 w-7 -mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+
+          </div>
+        </div>
+        <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Products</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="/product/status-page" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Status
+                    Page</a>
+                </li>
+
+                <li>
+                  <a href="/product/incident-management" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Incident Management</a>
+                </li>
+
+                <li>
+                  <a href="/product/monitoring" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Monitoring</a>
+                </li>
+
+                <li>
+                  <a href="/product/on-call" class="text-sm leading-6 text-gray-600 hover:text-gray-900">On-Call and
+                    Alerts</a>
+                </li>
+
+                <li>
+                  <a href="/product/workflows" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Workflows</a>
+                </li>
+
+
+              </ul>
+            </div>
+            <div class="mt-10 md:mt-0">
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Enterprise</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="/enterprise/overview" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Overview</a>
+                </li>
+
+                <li>
+                  <a href="/enterprise/demo" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Request
+                    Demo</a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="md:grid md:grid-cols-2 md:gap-8">
+            <div>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Compare</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                <li>
+                  <a href="/compare/statuspage.io" class="text-sm leading-6 text-gray-600 hover:text-gray-900">StatusPage.io</a>
+                </li>
+                <li>
+                  <a href="/compare/incident.io" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Incident.io</a>
+                </li>
+                <li>
+                  <a href="/compare/pagerduty" class="text-sm leading-6 text-gray-600 hover:text-gray-900">PagerDuty</a>
+                </li>
+                <li>
+                  <a href="/compare/pingdom" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Pingdom</a>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 md:mt-0">
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">More</h3>
+              <ul role="list" class="mt-6 space-y-4">
+
+                <li>
+                  <a href="/docs" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Docs</a>
+                </li>
+
+
+                <li>
+                  <a href="/reference" class="text-sm leading-6 text-gray-600 hover:text-gray-900">API Reference</a>
+                </li>
+
+                <li>
+                  <a href="/support" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Help and Support</a>
+                </li>
+
+                <li>
+                  <a href="/legal" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Legal Center</a>
+                </li>
+
+                <li>
+                  <a href="https://github.com/oneuptime/oneuptime" target="_blank" class="text-sm leading-6 text-gray-600 hover:text-gray-900">GitHub</a>
+                </li>
+
+                <li>
+                  <a href="/blog" target="_blank" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Blog</a>
+                </li>
+
+                <li>
+                  <a target="_blank" href="https://github.com/OneUptime/interview" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Careers</a>
+                </li>
+
+                <li>
+                  <a href="/oss-friends" target="_blank" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Open Source Friends</a>
+                </li>
+
+                <li>
+                  <a href="https://shop.oneuptime.com" target="_blank" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Merch Store</a>
+                </li>
+
+                <li>
+                  <a href="/about" class="text-sm leading-6 text-gray-600 hover:text-gray-900">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+        <p class="text-xs leading-5 text-gray-500">© HackerBay, Inc. All rights reserved.</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-x-6 bg-gray-700 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+      <p class="text-sm leading-6 text-white">
+        <a href="https://github.com/oneuptime/interview" target="blank">
+          <strong class="font-semibold">We're hiring remotely, worldwide! </strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
+            <circle cx="1" cy="1" r="1"></circle>
+          </svg>See open roles &nbsp;<span aria-hidden="true">→</span>
+        </a>
+      </p>
+      <div class="flex flex-1 justify-end">
+
+      </div>
+    </div>
+
+  </footer>
+
+</body></html>
