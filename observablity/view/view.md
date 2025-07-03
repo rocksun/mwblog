@@ -1,4 +1,3 @@
-
 <!--
 title: OneUptime MCP服务器：AI原生可观测性融入你的工作流程
 cover: https://oneuptime.com/blog/post/2025-07-01-oneuptime-mcp-server-ai-observability/social-media.png
