@@ -1,4 +1,3 @@
-
 <!--
 title: AI编程工具制造的Bug比修复的还多
 cover: https://cdn.thenewstack.io/media/2025/07/a9ece574-getty-images-2rzwlhrfluc-unsplash.jpg
