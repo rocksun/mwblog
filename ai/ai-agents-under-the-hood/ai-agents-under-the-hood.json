@@ -1,0 +1,1 @@
+{"url":"https://blog.surkar.in/ai-agents-under-the-hood","title":"AI Agents Under The Hood","author":"Manthan Surkar","summary":"","cover":"","zh_title":"AI Agents：底层原理探秘","zh_summary":"AI Agent 是利用 LLM 推理控制执行流程的软件系统，动态选择工具以达成目标。关键组成部分包括 LLM、记忆、提示词、工具和编排层。多Agent系统通过协作解决复杂问题，但需谨慎使用。操作Agent的心理模型是设身处地思考，提供清晰的目标和必要的工具。"}

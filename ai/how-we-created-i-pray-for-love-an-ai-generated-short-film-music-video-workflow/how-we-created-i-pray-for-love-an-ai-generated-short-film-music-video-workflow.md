@@ -1,4 +1,3 @@
-
 <!--
 title: “我祈祷爱”创作揭秘：AI短片&MV工作流程
 cover: https://olitunes.com/wp-content/uploads/2025/06/Dark-Minimalist-Best-Friend-Photo-Collage-Facebook-Post.jpg
@@ -9,9 +8,7 @@ summary: 《I Pray for Love》是由 Olivia Hadjiioannou 创作的音乐电影�
 
 > 译自：[How We Created 'I Pray for Love': An AI-Generated Short Film & Music Video Workflow — Oh.](https://olitunes.com/how-we-created-i-pray-for-love-an-ai-generated-short-film-music-video-workflow/)
 > 
-> 作者：Oh.
-
-*作者：Olivia Hadjiioannou & Team Oh*
+> 作者：Olivia Hadjiioannou & Team Oh
 
 *I Pray for Love* 是一部短篇音乐电影，探讨了精神内省和自我意识的主题。我创作并演奏了音乐，视觉效果完全通过 OpenAI 开发的生成式 AI 模型 “Sora” 创建。
 
