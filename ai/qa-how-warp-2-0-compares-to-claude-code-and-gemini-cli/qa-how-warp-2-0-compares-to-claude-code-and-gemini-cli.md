@@ -1,4 +1,3 @@
-
 <!--
 title: Q&A：Warp 2.0对比Claude Code和Gemini CLI
 cover: https://cdn.thenewstack.io/media/2025/07/3b61d180-allison-saeng-dn2xkz36ciw-unsplashb.jpg
