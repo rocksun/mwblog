@@ -1,4 +1,3 @@
-
 <!--
 title: GraphRAG vs. RAG：差异详解
 cover: https://cdn.thenewstack.io/media/2025/06/b6e1169c-navigating.jpg
