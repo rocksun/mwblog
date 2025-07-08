@@ -1,4 +1,3 @@
-
 <!--
 title: JavaScript三十年：重塑Web的10大里程碑
 cover: https://cdn.thenewstack.io/media/2025/07/3921dc37-javascript-1995-computerb.jpg
