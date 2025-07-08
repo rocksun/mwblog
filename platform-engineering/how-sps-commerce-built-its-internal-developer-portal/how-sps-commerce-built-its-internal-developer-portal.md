@@ -1,4 +1,3 @@
-
 <!--
 title: SPS Commerce内部开发者门户搭建揭秘
 cover: https://cdn.thenewstack.io/media/2025/06/8701f497-warehouse.jpg
