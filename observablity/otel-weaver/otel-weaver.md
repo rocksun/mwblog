@@ -1,4 +1,3 @@
-
 <!--
 title: 可观测性设计：OpenTelemetry Weaver赋能一致性
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png

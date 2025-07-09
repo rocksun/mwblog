@@ -1,4 +1,3 @@
-
 <!--
 title: 科里·多克托罗揭示如何破解大型科技公司的垄断
 cover: https://cdn.thenewstack.io/media/2025/07/cc31b0a8-cory-doctorow-screenshot-from-pycon-us-2025-keynote.jpg

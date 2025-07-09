@@ -1,4 +1,3 @@
-
 <!--
 title: 驱动平台应用：营销的缺失环节
 cover: https://cdn.thenewstack.io/media/2025/07/498bf04d-marketing.png
