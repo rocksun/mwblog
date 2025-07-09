@@ -5,6 +5,8 @@ cover: https://github.com/googleapis/genai-toolbox/raw/main/docs/en/getting-star
 summary: 本文介绍如何使用开源的 MCP Toolbox for Databases，通过 YAML 配置将其集成到 VSCode Copilot。这使得用户能用自然语言查询数据库，或自定义工具执行精确 SQL，从而简化数据库访问。
 -->
 
+本文介绍如何使用开源的 MCP Toolbox for Databases，通过 YAML 配置将其集成到 VSCode Copilot。这使得用户能用自然语言查询数据库，或自定义工具执行精确 SQL，从而简化数据库访问。
+
 使用自然语言访问数据库已经有了许多成功的案例，AI很擅长完成这种自然语言与机器语言的转换工作。随着 MCP 的发展，肯定有不少这样的数据库 MCP Server。
 
 MCP Toolbox for Databases 是一个用于数据库的开源 MCP 服务器。它通过处理连接池、身份验证等复杂性，使您能够更轻松、更快速、更安全地开发工具。
