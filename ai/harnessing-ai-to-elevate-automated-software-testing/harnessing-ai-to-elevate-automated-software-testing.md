@@ -1,4 +1,3 @@
-
 <!--
 title: 利用AI技术提升自动化软件测试
 cover: https://cdn.thenewstack.io/media/2025/07/bd99aa68-testinga.png
