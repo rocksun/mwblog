@@ -1,4 +1,3 @@
-
 <!--
 title: LLM和Vibe Coding能否点燃开发者文艺复兴？
 cover: https://cdn.thenewstack.io/media/2025/06/00a6d108-acr_2588-1-scaled.jpg
