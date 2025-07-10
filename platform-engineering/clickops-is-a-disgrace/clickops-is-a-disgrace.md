@@ -1,4 +1,3 @@
-
 <!--
 title: ClickOps 令人蒙羞
 cover: https://cdn.thenewstack.io/media/2025/07/18f1592f-clickops-is-a-disgrace.jpg
