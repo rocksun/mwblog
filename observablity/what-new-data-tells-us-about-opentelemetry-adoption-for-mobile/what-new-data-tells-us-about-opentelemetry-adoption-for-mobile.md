@@ -1,4 +1,3 @@
-
 <!--
 title: 移动端OpenTelemetry：调查称采用率将增三倍
 cover: https://cdn.thenewstack.io/media/2025/07/2251e434-mobilex.png
