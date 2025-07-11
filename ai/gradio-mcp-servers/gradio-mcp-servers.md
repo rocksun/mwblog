@@ -1,7 +1,6 @@
-
 <!--
 title: 用Gradio MCP服务器提升你的LLM
-cover: https://huggingface.co/blog/assets/upskill-llms-with-gradio-mcp/UpskillThumbnail.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1752216364/ghk8ulubztike8lig7sd.png
 summary: 本文介绍了模型上下文协议(MCP)如何增强大型语言模型(LLM)的能力。Hugging Face Spaces上的Gradio应用成为LLM工具的“应用商店”。通过连接MCP服务器，LLM可以获得图像编辑等新功能。文章还展示了如何将Flux.1 Kontext[dev]模型添加到LLM中以编辑图像。
 -->
 
@@ -9,7 +8,7 @@ summary: 本文介绍了模型上下文协议(MCP)如何增强大型语言模型
 
 > 译自：[Upskill your LLMs With Gradio MCP Servers](https://huggingface.co/blog/gradio-mcp-servers)
 > 
-> 作者：[no-author]
+> 作者：Freddy Boulton
 
 现在它可以了！在这篇博文中，我将向你展示：
 
@@ -33,7 +32,7 @@ Hugging Face [Spaces](https://hf.co/spaces) 是世界上最大的 AI 应用程�
 
 想要浏览应用商店吗？访问此[链接](https://huggingface.co/spaces?filter=mcp-server)。手动地，你可以在 `https://hf.co/spaces` 中筛选 `MCP Compatible`。
 
-![](https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPFilter.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752213782/sv7qtamhnreanyfc12sx.png)
 
 ## 示例：一个可以编辑图像的 LLM
 
@@ -45,21 +44,21 @@ Hugging Face [Spaces](https://hf.co/spaces) 是世界上最大的 AI 应用程�
 2.  在你的[设置](https://huggingface.co/settings/profile)中，在左侧点击 `MCP`。你可能需要在页面中向下滚动才能看到它。
 3.  现在，滚动到页面底部。你应该看到一个名为 `Spaces Tools` 的部分。在搜索栏中，键入 `Flux.1-Kontext-Dev` 并选择名为 `black-forest-labs/Flux.1-Kontext-Dev` 的 space。点击后，该页面应如下所示：
 
-![](https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/SpacesTools.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752213874/cfrzagkjktmewny3spbz.png)
 
 4.  对于此演示，我们将使用 Cursor，但任何 [MCP 客户端](https://github.com/punkpeye/awesome-mcp-clients) 都应遵循类似的过程。滚动回到 [MCP 设置](https://huggingface.co/settings/mcp) 页面的顶部，然后单击 `Setup with your AI assistant` 部分的 `Cursor` 图标。现在，复制该代码段并将其放入你的 cursor 设置文件中。
 
-![](https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/CursorScreenshot.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752217246/m2ynyhxffvzli45beory.png)
 
 5.  现在，当你在 cursor 中启动新的聊天会话时，你可以要求它编辑图像！请注意，目前图像必须通过公共 URL 提供。你可以创建一个 [Hugging Face Dataset](https://huggingface.co/datasets) 在线存储你的图像。
 
-![](https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/FluxKontextDevMcp.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752217542/lx2gkp1cyi7zp2r1nkgv.png)
 
 > 将流行的公共 space 用作工具可能意味着你必须等待更长的时间才能收到结果。如果你访问该 space，你可以单击“Duplicate This Space”来为自己创建一个私有版本的 space。如果该 space 使用“ZeroGPU”，你可能需要更新到 [PRO](https://huggingface.co/settings/billing/subscription) 帐户才能复制它。
 
 6.  奖励：你还可以使用 Hugging Face MCP 服务器搜索 MCP 兼容的 space！完成第 4 步后，你还可以要求你的 LLM 查找可以完成特定任务的 space：
 
-![](https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/SpacesSearch.png)
+![](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752217637/tmqv60rc91y9coheaerx.png)
 
 ## 结论
 
