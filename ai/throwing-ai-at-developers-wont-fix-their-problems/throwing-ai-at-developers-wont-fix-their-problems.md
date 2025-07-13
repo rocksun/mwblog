@@ -1,4 +1,3 @@
-
 <!--
 title: 指望AI解决开发者问题，没门！
 cover: https://cdn.thenewstack.io/media/2025/07/9fd44959-ai-shifts-developer-productivity-problems.jpg

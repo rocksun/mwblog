@@ -1,4 +1,3 @@
-
 <!--
 title: 谷歌云平台集成 Lustre 并行文件系统
 cover: https://cdn.thenewstack.io/media/2025/07/43779f13-lustre-architecture.png

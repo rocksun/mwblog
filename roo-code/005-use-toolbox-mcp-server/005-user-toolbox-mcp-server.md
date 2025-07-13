@@ -1,4 +1,3 @@
-
 <!--
 title: 使用MCP Toolbox for Databases访问数据库
 cover: https://github.com/googleapis/genai-toolbox/raw/main/docs/en/getting-started/introduction/architecture.png

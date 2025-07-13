@@ -1,7 +1,6 @@
-
 <!--
 title: 事件驱动架构中持久执行引擎的崛起
-cover: https://www.kai-waehner.de/wp-content/uploads/2025/06/Durable-Execution-Engine-with-Restate-Temporal-DBOS-vs-Stream-Processing-with-Kafka-Streams-Apache-Flink-Spark-Structured-Streaming-1024x769.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1752328882/jrhveiev22k89lgpddpc.png
 summary: 持久执行引擎如Temporal和Restate用于管理分布式系统中的长期工作流。它们通过持久化状态、处理重试和容错事务来确保可靠执行，并与Kafka等事件驱动平台集成。持久执行引擎补充了流处理框架，为长期运行的业务流程提供状态管理和分布式事务处理。
 -->
 
@@ -19,7 +18,7 @@ summary: 持久执行引擎如Temporal和Restate用于管理分布式系统中�
 
 这篇博文探讨了持久执行引擎与诸如 Apache Kafka、Flink 和 Spark Structured Streaming 等数据流技术的集成、用例和能力，突出了它们为现代分布式企业系统创建可扩展、弹性架构的潜力。
 
-![带有 Restate Temporal DBOS 的持久执行引擎 vs 带有 Kafka Streams Apache Flink Spark Structured Streaming 的流处理](https://www.kai-waehner.de/wp-content/uploads/2025/06/Durable-Execution-Engine-with-Restate-Temporal-DBOS-vs-Stream-Processing-with-Kafka-Streams-Apache-Flink-Spark-Structured-Streaming-1024x769.png)
+![带有 Restate Temporal DBOS 的持久执行引擎 vs 带有 Kafka Streams Apache Flink Spark Structured Streaming 的流处理](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752328882/jrhveiev22k89lgpddpc.png)
 
 加入**数据流社区**并通过[订阅我的时事通讯](https://www.kai-waehner.de/newsletter)了解新的博客文章，并在 [LinkedIn](http://linkedin.com/in/kaiwaehner) 或 [X (前身为 Twitter)](https://twitter.com/kaiwaehner) 上关注我以保持联系。并确保下载我的[关于跨行业数据流用例的免费电子书](https://www.kai-waehner.de/ebook)。
 
@@ -31,7 +30,7 @@ summary: 持久执行引擎如Temporal和Restate用于管理分布式系统中�
 * 自动处理重试、超时和回滚。
 * 以容错方式管理分布式事务。
 
-![持久执行引擎的架构](https://www.kai-waehner.de/wp-content/uploads/2025/06/Architecture-of-a-Durable-Execution-Engine-1.png)
+![持久执行引擎的架构](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752328953/whvceg5ioa3u4x5k3hh2.png)
 
 例如，在一个分布式电子商务应用程序中，订单处理工作流可能涉及验证库存、保留资金和安排发货。持久执行引擎确保此过程可靠地完成，即使单个服务失败或重新启动也是如此。
 
@@ -48,7 +47,7 @@ summary: 持久执行引擎如Temporal和Restate用于管理分布式系统中�
 
 Temporal 将其架构描述如下：使用 Temporal SDK 以您喜欢的语言构建防故障、容错的应用程序，这些 SDK 用持久的工作流、自动重试和完全的执行可见性取代了脆弱的状态机。
 
-![Temporal 架构 - 持久执行引擎](https://www.kai-waehner.de/wp-content/uploads/2025/06/Temporal-Architecture-Durable-Execution-Engine-1024x529.png)
+![Temporal 架构 - 持久执行引擎](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752329030/bo1oebekgv6oyipcjoot.png)
 
 来源: Temporal
 
@@ -88,7 +87,7 @@ Camunda 通过推出 **Zeebe** 提前预测了云原生架构的趋势，将水�
 
 Restate 在其产品描述中探讨了**工作流、事件驱动的应用程序和微服务编排如何在持久执行引擎中结合在一起**：
 
-![restate 工作流 事件驱动的应用程序和微服务编排](https://www.kai-waehner.de/wp-content/uploads/2025/06/restate-Workflows-Event-Driven-Applications-and-Microservice-Orchestration-1024x542.png)
+![restate 工作流 事件驱动的应用程序和微服务编排](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752329105/pk0xbmrcmvbzvokqsldm.png)
 
 来源: Restate
 
@@ -129,7 +128,7 @@ Restate 在其产品描述中探讨了**工作流、事件驱动的应用程序�
 * **事件数据的丰富**（即，将实时数据流（如订单）与来自 ERP 或 CRM 的“静态”主数据结合）。
 * 使用 Spark Streaming 或 Flink 的 Batch API 的**批处理风格的工作负载**，用于高吞吐量处理，并及时回溯以进行历史数据重放（例如，重新处理一天的交易数据以重新生成用于财务合规或审计请求的报告）
 
-![使用 Kafka Streams、Apache Flink 和 Spark 进行流和批数据处理](https://www.kai-waehner.de/wp-content/uploads/2025/04/Stream-and-Batch-Data-Processing-with-Kafka-Streams-Apache-Flink-and-Spark-1024x549.png)
+![使用 Kafka Streams、Apache Flink 和 Spark 进行流和批数据处理](https://res.cloudinary.com/dkrpg71cx/image/upload/v1752367667/wjteiunvpxurzgdmyvms.png)
 
 更多详细信息请参见我的文章“[使用 Kafka Streams 和 Apache Flink 进行无状态 vs. 有状态流处理](https://www.kai-waehner.de/blog/2024/12/27/stateless-vs-stateful-stream-processing-with-kafka-streams-and-apache-flink/)”。
 

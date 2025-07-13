@@ -1,4 +1,3 @@
-
 <!--
 title: 图文再现《蛮王柯南》：黑色巨像
 cover: https://substackcdn.com/image/fetch/$s_!pSdf!,w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73f53deb-8629-47fb-b489-4f9863b06d55_1802x1185.png

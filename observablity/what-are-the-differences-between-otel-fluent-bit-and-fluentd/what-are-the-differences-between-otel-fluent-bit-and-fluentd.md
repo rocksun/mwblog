@@ -1,4 +1,3 @@
-
 <!--
 title: OTel、Fluent Bit和Fluentd：有什么不同？
 cover: https://cdn.thenewstack.io/media/2025/07/bfdbfc02-hummingbirds.jpg
