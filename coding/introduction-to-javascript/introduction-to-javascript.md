@@ -1,4 +1,3 @@
-
 <!--
 title: JavaScript简介
 cover: https://cdn.thenewstack.io/media/2022/12/f34b5762-javascript-.jpg
