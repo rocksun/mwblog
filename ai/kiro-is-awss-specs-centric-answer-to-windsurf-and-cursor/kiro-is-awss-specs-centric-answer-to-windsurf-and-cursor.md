@@ -1,4 +1,3 @@
-
 <!--
 title: Kiro：AWS的规格驱动型方案，挑战Windsurf和Cursor
 cover: https://cdn.thenewstack.io/media/2025/07/0c845440-img_0489-scaled.jpg
