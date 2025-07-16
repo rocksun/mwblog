@@ -1,4 +1,3 @@
-
 <!--
 title: MCP：开发人员的实用安全指南
 cover: https://cdn.thenewstack.io/media/2025/07/aff5997d-mcp-developer-security-blueprint.jpg
