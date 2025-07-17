@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en" class="js" data-header-style="classic" data-dom-content-loaded="true" style="--kutak--scrollbar-width: 0px;"><head>
+    <title>The rise of "context engineering"</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PKJ3R6D8"></script><script>document.documentElement.classList.replace('no-js','js');</script>
+    <script>
+        if (window.localStorage.getItem('kutak-prefers-color-scheme') && !document.documentElement.hasAttribute('data-prefers-color-scheme')) {
+            document.documentElement.setAttribute('data-prefers-color-scheme', window.localStorage.getItem('kutak-prefers-color-scheme'));
+        }
+    </script>
+
+    <link rel="preload" as="font" type="font/woff2" href="https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-regular.woff2?v=08fa2da55a" crossorigin="">
+<link rel="preload" as="font" type="font/woff2" href="https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-600.woff2?v=08fa2da55a" crossorigin="">
+<link rel="preload" as="font" type="font/woff2" href="https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-700.woff2?v=08fa2da55a" crossorigin="">
+
+<style>
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-regular.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-italic.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-600.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-600italic.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-700.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url('https://blog.langchain.com/assets/fonts/source-sans-pro-v21-latin-ext_latin-700italic.woff2?v=08fa2da55a') format('woff2');
+    }
+
+    :root {
+        --kutak--font-family--base: 'Source Sans Pro', Helvetica, sans-serif;
+        --kutak--font-family--headings: 'Source Sans Pro', Helvetica, sans-serif;
+        --kutak--font-family--elements: 'Source Sans Pro', Helvetica, sans-serif;
+        --kutak--font-weight--base: 400;
+        --kutak--font-weight--base-bold: 700;
+        --kutak--font-weight--headings: 700;
+        --kutak--font-weight--headings-small: 600;
+        --kutak--font-weight--elements: 600;
+    }
+</style>
+
+    <link rel="stylesheet" href="https://blog.langchain.com/assets/dist/style.css?v=08fa2da55a">
+
+                <link rel="preload" as="image" imagesrcset="/content/images/size/w360/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 360w,/content/images/size/w480/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 480w,/content/images/size/w760/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 760w,/content/images/size/w990/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 990w,/content/images/size/w1248/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 1248w,/content/images/size/w1520/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 1520w" imagesizes="(min-width: 1280px) 580px, (min-width: 1000px) calc(50vw - 60px), 100vw">
+
+
+    <link rel="icon" href="https://blog.langchain.com/content/images/size/w256h256/2024/03/Twitter_ProfilePicture.png" type="image/png">
+    <link rel="canonical" href="https://blog.langchain.com/the-rise-of-context-engineering/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="LangChain Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The rise of &quot;context engineering&quot;">
+    <meta property="og:description" content="Header image from Dex Horthy on Twitter.
+
+Context engineering is building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task.
+
+Most of the time when an agent is not performing reliably the underlying cause is that the">
+    <meta property="og:url" content="https://blog.langchain.com/the-rise-of-context-engineering/">
+    <meta property="og:image" content="https://blog.langchain.com/content/images/2025/06/GtRmoOqaUAEXH2i.jpeg">
+    <meta property="article:published_time" content="2025-06-23T16:56:00.000Z">
+    <meta property="article:modified_time" content="2025-06-23T16:56:00.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The rise of &quot;context engineering&quot;">
+    <meta name="twitter:description" content="Header image from Dex Horthy on Twitter.
+
+Context engineering is building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task.
+
+Most of the time when an agent is not performing reliably the underlying cause is that the">
+    <meta name="twitter:url" content="https://blog.langchain.com/the-rise-of-context-engineering/">
+    <meta name="twitter:image" content="https://blog.langchain.com/content/images/2025/06/GtRmoOqaUAEXH2i.jpeg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Harrison Chase">
+    <meta name="twitter:site" content="@LangChainAI">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "LangChain Blog",
+        "url": "https://blog.langchain.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.langchain.com/content/images/2024/03/LangChain-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Harrison Chase",
+        "url": "https://blog.langchain.com/author/harrison/",
+        "sameAs": []
+    },
+    "headline": "The rise of &quot;context engineering&quot;",
+    "url": "https://blog.langchain.com/the-rise-of-context-engineering/",
+    "datePublished": "2025-06-23T16:56:00.000Z",
+    "dateModified": "2025-06-23T16:56:00.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.langchain.com/content/images/2025/06/GtRmoOqaUAEXH2i.jpeg",
+        "width": 1200,
+        "height": 675
+    },
+    "description": "Header image from Dex Horthy on Twitter.\n\nContext engineering is building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task.\n\nMost of the time when an agent is not performing reliably the underlying cause is that the appropriate context, instructions and tools have not been communicated to the model.\n\nLLM applications are evolving from single prompts to more complex, dynamic agentic systems. As such, context enginee",
+    "mainEntityOfPage": "https://blog.langchain.com/the-rise-of-context-engineering/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="LangChain Blog" href="https://blog.langchain.com/rss/">
+    <script defer="" src="https://cdn.jsdelivr.net/ghost/portal@~2.51/umd/portal.min.js" data-i18n="true" data-ghost="https://blog.langchain.com/" data-key="e411fdfa6f54398669f416d1f0" data-api="https://langchain-blog.ghost.io/ghost/api/content/" data-locale="en" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer="" src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="e411fdfa6f54398669f416d1f0" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://langchain-blog.ghost.io/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.langchain.com/webmentions/receive/" rel="webmention">
+    <script defer="" src="/public/cards.min.js?v=08fa2da55a"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=08fa2da55a">
+    <script defer="" src="/public/member-attribution.min.js?v=08fa2da55a"></script><style>:root {--ghost-accent-color: #1c3b3b;}</style>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKJ3R6D8');</script>
+<!-- End Google Tag Manager -->
+
+<script defer="" data-domain="blog.langchain.dev" src="https://plausible.io/js/script.js"></script>
+
+<style>
+  .nav-signin { /* Replace .nav-signin with the actual class or id */
+    display: none !important;
+  }
+</style>
+
+
+<style>
+@media (min-width: 62.5em) {
+    .article-header__figure {
+        aspect-ratio: 16/9;
+    }
+
+</style>
+
+<meta name="google-site-verification" content="wr4UCEYzUuA1lg3MF2RFoRdF7AxRujOawehorKfkZ5M">
+<style>.App{text-align:center}.App-logo{height:40vmin;pointer-events:none}@media (prefers-reduced-motion: no-preference){.App-logo{animation:App-logo-spin infinite 20s linear}}.App-header{background-color:#282c34;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:calc(10px + 2vmin);color:#fff}.App-link{color:#61dafb}@keyframes App-logo-spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+/*$vite$:1*/</style></head>
+
+<body class="post-template">
+
+    <a class="skip-link visually-hidden-focusable" href="#main">Skip to content</a>
+
+    <div class="site">
+
+        <header id="site-header" class="site-header" data-is-sticky="false">
+    <span class="site-header__bg"></span>
+
+    <div class="site-header__container container">
+        <button class="site-header__hamburger" data-site-action-trigger="navigation" aria-label="Open Menu" aria-expanded="false" aria-controls="site-actions-navigation">
+            <span></span>
+        </button>
+
+        <a href="https://blog.langchain.com" rel="home" class="site-header__logo">
+                <img class="site-header__logo-image" data-logo-color-scheme="default" src="https://blog.langchain.com/content/images/2024/03/LangChain-logo.png" alt="LangChain Blog">
+        </a>
+
+        <div id="site-actions-navigation" class="site-navigation">
+            <div class="site-navigation__inner">
+                        <nav class="nav-classic">
+            <ul class="nav-classic__menu">
+                 
+                    <li class="nav-classic__menu-item">
+                        <a class="nav-classic__menu-link" href="https://blog.langchain.com/tag/case-studies/">
+                            <span class="nav-classic__menu-title">Case Studies</span>
+                        </a>
+                    </li>
+                 
+                 
+                    <li class="nav-classic__menu-item">
+                        <a class="nav-classic__menu-link" href="https://blog.langchain.com/tag/in-the-loop/">
+                            <span class="nav-classic__menu-title">In the Loop</span>
+                        </a>
+                    </li>
+                 
+                 
+                    <li class="nav-classic__menu-item">
+                        <a class="nav-classic__menu-link" href="https://www.langchain.com/">
+                            <span class="nav-classic__menu-title">LangChain</span>
+                        </a>
+                    </li>
+                 
+                 
+                    <li class="nav-classic__menu-item">
+                        <a class="nav-classic__menu-link" href="https://python.langchain.com/docs/get_started/introduction">
+                            <span class="nav-classic__menu-title">Docs</span>
+                        </a>
+                    </li>
+                 
+                 
+                    <li class="nav-classic__menu-item">
+                        <a class="nav-classic__menu-link" href="https://changelog.langchain.com/">
+                            <span class="nav-classic__menu-title">Changelog</span>
+                        </a>
+                    </li>
+                 
+            </ul>
+        </nav>
+
+                    <div class="site-account">
+                <a class="site-account__link gh-portal-close" href="#/portal/signin" data-portal="signin">Sign in</a>
+                <a class="site-account__button button gh-portal-close" data-btn-size="small" href="#/portal/signup" data-portal="signup">Subscribe</a>
+    </div>
+                            </div>
+        </div>
+
+        <button class="site-header__search-trigger" aria-label="Open Search" data-ghost-search="">
+            <span></span>
+        </button>
+    </div>
+
+    <div class="site-actions">
+        <span class="site-actions__backdrop" data-close-site-actions=""></span>
+        <span class="site-actions__bg"></span>
+
+
+    </div>
+
+</header>
+
+        <main id="main" class="site-main">
+            
+
+<article class="article post">
+
+    <header class="article-header section" data-layout-grid="custom" data-theme="highlight" data-section="first" data-has-featured-image="true">
+        <figure class="article-header__figure">
+            <img class="article-header__image" width="16" height="9" src="/content/images/size/w760/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg" srcset="/content/images/size/w360/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 360w,/content/images/size/w480/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 480w,/content/images/size/w760/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 760w,/content/images/size/w990/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 990w,/content/images/size/w1248/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 1248w,/content/images/size/w1520/format/webp/2025/06/GtRmoOqaUAEXH2i.jpeg 1520w" sizes="(min-width: 1280px) 580px, (min-width: 1000px) calc(50vw - 60px), 100vw" loading="eager" alt="The rise of &quot;context engineering&quot;" onload="this.setAttribute('data-loaded', true)" data-loaded="true">
+        </figure>
+        <div class="article-header__content">
+            <h1 class="article-header__title">The rise of "context engineering"</h1>
+            <div class="article-header__footer">
+                <span class="article-header__meta article-header__meta--read-time">5 min read</span>
+                <time class="article-header__meta article-header__meta--date" datetime="2025-06-23">Jun 23, 2025</time>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-main section" data-canvas-grid="content">
+        <div class="article-content" data-canvas-grid="content" data-canvas-grid-self="full">
+            <p><em>Header image from </em><a href="https://x.com/dexhorthy/status/1933283008863482067?ref=blog.langchain.com"><em>Dex Horthy on Twitter</em></a><em>.</em></p><p>Context engineering is building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task.</p><p>Most of the time when an agent is not performing reliably the underlying cause is that the appropriate context, instructions and tools have not been communicated to the model.</p><p>LLM applications are evolving from single prompts to more complex, dynamic agentic systems. As such, context engineering is becoming the <a href="https://cognition.ai/blog/dont-build-multi-agents?ref=blog.langchain.com#a-theory-of-building-long-running-agents">most important skill an AI engineer can develop</a>.</p><h2 id="what-is-context-engineering">What is context engineering?</h2><p>Context engineering is building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task.</p><p>This is the definition that I like, which builds upon recent takes on this from <a href="https://x.com/tobi/status/1935533422589399127?ref=blog.langchain.com">Tobi Lutke</a>, <a href="https://x.com/ankrgyl/status/1913766591910842619?ref=blog.langchain.com">Ankur Goyal</a>, and <a href="https://cognition.ai/blog/dont-build-multi-agents?ref=blog.langchain.com">Walden Yan</a>. Let’s break it down.</p><p><strong>Context engineering is a system</strong></p><p>Complex agents likely get context from many sources. Context can come from the developer of the application, the user, previous interactions, tool calls, or other external data. Pulling these all together involves a complex system.</p><p><strong>This system is dynamic</strong></p><p>Many of these pieces of context can come in dynamically. As such, the logic for constructing the final prompt needs to be dynamic as well. It is not just a static prompt.</p><p><strong>You need the right information</strong></p><p>A common reason agentic systems don’t perform is they just don’t have the right context. LLMs cannot read minds - you need to give them the right information. Garbage in, garbage out.</p><p><strong>You need the right tools</strong></p><p>It may not always be the case that the LLM will be able to solve the task just based solely on the inputs. In these situations, if you want to empower the LLM to do so, you will want to make sure that it has the right tools. These could be tools to look up more information, take actions, or anything in between. Giving the LLM the right tools is just as important as giving it the right information.</p><p><strong>The format matters</strong></p><p>Just like communicating with humans, how you communicate with LLMs matters. A short but descriptive error message will go a lot further a large JSON blob. This also applies to tools. What the input parameters to your tools are matters a lot when making sure that LLMs can use them.</p><p><strong>Can it plausibly accomplish the task?</strong></p><p>This is a great question to be asking as you think about context engineering. It reinforces that LLMs are not mind readers - you need to set them up for success. It also helps separate the failure modes. Is it failing because you haven’t given it the right information or tools? Or does it have all the right information and it just messed up? These failure modes have very different ways to fix them.</p><h2 id="why-is-context-engineering-important">Why is context engineering important</h2><p>When agentic systems mess up, it’s largely because an LLM messes. Thinking from first principles, LLMs can mess up for two reasons:</p><ol><li>The underlying model just messed up, it isn’t good enough</li><li>The underlying model was not passed the appropriate context to make a good output</li></ol><p>More often than not (especially as the models get better) model mistakes are caused more by the second reason. The context passed to the model may be bad for a few reasons:</p><ul><li>There is just missing context that the model would need to make the right decision. Models are not mind readers. If you do not give them the right context, they won’t know it exists.</li><li>The context is formatted poorly. Just like humans, communication is important! How you format data when passing into a model absolutely affects how it responds</li></ul><h2 id="how-is-context-engineering-different-from-prompt-engineering">How is context engineering different from prompt engineering?</h2><p>Why the shift from “prompts” to “context”? Early on, developers focused on phrasing prompts cleverly to coax better answers. But as applications grow more complex, it’s becoming clear that <strong>providing complete and&nbsp;structured context</strong>&nbsp;to the AI is far more important than any magic wording.</p><p>I would also argue that prompt engineering is a subset of context engineering. Even if you have all the context, how you assemble it in the prompt still absolutely matters. The difference is that you are not architecting your prompt to work well with a single set of input data, but rather to take a set of dynamic data and format it properly.</p><p>I would also highlight that a key part of context is often core instructions for how the LLM should behave. This is often a key part of prompt engineering. Would you say that providing clear and detailed instructions for how the agent should behave is context engineering or prompt engineering? I think it’s a bit of both.</p><h2 id="examples-of-context-engineering">Examples of context engineering</h2><p>Some basic examples of good context engineering include:</p><ul><li>Tool use: Making sure that if an agent needs access to external information, it has tools that can access it. When tools return information, they are formatted in a way that is maximally digestable for LLMs</li><li>Short term memory: If a conversation is going on for a while, creating a summary of the conversation and using that in the future.</li><li>Long term memory: If a user has expressed preferences in a previous conversation, being able to fetch that information.</li><li>Prompt Engineering: Instructions for how an agent should behave are clearly enumerated in the prompt.</li><li>Retrieval: Fetching information dynamically and inserting it into the prompt before calling the LLM.</li></ul><h2 id="how-langgraph-enables-context-engineering">How LangGraph enables context engineering</h2><p>When we built <a href="https://github.com/langchain-ai/langgraph?ref=blog.langchain.com">LangGraph</a>, we built it with the goal of making it the most controllable agent framework. This also allows it to perfectly enable context engineering.</p><p>With LangGraph, you can control everything. You decide what steps are run. You decide <strong>exactly</strong> what goes into your LLM. You decide where you store the outputs. You control everything.</p><p>This allows you do all the context engineering you desire. One of the downsides of agent abstractions (which most other agent frameworks emphasize) is that they restrict context engineering. There may be places where you cannot change exactly what goes into the LLM, or exactly what steps are run beforehand.</p><p>Side note: a very good read is Dex Horthy's <a href="https://github.com/humanlayer/12-factor-agents?ref=blog.langchain.com">"12 Factor Agents"</a>. A lot of the points there relate to context engineering ("own your prompts", "own your context building", etc). The header image for this blog is also taken from Dex. We really enjoy the way he communicates about what is important in the space.</p><h2 id="how-langsmith-helps-with-context-engineering">How LangSmith helps with context engineering</h2><p><a href="https://smith.langchain.com/?ref=blog.langchain.com">LangSmith</a> is our LLM application observability and evals solution. One of the key features in LangSmith is the ability to <a href="https://docs.smith.langchain.com/observability/tutorials/observability?ref=blog.langchain.com">trace your agent calls</a>. Although the term "context engineering" didn't exist when we built LangSmith, it aptly describes what this tracing helps with.</p><p>LangSmith lets you see all the steps that happen in your agent. This lets you see what steps were run to gather the data that was sent into the LLM.</p><p>LangSmith lets you see the exact inputs and outputs to the LLM. This lets you see exactly what went into the LLM - the data it had and how it was formatted. You can then debug whether that contains all the relevant information that is needed for the task. This includes what tools the LLM has access to - so you can debug whether it's been given the appropriate tools to help with the task at hand</p><h2 id="communication-is-all-you-need">Communication is all you need</h2><p>A few months ago I wrote a blog called <a href="https://blog.langchain.com/communication-is-all-you-need/">"Communication is all you need"</a>. The main point was that communicating to the LLM is hard, and not appreciated enough, and often the root cause of a lot of agent errors. Many of these points have to do with context engineering!</p><p>Context engineering isn't a new idea - agent builders have been doing it for the past year or two. It's a new term that aptly describes an increasingly important skill. We'll be writing and sharing more on this topic. We think a lot of the tools we've built (LangGraph, LangSmith) are perfectly built to enable context engineering, and so we're excited to see the emphasis on this take off.</p>
+        </div>
+
+
+
+
+        <div class="article-newsletter newsletter-box" data-theme="highlight">
+            <h3 class="newsletter-box__title meta-title">Join our newsletter</h3>
+            <p class="newsletter-box__info">Updates from the LangChain team and community</p>
+            <form class="newsletter-box__form" data-members-form="signup" data-theme="reset">
+                <div class="newsletter-box__form-field">
+                    <label for="newsletter-box-email-input" class="visually-hidden">Enter your email</label>
+                    <input id="newsletter-box-email-input" class="newsletter-box__form-input" type="email" name="email" placeholder="Enter your email" required="" data-members-email="">
+                    <button class="newsletter-box__form-submit" type="submit">Subscribe</button>
+                </div>
+                <p class="newsletter-box__message" data-message="loading">Processing your application...</p>
+                <p class="newsletter-box__message" data-message="success">Success! Please check your inbox and click the link to confirm your subscription.</p>
+                <p class="newsletter-box__message" data-message="error">Sorry, something went wrong. Please try again.</p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="article-footer">
+        
+
+    </footer>
+
+</article>
+
+
+        </main>
+
+        <footer id="site-footer" class="site-footer" data-theme="highlight">
+
+
+    <div class="site-footer__content" data-canvas-grid="container">
+
+            <nav class="nav-secondary">
+        <ul class="nav-secondary__menu">
+            <li class="nav-secondary__menu-item">
+                <a class="nav-secondary__menu-link" href="#/portal/">
+                    <span class="nav-secondary__menu-title">Sign up</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+        <p class="site-footer__copyright">
+            © LangChain Blog 2025
+        </p>
+
+    </div>
+</footer>
+
+    </div><!-- .site -->
+
+    <script type="module" src="https://blog.langchain.com/assets/dist/main.js?v=08fa2da55a"></script>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKJ3R6D8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+<div id="ghost-portal-root"><iframe srcdoc="<!DOCTYPE html>" data-testid="portal-trigger-frame" title="portal-trigger" frameborder="0" dir="ltr" class="gh-portal-triggerbtn-iframe" style="z-index: 3999998; position: fixed; bottom: 0px; right: 0px; width: 185px; max-width: 500px; height: 98px; animation: 250ms ease 0s 1 normal none running animation-bhegco; transition: opacity 0.3s; overflow: hidden;"></iframe></div><div id="sodo-search-root"></div></body></html>
