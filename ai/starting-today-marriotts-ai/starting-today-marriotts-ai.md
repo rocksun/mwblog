@@ -1,4 +1,3 @@
-
 <!--
 title: 万豪酒店AI掌控客房升级：告别“人情味”，算法决定你是否能住套房
 cover: https://viewfromthewing.com/wp-content/uploads/2024/09/Screenshot_2024-09-24_094433-transformed-1024x807.png
