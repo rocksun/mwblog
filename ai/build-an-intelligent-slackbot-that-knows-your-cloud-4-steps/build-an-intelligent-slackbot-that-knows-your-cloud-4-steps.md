@@ -1,4 +1,3 @@
-
 <!--
 title: 四步打造智能SlackBot，玩转云服务
 cover: https://cdn.thenewstack.io/media/2025/07/8ecf6ddf-intelligent-slackbot.jpg
