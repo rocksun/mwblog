@@ -13,6 +13,8 @@ summary: 本文讨论了平台品牌的重要性，包括名称、Logo、配色�
 
 *这是系列文章的第二篇。另请阅读：*
 
+- 第 1 部分：[驱动平台应用：营销的缺失环节](https://yylives.cc/2025/07/17/driving-platform-adoption-the-missed-opportunity-of-marketing/)
+
 我们的同事 [DaShaun Carter](https://www.linkedin.com/in/dashaun/) 问平台团队：“你们有 T 恤了吗？” 这个问题看似无关紧要，实际上却触及了 [平台营销](https://thenewstack.io/the-art-of-platform-marketing-youve-gotta-sell-it/) 的核心：品牌标识。虽然工程师们常常认为品牌塑造是营销上的花架子，但现实情况是，技术团队对工具的依恋程度，就像球鞋爱好者痴迷于最新款的 Air Jordan 一样。
 
 想想开发者是如何进行自我认同的：问问他们是什么类型的开发者，他们会立刻说出自己主要使用的语言。“我是 Java 开发者”或“我是 Python 开发者”。运维人员也会这样做——他们是“VMware 管理员”或“Linux 管理员”。这种基于技术工具的部落式认同感，既能推动采用，也能帮助人们克服不可避免的技术挑战。
