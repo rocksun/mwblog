@@ -1,0 +1,11 @@
+Companies developing [video](https://techcrunch.com/2025/04/03/runway-best-known-for-its-video-generating-models-raises-308m/) AI [models](https://techcrunch.com/2025/05/15/hedra-the-app-used-to-make-talking-baby-podcasts-raises-32m-from-a16z/) and [tools](https://techcrunch.com/2025/04/28/ai-animation-startup-cheehoo-lands-10m-funding-from-greycroft/) often talk about working with Hollywood studios to make certain workflows possible. On Thursday, Netflix said that it has started using AI in movies and shows it produces.
+
+Speaking at the company’s post-results conference call, co-CEO Ted Sarandos said that the platform had “the very first GenAI final footage to appear on screen” in an Argentine show called “El Eternauta” (“The Eternaut”). He noted that Netflix’s internal production group teamed up with producers to use AI to create a scene of a building collapsing.
+
+Sarandos said that using AI, the scene was finished 10x faster than it would have with traditional visual effect tools, and that it cost less.
+
+“We remain convinced that AI represents an incredible opportunity to help creators make films and series better, not just cheaper. There are AI-powered creator tools. So this is real people doing real work with better tools. Our creators are already seeing the benefits in production through pre-visualization and shot-planning work, and certainly visual effects. It used to be that only big-budget projects would have access to advanced visual effects like de-aging,” he said during the call.
+
+Co-CEO Greg Peters said Netflix is using generative AI in other areas as well, including personalization and search and ads, and the company aims to roll out interactive ads in the second half of this year. Earlier this year, the company introduced [AI-powered search](https://techcrunch.com/2025/05/07/netflix-debuts-its-generative-ai-powered-search-tool/).
+
+In the second quarter, Netflix reported revenue of $11.08 billion, up 16% from a year earlier, and profit of $3.13 billion. It noted that users watched over 95 billion hours of content in the first half of 2025, with non-English titles accounting for one-third of all its views.
