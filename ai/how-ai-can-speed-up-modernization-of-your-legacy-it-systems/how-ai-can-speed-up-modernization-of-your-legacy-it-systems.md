@@ -1,4 +1,3 @@
-
 <!--
 title: AI助力加速传统IT系统现代化改造
 cover: https://cdn.thenewstack.io/media/2025/07/2fbfde9b-city.jpg
