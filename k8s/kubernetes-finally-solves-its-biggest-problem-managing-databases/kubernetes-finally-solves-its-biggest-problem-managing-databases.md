@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes终结数据库管理难题
 cover: https://cdn.thenewstack.io/media/2025/07/484cafe9-workplace-5517755_1280.jpg

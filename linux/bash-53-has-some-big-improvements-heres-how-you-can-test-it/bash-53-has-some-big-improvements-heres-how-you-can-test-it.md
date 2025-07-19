@@ -1,4 +1,3 @@
-
 <!--
 title: Bash 5.3迎来重大改进——教你如何测试
 cover: https://cdn.thenewstack.io/media/2025/07/58ed64e4-bash.png

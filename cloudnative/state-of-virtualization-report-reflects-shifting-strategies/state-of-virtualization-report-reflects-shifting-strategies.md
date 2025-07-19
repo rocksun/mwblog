@@ -1,4 +1,3 @@
-
 <!--
 title: 虚拟化报告：战略转型新趋势
 cover: https://cdn.thenewstack.io/media/2025/07/dd9dfc15-globe.jpg

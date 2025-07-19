@@ -28,6 +28,10 @@
         "https_proxy": "http://127.0.0.1:10808"
       },
       "alwaysAllow": []
+    },
+    "excel": {
+      "command": "uvx",
+      "args": ["excel-mcp-server", "stdio"]
     }
   }
 }

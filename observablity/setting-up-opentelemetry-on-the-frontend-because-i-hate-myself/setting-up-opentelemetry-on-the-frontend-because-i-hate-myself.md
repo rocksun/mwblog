@@ -1,4 +1,3 @@
-
 <!--
 title: 前端OpenTelemetry配置：我与痛苦共舞
 cover: https://cdn.thenewstack.io/media/2025/07/dfda0181-frown.jpg

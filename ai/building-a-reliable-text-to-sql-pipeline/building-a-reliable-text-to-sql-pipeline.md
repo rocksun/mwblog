@@ -1,4 +1,3 @@
-
 <!--
 title: 构建可靠的Text-to-SQL流水线：分步指南，第一部分
 cover: https://substackcdn.com/image/fetch/$s_!4CFP!,w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F860b74d5-342f-4490-b42b-0d20b853ddfc_788x680.jpeg
