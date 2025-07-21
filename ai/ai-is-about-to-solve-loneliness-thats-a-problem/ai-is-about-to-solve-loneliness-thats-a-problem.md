@@ -1,4 +1,3 @@
-
 <!--
 title: 人工智能即将解决孤独，但这意味着问题
 cover: https://media.newyorker.com/photos/686e9f7144479bdd2481deb7/16:9/w_1280,c_limit/r46719.jpg
