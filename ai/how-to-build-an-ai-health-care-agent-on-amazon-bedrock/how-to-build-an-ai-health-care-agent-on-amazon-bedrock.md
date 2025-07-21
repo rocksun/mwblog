@@ -1,4 +1,3 @@
-
 <!--
 title: Amazon Bedrock：AI 医疗助手构建攻略
 cover: https://cdn.thenewstack.io/media/2025/07/dae62043-health-care.jpg
