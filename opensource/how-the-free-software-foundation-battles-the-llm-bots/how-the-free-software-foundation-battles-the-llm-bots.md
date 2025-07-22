@@ -1,4 +1,3 @@
-
 <!--
 title: 自由软件基金会如何对抗LLM机器人
 cover: https://cdn.thenewstack.io/media/2025/07/71053e97-sculpture-outside-san-franciscos-metreon-photo-by-david-cassel-1024x768-2.jpg

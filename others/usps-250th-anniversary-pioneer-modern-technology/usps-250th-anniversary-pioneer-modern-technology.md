@@ -1,4 +1,3 @@
-
 <!--
 title: 美国邮政带给我们的科技
 cover: https://platform.theverge.com/wp-content/uploads/sites/2/2025/07/Vrg-illo-post-office-anniversary.jpg?quality=90&strip=all&crop=0%2C10.740836125969%2C100%2C78.518327748063&w=1200
