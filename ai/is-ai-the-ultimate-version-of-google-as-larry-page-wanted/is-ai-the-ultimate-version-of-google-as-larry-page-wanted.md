@@ -1,4 +1,3 @@
-
 <!--
 title: AI会是像拉里·佩奇期望的“终极版谷歌”吗？
 cover: https://cdn.thenewstack.io/media/2025/07/29f27a5b-larry-page-2000.jpg
