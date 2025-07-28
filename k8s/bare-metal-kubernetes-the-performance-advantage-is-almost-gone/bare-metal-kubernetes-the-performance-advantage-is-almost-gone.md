@@ -1,4 +1,3 @@
-
 <!--
 title: 裸机 Kubernetes：性能优势几近消失
 cover: https://cdn.thenewstack.io/media/2025/07/e30640aa-balls-8442426_1280.jpg
