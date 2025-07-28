@@ -1,4 +1,3 @@
-
 <!--
 title: DHH 论道 AI、氛围编程及编程未来
 cover: https://cdn.thenewstack.io/media/2025/07/93d5291b-dhh-remembers-the-demo-scene-in-denmark-in-the-1990s-from-2025-lex-fridman-interview.jpg
