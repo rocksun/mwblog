@@ -1,4 +1,3 @@
-
 <!--
 title: 厌倦了 JavaScript 框架的复杂性？认识一下 Still.js
 cover: https://cdn.thenewstack.io/media/2025/07/46ac1d7e-still_framework.jpg
