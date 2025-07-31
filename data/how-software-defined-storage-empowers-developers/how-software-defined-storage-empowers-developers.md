@@ -1,4 +1,3 @@
-
 <!--
 title: 软件定义存储赋能开发者
 cover: https://cdn.thenewstack.io/media/2025/07/a09fc610-storage.jpg
