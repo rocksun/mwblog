@@ -1,4 +1,3 @@
-
 <!--
 title: Aider开发者步入式教程：开源Agentic CLI
 cover: https://cdn.thenewstack.io/media/2025/07/56a9cfbe-lorenzo-herrera-yp89apz2taa-unsplashb.jpg
