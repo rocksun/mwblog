@@ -1,0 +1,44 @@
+
+<!--
+title: 生成式AI：全新安全解决方案需求迫在眉睫
+cover: https://cdn.thenewstack.io/media/2025/07/c834b958-nick-fewings-4pzu15oetxa-unsplash-scaled.jpg
+summary: Pangea发布AI检测和响应(AIDR)服务，旨在帮助企业检测、监控和保护生成式AI应用，应对新的安全威胁，如提示注入攻击和员工泄露机密数据。通过AI Guard服务和Chrome扩展等工具，实现对AI流量的可见性和控制。
+-->
+
+Pangea发布AI检测和响应(AIDR)服务，旨在帮助企业检测、监控和保护生成式AI应用，应对新的安全威胁，如提示注入攻击和员工泄露机密数据。通过AI Guard服务和Chrome扩展等工具，实现对AI流量的可见性和控制。
+
+> 译自：[Why Generative AI Needs A New Kind of Security Solution](https://thenewstack.io/why-generative-ai-needs-a-new-kind-of-security-solution/)
+> 
+> 作者：Frederic Lardinois
+
+生成式 AI 工具、AI 代理和 AI 编码工具的快速采用正在创建一个安全团队必须努力应对的[新威胁载体](https://thenewstack.io/navigating-the-turbulent-waters-of-ai-security/)。[Pangea](https://pangea.cloud/) 于 2021 年成立，最初是一个用于保护云应用的更传统服务，今天以预览形式发布了其 AI 检测和响应 (AIDR) 服务，旨在解决当前许多企业面临的这些问题。它允许安全团队检测、监控和保护企业中的生成式 AI 应用程序，无论那是员工的 AI 使用（授权或影子 AI）、内部 AI 应用程序等等。
+
+“当病毒和恶意软件在 80 年代和 90 年代首次出现时，那是一种新的威胁，我们必须创建新的检测技术来检测这种威胁，因为它以前不存在，”Pangea 首席执行官 [Oliver Friedrichs](https://www.linkedin.com/in/oliverfriedrichs/) 说。“我认为在这种情况下，情况非常相似。现在，词语是武器，而不是我们过去用防病毒产品检测的字节——现在我们必须创建新的检测逻辑和策略框架来执行 AI 治理并检测 AI 威胁。”
+
+[![](https://cdn.thenewstack.io/media/2025/07/273ecc76-screenshot-2025-06-25-at-6.24.00%E2%80%AFpm.png)](https://cdn.thenewstack.io/media/2025/07/273ecc76-screenshot-2025-06-25-at-6.24.00%E2%80%AFpm.png)
+
+图片来源：Pangea。
+
+Friedrichs 是进行这些比较的合适人选。他创立并共同创立了四家安全公司，并且在防病毒和反恶意软件方面拥有深厚的背景（并出售给了 McAfee、Symantec、Sourcefire 和 Splunk）。他认为——而且许多人肯定会同意——随着企业竞相采用这项新技术，安全性通常是事后才考虑的。
+
+## 安全团队目前面临的 AI 安全威胁
+
+这种威胁也不同，而且与大多数安全团队熟悉的威胁截然不同。Friedrichs 指出，Pangea 的大多数客户主要担心两个不同的问题。首先是提示注入攻击，这种攻击可能会诱使模型提供不应该提供的数据或执行恶意操作，这是大多数安全团队最关心的问题。但是，对于大多数安全团队来说，另一种主要威胁是员工使用第三方 AI 工具并将机密数据输入这些服务。
+
+“安全团队担心员工和劳动力访问第三方 AI 模型。提示注入绝对是一个令人担忧的问题，但他们更担心员工泄露个人身份信息、机密信息，或者取回恶意内容并将其带回企业，”Friedrichs 说。“AI 安全有两个非常不同的方面——有时它们会结合在一起。”
+
+让模型响应恶意内容还不是一个普遍存在的问题，但 Friedrichs 指出，恶意行为者可能会毒害数据集，并将恶意链接输入到模型的训练数据中，或者，更有可能的是，模型或代理访问的第三方工具或恶意模型上下文协议 (MCP) 服务器。
+
+[![](https://cdn.thenewstack.io/media/2025/07/a6605bde-screenshot-2025-06-25-at-6.40.55%E2%80%AFpm.png)](https://cdn.thenewstack.io/media/2025/07/a6605bde-screenshot-2025-06-25-at-6.40.55%E2%80%AFpm.png)
+
+图片来源：Pangea。
+
+Pangea 构建的是一组位于其 [AI Guard](https://pangea.cloud/services/ai-guard/) 服务之上的工具。此服务本质上是一个代理，开发人员可以通过 API 调用它，位于应用程序和 LLM 或代理之间。为了检测这种恶意内容（或仅仅是不良内容）并阻止机密数据泄露到模型中，Pangea 本身使用较小的 LLM，这些 LLM 可保持低延迟，但仍然足够智能以检测潜在问题。
+
+该公司还与 Crowdstrike 等公司合作，以收集额外的威胁情报，以便它可以过滤掉提示中的恶意 URL 和 IP 地址。
+
+## Pangea AIDR
+
+现在，借助 AIDR 平台，Pangea 希望为企业提供一个更端到端的解决方案，用于监控和保护 AI 在其工作流程中的使用方式。为此，该公司必须在更广泛的端点上部署传感器。除其他事项外，这意味着今天，它还推出了一个 Chrome 扩展程序，以防止影子 AI 的使用，以及用于获取对代理框架和 SDK 可见性的传感器，以及用于内部构建代理的 MCP 代理。该团队还与 [Kong](https://konghq.com/?utm_content=inline+mention)、LiteLLM、Portkey 等公司现有的 AI 网关集成了，这使其也可以在此时添加其安全服务。还有一个 SDK 供希望将 Pangea 直接构建到其应用程序中的开发人员使用，并且在不久的将来，该团队计划支持其他浏览器（如 Microsoft Edge）和其他 AI 接触点。
+
+“检测这些类型的威胁确实需要不同的知识和经验，”Friedrichs 说。“但是，另一半只是我们以前所做的一切。这只是另一件需要监控的事情。我们过去总是在网络上说，我们希望应用网络流量的可见性和控制，现在我们说我们希望对 Gen AI 流量做同样的事情。”
