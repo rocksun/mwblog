@@ -1,4 +1,3 @@
-
 <!--
 title: MCP-UI：用AI代理用户界面颠覆传统网站
 cover: https://cdn.thenewstack.io/media/2025/07/32d2abfe-museum-of-new-zealand-te-papa-tongarewa-zzd_eou_knu-unsplashb.jpg
