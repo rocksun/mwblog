@@ -1,4 +1,3 @@
-
 <!--
 title: MCP网关：赋能安全与可扩展的企业AI集成
 cover: https://www.infracloud.io/assets/img/Blog/mcp-gateway/mcp-gateway-1200x628.png
