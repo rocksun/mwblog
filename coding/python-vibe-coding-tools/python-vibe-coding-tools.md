@@ -1,6 +1,5 @@
-
 <!--
-title: Python炫酷编程工具
+title: Python氛围编程工具
 cover: https://cdn.thenewstack.io/media/2025/08/36fa9428-a-c-qqvg560p-r4-unsplash.jpg
 summary: 氛围编程是一种通过与AI对话而不是自己编写代码的编程方式。文章介绍了GitHub Copilot、Cursor、Open Interpreter和AI Notebook Tools等Python氛围编程工具，并提供了提示技巧。
 -->
