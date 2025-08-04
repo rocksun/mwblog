@@ -1,4 +1,3 @@
-
 <!--
 title: 如何利用AI设计智能、自适应的基础设施
 cover: https://cdn.thenewstack.io/media/2025/07/099fa948-rahul-mishra-7vnpuky3gg4-unsplash-scaled.jpg
