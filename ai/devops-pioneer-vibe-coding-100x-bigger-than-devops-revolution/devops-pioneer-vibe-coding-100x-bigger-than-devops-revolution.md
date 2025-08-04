@@ -1,0 +1,96 @@
+
+<!--
+title: DevOps 先驱：氛围编程比 DevOps 变革大 100 倍
+cover: https://cdn.thenewstack.io/media/2025/08/bfb613a1-josue-sanchez-rw48fesddz4-unsplash.jpg
+summary: Gene Kim的新书《氛围编程》与 Steve Yegge 合著，探讨了 AI 编码带来的变革，认为它比 DevOps 的影响更大。书中提出了 FAAFO 框架，强调了 AI 在软件开发中的“超能力”。作者用 7000 万个人工智能 tokens 完成此书，并获得了编辑的高度评价。
+-->
+
+Gene Kim的新书《氛围编程》与 Steve Yegge 合著，探讨了 AI 编码带来的变革，认为它比 DevOps 的影响更大。书中提出了 FAAFO 框架，强调了 AI 在软件开发中的“超能力”。作者用 7000 万个人工智能 tokens 完成此书，并获得了编辑的高度评价。
+
+> 译自：[DevOps Pioneer: Vibe Coding 100x Bigger Than DevOps Revolution](https://thenewstack.io/devops-pioneer-vibe-coding-100x-bigger-than-devops-revolution/)
+> 
+> 作者：Darryl K. Taft
+
+[Gene Kim](https://www.linkedin.com/in/realgenekim/) 撰写了六本书，这些书帮助定义了现代软件的构建和部署方式。他的第七本书只用了一半的时间完成，在此过程中使用了 7000 万个人工智能 tokens，并赢得了他的编辑的赞扬，称其为他们收到的“最干净的交接”手稿。
+
+这位因 [DevOps](https://thenewstack.io/introduction-to-devops/) 而成名，并改变了企业对软件交付的看法的作者，现在提出了一个更大胆的主张：AI 编码代表着“比 DevOps 大 10 到 100 倍”的变革 —— 并且他正在用自己的声誉来押注 [“氛围编程”的潜力。](https://thenewstack.io/vibe-coding-where-everyone-can-speak-computer-programming/) 事实上，Kim 形容写这本书是“我整个职业生涯中最有趣的事情”。
+
+## 自行编写的书
+
+Kim 的最新著作 [“氛围编程”](https://itrevolution.com/product/vibe-coding-book/)，与 [Steve Yegge](https://www.linkedin.com/in/steveyegge/) 共同撰写，他是 [Sourcegraph](https://thenewstack.io/google-that-code-how-sourcegraph-simplifies-development/)（以及之前的 [Amazon](https://aws.amazon.com/?utm_content=inline+mention) 和 [Google](https://cloud.google.com/?utm_content=inline+mention)）的软件工程师，这本书不仅仅是关于人工智能的转型 —— 它是转型的一个产物。作者在写作过程中使用了 7000 万个人工智能 tokens，使其同时成为 [AI 辅助开发](https://thenewstack.io/three-ai-assisted-development-skills-you-can-start-using-today/) 的手册和他们的方法论的概念验证。该书将于 10 月 21 日发布。
+
+“我们像 [Seinfeld 所说的那样使用它（AI），喜剧是一场吨位游戏](https://tim.blog/2020/12/09/jerry-seinfeld-transcript/)，”Kim 告诉 The New Stack。“对于每一个登上舞台的笑话，都有 100 个没有成功的笑话。我们使用 AI 来生成五种讲述故事的方式，纳入的时代，对吧？” 结果如何？ 他们的编辑称之为“我们组织的任何书籍中最干净的交接 —— 最接近完成的手稿，最短的编辑时间”。
+
+正如标题所宣称的那样，这本书的中心是氛围编程 —— 由 [Andrej Karpathy 博士](https://www.linkedin.com/in/andrej-karpathy-9a650716/) 推广的一个术语，它描述了关闭你的大脑，让 AI 为你编写代码。 但这并非随意的实验。 Kim 称他们的工作为“氛围编程的专业化”，从新奇事物转变为系统的方法论。
+
+## 从 DevOps 革命者到 AI 皈依者
+
+Kim 成为 AI 倡导者的过程并非一蹴而就。 尽管他拥有研究高性能组织的辉煌职业生涯，但他承认直到最近才“编写生产代码”。 当他遇到以其 [技术咆哮](https://courses.cs.washington.edu/courses/cse452/23wi/papers/yegge-platform-rant.html) 而闻名的工程师 Yegge 时，这种情况发生了改变。
+
+“我去年遇到了他，天哪，我们有很多共同点，”Kim 回忆道。“他是一名专业的开发人员，手工编写了超过一百万行的生产代码，现在可能很少手工编写代码了。”
+
+突破性的时刻出现在 Kim 想要解决一个个人问题时：将视频通话中的大量屏幕截图转换为可搜索的剪辑。 在与 Yegge 合作下，他们用了 47 分钟构建了一个功能正常的工具。“我拍摄这些屏幕截图已经 15 年了，我从来没有对它们做过任何事情，可能只有一两次，”Kim 说。“这改变了我的生活。”
+
+## FAAFO 革命
+
+在他们的书中，Kim 和 Yegge 概述了氛围编程提供的五个“超能力”，这些超能力体现在他们的 FAAFO 框架中：
+
+*   **快速 (Fast):** “我们通常在几分钟内交付过去需要数周或数月的特性。”
+*   **雄心勃勃 (Ambitious):** “你几十年来的愿望和目标可以周末实现巨大的飞跃。”
+*   **自主 (Autonomous):** “一个拥有五个代理的开发人员感觉像一个完整的团队，并且你可以访问过去需要找其他人才能获得的信息。”
+*   **有趣 (Fun):** “手动输入代码的苦差事消失了，取而代之的是，你以前所未有的方式释放你创造事物的能力。”
+*   **选择性 (Optionality):** “并行实验的成本很低，因此你无需坚持尝试的第一个想法。”
+
+这本书认为，我们正在接近一个世界，在这个世界里，“你所要做的就是解释你想要什么，你的话几乎可以立即变成可工作的软件。 当出现问题时，你无需花费数小时进行调试 —— 你只需描述需要更改的内容。”
+
+## 企业现实检验
+
+这不仅仅是硅谷的炒作。 Kim 指出了具有可衡量结果的实际企业采用情况。 该书引用了 Adidas 全球数字和电子商务高级副总裁 [Fernando Cornago](https://www.linkedin.com/in/fernando-cornago-763a782/) 的例子，该公司每天有 700 名开发人员使用 GitHub Copilot。 Cornago 告诉 Kim，Adidas 运行了一个全面的生成式 AI (GenAI) 试点计划，该计划使“快乐时间”增加了 2 倍 —— 花在实际编码、测试和技能开发上的时间，而不是会议和行政任务。
+
+然而，这些好处并非普遍存在。 具有松耦合和部署独立性的团队看到了显着的改进，而那些陷入具有不频繁部署的传统、紧密耦合的系统中的团队则几乎没有获得任何收益。 “当你在这些条件下时，氛围编程将无济于事，”Kim 说，“因为瓶颈距离编码太远了。”
+
+## 更多的开发人员，而不是更少
+
+这本书最具反直觉的论点之一挑战了开发人员被取代的恐惧。 Kim 预测氛围编程将创造对更多开发人员的需求，而不是更少，他将此比作数码摄影。 Kim 说，当成本大幅下降（手机）时，拍照量从每年数百万张猛增至数万亿张。
+
+“初级开发人员不会变得多余。 远非如此，”这本书指出。 “他们的角色正在演变。 他们可能不会主要执行叶子任务，而是可能成为厨房的‘站长’，帮助整合公司内非工程师的贡献。”
+
+作者描述了传统工程角色之外的人员（UX 设计师、产品经理、基础设施运维）使用 AI 直接为代码库做出贡献的趋势。 “一位初级工程师，就像一位初级医生一样，仍然接受过高度培训，并且在帮助新一代的初出茅庐的‘现场医务人员’直接为代码做出贡献方面非常有价值，”该书说道。
+
+## 影子 AI 现实
+
+这本书记录了“氛围编程如何在组织的各个地方开始发生，人们正在等待没有得到优先考虑的开发人员或工程师。 过去，这些人要么陷入困境，要么不得不使用外部供应商，要么不得不升级到管理层。 现在，他们可以自己创建软件 —— 构建原型、修复问题，甚至构建特性。”
+
+这种“[影子 AI](https://thenewstack.io/ibm-tackles-shadow-ai-an-enterprise-blind-spot/)”趋势代表了组织动态的根本转变，使软件创建民主化，超越了传统的工程团队。
+
+## AI 时代的领导力
+
+这本书还探讨了管理 AI 代理如何类似于传统的团队领导。 “史蒂夫惊呆了：他别无选择，只能再次成为团队领导，尽管他已经明确辞去了领导职务，并且认为自己是一名独立开发人员，”这本书写道。 “通过氛围编程，你有了所有新的与团队相关的问题，并且它们与人类团队的问题并不完全相同。”
+
+## 行业验证
+
+此外，这本书还获得了 [Anthropic](https://thenewstack.io/anthropic-launches-claude-opus-4-and-sonnet-4/)（[Claude](https://thenewstack.io/claude-opus-4-with-claude-code-a-developer-walkthrough/) 的制造商）首席执行官 [Dario Amodei](https://www.linkedin.com/in/dario-amodei-3934934/) 的大力支持：“听取雇用世界上许多最优秀程序员的人的意见：‘氛围编程’的工作方式将长期存在。 如果你打算进行任何编码 —— 如果你打算利用这种比较优势 —— 你需要立即参与氛围编程。”
+
+[Erik Meijer 博士](https://www.linkedin.com/in/erikmeijer1/) 是一位传奇的计算机科学家，也是 Facebook 的 [Hack 语言](https://hacklang.org/) 和更多技术的幕后设计师，他为这本书提供了关键的验证：“我们很可能是最后一批手动编写代码的开发人员。 …… 但让我们玩得开心吧！”
+
+## 开始使用
+
+对于持怀疑态度者和新手来说，这本书都提供了实用的建议。
+
+“从小处着手，从今天开始，”这本书指出。 “将一个独立的任务交给你的 AI 助手，观察它跌跌撞撞，纠正它，并收紧循环，直到跌跌撞撞停止。 然后将范围扩大一倍。 到第十次迭代时，你会注意到对话感觉不像工具，而更像是领导。 那就是你成为主厨的时刻。”
+
+## 底线
+
+无论 Kim 最新的大胆预测是否被证明是准确的，企业采用数据表明正在发生一些重要的事情。 对于一位花了数十年时间研究技术转型的 DevOps 先驱来说，他坚信这代表了他所目睹的最大转变 —— 这体现在一本本身就展示了 AI 辅助创作力量的书中 —— 值得关注。
+
+Kim 和 Yegge 的“氛围编程”是一项严肃的努力，代表了在短时间内完成的大量工作。 它充满了对氛围程序员有价值的信息，尤其是在企业中。
+
+正如这本书所说：“氛围编程可以改变你的生活，就像它改变了我们的生活一样。 掌握氛围编程使你能够承担雄心勃勃的项目，更快、更自主地工作，并且，也许最重要的是，重新发现按照自己的方式构建软件的乐趣。”
+
+## 与 Gene Kim 一起进行氛围编程
+
+除了谈论这本书之外，Kim 和我进行了一次引人入胜且非常有趣的科技讨论，甚至一起进行氛围编程，编写一个我一直想编写的小应用程序，以记录我心爱的 [巴尔的摩乌鸦队](https://www.baltimoreravens.com/) 的进攻成就。 随着 NFL 赛季即将开始，我希望有一个应用程序可以为第 1 周做好准备。
+
+Kim 选择 [Vercel 的 v0](https://v0.dev/) 作为他选择的 [氛围编程工具](https://thenewstack.io/vibe-coding-and-you/)（主要是因为他无法登录 [Lovable](https://lovable.dev/)），我们只是通过语音界面告诉它 —— 我们想要跟踪谁，什么参数等等，然后 bip, bap, boom！ 我们有了一个不错的可用应用程序的雏形。 他通过几次迭代来消除怪癖并添加内容，但它像一个魅力一样工作。
+
+所以，在我看来，问题不在于 AI 是否会改变软件开发 —— 而在于开发人员是否会足够快地适应，从而在一个仅仅通过对话就能创建代码的世界中保持相关性。
