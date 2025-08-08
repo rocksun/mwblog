@@ -1,4 +1,3 @@
-
 <!--
 title: IT战略转型：平衡安全与韧性
 cover: https://cdn.thenewstack.io/media/2025/07/1e490f85-balance.jpg
