@@ -1,0 +1,86 @@
+
+<!--
+title: AI 代理是新的 API：Mashery 创始人的新公司
+cover: https://cdn.thenewstack.io/media/2025/08/da640557-getty-images-rlwn_88wery-unsplashb.jpg
+summary: AI 代理正成为访问互联网数据的新方式，Barndoor 致力于管理这些代理，类似于 Mashery 管理 API。Barndoor 的目标用户是需要利用 AI 更快更有效地完成工作的人，用例围绕与各种工具交互的代理工作流程。Michels 认为代理 AI 市场可能与 SaaS 市场一样大。
+-->
+
+AI 代理正成为访问互联网数据的新方式，Barndoor 致力于管理这些代理，类似于 Mashery 管理 API。Barndoor 的目标用户是需要利用 AI 更快更有效地完成工作的人，用例围绕与各种工具交互的代理工作流程。Michels 认为代理 AI 市场可能与 SaaS 市场一样大。
+
+> 译自：[AI Agents Are the New APIs: Mashery Founder’s New Company](https://thenewstack.io/managing-ai-agents-the-new-api-management/)
+> 
+> 作者：Richard MacManus
+
+如果说 API 是 Web 2.0 时代不同网站和应用程序之间的连接组织，那么 AI 代理正在成为 AI 时代相同的东西。换句话说，AI 代理将越来越多地成为你访问和使用来自互联网上各种来源的数据的方式。API 不会消失，但 AI 代理已经抢了它们的风头。
+
+管理 AI 代理就是新的 API 管理——这基本上是新 AI 公司 Barndoor 的 CEO [Oren Michels](https://www.linkedin.com/in/omichels/) 正在押注的。Michels 之前是 Mashery 的创始人，他从 2006 年一直领导该公司，直到 2013 年被英特尔收购。
+
+Michels 并不回避这种比较。“如果你把 API 中的 ‘P’ 去掉，那就更有趣了，”他在我们谈话开始时开玩笑说。
+
+[![Barndoor 首页](https://cdn.thenewstack.io/media/2025/08/7066d934-barndoor-homepage-aug2025.png)](https://cdn.thenewstack.io/media/2025/08/7066d934-barndoor-homepage-aug2025.png)
+
+*Barndoor 首页*
+
+[Barndoor](https://barndoor.ai/) 将自己描述为“代理 AI 的控制平面”。正如 Mashery 帮助公司控制 API 一样，Barndoor 的目标是帮助企业公司驯服代理并在其周围设置护栏。
+
+Michels 认为目前管理 AI 代理的解决方案还不够完善。他说，现有的 IAM（身份和访问管理）和 API 管理公司尚未完全解决这个问题。“如果这些解决方案足够好，我们会在企业中看到更多代理 AI 的渗透，”他说。“但我们没有看到，因为我不相信这些解决方案足够好。”
+
+他对 Mashery 时代做了另一个类比。
+
+“就像你过去可能会说，Cisco 正在管理流量，所以他们一定在做 API 管理？当然，他们*没有*做 API 管理。这就是我们得以存在的原因；其他公司也是如此。”
+
+## 目标用户和用例
+
+那么，谁将使用 Barndoor？根据 Michels 的说法，不一定是 CIO 或安全人员。他们的工作不是使用 AI（即使现在很难*不*使用 AI）。但这些人没有“AI 问题”，正如 Michels 所说。再一次，这与过去的 API 时代类似。
+
+“在万豪，有 API 问题的人是负责在移动应用程序上预订酒店房间的人，”Michels 说。在 AI 时代，有 AI 问题的人“是那些工作是销售产品并且需要更快、更有效地销售产品，并使用 AI 来做到这一点的人。”
+
+Barndoor 已经发布，但由于它是如此新，因此有一个等待列表。由于我们不知道 Barndoor 的早期客户，我问 Michels 他看到了哪些早期用例？
+
+“用例实际上是围绕需要与各种工具交互的代理工作流程，”他回答说。
+
+他将代理比作“机器人劳动力”，并指出他们需要与人类劳动力相同的工具访问身份管理。
+
+“他们 [人类劳动力] 可以访问 Salesforce 或 Notion 以及他们可能做的其他一些事情——Gmail，他们用来完成工作的事情——他们使用这些工具，完成他们的工作，并且可能会创建一些工作成果。我们正在合作的客户希望他们的代理工具也能做到这一点。”
+
+> “如果你要让代理访问 [企业] 工具，你必须从小处着手。”
+> 
+> **– Oren Michels, Barndoor CEO**
+
+如果仅仅是访问工具，那将是一个简单的解决方案。但当然还有更多。
+
+“如果你要让代理访问这些工具，你必须从小处着手，”Michels 说。“你必须开始并非常慎重且非常适度地限制这些代理的影响范围，以便你可以了解他们在做什么，了解他们试图做什么。”
+
+## MCP：新的 REST？
+
+鉴于 [AI 代理](https://thenewstack.io/ai-agents-a-comprehensive-introduction-for-developers/) 仍然非常新——尽管被大肆宣传——我想知道他的早期企业客户希望 AI 代理使用哪些类型的工具？
+
+Michels 回复说，“第一批这种有点像打了类固醇的 RPA。”（我稍后不得不查阅 RPA：Google 的 AI 告诉我它代表“机器人流程自动化”，并且它“通过自动化重复的、基于规则的任务来彻底改变企业 IT，从而将 IT 人员解放出来以从事更具战略意义的工作。”）
+
+然而，Barndoor 团队到目前为止发现的是，RPA 用例没有太多价值，“因为仅仅做人类做得更快一点的事情并没有那么有趣。”但最新的用例，涉及 [模型上下文协议](https://thenewstack.io/mcp-the-missing-link-between-ai-agents-and-apis/) (MCP)，更有趣，根据 Michels 的说法。
+
+他将 MCP 比作 API 时代的 REST（表述性状态转移）；REST 在 2000 年代成为 API 最流行的架构风格。
+
+> “……你访问一个 API，你把它变成一个 MCP 服务器，然后你让你的 AI 访问它。”
+> 
+> **– Michels**
+
+“这是一种更有效、更快的计算机与计算机对话的方式，可以真正完成事情，”他谈到 MCP 时说。“所以我认为 [与 API 的] 相似之处确实存在，特别是自从你通常想要使用 MCP 时，你访问一个 API，你把它变成一个 MCP 服务器，然后你让你的 AI 访问它。”
+
+就它实际如何工作而言，Barndoor 充当 MCP 服务器的代理，Michels 解释说。再一次，与 API 管理有相似之处。
+
+“在 API 世界中，人们使用一种 OAuth 工作流程来说：我在这里，我有一个密钥可以使用这个 API，并且我也被允许使用这些数据。在 MCP 世界中，或者至少在我们这样做的方式中，有一个类似的概念，[其中] 我们基本上能够说：好的，我们有这个已经授权的代理，我们有这个人，并且因为这个人与他们从身份访问管理系统获得的身份相关联——我们连接和协作——我们意识到了这一点，然后有一个流程。”
+
+因此，Barndoor 本质上协调了人类工作者和代理之间的工作流程。
+
+## 和 SaaS 一样大
+
+在 5 月份 Barndoor 的 [发布帖子](https://barndoor.ai/ai-sprawl-competitive-advantage/) 中，Michels 写道：“我们预计代理 AI 市场的发展方式与 SaaS [软件即服务] 市场类似。”我问他是否也认为代理 AI 市场会变得像 SaaS 市场一样大（不用说，SaaS 市场非常庞大）？
+
+“哦，是的，”他热情地回答说，并补充说，代理 AI 也可能会在某些类别中取代 SaaS 产品。他没有特别提到任何名称，但我认为某些客户服务 SaaS 工具是有风险的。
+
+但对于其他类别的 SaaS，人类工作者仍然需要控制，这些产品将与代理 AI 共存。
+
+“记住我们是人类；我们使用这些工具，”Michels 说。“AI 取代了 [我们所做的一些] 事情，并赋予我们这些超能力，可以更快地完成更多事情。但最终，我们确实需要跟踪我们的客户，我们需要一个记录来源，我们需要一个组织拥有的并且每个人都可以访问的真理。”
+
+换句话说，像 Salesforce、Notion 和 Gmail 这样的 SaaS 工具不会被代理 AI 取代。尽管正如 Michels 在本文前面指出的那样，它们将越来越多地被代理*以及*人类使用。

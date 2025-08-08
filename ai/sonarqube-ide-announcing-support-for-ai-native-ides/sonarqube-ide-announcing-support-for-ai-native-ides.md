@@ -1,4 +1,3 @@
-
 <!--
 title: SonarQube IDE：宣布支持AI原生IDE
 cover: https://assets-eu-01.kc-usercontent.com:443/55017e37-262d-017b-afd6-daa9468cbc30/6e72fe22-ed92-4bb6-ac6a-876124f22282/sq%20ide_support%20native%20ai%20ides_social-landscape.png
