@@ -1,4 +1,3 @@
-
 <!--
 title: 应用开发日志框架指南
 cover: https://cdn.thenewstack.io/media/2025/08/ecd84b22-logging-framework.jpg
