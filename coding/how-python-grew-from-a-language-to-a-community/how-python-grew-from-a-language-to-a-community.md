@@ -1,4 +1,3 @@
-
 <!--
 title: Python：从语言到社区的成长之路
 cover: https://cdn.thenewstack.io/media/2025/08/686c6b18-paul-everitt-big-smile-interviewed-by-david-cassel-on-zoom-for-the-new-stack-july-25-2025-1024x586-1.png
