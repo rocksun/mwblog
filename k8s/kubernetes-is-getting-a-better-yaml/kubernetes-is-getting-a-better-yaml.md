@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes将使用KYAML解决YAML难题
 cover: https://cdn.thenewstack.io/media/2025/08/f9639697-imkara-visual-kh2i3gtohxo-unsplash.jpg
