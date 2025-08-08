@@ -1,4 +1,3 @@
-
 <!--
 title: 数据产品化：解锁创新的8种方式
 cover: https://cdn.thenewstack.io/media/2025/07/ec49a4fb-keyboard12.jpeg
