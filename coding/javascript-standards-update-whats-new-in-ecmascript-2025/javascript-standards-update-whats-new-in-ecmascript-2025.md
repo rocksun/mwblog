@@ -1,4 +1,3 @@
-
 <!--
 title: ECMAScript 2025：JavaScript 新标准前瞻
 cover: https://cdn.thenewstack.io/media/2021/10/8707e192-ec73391f-javascripticon-1024x576-1.png
