@@ -1,4 +1,3 @@
-
 <!--
 title: 如何在Kubernetes中以原生方式部署Fluent Bit
 cover: https://cdn.thenewstack.io/media/2025/07/3d3bf7a5-deploy-fluentbit-kubernetes-native-crd.jpg

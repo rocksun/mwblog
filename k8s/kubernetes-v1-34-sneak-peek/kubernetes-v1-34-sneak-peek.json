@@ -1,0 +1,1 @@
+{"url":"https://kubernetes.io/blog/2025/07/28/kubernetes-v1-34-sneak-peek/","title":"Kubernetes v1.34 Sneak Peek","author":"[no-author]","summary":"","cover":"","zh_title":"Kubernetes v1.34 预览","zh_summary":"Kubernetes v1.34将于2025年8月底发布，包含DRA稳定、ServiceAccount令牌用于镜像拉取认证、Deployment的Pod替换策略、kubelet和API Server的生产就绪追踪等增强功能。KYAML作为kubectl的新输出格式引入，并支持HPA可配置容差进行细粒度的自动扩缩控制。"}
