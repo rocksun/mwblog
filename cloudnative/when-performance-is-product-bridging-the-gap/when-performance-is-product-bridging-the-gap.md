@@ -1,4 +1,3 @@
-
 <!--
 title: 性能即产品：弥合差距
 cover: https://cdn.thenewstack.io/media/2025/08/c9e20fde-merging.jpg
