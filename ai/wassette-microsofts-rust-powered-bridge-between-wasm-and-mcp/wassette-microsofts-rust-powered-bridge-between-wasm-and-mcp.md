@@ -1,4 +1,3 @@
-
 <!--
 title: Wassette：微软 Rust 技术打造 Wasm 与 MCP 的桥梁
 cover: https://cdn.thenewstack.io/media/2025/08/47004f38-planet-volumes-tvwelcgs1w-unsplash.jpg
