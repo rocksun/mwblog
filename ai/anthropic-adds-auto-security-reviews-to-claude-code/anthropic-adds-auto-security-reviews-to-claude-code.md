@@ -1,4 +1,3 @@
-
 <!--
 title: Claude Code代码新增自动安全评估
 cover: https://cdn.thenewstack.io/media/2025/08/476ea983-peter-conrad-ua8pwpht1vw-unsplash-1.jpg
