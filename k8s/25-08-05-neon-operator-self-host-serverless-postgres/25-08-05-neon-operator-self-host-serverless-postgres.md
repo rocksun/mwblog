@@ -1,4 +1,3 @@
-
 <!--
 title: Neon Operator：在 Kubernetes 上自建无服务器 Postgres
 cover: https://molnett.com/images/posts/25-08-05-neon-operator-self-host-serverless-postgres/mainImage.png
@@ -53,7 +52,7 @@ Operator 附带一个 API，该 API 直接与存储控制器（Neon 中的编排
 
 但 Rust 可能不是最佳选择，这倒是真的。 kube-rs 的功能远不如 kubebuilder 丰富，没有 `envtest` 对集成测试来说是一个问题，**而且** Rust 出了名的难学。
 
-几个月后，我们将看到 Rust 和 kube-rs 对我们有什么作用。 我们仍处于开发的早期阶段，因此我们乐于接受反馈和建议。
+几个月后，我们将看到 Rust 和 kube-rs 对我们有什么作用。 我们仍处于开发的早期阶段，因此我们乐于接受反馈
 
 ### 接下来是什么
 
@@ -69,5 +68,3 @@ Operator 附带一个 API，该 API 直接与存储控制器（Neon 中的编排
 ### 寻找合作者
 
 你是否正在寻找在本地部署 Neon 的方法？或者合作完成上述里程碑？请在 [X](https://X.com/jonathangrahl) 或 Discord @bittermandel 上联系我，或在 [GitHub](https://github.com/molnett/neon-operator) 上创建 issue。
-
-如果你想试用 Molnett，可以在 <https://console.molnett.com> 上注册，我们会与你联系！
