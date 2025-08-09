@@ -1,4 +1,3 @@
-
 <!--
 title: 向量搜索的局限性及未来发展
 cover: https://cdn.thenewstack.io/media/2025/08/454e9fc5-vector.jpg
