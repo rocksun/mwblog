@@ -1,0 +1,1 @@
+{"url":"https://opentelemetry.io/blog/2025/how-to-name-your-spans/","title":"How to Name Your Spans","author":"[no-author]","summary":"","cover":"https://opentelemetry.io/img/social/logo-wordmark-001.png","zh_title":"Span命名攻略","zh_summary":"好的 Span 名称应遵循“{谓语} {宾语}”结构，例如“处理付款”。避免在 Span 名称中包含唯一标识符以保持低基数。这种命名方式与 OpenTelemetry 语义约定一致，有助于构建强大而有效的可观测性策略。"}
