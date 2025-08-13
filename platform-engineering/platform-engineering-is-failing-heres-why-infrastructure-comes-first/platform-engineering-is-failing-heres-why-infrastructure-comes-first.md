@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程遇阻：为何基础设施至关重要
 cover: https://cdn.thenewstack.io/media/2025/07/91f798ab-jakub-zerdzicki-agkspo5oiyg-unsplash-scaled.jpg
