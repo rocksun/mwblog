@@ -1,4 +1,3 @@
-
 <!--
 title: AI能否“攻破”身份验证？
 cover: https://cdn.thenewstack.io/media/2025/08/7505d033-stytch-ceo-reed-mcginley-stempel-interviewed-august-4-2025-screenshot-1024x676-1.png
