@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程能加速AI应用落地吗？
 cover: https://cdn.thenewstack.io/media/2025/08/a818af9a-pe-ai-ref-arch.jpg
