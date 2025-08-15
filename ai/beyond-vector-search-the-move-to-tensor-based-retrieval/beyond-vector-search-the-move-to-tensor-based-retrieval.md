@@ -1,4 +1,3 @@
-
 <!--
 title: 超越向量搜索：转向张量检索
 cover: https://cdn.thenewstack.io/media/2025/08/88163069-search.png
