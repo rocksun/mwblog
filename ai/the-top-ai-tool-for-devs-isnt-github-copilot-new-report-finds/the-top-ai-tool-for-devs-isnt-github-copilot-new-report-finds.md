@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者顶级AI工具竟不是GitHub Copilot
 cover: https://cdn.thenewstack.io/media/2025/08/17a32a3b-for-thumbnail.png
