@@ -1,4 +1,3 @@
-
 <!--
 title: 2025年K8s用户对AI的真实看法
 cover: https://cdn.thenewstack.io/media/2025/07/98f5a45a-kubernetes-users-think-ai-2025.jpg
