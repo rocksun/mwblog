@@ -1,4 +1,3 @@
-
 <!--
 title: 数据库分类已成过去：未来趋势前瞻
 cover: https://cdn.thenewstack.io/media/2025/08/1a727615-convergence.jpg
