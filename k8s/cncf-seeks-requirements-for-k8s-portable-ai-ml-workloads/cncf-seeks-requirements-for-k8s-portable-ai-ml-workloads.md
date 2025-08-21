@@ -1,4 +1,3 @@
-
 <!--
 title: CNCF征集K8s平台可移植AI/ML工作负载需求
 cover: https://cdn.thenewstack.io/media/2025/08/6f9f0994-k8s-conform.jpg
