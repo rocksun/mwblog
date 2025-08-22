@@ -1,4 +1,3 @@
-
 <!--
 title: MCP-UI 创造者揭秘：AI 智能代理为何需要强大用户界面
 cover: https://cdn.thenewstack.io/media/2025/08/3b8063b6-benoit-deschasaux-i-cjnhessuo-unsplashb.jpg
