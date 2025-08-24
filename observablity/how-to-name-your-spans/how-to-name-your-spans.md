@@ -1,4 +1,3 @@
-
 <!--
 title: 如何命名你的Span
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
