@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes不足以支撑生产级平台
 cover: https://cdn.thenewstack.io/media/2025/08/4796683e-kubernetes-isnt-enough-for-production-ready-platform.jpg
