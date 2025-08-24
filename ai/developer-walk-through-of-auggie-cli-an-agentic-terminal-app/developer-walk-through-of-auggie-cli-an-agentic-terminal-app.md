@@ -1,4 +1,3 @@
-
 <!--
 title: Auggie CLI开发者实战：Agentic终端应用
 cover: https://cdn.thenewstack.io/media/2025/08/c58041b2-andras-vas-iq2a48crn7e-unsplashb.jpg
