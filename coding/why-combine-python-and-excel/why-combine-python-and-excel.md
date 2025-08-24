@@ -1,4 +1,3 @@
-
 <!--
 title: 为何Python与Excel是天作之合？
 cover: https://cdn.thenewstack.io/media/2025/08/02fd6d79-mika-baumeister-xta7saatg40-unsplash-1.jpg
@@ -389,7 +388,7 @@ with smtplib.SMTP('smtp.example.com') as s:
 
 ## 性能和安全注意事项
 
-### 管理内存和大型数据集
+管理内存和大型数据集
 
 与任何其他大型文件类似，当处理大型 Excel 文件时，如果一次将所有内容加载到内存中，性能可能会迅速下降。由于这些 Excel 文件通常非常大，因此以下是一些提示：
 
