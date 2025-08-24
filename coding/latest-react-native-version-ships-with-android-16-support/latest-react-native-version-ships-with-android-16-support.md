@@ -1,4 +1,3 @@
-
 <!--
 title: React Native最新版本发布，全面支持Android 16
 cover: https://cdn.thenewstack.io/media/2024/04/d8b458d6-dev_news_img-2-2.png
