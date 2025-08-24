@@ -1,4 +1,3 @@
-
 <!--
 title: 未来应用形态：Web、原生，抑或两者合璧？
 cover: https://cdn.thenewstack.io/media/2025/08/f3a590c2-web_app_getty_images.jpg
