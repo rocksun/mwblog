@@ -1,4 +1,3 @@
-
 <!--
 title: 当关键开源项目走到生命尽头：应对之策
 cover: https://cdn.thenewstack.io/media/2025/08/25da282e-open-source-eol-2.jpg
