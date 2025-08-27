@@ -1,4 +1,3 @@
-
 <!--
 title: AI反叛者：批判氛围编码
 cover: https://cdn.thenewstack.io/media/2025/08/eb1a421d-ai_contrarians_speak.jpg
