@@ -1,4 +1,3 @@
-
 <!--
 title: AI融入编程工作流的10个心得
 cover: https://cdn.thenewstack.io/media/2025/07/8ad13ea3-assistant.png
