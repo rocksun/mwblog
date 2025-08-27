@@ -1,4 +1,3 @@
-
 <!--
 title: 张量技术正在改变生命科学搜索
 cover: https://cdn.thenewstack.io/media/2025/08/a699a696-medicine.jpg
