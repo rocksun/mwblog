@@ -1,4 +1,3 @@
-
 <!--
 title: GitHub Issue：提升信号，减少噪音，优先排序
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
