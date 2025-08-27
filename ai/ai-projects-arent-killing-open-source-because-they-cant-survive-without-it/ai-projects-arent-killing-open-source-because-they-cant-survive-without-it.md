@@ -1,4 +1,3 @@
-
 <!--
 title: AI项目无法扼杀开源，因为没有开源它们无法生存
 cover: https://cdn.thenewstack.io/media/2025/08/7564d5c4-brett-jordan-lb0nktvpzcg-unsplash.jpg
@@ -28,8 +27,6 @@ COSS 公司在融资速度、早期估值和流动性结果方面始终优于同
 Serena 的合伙人兼报告的合著者 [Matthieu Lavergne](https://www.linkedin.com/in/matthieulavergne/?originalSubdomain=fr) 在主题演讲中表示：“在 Serena 和 Linux 基金会，我们认为将商业与开源对立是软件历史上最大的误解之一。但光有信念是不够的，因此我们研究了 25 年来由风险投资支持的商业开源公司的数据，并且我们在研究数据时考虑了两个主要研究问题。”
 
 ## 人工智能挑战
-
-![](https://cdn.thenewstack.io/media/2025/08/99041206-img_5390.heic)
 
 显然，人工智能对开源项目提出了挑战。以极其流行和广泛使用的 [cURL](https://thenewstack.io/the-world-runs-20-billion-instances-of-curl-wheres-the-support/) 项目为例，cURL 的创始人、首席开发人员和唯一员工 [Daniel Stenberg](https://www.linkedin.com/in/danielstenberg/?originalSubdomain=se) 描述了人工智能对维护该项目所造成的困难，数百万用户直接或间接地依赖该项目来维持生计。
 
