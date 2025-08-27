@@ -1,4 +1,3 @@
-
 <!--
 title: 仅四分之一IT团队称工作流程顺畅
 cover: https://cdn.thenewstack.io/media/2025/08/c5bf6e2c-kanban-4054380_1280.jpg
