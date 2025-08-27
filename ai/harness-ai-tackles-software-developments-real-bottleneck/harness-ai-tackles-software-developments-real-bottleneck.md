@@ -1,4 +1,3 @@
-
 <!--
 title: Harness AI 解决软件开发的核心瓶颈
 cover: https://cdn.thenewstack.io/media/2025/08/f2ef1a1b-akash-rai-q3w3c8iskci-unsplash.jpg
