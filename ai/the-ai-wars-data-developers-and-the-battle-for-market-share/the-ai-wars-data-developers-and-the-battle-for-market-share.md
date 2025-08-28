@@ -1,4 +1,3 @@
-
 <!--
 title: AI 战争：数据、开发者与市场份额之战
 cover: https://cdn.thenewstack.io/media/2025/08/15a74b6b-ai.jpg
