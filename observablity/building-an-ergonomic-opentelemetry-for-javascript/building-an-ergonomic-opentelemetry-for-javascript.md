@@ -1,4 +1,3 @@
-
 <!--
 title: 构建符合人体工学的JavaScript OpenTelemetry
 cover: https://cdn.thenewstack.io/media/2025/08/dbb809c5-code.jpg

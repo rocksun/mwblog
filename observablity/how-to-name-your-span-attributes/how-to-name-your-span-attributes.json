@@ -1,0 +1,1 @@
+{"url":"https://opentelemetry.io/blog/2025/how-to-name-your-span-attributes/","title":"How to Name Your Span Attributes","author":"[no-author]","summary":"","cover":"https://opentelemetry.io/img/social/logo-wordmark-001.png","zh_title":"Span属性命名指南","zh_summary":"本文介绍了 OpenTelemetry 中 span 属性命名的最佳实践，强调了使用语义约定、领域优先而非公司优先，以及遵循命名结构的重要性。避免使用保留的命名空间，并为可重用性构建属性。"}
