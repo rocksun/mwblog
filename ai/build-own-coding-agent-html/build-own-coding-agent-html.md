@@ -1,4 +1,3 @@
-
 <!--
 title: 用 Pydantic-AI 打造你的专属 CLI 编码助手
 cover: https://martinfowler.com/logo-sq.png
