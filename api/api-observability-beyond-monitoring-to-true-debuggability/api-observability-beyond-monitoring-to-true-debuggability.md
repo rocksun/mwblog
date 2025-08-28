@@ -1,7 +1,6 @@
-
 <!--
 title: API可观测性：从监控走向真正的可调试性
-cover: https://cdn.thenewstack.io/media/2025/08/b5dbe6b1-screenshot-2025-08-06-at-10.42.14 am.png
+cover: https://cdn.thenewstack.io/media/2025/08/b5dbe6b1-screenshot-2025-08-06-at-10.42.14%E2%80%AFam-1024x580.png
 summary: 传统监控已不足，可调试性是下一代运维关键。它通过按需检查、上下文关联和智能采样，实现主动问题调查和快速修复，降低运维成本并提高效率。API网关是理想的可调试性控制点。
 -->
 
