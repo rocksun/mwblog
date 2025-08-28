@@ -1,4 +1,3 @@
-
 <!--
 title: Span属性命名指南
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
