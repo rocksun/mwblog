@@ -1,4 +1,3 @@
-
 <!--
 title: Fastly：高级开发者AI代码产出是初级的2.5倍
 cover: https://cdn.thenewstack.io/media/2025/08/3d014f28-sweet-life-yd0mcouiduw-unsplash-1.jpg
