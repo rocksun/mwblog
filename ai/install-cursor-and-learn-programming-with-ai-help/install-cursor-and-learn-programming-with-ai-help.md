@@ -1,4 +1,3 @@
-
 <!--
 title: 安装Cursor：AI加持的编程学习利器
 cover: https://cdn.thenewstack.io/media/2025/08/3a5c7219-yasa-design-studio-chfhlwmlizy-unsplash.jpg
