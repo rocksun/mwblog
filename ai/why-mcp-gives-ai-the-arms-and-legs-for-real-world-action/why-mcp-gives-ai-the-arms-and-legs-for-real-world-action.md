@@ -1,7 +1,6 @@
-
 <!--
 title: MCP如何赋予AI在现实世界中行动的“手脚”
-cover: https://cdn.thenewstack.io/media/2025/08/2045565d-screenshot-2025-08-27-at-2.12.49 pm-1024x603.png
+cover: https://cdn.thenewstack.io/media/2025/08/2045565d-screenshot-2025-08-27-at-2.12.49%E2%80%AFpm-1024x603.png
 summary: MCP 协议旨在连接 AI 代理与现有系统，使 AI 能够执行实际操作。其关键在于开源、改进现有工具和流程，并优先考虑安全性。Block 公司已成功应用 MCP 于欺诈检测和销售运营，显著提高了效率。MCP 有望成为 AI 自动化领域的基础。
 -->
 
