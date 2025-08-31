@@ -1,4 +1,3 @@
-
 <!--
 title: 化繁为简，掌控数据：规模化AI之路
 cover: https://cdn.thenewstack.io/media/2025/08/723f1f2b-cut-complexity-control-data-ai-at-scale.jpg
