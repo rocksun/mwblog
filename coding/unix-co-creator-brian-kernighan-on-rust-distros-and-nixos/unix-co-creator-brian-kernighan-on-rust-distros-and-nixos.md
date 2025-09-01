@@ -1,4 +1,3 @@
-
 <!--
 title: Unix共同创造者Brian Kernighan谈Rust、发行版和NixOS
 cover: https://cdn.thenewstack.io/media/2025/08/088e8bf4-83-year-old-brian-kernighan-laughs-at-vintage-computer-festival-east-2025-1.png
