@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么AI搜索平台备受关注
 cover: https://cdn.thenewstack.io/media/2025/08/7e5bc62b-search.png
