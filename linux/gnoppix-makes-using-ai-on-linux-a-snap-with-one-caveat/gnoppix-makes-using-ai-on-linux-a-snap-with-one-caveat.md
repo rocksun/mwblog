@@ -1,4 +1,3 @@
-
 <!--
 title: Gnoppix简化Linux AI应用，一键搞定，但有个坑
 cover: https://cdn.thenewstack.io/media/2025/08/97465462-gnoppixhero-1.jpg
