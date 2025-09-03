@@ -1,4 +1,3 @@
-
 <!--
 title: 开源AI究竟是什么？
 cover: https://cdn.thenewstack.io/media/2025/09/1f49c2dd-img_2050-2-scaled.jpg
