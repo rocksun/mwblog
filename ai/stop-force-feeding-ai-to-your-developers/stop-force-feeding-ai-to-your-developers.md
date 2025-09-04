@@ -1,4 +1,3 @@
-
 <!--
 title: 别再给你的开发者强行喂食AI了
 cover: https://cdn.thenewstack.io/media/2025/09/58712448-rahul-mishra-bn4l8ostijc-unsplash-scaled.jpg
