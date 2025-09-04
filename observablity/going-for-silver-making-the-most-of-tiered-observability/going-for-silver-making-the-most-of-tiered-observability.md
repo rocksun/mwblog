@@ -1,4 +1,3 @@
-
 <!--
 title: “银弹”攻略：分层观测性的价值最大化
 cover: https://cdn.thenewstack.io/media/2025/08/ed036086-medals.jpg
