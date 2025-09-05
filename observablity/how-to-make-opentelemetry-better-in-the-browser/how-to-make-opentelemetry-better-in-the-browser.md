@@ -1,4 +1,3 @@
-
 <!--
 title: 如何提升浏览器中OpenTelemetry的性能
 cover: https://cdn.thenewstack.io/media/2025/09/e4b442ee-otel.jpg
