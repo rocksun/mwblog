@@ -1,4 +1,3 @@
-
 <!--
 title: Guido van Rossum的新纪录片回顾Python的历程
 cover: https://cdn.thenewstack.io/media/2025/08/abc3bb2d-screenshot-from-cult-repo-youtube-channel-wednesdfay-night.png
