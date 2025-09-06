@@ -1,4 +1,3 @@
-
 <!--
 title: Warp：从终端到 Agentic 开发环境的演变
 cover: https://cdn.thenewstack.io/media/2025/09/1217c754-thumbnail-13.png
