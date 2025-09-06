@@ -1,4 +1,3 @@
-
 <!--
 title: 你的团队应该“氛围编程”吗？
 cover: https://cdn.thenewstack.io/media/2025/09/a0e5be59-ai12b.jpg
