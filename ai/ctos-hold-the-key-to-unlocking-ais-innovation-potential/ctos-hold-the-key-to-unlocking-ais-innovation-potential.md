@@ -1,4 +1,3 @@
-
 <!--
 title: CTO：释放AI创新潜力的关键
 cover: https://cdn.thenewstack.io/media/2025/09/41b41a22-ai.jpg
