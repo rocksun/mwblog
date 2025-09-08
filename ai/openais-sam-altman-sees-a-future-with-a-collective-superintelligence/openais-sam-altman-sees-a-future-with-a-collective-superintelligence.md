@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI的Sam Altman预见集体“超级智能”的未来
 cover: https://cdn.thenewstack.io/media/2025/09/17105c7d-screenshot-from-cleo-abrams-left-interview-with-sam-altman-huge-ideas-youtube-show-august-2025.jpg
