@@ -1,4 +1,3 @@
-
 <!--
 title: AI被困在1996？打破现状，通向未来！
 cover: https://cdn.thenewstack.io/media/2025/09/b0b8b8f1-future.jpg
