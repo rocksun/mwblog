@@ -1,4 +1,3 @@
-
 <!--
 title: Agentic编码的未来是多人协作
 cover: https://cdn.thenewstack.io/media/2025/09/c2559637-connections.jpg
