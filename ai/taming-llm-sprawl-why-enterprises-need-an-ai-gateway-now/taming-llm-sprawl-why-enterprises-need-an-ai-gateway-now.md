@@ -1,4 +1,3 @@
-
 <!--
 title: 驯服 LLM 蔓延：为什么企业现在需要 AI 网关
 cover: https://cdn.thenewstack.io/media/2025/09/9fe04800-taming-llm-sprawl-gateway.jpg
