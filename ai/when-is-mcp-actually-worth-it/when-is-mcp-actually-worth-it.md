@@ -1,6 +1,5 @@
-
 <!--
-title: MCP认证：何时才是最佳投资？
+title: 何时MCP值得投入？
 cover: https://cdn.thenewstack.io/media/2025/09/97717475-mcp-logo-2.png
 summary: MCP 是连接 AI 代理与外部数据和服务的开放标准，适用于增强代理工作流程、提供工程上下文和公开系统。但它不适用于确定性自动化、静态上下文、绕过 CLI 和安全风险高的场景。
 -->
