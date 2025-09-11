@@ -1,4 +1,3 @@
-
 <!--
 title: 氛围编码失败：企业现实检验
 cover: https://cdn.thenewstack.io/media/2025/09/b992c0c9-philip-oroni-_v-asnc8cve-unsplash.jpg
