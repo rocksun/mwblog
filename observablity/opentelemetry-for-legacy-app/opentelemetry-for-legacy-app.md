@@ -1,4 +1,3 @@
-
 <!--
 title: 关键应用深陷黑盒？5分钟重见光明！
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png

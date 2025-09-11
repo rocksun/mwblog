@@ -1,0 +1,1 @@
+{"url":"https://opentelemetry.io/blog/2025/how-to-name-your-metrics/","title":"How to Name Your Metrics","author":"[no-author]","summary":"","cover":"https://opentelemetry.io/img/social/logo-wordmark-001.png","zh_title":"如何命名你的指标","zh_summary":"本文介绍了如何命名OpenTelemetry指标，强调不要在指标名称中包含服务名称和单位，应将上下文信息放入资源属性中。好的命名能提高查询性能，简化运维，并促进跨服务聚合。"}
