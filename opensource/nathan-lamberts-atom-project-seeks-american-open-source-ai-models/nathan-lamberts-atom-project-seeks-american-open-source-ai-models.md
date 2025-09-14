@@ -1,4 +1,3 @@
-
 <!--
 title: Nathan Lambert的ATOM项目：打造美国开源AI模型
 cover: https://cdn.thenewstack.io/media/2025/08/636ffa61-tim-mossholder-s-v_xmr0vhg-unsplash.jpg
