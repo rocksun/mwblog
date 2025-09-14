@@ -1,4 +1,3 @@
-
 <!--
 title: AI Agents vs. Agentic AI：Kubernetes开发者指南
 cover: https://cdn.thenewstack.io/media/2025/09/77336087-aakash-dhage-plqw2qp-16k-unsplash.jpg
