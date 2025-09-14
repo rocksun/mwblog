@@ -1,4 +1,3 @@
-
 <!--
 title: 混合云架构下，为何联邦API管理至关重要
 cover: https://cdn.thenewstack.io/media/2025/08/d2b0aefe-federated-api-management-hybrid-cloud.png
