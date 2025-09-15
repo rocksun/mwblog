@@ -1,4 +1,3 @@
-
 <!--
 title: 安全团队驯服自主AI代理的三种方式
 cover: https://cdn.thenewstack.io/media/2025/09/a5b09244-aisecurity.jpg
