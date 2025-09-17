@@ -1,4 +1,3 @@
-
 <!--
 title: 运营成熟度：破解五大成本难题
 cover: https://cdn.thenewstack.io/media/2025/08/1c3675ed-costs12a.jpg
