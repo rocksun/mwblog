@@ -1,4 +1,3 @@
-
 <!--
 title: 分布式Postgres如何解决云的高可用性问题
 cover: https://cdn.thenewstack.io/media/2025/09/5da24611-distributed-postgres-cloud-ha.jpg
