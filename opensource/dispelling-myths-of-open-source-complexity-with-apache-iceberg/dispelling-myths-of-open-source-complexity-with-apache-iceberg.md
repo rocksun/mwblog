@@ -1,4 +1,3 @@
-
 <!--
 title: Apache Iceberg打破开源复杂性的迷思
 cover: https://cdn.thenewstack.io/media/2025/09/d44f92da-iceberg12.jpeg
