@@ -1,4 +1,3 @@
-
 <!--
 title: 规格驱动开发：可扩展AI代理的关键
 cover: https://cdn.thenewstack.io/media/2025/09/a09e188f-speca.jpg
