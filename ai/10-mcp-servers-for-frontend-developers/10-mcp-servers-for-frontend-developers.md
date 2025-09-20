@@ -1,4 +1,3 @@
-
 <!--
 title: 前端开发者的十大 MCP 服务器
 cover: https://cdn.thenewstack.io/media/2025/09/d0dccb4d-mcp_servers_for_frontend.jpg
