@@ -1,4 +1,3 @@
-
 <!--
 title: Chrome 拥抱 AI：浏览器的未来，由此开启
 cover: https://cdn.thenewstack.io/media/2025/09/f907ffc4-chrome-curtains2.jpg
