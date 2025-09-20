@@ -1,4 +1,3 @@
-
 <!--
 title: 别再浪费时间处理事件了，交给AI！
 cover: https://cdn.thenewstack.io/media/2025/09/0d6b3258-robot12.jpg
