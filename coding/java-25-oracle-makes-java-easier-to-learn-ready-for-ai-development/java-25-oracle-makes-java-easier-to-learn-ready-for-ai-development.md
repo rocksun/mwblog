@@ -1,4 +1,3 @@
-
 <!--
 title: Java 25：Oracle让Java更易学，为AI开发做好准备
 cover: https://cdn.thenewstack.io/media/2025/09/8f935504-getty-images-sg2eggqll14-unsplash.jpg
