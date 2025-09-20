@@ -1,4 +1,3 @@
-
 <!--
 title: Rust采用为何可能失败（以及如何逆袭）
 cover: https://cdn.thenewstack.io/media/2025/09/61794dda-the-blowup-un4paddppau-unsplash.jpg
