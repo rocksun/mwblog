@@ -1,4 +1,3 @@
-
 <!--
 title: AI如何重塑开发者作品集
 cover: https://cdn.thenewstack.io/media/2025/09/d4a799ca-role_of_ai_in_developer_portfolios.jpg
