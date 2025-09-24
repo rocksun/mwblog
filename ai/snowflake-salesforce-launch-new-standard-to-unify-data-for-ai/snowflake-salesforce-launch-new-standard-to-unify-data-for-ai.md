@@ -1,4 +1,3 @@
-
 <!--
 title: Snowflake、Salesforce推出AI数据统一新标准
 cover: https://cdn.thenewstack.io/media/2025/09/d2818833-arturo-esparza-oji8px8laro-unsplash.jpg
