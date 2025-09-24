@@ -1,4 +1,3 @@
-
 <!--
 title: AWS Kiro：用规格驱动方法测试 AI IDE
 cover: https://cdn.thenewstack.io/media/2025/09/09235ce3-tandem-x-visuals-fzooxr2auvi-unsplashb.jpg
