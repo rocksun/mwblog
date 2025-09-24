@@ -1,4 +1,3 @@
-
 <!--
 title: 开源升级提速的隐性成本
 cover: https://cdn.thenewstack.io/media/2025/09/3a3ed5c6-costsofrushingopensourceupgrades.jpg
