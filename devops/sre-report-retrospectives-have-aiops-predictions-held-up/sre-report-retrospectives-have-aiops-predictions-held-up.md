@@ -1,4 +1,3 @@
-
 <!--
 title: SRE 报告回顾：AIOps 预测是否经受住了考验？
 cover: https://cdn.thenewstack.io/media/2025/08/b93d26f7-srereport.png
