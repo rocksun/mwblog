@@ -1,4 +1,3 @@
-
 <!--
 title: 十大Kubernetes部署错误：成因、解决与避坑秘籍
 cover: https://cdn.thenewstack.io/media/2025/09/e4e5b71b-kubernetes.png
