@@ -1,4 +1,3 @@
-
 <!--
 title: Java语言架构师Brian Goetz谈Java的未来发展
 cover: https://cdn.thenewstack.io/media/2025/09/a3c50315-brian-goetz-java-language-architect-at-2025-jvm-summit-shh-1.png
