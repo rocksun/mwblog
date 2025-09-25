@@ -1,4 +1,3 @@
-
 <!--
 title: GPT-5推理能力飙升，隐形成本令人咋舌
 cover: https://cdn.thenewstack.io/media/2025/09/e71751f5-gpt-5.jpg
