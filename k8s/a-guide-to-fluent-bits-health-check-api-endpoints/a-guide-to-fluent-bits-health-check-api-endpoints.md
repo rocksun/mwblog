@@ -1,4 +1,3 @@
-
 <!--
 title: Fluent Bit 健康检查 API 端点指南
 cover: https://cdn.thenewstack.io/media/2025/09/80d5a166-health.jpg
