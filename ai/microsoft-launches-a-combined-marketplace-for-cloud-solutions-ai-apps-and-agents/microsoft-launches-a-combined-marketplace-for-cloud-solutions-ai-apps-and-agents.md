@@ -1,0 +1,31 @@
+<!--
+title: 微软推出云、AI应用与智能体一站式市场
+cover: https://cdn.thenewstack.io/media/2025/09/f70b4964-00000img_00000_burst20191106094447621_cover-scaled.jpg
+summary: 微软将Azure Marketplace和AppSource合并为“Microsoft Marketplace”，简化企业获取可信AI应用和代理。新市场提供超3000种AI产品，AI购买量本财年增长两倍。
+-->
+
+微软将Azure Marketplace和AppSource合并为“Microsoft Marketplace”，简化企业获取可信AI应用和代理。新市场提供超3000种AI产品，AI购买量本财年增长两倍。
+
+> 译自：[Microsoft Launches a Combined Marketplace for Cloud Solutions, AI Apps and Agents](https://thenewstack.io/microsoft-launches-a-combined-marketplace-for-cloud-solutions-ai-apps-and-agents/)
+> 
+> 作者：Frederic Lardinois
+
+微软长期以来一直在其生态系统中为企业提供各种市场。对于云解决方案，有 [Azure Marketplace](https://azuremarketplace.microsoft.com/)；而对于生产力以及最近的 AI 工具，则有 [Microsoft AppSource](https://appsource.microsoft.com/en-us/)。但从今天开始，该公司将这两个市场合并到名为“Microsoft Marketplace”（微软市场）的旗下。
+
+随着企业越来越多地 [采用 AI 驱动的应用程序和代理](https://thenewstack.io/microsoft-ai-business-agents-will-kill-saas-by-2030/)，公司现在经常面临的一个问题是如何找到并获取这些工具。在软件即服务 (SaaS) 的早期，出现了许多市场解决方案，因此我们现在看到围绕 AI 应用程序以及最近的 AI 代理出现非常相似的发展，这也许并不奇怪。
+
+微软目前的市场每月约有六百万访客，这对于大型企业和小型专业开发商店来说，都是一个巨大的潜在客户市场。
+
+微软云与 AI 营销副总裁 Cyril Belikoff 告诉我，微软之所以这样做，原因之一是为了给企业提供一种更简单的方式来购买值得信赖的 AI 应用程序和代理。
+
+“AI 不仅仅是一次技术转变。它是一次业务重振转型。这是一次重大的平台转变，”Belikoff 说。“当我们与企业和领导者交谈时，他们非常清楚自己在采用 AI 时需要速度、简单性和信心方面的帮助。因此，我们的方法和愿景是真正帮助客户利用一套值得信赖的工具、负责任的框架，当然还有我们的合作伙伴生态系统，从实验走向规模化，从而帮助他们实现这种影响和创新。”
+
+微软市场在发布时将总共提供 3,000 多个免费和付费的 AI 应用程序和代理。例如，这些产品可以是扩展 Microsoft 365 Copilot 或 Azure AI Foundry（微软用于构建和管理 AI 应用程序和代理的平台）的产品。对于其中许多工具和服务，配置它们只需集成一个模型上下文协议 (MCP) 服务器。
+
+微软还在采用一种新策略，通过在其自己的产品中直接展示其合作伙伴的“上下文相关”云解决方案、AI 应用程序和代理，从而将潜在客户带到这些解决方案。例如，在 Azure AI Foundry 中，该公司可能会突出显示特定的模型和工具。
+
+该公司还向可能希望将其集成到自己市场中的合作伙伴开放其市场。Arrow、Crayon、Ingram Micro、Pax8 和 TD SYNNEX 是该计划的首批合作伙伴。
+
+“有许多不同规模的客户会通过渠道合作伙伴购买，他们将作为该市场的一部分——以及来自这些合作伙伴的解决方案——获得对 Microsoft Marketplace 组件的访问，”Belikoff 解释说。
+
+尽管这个新市场现在结合了 AI 和非 AI 应用程序和服务，但 AI 似乎正在推动市场增长的很大一部分。微软表示，仅在本财年，通过该渠道购买 AI 产品的客户数量就已经增长了两倍。

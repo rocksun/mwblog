@@ -1,4 +1,3 @@
-
 <!--
 title: RAG AI赋能：遗留代码安全维护实战指南
 cover: https://cdn.thenewstack.io/media/2025/09/4c7b5de8-rag-poweredai-safer-legacy-code.jpg
