@@ -1,4 +1,3 @@
-
 <!--
 title: DBOS：十倍代码精简，应用稳如磐石！
 cover: https://cdn.prod.website-files.com/672411cbf038560468c9e68f/67dbba9ed505e94c43290996_Durable-Execution-DBOS-vs-Temporal.jpg
