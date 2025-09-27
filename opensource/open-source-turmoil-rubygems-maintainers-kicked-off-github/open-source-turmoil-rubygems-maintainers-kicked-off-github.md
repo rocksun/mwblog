@@ -1,4 +1,3 @@
-
 <!--
 title: 开源巨震：RubyGems维护者遭GitHub“驱逐”
 cover: https://cdn.thenewstack.io/media/2025/09/aadbed77-ruby_gems_debate.jpg
