@@ -1,4 +1,3 @@
-
 <!--
 title: 规模一致性：Temporal与YugabyteDB的统一之道
 cover: https://cdn.thenewstack.io/media/2025/09/f10a1884-twothings.jpg
