@@ -1,4 +1,3 @@
-
 <!--
 title: OpenSSF专家解读CISA SBOM最低元素更新
 cover: https://cdn.thenewstack.io/media/2025/09/7e80988c-sboms.png
