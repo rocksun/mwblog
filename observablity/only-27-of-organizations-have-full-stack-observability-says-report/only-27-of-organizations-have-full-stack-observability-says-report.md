@@ -1,4 +1,3 @@
-
 <!--
 title: 报告称仅27%的组织拥有全栈可观测性
 cover: https://cdn.thenewstack.io/media/2025/09/0d511be5-full-stack-observability-2.jpg
