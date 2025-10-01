@@ -1,4 +1,3 @@
-
 <!--
 title: 前端为何必须拥抱平台工程？
 cover: https://cdn.thenewstack.io/media/2025/09/e2d36e8d-frontend_platform_engineering.jpg
