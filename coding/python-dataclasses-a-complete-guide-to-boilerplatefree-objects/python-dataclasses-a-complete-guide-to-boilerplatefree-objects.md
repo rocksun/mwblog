@@ -1,4 +1,3 @@
-
 <!--
 title: Python 数据类：告别样板代码，轻松构建高效对象
 cover: https://cdn.thenewstack.io/media/2025/09/f275b82a-henry-lai-qu14c53dmtg-unsplash-1.jpg

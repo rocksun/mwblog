@@ -1,4 +1,3 @@
-
 <!--
 title: 缓存六计：延迟与复杂性之间的权衡
 cover: https://cdn.thenewstack.io/media/2025/08/9d8cade8-datacenter.jpg

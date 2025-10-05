@@ -1,4 +1,3 @@
-
 <!--
 title: Anthropic 重磅发布 Claude Sonnet 4.5
 cover: https://cdn.thenewstack.io/media/2025/09/16ef92f1-sonnet-4.5.png

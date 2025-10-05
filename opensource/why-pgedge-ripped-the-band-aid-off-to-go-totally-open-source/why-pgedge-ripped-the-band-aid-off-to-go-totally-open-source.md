@@ -1,4 +1,3 @@
-
 <!--
 title: pgEdge为何壮士断腕，彻底开源？
 cover: https://cdn.thenewstack.io/media/2025/09/cb49d210-coding123.jpeg

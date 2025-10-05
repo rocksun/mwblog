@@ -1,4 +1,3 @@
-
 <!--
 title: Oreon Linux：能否成为真正的红帽企业版替代品？
 cover: https://cdn.thenewstack.io/media/2025/09/d5e221f8-oreonhero.jpg
