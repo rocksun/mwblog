@@ -1,7 +1,6 @@
-
 <!--
 title: 基于GitOps的平台工程：Crossplane与ArgoCD实战
-cover: ./cover.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1759644751/wh0xexxqsyh1kqg1nwhg.png
 summary: Crossplane结合ArgoCD，通过抽象和自助服务，简化了云基础设施（如EKS）的管理与创建，提升开发效率和成本效益。
 -->
 
