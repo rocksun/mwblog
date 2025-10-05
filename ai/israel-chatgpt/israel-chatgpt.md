@@ -1,4 +1,3 @@
-
 <!--
 title: 以色列欲训练ChatGPT，使其立场更“以色列”
 cover: https://responsiblestatecraft.org/media-library/israel-ai.jpg?id=61670546&width=1200&height=600&coordinates=0%2C140%2C0%2C141
