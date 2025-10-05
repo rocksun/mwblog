@@ -1,4 +1,3 @@
-
 <!--
 title: 凤凰创始人力挺：Elixir才是AI编程的最佳语言！
 cover: https://cdn.thenewstack.io/media/2025/10/63e5e3f7-chris_mccord_elixirconf.jpg
