@@ -1,4 +1,3 @@
-
 <!--
 title: 别再忽视浏览器：十年前端巨变的序幕
 cover: https://cdn.thenewstack.io/media/2025/10/c4c7c542-mohammad-mardani-p0dniqi1upw-unsplashb.jpg
