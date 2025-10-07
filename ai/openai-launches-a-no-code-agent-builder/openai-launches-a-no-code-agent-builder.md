@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI重磅推出：无代码智能体构建器！
 cover: https://cdn.thenewstack.io/media/2025/10/23dcea28-img_2585-scaled.jpg
