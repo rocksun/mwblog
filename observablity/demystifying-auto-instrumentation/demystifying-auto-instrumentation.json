@@ -1,0 +1,1 @@
+{"url":"https://opentelemetry.io/blog/2025/demystifying-auto-instrumentation/","title":"Demystifying Automatic Instrumentation: How the Magic Actually Works","author":"[no-author]","summary":"","cover":"https://opentelemetry.io/img/social/logo-wordmark-001.png","zh_title":"自动化埋点揭秘：这“魔法”究竟如何运作？","zh_summary":"本文揭示了自动插码的五大核心技术：猴子补丁、字节码插码、编译时插码、eBPF和语言运行时API，无需修改源码即可增强可观测性。"}
