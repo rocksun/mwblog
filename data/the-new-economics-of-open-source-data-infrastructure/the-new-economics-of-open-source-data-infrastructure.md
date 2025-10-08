@@ -1,4 +1,3 @@
-
 <!--
 title: 开源数据基建：新经济浪潮
 cover: https://cdn.thenewstack.io/media/2025/10/b3d03b97-data.jpg
