@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI发布ChatGPT应用SDK：开启全新应用平台
 cover: https://cdn.thenewstack.io/media/2025/10/82da0b39-apps-sdk-altman.jpg
