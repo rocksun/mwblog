@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者不信AI，反而是好事！
 cover: https://cdn.thenewstack.io/media/2025/10/2b4ac029-rahul-mishra-8pmt3j_gxja-unsplash-scaled.jpg
