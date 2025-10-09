@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes有状态应用备份与恢复实战
 cover: https://cdn.thenewstack.io/media/2025/10/cccaf292-kubernetes-stateful-backup-recovery.jpg
