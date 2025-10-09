@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者平台设计：3大黄金准则
 cover: https://cdn.thenewstack.io/media/2025/10/07d6e3ca-russell_miles_platform_engineering.jpg
