@@ -1,4 +1,3 @@
-
 <!--
 title: IDP与AI：平台工程的“民主化”革命
 cover: https://cdn.thenewstack.io/media/2025/10/89ff9ba8-self-service2.png
