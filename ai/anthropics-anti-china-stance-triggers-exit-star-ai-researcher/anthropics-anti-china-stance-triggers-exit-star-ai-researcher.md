@@ -1,4 +1,3 @@
-
 <!--
 title: Anthropic“反华”立场惹争议，明星AI研究员愤而离职
 cover: https://cdn.i-scmp.com/sites/default/files/styles/og_image_scmp_generic/public/d8/images/canvas/2025/10/08/5d0af9a7-05cf-4002-8cdd-696a3c1add0e_4a8750a0.jpg?itok=ZmNt9Qju&v=1759910231
