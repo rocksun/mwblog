@@ -1,4 +1,3 @@
-
 <!--
 title: 别只做“Rails开发”：驾驭职业风险，拓展职业边界
 cover: https://cdn.thenewstack.io/media/2025/10/71c898ab-victoria-priessnitz-ehpih0l5bjw-unsplashb.jpg
