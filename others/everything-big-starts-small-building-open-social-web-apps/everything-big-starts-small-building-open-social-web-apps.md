@@ -1,4 +1,3 @@
-
 <!--
 title: 千里之行，始于足下：打造开放社交Web应用
 cover: https://cdn.thenewstack.io/media/2025/10/7be9a070-getty-images-jqokwlzwrbk-unsplashb.jpg
