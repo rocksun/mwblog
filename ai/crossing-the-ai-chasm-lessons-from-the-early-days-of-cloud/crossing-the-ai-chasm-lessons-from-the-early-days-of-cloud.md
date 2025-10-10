@@ -1,4 +1,3 @@
-
 <!--
 title: 跨越AI鸿沟：从云计算早期看未来
 cover: https://cdn.thenewstack.io/media/2025/10/834d388b-chasm.jpg

@@ -1,0 +1,60 @@
+
+<!--
+title: Tasklet：智能体时代的“IFTTT”
+cover: https://cdn.thenewstack.io/media/2025/10/3de75502-carl-heyerdahl-ke0nc8-58mq-unsplash-scaled.jpg
+summary: Tasklet.ai通过聊天构建AI代理，无需代码。它专注于个人/团队效率，结合自动化与代理功能，通过描述性指令创建工作流，并独有计算机使用代理能力，实现复杂任务自动化。
+-->
+
+Tasklet.ai通过聊天构建AI代理，无需代码。它专注于个人/团队效率，结合自动化与代理功能，通过描述性指令创建工作流，并独有计算机使用代理能力，实现复杂任务自动化。
+
+> 译自：[Tasklet Is IFTTT for the Agentic Age](https://thenewstack.io/tasklet-is-ifttt-for-the-agentic-age/)
+> 
+> 作者：Frederic Lardinois
+
+市场上有许多工具可以让你构建AI代理。也许你用过AWS AgentCore、Crew.ai、n8n，甚至是本周早些时候发布的[OpenAI Agent Builder](https://thenewstack.io/openai-launches-a-no-code-agent-builder/)。
+
+[Tasklet.ai](https://tasklet.ai/)于今日结束测试版发布，它与那些工具截然不同。
+
+你无需使用代码或图形化的拖放界面，而是通过与代理聊天来创建它。Tasklet由[Shortwave电子邮件客户端](https://thenewstack.io/how-shortwave-wants-to-reinvent-email-with-ai/)背后的团队开发，更侧重于个人和团队生产力，而不是构建由复杂数据管道支持的企业代理（尽管它也明确旨在成为一种商业工具，路线图上包含了日志记录、安全控制和成本管理等企业功能）。
+
+对我来说，它更像是IFTTT或Zapier这类自动化服务（因为它专注于自动触发工作流）与代理构建器之间的结合。
+
+[![Tasklet AI界面的截图。](https://cdn.thenewstack.io/media/2025/10/93590ca0-tasklet-2.png)](https://cdn.thenewstack.io/media/2025/10/93590ca0-tasklet-2.png)
+
+正如Tasklet/Shortwave首席执行官Andrew Lee告诉我的，团队在这个想法上已经努力了一段时间，但最初的重点是将部分功能添加到内置AI聊天的Shortwave电子邮件客户端中。用户不断告诉团队，他们经常希望运行相同的查询，而不想一遍又一遍地在聊天框中输入。随着团队的深入开发，他们意识到他们正在构建的可能是一个更通用的工具，尤其是在模型已经变得如此智能的现在。
+
+“我认为我们发现的关键是，如果你看看Zapier、n8n，甚至是OpenAI周一发布的AgentKit，它们都具有AI功能，但它们是一个代码定义的工作流，将整个过程包裹起来，然后AI在其中，”Lee解释说，“如果你反过来思考，说，如果工作流消失了呢？你只让代理自行判断该做什么。我认为过去人们会争辩说：这不够可靠，因为模型不够智能。但我认为现在的模型已经足够智能了。”
+
+## 触发器
+
+为了启动工作流，Tasklet使用触发器。这可以是应用程序中的一个动作或事件，例如Gmail中收到新邮件、HubSpot中添加新联系人、计时器（每15分钟），或者你可以设置代理来响应来自外部服务的webhook。
+
+## 构建工作流
+
+实际上，这意味着构建代理的工作流就像在聊天框中描述你的需求一样简单。也许你想在Gmail中将一封邮件标记为待办事项时启动一个特定的工作流。这可能包括检查收件箱中关于此主题的旧邮件，在网上搜索更多信息，然后汇总所有内容并将其放入Todoist任务中。或者你可以让Tasklet在日历上的每次会议前一小时发送一份简报文件，并将其发送到Slack。
+
+[![Tasklet AI设置Gmail集成的截图。](https://cdn.thenewstack.io/media/2025/10/ce105dd6-tasklet.png)](https://cdn.thenewstack.io/media/2025/10/ce105dd6-tasklet.png)
+
+例如，我已将其设置为向我发送关于夜间收到的邮件的早间简报。但你可以轻松构思一个工作流，当收到来自尚未在CRM中的新联系人的邮件时，自动更新HubSpot。或者如果你是一名开发人员，你可以设置一个代理，查看你在GitHub或Linear中记录的工作，进行编译，并在Slack中创建帖子以更新你的经理。
+
+这些代理将对任务进行推理，在出现故障时重试，并且与更脆弱的工作流自动化工具不同，它们会在情况变化时自动适应。
+
+代理显然会在后台工作，但在你设置它们时，你可以随时查看它们的推理过程，并在必要时调整你的提示。
+
+正如Lee告诉我的，Tasklet开箱即用，可以连接到数千个应用程序，这得益于使用[Pipedream](https://pipedream.com/)作为其集成服务。该服务还可以连接到任何MCP服务器，但他同时指出，如今模型在处理API方面表现出色，因此通常直接使用API会更容易。
+
+## 没有API？Tasklet会使用计算机？
+
+不过，Tasklet更巧妙的一个技巧是，它还内置了一个由公司自己构建的计算机使用代理。当代理需要使用浏览器时——可能因为没有可用的API，或者内置的网页浏览器工具被阻止——Tasklet会在谷歌云中启动一个虚拟机（使用Ubuntu），并利用计算机视觉为你开始浏览。
+
+该计算机在会话之间保持持久性，因此如果你在那里登录了一个服务，代理之后就能再次使用它。这总是会比使用API慢，但它确实有效。我注意到这台计算机也为你提供了终端访问权限，因此你可以用它做的事情几乎没有限制。
+
+[![](https://cdn.thenewstack.io/media/2025/10/97705374-screenshot-2025-10-09-at-9.32.55%E2%80%AFam.png)](https://cdn.thenewstack.io/media/2025/10/97705374-screenshot-2025-10-09-at-9.32.55%E2%80%AFam.png)
+
+运行所有这些代理并不便宜。需要进行大量的推理，这会消耗相当多的token。尽管如此，Tasklet提供了一个免费但有限的套餐，至少目前它使用与付费套餐相同的模型。
+
+不过，该[免费套餐](https://tasklet.ai/pricing)不提供计算机使用权限，你很可能会经常超出每日使用配额。在免费套餐中，你也不能选择不与Tasklet团队分享你的聊天记录。
+
+付费计划起价为每月35美元，提供更高的使用限制、一个计算机使用实例的权限、选择不与Tasklet共享数据的功能以及处理文件时更高的上传限制。在每月100美元和250美元的套餐中，所有这些限制都会提高，并且随着时间的推移，Tasklet还将为用户提供更智能的语言模型。
+
+“现实是它的运行成本非常高，”Lee告诉我。“基本上，我们只是收取高昂的费用。我们有一批测试用户已经在使用[更昂贵的]计划，我向商业用户提出的主要观点是，这会比使用Zapier之类的服务贵得多，但它会强大得多。”
