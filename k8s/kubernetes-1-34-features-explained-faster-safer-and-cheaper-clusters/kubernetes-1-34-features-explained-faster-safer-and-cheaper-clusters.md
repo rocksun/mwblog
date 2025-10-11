@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes 1.34：智能扩缩，强化基建
 cover: https://scaleops.com/wp-content/uploads/2025/10/Group-1000002647.png
