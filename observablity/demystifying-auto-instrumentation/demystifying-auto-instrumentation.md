@@ -1,4 +1,3 @@
-
 <!--
 title: 自动化埋点揭秘：这“魔法”究竟如何运作？
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
