@@ -1,4 +1,3 @@
-
 <!--
 title: 如何量化AI组织影响：价值衡量与效益评估
 cover: https://cdn.thenewstack.io/media/2025/10/e1569693-van-tay-media-s2-akdwqoq-unsplash-scaled.jpg
