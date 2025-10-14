@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI 欲将 ChatGPT 打造为未来操作系统
 cover: https://cdn.thenewstack.io/media/2025/10/80987166-aron-yigin-4g4h2lua41u-unsplash-c.jpg
