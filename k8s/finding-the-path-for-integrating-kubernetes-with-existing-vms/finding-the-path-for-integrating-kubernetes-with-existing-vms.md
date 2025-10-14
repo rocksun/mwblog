@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes 融合现有虚机：路径探索与实践
 cover: https://cdn.thenewstack.io/media/2025/10/b2cddd08-fall.jpeg
