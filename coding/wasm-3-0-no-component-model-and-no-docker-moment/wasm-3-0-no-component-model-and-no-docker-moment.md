@@ -1,4 +1,3 @@
-
 <!--
 title: Wasm 3.0：无组件模型，难迎“Docker时刻”
 cover: https://cdn.thenewstack.io/media/2025/10/56fea580-brett-jordan-xp9wozf92jw-unsplash.jpg
