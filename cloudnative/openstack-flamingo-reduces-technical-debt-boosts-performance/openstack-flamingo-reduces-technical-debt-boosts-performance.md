@@ -1,4 +1,3 @@
-
 <!--
 title: OpenStack Flamingo：轻装上阵，性能腾飞！
 cover: https://cdn.thenewstack.io/media/2025/10/865539dd-openstack-flamingo-2.jpg
