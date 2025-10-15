@@ -1,4 +1,3 @@
-
 <!--
 title: 25年前她预警硅谷，我们为何置若罔闻？
 cover: https://www.thenerdreich.com/content/images/2025/09/NEW.111113.Borsook-1.webp
