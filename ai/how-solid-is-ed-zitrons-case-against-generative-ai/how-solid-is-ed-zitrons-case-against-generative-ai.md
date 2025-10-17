@@ -1,4 +1,3 @@
-
 <!--
 title: Ed Zitron的“反生成式AI”论点，究竟有多站得住脚？
 cover: https://cdn.thenewstack.io/media/2025/10/957c397b-pumpkins-david-cassel-2.jpg
