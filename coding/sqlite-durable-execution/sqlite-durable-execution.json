@@ -1,0 +1,1 @@
+{"url":"https://threedots.tech/post/sqlite-durable-execution/","title":"Durable Background Execution with Go and SQLite","author":"Dima Kotik","summary":"","cover":"https://threedots.tech/images/covers/sqlite-durable-execution-social.png","zh_title":"Go与SQLite：打造永不中断的持久化后台执行","zh_summary":"持久执行保证程序输出正确，业务应用需将输入写入持久存储，结合幂等性与原子性实现。Watermill SQLite 后端是实现持久性的良好选择。"}
