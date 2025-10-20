@@ -1,4 +1,3 @@
-
 <!--
 title: 当可观测性困于过去，你的用户却已走得很远！
 cover: https://cdn.thenewstack.io/media/2025/10/ae7d13fa-observe.jpeg
