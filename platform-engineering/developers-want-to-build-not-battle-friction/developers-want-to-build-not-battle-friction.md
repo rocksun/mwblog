@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者只想构建，而非内耗
 cover: https://cdn.thenewstack.io/media/2025/10/e9c28b0b-build12.jpg
