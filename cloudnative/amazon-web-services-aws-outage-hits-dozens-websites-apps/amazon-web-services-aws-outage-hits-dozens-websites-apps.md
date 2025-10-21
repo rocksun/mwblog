@@ -1,0 +1,62 @@
+
+<!--
+title: 亚马逊AWS大宕机揭示：专家称少数巨头掌控下，网民“任人宰割”
+cover: https://i.guim.co.uk/img/media/2043251fecc4cb433acb94649126fd2555f30433/509_0_5031_4024/master/5031.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=cc5a8f97169ffb7f493bf0190eb4f940
+summary: 亚马逊AWS故障致全球网站应用瘫痪。专家警告过度依赖少数科技公司风险，呼吁云计算多元化，此为内部IT问题。
+-->
+
+亚马逊AWS故障致全球网站应用瘫痪。专家警告过度依赖少数科技公司风险，呼吁云计算多元化，此为内部IT问题。
+
+> 译自：[Amazon Web Services outage shows internet users ‘at mercy’ of too few providers, experts say](https://www.theguardian.com/technology/2025/oct/20/amazon-web-services-aws-outage-hits-dozens-websites-apps)
+> 
+> 作者：Dan Milmo 和 Graeme Wearden
+
+专家警告称，在全球互联网运营方面过度依赖少数几家公司存在风险，此前亚马逊的云计算服务出现故障，导致全球范围内的应用程序和网站瘫痪。
+
+受影响的平台包括[Snapchat](https://www.theguardian.com/technology/snapchat)、Roblox、Signal和Duolingo，以及亚马逊旗下的一系列业务，包括其主要零售网站和Ring门铃公司。
+
+据监测互联网中断情况的网站Downdetector称，全球有2000多家公司受到影响，用户报告了810万个问题，其中美国有190万个，英国有100万个，澳大利亚有41.8万个。
+
+许多网站在几个小时后恢复，但有些网站在当天持续出现问题。到周一晚上，亚马逊[表示](https://health.aws.amazon.com/health/status)其所有云服务均已“恢复正常运行”。
+
+在英国，劳埃德银行及其子公司哈利法克斯银行和苏格兰银行受到影响，周一早上也出现了无法访问英国税务海关总署网站的问题。同样在英国，Ring用户在社交媒体上抱怨他们的门铃无法正常工作。
+
+仅在英国，各个应用程序的问题报告就达到每个平台数万起。全球其他受影响的平台包括Wordle、Coinbase、Duolingo、Slack、Pokémon Go、Epic Games、PlayStation Network和Peloton。
+
+到英国时间上午10点30分，亚马逊报告称，大约上午8点首次出现的问题正在解决，AWS“显示出明显的恢复迹象”。
+
+然而，在英国上午晚些时候报告了进一步的积极进展后，亚马逊在当天下午似乎仍在努力克服这一故障，因为它承认仍然存在较多的错误。
+
+AWS在大约太平洋时间上午7点和英国时间下午3点发布的一份更新中表示：“我们可以确认多个服务存在严重的API错误和连接问题……我们正在调查。”
+
+为帮助恢复，AWS表示正在对其平台上的请求数量设置限制。
+
+专家表示，此次中断凸显了互联网对少数科技公司过度依赖的危险，亚马逊、微软和谷歌在云市场中扮演着关键角色。
+
+人权组织Article 19的数字部门负责人Corinne Cath-Speth博士表示：“我们迫切需要云计算的多元化。支撑民主对话、独立新闻和安全通信的基础设施不能依赖于少数几家公司。”
+
+支持欧洲主权技术框架智库未来技术研究所（Future of Technology Institute）执行董事Cori Crider表示：“英国不能继续将其关键基础设施置于美国科技巨头的摆布之下。随着亚马逊网络服务中断，我们看到从银行到通信的现代经济都陷入了停滞。”
+
+伦敦大学学院全球政治与网络安全教授Madeline Carr表示，关于全球互联网过度依赖少数几家公司的警告，“很难不表示认同”。
+
+“反驳的观点是，正是这些大型的超规模公司拥有财力来提供安全、全球化和有韧性的服务。但这些公司之外的大多数人会认为，这对世界来说是一个危险的境地。”
+
+去年，全球机场、医疗保健服务和企业都遭遇了“历史上最大规模的中断”，原因是网络安全公司CrowdStrike的一次拙劣的软件升级，[影响了微软的Windows操作系统](https://www.theguardian.com/australia-news/article/2024/jul/19/microsoft-windows-pcs-outage-blue-screen-of-death)。
+
+亚马逊报告称，周一的问题起源于美国东海岸的亚马逊网络服务（Amazon Web Services），该部门为许多公司提供重要的网络基础设施，这些公司租用亚马逊服务器上的空间。AWS是全球最大的云计算平台。
+
+周一午夜刚过（美国太平洋夏令时间，即英国夏令时上午8点），亚马逊证实美国东海岸某地区的AWS服务出现了“错误率和延迟增加”的情况。连锁反应波及全球服务，Downdetector报告称多个大洲的相同网站出现问题。
+
+思科的Thousand Eyes，一项[追踪互联网中断](https://www.thousandeyes.com/outages/)的服务，也报告称周一早上问题激增，其中许多位于弗吉尼亚州，即亚马逊US-East-1区域所在地，AWS表示问题始于此处，并且AWS在此处拥有多个数据中心。
+
+专家表示，此次中断似乎是IT问题而非网络攻击。AWS的在线健康仪表板提到了DynamoDB，这是AWS客户存储数据的数据库系统。亚马逊似乎排除了恶意行为，称根本原因是一个内部子系统，该系统负责监控其负载均衡器，以防止流量使服务器过载。
+
+伦敦大学学院安全工程教授Steven Murdoch表示：“这起事件似乎是AWS内部的某种意外造成的，而不是任何恶意意图的结果。”
+
+英国政府表示正在就此次中断与亚马逊保持联系。
+
+一位发言人表示：“我们已了解到影响亚马逊网络服务以及依赖其基础设施的多个在线服务的事件。通过我们既定的事件响应安排，我们正在与该公司保持联系，他们正在努力尽快恢复服务。”
+
+英国下议院财政委员会已致函财政部经济秘书Lucy Rigby，询问政府为何尚未将亚马逊指定为英国金融服务业的“关键第三方”——这将使这家科技公司受到金融监管审查。
+
+委员会主席Meg Hillier指出，亚马逊最近曾告诉委员会，金融服务客户正在使用AWS来支持他们的“韧性”，并且AWS提供了“多层保护”。

@@ -1,4 +1,3 @@
-
 <!--
 title: AWS美东大宕机：线上服务“乱”成一锅粥
 cover: https://regmedia.co.uk/2020/11/30/shutterstock_broken_cloud_outage.jpg
