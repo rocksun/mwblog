@@ -1,4 +1,3 @@
-
 <!--
 title: Block狂飙！两月让1.2万员工变身AI高手
 cover: https://cdn.thenewstack.io/media/2025/10/9dfa3b0a-alex-kotliarskyi-qbpzgqemskg-unsplash-1.jpg
