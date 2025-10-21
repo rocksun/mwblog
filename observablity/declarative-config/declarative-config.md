@@ -1,4 +1,3 @@
-
 <!--
 title: 声明式配置之旅：为何链路追踪花了五年才“无视”健康检查？
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
