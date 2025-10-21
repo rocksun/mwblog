@@ -1,4 +1,3 @@
-
 <!--
 title: MCP与API网关：不可互换的各自定位
 cover: https://cdn.thenewstack.io/media/2025/10/2d9e530c-gateway12.jpg
