@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes：从集市联邦到AI新纪元
 cover: https://cdn.thenewstack.io/media/2025/10/88cf1887-bazaar.jpg
