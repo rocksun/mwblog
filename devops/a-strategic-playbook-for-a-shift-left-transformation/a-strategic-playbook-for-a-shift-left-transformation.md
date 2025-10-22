@@ -1,4 +1,3 @@
-
 <!--
 title: 战略左移：转型实战手册
 cover: https://cdn.thenewstack.io/media/2025/10/5de80f0c-left.jpg
