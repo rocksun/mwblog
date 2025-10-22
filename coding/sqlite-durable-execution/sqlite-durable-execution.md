@@ -1,4 +1,3 @@
-
 <!--
 title: Go与SQLite：打造永不中断的持久化后台执行
 cover: https://threedots.tech/images/covers/sqlite-durable-execution-social.png
