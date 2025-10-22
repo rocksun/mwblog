@@ -1,4 +1,3 @@
-
 <!--
 title: React 基金会负责人：框架未来何去何从？
 cover: https://cdn.thenewstack.io/media/2024/09/b6631870-react-shatter-1200.png
