@@ -1,4 +1,3 @@
-
 <!--
 title: GenAI：唤醒企业的“自我意识”
 cover: https://cdn.thenewstack.io/media/2025/10/cedcf3e3-reflection.jpeg
