@@ -1,4 +1,3 @@
-
 <!--
 title: 虚机容器大融合：单一平台挑战何解？
 cover: https://cdn.thenewstack.io/media/2025/10/54707da5-merge.jpg
