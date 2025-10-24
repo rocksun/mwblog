@@ -1,4 +1,3 @@
-
 <!--
 title: 亚马逊AWS大宕机揭示：专家称少数巨头掌控下，网民“任人宰割”
 cover: https://i.guim.co.uk/img/media/2043251fecc4cb433acb94649126fd2555f30433/509_0_5031_4024/master/5031.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=cc5a8f97169ffb7f493bf0190eb4f940
