@@ -1,4 +1,3 @@
-
 <!--
 title: AI智能体终将吞噬企业软件，但绝非一蹴而就。
 cover: https://cdn.thenewstack.io/media/2025/10/9c9c5c94-shamin-haky-rik-i9rxpao-unsplash-2-scaled.jpg
