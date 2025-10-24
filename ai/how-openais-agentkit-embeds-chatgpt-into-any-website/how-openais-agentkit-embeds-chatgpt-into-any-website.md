@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI AgentKit：让ChatGPT无缝融入任何网站
 cover: https://cdn.thenewstack.io/media/2025/10/ae26819a-curated-lifestyle-i0i9xgmky-o-unsplashb.jpg
