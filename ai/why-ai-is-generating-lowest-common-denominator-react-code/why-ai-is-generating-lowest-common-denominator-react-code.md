@@ -1,4 +1,3 @@
-
 <!--
 title: AI为何只生成“平庸”的React代码？
 cover: https://cdn.thenewstack.io/media/2025/10/e76690bf-react.jpg
