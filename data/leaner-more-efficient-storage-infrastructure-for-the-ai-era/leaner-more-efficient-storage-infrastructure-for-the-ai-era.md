@@ -1,4 +1,3 @@
-
 <!--
 title: 智领AI未来：打造更精简高效的存储基石
 cover: https://cdn.thenewstack.io/media/2025/10/7dcca862-datacenter.jpg
