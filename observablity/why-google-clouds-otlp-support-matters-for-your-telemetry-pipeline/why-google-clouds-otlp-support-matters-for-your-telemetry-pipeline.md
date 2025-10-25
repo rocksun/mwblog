@@ -1,4 +1,3 @@
-
 <!--
 title: 谷歌云OTLP支持：你的遥测管道为何不可或缺？
 cover: https://cdn.thenewstack.io/media/2025/10/aa77c53c-google-cloud-observability-otlp-2.jpg
