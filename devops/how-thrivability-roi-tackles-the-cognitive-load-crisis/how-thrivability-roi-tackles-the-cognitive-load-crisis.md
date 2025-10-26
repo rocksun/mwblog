@@ -1,4 +1,3 @@
-
 <!--
 title: 蓬勃发展投资回报：终结认知负荷危机的利器
 cover: https://cdn.thenewstack.io/media/2025/10/53432a6e-stress1.png
