@@ -1,4 +1,3 @@
-
 <!--
 title: 云原生AI时代：开源，为何亟需MCP这类标准？
 cover: https://cdn.thenewstack.io/media/2025/10/3c5041d3-argocd-mcp-logo-2.png
