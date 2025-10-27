@@ -1,6 +1,6 @@
 <!--
 title: OpenTelemetry赋能WebLogic：可观测性与监控实战指南
-cover: images/Screenshot-2025-05-06-at-10.53.47-AM.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1761417045/r2vnxriukajbabuwcfmm.png
 summary: 本文展示OpenTelemetry如何现代化WebLogic Server与Oracle数据库的可观测性，提供统一遥测数据，以增强性能监控和加速故障排除。
 -->
 
