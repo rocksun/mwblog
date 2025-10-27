@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry 维护者的一天
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
