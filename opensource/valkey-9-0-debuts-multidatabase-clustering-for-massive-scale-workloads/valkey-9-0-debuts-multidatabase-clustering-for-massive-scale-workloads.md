@@ -1,4 +1,3 @@
-
 <!--
 title: Valkey 9.0 重磅发布：多数据库集群，驾驭海量级工作负载！
 cover: https://cdn.thenewstack.io/media/2024/08/ec9588da-valkey.png
