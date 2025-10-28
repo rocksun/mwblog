@@ -1,4 +1,3 @@
-
 <!--
 title: 开发者团队的未来挑战：现在如何超前布局？
 cover: https://cdn.thenewstack.io/media/2025/10/588df88e-future.jpg
