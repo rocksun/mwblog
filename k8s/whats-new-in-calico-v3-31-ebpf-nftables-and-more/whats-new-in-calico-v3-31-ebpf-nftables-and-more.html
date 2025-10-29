@@ -1,0 +1,897 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.4",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),o([])},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();</script>
+  
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <noscript>
+      
+    </noscript>
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <script type="rocketlazyloadscript" async="" data-rocket-src="https://www.googleoptimize.com/optimize.js?id=GTM-WGRHN9W"></script>
+    
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.gstatic.com"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//js.driftt.com">
+	<!-- This site is optimized with the Yoast SEO Premium plugin v26.0 (Yoast SEO v26.0) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Calico v3.31 Release: New Features and Improvements</title>
+<link data-rocket-preload="" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="preload">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" media="all" onload="this.media='all'" rel="stylesheet">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&#038;display=swap"></noscript>
+	<meta name="description" content="Explore the Calico v3.31 release featuring new installation simplifications, improved UI, and enhanced performance.">
+	<link rel="canonical" href="https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="What's New in Calico v3.31? eBPF, NFTables, and More | Tigera - Creator of Calico">
+	<meta property="og:description" content="Explore the Calico v3.31 release featuring new installation simplifications, improved UI, and enhanced performance.">
+	<meta property="og:url" content="https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/">
+	<meta property="og:site_name" content="Tigera - Creator of Calico">
+	<meta property="article:published_time" content="2025-10-25T01:59:07+00:00">
+	<meta property="og:image" content="https://www.tigera.io/app/uploads/2025/10/Whats-New-in-Calico-v3.31.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="628">
+	<meta property="og:image:type" content="image/png">
+	<meta name="author" content="Reza Ramezanpour">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:creator" content="@https://x.com/rezatechadv">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="Reza Ramezanpour">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="6 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"NewsArticle","@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#article","isPartOf":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/"},"author":{"name":"Reza Ramezanpour","@id":"https://www.tigera.io/#/schema/person/ca39256659eada855cdd859f971794cd"},"headline":"What&#8217;s New in Calico v3.31? eBPF, NFTables, and More","datePublished":"2025-10-25T01:59:07+00:00","mainEntityOfPage":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/"},"wordCount":1236,"publisher":{"@id":"https://www.tigera.io/#organization"},"image":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#primaryimage"},"thumbnailUrl":"https://www.tigera.io/app/uploads/2025/10/Whats-New-in-Calico-v3.31.png","keywords":["Release","Project Calico","Announcements"],"articleSection":["Technical Blog"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/","url":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/","name":"Calico v3.31 Release: New Features and Improvements","isPartOf":{"@id":"https://www.tigera.io/#website"},"primaryImageOfPage":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#primaryimage"},"image":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#primaryimage"},"thumbnailUrl":"https://www.tigera.io/app/uploads/2025/10/Whats-New-in-Calico-v3.31.png","datePublished":"2025-10-25T01:59:07+00:00","description":"Explore the Calico v3.31 release featuring new installation simplifications, improved UI, and enhanced performance.","breadcrumb":{"@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#primaryimage","url":"https://www.tigera.io/app/uploads/2025/10/Whats-New-in-Calico-v3.31.png","contentUrl":"https://www.tigera.io/app/uploads/2025/10/Whats-New-in-Calico-v3.31.png","width":1200,"height":628},{"@type":"BreadcrumbList","@id":"https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tigera.io/"},{"@type":"ListItem","position":2,"name":"What&#8217;s New in Calico v3.31? eBPF, NFTables, and More"}]},{"@type":"WebSite","@id":"https://www.tigera.io/#website","url":"https://www.tigera.io/","name":"Tigera - Creator of Calico","description":"Unified network security &amp; observability for Kubernetes","publisher":{"@id":"https://www.tigera.io/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.tigera.io/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.tigera.io/#organization","name":"Tigera - Creator of Calico","url":"https://www.tigera.io/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/#/schema/logo/image/","url":"https://www.tigera.io/app/uploads/2018/08/homepage-social-share-2.png","contentUrl":"https://www.tigera.io/app/uploads/2018/08/homepage-social-share-2.png","width":1200,"height":627,"caption":"Tigera - Creator of Calico"},"image":{"@id":"https://www.tigera.io/#/schema/logo/image/"}},{"@type":"Person","@id":"https://www.tigera.io/#/schema/person/ca39256659eada855cdd859f971794cd","name":"Reza Ramezanpour","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/7e05fba7287ec573941b4a712ba7bb42d8dfd62ac1e2bb9eeaf5b73522184a0c?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/7e05fba7287ec573941b4a712ba7bb42d8dfd62ac1e2bb9eeaf5b73522184a0c?s=96&d=mm&r=g","caption":"Reza Ramezanpour"},"description":"Reza Ramezanpour is a Senior Developer Advocate at Tigera, working to promote the widespread adoption of Kubernetes and Project Calico. With over 15 years of experience in the IT industry, Reza’s expertise ranges from reverse engineering to full stack development. His true passion lies in education, which is why he is committed to creating captivating and informative materials that enable learners to develop a deep affection for the world of IT.","sameAs":["https://linkedin.com/in/rramezanpour/","https://x.com/https://x.com/rezatechadv"],"jobTitle":"Senior Developer Advocate","url":"https://www.tigera.io/blog/author/rezar/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel="dns-prefetch" href="//info.tigera.io">
+<link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Tigera - Creator of Calico » Feed" href="https://www.tigera.io/feed/">
+<link rel="alternate" type="application/rss+xml" title="Tigera - Creator of Calico » Comments Feed" href="https://www.tigera.io/comments/feed/">
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel="stylesheet" id="enlighterjs-css" href="https://www.tigera.io/app/plugins/enlighter/cache/enlighterjs.min.css?ver=kRtFLEJRvr79viJ" media="all">
+<link data-minify="1" rel="stylesheet" id="tigera-2021-theme-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/tigera.css?ver=1761289231" media="all">
+<link data-minify="1" rel="stylesheet" id="webstick-css-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/webstick.css?ver=1761289231" media="all">
+<link data-minify="1" rel="stylesheet" id="single-post-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/single-post.css?ver=1761289238" media="all">
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/js/webstick.js?ver=1761289231" id="webstick-script-js" data-rocket-defer="" defer=""></script>
+<link rel="https://api.w.org/" href="https://www.tigera.io/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.tigera.io/wp-json/wp/v2/posts/64384"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.tigera.io/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.8.3">
+<link rel="shortlink" href="https://www.tigera.io/?p=64384">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.tigera.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tigera.io%2Fblog%2Fwhats-new-in-calico-v3-31-ebpf-nftables-and-more%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.tigera.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tigera.io%2Fblog%2Fwhats-new-in-calico-v3-31-ebpf-nftables-and-more%2F&amp;format=xml">
+<meta name="generator" content="Elementor 3.32.3; features: additional_custom_breakpoints; settings: css_print_method-internal, google_font-enabled, font_display-swap">
+<link rel="search" type="application/opensearchdescription+xml" title="Search Tigera - Creator of Calico" href="https://www.tigera.io/wp-json/opensearch/1.1/document">			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-270x270.png">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+    
+
+    <script type="rocketlazyloadscript">
+      // Keeping while we test GTM deactivation.
+      setTimeout(function () {
+        var s = document.createElement('script')
+        s.type = 'text/javascript'
+        s.src = '/app/themes/tigera2021/src/js/vendor/tigera-clym.js'
+        document.head.append(s)
+      }, 10000)
+    </script>
+
+    
+    <script type="rocketlazyloadscript" data-minify="1" async="" data-rocket-src="https://www.tigera.io/app/cache/min/1/kapa-widget.bundle.js?ver=1761289234" data-website-id="4b4bbcee-986a-478e-beb6-73605311953a" data-project-name="Felix" data-modal-title="Felix AI" data-project-color="#F89C1D" data-project-logo="https://www.tigera.io/app/uploads/2021/06/Tigera-orange.png" data-button-hide="false" data-modal-override-open-class="btn--search" data-modal-z-index="9001" data-modal-disclaimer="Felix, powered by AI, answers questions based on content found on tigera.io and in Calico's product documentation.  For more information, [contact us](https://www.tigera.io/contact/)." data-modal-ask-ai-input-placeholder="Ask me about Calico, eBPF, container or Kubernetes security" data-modal-search-input-placeholder="Search by keyword" data-font-family="Poppins,Helvetica Neue,Helvetica,Arial,sans-serif" data-modal-border-radius="6px" data-button-box-shadow="2px 2px 8px rgba(0, 0, 0, 0.2)" data-modal-header-bg-color="#FFFFFF" data-search-mode-enabled="true">
+    </script>
+
+    
+        
+    
+    
+  <meta name="robots" content="index, follow">
+<meta name="generator" content="WP Rocket 3.19.4" data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_desktop"><script type="text/javascript" src="https://a.omappapi.com/app/js/api.min.js" async="" data-user="141683" data-account="154800"></script><link href="https://www.googleoptimize.com" rel="preconnect"></head>
+<body class="wp-singular post-template-default single single-post postid-64384 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-hello-elementor wp-child-theme-tigera2021 hello-elementor-default elementor-default elementor-kit-10">
+<div data-rocket-location-hash="ff134c4bb2957bbb7546a10c5daff1fb" class="menu">
+  <div data-rocket-location-hash="9146f144d11f2694c62b0aabfe937d70" class="section-container flex">
+    <a class="menu-image" href="/">
+      <img title="tigera-logoWhite" width="150" height="30" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png" data-lazy-src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img title="tigera-logoWhite" width="150" height="30" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png"></noscript>
+    </a>
+
+    <div class="menu-hamburger">
+      <div class="menu-hamburger__wrapper" id="menuToggle">
+        <input type="checkbox" class="menu-hamburger__checkbox">
+          <span class="bar-top"></span>
+          <span class="bar-middle"></span>
+          <span class="bar-bottom"></span>
+      </div>
+    </div>
+     <div id="nav-left" class="menu-left"><ul id="menu-main-menu" class="menu-left__list"><li id="menu-item-37708" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37708"><a href="/project-calico/">Project Calico</a></li>
+<li id="menu-item-26542" class="nav-products menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-26542"><a href="#">Products</a>
+<ul class="sub-menu">
+	<li id="menu-item-56616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56616"><a href="https://www.tigera.io/tigera-products/calico/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-calico-os.svg" width="32" height="32" alt="Calico Open Source Icon"><span class="menu-item-title">Calico Open Source</span> <span class="menu-item-description">eBPF-based networking and security</span></a></li>
+	<li id="menu-item-60730" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60730"><a href="/tigera-products/calico-commercial-editions/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-calico-enterprise.svg" width="32" height="32" alt="Calico Commercial Editions Icon"><span class="menu-item-title">Calico Commercial Editions</span> <span class="menu-item-description">Calico Cloud and Calico Enterprise</span></a></li>
+	<li id="menu-item-52045" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52045"><a href="https://www.tigera.io/tigera-products/compare-products/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-compare.svg" width="32" height="32" alt="Compare Products Icon"><span class="menu-item-title">Compare Calico Editions</span></a></li>
+	<li id="menu-item-52046" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52046"><a href="https://www.tigera.io/tigera-products/calico-cloud-pricing/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-pricing.svg" width="32" height="32" alt="Pricing Icon"><span class="menu-item-title">Calico Pricing</span></a></li>
+	<li id="menu-item-56027" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56027"><a href="https://www.tigera.io/tigera-products/why-calico/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-why.svg" width="32" height="32" alt="Why Calico Icon"><span class="menu-item-title">Why Calico</span></a></li>
+</ul>
+</li>
+<li id="menu-item-24609" class="nav-solutions menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24609"><a href="#">Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-24610" class="nav-usecases menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24610"><a>Use Cases</a>
+	<ul class="sub-menu">
+		<li id="menu-item-23794" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-23794"><a href="/tigera-products/kubernetes-network-security/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2023/04/icon-kubernetes-security.svg" width="32" height="32" alt="Kubernetes Security"><span class="menu-item-title">Kubernetes Network Security</span></a>
+		<ul class="sub-menu">
+			<li id="menu-item-59788" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59788"><a href="/tigera-products/ingress-gateway/">Ingress Gateway</a></li>
+			<li id="menu-item-51630" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51630"><a href="/tigera-products/egress-gateway/">Egress Gateway</a></li>
+			<li id="menu-item-46519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46519"><a href="/features/firewall-integration/">Universal Firewall Integration</a></li>
+			<li id="menu-item-48986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48986"><a href="/tigera-products/cluster-mesh/">Cluster Mesh</a></li>
+			<li id="menu-item-63800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63800"><a href="https://www.tigera.io/tigera-products/ai-workloads/">Calico for AI Workloads</a></li>
+			<li id="menu-item-23790" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23790"><a href="/tigera-products/zero-trust-workload-security/">Workload Access Controls</a></li>
+			<li id="menu-item-46518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46518"><a href="/features/microsegmentation/">Microsegmentation</a></li>
+			<li id="menu-item-46523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46523"><a href="/tigera-products/kubernetes-high-availability/">High-Availability Kubernetes</a></li>
+		</ul>
+</li>
+		<li id="menu-item-23788" class="nav-usecases__subitem menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-23788"><a><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2024/07/icon-Intrusion-detection-prevention.svg" width="32" height="32" alt="Intrusion detection prevention"><span class="menu-item-title">Observability &amp; Compliance</span></a>
+		<ul class="sub-menu">
+			<li id="menu-item-39099" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39099"><a href="/features/network-threat-detection/">Network Threat Detection</a></li>
+			<li id="menu-item-39101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39101"><a href="/features/policy-lifecycle-management/">Security Policy Management</a></li>
+			<li id="menu-item-23791" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23791"><a href="/tigera-products/observability-and-troubleshooting/">Observability &amp; Troubleshooting</a></li>
+			<li id="menu-item-34336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34336"><a href="/features/compliance-and-audit/">Compliance</a></li>
+			<li id="menu-item-29128" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29128"><a href="/tigera-products/multi-cloud-security/">Multi-Cloud Security</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li id="menu-item-24611" class="nav-enviroments menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24611"><a>Environments</a>
+	<ul class="sub-menu">
+		<li id="menu-item-29135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29135"><a href="/partners/aws/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-aws.svg" width="32" height="32" alt="AWS EKS"><span class="menu-item-title">AWS EKS</span></a></li>
+		<li id="menu-item-29136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29136"><a href="/partners/microsoft/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-azure.svg" width="32" height="32" alt="Azure AKS"><span class="menu-item-title">Azure AKS</span></a></li>
+		<li id="menu-item-29137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29137"><a href="/partners/google/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-google.svg" width="32" height="32" alt="Google GKE"><span class="menu-item-title">Google GKE</span></a></li>
+		<li id="menu-item-29138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29138"><a href="/partners/redhat/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-redhat.svg" width="32" height="32" alt="Red Hat OpenShift"><span class="menu-item-title">Red Hat OpenShift</span></a></li>
+		<li id="menu-item-29139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29139"><a href="/partners/rancher/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2022/05/icon-SUSE-rancher.svg" width="32" height="32" alt="SUSE Rancher"><span class="menu-item-title">SUSE Rancher</span></a></li>
+		<li id="menu-item-29140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29140"><a href="/partners/fortinet/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-fortinet.svg" width="32" height="32" alt="Fortinet"><span class="menu-item-title">Fortinet</span></a></li>
+		<li id="menu-item-29141" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29141"><a href="/partners/mirantis/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-mirantis.svg" width="32" height="32" alt="Mirantis"><span class="menu-item-title">Mirantis</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-24613" class="nav-learn menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-has-children menu-item-24613"><a href="#">Learn</a>
+<ul class="sub-menu">
+	<li id="menu-item-26535" class="nav-resources menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-26535"><a href="#">Developer Center</a>
+	<ul class="sub-menu">
+		<li id="menu-item-45507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45507"><a href="https://docs.tigera.io/">Documentation</a></li>
+		<li id="menu-item-55759" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55759"><a href="https://www.tigera.io/interactive-training/">Interactive Training</a></li>
+		<li id="menu-item-45181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45181"><a href="https://www.tigera.io/tutorials/">Product Tutorials</a></li>
+		<li id="menu-item-44849" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-44849"><a href="https://www.tigera.io/lp/calico-certification/">Certification</a></li>
+		<li id="menu-item-60941" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60941"><a href="/events/">Events</a></li>
+		<li id="menu-item-59218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59218"><a href="https://www.tigera.io/resources/">Resources</a></li>
+		<li id="menu-item-58644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58644"><a href="https://www.tigera.io/blog/">Blog</a></li>
+	</ul>
+</li>
+	<li id="menu-item--1" class="menu-item learn-menu-banner menu-item--1"><a href="https://link.tigera.io/uiqF1"><span class="flex"><img width="262" height="145" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20262%20145'%3E%3C/svg%3E" class="banner-img" alt="What is New in Calico v3.30" data-lazy-src="https://www.tigera.io/app/uploads/2025/05/learn-menu-banner-Calico-3.30.png"><noscript><img width="262" height="145" src="https://www.tigera.io/app/uploads/2025/05/learn-menu-banner-Calico-3.30.png" class="banner-img" alt="What is New in Calico v3.30"></noscript><span class="content-wrapper"><span class="banner-title">What is New in Calico v3.30<span class="new">NEW</span></span><span class="banner-text">Facing challenges with Kubernetes observability and security? Discover how Calico 3.30’s new features can help in our webinar.</span><span class="banner-learn-more">Learn More &gt;</span></span></span></a></li>
+	<li id="menu-item-29121" class="nav-guides menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-29121"><a>Guides</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35865" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35865"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Security</a>
+		<ul class="sub-menu">
+			<li id="menu-item-34256" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-34256"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Kubernetes Security</a></li>
+			<li id="menu-item-55502" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55502"><a href="https://www.tigera.io/learn/guides/llm-security/">LLM Security</a></li>
+			<li id="menu-item-55774" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55774"><a href="https://www.tigera.io/learn/guides/service-mesh/">Service Mesh</a></li>
+			<li id="menu-item-56457" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56457"><a href="https://www.tigera.io/learn/guides/microservices-security/">Microservices Security</a></li>
+			<li id="menu-item-59014" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59014"><a href="https://www.tigera.io/learn/guides/zero-trust/">Zero Trust</a></li>
+			<li id="menu-item-38334" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-38334"><a href="https://www.tigera.io/learn/guides/cloud-native-security/">Cloud-Native Security</a></li>
+			<li id="menu-item-59403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59403"><a href="https://www.tigera.io/learn/guides/microsegmentation/">Microsegmentation</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li id="menu-item-54074" class="nav-guides menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54074"><a href="#">Guides</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35867" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35867"><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">Observability</a>
+		<ul class="sub-menu">
+			<li id="menu-item-61411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61411"><a href="https://www.tigera.io/learn/guides/observability/">Observability</a></li>
+			<li id="menu-item-30192" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-30192"><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">Kubernetes Monitoring</a></li>
+			<li id="menu-item-34829" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-34829"><a href="https://www.tigera.io/learn/guides/prometheus-monitoring/">Prometheus Monitoring</a></li>
+		</ul>
+</li>
+		<li id="menu-item-35866" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35866"><a href="https://www.tigera.io/learn/guides/kubernetes-networking/">Networking</a>
+		<ul class="sub-menu">
+			<li id="menu-item-35075" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-35075"><a href="https://www.tigera.io/learn/guides/kubernetes-networking/">Kubernetes Networking</a></li>
+			<li id="menu-item-57122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57122"><a href="https://www.tigera.io/learn/guides/cilium-vs-calico/">Cillium vs Calico</a></li>
+			<li id="menu-item-35032" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-35032"><a href="https://www.tigera.io/learn/guides/ebpf/">eBPF</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-37706" class="nav-support menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37706"><a href="#">Support</a>
+<ul class="sub-menu">
+	<li id="menu-item-47374" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47374"><a href="https://www.tigera.io/customer-success/">Customer Success</a></li>
+	<li id="menu-item-37715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37715"><a target="_blank" href="https://support.tigera.io/s/login/">Support Portal</a></li>
+	<li id="menu-item-41533" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41533"><a target="_blank" href="https://www.tigera.io/calico-support/">Tigera Help Center</a></li>
+	<li id="menu-item-58874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58874"><a href="https://www.tigera.io/security-bulletins/">Security Bulletins</a></li>
+	<li id="menu-item-37711" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37711"><a href="/vulnerability-disclosure/">Report Security Issue</a></li>
+</ul>
+</li>
+<li id="menu-item-37736" class="nav-company menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37736"><a href="#">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-54317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54317"><a href="https://www.tigera.io/about/">About</a></li>
+	<li id="menu-item-61245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61245"><a href="/lp/calicocon-2025/">CalicoCon 2025</a></li>
+	<li id="menu-item-50364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50364"><a href="https://www.tigera.io/customer-stories/">Customers</a></li>
+	<li id="menu-item-54323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54323"><a href="https://www.tigera.io/partners/">Partners</a></li>
+	<li id="menu-item-59069" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59069"><a href="https://www.tigera.io/media/">Newsroom</a></li>
+	<li id="menu-item-54327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54327"><a href="https://www.tigera.io/careers/">Careers</a></li>
+	<li id="menu-item-37733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37733"><a href="https://www.tigera.io/contact/">Contact</a></li>
+</ul>
+</li>
+</ul></div>
+    <div data-rocket-location-hash="47313f419fd974d5f72959edff8eafdc" class="menu-right">
+      <ul class="menu-right__list">
+        <li class="btn--search">
+          <a class="" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 19 19" style="width: 17px;">
+              <path d="M13.81 6.91c0 1.52-0.49 2.93-1.33 4.07l4.2 4.2c0.41 0.41 0.41 1.09 0 1.5s-1.09 0.41-1.5 0l-4.2-4.2c-1.14 0.84-2.55 1.33-4.07 1.33C3.09 13.81 0 10.72 0 6.91S3.09 0 6.91 0s6.91 3.09 6.91 6.91zM6.91 11.68a4.78 4.78 0 1 0 0-9.56 4.78 4.78 0 1 0 0 9.56z"></path>
+            </svg>
+          </a>
+        </li>
+      <li class="buttons"><ul id="menu-main-menu-right" class="menu__buttons"><li id="menu-item-43675" class="btn--signin menu-item menu-item-type-post_type menu-item-object-page menu-item-43675"><a href="https://www.tigera.io/contact/">Contact</a></li>
+<li id="menu-item-37646" class="btn--signin menu-item menu-item-type-custom menu-item-object-custom menu-item-37646"><a href="https://www.calicocloud.io/login">Login</a></li>
+<li id="menu-item-37666" class="btn--try menu-item menu-item-type-custom menu-item-object-custom menu-item-37666"><a href="https://www.calicocloud.io"><span class="menu-item-title">Start Free</span></a></li>
+</ul></li>      </ul>
+    </div>
+  </div>
+</div>
+
+<div data-rocket-location-hash="84e5de8417e767b86b47d41e28c2348c" class="posts-banner__wrapper">
+    <div data-rocket-location-hash="014c17b2e5387b77882b537203f566b1" class="posts-banner__container section-container">
+                <div data-rocket-location-hash="d5b19df454895eb5bebcd6639cc4b0d1" class="posts-banner__content">
+                            <div class="posts-banner__terms">
+                                                <span class="technical-blog">
+                                <a href="https://www.tigera.io/category/technical-blog/">Technical Blog</a>
+                            </span>
+                                                            </div>
+                                      <h1>What’s New in Calico v3.31? eBPF, NFTables, and More</h1>
+                        
+                            <span class="post-author">By <a href="https://www.tigera.io/blog/author/rezar/">Reza Ramezanpour</a>
+                                        on Oct 24, 2025 • 8 min read</span>
+                    <div class="share-buttons flex">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="LinkedIn" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button" width="24" height="24" alt="LinkedIn"></noscript>
+        </a>
+        <a href="https://twitter.com/share?url=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;text=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Twitter" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button" width="24" height="24" alt="Twitter"></noscript>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;quote=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Facebook" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button" width="24" height="24" alt="Facebook"></noscript>
+        </a>
+        <a href="https://www.reddit.com/submit?url= https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;title=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Reddit" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button" width="24" height="24" alt="Reddit"></noscript>
+        </a>
+    </div>
+            
+            
+                    </div>
+    </div>
+</div>
+<main data-rocket-location-hash="56922a952f8bdd0ce56ac834fc0eb1ec">
+    <div data-rocket-location-hash="34151a5701bb563b848ed8396a5062d1" class="single-post__wrapper section-container section-wrapper">
+        <div data-rocket-location-hash="6626af708d4ef5f982f09a854f9e9d17" class="two-columns">
+            <div class="single-post__container">
+                                        <article><p>We’re excited to announce the release of Calico v3.31, &nbsp;🎉 which brings a wave of new features and improvements.</p>
+<p>For a quick look, here are the key updates and improvements in this release:</p>
+<ul>
+<li><a href="#calico-nftables">Calico NFTables Dataplane is now Generally Available</a></li>
+<li><a href="#calico-ebpf">Calico eBPF Dataplane Enhancements</a>
+<ul>
+<li><strong>Simplified installation:</strong> new template defaults to <code>eBPF</code>, automatically disables <code>kube-proxy</code> via <code>kubeProxyManagement</code> field, and adds <code>bpfNetworkBootstrap</code> for auto API endpoint detection.</li>
+<li><strong>Configurable cgroupv2 path:</strong> support for immutable OSes (e.g., Talos).</li>
+</ul>
+</li>
+<li><a href="#calico-whisker">Calico Whisker (Observability Stack)</a>
+<ul>
+<li>Improved UI and performance in Calico v3.31.</li>
+<li>New policy trace categories: <strong>Enforced</strong> vs <strong>Pending</strong>.</li>
+<li>Lower memory use, IPv6 fixes, and more efficient flow streaming.</li>
+</ul>
+</li>
+<li><a href="#networking">Networking &amp; QoS</a>
+<ul>
+<li>New bandwidth and packet rate QoS controls across all dataplanes.</li>
+<li>DiffServ (<code>DSCP</code>) support: prioritize traffic by marking packets (e.g., <code>EF</code> for VoIP).</li>
+<li>Introduces new <code>QoSPolicy</code> API for declarative traffic control.</li>
+</ul>
+</li>
+<li><a href="#encapsulation">Encapsulation &amp; Routing</a>
+<ul>
+<li><strong>Tech Preview:</strong> Felix now handles encapsulation routes (<code>IP-in-IP</code>, <code>no-encap</code>) directly — no BIRD required!</li>
+</ul>
+</li>
+<li><a href="#nat-control">NAT Control</a>
+<ul>
+<li>New <code>natOutgoingExclusions</code> config for granular NAT management.</li>
+<li>Choose between <code>IPPoolsOnly</code> or <code>IPPoolsAndHostIPs</code> for flexibility.</li>
+</ul>
+</li>
+<li><a href="#bgp">BGP Enhancements</a>
+<ul>
+<li>Support for custom local ASNs per peer, enabling <code>eBGP</code> and advanced route reflector setups.</li>
+</ul>
+</li>
+<li><a href="#performance">Performance &amp; Usability</a>
+<ul>
+<li>Even faster IP Address Management startup.</li>
+<li>Reduced memory usage and improved selector indexing.</li>
+<li>New <code>calicoctl validate</code> command to validate Calico resources offline and in CI/CD pipelines.</li>
+<li><code>AutoHostEndpoint</code> now supports both <code>InterfaceCIDRs</code> and <code>InterfaceSelectors</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="calico-nftables">Calico NFTables is now Generally Available (GA)!</h2>
+<p><iframe title="04.Migrate to nftables: Let’s Get Ready for the Next Linux Update and Avoid an Outage" width="800" height="450" src="https://www.youtube.com/embed/q68A1PR3G6s?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>We’re excited to announce that Calico’s <code>NFTables</code> data plane is now GA! As more Linux distributions adopt <code>NFTables</code> as the netfilter tool of choice, it’s clear that <code>NFTables</code> is becoming the successor to <code>IPTables</code> in cloud native networking.</p>
+<p>Calico users have already been testing and adopting the <code>NFTables</code> data plane through our tech preview with Calico v3.29, and in this release we are making our <code>nftables</code> data plane GA. Compared to its predecessor, <code>iptables</code>, <code>NFTables</code> brings significant improvements in efficiency and performance by streamlining how networking changes are programmed in the Linux kernel, helping you run Kubernetes networking and security at scale with less overhead.</p>
+<p><img fetchpriority="high" decoding="async" class="alignnone wp-image-64391 size-full" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201162%20704'%3E%3C/svg%3E" alt="kube-proxy ipvs vs nftables latency" width="1162" height="704" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog.png 1162w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-300x182.png 300w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-1024x620.png 1024w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-768x465.png 768w" data-lazy-sizes="(max-width: 1162px) 100vw, 1162px" data-lazy-src="https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog.png"><noscript><img fetchpriority="high" decoding="async" class="alignnone wp-image-64391 size-full" src="https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog.png" alt="kube-proxy ipvs vs nftables latency" width="1162" height="704" srcset="https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog.png 1162w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-300x182.png 300w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-1024x620.png 1024w, https://www.tigera.io/app/uploads/2025/10/kube-proxy-ipvs-vs-nftables-latency-blog-768x465.png 768w" sizes="(max-width: 1162px) 100vw, 1162px" /></noscript></p>
+<p>&nbsp;</p>
+<h2 id="calico-ebpf" style="scroll-margin-top: 90px;">Calico eBPF data plane</h2>
+<p>Calico v3.31 makes installation easier and more automated. The new installation template defaults to the <code>eBPF</code> data plane, automatically disables <code>kube-proxy</code> via the <code>kubeProxyManagement</code> setting, and uses <code>bpfNetworkBootstrap</code> to detect API server endpoints automatically. It also supports dynamic <code>cgroupv2</code> paths, improving compatibility with immutable operating systems like <code>Talos Linux</code>. If you want a step-by-step walkthrough, check out the following video:</p>
+<p><iframe title="05.Migrate to Calico eBPF, and Say Goodbye to kube-proxy" width="800" height="450" src="https://www.youtube.com/embed/bzR5vqk7Fyo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>&nbsp;</p>
+<h3>eBPF based installation resource</h3>
+<p><iframe loading="lazy" title="Replace Kubernetes kube-proxy now!" width="800" height="450" src="https://www.youtube.com/embed/NOxjbnFaZSE?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>With Calico v3.31, installing the <code>eBPF</code> data plane using the Calico Operator on kubeadm-based Kubernetes clusters is now seamless. It no longer requires any manual steps. Simply use the new <code>eBPF</code> installation template.</p>
+<ul>
+<li>📄 <code>eBPF</code> template: A new installation template now defaults to using <code>eBPF</code> as the data plane, reducing manual configuration.</li>
+<li>🔑 New installation options: it’s now simpler to install directly with the <code>eBPF</code> data plane:</li>
+</ul>
+<ol>
+<li><strong><code>kubeProxyManagement</code>:</strong> Automatically disables <code>kube-proxy</code>, since Calico <code>eBPF</code> fully replaces it.</li>
+<li><strong><code>bpfNetworkBootstrap</code>:</strong> In an environment where <code>kube-proxy</code> exists before installing Calico, Calico learns the <code>kubernetes</code> service endpoints and programs the endpoints into the <code>eBPF</code> data plane automatically so that no manual configuration is needed.</li>
+</ol>
+<p>This simplifies the installation/migration process and ensures that Calico’s <code>eBPF</code> data plane is configured optimally with minimal manual steps.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">spec:
+  calicoNetwork:
+    bpfNetworkBootstrap: Enabled
+    kubeProxyManagement: Enabled
+...</pre>
+<h3>Configurable cgroupv2 path</h3>
+<p><iframe loading="lazy" title="How to install Calico On Talos Linux" width="800" height="450" src="https://www.youtube.com/embed/n_OJDubnCII?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>Immutable Linux distributions are becoming increasingly popular, and each has its own way of managing system resources and storage. In Calico v3.31, we’ve added a new Felix configuration field:</p>
+<ul>
+<li><strong><code>cgroupV2Path</code>:</strong> Allows you to specify a custom cgroup mount path, improving <code>eBPF</code> compatibility with immutable OSes such as <code>Talos Linux</code> and others.</li>
+</ul>
+<p>This ensures Calico’s <code>eBPF</code> data plane runs smoothly across a wide range of modern OS environments, making adoption easier and more reliable.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">apiVersion: crd.projectcalico.org/v1
+kind: FelixConfiguration
+metadata:
+ name: default
+spec:
+ cgroupV2Path: "/sys/fs/cgroup"</pre>
+<h2 id="calico-whisker" style="scroll-margin-top: 70px;">Calico Whisker (Calico Observability Stack)</h2>
+<p><iframe loading="lazy" title="03.New Observability Features in Calico Open Source v3.30 aka Whisker" width="800" height="450" src="https://www.youtube.com/embed/gtgUiDsHjYM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>Whisker has quickly become a favourite in our community, with users loving its intuitive UI. In Calico v3.31, we’re taking it a step further by improving UI for policy traces, reduced memory use, IPv6 binding fixes, and more efficient flow streaming in Goldmane. Now, policies evaluated for each flow are clearly categorized into two groups:</p>
+<ul>
+<li><strong>Enforced</strong>: Policies that are currently active and shaping traffic flows.</li>
+<li><strong>Pending</strong>: If a flow matches a staged network policy, then the pending row will be populated by all the policies that could be applied to that flow if the staged network policy is enforced. The policies that would be enforced on any new connections matching this flow, if all staged policies were enforced.</li>
+</ul>
+<p><!--ARCADE EMBED START--></p>
+<div style="position: relative; padding-bottom: calc(55.332725615314494% + 41px); height: 0; width: 100%;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" title="Calico Whisker" src="https://demo.arcade.software/SZ028sCkdnwA8SF1Idlq?embed&amp;embed_mobile=inline&amp;embed_desktop=inline&amp;show_copy_link=true" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
+<h2 id="networking" style="scroll-margin-top: 70px;">Networking</h2>
+<h3>Calico Bandwidth Management Quality of Service (QoS)</h3>
+<p><iframe loading="lazy" title="Network quality of service for kubernetes (QoS)" width="800" height="450" src="https://www.youtube.com/embed/AvgtdzqmFOg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></p>
+<p>New burst and peak rate controls for bandwidth and packet rate QoS are now available in Linux multiple dataplanes: <code>eBPF</code>, <code>IPTables</code>, and <code>NFTables</code>.</p>
+<p>These improvements give operators finer control and faster responsiveness when managing traffic QoS in OpenStack and Kubernetes environments.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">annotations:
+   # Bandwidth peakrate and minburst
+   qos.projectcalico.org/ingressPeakrate: "1000000"   # in bits per second
+   qos.projectcalico.org/egressPeakrate: "500000"     # in bits per second
+   qos.projectcalico.org/ingressMinburst: "1500"      # defaults to MTU if lower
+   qos.projectcalico.org/egressMinburst: "1500"
+
+   # Packet rate limits with burst
+   qos.projectcalico.org/ingressPackets: "1000"       # packets per second
+   qos.projectcalico.org/egressPackets: "800"         # packets per second
+   qos.projectcalico.org/ingressPktBurst: "200"       # burst packets
+   qos.projectcalico.org/egressPktBurst: "200"</pre>
+<h2>Traffic classification</h2>
+<p><!-- QoS / DSCP Section --></p>
+<p>In Calico v3.31, we’re expanding Quality of Service (QoS) capabilities with Differentiated services (<code>DiffServ</code>) support for workloads and <code>hostendpoints</code>.</p>
+<p>This enhancement allows you to classify and prioritize traffic leaving your cluster, ensuring that critical traffic is prioritized even when it leaves your cluster.</p>
+<p>By setting the <code>qos.projectcalico.org/dscp</code> annotation on a Calico <code>hostendpoint</code>, Calico can apply the appropriate DSCP marking to egress packets. Think of it like slapping a VIP badge on your packets, no lineups—straight to the fast lane of your QoS-aware network.</p>
+<p>This update introduces a new DSCP type supporting both numeric values (0–63) and common string values, and corresponding data plane logic to enforce DSCP marks in multiple dataplanes. Because DSCP is embedded in the 6-bit IP packet header, downstream devices in your network can use these markings for forwarding and prioritization, making it easier to integrate Kubernetes workloads into existing QoS-aware environments.</p>
+<h3>How it works</h3>
+<ul>
+<li>DSCP support for both numeric values (0–63) and string names (AF11, EF, CS5).</li>
+<li>New <code>QoSPolicy</code> API for Kubernetes-native traffic control.</li>
+<li>Enforced via data plane using <code>iptables</code> or <code>nftables</code>.</li>
+</ul>
+<h3>Why it matters</h3>
+<ul>
+<li>Prioritize critical workloads: latency-sensitive traffic like video or trading gets expedited handling.</li>
+<li>Simplify configuration: declaratively set QoS in manifests instead of manual DSCP configs.</li>
+<li>Future-ready: works across both <code>iptables</code> and <code>nftables</code> dataplanes.</li>
+</ul>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">apiVersion: projectcalico.org/v3
+kind: HostEndpoint
+metadata:
+  name: hep-with-dscp
+  annotations:
+    qos.projectcalico.org/dscp: "cs5"
+</pre>
+<p><strong>Visualizing the impact:</strong></p>
+<ul>
+<li>🟢 Video/Voice traffic → prioritized with EF</li>
+<li>🔵 API traffic → marked with AF21</li>
+<li>⚪ Batch jobs → default BE</li>
+</ul>
+<p><!-- Encapsulation Routes --></p>
+<h2 id="encapsulation" style="scroll-margin-top: 70px;">Encapsulation Routes programmed direct from Felix</h2>
+<p>Encapsulation isn’t new to Calico, but in v3.31, Felix takes over responsibility for IP-in-IP and no-encapsulation routing. Previously, BIRD handled this through BGP. Moving it into Felix simplifies operations, reduces dependencies, and speeds up live upgrades in large clusters.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">apiVersion: crd.projectcalico.org/v1
+kind: FelixConfiguration
+metadata:
+ name: default
+spec:
+ programClusterRoutes: Enabled
+</pre>
+<p><!-- NAT Control --></p>
+<h2 id="nat-control" style="scroll-margin-top: 70px;">Granular control over natOutgoing (A Community Contribution!)</h2>
+<p>Calico v3.31 introduces finer control over NAT outgoing. Previously, enabling <code>natOutgoing</code> SNATed all traffic leaving an IPPool, including local cluster traffic. Now, Felix introduces <code>natOutgoingExclusions</code>:</p>
+<ul>
+<li><strong>IPPoolsOnly</strong> (default): Only traffic leaving the IPPool is SNATed.</li>
+<li><strong>IPPoolsAndHostIPs</strong>: Both traffic leaving the IPPool and traffic to cluster hosts are SNATed.</li>
+</ul>
+<p>Example patch command:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="bash">kubectl patch felixconfiguration --type=merge default -p='{"spec":{"natOutgoingExclusions":"IPPoolsAndHostIPs"}}'
+</pre>
+<p><!-- BGP --></p>
+<h2 id="bgp" style="scroll-margin-top: 70px;">BGP Enhancements</h2>
+<p>Previously, Calico used the node’s global ASN for all BGP sessions. Now, you can override per peer, unlocking scenarios like eBGP with external routers and route reflector designs.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="yaml">kind: BGPPeer
+apiVersion: projectcalico.org/v3
+metadata:
+  name: asn_override
+spec:
+  asNumber: 64516
+  localASNumber: 65002
+</pre>
+<p><!-- Performance & Usability --></p>
+<h2 id="performance" style="scroll-margin-top: 70px;">Performance &amp; Usability</h2>
+<ul>
+<li><strong>Faster IPAM:</strong> Efficient server-side filtering speeds IP allocation in large clusters (1000+ blocks).</li>
+<li><strong>Parallel Startup:</strong> Felix now loads BPF programs in parallel, reducing startup latency.</li>
+<li><strong>Memory Optimization:</strong> Deduplicates resource label keys/values to reduce memory usage at scale.</li>
+<li><strong>Security &amp; Compliance:</strong> TLS ciphers now configurable for enterprise needs.</li>
+<li><strong>Performance Improvements:</strong> Selector index deduplication, parallel BPF program loading, reduced memory usage.</li>
+<li><strong><code>calicoctl validate</code>:</strong> Validate input locally without applying changes.</li>
+<li><strong>AutoHostEndpoint:</strong> Supports <code>InterfaceSelectors</code> and new <code>InterfaceCIDRs</code> option to match node IPs precisely.</li>
+</ul>
+<p>Check out the full list of improvements in OpenStack and OpenShift in our <a href="https://docs.projectcalico.org/release-notes/v3.31">release notes</a>.</p>
+<p><span class="blockquote"><a href="https://demo.arcade.software/SZ028sCkdnwA8SF1Idlq?embed" target="_blank" rel="noopener">Click here</a> to try Calico v3.31 Whisker UI Improvements in your browser</span></p>
+</article>
+                        <div class="post-tags"><a href="https://www.tigera.io/tags/release/" title="Release Tag" class="release">Release</a><a href="https://www.tigera.io/tags/project-calico/" title="Project Calico Tag" class="project-calico">Project Calico</a><a href="https://www.tigera.io/tags/announcements/" title="Announcements Tag" class="announcements">Announcements</a></div>                
+                                
+                    <div class="share-buttons flex">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="LinkedIn" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button" width="24" height="24" alt="LinkedIn"></noscript>
+        </a>
+        <a href="https://twitter.com/share?url=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;text=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Twitter" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button" width="24" height="24" alt="Twitter"></noscript>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;quote=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Facebook" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button" width="24" height="24" alt="Facebook"></noscript>
+        </a>
+        <a href="https://www.reddit.com/submit?url= https://www.tigera.io/blog/whats-new-in-calico-v3-31-ebpf-nftables-and-more/&amp;title=What’s New in Calico v3.31? eBPF, NFTables, and More" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Reddit" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button" width="24" height="24" alt="Reddit"></noscript>
+        </a>
+    </div>
+                            </div>
+            
+            <div class="single-post__mailing-list">
+                <div class="mailing-list-form">
+        <h2>Join our mailing list</h2>
+    
+        <p>Get updates on blog posts, workshops, certification programs, new releases, and more!</p>
+    
+    <form id="mktoForm_2509"></form>
+  <script type="rocketlazyloadscript" defer="">
+  document.addEventListener('DOMContentLoaded', function() {
+      mktoDefer(2509);
+    });
+  </script>
+</div>            </div>
+
+        </div>
+    </div>
+    <aside class="single-post__related-posts" style="background-color:#F7F9FC">
+        <div class="single-post__wrapper section-container section-wrapper">
+            <div id="relatedposts"><h2>Related posts</h2><ul>
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/how-nrp-scales-global-scientific-research-with-calico/" rel="bookmark" title="How NRP Scales Global Scientific Research with Calico">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="How NRP Scales Global Scientific Research with Calico" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico.png 1200w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico.png" class="attachment-full size-full wp-post-image" alt="How NRP Scales Global Scientific Research with Calico" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico.png 1200w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/How-NRP-Scales-Global-Scientific-Research-with-Calico-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/how-nrp-scales-global-scientific-research-with-calico/" rel="bookmark" title="How NRP Scales Global Scientific Research with Calico">How NRP Scales Global Scientific Research with Calico</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/john-alexander/" rel="bookmark" title="John Alexander">John Alexander</a>
+                                                            </span>
+                                    <span class="relatedDate">on Oct 15, 2025 </span>
+                                    <p></p><p>The National Research Platform (NRP) operates a globally distributed, high-performance computing and networking environment, with an average of 15,000 pods across 450 nodes supporting more than 3,000 scientific project namespaces. With its head node in…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/how-nrp-scales-global-scientific-research-with-calico/" rel="bookmark" title="How NRP Scales Global Scientific Research with Calico">Read more &gt;</a>
+                                </div>
+                            </li>
+                        
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/suse-and-tigera-empowering-secure-scalable-kubernetes-with-calico-enterprise/" rel="bookmark" title="SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise.png 1200w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise.png" class="attachment-full size-full wp-post-image" alt="SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise.png 1200w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/SUSE-Tigera-Empowering-Secure-Scalable-Kubernetes-with-Calico-Enterprise-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/suse-and-tigera-empowering-secure-scalable-kubernetes-with-calico-enterprise/" rel="bookmark" title="SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise">SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/utpal-bhatt/" rel="bookmark" title="Utpal Bhatt">Utpal Bhatt</a>
+                                 and <a href="https://www.tigera.io/blog/author/steve-hale/" rel="bookmark" title="Steve Hale">Steve Hale</a>                            </span>
+                                    <span class="relatedDate">on Oct 3, 2025 </span>
+                                    <p></p><p>By Steve Hale, Sr. Director, Software &amp; Services Ecosystem GTM — Co-written by Utpal Bhatt, Chief Marketing Officer, Tigera Modern Workloads Demand Modern Kubernetes Infrastructure As organizations expand Kubernetes adoption—modernizing legacy applications on VMs and…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/suse-and-tigera-empowering-secure-scalable-kubernetes-with-calico-enterprise/" rel="bookmark" title="SUSE and Tigera: Empowering Secure, Scalable Kubernetes with Calico Enterprise">Read more &gt;</a>
+                                </div>
+                            </li>
+                        
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/how-to-connect-nested-kubevirt-clusters-with-calico-and-bgp-peering/" rel="bookmark" title="How to Connect Nested KubeVirt Clusters with Calico and BGP Peering">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="How to Connect Nested KubeVirt Clusters with Calico and BGP Peering" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering.png 1200w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering.png" class="attachment-full size-full wp-post-image" alt="How to Connect Nested KubeVirt Clusters with Calico and BGP Peering" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering.png 1200w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-300x157.png 300w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-768x402.png 768w, https://www.tigera.io/app/uploads/2025/10/Advanced-BGP-Peering-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/how-to-connect-nested-kubevirt-clusters-with-calico-and-bgp-peering/" rel="bookmark" title="How to Connect Nested KubeVirt Clusters with Calico and BGP Peering">How to Connect Nested KubeVirt Clusters with Calico and BGP Peering</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/leon-barron/" rel="bookmark" title="Leon Barron">Leon Barron</a>
+                                                            </span>
+                                    <span class="relatedDate">on Oct 3, 2025 </span>
+                                    <p></p><p>Running Kubernetes inside Kubernetes isn’t just a fun experiment anymore – it’s becoming a key pattern for delivering multi-environment platforms at scale. With KubeVirt, a virtualization add-on for Kubernetes that uses QEMU (an open-source machine…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/how-to-connect-nested-kubevirt-clusters-with-calico-and-bgp-peering/" rel="bookmark" title="How to Connect Nested KubeVirt Clusters with Calico and BGP Peering">Read more &gt;</a>
+                                </div>
+                            </li>
+                        </ul></div>        </div>
+    </aside>
+</main>
+
+<div data-rocket-location-hash="4b05513b0c2462ceefc464bb139f92e5" id="img-zoom-popup">
+	<div data-rocket-location-hash="6da4dfb7a6c01e63c7df599a55dd7934" class="darker"></div>
+	<div data-rocket-location-hash="329b2331305740b59ada262f57a91c3d" class="content-wrapper">
+		<a href="#" class="close-btn">X</a>
+		<img src="" width="" height="" alt="">
+	</div>
+</div>
+
+<div data-rocket-location-hash="5a74f927be8f971d634cb4c7ad8a4338" class="tigera-custom-footer" data-bg="https://www.tigera.io/app/uploads/2021/05/Footer-1.jpg">
+    <div data-rocket-location-hash="e78f661669626b32a35ef61e94e53af1" class="container">
+        <div data-rocket-location-hash="f78c7fe9a03cc6f0f492d19fe5c63817" class="menu-footer"><ul id="menu-footer-menu" class="menu-footer__list"><li id="menu-item-37647" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37647"><a href="#">PROJECT CALICO</a>
+<ul class="sub-menu">
+	<li id="menu-item-37649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37649"><a href="https://www.tigera.io/project-calico/">What is Project Calico?</a></li>
+	<li id="menu-item-37650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37650"><a target="_blank" href="https://docs.tigera.io/calico/">Docs</a></li>
+	<li id="menu-item-37652" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37652"><a href="https://www.tigera.io/project-calico/community/">Community</a></li>
+	<li id="menu-item-37651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37651"><a target="_blank" href="https://github.com/projectcalico/calico">GitHub</a></li>
+</ul>
+</li>
+<li id="menu-item-37648" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37648"><a href="#">PRODUCTS</a>
+<ul class="sub-menu">
+	<li id="menu-item-37653" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37653"><a href="/tigera-products/calico/">Calico Open Source</a></li>
+	<li id="menu-item-37654" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37654"><a href="/tigera-products/calico-commercial-editions/">Calico Commercial Editions</a></li>
+	<li id="menu-item-37656" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37656"><a href="https://www.tigera.io/tigera-products/compare-products/">Compare Calico Editions</a></li>
+	<li id="menu-item-37657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37657"><a href="https://www.tigera.io/tigera-products/calico-cloud-pricing/">Pricing</a></li>
+	<li id="menu-item-52314" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52314"><a href="https://www.tigera.io/tigera-products/why-calico/">Why Calico?</a></li>
+</ul>
+</li>
+<li id="menu-item-37658" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37658"><a href="#">SOLUTIONS</a>
+<ul class="sub-menu">
+	<li id="menu-item-37664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37664"><a href="/tigera-products/ingress-gateway/">Ingress Gateway</a></li>
+	<li id="menu-item-37663" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37663"><a href="/tigera-products/egress-gateway/">Egress Gateway</a></li>
+	<li id="menu-item-48984" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48984"><a href="https://www.tigera.io/tigera-products/cluster-mesh/">Cluster Mesh</a></li>
+	<li id="menu-item-37660" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37660"><a href="/tigera-products/multi-cloud-security/">Multi-Cloud Security</a></li>
+	<li id="menu-item-37659" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37659"><a href="/tigera-products/observability-and-troubleshooting/">Observability &amp; Troubleshooting</a></li>
+	<li id="menu-item-51628" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51628"><a href="/features/compliance-and-audit/">Compliance</a></li>
+	<li id="menu-item-60260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60260"><a href="/features/microsegmentation/">Microsegmentation</a></li>
+	<li id="menu-item-37665" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37665"><a href="https://www.tigera.io/partners/">Environments</a></li>
+</ul>
+</li>
+<li id="menu-item-37669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37669"><a href="#">LEARN</a>
+<ul class="sub-menu">
+	<li id="menu-item-37670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37670"><a href="https://docs.tigera.io/">Documentation</a></li>
+	<li id="menu-item-55758" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55758"><a href="https://www.tigera.io/interactive-training/">Interactive Training</a></li>
+	<li id="menu-item-45182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45182"><a href="https://www.tigera.io/tutorials/">Product Tutorials</a></li>
+	<li id="menu-item-37672" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37672"><a href="https://www.tigera.io/lp/calico-certification/">Certification</a></li>
+	<li id="menu-item-37671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37671"><a href="https://www.tigera.io/events/">Events</a></li>
+	<li id="menu-item-37673" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37673"><a href="https://www.tigera.io/resources/">Resources</a></li>
+	<li id="menu-item-37674" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37674"><a href="https://www.tigera.io/blog/">Blog</a></li>
+	<li id="menu-item-37675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37675"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Guides</a></li>
+</ul>
+</li>
+<li id="menu-item-37676" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37676"><a href="#">SUPPORT</a>
+<ul class="sub-menu">
+	<li id="menu-item-37677" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37677"><a href="https://www.tigera.io/customer-success/">Customer Success</a></li>
+	<li id="menu-item-37678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37678"><a target="_blank" href="https://support.tigera.io/s/login/">Support Portal</a></li>
+	<li id="menu-item-40051" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40051"><a target="_blank" href="https://www.tigera.io/calico-support/">Tigera Help Center</a></li>
+	<li id="menu-item-37679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37679"><a href="https://www.tigera.io/security-bulletins/">Security Bulletins</a></li>
+	<li id="menu-item-37680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37680"><a href="https://www.tigera.io/vulnerability-disclosure/">Report Security Issue</a></li>
+</ul>
+</li>
+<li id="menu-item-37681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37681"><a href="#">COMPANY</a>
+<ul class="sub-menu">
+	<li id="menu-item-37682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37682"><a href="https://www.tigera.io/about/">About</a></li>
+	<li id="menu-item-61246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61246"><a href="/lp/calicocon-2025/">CalicoCon 2025</a></li>
+	<li id="menu-item-50363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50363"><a href="https://www.tigera.io/customer-stories/">Customers</a></li>
+	<li id="menu-item-37683" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37683"><a href="https://www.tigera.io/partners/">Partners</a></li>
+	<li id="menu-item-59070" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59070"><a href="https://www.tigera.io/media/">Newsroom</a></li>
+	<li id="menu-item-37685" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37685"><a href="https://www.tigera.io/careers/">Careers</a></li>
+	<li id="menu-item-37686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37686"><a href="https://www.tigera.io/contact/">Contact</a></li>
+</ul>
+</li>
+</ul></div>        <div data-rocket-location-hash="8d5447729974ca26fc37e70ad7378bc2" class="tigera-custom-footer__logo">
+            <a class="logo-link" href="/">
+                <img width="180" height="36" class="logo-image" title=" tigera-logoWhite" alt="tigera-logoWhite" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%2036'%3E%3C/svg%3E" data-lazy-src="/app/uploads/elementor/thumbs/tigera-logoWhite-pex43dmbi9rv5py4nuwhpkbh5bury9emp21calqze4.png"><noscript><img width="180" height="36" class="logo-image" title=" tigera-logoWhite" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pex43dmbi9rv5py4nuwhpkbh5bury9emp21calqze4.png" loading="lazy"></noscript>
+            </a>
+        </div>
+
+        <div data-rocket-location-hash="00a99e5963f9014e49456c6f7af343f5" class="tigera-custom-footer__credits">
+            <p> Copyright © <span id="copyright">
+            <script type="rocketlazyloadscript">document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+            </span> Tigera, Inc. All rights reserved. </p>
+            <ul class="credits__list">
+                <li><a href="#" onclick="return false" data-rocket-onclick="Clym.showPrivacyCenter('/cookies');">Privacy Center</a></li>
+                <li><a href="#" onclick="return false" data-rocket-onclick="Clym.showPrivacyCenter('/requests/new/do_not_sell_my_data');">Do Not Sell Or Share My Personal Information</a></li>
+                <li><a target="_blank" href="/legal/"> Legal</a></li>
+            </ul>
+        </div>
+        <div data-rocket-location-hash="cb28199b365e1d2e2987f332a987b49a" class="tigera-custom-footer__bottom">
+            <div class="social-icons">
+                <a class="social-icon linkedin-in" href="https://www.linkedin.com/company/tigera/" target="_blank">
+                    <span class="elementor-screen-only">Linkedin</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Linkedin" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-linkedin.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-linkedin.svg" class="social-icon-img" alt="Linkedin"></noscript>
+                </a>
+                <a class="social-icon twitter" href="https://twitter.com/tigeraio" target="_blank">
+                    <span class="elementor-screen-only">Twitter</span>
+                    <img width="32" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3C/svg%3E" class="social-icon-img" alt="X (Twitter)" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-x.svg"><noscript><img width="32" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-x.svg" class="social-icon-img" alt="X (Twitter)"></noscript>
+                </a>
+                <a class="social-icon youtube" href="https://www.youtube.com/channel/UC8uN3yhpeBeerGNwDiQbcgw/" target="_blank">
+                    <span class="elementor-screen-only">Youtube</span>
+                    <img width="36" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2036%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Youtube" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-youtube.svg"><noscript><img width="36" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-youtube.svg" class="social-icon-img" alt="Youtube"></noscript>
+                </a>
+                <a class="social-icon slack" href="https://calicousers.slack.com/" target="_blank">
+                    <span class="elementor-screen-only">Slack</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Slack" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-slack.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-slack.svg" class="social-icon-img" alt="Slack"></noscript>
+                </a>
+                <a class="social-icon github" href="https://github.com/tigera" target="_blank">
+                    <span class="elementor-screen-only">Github</span>
+                    <img width="31" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2031%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Github" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-github.svg"><noscript><img width="31" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-github.svg" class="social-icon-img" alt="Github"></noscript> 
+                </a>
+                <a class="social-icon discourse" href="https://discuss.projectcalico.tigera.io/" target="_blank">
+                    <span class="elementor-screen-only">Discourse</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Discourse" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-discourse.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-discourse.svg" class="social-icon-img" alt="Discourse"></noscript> 
+                </a>
+            </div>
+            <form id="mktoForm_1564"></form>
+            <script type="rocketlazyloadscript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    mktoDefer(1564);
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+
+<!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com  -->
+<script>
+    (function(d,u,ac){
+        var s=d.createElement('script');
+        s.type='text/javascript';
+        s.src='https://a.omappapi.com/app/js/api.min.js';
+        s.async=true;
+        s.dataset.user=u;
+        s.dataset.account=ac;
+        d.getElementsByTagName('head')[0].appendChild(s);
+    })(document,141683,154800);
+
+    document.addEventListener('om.Scripts.init', function(event) {
+        event.detail.Scripts.enabled.fonts = false;
+    });
+</script>
+<!-- / https://optinmonster.com  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/app\/uploads\/*","\/app\/*","\/app\/plugins\/*","\/app\/themes\/tigera2021\/*","\/app\/themes\/hello-elementor\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+    <style>
+        .tigera-custom-footer__bottom .mktoForm {
+            display: flex!important;
+            flex-wrap: wrap;
+            position: relative;
+            width: 40%!important
+        }
+        .mailing-list-form .mktoButtonRow,.mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow {
+            margin-bottom: 0!important;
+            margin-top: 10px!important;
+            padding: 0!important;
+            width: 100%!important
+        }
+
+        .mailing-list-form .mktoButtonRow .mktoButtonWrap.mktoGlow,.mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap {
+            display: grid;
+            width: 100%!important
+        }
+
+        .mailing-list-form .mktoButtonRow .mktoButtonWrap.mktoGlow .mktoButton,.mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap .mktoButton {
+            background: #ff9e16!important;
+            border: 2px solid #ff9e16!important;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: #fff!important;
+            display: block;
+            font-family: Poppins!important;
+            font-size: 14px!important;
+            font-weight: 700!important;
+            line-height: 21px!important;
+            margin-top: auto!important;
+            max-width: 100%!important;
+            padding: 12px 24px!important;
+            text-align: center;
+            width: 100%!important
+        }
+
+        .mailing-list-form .mktoButtonRow .mktoButtonWrap.mktoGlow .mktoButton:hover,.mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap .mktoButton:hover {
+            background-color: transparent!important;
+            border: 2px solid #ff9e16!important;
+            color: #ff9e16!important;
+            transition: .2s linear
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm#mktoForm_3012 .mktoFieldWrap .mktoCheckboxList * {
+            margin: 0 !important;
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoCheckboxList,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoGutter,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap label[for=Email_Opt_In__c] {
+            display: inline !important;
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoCheckboxList *,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoGutter * {
+            margin: 0 !important;
+        }
+    </style>
+
+    <script type="rocketlazyloadscript">
+        window.mktoDefer = function(id) {
+
+            if (window.MktoForms2) {
+                MktoForms2.loadForm("//info.tigera.io", "805-GFH-732", id);
+
+                /*
+                 * @author Sanford Whiteman
+                 * @version v1.104
+                 * @license MIT License: This license must appear with all reproductions of this software.
+                 *
+                 * Create a completely barebones, user-styles-only Marketo form
+                 * by removing inline STYLE attributes and disabling STYLE and LINK elements
+                 */
+                function destyleMktoForm(mktoForm, moreStyles) {
+                var formEl = mktoForm.getFormElem()[0],
+                    arrayify = getSelection.call.bind([].slice);
+
+                // Remove element styles from <form> and children
+                var styledEls = arrayify(formEl.querySelectorAll('[style]:not([class*="captcha"])')).concat(formEl);
+                styledEls.forEach(function (el) {
+                    el.removeAttribute('style');
+                });
+
+                // Remove <style> tags within the form
+                var styleTags = formEl.querySelectorAll('style');
+                styleTags.forEach(function(styleTag) {
+                    styleTag.parentNode.removeChild(styleTag);
+                });
+
+                // Disable remote stylesheets and local <style>s
+                var styleSheets = arrayify(document.styleSheets);
+                styleSheets.forEach(function (ss) {
+                    if (
+                        [mktoForms2BaseStyle, mktoForms2ThemeStyle].indexOf(ss.ownerNode) != -1 ||
+                        formEl.contains(ss.ownerNode)
+                    ) {
+                        ss.disabled = true;
+                    }
+                });
+
+                if (!moreStyles) {
+                    formEl.setAttribute('data-styles-ready', 'true');
+                    // console.log('Styles ready at: ' + performance.now());
+                }
+            }
+
+                MktoForms2.whenRendered(function (form) {
+                    destyleMktoForm(form)
+                })
+            } else {
+                setTimeout(function() { mktoDefer(id) }, 500);
+            }
+        }
+    </script>
+
+    			<script type="rocketlazyloadscript">
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/app/plugins/dynamicconditions/Public/js/dynamic-conditions-public.js?ver=1761289234" id="dynamic-conditions-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.13.3" id="jquery-ui-datepicker-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" id="jquery-ui-datepicker-js-after">window.addEventListener('DOMContentLoaded', function() {
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+});</script>
+<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"\/lp\/nist-cybersecurity-framework-assessment-for-containers\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.tigera.io","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/js/forms2/js/forms2.min.js?ver=1761289234" id="marketo-form-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/app/plugins/enlighter/cache/enlighterjs.min.js?ver=kRtFLEJRvr79viJ" id="enlighterjs-js" data-rocket-defer="" defer=""></script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":false,"acceptedAnswer":{"@type":"Answer","text":false}}]}</script><script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="https://www.tigera.io/app/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+<script>var rocket_beacon_data = {"ajax_url":"https:\/\/www.tigera.io\/wp-admin\/admin-ajax.php","nonce":"826e96a4f7","url":"https:\/\/www.tigera.io\/blog\/whats-new-in-calico-v3-31-ebpf-nftables-and-more","is_mobile":false,"width_threshold":1600,"height_threshold":700,"delay":500,"debug":null,"status":{"atf":true,"lrc":true,"preconnect_external_domain":true},"elements":"img, video, picture, p, main, div, li, svg, section, header, span","lrc_threshold":1800,"preconnect_external_domain_elements":["link","script","iframe"],"preconnect_external_domain_exclusions":["static.cloudflareinsights.com","rel=\"profile\"","rel=\"preconnect\"","rel=\"dns-prefetch\"","rel=\"icon\""]}</script><script type="rocketlazyloadscript" data-name="wpr-wpr-beacon" data-rocket-src="https://www.tigera.io/app/plugins/wp-rocket/assets/js/wpr-beacon.min.js" async=""></script><script>(()=>{class RocketElementorPreload{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}t(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this.i(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach((t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this.o(t)}catch(t){}}))}o(t){const e=JSON.parse(t.dataset.settings),i=e.m||e.animation_delay||0,n=e[this.animationSettingKeys.find((t=>e[t]))];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let o=setTimeout((()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this.l(t,e)}),i);window.addEventListener("rocket-startLoading",(function(){clearTimeout(o)}))}i(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach((t=>{e.forEach((e=>{i.push(t+e)}))})),i}l(t,e){this.i().forEach((t=>delete e[t])),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorPreload;requestAnimationFrame(t.t.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorPreload.run)})();</script>
+
+<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span></body></html>
