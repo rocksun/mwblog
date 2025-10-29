@@ -1,4 +1,3 @@
-
 <!--
 title: GitHub携Agent HQ入局，全面拥抱AI编程智能体大战
 cover: https://cdn.thenewstack.io/media/2025/10/3fb0a441-img_2704-scaled.jpg
