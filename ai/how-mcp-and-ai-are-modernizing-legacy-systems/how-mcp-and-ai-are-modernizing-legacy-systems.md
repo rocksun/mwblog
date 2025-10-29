@@ -1,4 +1,3 @@
-
 <!--
 title: MCP与AI：旧系统现代化转型的新引擎
 cover: https://cdn.thenewstack.io/media/2025/10/7e8a8fc0-modernize.jpg
