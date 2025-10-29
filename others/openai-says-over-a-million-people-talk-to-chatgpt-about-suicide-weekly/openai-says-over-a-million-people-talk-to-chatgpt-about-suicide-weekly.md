@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI报告每周超百万用户向ChatGPT倾诉自杀念头
 cover: https://techcrunch.com/wp-content/uploads/2025/02/GettyImages-2194585161.jpg?w=1024
