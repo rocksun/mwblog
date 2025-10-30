@@ -1,4 +1,3 @@
-
 <!--
 title: 甲骨文WebLogic Server与Coherence 15.1.1重磅发布！
 cover: https://blogs.oracle.com/weblogicserver/wp-content/uploads/sites/71/2025/10/Oracle_WebLogic-Server_rgb.png
