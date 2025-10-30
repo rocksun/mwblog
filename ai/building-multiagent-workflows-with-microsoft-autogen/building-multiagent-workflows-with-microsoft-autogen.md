@@ -1,4 +1,3 @@
-
 <!--
 title: 微软AutoGen：构建多智能体工作流的艺术
 cover: https://cdn.thenewstack.io/media/2025/10/a54300f1-agents.jpg
