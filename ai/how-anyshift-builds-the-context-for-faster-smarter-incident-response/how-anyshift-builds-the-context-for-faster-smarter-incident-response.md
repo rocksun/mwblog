@@ -1,4 +1,3 @@
-
 <!--
 title: Anyshift：构建上下文，加速智能事件响应
 cover: https://cdn.thenewstack.io/media/2025/10/f9a162fb-anyshift.png
