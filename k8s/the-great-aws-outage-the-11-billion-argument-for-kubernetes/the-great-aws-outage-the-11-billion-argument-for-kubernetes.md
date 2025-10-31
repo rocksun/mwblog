@@ -1,4 +1,3 @@
-
 <!--
 title: AWS惊天大宕机：110亿天价警示，力推Kubernetes！
 cover: https://cdn.thenewstack.io/media/2025/10/063031b0-kubernetes.jpg
