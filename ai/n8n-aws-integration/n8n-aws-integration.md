@@ -1,4 +1,3 @@
-
 <!--
 title: 用 n8n 和 MCP 搭建 AI AWS 基础设施
 cover: https://www.clickittech.com/wp-content/uploads/2025/10/How-to-Build-an-AWS-Infrastructure-with-n8n-MCP.png
