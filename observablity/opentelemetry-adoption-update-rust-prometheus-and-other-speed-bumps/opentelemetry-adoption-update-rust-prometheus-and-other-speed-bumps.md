@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry 采纳进展：Rust、Prometheus 及其他“拦路虎”
 cover: https://cdn.thenewstack.io/media/2025/10/884f56d6-john-cardamone-nxh2zbyjc4a-unsplash-1.jpg
