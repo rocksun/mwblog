@@ -1,4 +1,3 @@
-
 <!--
 title: 应对多区域事件响应三大失效点
 cover: https://cdn.thenewstack.io/media/2025/10/21f872c6-handoffs.jpg
