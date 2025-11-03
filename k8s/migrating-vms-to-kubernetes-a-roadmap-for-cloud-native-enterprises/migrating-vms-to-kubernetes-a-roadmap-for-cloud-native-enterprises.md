@@ -1,4 +1,3 @@
-
 <!--
 title: VMs迁移Kubernetes：云原生企业路线图
 cover: https://cdn.thenewstack.io/media/2025/10/98aa3d89-migratingvmstokubernetes.jpg
