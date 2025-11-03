@@ -1,4 +1,3 @@
-
 <!--
 title: ChatGPT拥抱Next.js：Vercel让AI对话“动”起来！
 cover: https://cdn.thenewstack.io/media/2025/10/50d4e2c5-getty-images-apf8rlrldwo-unsplashb.jpg
