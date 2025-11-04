@@ -1,4 +1,3 @@
-
 <!--
 title: Rust 与 C++：性能与安全的现代考量
 cover: https://cdn.thenewstack.io/media/2025/10/422ee74e-tools12.jpg
