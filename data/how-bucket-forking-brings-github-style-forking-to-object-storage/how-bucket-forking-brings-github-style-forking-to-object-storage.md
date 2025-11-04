@@ -1,4 +1,3 @@
-
 <!--
 title: 桶分叉：如何将GitHub式分叉带入对象存储
 cover: https://cdn.thenewstack.io/media/2025/11/f1d0e807-bucket-forking.jpg
