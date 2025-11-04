@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry 与 Fluent Bit：关系深度解读
 cover: https://cdn.thenewstack.io/media/2025/10/de01085e-together.jpg
