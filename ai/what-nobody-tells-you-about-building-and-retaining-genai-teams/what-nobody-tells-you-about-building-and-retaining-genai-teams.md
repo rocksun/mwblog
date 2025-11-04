@@ -1,4 +1,3 @@
-
 <!--
 title: 组建与留住GenAI团队：没人告诉你的秘密
 cover: https://cdn.thenewstack.io/media/2025/11/4b5564b9-rowing.jpg
