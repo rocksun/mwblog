@@ -1,4 +1,3 @@
-
 <!--
 title: Kubernetes和AI：定义下一代平台
 cover: https://cdn.thenewstack.io/media/2025/10/8f2e1ec9-wires.jpeg
