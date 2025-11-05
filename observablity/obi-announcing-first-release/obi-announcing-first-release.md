@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry eBPF 观测利器首度发布
 cover: https://opentelemetry.io/img/social/logo-wordmark-001.png
