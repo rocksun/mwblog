@@ -1,4 +1,3 @@
-
 <!--
 title: Win11 25H2重磅修复！“更新并关机”不再重启，终结数十年老Bug
 cover: https://www.windowslatest.com/wp-content/uploads/2025/11/Update-and-shut-down-in-Windows-11.jpg

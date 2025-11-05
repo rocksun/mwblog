@@ -11,7 +11,7 @@
               "server.py"
           ],
       "env": {
-        "GEMINI_API_KEY": "AIzaSyAPerl-RGCveh4_Ge9Gc_L4waUHzh-n2yk",
+        "GEMINI_API_KEY": "AIzaSyDGLclHf_plxYg1xbqLNaws2KsPIp2_c0A",
         "http_proxy": "http://127.0.0.1:10808",
         "https_proxy": "http://127.0.0.1:10808",
 

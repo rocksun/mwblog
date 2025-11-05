@@ -1,4 +1,3 @@
-
 <!--
 title: Prometheus集成OpenTelemetry：这些“顽疾”急需根治！
 cover: https://cdn.thenewstack.io/media/2025/11/32fce064-getty-images-mx88anchvle-unsplash-1.jpg

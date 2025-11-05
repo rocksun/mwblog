@@ -1,4 +1,3 @@
-
 <!--
 title: 技术债与架构债：千万别搞混！
 cover: https://cdn.thenewstack.io/media/2025/10/973705b1-badroad.jpg

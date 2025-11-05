@@ -1,4 +1,3 @@
-
 <!--
 title: Deepnote：Jupyter Notebook 接班人，正式开源！
 cover: https://cdn.thenewstack.io/media/2025/11/cc49520d-jakub-jurovych-2.jpg

@@ -1,4 +1,3 @@
-
 <!--
 title: Apache Arrow的终极前沿：告别过时数据库驱动
 cover: https://cdn.thenewstack.io/media/2025/11/01917682-columnar-2.jpg

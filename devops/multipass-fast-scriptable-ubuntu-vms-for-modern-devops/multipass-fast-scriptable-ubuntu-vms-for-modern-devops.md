@@ -1,4 +1,3 @@
-
 <!--
 title: Multipass：现代DevOps的极速脚本化Ubuntu虚拟机
 cover: https://cdn.thenewstack.io/media/2025/10/280a1e37-canonical-multipass.png

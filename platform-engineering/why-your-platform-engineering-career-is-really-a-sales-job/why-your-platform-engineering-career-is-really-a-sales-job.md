@@ -1,4 +1,3 @@
-
 <!--
 title: 平台工程：为什么你的职业生涯，其实是场“销售”？
 cover: https://cdn.thenewstack.io/media/2025/10/75091f38-christopher-batey-fast-flow-25-2.jpg
