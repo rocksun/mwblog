@@ -1,4 +1,3 @@
-
 <!--
 title: 开源AI攻略：决胜未来战略
 cover: https://cdn.thenewstack.io/media/2025/11/d43d23b4-redhat-ebook-heroimage.png
