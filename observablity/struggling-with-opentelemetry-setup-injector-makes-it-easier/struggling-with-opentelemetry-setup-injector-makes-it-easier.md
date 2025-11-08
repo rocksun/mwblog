@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry 配置难？Injector 助你轻松上手！
 cover: https://cdn.thenewstack.io/media/2025/11/9fbe49be-view.jpeg
