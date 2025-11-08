@@ -1,4 +1,3 @@
-
 <!--
 title: Palantir CEO：宁成监控国家，也绝不能让中国AI领先！
 cover: https://gizmodo.com/app/uploads/2019/04/dnyw19alfh2b9ztv6t3y.jpg
