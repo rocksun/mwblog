@@ -1,4 +1,3 @@
-
 <!--
 title: AI赋能人类巧思，重塑软件开发新格局
 cover: https://cdn.thenewstack.io/media/2025/11/127a69cf-innovation.jpeg
