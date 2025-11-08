@@ -1,4 +1,3 @@
-
 <!--
 title: ClickHouse：C++转Rust的独家秘籍
 cover: https://cdn.thenewstack.io/media/2025/11/45338a44-jen-theodore-gvf_yldx_oy-unsplash.jpg
