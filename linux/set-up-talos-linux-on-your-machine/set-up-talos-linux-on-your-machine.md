@@ -1,4 +1,3 @@
-
 <!--
 title: 部署 Talos Linux 到你的设备
 cover: https://cdn.thenewstack.io/media/2025/11/f2153871-talos-linux-tutorial-2.jpg
