@@ -1,4 +1,3 @@
-
 <!--
 title: 终结“黑暗模式”：App与Web开发实战策略
 cover: https://cdn.thenewstack.io/media/2025/11/a861f503-darkpatternsinwebui.jpg
