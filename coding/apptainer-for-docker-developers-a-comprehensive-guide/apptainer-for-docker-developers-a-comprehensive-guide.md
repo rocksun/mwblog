@@ -1,4 +1,3 @@
-
 <!--
 title: Docker开发者玩转Apptainer：从入门到精通宝典
 cover: https://cdn.thenewstack.io/media/2025/11/0e5d4e75-apptainer.png
