@@ -1,4 +1,3 @@
-
 <!--
 title: AI减负报告：解放了谁，又辜负了谁？
 cover: https://cdn.thenewstack.io/media/2025/11/b291058a-chess.jpg
