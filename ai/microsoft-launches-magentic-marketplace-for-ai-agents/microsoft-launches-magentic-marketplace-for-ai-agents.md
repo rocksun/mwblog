@@ -1,4 +1,3 @@
-
 <!--
 title: 微软Magentic AI智能体市场重磅上线！
 cover: https://cdn.thenewstack.io/media/2025/11/61978141-alex-shuper-rvrqqdweij0-unsplashb.jpg
