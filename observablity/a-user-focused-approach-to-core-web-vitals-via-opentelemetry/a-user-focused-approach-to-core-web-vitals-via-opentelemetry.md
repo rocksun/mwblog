@@ -1,4 +1,3 @@
-
 <!--
 title: 用户至上：OpenTelemetry赋能Core Web Vitals优化实践
 cover: https://cdn.thenewstack.io/media/2025/10/dea27bd3-observability123.jpeg
