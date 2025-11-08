@@ -1,4 +1,3 @@
-
 <!--
 title: 前端开发者，是时候告别“暗模式”了！
 cover: https://cdn.thenewstack.io/media/2025/11/d7ce4190-selam_moges_deceptive_patterns.jpg
