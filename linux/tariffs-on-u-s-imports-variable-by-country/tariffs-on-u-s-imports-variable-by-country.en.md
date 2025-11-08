@@ -1,0 +1,3 @@
+At the beginning of this year, most people probably had little awareness or had even heard of tariffs. That changed quickly with the start of the current administration. For the New York Times, Lazaro Gamio, Keith Collins, and Ana Swanson show the big shifts, [which have varied widely by country](https://www.nytimes.com/interactive/2025/11/05/business/economy/trump-tariffs-us-imports.html?unlocked_article_code=1.zE8.R3tq.rnjPrsOK1f1E&smid=url-share).
+
+The layers in the series of stacked area charts are mostly minding their own business pre-inauguration, and then suddenly they are not.
