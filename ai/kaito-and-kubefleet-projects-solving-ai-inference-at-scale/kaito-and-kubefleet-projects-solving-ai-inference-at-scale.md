@@ -1,4 +1,3 @@
-
 <!--
 title: KAITO与KubeFleet：破解AI推理规模化难题
 cover: https://cdn.thenewstack.io/media/2025/10/1ed5b294-fall123.jpeg
