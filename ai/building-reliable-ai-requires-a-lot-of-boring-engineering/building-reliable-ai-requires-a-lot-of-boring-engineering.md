@@ -1,4 +1,3 @@
-
 <!--
 title: 构建可靠AI，离不开“枯燥”工程
 cover: https://cdn.thenewstack.io/media/2025/10/109e69d4-boring.jpg
