@@ -1,4 +1,3 @@
-
 <!--
 title: 开源Talos Linux：重塑Kubernetes的简洁之道
 cover: https://cdn.thenewstack.io/media/2025/11/36476e17-talos-linux-2.jpg
