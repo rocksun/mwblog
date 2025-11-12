@@ -1,4 +1,3 @@
-
 <!--
 title: 开源真相：更像是小狗，而不是啤酒
 cover: https://cdn.thenewstack.io/media/2025/11/57474cb0-puppies.jpeg
