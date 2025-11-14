@@ -1,4 +1,3 @@
-
 <!--
 title: KubeCon：VCluster K8s平台，玩转GPU即服务
 cover: https://cdn.thenewstack.io/media/2025/11/aabb5eec-vcluster.png
