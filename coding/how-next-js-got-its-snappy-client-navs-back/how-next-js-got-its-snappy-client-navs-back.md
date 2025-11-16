@@ -1,4 +1,3 @@
-
 <!--
 title: Next.js 疾速客户端导航，强势回归！
 cover: https://cdn.thenewstack.io/media/2025/10/77ad73bd-samselikoffnext.jpg
