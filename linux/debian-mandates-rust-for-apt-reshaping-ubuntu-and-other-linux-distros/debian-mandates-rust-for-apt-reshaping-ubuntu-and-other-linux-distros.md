@@ -1,4 +1,3 @@
-
 <!--
 title: Debian APT要求强制使用Rust，Ubuntu等Linux发行版生态或将重塑
 cover: https://cdn.thenewstack.io/media/2025/04/6d6504ec-rust-programming-image-1.jpg
