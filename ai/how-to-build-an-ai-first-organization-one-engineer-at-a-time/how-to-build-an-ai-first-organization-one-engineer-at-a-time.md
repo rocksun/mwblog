@@ -1,4 +1,3 @@
-
 <!--
 title: 构建AI优先企业：从工程师个体赋能
 cover: https://cdn.thenewstack.io/media/2025/11/8b7a2383-build-ai-first-organization-one-engineer-time.jpg
