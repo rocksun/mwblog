@@ -1,0 +1,1 @@
+{"url":"https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/","title":"Ingress NGINX Retirement: What You Need to Know","author":"[no-author]","summary":"","cover":"","zh_title":"Ingress NGINX 退役：你需要知道的一切","zh_summary":"Ingress NGINX因安全优先及维护挑战将于2026年3月退役。现有部署仍可用，但不再更新。建议迁移至Gateway API或其他Ingress控制器。"}
