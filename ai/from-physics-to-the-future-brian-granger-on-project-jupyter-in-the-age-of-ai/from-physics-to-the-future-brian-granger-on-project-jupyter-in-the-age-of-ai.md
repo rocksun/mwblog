@@ -1,4 +1,3 @@
-
 <!--
 title: 从物理到未来：Brian Granger洞见AI时代的Jupyter项目
 cover: https://cdn.thenewstack.io/media/2025/11/491cff03-thumbnail-22.png
