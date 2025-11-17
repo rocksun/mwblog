@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI 神迹！Fluent Bit 巧调，3万CPU核心满血复活！
 cover: https://cdn.thenewstack.io/media/2025/11/422018ea-fabian_ponce.jpg
