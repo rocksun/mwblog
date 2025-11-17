@@ -1,4 +1,3 @@
-
 <!--
 title: Cover Whale开发者平台：从MVP到规模化进阶秘籍
 cover: https://cdn.thenewstack.io/media/2025/10/f2b841b9-trucks.jpeg
