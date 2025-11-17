@@ -1,4 +1,3 @@
-
 <!--
 title: AI智能体与遗留系统：无人提及的深层挑战
 cover: https://cdn.thenewstack.io/media/2025/11/cf0a101e-agents.jpg
