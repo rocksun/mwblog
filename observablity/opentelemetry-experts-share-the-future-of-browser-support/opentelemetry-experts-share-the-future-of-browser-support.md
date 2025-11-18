@@ -1,4 +1,3 @@
-
 <!--
 title: OpenTelemetry 专家：浏览器支持的未来之路
 cover: https://cdn.thenewstack.io/media/2025/11/ea7d1544-browswer12.jpg
