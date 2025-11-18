@@ -1,4 +1,3 @@
-
 <!--
 title: “混乱与谎言：奥特曼被OpenAI踢出的内幕”
 cover: https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25431704/STK201_SAM_ALTMAN_CVIRGINIA_C.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200

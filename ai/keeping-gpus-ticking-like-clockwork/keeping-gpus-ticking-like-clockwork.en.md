@@ -1,0 +1,21 @@
+“Today, Clockwork builds a software layer that focuses on optimizing the communication between GPUs in large clusters that are then used for AI workloads,” Vasudevan told me. “As you well know, AI workloads are among the most distributed and most demanding distributed applications in history. A lot of how well the workload performs depends on how effective the communication is between GPUs. What Clockwork focuses on is a set of software building blocks that allow you to get three things that ultimately lead to higher AI efficiency.”
+
+These include deep visibility into what happens with the GPU fleet, from the network to the application layer. But the feature that most of its customers are likely coming to the company for is FleetIQ, with its ability to deliver fault tolerance by automatically rerouting traffic around broken network switches, for example.
+
+That’s especially important for large LLM training workloads because they are difficult to restart when something goes awry. Typical GPU clusters have uptimes in the high 80s to low 90s.
+
+“Contrast this with cloud availability, which is often measured in three to four nines — it’s a completely different world. What’s worse is that when a link disappears, you have to stop the workload, go back to a checkpoint that may be many hours old and restart your training all over again. So hundreds to thousands of GPUs are wasting all the compute they’ve already done,” Vasudevan explained.
+
+## From Clocks to GPUs
+
+That was very much not what Clockwork’s founders were originally thinking about when they started the company.
+
+Incubated at Stanford University in 2018 (and called TickTock at the time and later renamed for obvious reasons), the company was founded by [Balaji Prabhakar](https://www.linkedin.com/in/balaji-prabhakar-45426bb7/), [Deepak Merugu](https://www.linkedin.com/in/deepak-merugu-334b3775/) and [Yilong Geng](https://www.linkedin.com/in/yilong-geng-7b15a16a/), based on [the research](https://www.usenix.org/system/files/conference/nsdi18/nsdi18-geng.pdf) Prabhakar and Geng had done on clock synchronization. Vasudevan joined earlier this year to become the company’s CEO after previously being the CEO of Sysdig, Nimble Storage and Omneon.
+
+“The first four years of the company was really a small team that acted almost as an outgrowth of Stanford, and it was five or six people,” Vasudevan explained. “Both the core technology and the use cases we were pursuing were all about clock syncing. For example, we have some of the Fortune 100 financial companies using us to synchronize clocks for time-stamping financial records and market data.”
+
+From there, the team had the epiphany that it could use its ability to measure how long packets take to go from A to B as the foundation of a network telemetry system.
+
+“Along the way, we were able to complement our global clock sync with another building block technology that we call dynamic traffic control. Because we now know exactly what’s happening in your network between GPUs, we’re also able to redirect flows by intercepting at the software layer,” he explained. “We plug into the communication library that Nvidia has called [NCCL](https://developer.nvidia.com/nccl), we plug into TCP communication libraries, we plug into [RDMA communication libraries](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_infiniband_and_rdma_networks/understanding-infiniband-and-rdma_configuring-infiniband-and-rdma-networks). When we see congestion or flows contending, we’re able to redirect. The evolution was: With clocks, I can measure things. Once I measure things, I can control them. And then how do I take control not just at the network layer but all the way up into PyTorch training workloads and manage the entire application for both fault tolerance and performance?”
+
+For more details on how Clockwork does this, as well as Vasudevan’s thoughts on whether we are in an AI bubble — and if it matters — check out the full video on YouTube or subscribe to our podcast.
