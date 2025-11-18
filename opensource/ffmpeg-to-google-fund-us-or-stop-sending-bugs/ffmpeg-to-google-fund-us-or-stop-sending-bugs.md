@@ -1,4 +1,3 @@
-
 <!--
 title: FFmpeg硬核喊话谷歌：不给钱就别再报Bug！
 cover: https://cdn.thenewstack.io/media/2025/11/0c7ed4fb-allison-saeng-roanyq5ym74-unsplash.jpg
