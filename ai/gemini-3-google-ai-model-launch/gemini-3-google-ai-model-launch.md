@@ -1,4 +1,3 @@
-
 <!--
 title: Gemini 3震撼发布：史上最强AI模型登场
 cover: https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25290329/STK255_Google_Gemini_A.jpg?quality=90&strip=all&crop=0%2C9.9676601489831%2C100%2C80.064679702034&w=1200
