@@ -1,4 +1,3 @@
-
 <!--
 title: Knative 正式毕业，荣膺 CNCF 毕业项目
 cover: https://cdn.thenewstack.io/media/2025/11/bb820809-md-duran-1vqhrwxcccw-unsplash.jpg
