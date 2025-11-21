@@ -1,4 +1,3 @@
-
 <!--
 title: IBM裁员8000人，AI革命的残酷真相浮出水面
 cover: https://www.slashgear.com/img/gallery/ibms-8000-layoffs-reveal-the-harsh-reality-of-the-ai-revolution/l-intro-1762263562.jpg
