@@ -1,4 +1,3 @@
-
 <!--
 title: Canonical官宣：Ubuntu Linux支持期史无前例延长至15年！
 cover: https://cdn.thenewstack.io/media/2025/11/36476e17-talos-linux-2.jpg
