@@ -1,4 +1,3 @@
-
 <!--
 title: 亚马逊黑五备战：大数据预测
 cover: https://cdn.thenewstack.io/media/2025/11/8b294ee9-puzzle-creative-v4ncwsb6a_u-unsplash.jpg
