@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI发布Codex-Max：更大、更快、更便宜
 cover: https://cdn.thenewstack.io/media/2025/11/8ed87b67-sam-altman-openai-devday-2.jpg
