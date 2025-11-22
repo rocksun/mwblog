@@ -1,4 +1,3 @@
-
 <!--
 title: Nginx Gateway Fabric实战：Ingress的替代者？
 cover: https://cdn.thenewstack.io/media/2025/11/9466f8ec-alexey-taktarov-_a6erb7nlfg-unsplash-1.jpg
