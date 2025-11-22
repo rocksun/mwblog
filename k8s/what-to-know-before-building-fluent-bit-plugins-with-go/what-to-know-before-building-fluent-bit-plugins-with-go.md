@@ -1,4 +1,3 @@
-
 <!--
 title: Go 语言构建 Fluent Bit 插件：要点速览
 cover: https://cdn.thenewstack.io/media/2025/11/65e41250-birds.jpeg
