@@ -1,6 +1,5 @@
-
 <!--
-title: 您需要将英文标题“Is Spec-Driven Development Key for Infrastructure Automation?”翻译为地道的中文。
+title: 规格驱动开发是基础设施自动化的“金钥匙”吗？
 cover: https://cdn.thenewstack.io/media/2025/11/dcfbd784-desktop_spec_driven_development__4x-scaled.webp
 summary: 文章探讨了驱动式开发（SDD）在基础设施领域的适用性。作者认为，与应用程序代码不同，基础设施代码（IaC）本质上是声明式的，强调可复现性而非创造性。SDD 假设从规范到代码的单向流动，但这与平台团队处理基础设施“漂移”的实际工作方式相悖。真正的自动化差距在于部署编排。文章提出，应将基础设施重构为标准化的“构件”和“蓝图”，并发布到目录中，结合“云图”来管理实际运行状态。这样，AI 代理才能安全地执行部署，而不是仅仅生成代码。
 -->
