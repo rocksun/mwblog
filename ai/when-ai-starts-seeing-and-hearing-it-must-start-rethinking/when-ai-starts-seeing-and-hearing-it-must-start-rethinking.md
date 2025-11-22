@@ -1,4 +1,3 @@
-
 <!--
 title: 当AI开始看见和听见，它必须开始重新思考
 cover: https://cdn.thenewstack.io/media/2025/11/f4243816-sound1.jpeg
