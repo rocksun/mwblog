@@ -1,4 +1,3 @@
-
 <!--
 title: 没有万能的AI“万金油”：用3个框架规避AI失败风险
 cover: https://cdn.thenewstack.io/media/2025/11/52557766-buying.jpg
