@@ -1,4 +1,3 @@
-
 <!--
 title: 蜂鸟：红帽版“小而美”系统，比肩Alpine、Ubuntu Chiseled和Wolfi
 cover: https://cdn.thenewstack.io/media/2025/11/f7458409-getty-images-njrp-x3anjk-unsplash.jpg
