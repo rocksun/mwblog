@@ -1,4 +1,3 @@
-
 <!--
 title: AI会取代人类项目经理吗？没那么快！
 cover: https://cdn.thenewstack.io/media/2025/11/0f9fb1bf-whiteboard.jpeg
