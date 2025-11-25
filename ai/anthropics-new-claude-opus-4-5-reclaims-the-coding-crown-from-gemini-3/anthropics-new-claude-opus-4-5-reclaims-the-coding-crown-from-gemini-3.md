@@ -1,4 +1,3 @@
-
 <!--
 title: Anthropic Claude Opus 4.5 重夺编程王冠
 cover: https://cdn.thenewstack.io/media/2025/11/d174fc47-claude-opus-4.5-illustration.png
