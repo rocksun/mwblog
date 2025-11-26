@@ -1,7 +1,6 @@
-
 <!--
 title: 我们教AI写出“真”Postgres代码，并已开源！
-cover: ./cover.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1764085251/u6a0ak2brclt0olkj6e7.png
 summary: pg-aiguide通过AI优化技能和文档语义搜索，赋能AI编写高质量Postgres代码，避免常见错误，生成生产级SQL，提升开发者效率。
 -->
 
