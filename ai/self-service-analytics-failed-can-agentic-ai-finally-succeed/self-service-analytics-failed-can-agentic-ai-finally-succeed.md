@@ -1,4 +1,3 @@
-
 <!--
 title: 自助分析已折戟，智能体AI能否破局翻身？
 cover: https://cdn.thenewstack.io/media/2025/11/b81bd766-analytics.jpg
