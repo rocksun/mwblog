@@ -1,4 +1,3 @@
-
 <!--
 title: Mozilla AI战略：为何与浏览器初心渐行渐远？
 cover: https://cdn.thenewstack.io/media/2025/11/9ac3fbcf-getty-images-ijbq4mx7t0s-unsplashc.jpg
