@@ -1,4 +1,3 @@
-
 <!--
 title: AI时代企业架构的新角色
 cover: https://cdn.thenewstack.io/media/2025/11/c5a7c189-architecture.jpg
