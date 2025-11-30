@@ -1,4 +1,3 @@
-
 <!--
 title: Kamera：模拟验证Kubernetes控制器逻辑
 cover: https://cdn.thenewstack.io/media/2025/11/e53322bc-round-icons-ckymflj2lig-unsplash.jpg
