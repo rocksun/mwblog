@@ -1,4 +1,3 @@
-
 <!--
 title: AI时代，IDP如何巧衡效率与掌控？
 cover: https://cdn.thenewstack.io/media/2025/11/701beed3-skating.jpg
