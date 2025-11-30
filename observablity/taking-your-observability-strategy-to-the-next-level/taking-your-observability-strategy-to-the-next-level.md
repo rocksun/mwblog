@@ -1,4 +1,3 @@
-
 <!--
 title: 让可观测性战略更上一层楼
 cover: https://cdn.thenewstack.io/media/2025/11/1d96e48b-landscape.jpg
