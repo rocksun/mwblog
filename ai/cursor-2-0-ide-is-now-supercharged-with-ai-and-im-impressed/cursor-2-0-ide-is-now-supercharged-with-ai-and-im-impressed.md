@@ -1,4 +1,3 @@
-
 <!--
 title: Cursor 2.0 IDE：AI赋能，开发体验惊艳升级！
 cover: https://cdn.thenewstack.io/media/2025/11/8379b3d5-wesley-tingey-z0lr-6fa2r8-unsplash-1.jpg
