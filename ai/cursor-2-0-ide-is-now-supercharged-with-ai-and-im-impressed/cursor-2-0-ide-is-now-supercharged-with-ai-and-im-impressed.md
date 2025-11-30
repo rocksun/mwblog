@@ -120,14 +120,3 @@ Cursor 然后让其智能体开始改进脚本。Cursor 花了大约两分钟解
 仅这一点就值回票价了。
 
 说到价格……
-
-## Cursor 定价
-
-以下是 Cursor 的定价细分：
-
-*   Hobby（免费）：一周专业版试用，有限的智能体请求和有限的选项卡补全。
-*   专业版（每月20美元）：包含Hobby版所有功能，外加扩展的智能体限制、无限制的选项卡补全、后台智能体和最大上下文窗口。
-*   专业版+（每月60美元）：包含专业版所有功能，外加所有 OpenAI、[Claude](https://thenewstack.io/anthropics-claude-code-comes-to-web-and-mobile/) 和 Gemini 模型的三倍使用量。
-*   Ultra（每月200美元）：包含专业版+所有功能，外加所有 OpenAI、Claude 和 Gemini 模型的 20 倍使用量，以及新功能的优先访问权。
-
-如果您喜欢让 AI 智能体帮助改进代码的想法，请帮自己一个忙，试用一下 Cursor 2.0。
