@@ -1,4 +1,3 @@
-
 <!--
 title: React组件金字塔：一种过度工程的危机
 cover: https://cdn.thenewstack.io/media/2025/11/7552f648-getty-images-00hj4dtxkw0-unsplashb.jpg
