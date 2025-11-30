@@ -1,4 +1,3 @@
-
 <!--
 title: CNCF 宣布弃用 Kubernetes Ingress Nginx 控制器
 cover: https://cdn.thenewstack.io/media/2025/11/d90814fe-kubecon-haproxy-mancini-assman.jpg
