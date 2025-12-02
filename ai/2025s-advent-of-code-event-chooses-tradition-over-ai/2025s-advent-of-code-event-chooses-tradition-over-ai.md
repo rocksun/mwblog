@@ -1,4 +1,3 @@
-
 <!--
 title: 2025代码降临节：AI退位，传统为王！
 cover: https://cdn.thenewstack.io/media/2025/11/db3f1016-santa-presents-an-ornament-scaled-1.jpg
