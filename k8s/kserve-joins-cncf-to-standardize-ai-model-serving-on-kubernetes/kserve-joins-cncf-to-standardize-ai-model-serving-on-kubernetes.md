@@ -1,4 +1,3 @@
-
 <!--
 title: KServe 携手 CNCF，共促 Kubernetes AI 模型服务标准化
 cover: https://cdn.thenewstack.io/media/2025/11/62a45454-kubecon-kserve.png
