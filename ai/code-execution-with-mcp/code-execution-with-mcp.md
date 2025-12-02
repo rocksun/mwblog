@@ -1,7 +1,6 @@
-
 <!--
 title: MCP驱动代码执行：构建超高效智能体
-cover: ./image.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1764659153/oh6dzemhdxkt3pskix9e.png
 summary: MCP连接AI代理，但传统方法导致token消耗高。代码执行使MCP代理更高效，减少token用量，提升上下文管理、隐私及工具重用能力。
 -->
 
