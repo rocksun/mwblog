@@ -1,4 +1,3 @@
-
 <!--
 title: Adobe新AI助手：前端开发者的智能进阶课
 cover: https://cdn.thenewstack.io/media/2025/12/6a77fc71-accessibility_and-ai.jpg
