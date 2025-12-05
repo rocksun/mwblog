@@ -1,4 +1,3 @@
-
 <!--
 title: AWS Bedrock与SageMaker：AI模型定制，博士不再是门槛！
 cover: https://cdn.thenewstack.io/media/2025/12/fb90841c-17d47d58-211f-4d37-a330-415fb51fd773-scaled.jpg
