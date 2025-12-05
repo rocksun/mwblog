@@ -1,4 +1,3 @@
-
 <!--
 title: MCP一周年：回首征程，展望未来
 cover: https://cdn.thenewstack.io/media/2025/12/f266e719-christina-wocintechchat-com-7phq2bca7dm-unsplash-scaled.jpg
