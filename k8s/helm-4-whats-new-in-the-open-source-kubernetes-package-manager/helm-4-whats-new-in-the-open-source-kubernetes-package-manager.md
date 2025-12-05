@@ -1,4 +1,3 @@
-
 <!--
 title: Helm 4 重磅发布：开源 Kubernetes 包管理器新功能全解析
 cover: https://cdn.thenewstack.io/media/2025/12/2dbf39d2-thumbnail-30.png
