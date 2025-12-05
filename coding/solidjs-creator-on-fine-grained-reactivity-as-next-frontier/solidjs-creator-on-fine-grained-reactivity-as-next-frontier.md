@@ -1,4 +1,3 @@
-
 <!--
 title: SolidJS创始人：细粒度响应式，前端未来新战场
 cover: https://cdn.thenewstack.io/media/2025/11/bcda7b35-solidjsryancarniato.jpg
