@@ -1,4 +1,3 @@
-
 <!--
 title: MCP：让Claude AI全面掌控你的本地文件系统
 cover: https://cdn.thenewstack.io/media/2025/12/bd43b97c-osarugue-igbinoba-an_icdzkbhu-unsplash.jpg
