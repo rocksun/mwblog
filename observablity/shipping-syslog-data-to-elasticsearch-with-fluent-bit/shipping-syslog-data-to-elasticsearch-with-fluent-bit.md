@@ -1,4 +1,3 @@
-
 <!--
 title: Fluent Bit：Syslog 数据高效入驻 Elasticsearch
 cover: https://cdn.thenewstack.io/media/2025/11/45038acc-birds.jpg
