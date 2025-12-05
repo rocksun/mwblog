@@ -1,4 +1,3 @@
-
 <!--
 title: 存储与访问一体化：数据库的必经之路
 cover: https://cdn.thenewstack.io/media/2025/11/9473b935-bowlingshoes3.jpg
