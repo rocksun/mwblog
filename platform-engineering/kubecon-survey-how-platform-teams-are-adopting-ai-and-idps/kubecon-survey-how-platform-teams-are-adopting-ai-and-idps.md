@@ -1,4 +1,3 @@
-
 <!--
 title: KubeCon报告：平台团队AI与IDP采纳全景
 cover: https://cdn.thenewstack.io/media/2025/12/9fa41426-railway.jpg
