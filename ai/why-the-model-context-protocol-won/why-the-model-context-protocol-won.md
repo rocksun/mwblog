@@ -1,4 +1,3 @@
-
 <!--
 title: 模型上下文协议缘何制胜？
 cover: https://cdn.thenewstack.io/media/2025/12/8aa85189-communication.jpg
