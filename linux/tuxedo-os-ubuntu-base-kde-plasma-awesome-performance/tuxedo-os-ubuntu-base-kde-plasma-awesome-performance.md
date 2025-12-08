@@ -1,4 +1,3 @@
-
 <!--
 title: Tuxedo OS：Ubuntu血脉，KDE Plasma加持，性能一骑绝尘！
 cover: https://cdn.thenewstack.io/media/2025/11/5bdc9dd3-tuxedooshero.jpg
