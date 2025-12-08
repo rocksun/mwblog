@@ -1,4 +1,3 @@
-
 <!--
 title: 大模型降本增效：令牌高效数据预处理指南
 cover: https://cdn.thenewstack.io/media/2025/12/6eace39e-token.jpg
