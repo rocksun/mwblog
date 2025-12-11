@@ -1,4 +1,3 @@
-
 <!--
 title: 构建可扩展AI智能体：实战指南
 cover: https://cdn.thenewstack.io/media/2025/12/c27c9a74-building-scalable-ai-agents.jpg
@@ -21,7 +20,9 @@ summary: 本指南介绍如何使用Salesforce Agentforce和Heroku AppLink构建
 
 使用 AI 代理的一种流行方法是构建流程——AI 代理在自动处理和执行任务时遵循的工作流程。以下是一个工作流程示例：
 
-![](https://cdn.thenewstack.io/media/2025/12/9491b2-agentforce-flow-architecture.png)
+
+![](https://fastly.jsdelivr.net/gh/bucketio/img0@main/2025/12/09/1765288801331-a83df0f4-5f79-4a2a-8689-3d574369a1f6.png)
+
 
 *Agentforce 流程示例。*
 

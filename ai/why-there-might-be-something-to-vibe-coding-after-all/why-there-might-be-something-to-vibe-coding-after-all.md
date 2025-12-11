@@ -1,0 +1,81 @@
+<!--
+title: 氛围编程：原来真的有道理！
+cover: https://cdn.thenewstack.io/media/2025/12/89c8dcab-chris-bair-a10y2eq7ohy-unsplash.jpg
+summary: 氛围编程是一种直觉驱动的编码哲学，挑战完美神话，强调心流与创造力。它通过混乱带来清晰，作为反倦怠工具，提升人类直觉。旨在平衡严谨与自发，激发创新，与AI协作互补。
+-->
+
+氛围编程是一种直觉驱动的编码哲学，挑战完美神话，强调心流与创造力。它通过混乱带来清晰，作为反倦怠工具，提升人类直觉。旨在平衡严谨与自发，激发创新，与AI协作互补。
+
+> 译自：[Why There Might Be Something to Vibe Coding After All](https://thenewstack.io/why-there-might-be-something-to-vibe-coding-after-all/)
+> 
+> 作者：Alexander T. Williams
+
+在严谨的软件工程和深夜代码爵士乐之间，存在着一种奇怪的新哲学：[氛围编程](https://thenewstack.io/mastering-vibe-coding-may-the-force-be-with-you/)。
+
+它是一种直观编写代码的行为，让流畅和直觉主导，而不是痴迷于完美的架构或 Lint 错误。它曾被嘲笑为懒惰、缺乏纪律，甚至是混乱，[正如我在十月份的文章中所述](https://thenewstack.io/vibe-coding-six-months-later-the-honeymoons-over/)。
+
+但是，在这些表情包和混乱之下，隐藏着开发者们一直都知道却很少大声说出来的事实：最好的想法发生在你停止强迫它们的时候。也许氛围编程只是以不良形式伪装的创造力。我们是否发现了一些东西？
+
+## 完美工程师的神话
+
+开发者们一直被灌输一种观念：伟大的代码总是干净、逻辑清晰且可复现的。业界崇尚 [SOLID](https://softwareengineering.stackexchange.com/questions/447532/when-to-not-use-solid-principles) 原则、设计模式和细致的文档。然而，仔细审视一些改变了网络的项目——React、Node.js，甚至 Linux 的最初版本——你会发现大量的即兴创作。这些并非委员会的作品；它们是由好奇心和咖啡因写成的。
+
+> 氛围编程挑战了完美的假象。
+
+氛围编程挑战了完美的假象。它承认一些最有效的解决方案源于实验，而非电子表格。当你凭感觉编码时，你是在凭直觉而非过度工程化地导航。这[可能会导致更混乱的代码库](https://www.freecodecamp.org/news/command-line-tricks-for-managing-your-messy-open-source-repository/)，但也能带来纯粹的结构永远无法实现的突破。
+
+从核心来看，氛围编程并非拒绝纪律，而是重新定义它。它关乎信任你积累的经验和潜意识的模式识别，有时比僵化的过程更好的指导。
+
+## 心流状态与直觉科学
+
+每个开发者都了解进入心流状态的快感——时间消逝、语法成为本能、逻辑感觉像节奏的那一刻。这不是伪科学；[它是一个神经学上的最佳点](https://pmc.ncbi.nlm.nih.gov/articles/PMC7551835/)，而且是真实存在的。
+
+认知心理学研究[表明，专业知识能释放工作记忆](https://www.researchgate.net/publication/303873708_How_chunks_long-term_working_memory_and_templates_offer_a_cognitive_explanation_for_neuroimaging_data_on_expertise_acquisition_A_two-stage_framework)，从而做出毫不费力却又深入人心的直觉决策。这种直觉甚至在[API 安全](https://www.imperva.com/learn/application-security/api-security/)等高度技术领域也常常浮现，经验丰富的开发者在完全阐明之前就能感知到架构陷阱。
+
+> 一旦你掌握了音阶，你就可以即兴创作。
+
+氛围编程正是顺应了这一点。它不是每隔几分钟就停下来重构或交叉检查文档，而是让你乘势而为。因此，结论是：[持续修正的精神摩擦](https://www.alanaatchisonpsyd.com/articlesandresources/why-perfectionism-kills-creativity-(and-how-to-set-your-id-free))会扼杀创造力。凭直觉编码并非盲目编码；它意味着充分信任你的心智模型，以便在完善之前进行即兴创作。
+
+将其视为音乐即兴创作。爵士乐手在独奏中途不会停下来重新分析和弦理论——他们依靠多年练习建立起来的内在结构感。同样适用于编码：一旦你掌握了音阶，你就可以即兴创作。
+
+## 非结构化编码如何带来清晰度
+
+讽刺的是，混乱可以是一个优秀的调试工具，尤其是在人工智能能够[在你无法找到模式的地方找到模式](https://www.aubergine.co/insights/the-future-of-debugging-a-human-ai-symphony-in-resolving-chaos)时。自由编写会暴露出你真正理解什么；以及你不理解什么。当你进行氛围编程时，推理中的空白会迅速浮现，因为你没有隐藏在抽象层或过早优化的背后。
+
+混乱阶段实际上可以加速清晰度，即使你最终[必须对其进行一些整理](https://thenewstack.io/bringing-harmony-to-chaos-a-dive-into-standardization/)。在简陋的环境中测试原始逻辑比构建一个在实际约束下崩溃的纯净系统要快。氛围编程鼓励快速迭代，而不会因完美主义而陷入瘫痪。
+
+许多开发者在原型设计或黑客马拉松期间已经秘密地进行了氛围编程——他们只是稍后才清理它。区别在于承认这个过程不是弱点；它是一个真正的发现阶段。
+
+## 氛围编程作为一种反倦怠哲学
+
+技术行业的倦怠流行不仅仅是长时间工作的问题，它还涉及创造性枯竭。编码已经变得程序化到几乎无菌的程度。无休止的 PR 评审、检查表和 JIRA 票据扼杀了最初吸引人们进入软件行业的乐趣。氛围编程重新引入了乐趣。
+
+> 重新将代码视为艺术具有力量。
+
+重新[将代码视为艺术](https://www.ideo.com/journal/painting-with-code)具有力量。当你允许自己跟随好奇心而不是任务的验收标准时，你会重新激活大脑中将编程与奇妙联系起来的部分。这并不意味着忽视结构或破坏生产——它意味着为探索留出空间。
+
+从这个意义上说，氛围编程是一种[抵制倦怠文化](https://thenewstack.io/tech-works-how-to-identify-and-address-burnout-on-your-team/)的形式。它提醒开发者，生产力并非总是表现为完美的进度图表。有时，进步是混乱的、自发的和情感化的。
+
+## 将直观编码融入可行工作流程
+
+当然，氛围编程不能取代传统的纪律。一个完全基于“氛围”构建的产品会在扩展、依赖和质量保证方面崩溃。但如果刻意使用，它能以系统化流程无法实现的方式激发创新。诀窍在于知道何时切换模式——构思时求流畅，实现时求结构。
+
+有些团队已经通过“[氛围冲刺](https://dzone.com/articles/one-week-sprints-vibe-coding)”将此制度化——在短期的创意编码窗口中，除了实验之外没有任何规则。在这些会话中，常常会涌现出令人惊喜的解决方案：更清晰的 UI 流程、新颖的自动化脚本、意想不到的性能调整。一旦通过标准审查进行完善，这些想法通常能成功过渡到生产。
+
+也许氛围编程不是严谨的敌人，而是防止严谨变得机械化的缪斯。两者之间的平衡可能正是区分仅仅交付任务的团队和那些进行发明的团队的关键。
+
+## 为什么人类编码器比人工智能有优势
+
+随着 [AI 编码助手变得无处不在](https://thenewstack.io/augment-code-an-ai-coding-tool-for-real-development-work/)，氛围编程可能会成为人类的优势。大型语言模型擅长结构化逻辑、一致性和语法完美。它们缺乏的是人类的直觉，这种直觉甚至在编译器同意之前就能检测到“这感觉对了”。氛围编程利用了这种无形品质——包裹在情感中的模式识别。
+
+> 氛围编程可能成为人类的优势。
+
+在未来几年，开发者可能会更多地依靠直觉[来引导人工智能协作伙伴](https://link.springer.com/article/10.1007/s41469-025-00199-z)。有效提示代理将更像爵士乐而非工程：你设定主调，定义节奏，然后即兴创作直到有所突破。这种创造性共生需要你对“氛围”的信心。
+
+讽刺的是，自动化最终可能会让氛围编程变得必不可少。机器可以处理无聊的部分；人类终于可以追逐那些奇特的部分。
+
+## 结论
+
+氛围编程不会取代传统的软件实践，也不应该取代。但它可能会提醒开发者一些关键的事情：代码不仅仅是逻辑，它也是一种表达。偶尔让直觉引导你，这并不会让你变得散漫；它只会让你对这个过程充满活力。
+
+科技领域一些最具开创性的想法并非源于计划，而是源于“氛围”。下次当你的大脑告诉你不要过度思考，只管写代码时——也许，只管听从它吧。

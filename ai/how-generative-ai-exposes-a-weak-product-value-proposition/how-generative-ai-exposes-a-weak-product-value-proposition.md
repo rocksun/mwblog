@@ -1,0 +1,57 @@
+<!--
+title: 生成式AI：产品价值主张的“试金石”与“照妖镜”
+cover: https://cdn.thenewstack.io/media/2025/12/e007b11e-birger-strahl-0om-bfpwvow-unsplash.jpg
+summary: AI改变用户期望，暴露价值模糊产品。勿盲目“AI赋能”，应以用户为先。LLM伴随法律风险，项目须清晰界定价值与责任。
+-->
+
+AI改变用户期望，暴露价值模糊产品。勿盲目“AI赋能”，应以用户为先。LLM伴随法律风险，项目须清晰界定价值与责任。
+
+> 译自：[How Generative AI Exposes a Weak Product Value Proposition](https://thenewstack.io/how-generative-ai-exposes-a-weak-product-value-proposition/)
+> 
+> 作者：David Eastman
+
+虽然这无疑是智能体AI之年，但LLM生成将对原本中立的项目产生何种影响，目前尚不明确。我们已经看到一些软件产品借着营销浪潮争取到了转型时间，但公众对AI的期望尚未尘埃落定。
+
+这引出了一个问题：哪些类型的项目可以在不受AI负面影响的情况下开展？本文强调了AI如何暴露出那些未能清晰表达其真正价值主张的产品。
+
+## AI如何改变用户期望并暴露风险
+
+创意产业（其中游戏产业最容易识别）在生成式AI方面遇到的问题，不是其使用或滥用，而是产品现在被用户看待的方式。一款游戏是否只应拥有人工生成的资产，就像一件经典艺术品一样？这已不再是一个学术问题。
+
+我们明白，如果你试图用一件劣质的生成艺术品冒充人工创作的艺术品，它将被理所当然地描述为“AI糟粕”，并因其被认为价值较低而引起不满。但如果AI是增强型工作流程的一部分，即使人类为他们的工作获得了报酬，用户也可能需要了解更多。例如，在最近推出的多人游戏 [ARC Raiders](https://www.gamesindustry.biz/arc-raiders-becomes-most-successful-global-launch-in-nexons-history) 中，当玩家遇到一个机器人敌人时，他们对机器人的动作是由AI辅助生成的事实并不感到惊讶。但当听到游戏中的人声时，一些玩家却对并非每一句台词都有配音感到不满。尽管配音演员获得了报酬，且AI仅用于生成可变语音台词，但 [一些玩家认为这是错误的。](https://www.theguardian.com/games/2025/nov/19/pushing-buttons-arc-raiders-generative-ai-call-of-duty)
+
+> 所有受LLM影响并直接与人类用户交互的工作流程和过程，都面临着其价值被质疑的风险。
+
+最重要的是，所有受LLM影响并直接与人类用户交互的工作流程和过程，都面临着其价值被质疑的风险。我们第一次与ChatGPT互动时都觉得它很新奇，尽管最初尝试用聊天框生成的回复取代人工帮助的努力遭到了拒绝。话虽如此，如果一家公司正确地描述了用户可能得到什么（例如，24小时解决常见问题），大多数用户都接受了这一主张。
+
+Simon Willison经常要求他正在研究的任何LLM模型画 [一只骑自行车的鹈鹕](https://simonwillison.net/2025/Dec/2/)。这些画通常糟糕得滑稽，但这有助于理解LLM到目前为止只能从网络中提取客观现实（大多数LLM现在都已摄取了这些数据）。这就是为什么我们目前不应高度评价LLM图像创作的原因。例如，下面的SVG图片是Mistral Large 3的回复：
+
+[![](https://cdn.thenewstack.io/media/2025/12/4f9b5ab4-image.png)](https://cdn.thenewstack.io/media/2025/12/4f9b5ab4-image.png)
+
+*[Mistral为一只骑自行车的鹈鹕生成的SVG结果](https://gist.github.com/simonw/0df5e656291d5a7a1bf012fabc9edc3f)*
+
+Simon这样做并非为了嘲笑LLM，他只是指出所有模型都在这项任务上做出了完全独特且（在人类看来）奇怪的尝试，因为它们脑中并没有实际世界的模型可以用来工作。事实上，它们根本就没有“头脑”。
+
+## “AI赋能”产品的陷阱
+
+我今年早些时候提到的 [Ladybird 网页浏览器项目](https://thenewstack.io/ladybird-that-rare-breed-of-browser-based-on-web-standards/) 有一个简单的前提：它从零开始构建，不包含其他浏览器的任何组件。除了承诺不进行商业化交易外，它还专注于仅仅作为一款网页浏览器。因此，现在它有了一个额外的、不言而喻的优势：它没有内置LLM服务。
+
+相比之下，以谷歌为例，它正忙于 [将AI整合到Chrome及其他产品中](https://thenewstack.io/how-google-is-shifting-ai-from-the-cloud-to-your-browser/)，以至于用户不再清楚他们正在获得什么。从技术上讲，搜索中的AI概览服务——它生成一个简短的回复，而不是仅仅列出链接——是独立于浏览器的。但谷歌将 [Chrome宣传为AI浏览器](https://thenewstack.io/chrome-switches-on-ai-the-future-of-browsing-begins-now/)，使得这些必要的区分现在变得模糊不清。我曾撰写过关于 [Atlas，OpenAI的浏览器](https://thenewstack.io/openais-apps-sdk-a-developers-guide-to-getting-started/)，它“内置了ChatGPT”，这使我们进一步偏离了原始网络。没有人想要一只骑自行车的鹈鹕。
+
+> 最糟糕的做法是将产品或体验标榜为“AI原生”或“AI优先”。一切都应以用户优先为目标。
+
+再次强调，担忧的产生并非因为LLM是某种毒药，而是因为大公司未能澄清其服务如何带来价值。他们选择将LLM描绘成一种巫术，一种无法量化但应在整个组织中灌输以达到最大效果的神秘力量。这与大多数人使用ChatGPT的经验背道而驰——他们能清楚地看到它擅长什么，不擅长什么。最糟糕的做法是将产品或体验标榜为“AI原生”或“AI优先”。一切都应以用户优先为目标。我经常报道智能体AI如何成功地为开发者提供开发软件的新方法——例如，请参阅 [我对Conductor的评论](https://thenewstack.io/a-hands-on-review-of-conductor-an-ai-parallel-runner-app/)——即使现在衡量其真实效果还为时过早。然而，用户（在这种情况下是开发者）确实能看到其好处。
+
+我明白踩刹车踏板减速通常仍然是一个机械过程（即液压作用于刹车），但现在也可以通过电线完成（即踏板发送电子信号到刹车）。我明白电动汽车（EVs）可能仍会使用机械备用。我模糊地理解ABS的工作原理。信息是可用的，但我们接受工程是整体完成的。但我不会被一辆自称“线控原生”或“线控优先”的汽车所吸引。我只是期望任何汽车制造商都重视在他们的车辆中使用安全高效的组件。
+
+## 了解使用LLM的法律风险
+
+LLM带来的最后一个风险更为人熟知。[Midjourney](https://www.midjourney.com/) 成功地使用开源模型开发出了一款非常优秀的图像生成产品，但它现在正面临几项 [法律问题](https://futurism.com/midjourney-trouble-warner-bros-discovery)。大公司能更好地管理法律风险，或与他们正在损害其业务的公司建立关系。Midjourney本应清楚地看到并打击人们从一开始就警告他们的“公然侵犯版权”行为。但他们在用户提示层或输出层方面创新不足，未能规避这一点。相比之下，YouTube则努力发现上传到其平台视频中的侵权行为。
+
+对其他项目而言，问题在于，即使只使用了少量LLM生成的内容，它们现在也面临法律威胁——如果诉讼成功，这种威胁还会越来越大。通过及早限制其价值主张，它们可能会阻止用户探索可能发生侵权行为的领域。
+
+## 在AI时代清晰的价值主张为何重要
+
+我鼓励将LLM视为工具的观点，但它们显然会以不可预测的方式影响许多现有和新的软件项目。LLM引入的，是需要充分探索和解释你的产品价值主张现在可能如何改变，或者该主张最初是否足够成熟。
+
+项目需要更努力地独立解释其产品产出什么，预期结果是什么，以及这些结果属于哪个领域。这样，项目的责任范围将更加清晰。未来在审视这些界限时，“LLM做的”将不再是一个有效的答案。
