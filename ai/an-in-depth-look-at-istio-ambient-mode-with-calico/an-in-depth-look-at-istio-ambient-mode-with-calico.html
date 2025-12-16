@@ -1,0 +1,878 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.4",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),o([])},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();</script>
+  
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <noscript>
+      
+    </noscript>
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <script type="rocketlazyloadscript" async="" data-rocket-src="https://www.googleoptimize.com/optimize.js?id=GTM-WGRHN9W"></script>
+    
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.gstatic.com"><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//js.driftt.com">
+	<!-- This site is optimized with the Yoast SEO Premium plugin v26.4 (Yoast SEO v26.4) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Istio Ambient Mode with Calico: Sidecarless Service Mesh Simplicity</title>
+<link data-rocket-preload="" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" rel="preload">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;display=swap" media="all" onload="this.media='all'" rel="stylesheet">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&#038;display=swap"></noscript>
+	<meta name="description" content="Reduce complexity and cost with Istio Ambient Mode integrated into the Calico platform. Get sidecarless mTLS, L7 traffic control, and unified Kubernetes security.">
+	<link rel="canonical" href="https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="An In-Depth Look at Istio Ambient Mode with Calico | Tigera - Creator of Calico">
+	<meta property="og:description" content="Reduce complexity and cost with Istio Ambient Mode integrated into the Calico platform. Get sidecarless mTLS, L7 traffic control, and unified Kubernetes security.">
+	<meta property="og:url" content="https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/">
+	<meta property="og:site_name" content="Tigera - Creator of Calico">
+	<meta property="article:published_time" content="2025-12-11T19:35:56+00:00">
+	<meta property="og:image" content="https://www.tigera.io/app/uploads/2025/12/Dec-10-An-In-Depth-Look-at-Istio-Ambient-Mode-with-Calico-1.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="628">
+	<meta property="og:image:type" content="image/png">
+	<meta name="author" content="John Alexander">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="John Alexander">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="15 minutes">
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"NewsArticle","@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#article","isPartOf":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/"},"author":{"name":"John Alexander","@id":"https://www.tigera.io/#/schema/person/e469681bac39abbb6cbc961d0fba1369"},"headline":"An In-Depth Look at Istio Ambient Mode with Calico","datePublished":"2025-12-11T19:35:56+00:00","mainEntityOfPage":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/"},"wordCount":3088,"publisher":{"@id":"https://www.tigera.io/#organization"},"image":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#primaryimage"},"thumbnailUrl":"https://www.tigera.io/app/uploads/2025/12/Dec-10-An-In-Depth-Look-at-Istio-Ambient-Mode-with-Calico-1.png","keywords":["How-To","Project Calico","Announcements"],"articleSection":["Technical Blog","Featured Blog"],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/","url":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/","name":"Istio Ambient Mode with Calico: Sidecarless Service Mesh Simplicity","isPartOf":{"@id":"https://www.tigera.io/#website"},"primaryImageOfPage":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#primaryimage"},"image":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#primaryimage"},"thumbnailUrl":"https://www.tigera.io/app/uploads/2025/12/Dec-10-An-In-Depth-Look-at-Istio-Ambient-Mode-with-Calico-1.png","datePublished":"2025-12-11T19:35:56+00:00","description":"Reduce complexity and cost with Istio Ambient Mode integrated into the Calico platform. Get sidecarless mTLS, L7 traffic control, and unified Kubernetes security.","breadcrumb":{"@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#primaryimage","url":"https://www.tigera.io/app/uploads/2025/12/Dec-10-An-In-Depth-Look-at-Istio-Ambient-Mode-with-Calico-1.png","contentUrl":"https://www.tigera.io/app/uploads/2025/12/Dec-10-An-In-Depth-Look-at-Istio-Ambient-Mode-with-Calico-1.png","width":1200,"height":628},{"@type":"BreadcrumbList","@id":"https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tigera.io/"},{"@type":"ListItem","position":2,"name":"An In-Depth Look at Istio Ambient Mode with Calico"}]},{"@type":"WebSite","@id":"https://www.tigera.io/#website","url":"https://www.tigera.io/","name":"Tigera - Creator of Calico","description":"Unified network security &amp; observability for Kubernetes","publisher":{"@id":"https://www.tigera.io/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.tigera.io/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.tigera.io/#organization","name":"Tigera - Creator of Calico","url":"https://www.tigera.io/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/#/schema/logo/image/","url":"https://www.tigera.io/app/uploads/2018/08/homepage-social-share-2.png","contentUrl":"https://www.tigera.io/app/uploads/2018/08/homepage-social-share-2.png","width":1200,"height":627,"caption":"Tigera - Creator of Calico"},"image":{"@id":"https://www.tigera.io/#/schema/logo/image/"}},{"@type":"Person","@id":"https://www.tigera.io/#/schema/person/e469681bac39abbb6cbc961d0fba1369","name":"John Alexander","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.tigera.io/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/30f72ab34f938113d1c4e89ed2dc77bbed8dd982f0b67d6b3be3c854229a28e0?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/30f72ab34f938113d1c4e89ed2dc77bbed8dd982f0b67d6b3be3c854229a28e0?s=96&d=mm&r=g","caption":"John Alexander"},"description":"John Alexander is a Director of Product Marketing at Tigera, bringing over 12 years of experience in cloud security and a Certified Information Security Manager (CISM) certification. A retired veteran of the U.S. Army Reserve with a decade in the Western Cyber Protection Center (WCPC), John combines deep cybersecurity expertise with a talent for clear, compelling messaging and is dedicated to helping organizations navigate evolving digital threats with impactful insights and guidance.","sameAs":["http://tigera.io","https://www.linkedin.com/in/john-alexander-86570a/"],"jobTitle":"Director of Product Marketing","url":"https://www.tigera.io/blog/author/john-alexander/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel="dns-prefetch" href="//info.tigera.io">
+<link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Tigera - Creator of Calico » Feed" href="https://www.tigera.io/feed/">
+<link rel="alternate" type="application/rss+xml" title="Tigera - Creator of Calico » Comments Feed" href="https://www.tigera.io/comments/feed/">
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link data-minify="1" rel="stylesheet" id="tigera-2021-theme-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/tigera.css?ver=1765482753" media="all">
+<link data-minify="1" rel="stylesheet" id="webstick-css-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/webstick.css?ver=1765482753" media="all">
+<link data-minify="1" rel="stylesheet" id="single-post-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/single-post.css?ver=1765482753" media="all">
+<link data-minify="1" rel="stylesheet" fetchpriority="low" as="style" onload="this.onload=null;this.rel='stylesheet'" id="non-critical-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/non-critical.css?ver=1765482753" media="all">
+<noscript><link data-minify="1" rel="stylesheet" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/non-critical.css?ver=1765482753" media="all"></noscript><script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/js/webstick.js?ver=1765482753" id="webstick-script-js" data-rocket-defer="" defer=""></script>
+<link rel="https://api.w.org/" href="https://www.tigera.io/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.tigera.io/wp-json/wp/v2/posts/65298"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.tigera.io/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 6.8.3">
+<link rel="shortlink" href="https://www.tigera.io/?p=65298">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.tigera.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tigera.io%2Fblog%2Fan-in-depth-look-at-istio-ambient-mode-with-calico%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.tigera.io/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tigera.io%2Fblog%2Fan-in-depth-look-at-istio-ambient-mode-with-calico%2F&amp;format=xml">
+<meta name="generator" content="Elementor 3.33.2; features: additional_custom_breakpoints; settings: css_print_method-internal, google_font-enabled, font_display-swap">
+<link rel="search" type="application/opensearchdescription+xml" title="Search Tigera - Creator of Calico" href="https://www.tigera.io/wp-json/opensearch/1.1/document">			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-32x32.png" sizes="32x32">
+<link rel="icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-180x180.png">
+<meta name="msapplication-TileImage" content="https://www.tigera.io/app/uploads/2021/05/cropped-tigera-icon-1-270x270.png">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+          <script type="rocketlazyloadscript">
+        // Keeping while we test GTM deactivation.
+        setTimeout(function () {
+          var s = document.createElement('script')
+          s.type = 'text/javascript'
+          s.src = '/app/themes/tigera2021/src/js/vendor/tigera-clym.js'
+          document.head.append(s)
+        }, 10000)
+      </script>
+    
+    <script type="rocketlazyloadscript" data-minify="1" async="" data-rocket-src="https://www.tigera.io/app/cache/min/1/kapa-widget.bundle.js?ver=1765482753" data-website-id="4b4bbcee-986a-478e-beb6-73605311953a" data-project-name="Felix" data-modal-title="Felix AI" data-project-color="#F89C1D" data-project-logo="https://www.tigera.io/app/uploads/2021/06/Tigera-orange.png" data-button-hide="false" data-modal-override-open-class="btn--search" data-modal-z-index="9001" data-modal-disclaimer="Felix, powered by AI, answers questions based on content found on tigera.io and in Calico's product documentation.  For more information, [contact us](https://www.tigera.io/contact/)." data-modal-ask-ai-input-placeholder="Ask me about Calico, eBPF, container or Kubernetes security" data-modal-search-input-placeholder="Search by keyword" data-font-family="Poppins,Helvetica Neue,Helvetica,Arial,sans-serif" data-modal-border-radius="6px" data-button-box-shadow="2px 2px 8px rgba(0, 0, 0, 0.2)" data-modal-header-bg-color="#FFFFFF" data-search-mode-enabled="true">
+    </script>
+
+    
+        
+    
+    
+  <meta name="robots" content="index, follow">
+<meta name="generator" content="WP Rocket 3.20.1.2" data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_desktop"><script type="text/javascript" src="https://a.omappapi.com/app/js/api.min.js" async="" data-user="141683" data-account="154800"></script><link href="https://www.googleoptimize.com" rel="preconnect"></head>
+<body class="wp-singular post-template-default single single-post postid-65298 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-hello-elementor wp-child-theme-tigera2021 hello-elementor-default elementor-default elementor-kit-10">
+<div data-rocket-location-hash="ff134c4bb2957bbb7546a10c5daff1fb" class="menu">
+  <div data-rocket-location-hash="9146f144d11f2694c62b0aabfe937d70" class="section-container flex">
+    <a class="menu-image" href="/">
+      <img title="tigera-logoWhite" width="150" height="30" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png" data-lazy-src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png" data-ll-status="loaded" class="entered lazyloaded"><noscript><img title="tigera-logoWhite" width="150" height="30" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pgs10u1azwwqta709onlhpgchcu467kpsetcdizd0s.png"></noscript>
+    </a>
+
+    <div class="menu-hamburger">
+      <div class="menu-hamburger__wrapper" id="menuToggle">
+        <input type="checkbox" class="menu-hamburger__checkbox">
+          <span class="bar-top"></span>
+          <span class="bar-middle"></span>
+          <span class="bar-bottom"></span>
+      </div>
+    </div>
+     <div id="nav-left" class="menu-left"><ul id="menu-main-menu" class="menu-left__list"><li id="menu-item-37708" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37708"><a href="/project-calico/">Project Calico</a></li>
+<li id="menu-item-26542" class="nav-products menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-26542"><a href="#">Products</a>
+<ul class="sub-menu">
+	<li id="menu-item-56616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56616"><a href="https://www.tigera.io/tigera-products/calico/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-calico-os.svg" width="32" height="32" alt="Calico Open Source Icon"><span class="menu-item-title">Calico Open Source</span> <span class="menu-item-description">eBPF-based networking and security</span></a></li>
+	<li id="menu-item-60730" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60730"><a href="/tigera-products/calico-commercial-editions/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-calico-enterprise.svg" width="32" height="32" alt="Calico Commercial Editions Icon"><span class="menu-item-title">Calico Commercial Editions</span> <span class="menu-item-description">Calico Cloud and Calico Enterprise</span></a></li>
+	<li id="menu-item-52045" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52045"><a href="https://www.tigera.io/tigera-products/compare-products/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-compare.svg" width="32" height="32" alt="Compare Products Icon"><span class="menu-item-title">Compare Calico Editions</span></a></li>
+	<li id="menu-item-52046" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52046"><a href="https://www.tigera.io/tigera-products/calico-cloud-pricing/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-pricing.svg" width="32" height="32" alt="Pricing Icon"><span class="menu-item-title">Calico Pricing</span></a></li>
+	<li id="menu-item-56027" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56027"><a href="https://www.tigera.io/tigera-products/why-calico/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-why.svg" width="32" height="32" alt="Why Calico Icon"><span class="menu-item-title">Why Calico</span></a></li>
+</ul>
+</li>
+<li id="menu-item-24609" class="nav-solutions menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24609"><a href="#">Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-24610" class="nav-usecases menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24610"><a>Use Cases</a>
+	<ul class="sub-menu">
+		<li id="menu-item-23794" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-23794"><a href="/tigera-products/kubernetes-network-security/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2023/04/icon-kubernetes-security.svg" width="32" height="32" alt="Kubernetes Security"><span class="menu-item-title">Kubernetes Network Security</span></a>
+		<ul class="sub-menu">
+			<li id="menu-item-59788" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59788"><a href="/tigera-products/ingress-gateway/">Ingress Gateway</a></li>
+			<li id="menu-item-51630" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51630"><a href="/tigera-products/egress-gateway/">Egress Gateway</a></li>
+			<li id="menu-item-46519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46519"><a href="/features/firewall-integration/">Universal Firewall Integration</a></li>
+			<li id="menu-item-48986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48986"><a href="/tigera-products/cluster-mesh/">Cluster Mesh</a></li>
+			<li id="menu-item-65348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65348"><a href="/tigera-products/istio-ambient-mode/">Istio Ambient Mode</a></li>
+			<li id="menu-item-63800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-63800"><a href="/tigera-products/ai-workloads/">Calico for AI Workloads</a></li>
+			<li id="menu-item-23790" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23790"><a href="/tigera-products/zero-trust-workload-security/">Workload Access Controls</a></li>
+			<li id="menu-item-46518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46518"><a href="/features/microsegmentation/">Microsegmentation</a></li>
+			<li id="menu-item-46523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46523"><a href="/tigera-products/kubernetes-high-availability/">High-Availability Kubernetes</a></li>
+		</ul>
+</li>
+		<li id="menu-item-23788" class="nav-usecases__subitem menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-23788"><a><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2024/07/icon-Intrusion-detection-prevention.svg" width="32" height="32" alt="Intrusion detection prevention"><span class="menu-item-title">Observability &amp; Compliance</span></a>
+		<ul class="sub-menu">
+			<li id="menu-item-39099" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39099"><a href="/features/network-threat-detection/">Network Threat Detection</a></li>
+			<li id="menu-item-39101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39101"><a href="/features/policy-lifecycle-management/">Security Policy Management</a></li>
+			<li id="menu-item-23791" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23791"><a href="/tigera-products/observability-and-troubleshooting/">Observability &amp; Troubleshooting</a></li>
+			<li id="menu-item-34336" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34336"><a href="/features/compliance-and-audit/">Compliance</a></li>
+			<li id="menu-item-29128" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29128"><a href="/tigera-products/multi-cloud-security/">Multi-Cloud Security</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li id="menu-item-24611" class="nav-enviroments menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-24611"><a>Environments</a>
+	<ul class="sub-menu">
+		<li id="menu-item-29135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29135"><a href="/partners/aws/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-aws.svg" width="32" height="32" alt="AWS EKS"><span class="menu-item-title">AWS EKS</span></a></li>
+		<li id="menu-item-29136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29136"><a href="/partners/microsoft/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-azure.svg" width="32" height="32" alt="Azure AKS"><span class="menu-item-title">Azure AKS</span></a></li>
+		<li id="menu-item-29137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29137"><a href="/partners/google/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-google.svg" width="32" height="32" alt="Google GKE"><span class="menu-item-title">Google GKE</span></a></li>
+		<li id="menu-item-29138" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29138"><a href="/partners/redhat/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-redhat.svg" width="32" height="32" alt="Red Hat OpenShift"><span class="menu-item-title">Red Hat OpenShift</span></a></li>
+		<li id="menu-item-29139" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29139"><a href="/partners/suse-rancher/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2025/10/icon-SUSE.svg" width="32" height="32" alt=""><span class="menu-item-title">SUSE Rancher</span></a></li>
+		<li id="menu-item-29140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29140"><a href="/partners/fortinet/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-fortinet.svg" width="32" height="32" alt="Fortinet"><span class="menu-item-title">Fortinet</span></a></li>
+		<li id="menu-item-29141" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29141"><a href="/partners/mirantis/"><img class="menu-item-icon" src="https://www.tigera.io/app/uploads/2021/06/icon-mirantis.svg" width="32" height="32" alt="Mirantis"><span class="menu-item-title">Mirantis</span></a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-24613" class="nav-learn menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-has-children menu-item-24613"><a href="#">Learn</a>
+<ul class="sub-menu">
+	<li id="menu-item-26535" class="nav-resources menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-26535"><a href="#">Developer Center</a>
+	<ul class="sub-menu">
+		<li id="menu-item-45507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45507"><a href="https://docs.tigera.io/">Documentation</a></li>
+		<li id="menu-item-55759" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55759"><a href="https://www.tigera.io/interactive-training/">Interactive Training</a></li>
+		<li id="menu-item-45181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45181"><a href="https://www.tigera.io/tutorials/">Product Tutorials</a></li>
+		<li id="menu-item-44849" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-44849"><a href="https://www.tigera.io/lp/calico-certification/">Certification</a></li>
+		<li id="menu-item-60941" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60941"><a href="/events/">Events</a></li>
+		<li id="menu-item-59218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59218"><a href="https://www.tigera.io/resources/">Resources</a></li>
+		<li id="menu-item-58644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58644"><a href="https://www.tigera.io/blog/">Blog</a></li>
+	</ul>
+</li>
+	<li id="menu-item--1" class="menu-item learn-menu-banner menu-item--1"><a href="https://www.tigera.io/blog/5-reasons-to-switch-to-the-calico-ingress-gateway-and-how-to-migrate-smoothly/?utm_source=website&amp;utm_medium=organic_social&amp;utm_campaign=learn_header"><span class="flex"><img width="262" height="145" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20262%20145'%3E%3C/svg%3E" class="banner-img" alt="NGINX Deprecation: What’s Next?" data-lazy-src="https://www.tigera.io/app/uploads/2025/11/learn-menu-banner-NGINX-Deprecation-1.png"><noscript><img width="262" height="145" src="https://www.tigera.io/app/uploads/2025/11/learn-menu-banner-NGINX-Deprecation-1.png" class="banner-img" alt="NGINX Deprecation: What’s Next?"></noscript><span class="content-wrapper"><span class="banner-title">NGINX Deprecation: What’s Next?<span class="new">NEW</span></span><span class="banner-text">Avoid disruption with a proven migration path. Discover why Calico Ingress Gateway is the secure, scalable NGINX alternative.</span><span class="banner-learn-more">Learn More &gt;</span></span></span></a></li>
+	<li id="menu-item-29121" class="nav-guides menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-29121"><a>Guides</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35865" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35865"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Security</a>
+		<ul class="sub-menu">
+			<li id="menu-item-34256" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-34256"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Kubernetes Security</a></li>
+			<li id="menu-item-55502" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55502"><a href="https://www.tigera.io/learn/guides/llm-security/">LLM Security</a></li>
+			<li id="menu-item-55774" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55774"><a href="https://www.tigera.io/learn/guides/service-mesh/">Service Mesh</a></li>
+			<li id="menu-item-56457" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56457"><a href="https://www.tigera.io/learn/guides/microservices-security/">Microservices Security</a></li>
+			<li id="menu-item-59014" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59014"><a href="https://www.tigera.io/learn/guides/zero-trust/">Zero Trust</a></li>
+			<li id="menu-item-38334" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-38334"><a href="https://www.tigera.io/learn/guides/cloud-native-security/">Cloud-Native Security</a></li>
+			<li id="menu-item-59403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-59403"><a href="https://www.tigera.io/learn/guides/microsegmentation/">Microsegmentation</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li id="menu-item-54074" class="nav-guides menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-54074"><a href="#">Guides</a>
+	<ul class="sub-menu">
+		<li id="menu-item-35867" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35867"><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">Observability</a>
+		<ul class="sub-menu">
+			<li id="menu-item-61411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61411"><a href="https://www.tigera.io/learn/guides/observability/">Observability</a></li>
+			<li id="menu-item-30192" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-30192"><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">Kubernetes Monitoring</a></li>
+			<li id="menu-item-34829" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-34829"><a href="https://www.tigera.io/learn/guides/prometheus-monitoring/">Prometheus Monitoring</a></li>
+		</ul>
+</li>
+		<li id="menu-item-35866" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-has-children menu-item-35866"><a href="https://www.tigera.io/learn/guides/kubernetes-networking/">Networking</a>
+		<ul class="sub-menu">
+			<li id="menu-item-35075" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-35075"><a href="https://www.tigera.io/learn/guides/kubernetes-networking/">Kubernetes Networking</a></li>
+			<li id="menu-item-57122" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-57122"><a href="https://www.tigera.io/learn/guides/cilium-vs-calico/">Cillium vs Calico</a></li>
+			<li id="menu-item-35032" class="menu-item menu-item-type-post_type menu-item-object-guides menu-item-35032"><a href="https://www.tigera.io/learn/guides/ebpf/">eBPF</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-37706" class="nav-support menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37706"><a href="#">Support</a>
+<ul class="sub-menu">
+	<li id="menu-item-47374" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47374"><a href="https://www.tigera.io/customer-success/">Customer Success</a></li>
+	<li id="menu-item-37715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37715"><a target="_blank" href="https://support.tigera.io/s/login/">Support Portal</a></li>
+	<li id="menu-item-41533" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41533"><a target="_blank" href="https://www.tigera.io/calico-support/">Tigera Help Center</a></li>
+	<li id="menu-item-58874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58874"><a href="https://www.tigera.io/security-bulletins/">Security Bulletins</a></li>
+	<li id="menu-item-37711" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37711"><a href="/vulnerability-disclosure/">Report Security Issue</a></li>
+</ul>
+</li>
+<li id="menu-item-37736" class="nav-company menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37736"><a href="#">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-54317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54317"><a href="https://www.tigera.io/about/">About</a></li>
+	<li id="menu-item-61245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61245"><a href="/lp/calicocon-2025/">CalicoCon 2025</a></li>
+	<li id="menu-item-50364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50364"><a href="https://www.tigera.io/customer-stories/">Customers</a></li>
+	<li id="menu-item-54323" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54323"><a href="https://www.tigera.io/partners/">Partners</a></li>
+	<li id="menu-item-59069" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59069"><a href="https://www.tigera.io/media/">Newsroom</a></li>
+	<li id="menu-item-54327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54327"><a href="https://www.tigera.io/careers/">Careers</a></li>
+	<li id="menu-item-37733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37733"><a href="https://www.tigera.io/contact/">Contact</a></li>
+</ul>
+</li>
+</ul></div>
+    <div data-rocket-location-hash="47313f419fd974d5f72959edff8eafdc" class="menu-right">
+      <ul class="menu-right__list flex">
+        <li class="btn--search">
+          <a class="flex flex-center" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 19 19" style="width: 17px;">
+              <path d="M13.81 6.91c0 1.52-0.49 2.93-1.33 4.07l4.2 4.2c0.41 0.41 0.41 1.09 0 1.5s-1.09 0.41-1.5 0l-4.2-4.2c-1.14 0.84-2.55 1.33-4.07 1.33C3.09 13.81 0 10.72 0 6.91S3.09 0 6.91 0s6.91 3.09 6.91 6.91zM6.91 11.68a4.78 4.78 0 1 0 0-9.56 4.78 4.78 0 1 0 0 9.56z"></path>
+            </svg>
+          </a>
+        </li>
+      <li class="buttons"><ul id="menu-main-menu-right" class="menu__buttons"><li id="menu-item-43675" class="btn--signin menu-item menu-item-type-post_type menu-item-object-page menu-item-43675"><a href="https://www.tigera.io/contact/">Contact</a></li>
+<li id="menu-item-37646" class="btn--signin menu-item menu-item-type-custom menu-item-object-custom menu-item-37646"><a href="https://www.calicocloud.io/login">Login</a></li>
+<li id="menu-item-37666" class="btn--try menu-item menu-item-type-custom menu-item-object-custom menu-item-37666"><a href="https://www.calicocloud.io"><span class="menu-item-title">Start Free</span></a></li>
+</ul></li>      </ul>
+    </div>
+  </div>
+</div>
+
+<div data-rocket-location-hash="84e5de8417e767b86b47d41e28c2348c" class="posts-banner__wrapper">
+    <div data-rocket-location-hash="014c17b2e5387b77882b537203f566b1" class="posts-banner__container section-container">
+                <div data-rocket-location-hash="d5b19df454895eb5bebcd6639cc4b0d1" class="posts-banner__content">
+                            <div class="posts-banner__terms">
+                                                <span class="technical-blog">
+                                <a href="https://www.tigera.io/category/technical-blog/">Technical Blog</a>
+                            </span>
+                                                    <span class="featured-blog">
+                                <a href="https://www.tigera.io/category/featured-blog/">Featured Blog</a>
+                            </span>
+                                                            </div>
+                                      <h1>An In-Depth Look at Istio Ambient Mode with Calico</h1>
+                        
+                            <span class="post-author">By <a href="https://www.tigera.io/blog/author/john-alexander/">John Alexander</a>
+                                        on Dec 11, 2025 • 16 min read</span>
+                    <div class="share-buttons flex">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="LinkedIn" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button" width="24" height="24" alt="LinkedIn"></noscript>
+        </a>
+        <a href="https://twitter.com/share?url=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;text=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Twitter" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button" width="24" height="24" alt="Twitter"></noscript>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;quote=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Facebook" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button" width="24" height="24" alt="Facebook"></noscript>
+        </a>
+        <a href="https://www.reddit.com/submit?url= https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;title=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button entered lazyloaded" width="24" height="24" alt="Reddit" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" data-ll-status="loaded"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button" width="24" height="24" alt="Reddit"></noscript>
+        </a>
+    </div>
+            
+            
+                    </div>
+    </div>
+</div>
+<main data-rocket-location-hash="56922a952f8bdd0ce56ac834fc0eb1ec">
+    <div data-rocket-location-hash="34151a5701bb563b848ed8396a5062d1" class="single-post__wrapper section-container section-wrapper">
+        <div data-rocket-location-hash="6626af708d4ef5f982f09a854f9e9d17" class="two-columns">
+            <div class="single-post__container">
+                                        <article><h2>The Next Step Toward a Unified Kubernetes Platform: Istio Ambient Mode</h2>
+<p>Organizations are struggling with rising operational complexity, fragmented tools, and inconsistent security enforcement as Kubernetes becomes the foundation for modern application platforms. As a result of this complexity and fragmentation, platform teams are increasingly burdened by the need to stitch together separate solutions for networking, network security, and observability. This fragmentation also creates higher operating costs, security gaps, inefficient troubleshooting, and an elevated risk of outages in mission-critical environments. The challenge is even greater for companies running multiple Kubernetes distributions, as relying on each platform’s unique and often incompatible networking stack can lead to significant vendor lock-in and operational overhead.</p>
+<h3>The Tigera Unified Strategy: Addressing Fragmentation</h3>
+<p>Tigera’s unified platform strategy is designed to address these challenges by providing a single solution that brings together all the essential Kubernetes networking and security capabilities enterprises need, that includes Istio Ambient Mode, delivered consistently across every Kubernetes distribution.</p>
+<p><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-65323" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201000%20689'%3E%3C/svg%3E" alt="" width="1000" height="689" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white.webp 1000w, https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white-300x207.webp 300w, https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white-768x529.webp 768w" data-lazy-sizes="(max-width: 1000px) 100vw, 1000px" data-lazy-src="https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white.webp"><noscript><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-65323" src="https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white.webp" alt="" width="1000" height="689" srcset="https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white.webp 1000w, https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white-300x207.webp 300w, https://www.tigera.io/app/uploads/2025/12/Solution-Architecture-Dec-2025-white-768x529.webp 768w" sizes="(max-width: 1000px) 100vw, 1000px" /></noscript></p>
+<p>Istio Ambient Mode brings sidecarless service-mesh functionality that includes authentication, authorization, encryption, L4/L7 traffic controls, and deep application-level (L7) observability directly into the unified Calico platform. By including Istio Ambient Mode with Calico and making it easy to install and manage with the Tigera Operator and including enterprise support, Tigera is giving customers a simpler, more scalable, and more secure way to achieve secure networking across their Kubernetes environments. The result is reduced operational strain, lower costs, and a single consistent platform for networking, network security, and observability across every cluster.</p>
+<p>To help platform teams understand the full potential of this sidecarless architecture, we will deep dive into the following key capabilities and differentiators:</p>
+<ul>
+<li><a href="#what-is-a-service-mesh">What is a Service Mesh</a></li>
+<li><a href="#what-is-istio-ambient-mode">What is Istio Ambient Mode?</a></li>
+<li><a href="#why-istio-ambient-mode">Why Istio Ambient Mode? Solving the Sidecar Problem</a></li>
+<li><a href="#ambient-mode-in-detail">Istio Ambient Mode in Detail</a>
+<ul>
+<li><a href="#calico-ambient-mtls">How Calico + Istio Ambient Mode Leverage mTLS</a></li>
+<li><a href="#calico-istio-policies">Seamless use of Istio and Calico Policies Together</a></li>
+</ul>
+</li>
+<li><a href="#traffic-control-ambient">Traffic Control Using Istio Ambient Mode</a></li>
+<li><a href="#l7-observability">Application (L7) Observability</a></li>
+<li><a href="#unified-operator-architecture">A Unified, Operator-Managed Architecture</a></li>
+<li><a href="#getting-started-ambient">How to Get Started with Istio Ambient Mode</a></li>
+</ul>
+<h2 id="what-is-a-service-mesh" style="padding-top: 90px; margin-top: -90px;">What is a Service Mesh</h2>
+<p>A service mesh is an infrastructure layer that transparently handles communication between the many services in distributed applications, without requiring changes to each service’s code.</p>
+<p>Specifically, a service mesh provides:</p>
+<ul>
+<li><strong>Traffic control:</strong> routing, load balancing, retries, fail-overs, traffic shifting (e.g. canary deployments), fault injection, and more.</li>
+<li><strong>Security</strong>: Authentication, encryption and authorization for service-to-service communication</li>
+<li><strong>Observability</strong>: telemetry, distributed tracing, metrics, and traffic logging.</li>
+</ul>
+<p>A service mesh decouples network-related complexity (connectivity, security, traffic rules, monitoring) from application logic, letting engineering teams build, scale, and manage application services more reliably and securely.</p>
+<h2 id="what-is-istio-ambient-mode" style="padding-top: 90px; margin-top: -90px;">What is Istio Ambient Mode?</h2>
+<p>At its core, Istio Ambient Mode is a lightweight, sidecarless service mesh. It is built on two shared data-plane components:</p>
+<ul>
+<li><strong>zTunnel proxy (L4):</strong> a node (L4) level zero-trust tunnel that handles identity, authentication, and mutual TLS (mTLS) encryption for all service-to-service traffic. Instead of running a proxy inside every pod, each Kubernetes node runs one zTunnel instance.</li>
+<li><strong>Waypoint Proxy (L7):</strong> an optional, namespace-scoped L7 proxy that provides fine-grained traffic routing, retries, shaping, failover, and L7-level authorization.</li>
+</ul>
+<p>Together, these components deliver mTLS (encryption and authentication), workload identity, L4/L7 traffic control, and deep observability, while removing the operational burden of per pod sidecars.</p>
+<figure id="attachment_64708" aria-describedby="caption-attachment-64708" style="width: 1480px" class="wp-caption alignnone"><img decoding="async" class="size-full wp-image-64708" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201480%20921'%3E%3C/svg%3E" alt="Istio Ambient Mode showing the use of how it uses ztunnel (L4) and Waypoint (L7) proxies to control traffic. There is one ztunnel proxy per node, and a recommended minimum of one Waypoint proxy per namespace. Compare this to a regular service mesh that deploys one side car proxy per pod." width="1480" height="921" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration.png 1480w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-300x187.png 300w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-1024x637.png 1024w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-768x478.png 768w" data-lazy-sizes="(max-width: 1480px) 100vw, 1480px" data-lazy-src="https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration.png"><noscript><img decoding="async" class="size-full wp-image-64708" src="https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration.png" alt="Istio Ambient Mode showing the use of how it uses ztunnel (L4) and Waypoint (L7) proxies to control traffic. There is one ztunnel proxy per node, and a recommended minimum of one Waypoint proxy per namespace. Compare this to a regular service mesh that deploys one side car proxy per pod." width="1480" height="921" srcset="https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration.png 1480w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-300x187.png 300w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-1024x637.png 1024w, https://www.tigera.io/app/uploads/2025/11/What-is-Calicos-Istio-Ambient-Mode-Integration-768x478.png 768w" sizes="(max-width: 1480px) 100vw, 1480px" /></noscript><figcaption id="caption-attachment-64708" class="wp-caption-text">Istio Ambient Mode showing the use of how it uses ztunnel (L4) and Waypoint (L7) proxies to control traffic. There is one ztunnel proxy per node, and a recommended minimum of one Waypoint proxy per namespace. Compare this to a regular service mesh that deploys one side car proxy per pod.</figcaption></figure>
+<h2 id="why-istio-ambient-mode" style="padding-top: 90px; margin-top: -90px;">Why Istio Ambient Mode? Solving the Sidecar Problem</h2>
+<p>Traditional Istio service mesh relies on a sidecar proxy for every pod, an approach that adds significant compute cost, complicates development and build pipelines, and creates an ongoing operational burden as clusters scale. Istio Ambient Mode solves this by eliminating sidecars altogether and replacing them with lightweight per-node (zTunnel) and per-namespace (Waypoint) proxies.</p>
+<table style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td style="width: 100%;">
+<h4>💥Complexity: The #1 Service Mesh Adoption Blocker</h4>
+<p>Many organizations evaluating a service mesh quickly find the operational complexity too high:</p>
+<ul>
+<li>One e-commerce company scrapped a service mesh implementation because it was too complicated to maintain.</li>
+<li>Another major cloud provider noted that the complexity of the interface for end-users and the resulting expensive troubleshooting overhead was a massive problem.</li>
+</ul>
+<p>Istio Ambient Mode with Calico solves this by eliminating thousands of sidecars and simplifying the management experience.</p></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ambient-mode-in-detail" style="padding-top: 90px; margin-top: -90px;">Istio Ambient Mode in Detail</h2>
+<p>This section explains how Ambient Mode works under the hood and outlines how it works with Calico.</p>
+<h3>mTLS Everywhere by Default</h3>
+<p>One of the most powerful capabilities of Istio Ambient Mode for Calico is how it delivers mutual TLS (mTLS), which includes two-way authentication and encryption across every service communication, without requiring changes to your application code. Let’s walk through exactly how this works, why it matters, and how the bundling of Istio Ambient Mode with Calico preserves both security and policy compatibility.</p>
+<h4>Why mTLS matters</h4>
+<p>In Kubernetes, large volumes of traffic move between pods, nodes, clusters, and it is unencrypted by default. This leaves environments vulnerable to threats like man-in-the-middle attacks, spoofing, and eavesdropping. Istio Ambient Mode addresses these risks by providing strong two-way authentication and service-to-service encryption through mTLS, while authorization is enforced using Istio’s network policies.</p>
+<p>By using mTLS, both sides of a connection authenticate each other (hence “mutual”), and then they encrypt traffic so that confidentiality and integrity are guaranteed.</p>
+<h4>How mTLS works in an ambient mode mesh</h4>
+<p>When a workload (a pod, node, or service) in Istio’s Ambient Mode mesh makes a request, the following happens:</p>
+<ol>
+<li><strong>Certificate provisioning:</strong> Each workload (zTunnel proxy) has a certificate (X.509) issued by a trusted Certificate Authority (CA). In an Istio’s ambient mode mesh, the control-plane issues and rotates these certificates automatically.</li>
+<li><strong>mTLS handshake begins:</strong> The client initiates a TLS handshake with the server.</li>
+<li><strong>Cryptographic negotiation:</strong> Cryptographic parameters (cipher suites, keys) are negotiated.</li>
+<li><strong>Server authentication:</strong> The server presents its certificate, and the client verifies it.</li>
+<li><strong>Client authentication (mTLS):</strong> In mTLS mode, the client additionally presents its certificate, which the server verifies.</li>
+<li><strong>Session establishment:</strong> Once both are verified, they derive a shared session key</li>
+<li><strong>Secure communication:</strong> Traffic between workloads proceeds encrypted and authenticated end-to-end.</li>
+</ol>
+<p>After the handshake, all subsequent traffic between client and server is encrypted and cannot be meaningfully intercepted or tampered with. The identities of both ends are cryptographically bound to their certificates, not just IP addresses.</p>
+<p>This also means that identity does not depend on transient IPs or network location. If a pod moves, re-scales, or changes to a different node, the certificate persists as the identity.</p>
+<figure id="attachment_64710" aria-describedby="caption-attachment-64710" style="width: 1480px" class="wp-caption alignnone"><img decoding="async" class="size-full wp-image-64710" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201480%20691'%3E%3C/svg%3E" alt="Istio Ambient Mode mTLS traffic flow example: Istio Ambient Mode encrypts traffic using mTLS. All pod traffic is captured by the node’s ztunnel, and the ztunnel automatically applies mTLS between source and destination ztunnels. The receiving ztunnel decrypts the traffic and forwards it to the destination pod, and mTLS is applied even if both pods are on the same node. mTLS can be used for both L4 and L7 (using the waypoint proxy) traffic as shown." width="1480" height="691" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere.png 1480w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-300x140.png 300w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-1024x478.png 1024w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-768x359.png 768w" data-lazy-sizes="(max-width: 1480px) 100vw, 1480px" data-lazy-src="https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere.png"><noscript><img decoding="async" class="size-full wp-image-64710" src="https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere.png" alt="Istio Ambient Mode mTLS traffic flow example: Istio Ambient Mode encrypts traffic using mTLS. All pod traffic is captured by the node’s ztunnel, and the ztunnel automatically applies mTLS between source and destination ztunnels. The receiving ztunnel decrypts the traffic and forwards it to the destination pod, and mTLS is applied even if both pods are on the same node. mTLS can be used for both L4 and L7 (using the waypoint proxy) traffic as shown." width="1480" height="691" srcset="https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere.png 1480w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-300x140.png 300w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-1024x478.png 1024w, https://www.tigera.io/app/uploads/2025/11/Built-In-L7-encryption-with-mTLS-Everywhere-768x359.png 768w" sizes="(max-width: 1480px) 100vw, 1480px" /></noscript><figcaption id="caption-attachment-64710" class="wp-caption-text">Istio Ambient Mode mTLS traffic flow example: Istio Ambient Mode encrypts traffic using mTLS. All pod traffic is captured by the node’s ztunnel, and the ztunnel automatically applies mTLS between source and destination ztunnels. The receiving ztunnel decrypts the traffic and forwards it to the destination pod, and mTLS is applied even if both pods are on the same node. mTLS can be used for both L4 and L7 (using the waypoint proxy) traffic as shown.</figcaption></figure>
+<h3 id="calico-ambient-mtls" style="padding-top: 90px; margin-top: -90px;">How Calico + Istio Ambient Mode Leverage mTLS</h3>
+<p>With the bundling of Istio Ambient Mode into the Calico platform:</p>
+<p>🔒 <strong>Every Node Runs the Enhanced L4 zTunnel</strong><br>
+Every node (that is part of the mesh) runs a lightweight zTunnel (Layer-4) that handles encryption, identity, two-way authentication, and policy enforcement. This per-node deployment drastically reduces overhead compared to traditional sidecars.</p>
+<p>🛡️ <strong>Automatic mTLS Encryption and Authentication for All Traffic</strong><br>
+When a workload (pod, node, or service) sends traffic, the zTunnel proxy intercepts it, attaches the certificate identity, negotiates an mTLS session (if required), and then forwards the encrypted traffic, whether it’s intra-node, inter-node or cross-cluster traffic.</p>
+<p>🔑 <strong>Preserving Policy Compatibility</strong><br>
+Because Calico’s enhanced zTunnel knows the original destination port (instead of forcing everything through, e.g., port 15008), existing Calico/Kubernetes network policies continue to function unmodified. No need to rewrite/tweak any Calico policies to work with the ambient mode mesh.</p>
+<p>As a result, you get end-to-end mTLS across all service-to-service communication (even intra-node traffic), without needing to re-architect any of your existing Calico or Istio Ambient Mode policies.</p>
+<h3 id="calico-istio-policies" style="padding-top: 90px; margin-top: -90px;">Seamless use of Istio and Calico Policies Together</h3>
+<p>One of the biggest challenges with Istio Ambient Mode is that all traffic is routed through a tunnel on port 15008, which causes upstream Kubernetes and Calico network policies to lose visibility of the original destination port. Without modifications, security teams would be forced to rewrite their Kubernetes and Calico policies and introduce complex exceptions to get them to work correctly.</p>
+<p>Calico solves this with a modified zTunnel proxy that preserves (remembers) the original destination port, allowing existing L3/L4 Kubernetes and Calico network policies to continue functioning exactly as they do today, with absolutely no rewrites needed.</p>
+<p>This means:</p>
+<ul>
+<li>No need to explicitly allow port 15008 in any network policies</li>
+<li>No loss of enforcement accuracy</li>
+<li>No change to existing policy definitions</li>
+</ul>
+<figure id="attachment_64751" aria-describedby="caption-attachment-64751" style="width: 1404px" class="wp-caption alignnone"><img decoding="async" class="size-full wp-image-64751" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201404%20378'%3E%3C/svg%3E" alt="As you can see from the diagram, ztunnel has been modified to match the destination port 8080. This allows existing Kubernetes and Calico policies to match the traffic even though it is mTLS encrypted." width="1404" height="378" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies.png 1404w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-300x81.png 300w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-1024x276.png 1024w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-768x207.png 768w" data-lazy-sizes="(max-width: 1404px) 100vw, 1404px" data-lazy-src="https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies.png"><noscript><img decoding="async" class="size-full wp-image-64751" src="https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies.png" alt="As you can see from the diagram, ztunnel has been modified to match the destination port 8080. This allows existing Kubernetes and Calico policies to match the traffic even though it is mTLS encrypted." width="1404" height="378" srcset="https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies.png 1404w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-300x81.png 300w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-1024x276.png 1024w, https://www.tigera.io/app/uploads/2025/11/Fully-Compatible-with-Calico-and-Kubernetes-Network-Policies-768x207.png 768w" sizes="(max-width: 1404px) 100vw, 1404px" /></noscript><figcaption id="caption-attachment-64751" class="wp-caption-text">As you can see from the diagram, ztunnel has been modified to match the destination port 8080. This allows existing Kubernetes and Calico policies to match the traffic even though it is mTLS encrypted.</figcaption></figure>
+<p>This “best of both worlds” approach enables organizations to adopt an ambient mode service mesh without rewriting network policies or maintaining separate models for Kubernetes networking and ambient mode mesh networking.</p>
+<h2 id="traffic-control-ambient" style="padding-top: 90px; margin-top: -90px;">Traffic Control Using Istio Ambient Mode</h2>
+<p>The next layer of power in the Ambient Mode architecture lies in its ability to bring sophisticated, mature Application-Layer (L7) traffic control to Kubernetes workloads, all while bypassing the operational burden of sidecars. Platform teams gain the tools needed to define high-level rules to govern traffic flow, ensure application stability, manage deployments safely, and enforce advanced security policies. To deliver this L7 capability with minimal overhead, Ambient Mode introduces a distinct data plane component: the Waypoint Proxy.</p>
+<h3>Istio’s Waypoint Proxy: Enabling L7 Control</h3>
+<p>While the L4 zTunnel handles base security (mTLS) and ensures policy compatibility with Calico, the next layer of power in the Ambient Mode architecture lies in its ability to bring sophisticated application-layer (L7) traffic control to Kubernetes workloads, without relying on sidecars or invasive application changes.</p>
+<p>At the heart of Ambient Mode’s L7 traffic control features is the waypoint proxy, a shared L7 data-plane component that operates at the namespace level (usually one waypoint proxy per namespace) instead of running one proxy per pod. When a namespace is configured for Istio Ambient Mode and L7 capabilities are enabled for the namespace, traffic destined for workloads in that namespace flows through the waypoint. This is where Istio applies its powerful suite of L7 traffic control logic, much like a gateway, but tailored specifically for inter-service communication inside the mesh.</p>
+<h3>Routing and Traffic Shaping</h3>
+<p>Ambient Mode supports all the signature routing features that make Istio popular in production environments. With the waypoint in place, teams can define VirtualService and DestinationRule configurations that control how traffic moves between services. These rules allow the mesh to do things like:</p>
+<ul>
+<li><strong>Shift traffic gradually</strong> between service versions for canary rollouts</li>
+<li><strong>Perform A/B testing</strong> by directing certain users or request headers to specific service versions</li>
+<li><strong>Implement blue/green deployments</strong> with precise control over cutover timing</li>
+<li><strong>Split or mirror traffic</strong> to validate new services before sending production load</li>
+</ul>
+<p>The waypoint evaluates routing rules based on attributes like paths, methods, headers, metadata, or user identity, giving teams application-aware control without needing to touch application code.</p>
+<h3>Resilience and Reliability Features</h3>
+<p>Traffic control in Ambient Mode also includes Istio’s resilience tools, which help stabilize Kubernetes environments and reduce the impact of failures. Through familiar Istio policy objects, teams can configure:</p>
+<ul>
+<li>Retries for transient errors</li>
+<li>Timeouts to prevent slow downstream services from cascading into failures</li>
+<li>Circuit breakers that protect services from overload</li>
+<li>Outlier detection to automatically eject unhealthy endpoints</li>
+<li>Load balancing strategies that can shift traffic based on latency, least connections, or random selection</li>
+</ul>
+<p>These policies make applications far more reliable, particularly during peak traffic, deployments, or partial outages.</p>
+<h3>Safe Production Deployment Controls</h3>
+<p>Because L7 traffic always passes through the waypoint proxy before reaching workloads, teams can gather detailed telemetry and test routing changes before committing to them. For example, the mesh can:</p>
+<ul>
+<li>Shadow traffic to a new service version for validation</li>
+<li>Send only a slice of traffic to a new release and automatically roll back based on error rates</li>
+<li>Gradually increase traffic to a new release using percentage-based routing</li>
+</ul>
+<p>This allows platform teams and SREs to roll out changes with confidence, leveraging real user behavior under production load while minimizing risk.</p>
+<h3>Identity-Aware Authorization</h3>
+<p>Traffic control in Ambient Mode isn’t limited to routing and resilience capabilities, it also helps with identity and authorization. Because the waypoint has access to the workload’s identity (via certificates from zTunnel) and L7 request data, it can enforce AuthorizationPolicy rules. This means you can allow or deny traffic based on:</p>
+<ul>
+<li>Workload identity</li>
+<li>Request paths or methods</li>
+<li>User or service identity</li>
+<li>JWT (JSON Web tokens) or authenticated session metadata</li>
+<li>Custom attributes or request headers</li>
+</ul>
+<p>This adds powerful authorization capabilities at the application (L7) layer: beyond authenticating workloads with mTLS, Istio lets you authorize requests based on detailed criteria such as request paths, HTTP methods, workload identity, HTTP and application headers, and more.</p>
+<p>In summary, traffic control in Istio Ambient Mode gives teams all the power of Istio’s mature L7 traffic control capabilities: routing, resilience, authorization, and traffic shaping, without the complexity of sidecar proxies.</p>
+<h2 id="l7-observability" style="padding-top: 90px; margin-top: -90px;">Application (L7) Observability</h2>
+<p>One of the advantages of using Istio Ambient Mode is how dramatically it improves observability into application-level (L7) behavior. Calico already provides excellent visibility into L3/L4 network flows. It is sometimes hard to understand why services behave the way they do at the application layer: which requests are failing, which routes are being taken, how retries are affecting latency, etc.</p>
+<p>Ambient Mode changes this dramatically by introducing a waypoint proxy for L7 traffic that can capture, enrich, and export L7 telemetry consistently across the ambient mode mesh. These waypoint proxies generate OpenTelemetry-based L7 metrics, traces, and logs. Istio uses OpenTelemetry as its standard observability framework, meaning structured telemetry can show everything from request paths to response codes to end-to-end latency.</p>
+<p>With Istio’s application (L7) observability features you can determine:</p>
+<ul>
+<li><strong>Identity-Based Service Communication:</strong> See which services are communicating, based on workload identity and request path rather than just IP addresses.</li>
+<li><strong>mTLS Encryption Status:</strong> Whether the traffic is encrypted, because Ambient Mode generates metadata that shows when mTLS is applied across each hop.</li>
+<li><strong>Performance Bottleneck Locations:</strong> Where bottlenecks form, using latency histograms, request timings, and upstream/downstream service correlations.</li>
+<li><strong>L4/L7 Policy Violation Visibility:</strong> Which L7 flows violate policy, including authorization denials or mismatches between Calico L4 rules and Istio L7 rules.</li>
+<li><strong>Real-Time Traffic Rule Behavior</strong>: How routing rules behave in real traffic, including canary deployments, weighted routing, retries, timeouts, failovers and more.</li>
+</ul>
+<p>In Istio Ambient Mode, this L7 data flows through the mesh’s telemetry pipeline and is exported via standard OpenTelemetry collectors. This gives platform teams a unified, consistent view of application behavior across every service, making it far easier to troubleshoot issues, validate policies, and understand how real traffic moves through their system. This L7 data can be combined with detailed L3/L4 log data from Calico into a unified view to make troubleshooting fast and easy.</p>
+<h2 id="unified-operator-architecture" style="padding-top: 90px; margin-top: -90px;">A Unified, Operator-Managed Architecture</h2>
+<p>Calico uses the Tigera Operator to install and manage Istio Ambient Mode, creating a unified and automated way to run a service mesh at scale. The operator handles installation, configuration, upgrades, and patching for all Ambient Mode components, including enterprise-hardened images and CVE remediation.</p>
+<p>Adding a workload to the mesh becomes as simple as applying a namespace label:</p>
+<p><code>kubectl label namespace default istio.io/istio-data plane=ambient</code></p>
+<p>There’s no need to modify deployment manifests, update sidecar injection webhooks, or coordinate mesh configuration with application pipelines. Teams get service-mesh capabilities with virtually none of the traditional maintenance overhead.</p>
+<h2 id="getting-started-ambient" style="padding-top: 90px; margin-top: -90px;">How to Get Started with Istio Ambient Mode</h2>
+<p>Getting started with Istio Ambient Mode in Calico is easy. Tigera has integrated Ambient Mode directly into the Tigera Operator, so you can enable the mesh, onboard namespaces, and begin applying mTLS, traffic controls, and L7 observability with just a few commands.</p>
+<h3>1. Enable Istio Ambient Mode with the Tigera Operator</h3>
+<p>Istio Ambient Mode is installed and managed through the Tigera Operator, which automates deployment, configuration, upgrades, and lifecycle management. Once Calico is installed, enabling Ambient Mode is as easy as applying the Istio custom resource, which installs all required Istio Ambient Mode components, including the enterprise-hardened zTunnel and Waypoint proxies.</p>
+<h3>2. Add Workloads to the Ambient Mesh</h3>
+<p>After installation, you can onboard workloads to the mesh simply by labeling their namespaces:</p>
+<p><code>kubectl label namespace istio.io/istio-data plane=ambient</code></p>
+<p>This automatically applies mTLS, identity, and policy enforcement for all workloads in that namespace, no sidecars or application changes required.</p>
+<h3>3. mTLS Authentication and Encryption</h3>
+<p>Enabling mTLS in Istio is straightforward. Once the Istio Ambient Mode mesh is installed, you simply apply a<a href="https://istio.io/latest/docs/reference/config/security/peer_authentication/" target="_blank" rel="noopener"> PeerAuthentication policy</a> that tells Istio to require mutual TLS for all service-to-service communication. For cluster-wide enforcement, create a policy for the istio-system namespace:</p>
+<p>With this in place, workloads automatically exchange and validate certificates during connection setup, and all traffic is transparently encrypted. No application changes are needed, Istio handles certificate issuance, rotation, and mTLS negotiation behind the scenes.</p>
+<h3>4. Combine Calico and Istio Network Policies Seamlessly</h3>
+<p>Because Tigera’s enhanced zTunnel preserves original destination ports, your existing Calico and Kubernetes network policies continue to work as-is with Istion policies, with no rewrites or exceptions required. You can introduce Istio AuthorizationPolicies alongside Calico GlobalNetworkPolicies for layered, defense-in-depth enforcement.</p>
+<h2>A Simpler, More Secure, More Scalable Platform</h2>
+<p>Istio Ambient Mode gives teams a simple and efficient way to secure service-to-service communication in Kubernetes. By removing sidecars, it eliminates the resource overhead, version drift, and operational complexity that come with managing thousands of per-pod proxies. Instead, teams get a lightweight, scalable solution that provides authentication, authorization, encryption, advanced traffic shaping, and detailed (L7) observability, without requiring changes to application code or deployment pipelines.</p>
+<p>Including Istio Ambient Mode as part of the unified Calico platform brings these service mesh capabilities together in one consistent, easily managed experience. Instead of stitching together separate tools for networking, network security, authorization, authentication, encryption, traffic control, and observability, platform teams get a fully integrated platform that works across every workload, cluster, and Kubernetes distribution.</p>
+<p><span class="blockquote"><strong>Ready to simplify and secure your service mesh? </strong><a href="https://www.tigera.io/demo/?utm_source=website&amp;utm_medium=blog&amp;utm_campaign=Dec_2025" target="_blank" rel="noopener">Request a personalized demo today</a> to see the Calico Platform with Istio Ambient Mode in action and discover your path to sidecarless simplicity.</span></p>
+</article>
+                        <div class="post-tags"><a href="https://www.tigera.io/tags/how-to/" title="How-To Tag" class="how-to">How-To</a><a href="https://www.tigera.io/tags/project-calico/" title="Project Calico Tag" class="project-calico">Project Calico</a><a href="https://www.tigera.io/tags/announcements/" title="Announcements Tag" class="announcements">Announcements</a></div>                
+                                
+                    <div class="share-buttons flex">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="LinkedIn" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-linkedin-dark.svg" class="share-button" width="24" height="24" alt="LinkedIn"></noscript>
+        </a>
+        <a href="https://twitter.com/share?url=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;text=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Twitter" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-x-dark.svg" class="share-button" width="24" height="24" alt="Twitter"></noscript>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;quote=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Facebook" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-facebook-dark.svg" class="share-button" width="24" height="24" alt="Facebook"></noscript>
+        </a>
+        <a href="https://www.reddit.com/submit?url= https://www.tigera.io/blog/an-in-depth-look-at-istio-ambient-mode-with-calico/&amp;title=An In-Depth Look at Istio Ambient Mode with Calico" target="_blank">
+            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" class="share-button" width="24" height="24" alt="Reddit" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg"><noscript><img src="https://www.tigera.io/app/themes/tigera2021/dist/img/post-social-reddit-dark.svg" class="share-button" width="24" height="24" alt="Reddit"></noscript>
+        </a>
+    </div>
+                            </div>
+            
+            <div class="single-post__mailing-list">
+                <div class="mailing-list-form">
+        <h2>Join our mailing list</h2>
+    
+        <p>Get updates on blog posts, workshops, certification programs, new releases, and more!</p>
+    
+    <form id="mktoForm_2509"></form>
+  <script type="rocketlazyloadscript" defer="">
+  document.addEventListener('DOMContentLoaded', function() {
+      mktoDefer(2509);
+    });
+  </script>
+</div>            </div>
+
+        </div>
+    </div>
+    <aside class="single-post__related-posts" style="background-color:#F7F9FC">
+        <div class="single-post__wrapper section-container section-wrapper">
+            <div id="relatedposts"><h2>Related posts</h2><ul>
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/is-it-time-to-migrate-a-practical-look-at-kubernetes-ingress-vs-gateway-api/" rel="bookmark" title="Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API.png 1200w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-300x157.png 300w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-768x402.png 768w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API.png" class="attachment-full size-full wp-post-image" alt="Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API.png 1200w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-300x157.png 300w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-768x402.png 768w, https://www.tigera.io/app/uploads/2025/06/Is-It-Time-to-Migrate-A-Practical-Look-at-Kubernetes-Ingress-vs.-Gateway-API-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/is-it-time-to-migrate-a-practical-look-at-kubernetes-ingress-vs-gateway-api/" rel="bookmark" title="Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API">Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/rezar/" rel="bookmark" title="Reza Ramezanpour">Reza Ramezanpour</a>
+                                                            </span>
+                                    <span class="relatedDate">on Dec 4, 2025 </span>
+                                    <p></p><p>If you’ve managed traffic in Kubernetes, you’ve likely worked with Ingress controllers. For years, Ingress has been the standard way to expose HTTP and HTTPS services. But in practice, it often came with trade-offs. Controller-specific…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/is-it-time-to-migrate-a-practical-look-at-kubernetes-ingress-vs-gateway-api/" rel="bookmark" title="Is It Time to Migrate? A Practical Look at Kubernetes Ingress vs. Gateway API">Read more &gt;</a>
+                                </div>
+                            </li>
+                        
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/ai-meets-kubernetes-security-tigera-ceo-reveals-what-comes-next-for-platform-teams/" rel="bookmark" title="AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security.png 1200w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-300x157.png 300w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-768x402.png 768w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security.png" class="attachment-full size-full wp-post-image" alt="AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security.png 1200w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-300x157.png 300w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-768x402.png 768w, https://www.tigera.io/app/uploads/2025/12/Blog-AI-Meets-Kubernetes-Security-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/ai-meets-kubernetes-security-tigera-ceo-reveals-what-comes-next-for-platform-teams/" rel="bookmark" title="AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams">AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/marketingtigera-io/" rel="bookmark" title="Tigera Team">Tigera Team</a>
+                                                            </span>
+                                    <span class="relatedDate">on Dec 2, 2025 </span>
+                                    <p></p><p>Kubernetes adoption is growing rapidly, but so are complexity and security risks. Platform teams are tasked with keeping clusters secure and observable while navigating a skills gap. At KubeCon + CloudNativeCon North America, The New…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/ai-meets-kubernetes-security-tigera-ceo-reveals-what-comes-next-for-platform-teams/" rel="bookmark" title="AI Meets Kubernetes Security: Tigera CEO Reveals What Comes Next for Platform Teams">Read more &gt;</a>
+                                </div>
+                            </li>
+                        
+                            <li class="related-post-item">
+                                <div class="relatedthumb">
+                                    <a href="https://www.tigera.io/blog/kubecon-na-2025-three-core-kubernetes-trends-and-a-calico-feature-you-should-use-now/" rel="bookmark" title="KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now">
+                                        <img width="1200" height="628" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20628'%3E%3C/svg%3E" class="attachment-full size-full wp-post-image" alt="KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now" decoding="async" data-lazy-srcset="https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap.png 1200w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-300x157.png 300w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-768x402.png 768w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-380x200.png 380w" data-lazy-sizes="(max-width: 1200px) 100vw, 1200px" data-lazy-src="https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap.png"><noscript><img width="1200" height="628" src="https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap.png" class="attachment-full size-full wp-post-image" alt="KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now" decoding="async" srcset="https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap.png 1200w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-300x157.png 300w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-1024x536.png 1024w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-768x402.png 768w, https://www.tigera.io/app/uploads/2025/11/KubeCon-Blog-Recap-380x200.png 380w" sizes="(max-width: 1200px) 100vw, 1200px" /></noscript>                                    </a>
+                                </div>
+                                <div class="relatedcontent">
+                                    <a href="https://www.tigera.io/category/technical-blog/" class="relatedCategory"> Technical Blog</a>
+                                    <h4 class="post-title"><a href="https://www.tigera.io/blog/kubecon-na-2025-three-core-kubernetes-trends-and-a-calico-feature-you-should-use-now/" rel="bookmark" title="KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now">KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now</a></h4>
+                                    <span class="relatedAuthor">
+                                By <a href="https://www.tigera.io/blog/author/marketingtigera-io/" rel="bookmark" title="Tigera Team">Tigera Team</a>
+                                                            </span>
+                                    <span class="relatedDate">on Nov 28, 2025 </span>
+                                    <p></p><p>The Tigera team recently returned from KubeCon + CloudNativeCon North America and CalicoCon 2025 in Atlanta, Georgia. It was great, as always, to attend these events, feel the energy of our community, and hold in-depth…</p>
+<p></p>
+                                    <a href="https://www.tigera.io/blog/kubecon-na-2025-three-core-kubernetes-trends-and-a-calico-feature-you-should-use-now/" rel="bookmark" title="KubeCon NA 2025: Three Core Kubernetes Trends and a Calico Feature You Should Use Now">Read more &gt;</a>
+                                </div>
+                            </li>
+                        </ul></div>        </div>
+    </aside>
+</main>
+
+<div data-rocket-location-hash="4b05513b0c2462ceefc464bb139f92e5" id="img-zoom-popup">
+	<div data-rocket-location-hash="6da4dfb7a6c01e63c7df599a55dd7934" class="darker"></div>
+	<div data-rocket-location-hash="329b2331305740b59ada262f57a91c3d" class="content-wrapper">
+		<a href="#" class="close-btn">X</a>
+		<img src="" width="" height="" alt="">
+	</div>
+</div>
+
+<div data-rocket-location-hash="5a74f927be8f971d634cb4c7ad8a4338" class="tigera-custom-footer" data-bg="https://www.tigera.io/app/uploads/2021/05/Footer-1.jpg">
+    <div data-rocket-location-hash="e78f661669626b32a35ef61e94e53af1" class="container">
+        <div data-rocket-location-hash="f78c7fe9a03cc6f0f492d19fe5c63817" class="menu-footer"><ul id="menu-footer-menu" class="menu-footer__list"><li id="menu-item-37647" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37647"><a href="#">PROJECT CALICO</a>
+<ul class="sub-menu">
+	<li id="menu-item-37649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37649"><a href="https://www.tigera.io/project-calico/">What is Project Calico?</a></li>
+	<li id="menu-item-37650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37650"><a target="_blank" href="https://docs.tigera.io/calico/">Docs</a></li>
+	<li id="menu-item-37652" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37652"><a href="https://www.tigera.io/project-calico/community/">Community</a></li>
+	<li id="menu-item-37651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37651"><a target="_blank" href="https://github.com/projectcalico/calico">GitHub</a></li>
+</ul>
+</li>
+<li id="menu-item-37648" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37648"><a href="#">PRODUCTS</a>
+<ul class="sub-menu">
+	<li id="menu-item-37653" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37653"><a href="/tigera-products/calico/">Calico Open Source</a></li>
+	<li id="menu-item-37654" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37654"><a href="/tigera-products/calico-commercial-editions/">Calico Commercial Editions</a></li>
+	<li id="menu-item-37656" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37656"><a href="https://www.tigera.io/tigera-products/compare-products/">Compare Calico Editions</a></li>
+	<li id="menu-item-37657" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37657"><a href="https://www.tigera.io/tigera-products/calico-cloud-pricing/">Pricing</a></li>
+	<li id="menu-item-52314" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52314"><a href="https://www.tigera.io/tigera-products/why-calico/">Why Calico?</a></li>
+</ul>
+</li>
+<li id="menu-item-37658" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37658"><a href="#">SOLUTIONS</a>
+<ul class="sub-menu">
+	<li id="menu-item-37664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37664"><a href="/tigera-products/ingress-gateway/">Ingress Gateway</a></li>
+	<li id="menu-item-37663" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37663"><a href="/tigera-products/egress-gateway/">Egress Gateway</a></li>
+	<li id="menu-item-48984" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48984"><a href="https://www.tigera.io/tigera-products/cluster-mesh/">Cluster Mesh</a></li>
+	<li id="menu-item-37660" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37660"><a href="/tigera-products/multi-cloud-security/">Multi-Cloud Security</a></li>
+	<li id="menu-item-37659" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37659"><a href="/tigera-products/observability-and-troubleshooting/">Observability &amp; Troubleshooting</a></li>
+	<li id="menu-item-51628" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51628"><a href="/features/compliance-and-audit/">Compliance</a></li>
+	<li id="menu-item-60260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60260"><a href="/features/microsegmentation/">Microsegmentation</a></li>
+	<li id="menu-item-37665" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37665"><a href="https://www.tigera.io/partners/">Environments</a></li>
+</ul>
+</li>
+<li id="menu-item-37669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37669"><a href="#">LEARN</a>
+<ul class="sub-menu">
+	<li id="menu-item-37670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37670"><a href="https://docs.tigera.io/">Documentation</a></li>
+	<li id="menu-item-55758" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55758"><a href="https://www.tigera.io/interactive-training/">Interactive Training</a></li>
+	<li id="menu-item-45182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45182"><a href="https://www.tigera.io/tutorials/">Product Tutorials</a></li>
+	<li id="menu-item-37672" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37672"><a href="https://www.tigera.io/lp/calico-certification/">Certification</a></li>
+	<li id="menu-item-37671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37671"><a href="https://www.tigera.io/events/">Events</a></li>
+	<li id="menu-item-37673" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37673"><a href="https://www.tigera.io/resources/">Resources</a></li>
+	<li id="menu-item-37674" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37674"><a href="https://www.tigera.io/blog/">Blog</a></li>
+	<li id="menu-item-37675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37675"><a href="https://www.tigera.io/learn/guides/kubernetes-security/">Guides</a></li>
+</ul>
+</li>
+<li id="menu-item-37676" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37676"><a href="#">SUPPORT</a>
+<ul class="sub-menu">
+	<li id="menu-item-37677" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37677"><a href="https://www.tigera.io/customer-success/">Customer Success</a></li>
+	<li id="menu-item-37678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37678"><a target="_blank" href="https://support.tigera.io/s/login/">Support Portal</a></li>
+	<li id="menu-item-40051" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40051"><a target="_blank" href="https://www.tigera.io/calico-support/">Tigera Help Center</a></li>
+	<li id="menu-item-37679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37679"><a href="https://www.tigera.io/security-bulletins/">Security Bulletins</a></li>
+	<li id="menu-item-37680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37680"><a href="https://www.tigera.io/vulnerability-disclosure/">Report Security Issue</a></li>
+</ul>
+</li>
+<li id="menu-item-37681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-37681"><a href="#">COMPANY</a>
+<ul class="sub-menu">
+	<li id="menu-item-37682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37682"><a href="https://www.tigera.io/about/">About</a></li>
+	<li id="menu-item-61246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-61246"><a href="/lp/calicocon-2025/">CalicoCon 2025</a></li>
+	<li id="menu-item-50363" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50363"><a href="https://www.tigera.io/customer-stories/">Customers</a></li>
+	<li id="menu-item-37683" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37683"><a href="https://www.tigera.io/partners/">Partners</a></li>
+	<li id="menu-item-59070" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59070"><a href="https://www.tigera.io/media/">Newsroom</a></li>
+	<li id="menu-item-37685" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37685"><a href="https://www.tigera.io/careers/">Careers</a></li>
+	<li id="menu-item-37686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37686"><a href="https://www.tigera.io/contact/">Contact</a></li>
+</ul>
+</li>
+</ul></div>        <div data-rocket-location-hash="8d5447729974ca26fc37e70ad7378bc2" class="tigera-custom-footer__logo">
+            <a class="logo-link" href="/">
+                <img width="180" height="36" class="logo-image" title=" tigera-logoWhite" alt="tigera-logoWhite" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20180%2036'%3E%3C/svg%3E" data-lazy-src="/app/uploads/elementor/thumbs/tigera-logoWhite-pex43dmbi9rv5py4nuwhpkbh5bury9emp21calqze4.png"><noscript><img width="180" height="36" class="logo-image" title=" tigera-logoWhite" alt="tigera-logoWhite" src="/app/uploads/elementor/thumbs/tigera-logoWhite-pex43dmbi9rv5py4nuwhpkbh5bury9emp21calqze4.png" loading="lazy"></noscript>
+            </a>
+        </div>
+
+        <div data-rocket-location-hash="00a99e5963f9014e49456c6f7af343f5" class="tigera-custom-footer__credits">
+            <p> Copyright © <span id="copyright">
+            <script type="rocketlazyloadscript">document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+            </span> Tigera, Inc. All rights reserved. </p>
+            <ul class="credits__list">
+                <li><a href="#" onclick="return false" data-rocket-onclick="Clym.showPrivacyCenter('/cookies');">Privacy Center</a></li>
+                <li><a href="#" onclick="return false" data-rocket-onclick="Clym.showPrivacyCenter('/requests/new/do_not_sell_my_data');">Do Not Sell Or Share My Personal Information</a></li>
+                <li><a target="_blank" href="/legal/"> Legal</a></li>
+            </ul>
+        </div>
+        <div data-rocket-location-hash="cb28199b365e1d2e2987f332a987b49a" class="tigera-custom-footer__bottom">
+            <div class="social-icons">
+                <a class="social-icon linkedin-in" href="https://www.linkedin.com/company/tigera/" target="_blank">
+                    <span class="elementor-screen-only">Linkedin</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Linkedin" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-linkedin.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-linkedin.svg" class="social-icon-img" alt="Linkedin"></noscript>
+                </a>
+                <a class="social-icon twitter" href="https://twitter.com/tigeraio" target="_blank">
+                    <span class="elementor-screen-only">Twitter</span>
+                    <img width="32" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3C/svg%3E" class="social-icon-img" alt="X (Twitter)" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-x.svg"><noscript><img width="32" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-x.svg" class="social-icon-img" alt="X (Twitter)"></noscript>
+                </a>
+                <a class="social-icon youtube" href="https://www.youtube.com/channel/UC8uN3yhpeBeerGNwDiQbcgw/" target="_blank">
+                    <span class="elementor-screen-only">Youtube</span>
+                    <img width="36" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2036%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Youtube" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-youtube.svg"><noscript><img width="36" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-youtube.svg" class="social-icon-img" alt="Youtube"></noscript>
+                </a>
+                <a class="social-icon slack" href="https://calicousers.slack.com/" target="_blank">
+                    <span class="elementor-screen-only">Slack</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Slack" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-slack.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-slack.svg" class="social-icon-img" alt="Slack"></noscript>
+                </a>
+                <a class="social-icon github" href="https://github.com/tigera" target="_blank">
+                    <span class="elementor-screen-only">Github</span>
+                    <img width="31" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2031%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Github" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-github.svg"><noscript><img width="31" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-github.svg" class="social-icon-img" alt="Github"></noscript> 
+                </a>
+                <a class="social-icon discourse" href="https://discuss.projectcalico.tigera.io/" target="_blank">
+                    <span class="elementor-screen-only">Discourse</span>
+                    <img width="28" height="32" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2032'%3E%3C/svg%3E" class="social-icon-img" alt="Discourse" data-lazy-src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-discourse.svg"><noscript><img width="28" height="32" src="https://www.tigera.io/app/themes/tigera2021/dist/img/social-discourse.svg" class="social-icon-img" alt="Discourse"></noscript> 
+                </a>
+            </div>
+            <form id="mktoForm_1564"></form>
+            <script type="rocketlazyloadscript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    mktoDefer(1564);
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+
+<!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com  -->
+<script>
+    (function(d,u,ac){
+        var s=d.createElement('script');
+        s.type='text/javascript';
+        s.src='https://a.omappapi.com/app/js/api.min.js';
+        s.async=true;
+        s.dataset.user=u;
+        s.dataset.account=ac;
+        d.getElementsByTagName('head')[0].appendChild(s);
+    })(document,141683,154800);
+
+    document.addEventListener('om.Scripts.init', function(event) {
+        event.detail.Scripts.enabled.fonts = false;
+    });
+</script>
+<!-- / https://optinmonster.com  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/app\/uploads\/*","\/app\/*","\/app\/plugins\/*","\/app\/themes\/tigera2021\/*","\/app\/themes\/hello-elementor\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+    <style>
+        .tigera-custom-footer__bottom .mktoForm {
+            display: flex!important;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow {
+            margin-bottom: 0!important;
+            margin-top: 10px!important;
+            padding: 0!important;
+            width: 100%!important
+        }
+
+        .mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap {
+            display: grid;
+            width: 100%!important
+        }
+        .mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap .mktoButton {
+            background: #ff9e16!important;
+            border: 2px solid #ff9e16!important;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: #fff!important;
+            display: block;
+            font-family: Poppins!important;
+            font-size: 14px!important;
+            font-weight: 700!important;
+            line-height: 21px!important;
+            margin-top: auto!important;
+            max-width: 100%!important;
+            padding: 12px 24px!important;
+            text-align: center;
+            width: 100%!important
+        }
+        .mailing-list__wrapper .mailing-list__container .mailing-list__container-form .mktoForm .mktoButtonRow .mktoButtonWrap .mktoButton:hover {
+            background-color: transparent!important;
+            border: 2px solid #ff9e16!important;
+            color: #ff9e16!important;
+            transition: .2s linear
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm#mktoForm_3012 .mktoFieldWrap .mktoCheckboxList * {
+            margin: 0 !important;
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoCheckboxList,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoGutter,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap label[for=Email_Opt_In__c] {
+            display: inline !important;
+        }
+
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoCheckboxList *,
+        .marketo-form__wrapper .marketo-form__container .marketo-form__container-form .mktoForm .mktoFieldWrap .mktoGutter * {
+            margin: 0 !important;
+        }
+    </style>
+
+    <script type="rocketlazyloadscript">
+        window.mktoDefer = function(id) {
+
+            if (window.MktoForms2) {
+                MktoForms2.loadForm("//info.tigera.io", "805-GFH-732", id);
+
+                /*
+                 * @author Sanford Whiteman
+                 * @version v1.104
+                 * @license MIT License: This license must appear with all reproductions of this software.
+                 *
+                 * Create a completely barebones, user-styles-only Marketo form
+                 * by removing inline STYLE attributes and disabling STYLE and LINK elements
+                 */
+                function destyleMktoForm(mktoForm, moreStyles) {
+                var formEl = mktoForm.getFormElem()[0],
+                    arrayify = getSelection.call.bind([].slice);
+
+                // Remove element styles from <form> and children
+                var styledEls = arrayify(formEl.querySelectorAll('[style]:not([class*="captcha"])')).concat(formEl);
+                styledEls.forEach(function (el) {
+                    el.removeAttribute('style');
+                });
+
+                // Remove <style> tags within the form
+                var styleTags = formEl.querySelectorAll('style');
+                styleTags.forEach(function(styleTag) {
+                    styleTag.parentNode.removeChild(styleTag);
+                });
+
+                // Disable remote stylesheets and local <style>s
+                var styleSheets = arrayify(document.styleSheets);
+                styleSheets.forEach(function (ss) {
+                    if (
+                        [mktoForms2BaseStyle, mktoForms2ThemeStyle].indexOf(ss.ownerNode) != -1 ||
+                        formEl.contains(ss.ownerNode)
+                    ) {
+                        ss.disabled = true;
+                    }
+                });
+
+                if (!moreStyles) {
+                    formEl.setAttribute('data-styles-ready', 'true');
+                    // console.log('Styles ready at: ' + performance.now());
+                }
+            }
+
+                MktoForms2.whenRendered(function (form) {
+                    destyleMktoForm(form)
+                })
+            } else {
+                setTimeout(function() { mktoDefer(id) }, 500);
+            }
+        }
+    </script>
+
+    			<script type="rocketlazyloadscript">
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<link data-minify="1" rel="stylesheet" id="posts-banner-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/posts-banner.css?ver=1765482753" media="all">
+<link data-minify="1" rel="stylesheet" id="mailing-list-form-css" href="https://www.tigera.io/app/cache/min/1/app/themes/tigera2021/dist/css/mailing-list-form.css?ver=1765482753" media="all">
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/app/plugins/dynamicconditions/Public/js/dynamic-conditions-public.js?ver=1765482753" id="dynamic-conditions-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://www.tigera.io/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.13.3" id="jquery-ui-datepicker-js" data-rocket-defer="" defer=""></script>
+<script type="rocketlazyloadscript" id="jquery-ui-datepicker-js-after">window.addEventListener('DOMContentLoaded', function() {
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+});</script>
+<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"\/lp\/nist-cybersecurity-framework-assessment-for-containers\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index.php\/)?(.*)wp-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.tigera.io","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.tigera.io/app/cache/min/1/js/forms2/js/forms2.min.js?ver=1765482754" id="marketo-form-js" data-rocket-defer="" defer=""></script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":false,"acceptedAnswer":{"@type":"Answer","text":false}}]}</script><script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="https://www.tigera.io/app/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+<script>var rocket_beacon_data = {"ajax_url":"https:\/\/www.tigera.io\/wp-admin\/admin-ajax.php","nonce":"8f54c6b7a4","url":"https:\/\/www.tigera.io\/blog\/an-in-depth-look-at-istio-ambient-mode-with-calico","is_mobile":false,"width_threshold":1600,"height_threshold":700,"delay":500,"debug":null,"status":{"atf":true,"lrc":true,"preconnect_external_domain":true},"elements":"img, video, picture, p, main, div, li, svg, section, header, span","lrc_threshold":1800,"preconnect_external_domain_elements":["link","script","iframe"],"preconnect_external_domain_exclusions":["static.cloudflareinsights.com","rel=\"profile\"","rel=\"preconnect\"","rel=\"dns-prefetch\"","rel=\"icon\""]}</script><script type="rocketlazyloadscript" data-name="wpr-wpr-beacon" data-rocket-src="https://www.tigera.io/app/plugins/wp-rocket/assets/js/wpr-beacon.min.js" async=""></script><script>(()=>{class RocketElementorPreload{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}t(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this.i(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach((t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this.o(t)}catch(t){}}))}o(t){const e=JSON.parse(t.dataset.settings),i=e.m||e.animation_delay||0,n=e[this.animationSettingKeys.find((t=>e[t]))];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let o=setTimeout((()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this.l(t,e)}),i);window.addEventListener("rocket-startLoading",(function(){clearTimeout(o)}))}i(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach((t=>{e.forEach((e=>{i.push(t+e)}))})),i}l(t,e){this.i().forEach((t=>delete e[t])),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorPreload;requestAnimationFrame(t.t.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorPreload.run)})();</script>
+
+<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span></body></html>
