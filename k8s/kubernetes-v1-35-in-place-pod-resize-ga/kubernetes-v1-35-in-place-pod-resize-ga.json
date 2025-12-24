@@ -1,0 +1,1 @@
+{"url":"https://kubernetes.io/blog/2025/12/19/kubernetes-v1-35-in-place-pod-resize-ga/","title":"Kubernetes 1.35: In-Place Pod Resize Graduates to Stable","author":"[no-author]","summary":"","cover":"","zh_title":"Kubernetes 1.35：Pod 原地扩缩容，稳定版重磅发布！","zh_summary":"Kubernetes 1.35: Pod 就地调整大小功能已升级至稳定版。它允许运行中调整 Pod 的 CPU/内存资源，无需重启。这提升了资源效率和灵活性，并支持无中断自动扩缩。"}

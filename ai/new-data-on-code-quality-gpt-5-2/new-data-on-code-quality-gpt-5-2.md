@@ -1,7 +1,6 @@
-
 <!--
 title: 代码质量新榜单：GPT-5.2断层领先，Opus 4.5、Gemini 3等表现揭晓
-cover: https://assets-eu-01.kc-usercontent.com:443/55017e37-262d-017b-afd6-daa9468cbc30/8e69d91e-9d71-453d-a4c7-d25797ae7e1a/sonar-open-graph%402x.png
+cover: https://res.cloudinary.com/dkrpg71cx/image/upload/v1765861153/bfqyubegzsinp2pc5mvw.webp
 summary: Sonar分析AI代码质量、安全与可维护性。LLM通过率高但复杂性和冗余度增加。Gemini 3 Pro高效，GPT-5.2安全最佳但代码量大，Claude Sonnet有漏洞和泄漏问题。
 -->
 

@@ -1,4 +1,3 @@
-
 <!--
 title: Kroah-Hartman：Linux内核维护者谈开源项目的影响力
 cover: https://cdn.thenewstack.io/media/2025/11/42c41e50-kroah-hartman.jpg

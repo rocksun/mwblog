@@ -1,4 +1,3 @@
-
 <!--
 title: KubeVirt架构全解析：CRD、控制器与守护进程
 cover: https://cdn.thenewstack.io/media/2025/12/2a4cacb6-kubevirt-architecture-spectrocloud.jpg

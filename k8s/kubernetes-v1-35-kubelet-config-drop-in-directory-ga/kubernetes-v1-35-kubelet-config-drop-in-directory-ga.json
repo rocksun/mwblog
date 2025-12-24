@@ -1,0 +1,1 @@
+{"url":"https://kubernetes.io/blog/2025/12/22/kubernetes-v1-35-kubelet-config-drop-in-directory-ga/","title":"Kubernetes v1.35: Kubelet Configuration Drop-in Directory Graduates to GA","author":"[no-author]","summary":"","cover":"","zh_title":"Kubernetes v1.35：Kubelet 配置热插拔目录正式 GA","zh_summary":"Kubernetes v1.35发布Kubelet配置目录插槽功能(GA)。它通过--config-dir简化了大型集群配置管理，允许合并多个文件，实现灵活定制。"}

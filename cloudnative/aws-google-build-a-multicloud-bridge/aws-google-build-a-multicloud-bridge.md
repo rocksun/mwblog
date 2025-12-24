@@ -1,4 +1,3 @@
-
 <!--
 title: AWS、谷歌共建多云桥梁
 cover: https://cdn.thenewstack.io/media/2025/12/210cf442-david-booth-okwmthqqslk-unsplash.jpg

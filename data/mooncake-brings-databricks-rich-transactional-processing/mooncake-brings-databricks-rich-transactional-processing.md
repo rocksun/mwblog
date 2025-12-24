@@ -1,4 +1,3 @@
-
 <!--
 title: Mooncake赋能Databricks：解锁强大事务处理新境界
 cover: https://cdn.thenewstack.io/media/2025/12/0041afda-annie-hatuanh-idwwqjugcxm-unsplash.jpg

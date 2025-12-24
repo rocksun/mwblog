@@ -1,4 +1,3 @@
-
 <!--
 title: Linux基金会主席：AI热潮远非泡沫
 cover: https://cdn.thenewstack.io/media/2025/12/ed0470df-jim-zemlin-oss-japan-2025-2.jpg

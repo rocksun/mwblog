@@ -1,0 +1,1 @@
+{"url":"https://kubernetes.io/blog/2025/12/17/kubernetes-v1-35-release/","title":"Kubernetes v1.35: Timbernetes (The World Tree Release)","author":"[no-author]","summary":"","cover":"","zh_title":"Kubernetes v1.35：世界之树版本，代号“林网”","zh_summary":"Kubernetes v1.35“世界之树”版发布（2025/12/17）。60项增强：Pod原地更新稳定、Pod证书测试、调度前节点声明Alpha。Ingress NGINX退役，cgroup v1和IPVS模式移除/弃用。"}

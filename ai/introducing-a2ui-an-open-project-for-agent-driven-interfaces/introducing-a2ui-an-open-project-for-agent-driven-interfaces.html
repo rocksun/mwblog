@@ -1,0 +1,1548 @@
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        
+        <title>
+            
+            Introducing A2UI: An open project for agent-driven interfaces
+            
+            
+            - Google Developers Blog
+            
+        </title>
+        <meta property="og:title" content="Introducing A2UI: An open project for agent-driven interfaces- Google Developers Blog">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+	<meta name="description" content="A2UI is an open-source project for agent-driven, cross-platform generative UI. It uses a secure, declarative format for agents to safely render UIs.">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="Google for Developers Blog - News about Web, Mobile, AI and Cloud" property="twitter:title">
+  <meta property="og:title" content="Introducing A2UI: An open project for agent-driven interfaces">
+  <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WVTLDSL"></script><script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/50cc0679/www-widgetapi.vflset/www-widgetapi.js" async="" nonce=""></script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google for Developers Blog",
+      "item": "https://developers.googleblog.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Introducing A2UI: An open project for agent-driven interfaces",
+      "item": "https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Introducing A2UI: An open project for agent-driven interfaces",
+      "description": "A2UI is an open-source project for agent-driven, cross-platform, and generative UI. It provides a secure, declarative data format for agents to compose bespoke interfaces from a trusted component catalog, allowing for native styling and incremental updates. Designed for the multi-agent mesh (A2A), it offers a framework-agnostic solution to safely render remote agent UIs, with integrations in AG UI, Flutter&#x27;s GenUI SDK, Opal, and Gemini Enterprise.",
+      "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/train-gpt2-model-with-jax-on-tpu-b.2e16d0ba.fill-800x400.png",
+      "datePublished": "2025-12-15",
+      "author": [
+        
+        
+          { "@type": "Person", "name": "Google A2UI Team", "url": "/search/?author=Google+A2UI+Team" }
+        
+        
+      ]
+    }
+  </script>
+  
+  <meta content="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/train-gpt2-model-with-jax-on-tpu-.2e16d0ba.fill-1200x600.png" property="og:image">
+  
+
+
+        
+        
+
+        <!-- Google Tag Manager -->
+        <script type="text/javascript" nonce="" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/js/analytics.js"></script>
+        <!-- End Google Tag Manager -->
+
+        
+        <link href="//www.gstatic.com/glue/v27_1/glue.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/css/dgc_blog.css">
+        <link rel="icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/apple-touch-icon.png">
+
+        
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+				<link rel="preload" href="https://fonts.googleapis.com/css2?family=Product+Sans&amp;family=Google+Sans+Display:ital@0;1&amp;family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" as="style">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&amp;family=Google+Sans+Display:ital@0;1&amp;family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&amp;display=swap">
+
+        
+        <link href="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet">
+
+        
+  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/css/blog_detail.css">
+  <link type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/css/prism.css" rel="stylesheet">
+
+    </head>
+
+    <body id="main-content" class="glue-body "><div class="glue-cookie-notification-bar" id="glue-cookie-notification-bar-1" aria-labelledby="glue-cookie-notification-bar-1-label" role="region" data-nosnippet="" tabindex="-1" style="font-size: 1rem;"><p class="glue-cookie-notification-bar__text"><span id="glue-cookie-notification-bar-1-label">developers.googleblog.com uses cookies to deliver and enhance the quality of its services and to analyze traffic. If you agree, cookies are also used to serve advertising and to personalize the content and advertisements that you see. </span><a href="https://policies.google.com/technologies/cookies?hl=en" class="glue-cookie-notification-bar__more" rel="noopener" aria-describedby="glue-cookie-notification-bar-1-label" target="_blank" aria-label="Learn more about how Google uses cookies. Opens in a new tab.">Learn more</a></p><button class="glue-cookie-notification-bar__accept">Agree</button><button class="glue-cookie-notification-bar__reject">No thanks</button></div>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVTLDSL "
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        
+
+				
+        
+
+<!-- HTML -->
+<header class="dgc-header">
+  <div class="dgc-header-inner">
+    <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-label="Open Menu">
+      <svg role="presentation" aria-hidden="true" class="glue-icon">
+        <use href="/glue-icon/#menu"></use>
+      </svg>
+    </button>
+    <div class="product-name-wrapper">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+    </div>
+    <div class="desktop-nav-wrapper">
+      <div class="upper-tabs-wrapper">
+        <div class="upper-tabs">
+          <nav class="tabs" aria-label="Upper Tabs">
+            <div class="tab" dropdown="">
+              <a href="//developers.google.com/products" class="top-nav-title">
+                Products
+              </a>
+              <a href="#" role="button" aria-haspopup="true" aria-expanded="true" aria-label="Dropdown menu for Products" class="dropdown-toggle">
+                <svg role="presentation" aria-hidden="true" class="glue-icon">
+                  <use href="/glue-icon/#arrow-drop-down"></use>
+                </svg>
+              </a>
+              <div class="tabs-dropdown" aria-label="Submenu">
+                <div class="tabs-dropdown-content">
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Develop Menu">Develop</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com">
+                            <div class="nav-item-title">
+                              Android
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.chrome.com">
+                            <div class="nav-item-title">
+                              Chrome
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//chromeos.dev/">
+                            <div class="nav-item-title">
+                              ChromeOS
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//cloud.google.com">
+                            <div class="nav-item-title">
+                              Cloud
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//firebase.google.com">
+                            <div class="nav-item-title">
+                              Firebase
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//flutter.dev">
+                            <div class="nav-item-title">
+                              Flutter
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/assistant">
+                            <div class="nav-item-title">
+                              Google Assistant
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/maps">
+                            <div class="nav-item-title">
+                              Google Maps Platform
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/workspace">
+                            <div class="nav-item-title">
+                              Google Workspace
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//www.tensorflow.org">
+                            <div class="nav-item-title">
+                              TensorFlow
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/youtube">
+                            <div class="nav-item-title">
+                              YouTube
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Grow Menu">Grow</li>
+                      
+                        <li class="nav-item">
+                          <a href="//firebase.google.com">
+                            <div class="nav-item-title">
+                              Firebase
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/google-ads">
+                            <div class="nav-item-title">
+                              Google Ads
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/analytics">
+                            <div class="nav-item-title">
+                              Google Analytics
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com/distribute">
+                            <div class="nav-item-title">
+                              Google Play
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/search">
+                            <div class="nav-item-title">
+                              Search
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/web/fundamentals/engage-and-retain/push-notifications">
+                            <div class="nav-item-title">
+                              Web Push and Notification APIs
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Earn Menu">Earn</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/admob">
+                            <div class="nav-item-title">
+                              AdMob
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/google-ads/api">
+                            <div class="nav-item-title">
+                              Google Ads API
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/pay">
+                            <div class="nav-item-title">
+                              Google Pay
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developer.android.com/google/play/billing/">
+                            <div class="nav-item-title">
+                              Google Play Billing
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/interactive-media-ads">
+                            <div class="nav-item-title">
+                              Interactive Media Ads
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab">
+              <a href="//developers.google.com/solutions/catalog" class="top-nav-title">
+                Solutions
+              </a>
+            </div>
+            <div class="tab">
+              <a href="//developers.google.com/events" class="top-nav-title">
+                Events
+              </a>
+            </div>
+            <div class="tab">
+              <a href="//developers.google.com/learn" class="top-nav-title">
+                Learn
+              </a>
+            </div>
+            <div class="tab" dropdown="">
+              <a href="//developers.google.com/community" class="top-nav-title">
+                Community
+              </a>
+              <a href="#" role="button" aria-haspopup="true" aria-expanded="true" aria-label="Dropdown menu for Community" class="dropdown-toggle">
+                <svg role="presentation" aria-hidden="true" class="glue-icon">
+                  <use href="/glue-icon/#arrow-drop-down"></use>
+                </svg>
+              </a>
+              <div class="tabs-dropdown" aria-label="Submenu">
+                <div class="tabs-dropdown-content">
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Groups Menu">Groups</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdg">
+                            <div class="nav-item-title">
+                              Google Developer Groups
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdsc">
+                            <div class="nav-item-title">
+                              Google Developer Student Clubs
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/womentechmakers">
+                            <div class="nav-item-title">
+                              Woman Techmakers
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/experts">
+                            <div class="nav-item-title">
+                              Google Developer Experts
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//www.techequitycollective.com/">
+                            <div class="nav-item-title">
+                              Tech Equity Collective
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Programs Menu">Programs</li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/accelerators">
+                            <div class="nav-item-title">
+                              Accelerator
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/gdsc-solution-challenge">
+                            <div class="nav-item-title">
+                              Solution Challenge
+                            </div>
+                          </a>
+                        </li>
+                      
+                        <li class="nav-item">
+                          <a href="//developers.google.com/community/devfest">
+                            <div class="nav-item-title">
+                              DevFest
+                            </div>
+                          </a>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="tabs-dropdown-column">
+                    <ul class="tabs-dropdown-section">
+                      <li class="nav-title" aria-label="Stories Menu">Stories</li>
+                      <li class="nav-item">
+                        <a href="//developers.google.com/community/stories">
+                          <div class="nav-item-title">
+                            All Stories
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab">
+              <a href="//developers.google.com/profile/u/me" class="top-nav-title">
+                Developer Program
+              </a>
+            </div>
+            <div class="tab">
+              <a href="//developers.googleblog.com/" class="top-nav-title">
+                Blog
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dgc-header-search">
+    <div class="search-wrapper glue-page">
+      <div class="glue-grid">
+        <form id="search-form" action="/search/" method="get" class="search-content glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-9-md glue-grid__col--span-7-lg">
+          <div class="search-input-wrapper">
+            <svg role="presentation" aria-hidden="true" class="glue-icon search-icon">
+              <use href="/glue-icon/#search"></use>
+            </svg>
+            <input type="text" name="query" placeholder="Search all articles..." aria-label="Search" class="search-input-field">
+          </div>
+          <button class="glue-button glue-button--high-emphasis">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" top-level-nav="">
+  <nav class="nav-content" aria-label="Side menu">
+    <div class="mobile-header">
+      <button class="nav-close-btn nav-btn" aria-label="Close navigation">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#close"></use>
+        </svg>
+      </button>
+      <button class="nav-back-btn nav-btn hidden" aria-label="Back to Menu">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#arrow-back"></use>
+        </svg>
+      </button>
+      <div class="product-name-wrapper">
+        <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+          <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+        </a>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <div class="mobile-nav-top">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="//developers.google.com/products" class="nav-title" data-label="Tab: Products">
+              <span class="nav-text" tooltip="">
+                Products
+             </span>
+            </a>
+            <ul class="nav-responsive-tabs">
+              <li class="nav-item">
+                <span tabindex="0" class="nav-title products-btn" data-label="More Products">
+                  <span class="nav-text" menu="Products">
+                    More
+                  </span>
+                  <span class="nav-icon" menu="Products">
+                    <svg role="presentation" aria-hidden="true" class="glue-icon">
+                      <use href="/glue-icon/#arrow-forward"></use>
+                    </svg>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/solutions/catalog" class="nav-title" data-label="Tab: Solutions">
+              <span class="nav-text" tooltip="">
+                Solutions
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/events" class="nav-title" data-label="Tab: Events">
+              <span class="nav-text" tooltip="">
+                Events
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/learn" class="nav-title" data-label="Tab: Learn">
+              <span class="nav-text" tooltip="">
+                Learn
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/community" class="nav-title" data-label="Tab: Community">
+              <span class="nav-text" tooltip="">
+                Community
+             </span>
+            </a>
+            <ul class="nav-responsive-tabs">
+              <li class="nav-item">
+                <span tabindex="0" class="nav-title community-btn" data-label="More Community">
+                  <span class="nav-text" menu="Community">
+                    More
+                  </span>
+                  <span class="nav-icon" menu="Community">
+                    <svg role="presentation" aria-hidden="true" class="glue-icon">
+                      <use href="/glue-icon/#arrow-forward"></use>
+                    </svg>
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/profile/u/me" class="nav-title" data-label="Tab: Developer Program">
+              <span class="nav-text" tooltip="">
+                Developer Program
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.googleblog.com/" class="nav-title" data-label="Tab: Blog">
+              <span class="nav-text" tooltip="">
+                Blog
+             </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="mobile-nav-bottom">
+        <ul class="nav-list products-submenu" menu="Products" aria-label="Side menu">
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Develop
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com" class="nav-title">
+                <span class="nav-text">
+                  Android
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.chrome.com" class="nav-title">
+                <span class="nav-text">
+                  Chrome
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//chromeos.dev/" class="nav-title">
+                <span class="nav-text">
+                  ChromeOS
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//cloud.google.com" class="nav-title">
+                <span class="nav-text">
+                  Cloud
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//firebase.google.com" class="nav-title">
+                <span class="nav-text">
+                  Firebase
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//flutter.dev" class="nav-title">
+                <span class="nav-text">
+                  Flutter
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/assistant" class="nav-title">
+                <span class="nav-text">
+                  Google Assistant
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/maps" class="nav-title">
+                <span class="nav-text">
+                  Google Maps Platform
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/workspace" class="nav-title">
+                <span class="nav-text">
+                  Google Workspace
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//www.tensorflow.org" class="nav-title">
+                <span class="nav-text">
+                  TensorFlow
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/youtube" class="nav-title">
+                <span class="nav-text">
+                  YouTube
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Grow
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//firebase.google.com" class="nav-title">
+                <span class="nav-text">
+                  Firebase
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/google-ads" class="nav-title">
+                <span class="nav-text">
+                  Google Ads
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/analytics" class="nav-title">
+                <span class="nav-text">
+                  Google Analytics
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com/distribute" class="nav-title">
+                <span class="nav-text">
+                  Google Play
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/search" class="nav-title">
+                <span class="nav-text">
+                  Search
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/web/fundamentals/engage-and-retain/push-notifications" class="nav-title">
+                <span class="nav-text">
+                  Web Push and Notification APIs
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Earn
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/admob" class="nav-title">
+                <span class="nav-text">
+                  AdMob
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/google-ads/api" class="nav-title">
+                <span class="nav-text">
+                  Google Ads API
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/pay" class="nav-title">
+                <span class="nav-text">
+                  Google Pay
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developer.android.com/google/play/billing/" class="nav-title">
+                <span class="nav-text">
+                  Google Play Billing
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/interactive-media-ads" class="nav-title">
+                <span class="nav-text">
+                  Interactive Media Ads
+                </span>
+              </a>
+            </li>
+          
+        </ul>
+        <ul class="nav-list community-submenu hidden" menu="Community" aria-label="Side menu">
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Groups
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdg" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Groups
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdsc" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Student Clubs
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/womentechmakers" class="nav-title">
+                <span class="nav-text">
+                  Woman Techmakers
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/experts" class="nav-title">
+                <span class="nav-text">
+                  Google Developer Experts
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//www.techequitycollective.com/" class="nav-title">
+                <span class="nav-text">
+                  Tech Equity Collective
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Programs
+              </span>
+            </span>
+          </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/accelerators" class="nav-title">
+                <span class="nav-text">
+                  Accelerator
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/gdsc-solution-challenge" class="nav-title">
+                <span class="nav-text">
+                  Solution Challenge
+                </span>
+              </a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="//developers.google.com/community/devfest" class="nav-title">
+                <span class="nav-text">
+                  DevFest
+                </span>
+              </a>
+            </li>
+          
+          <li class="nav-item nav-heading">
+            <span class="nav-title">
+              <span class="nav-text">
+                Stories
+              </span>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/community/stories" class="nav-title" aria-label="All Stories">
+              <span class="nav-text">
+                All Stories
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </nav>
+  <select aria-label="Change language" name="lang-selector" id="lang-selector-nav" class="glue-form__dropdown glue-mobile-nav__lang-dropdown" onchange="window.location.href=this.value">
+    
+  </select>
+</div>
+
+<div class="backdrop"></div>
+
+        
+  <div class="blog-detail-container">
+
+    
+      <section class="tags-container glue-page glue-spacer-5-top">
+        <div class="glue-eyebrow"></div>
+      </section>
+    
+
+    <section class="heading-container glue-page  glue-spacer-1-top">
+      <h1 class="glue-headline glue-headline--headline-1">Introducing A2UI: An open project for agent-driven interfaces</h1>
+    </section>
+
+    <section class="summary-container glue-page glue-spacer-4-top">
+      <div class="date-time">
+        <div class="published-date glue-font-weight-medium">DEC. 15, 2025</div>
+      </div>
+    </section>
+
+    <section class="glue-page glue-grid glue-spacer-1-top">
+
+      <section class="author-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-10-md">
+      
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/search/?author=Google+A2UI+Team">Google A2UI Team</a>
+            
+            
+          </div>
+        
+
+      
+      </section>
+      <section class="social-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-2-md">
+        <button id="social-button" class="glue-button glue-button--low-emphasis glue-button--icon" aria-haspopup="true" aria-expanded="false">
+          <svg role="presentation" aria-hidden="true" class="glue-icon">
+            <use href="/glue-icon/#share"></use>
+          </svg>
+          <span>Share</span>
+        </button>
+        <ul id="social-menu" class="glue-elevation-level-1" role="menu" aria-labelledby="social-button">
+          <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/" title="Share on Facebook" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-facebook"></use>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/intent/tweet?text=https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/" title="Share on Twitter" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#twitter-x"></use>
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/shareArticle?url=https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/&amp;mini=true" title="Share on LinkedIn" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-linkedin"></use>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:name@example.com?subject=Check%20out%20this%20site&amp;body=Check%20out%20https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/" title="Send via Email">
+              <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#email"></use>
+              </svg>
+              <span>Mail</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="Get shareable link" data-link="https://developers.googleblog.com/introducing-a2ui-an-open-project-for-agent-driven-interfaces/" data-copy-text="Copy Link" data-copied-text="Copied!">
+              <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#link"></use>
+              </svg>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    
+    <section class="blocks-container glue-page glue-spacer-3-top">
+      <div class="block">
+          
+
+<img class="banner-image" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/train-gpt2-model-with-jax-on-tpu-banner.original.png" alt="Train a GPT2 model with JAX on TPU for free">  <div class="inner-block-content rich-content">
+    <p data-block-key="78mfw">Generative AI does great at generating text, images, and code. Now, it’s time for it to be used to generate contextually relevant <b>interfaces</b>. Today we are making the <a href="https://github.com/google/A2UI/">A2UI</a> project public so we can collaborate with others on this early stage <i>format</i> and <i>implementations</i>. A2UI was designed to address the specific challenges of interoperable, cross-platform, generative or template-based UI responses from agents. A2UI allows agents to generate the interface which best suits the current conversation with the agent, and send it to a front end application. We have been building A2UI for some of our products, and we would like to engage with the community to help refine the A2UI specifications, add more transports, and add more client renderers and integrations.</p><p data-block-key="bga4g"><b>A2UI</b> is an open-source project, complete with a format optimized for representing updateable, agent-generated UIs and an initial set of renderers<b>,</b> that allows agents to generate or populate rich user interfaces, so they can be displayed in different host applications, rendered by a range of UI frameworks such as Lit, Angular, or Flutter (with more to come). Renderers support a set of common components and/or a client advertised set of custom components which are composed into layouts. The client owns the rendering and can integrate it seamlessly into their branded UX. Orchestrator agents and remote A2A subagents can all generate UI layouts which are securely passed as messages, not as executable code.</p><p data-block-key="rob2">Below are examples of A2UI rendered cards, showing a variety of UI compositions that A2UI can achieve.</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img class="regular-image" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/a2ui-blog-1-component-gallery_2.original.png" alt="a2ui-blog-1-component-gallery (2)">
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="11zll" id="the-problem:-agents-need-to-speak-ui"><b>The Problem: Agents need to</b> <b><i>speak</i></b><b> UI</b></h2><p data-block-key="7om8e">Imagine an agent designed to help you book a table at a restaurant. A text-only interaction might involve a clunky back-and-forth:</p><p data-block-key="4bgds"><b>User:</b> (typing) "Book a table for 2."</p><p data-block-key="9cjhj"><b>Agent:</b> "Okay, for what day?"</p><p data-block-key="6m4r1"><b>User:</b> (typing) "Tomorrow."</p><p data-block-key="9v5bs"><b>Agent:</b> "What time?"</p><p data-block-key="4pcrb"><b>User:</b> (typing) "Maybe 7p"</p><p data-block-key="bomm2"><b>Agent:</b> "We do not have reservation availability then, any other times?</p><p data-block-key="av5o4"><b>User:</b> (typing) "When do you have reservations?"</p><p data-block-key="fsedd"><b>Agent:</b> "We have availability at 5:00, 5:30, 6:00, 8:30, 9:00, 9:30 and 10:00, Do any of those work for you?”</p><p data-block-key="6uen0">This can be slow and inefficient. A better experience would be for the <b>agent to quickly generate, or use,</b> a simple form with a date picker, a time selector, and a submit button. With A2UI, LLMs can compose bespoke UIs from a catalog of widgets to provide a graphical, beautiful, easy to use interface for the exact task at hand.</p><p data-block-key="5k78l">For example, instead of the text-based chat back and forth above, you can use A2UI to compose this reservation UI. The below is one possible rendering of an A2UI representation of the restaurant booking, with many other possibilities thanks to A2UI's design that gives the front-end host app a lot of control over the styling.</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img class="regular-image" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/a2ui-blog-2-reserve-table.original.png" alt="a2ui-blog-2-reserve-table">
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="37raj" id="the-challenge:-rendering-across-trust-boundaries"><b>The challenge: Rendering across trust boundaries</b></h2><p data-block-key="cg2q7">We are entering the era of the multi-agent mesh. Agents from Google are talking to agents from Cisco, IBM, SAP, and Salesforce to solve complex tasks. This is why we collectively created the <a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">Agent-to-Agent (A2A) Protocol</a> and donated it to the Linux Foundation: to enable agents to collaborate even when they don’t share memory, tools, or context.</p><p data-block-key="8u3th">However, this decentralization creates a user interface problem.</p><p data-block-key="br6m5">If your agent lives inside your application, it can directly manipulate the view layer (e.g. DOM). But in a multi-agent world, the agent doing the work is often remote—running in the background, on a different server, or owned by a different organization. It cannot touch your UI directly; it must send messages.</p><p data-block-key="2ql3c">Historically, rendering UI from a remote, untrusted source meant sending HTML or JavaScript and sandboxing it inside <b>iframes</b>. This approach is heavy, can be visually disjointed (it rarely matches your app's native styling), and introduces complexity around security boundaries.</p><p data-block-key="brtsk">We needed a way to transmit UI that is <b>safe like data, but expressive like code</b>.</p><h2 data-block-key="6wity" id="the-solution:-ui-spec-as-a-sequence-of-messages"><b>The solution: UI spec as a sequence of messages</b></h2><p data-block-key="83eih">A2UI provides a standard format which can be generated on the fly as structured output, or used as a template and hydrated with values. The agent generating this response might be a remote A2A agent or the orchestrator the user is interacting with. The JSON payload can be sent to the client over A2A, AG UI, and potentially other transports. The client application renders using its own native UI components. This means <b>the client retains full control over styling and security</b>, helping to ensure the agent's output always feels native to your app.</p>
+</div>   
+
+<div class="inner-block-content video-block">
+    
+        <video autoplay="" loop="" muted="" playsinline="" poster="https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/wagtailvideo-xof9cc58_thumb.jpg">
+<source src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/landscape-architect-demo.mp4" type="video/mp4">
+<p>Sorry, your browser doesn't support playback for this video</p>
+
+</video>
+    
+    
+        
+            <div class="video-description">In this example, the user uploads a photo, and a remote agent uses Gemini to understand it and makes a bespoke form for the specific needs of the landscaping customer</div>
+        
+    
+</div>   
+
+<div class="inner-block-content video-block">
+    
+        <video autoplay="" loop="" muted="" playsinline="" poster="https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/wagtailvideo-l_1uca6i_thumb.jpg">
+<source src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/original_videos/a2ui-custom-compnent.mp4" type="video/mp4">
+<p>Sorry, your browser doesn't support playback for this video</p>
+
+</video>
+    
+    
+        
+            <div class="video-description">In this example, the agent decides to respond with a custom component containing an interactive chart and a custom component containing Google Maps.</div>
+        
+    
+</div>  <div class="inner-block-content rich-content">
+    <h2 data-block-key="nsai3" id="core-philosophy:-secure-updateable-and-decoupled"><b>Core philosophy: Secure, updateable, and decoupled</b></h2><p data-block-key="5b1rd">We designed A2UI around a few key principles:</p><ul><li data-block-key="bk8m4"><b>Security first:</b> Running arbitrary code generated by an LLM may present a significant security risk. A2UI is a <i>declarative</i> data format, not executable code. Your client application maintains a "catalog" of trusted, pre-approved UI components (e.g., <code>Card</code>, <code>Button</code>, <code>TextField</code>), and the agent can only request to render components from that catalog. This helps you to reduce the risk of UI injection and other vulnerabilities.</li><li data-block-key="8raum"><b>LLM-friendly and incrementally updateable:</b> The UI is represented as a flat list of components with ID references which is easy for LLMs to generate incrementally, allowing for progressive rendering and a responsive user experience. An agent can efficiently make incremental changes to the UI based on new user requests as the conversation progresses.</li><li data-block-key="bcgo3"><b>Framework-agnostic and portable:</b> A2UI separates the UI <i>structure</i> from the UI <i>implementation</i>. The agent sends a description of the component tree and its associated data model. Your client application is responsible for mapping these abstract descriptions to its native widgets—be it web components, Flutter widgets, React components, SwiftUI views or something else entirely. The same A2UI JSON payload from an agent can be rendered on multiple different clients built on top of different frameworks.</li></ul>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img class="regular-image" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/a2ui-blog-3-end-to-end-data-flow.original.png" alt="a2ui-blog-3-end-to-end-data-flow">
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="1gy2i" id="navigating-the-agentic-ui-ecosystem"><b>Navigating the agentic UI ecosystem</b></h2><p data-block-key="60len">The space for agentic UI is evolving rapidly, with excellent tools emerging to solve different parts of the stack. We view A2UI not as a replacement for these frameworks, but as a specialized protocol that aims to solve the specific problem of <b>interoperable, cross-platform, generative or template-based responses.</b></p><p data-block-key="8gg0r">To help you choose the right tool, or combination of tools, here is how we map the landscape:</p><p data-block-key="f4lbt"><b>1. Building the "host" application UI</b></p><p data-block-key="2n1e0">If you are building a full-stack application (the "host" UI that the user interacts with), in addition to building the actual UI, you may also utilize a framework <b>(AG UI, Vercel AI SDK, GenUI SDK for Flutter which already uses A2UI under the covers)</b> to handle the "pipes": state synchronization, chat history, and input handling.</p><ul><li data-block-key="3dckt"><b>Where A2UI can fit:</b> A2UI is complementary. If you connect your host application using AG UI, it can use A2UI as the data format for rendering responses from the host agent and also from third-party or remote agents. This gives you the best of both worlds: a rich, stateful host app that can safely render content from external agents it doesn't control.</li><li data-block-key="fpg9f"><b>A2UI with A2A:</b> You can send via A2A directly to a client front end.</li><li data-block-key="65uj"><b>A2UI with AG UI:</b> AG UI provides scaffolding to easily build and deploy applications that support A2UI.</li><li data-block-key="35qu4"><b>A2UI with REST</b> and other transports are feasible but not yet available.</li></ul><p data-block-key="f92l0"><b>2. UI as a "resource" (MCP apps)</b></p><p data-block-key="cmlsb">The <b>Model Context Protocol (MCP)</b> has <a href="https://blog.modelcontextprotocol.io/posts/2025-11-21-mcp-apps/">recently introduced <b>MCP Apps</b></a>, a new standard consolidating work from MCP-UI and OpenAI to enable servers to provide interactive interfaces. This approach treats UI as a resource (accessed via a <code>ui:// URI</code>) that tools can return, typically rendering pre-built HTML content within a sandboxed <code>iframe</code> to ensure isolation and security.</p><p data-block-key="5q2tk"><b>How A2UI is different:</b> A2UI takes a "native-first" approach that is distinct from the resource-fetching model of MCP Apps. Instead of retrieving an opaque payload to display in a sandbox, an A2UI agent sends a blueprint of native components. This allows the UI to inherit the host app's styling and accessibility features perfectly. In a multi-agent system, an orchestrator agent can easily understand the lightweight A2UI message content from a subagent, allowing for more fluid collaboration between agents.</p><p data-block-key="601du"><b>3. Platform-specific ecosystems (OpenAI ChatKit)</b></p><p data-block-key="9pgpr">Tools like <b>ChatKit</b> offer a highly integrated, optimized experience for deploying agents specifically within the OpenAI ecosystem.</p><p data-block-key="9me5q"><b>How A2UI is different:</b> A2UI is designed for developers building their own agentic surfaces across Web, Flutter, and native mobile, or for enterprise meshes (like <b>A2A</b>) where agents need to communicate across trust boundaries. A2UI gives the client more control over styling at the expense of the agent, in order to allow for greater visual consistency with the host client application.</p><h2 data-block-key="bvv7k" id="built-for-the-real-world"><b>Built for the real world</b></h2><p data-block-key="55lf7">From day one, A2UI has been developed in partnership with several teams inside and outside of Google to solve real-world problems. We're thrilled to build with support from key collaborators:</p><p data-block-key="9ahs1"><b>AG UI / CopilotKit: A powerful combination</b></p><p data-block-key="b5p4m">We believe in a collaborative ecosystem. The team behind <a href="https://ag-ui.com/">AG UI</a> / <a href="https://www.copilotkit.ai/">CopilotKit</a> has worked with us to ensure day-zero compatibility, offering developers a powerful "better together" story.</p><blockquote data-block-key="219c2"><i>"The Agent-User Interaction Protocol (AG-UI) connects agentic backends and agentic frontends. It provides developers with practical building blocks for building rich fullstack agentic applications. AG-UI fully supports the A2UI spec for rich declarative generative UIs dynamically generated by agents. AG-UI also implements a full handshake with A2A protocol, for seamless full-featured integration with any A2A system. We're excited to provide day-0 compatibility between AG-UI and A2UI."</i> — Atai Barkai, Founder of CopilotKit and AG UI</blockquote><p data-block-key="75kjk"><b>Opal: Powering experimental AI mini-apps</b></p><p data-block-key="4sjju"><a href="http://opal.google/">Opal</a> lets hundreds of thousands of people build, edit, and share AI mini-apps using natural language. The Opal team at Google has been a core contributor to A2UI. In addition to helping build A2UI, the team has also been using it to <b>rapidly prototype</b> and integrate it into the core app building flow. A2UI in Opal will enable anyone to build AI mini-apps with dynamic, generative UI custom for each use case. In the next few weeks, you’ll be able to see and experience A2UI in action in Opal.</p><blockquote data-block-key="12kte"><i>"A2UI is foundational to our work. It gives us the flexibility to let the AI drive the user experience in novel ways, without being constrained by a fixed front-end. Its declarative nature and focus on security allow us to experiment quickly and safely."</i> — Dimitri Glazkov, Principal Engineer, Opal Team</blockquote><p data-block-key="a5r8t"><b>Gemini Enterprise: Custom UIs for enterprise agents</b></p><p data-block-key="7alpt">Gemini Enterprise enables businesses to build powerful, custom AI agents. A2UI is being integrated to allow these enterprise agents to render rich, interactive UIs within their host applications.</p><blockquote data-block-key="c6s94"><i>"Our customers need their agents to do more than just answer questions; they need them to guide employees through complex workflows. A2UI will allow developers building on Gemini Enterprise to have their agents generate the dynamic, custom UIs needed for any task, from data entry forms to approval dashboards, dramatically accelerating workflow automation."</i> — Fred Jabbour, Product Manager, Gemini Enterprise</blockquote><p data-block-key="d623e"><b>Flutter: Multi-platform Generative UI app experiences</b></p><p data-block-key="f93to"><a href="http://flutter.dev/">Flutter</a> and its <a href="https://github.com/flutter/genui">GenUI SDK</a> helps you generate dynamic, personalized UI with Gemini (or other LLMs) to significantly improve the usability and satisfaction of your GenAI and agent-based user experiences. These generative UIs adhere to your established brand guidelines and use your own widget catalog. A2UI is used by GenUI SDK as the UI declaration format between remote server-side agents and the app.</p><blockquote data-block-key="3ui52"><i>"Our developers choose Flutter because it lets them quickly create expressive, brand-rich, custom design systems that feel great on every platform. A2UI was a great fit for Flutter's GenUI SDK because it ensures that every user, on every platform, gets a high quality native feeling experience."</i> — Vijay Menon, Engineering Director, Dart</blockquote><p data-block-key="4dfi7"><b>AI Powered Google: Standardizing Agentic UI</b></p><p data-block-key="9ba10">As Google adopts AI across the company, A2UI gives teams a standardized way for AI agents to exchange user interfaces, not just text. This interoperability allows agents to render on any frontend, supports workflows involving multiple agents per surface or multiple surfaces per agent, and enables internally built agents to be easily exposed externally, such as in Gemini Enterprise.</p><blockquote data-block-key="8sbea"><i>"Much like A2A lets any agent talk to another agent regardless of platform, A2UI standardizes the user interface layer and supports remote agent use cases through an orchestrator. This has been incredibly powerful for internal teams, allowing them to rapidly develop agents where rich user interfaces are the norm, not the exception. As Google pushes further into generative UI, A2UI provides a perfect platform for server-driven UI that renders on any client."</i> — James Wren, Senior Staff Engineer, AI Powered Google</blockquote><p data-block-key="566bt"></p><h2 data-block-key="1mvch" id="get-started:-try-out-a2ui"><b>Get started: Try out A2UI</b></h2><p data-block-key="2hksb">The best way to understand A2UI is to see it in action.</p><ul><li data-block-key="b822j">Start by going to <a href="http://a2ui.org/">a2ui.org</a> and reading the quickstart guide and documentation.</li><li data-block-key="etbi8">Next go to the samples folder and try a client UI and some background sample agents, perhaps the restaurant finder.</li></ul><p data-block-key="5415i">Here’s how to launch the restaurant finder:</p>
+</div>  <div class="inner-block-content code-block line-numbers">
+    <pre class="language-shell line-numbers" tabindex="0"><code class="language-shell"><span class="token function">git</span> clone https://github.com/google/A2UI.git
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">GEMINI_API_KEY</span><span class="token operator">=</span><span class="token string">"your_gemini_api_key"</span>
+
+<span class="token comment"># Run the restaurant finder A2A agent</span>
+<span class="token builtin class-name">cd</span> A2UI/samples/agent/adk/restaurant_finder
+uv run <span class="token builtin class-name">.</span>
+
+<span class="token comment"># Run the lit client that uses the A2UI lit renderer library</span>
+<span class="token builtin class-name">cd</span> A2UI/samples/client/lit/shell
+<span class="token function">npm</span> <span class="token function">install</span>
+<span class="token function">npm</span> run dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <div class="language-block glue-font-weight-medium">
+        Shell
+    </div>
+    <div class="copy-code-block">
+        <span class="hidden">Copied</span>
+        <button class="copy-clipboard">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"></path></svg>
+        </button>
+    </div>
+    <div class="dark-mode-block">
+        <button class="dark-mode-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"></path></svg>
+        </button>
+    </div>
+    
+</div>  <div class="inner-block-content rich-content">
+    <p data-block-key="78mfw">Another way to see A2UI in action is to try the GenUI SDK for Flutter.</p><p data-block-key="d0dr9">The GenUI SDK for Flutter uses A2UI under the covers when talking to remote or server-side agents. It's easy to get started, visit <a href="https://docs.flutter.dev/ai/genui">https://docs.flutter.dev/ai/genui</a> or watch the <a href="https://www.youtube.com/watch?v=nWr6eZKM6no">Getting started with GenUI video</a>. In the GenUI SDK repo on GitHub, you can also find a <a href="https://github.com/flutter/genui/tree/main/examples/verdure">client-server sample that uses A2UI</a>.</p><p data-block-key="615ik">CopilotKit has a public <a href="https://go.copilotkit.ai/A2UI-widget-builder">A2UI Widget Builder</a> to try out as well.</p><h2 data-block-key="jlt3d" id="supported-integrations"><b>Supported integrations</b></h2><p data-block-key="cf9h6">Here are a few key integrations that the project has today, and some that we hope the project supports in the future. We welcome community contributions in these areas.</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img class="regular-image" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/a2ui-blog-4-checklist.original.png" alt="a2ui-blog-4-checklist">
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="g8k3k" id="the-future-is-open:-join-us!"><b>The future is open: Join us!</b></h2><p data-block-key="e8f3v">Today marks the first public milestone of A2UI. Our format is currently at <code>v0.8</code> because we have been through many rounds of battle hardening and testing for the initial use cases, and there is more to evolve and discover. We have early, but working, client libraries for <b>Flutter,</b> <b>Web Components</b> and <b>Angular</b>.</p><p data-block-key="e41dk">With the project now open, we are excited to work with the ecosystem to:</p><ul><li data-block-key="7g612">Refine and evolve the format</li><li data-block-key="far1u">Connect A2UI into your favorite client libraries</li><li data-block-key="rq5r">Build more robust and useful tools in the future</li><li data-block-key="1uo8d">Contribute to developer onboarding and provide samples</li></ul><p data-block-key="4phj8">A2UI is an Apache 2 licensed project, and we believe its success depends on the community. We invite you to explore the code, try the demos, and especially to contribute. Whether you want to build a client for your favorite UI framework, add support to an agent-building library, or build a sweet demo, we want to hear from you and collaborate with you.</p><p data-block-key="4jgae">Check out our public roadmap to see where we're headed and find out how you can get involved. Let's build the future of agentic user experiences together.</p>
+</div> 
+      </div>
+    </section>
+    
+
+    <section class="navigation-container glue-page glue-spacer-6-top">
+      <div class="posted-in-section">
+        <div class="posted-in-section__heading">
+          <span class="glue-caption">
+            posted in:
+          </span>
+        </div>
+        <div class="posted-in-section__tags">
+          <ul>
+              
+                  <li>
+                      <a href="/search/?technology_categories=Mobile" class="glue-caption">Mobile</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?technology_categories=Web" class="glue-caption">Web</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?technology_categories=AI" class="glue-caption">AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?technology_categories=Cloud" class="glue-caption">Cloud</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?content_type_categories=Announcements" class="glue-caption">Announcements</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?content_type_categories=Solutions" class="glue-caption">Solutions</a>
+                  </li>
+              
+              
+                  <li>
+                      <a href="/search/?tag=Solve" class="glue-caption">Solve</a>
+                  </li>
+              
+                  <li>
+                      <a href="/search/?tag=Learn" class="glue-caption">Learn</a>
+                  </li>
+              
+          </ul>
+      </div>
+      </div>
+      <div class="buttons-section">
+        <div class="buttons-section__left">
+          <a href="/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/" class="glue-button--icon glue-elevation-level-1 " aria-label="Previous">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </a>
+          <span class="caption ">Previous</span>
+        </div>
+        <div class="buttons-section__right">
+          <span class="caption ">Next</span>
+          <a href="/building-agents-with-the-adk-and-the-new-interactions-api/" class="glue-button--icon glue-elevation-level-1 " aria-label="Next">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="related-posts-container glue-page glue-spacer-6-top glue-spacer-3-bottom">
+      <span class="glue-headline glue-headline--headline-3">Related Posts</span>
+      <div class="related-posts-container__carousel glue-page glue-spacer-5-top">
+        <div class="glue-carousel glue-carousel--cards glue-carousel-related-posts glue-carousel--peek-out glue-carousel--has-navigation" aria-label="Related Posts">
+          <!-- Previous -->
+          <button class="glue-carousel__button glue-carousel__button--prev glue-is-inactive" aria-label="Go to the previous slide" aria-controls="">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </button>
+          <!-- Next -->
+          <button class="glue-carousel__button glue-carousel__button--next" aria-label="Go to the next slide" aria-controls="">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </button>
+          <!-- List -->
+          <div class="glue-carousel__viewport">
+            <div class="glue-carousel__list" aria-live="polite" style="width: 1716px; grid-template-columns: repeat(4, 1fr); transform: translate3d(0px, 0px, 0px);">
+              
+                <a class="glue-card glue-carousel__item" href="/introducing-agent-development-kit-for-typescript-build-ai-agents-with-the-power-of-a-code-first-approach/" tabindex="0">
+                  <div aria-label="Introducing Agent Development Kit for TypeScript: Build AI Agents with the Power of a Code-First Approach" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Introducing Agent Development Kit for TypeScript: Build AI Agents with the Power of a Code-First Approach" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Building-1-banner.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">How-To Guides</span>
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Introducing Agent Development Kit for TypeScript: Build AI Agents with the Power of a Code-First Approach</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">DEC. 17, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/unlocking-peak-performance-on-qualcomm-npu-with-litert/" tabindex="-1">
+                  <div aria-label="Unlocking Peak Performance on Qualcomm NPU with LiteRT" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Unlocking Peak Performance on Qualcomm NPU with LiteRT" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/train-gpt2-model-with-jax-on-tpu-b.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">Mobile</span>
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Industry Trends</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Unlocking Peak Performance on Qualcomm NPU with LiteRT</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">NOV. 24, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/mediatek-npu-and-litert-powering-the-next-generation-of-on-device-ai/" aria-hidden="true" tabindex="-1">
+                  <div aria-label="MediaTek NPU and LiteRT: Powering the next generation of on-device AI" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="MediaTek NPU and LiteRT: Powering the next generation of on-device AI" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/train-gpt2-model-with-jax-on-tpu-b.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">Mobile</span>
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Industry Trends</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">MediaTek NPU and LiteRT: Powering the next generation of on-device AI</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">DEC. 8, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/gemini-3-flash-is-now-available-in-gemini-cli/" aria-hidden="true" tabindex="-1">
+                  <div aria-label="Gemini 3 Flash is now available in Gemini CLI" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Gemini 3 Flash is now available in Gemini CLI" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/output_padded.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Problem-Solving</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Gemini 3 Flash is now available in Gemini CLI</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">DEC. 17, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+          <!-- Navigation dots -->
+          <div class="glue-carousel__navigation" aria-label="Choose a page" data-glue-carousel-navigation-label="Selected tab $glue_carousel_page_number$ of $glue_carousel_page_total$">
+          <button class="glue-carousel__dot glue-is-active" data-dot="1" aria-controls="" aria-label="Selected tab 1 of 2" tabindex="0" aria-current="true"></button><button class="glue-carousel__dot" data-dot="2" aria-controls="" aria-label="Selected tab 2 of 2" tabindex="-1" aria-current="false"></button></div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+
+				
+				
+
+<div class="footer-linkboxes__wrapper">
+  <nav class="footer-linkboxes" aria-label="Footer links">
+    <ul class="footer-linkboxes__list">
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Connect
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//googledevelopers.blogspot.com" class="footer-linkbox-list__link">
+                Blog
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/3FReQXN" class="footer-linkbox-list__link">
+                Bluesky
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/googlefordevs" class="footer-linkbox-list__link">
+                Instagram
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-li" class="footer-linkbox-list__link">
+                LinkedIn
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-tw" class="footer-linkbox-list__link">
+                X (Twitter)
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/developers" class="footer-linkbox-list__link">
+                YouTube
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Programs
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/program" class="footer-linkbox-list__link">
+                Google Developer Program
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/gdg" class="footer-linkbox-list__link">
+                Google Developer Groups
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/experts" class="footer-linkbox-list__link">
+                Google Developer Experts
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/accelerators" class="footer-linkbox-list__link">
+                Accelerators
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//www.womentechmakers.com" class="footer-linkbox-list__link">
+                Women Techmakers
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/nvidia" class="footer-linkbox-list__link">
+                Google Cloud &amp; NVIDIA
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Developer consoles
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.developers.google.com" class="footer-linkbox-list__link">
+                Google API Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.cloud.google.com" class="footer-linkbox-list__link">
+                Google Cloud Platform Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//play.google.com/apps/publish" class="footer-linkbox-list__link">
+                Google Play Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.firebase.google.com" class="footer-linkbox-list__link">
+                Firebase Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.actions.google.com" class="footer-linkbox-list__link">
+                Actions on Google Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//cast.google.com/publish" class="footer-linkbox-list__link">
+                Cast SDK Developer Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//chrome.google.com/webstore/developer/dashboard" class="footer-linkbox-list__link">
+                Chrome Web Store Dashboard
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.home.google.com/" class="footer-linkbox-list__link">
+                Google Home Developer Console
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer-utility__wrapper">
+  <div>
+    <nav class="footer-sites" aria-label="Other Google Developers websites">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+      <ul class="footer-sites-list">
+        <li class="footer-sites-item">
+          <a href="//developer.android.com" class="footer-sites-link">
+            Android
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developer.chrome.com/home" class="footer-sites-link">
+            Chrome
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//firebase.google.com" class="footer-sites-link">
+            Firebase
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//cloud.google.com" class="footer-sites-link">
+            Google Cloud Platform
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developers.google.com/products" class="footer-sites-link">
+            All products
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <button class="glue-cookie-notification-bar-control footer-sites-link" aria-controls="glue-cookie-notification-bar-1" aria-expanded="true">Manage cookies</button>
+        </li>
+      </ul>
+    </nav>
+    <nav class="footer-utility-links">
+      <ul class="footer-utility-list">
+        <li class="footer-utility-item">
+          <a href="//developers.google.com/terms/site-terms" class="footer-utility-link">
+            Terms
+          </a>
+        </li>
+        <li class="footer-utility-item">
+          <a href="//policies.google.com/privacy" class="footer-utility-link">
+            Privacy
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+        
+				
+
+        
+        <script nonce="" src="https://www.youtube.com/player_api"></script>
+        <script nonce="" src="//www.gstatic.com/glue/v27_1/glue.min.js"></script>
+        <script nonce="" type="text/javascript" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/js/dgc_blog.js"></script>
+
+        <script nonce="" src="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js" data-glue-cookie-notification-bar-category="2A" data-glue-cookie-notification-bar-site-id="developers.googleblog.com"></script>
+
+        
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/js/blog_detail.js" nonce=""></script>
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20251118-195321/js/prism.js" nonce=""></script>
+
+    
+
+</body></html>
