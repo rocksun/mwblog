@@ -1,4 +1,3 @@
-
 <!--
 title: 生成式AI应用：告别提示词，构建生态圈
 cover: https://cdn.thenewstack.io/media/2025/12/bdb36f79-cherries.jpg

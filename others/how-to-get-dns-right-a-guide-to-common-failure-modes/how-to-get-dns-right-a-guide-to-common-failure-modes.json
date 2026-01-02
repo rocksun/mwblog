@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/how-to-get-dns-right-a-guide-to-common-failure-modes/","title":"How To Get DNS Right: A Guide to Common Failure Modes","author":"Sheldon Pereira","summary":"","cover":"https://cdn.thenewstack.io/media/2025/12/7f14ddca-outage.jpg","zh_title":"DNS配置精要：常见故障模式与避坑指南","zh_summary":"DNS是关键基础。常见风险有微中断、配置错误、投毒和DDoS攻击，它们严重影响系统可用性及性能。本系列后续将探讨如何有效监控DNS。"}

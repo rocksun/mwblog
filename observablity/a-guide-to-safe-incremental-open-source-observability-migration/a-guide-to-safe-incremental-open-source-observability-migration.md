@@ -1,4 +1,3 @@
-
 <!--
 title: 安全渐进式开源可观测性迁移指南
 cover: https://cdn.thenewstack.io/media/2025/12/9c15f6fb-birds2.jpeg
