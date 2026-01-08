@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/what-it-takes-to-scale-ai-agents-in-production/","title":"What It Takes To Scale AI Agents in Production","author":"Raj Shukla","summary":"","cover":"https://cdn.thenewstack.io/media/2025/12/795cb6e5-agentic.jpg","zh_title":"AI智能体生产级规模化：挑战与致胜秘诀","zh_summary":"LLM作中间件易脆，向量数据库难多跳推理。需分层治理架构，尤其上下文层（DKG）。切勿DIY，应将上下文视为采购基础设施。智能是商品，上下文非。"}

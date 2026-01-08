@@ -1,0 +1,76 @@
+<!--
+title: AI编程真相大揭秘：开发者代码现状深度报告
+cover: https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/e3f9954e-339c-46de-abd7-f1b31cbf4c68/SOC_Survey_report_blog-article_Social_Landscape_B_2x.png
+summary: 调查显示，AI编程已成日常，72%开发者每天用，42%代码AI辅助。AI应用于多类项目，对文档和代码解释高效，但引发验证瓶颈。
+-->
+
+调查显示，AI编程已成日常，72%开发者每天用，42%代码AI辅助。AI应用于多类项目，对文档和代码解释高效，但引发验证瓶颈。
+
+> 译自：[State of Code Developer Survey report: The current reality of AI coding](https://www.sonarsource.com/blog/state-of-code-developer-survey-report-the-current-reality-of-ai-coding/)
+> 
+> 作者：Anirban Chatterjee
+
+Sonar 每天分析超过 7500 亿行代码。这使我们能够独特地、高层次地了解全球代码质量和安全的现状。我们可以看到代码本身的趋势，但要真正理解软件开发的现状，我们需要了解编写代码的人。
+
+为了获得这种实地视角，我们发起了《*代码开发者现状调查*》。我们调查了 1100 多名专业开发人员，以了解他们的日常工作正在如何变化——特别是在 AI 编程热潮之后。我们希望超越炒作，了解现实情况：当今工程团队中实际出现的效率、挫折和新工作流程。
+
+我们的发现挑战了普遍的说法。虽然 AI 的采用率很高，但它并未带来生产力的简单线性提升。相反，它在验证阶段造成了新的瓶颈，现在需要更多的工作来审查代码。
+
+[下载完整报告](/resources/developer-survey-report/ "下载完整报告")
+
+以下是我们报告第一章的主要发现，重点关注开发人员当前*真正*如何使用 AI。
+
+## AI 现已成为日常习惯，而非实验
+
+周末使用 AI 进行实验的时代已经结束。AI 辅助编程已正式成为专业工作流程的标准组成部分。
+
+我们的数据显示，尝试过 AI 编程工具的开发人员中，有 72% 现在每天都在使用它们。
+
+这不仅仅是与机器人聊天来调试错误信息。它代表了软件构建方式的根本性转变。开发人员报告称，他们提交的代码中，有 42% 目前是由 AI 生成或辅助生成的。
+
+这一数量只会继续增长。开发人员预测，到 2027 年，其代码库中 AI 生成代码的份额将增加一半以上。
+
+![]()
+
+![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/0b378ff7-b358-4564-a3e5-e0aeaa4eaf44/average-share-of-ai-assisted-graph.png?w=1554&h=588&auto=format&fit=crop)![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/0b378ff7-b358-4564-a3e5-e0aeaa4eaf44/average-share-of-ai-assisted-graph.png?w=1554&h=588&auto=format&fit=crop)
+
+## AI 无处不在，应用于方方面面
+
+许多人认为 AI 仅用于实验、原型或副项目。我们的调查表明，AI 已经远远超越了这些领域，渗透到软件开发的每个层面。
+
+开发人员在各种项目中都使用 AI：
+
+* 88% 用于原型和概念验证
+* 83% 用于内部、非关键生产软件
+* 73% 用于面向客户的应用程序
+* 58% 用于业务关键或任务关键服务
+
+![]()
+
+![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/6d3b2a67-3a67-4179-8809-2ca595045148/ai-being-used-everywhere.png?w=1554&h=726&auto=format&fit=crop)![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/6d3b2a67-3a67-4179-8809-2ca595045148/ai-being-used-everywhere.png?w=1554&h=726&auto=format&fit=crop)
+
+这种广泛的采用表明，组织不再是浅尝辄止；它们已经一头扎了进去。
+
+## 使用率与有效性之间存在差距
+
+虽然使用率很高，但有效性因任务而异。我们发现开发人员使用 AI 完成任务的频率与他们实际认为 AI 有效性之间存在明显差距。
+
+例如，AI 最常见的用例是协助新代码开发，90% 的开发人员为此目的使用它。然而，其中只有 55% 的用户认为 AI 在该特定任务中“极其或非常有效”。同样，虽然 72% 的人使用 AI 进行重构，但只有 43% 的人认为它非常有效。
+
+AI 真正擅长什么？据开发人员称，AI 在处理现有上下文或生成样板材料时表现最佳。有效性评分最高的用途是：
+
+* 编写文档（74% 有效）
+* 解释或理解现有代码（66% 有效）
+* 生成测试（59% 有效）
+
+![]()
+
+![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/14ebade1-4aa7-4db0-a89e-66873b7a1b08/understanding-ai-use-cases.png?w=1554&h=1484&auto=format&fit=crop)![](https://assets-eu-01.kc-usercontent.com:443/ef593040-b591-0198-9506-ed88b30bc023/14ebade1-4aa7-4db0-a89e-66873b7a1b08/understanding-ai-use-cases.png?w=1554&h=1484&auto=format&fit=crop)
+
+开发人员是务实的。他们将 AI 视为强大的“解释器”和“原型生成器”，但他们仍然认为 AI 在处理细致、复杂的重构工作或在没有严密监督的情况下维护任务关键型系统方面存在不足。这种高使用率和选择性有效性之间的差距不仅仅是关于功能，更是关于信心。当风险很高时，开发人员对 AI 生成的代码到底有多信任？
+
+## 阅读完整报告
+
+这仅仅是故事的开始。完整的《*代码开发者现状调查报告*》深入探讨了这一转变的后果，包括新兴的“验证瓶颈”、对技术债务的影响，以及初级和高级开发人员之间对态度的惊人分歧。
+
+[在此下载完整报告](https://www.sonarsource.com/resources/developer-survey-report/)
