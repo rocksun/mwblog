@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/how-rust-does-async-differently-and-why-it-matters/","title":"How Rust does Async differently (and why it matters)","author":"Anshul Gupta","summary":"","cover":"https://cdn.thenewstack.io/media/2026/01/1258abd5-rust123.jpeg","zh_title":"Rust 异步编程的独特之道（为何至关重要）","zh_summary":"Rust 异步采用基于轮询的“拉取”模式，惰性执行，需执行器轮询。理解其内部机制，如 Pin、Waker，有助于深入系统架构，实现高性能异步编程。"}

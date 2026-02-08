@@ -1,0 +1,38 @@
+
+<!--
+title: 你的CI/CD管道，是否正在无意中增加技术债务？
+cover: https://cdn.thenewstack.io/media/2026/01/f69a8e01-ci-cd-pipeline-tech-debt.jpg
+summary: CI/CD管道通过模板克隆虽能快速部署，但第二天常因“脚手架陷阱”导致操作瘫痪和技术债务。文章建议通过继承而非复制来重构策略，以实现可扩展性并减少维护负担，并介绍了相关网络研讨会。
+-->
+
+CI/CD管道通过模板克隆虽能快速部署，但第二天常因“脚手架陷阱”导致操作瘫痪和技术债务。文章建议通过继承而非复制来重构策略，以实现可扩展性并减少维护负担，并介绍了相关网络研讨会。
+
+> 译自：[Are your CI/CD pipelines accidentally increasing technical debt?](https://thenewstack.io/are-your-ci-cd-pipelines-accidentally-increasing-technical-debt/)
+> 
+> 作者：Vicki Walker
+
+对于大多数[平台工程](https://thenewstack.io/ebooks/platform-engineering/platform-engineering-what-you-need-to-know-now/)团队来说，内部开发者门户被认为是解决DevOps可扩展性挑战的最佳方式。通过克隆模板即时启动新管道的能力，对于开发团队来说是颠覆性的。只需轻触一个按钮，开发者就可以建立一个新管道，其中包含创建新应用程序所需的所有工作流、工具链和资源。这几乎感觉像魔术。
+
+但这种第一天的速度常常伴随着一个主要的第二天问题：操作瘫痪，也被称为“脚手架陷阱”，Harness的DevOps布道者 **Eric Minick** 说道。每次克隆管道模板时，它都不可避免地会发生偏差。你正在用第二天的技术债务来偿还第一天的简单性。
+
+Minick说，随着组织的发展，“对100个服务进行更新意味着管理100个独立的拉取请求，或者说服数十个团队进行更改。”
+
+## 为什么复制模板会产生技术债务
+
+如果你的第二天操作正在制造混乱，并且你正在努力在不增加更多技术债务的情况下进行扩展，请在太平洋时间2月3日上午8:30 | 东部时间上午11:30加入我们，参加一场特别的在线活动：**[如何构建真正可扩展的CI/CD管道](https://thenewstack.io/webinar/how-to-architect-a-ci-cd-pipeline-that-really-scales/)。**
+
+在这次免费网络研讨会中，Minick；Choice Hotels云平台与站点可靠性高级总监 **Stephen Cihak**；以及TNS主持人 **Chris Pirillo** 将探讨脚手架陷阱，并解释为什么复制[CI/CD](https://thenewstack.io/introduction-to-ci-cd/)模板会产生技术债务和操作瘫痪。
+
+他们还将分享Choice Hotels如何通过重构其管道策略，侧重于继承而非复制，从而摆脱脚手架陷阱，使其能够即时更新数百个工作流，并让开发者满意。
+
+## 立即注册参加本次免费网络研讨会！
+
+如果您无法在线观看直播，仍请注册，我们将在网络研讨会结束后向您发送录音。
+
+## 您将学到什么
+
+通过参加这次特别的在线活动，您将获得最佳实践、真实案例和可操作的提示，包括：
+
+*   **揭示“脚手架陷阱”：** 了解为什么优化第一天的速度常常导致第二天维护期间的操作瘫痪。
+*   **探索实际重构：** 听Choice Hotels如何重构其管道策略，即时更新数百个工作流，同时支持开发者体验。
+*   **审视重用成熟度模型：** 学习一个简单的成熟度模型，轻松评估您现有的重用架构并确定未来的方向。

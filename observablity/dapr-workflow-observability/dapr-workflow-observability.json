@@ -1,0 +1,1 @@
+{"url":"https://opentelemetry.io/blog/2026/dapr-workflow-observability/","title":"Improving Async Workflow Observability in Dapr","author":"[no-author]","summary":"","cover":"https://opentelemetry.io/img/social/logo-wordmark-001.png","zh_title":"提升 Dapr 异步工作流的可观测性","zh_summary":"文章介绍了 Dapr 团队如何通过增强 OpenTelemetry 集成，解决异步工作流跟踪上下文传播难题，实现 Jaeger 连贯跟踪，并探索语义对齐与异步行为建模，为云原生项目提供协作范例。"}
