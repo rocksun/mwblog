@@ -1,4 +1,3 @@
-
 <!--
 title: WebAssembly和Web Workers如何防止UI卡顿
 cover: https://cdn.thenewstack.io/media/2026/02/c076ef00-mika-baumeister-74tw4fxp4hw-unsplash-1.jpg
