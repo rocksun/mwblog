@@ -1,0 +1,36 @@
+
+<!--
+title: AI代理为何不应触碰你的源代码——以及它们应该做什么
+cover: https://cdn.thenewstack.io/media/2026/02/8c027214-for-thumbnail-18.png
+summary: Dynatrace拓展可观测性平台，聚焦AI自主运营与安全。高管Reitbauer指出，功能标志可作AI失控安全开关，AI应通过配置而非代码操作，在限定范围内快速决策。
+-->
+
+Dynatrace拓展可观测性平台，聚焦AI自主运营与安全。高管Reitbauer指出，功能标志可作AI失控安全开关，AI应通过配置而非代码操作，在限定范围内快速决策。
+
+> 译自：[The reason AI agents shouldn’t touch your source code — and what they should do instead](https://thenewstack.io/dynatrace-ai-safety-mechanism/)
+> 
+> 作者：Nick Lucchesi
+
+[Dynatrace](https://www.dynatrace.com/) 正在经历其历史上的一个重要时刻。它正在从一个可观测性平台扩展到一个可以被描述为新环境的领域，该新环境为自主运营和安全提供配置。
+
+在本期《*The New Stack Makers*》节目中，Dynatrace 首席技术战略家 [Alois Reitbauer](https://www.linkedin.com/in/aloisreitbauer/) 阐述了他对一个由代理AI管理生产环境的未来的预测。
+
+视频
+
+这次采访是在1月下旬的 [Dynatrace Perform](https://www.dynatrace.com/perform/) 大会上录制的，恰逢 Dynatrace 收购功能管理平台 [DevCycle](https://devcycle.com/) 几周之后。功能标志（Feature flags）已经存在了几十年，但随着代理AI的出现，它们可能会扮演一个新角色，作为阻止失控AI的安全开关。在某种程度上，这是一个一直隐藏在人们视线中的解决方案。
+
+DevCycle 充当了安全机制，用 Reitbauer 的话说，使运营真正实现自主化。
+
+“对环境最安全的改变不是通过代理重写代码并部署，而是改变配置，” Reitbauer 告诉《*The New Stack*》。
+
+以下是采访中一次令人难忘的交流：
+
+***The New Stack*****:** 人们对代理AI做出不该做的决定和具有重大影响的决定感到非常焦虑。您认为功能标志是一种安全机制吗？
+
+**Reitbauer:** 它是一种安全机制。我们并不是将我们的生产环境完全交给AI；我们还没到那个地步。但在许多任务中，AI 可以做出更快的决策，并采取更快的行动。这也是我们从客户那里得到的反馈。他们说，他们发现AI在特定的护栏和约束下运行。
+
+“这可能是我们通过 [model context protocol] 暴露的工作流，代理可以选择[公司的]自己的账本，而功能标志完美地属于这一类别。你允许代理更改一些配置设置，但你或多或少有一些选项可以挑选和选择。这是一个非常安全的机制。
+
+“没人会希望代理在生产中发现问题时，就自行决定完全重新配置。这更多是关于做出那些适当的选择。我们也看到，我们的客户更愿意朝着这个方向发展。”
+
+这是一个引人入胜的未来，Reitbauer 似乎对它将如何发展有着敏锐的洞察。
