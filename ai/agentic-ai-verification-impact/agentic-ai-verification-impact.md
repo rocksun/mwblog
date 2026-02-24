@@ -1,0 +1,51 @@
+<!--
+title: 96%开发者不信任AI代码：这是解决之道
+cover: https://cdn.thenewstack.io/media/2026/02/93cda083-daniil-komov-sbrnecfkmn4-unsplash-scaled.jpg
+summary: 96%的开发者不信任AI代码，导致大量人工验证工作。文章指出，为解决AI驱动SDLC的信任问题，需从关注速度转向影响力，建立受控AI框架，并自动化验证，以减少技术债务。
+-->
+
+96%的开发者不信任AI代码，导致大量人工验证工作。文章指出，为解决AI驱动SDLC的信任问题，需从关注速度转向影响力，建立受控AI框架，并自动化验证，以减少技术债务。
+
+> 译自：[96% of developers don't trust AI code: Here's a step toward the fix](https://thenewstack.io/agentic-ai-verification-impact/)
+> 
+> 作者：Manish Kapur
+
+过去六个月，围绕软件开发的叙事发生了巨大转变。业界已经超越了对大型语言模型（LLMs）最初的敬畏，进入了代理式AI开发时代——在这个时代，自主系统不仅仅是建议代码行，而是积极重构服务并管理跨代码库的多步骤部署。
+
+然而，尽管[开发团队在速度上取得了飞跃](https://thenewstack.io/accelerating-developer-velocity-with-effective-platform-teams/)，但一个摩擦点也随之出现：生成与验证之间的鸿沟。根据[Sonar的《2026年代码状况：开发者调查》](https://www.sonarsource.com/the-state-of-code/developer-survey-report/)，96%的开发者在没有人工干预的情况下，不完全信任AI生成的代码。这种不信任催生了一种新型的开发者“苦差事”，团队报告称，他们每周工作时间近四分之一（24%）仅仅用于检查、修复和验证AI输出的可靠性。
+
+简而言之，编写代码的工作量与审计代码的劳动量之间存在一种权衡。为了实现AI驱动的软件开发生命周期（SDLC）的承诺，组织必须超越这种“苦差事互换”，重点关注三个战略要点：将衡量标准从速度转向影响力、实施受治理的AI框架以及自动化验证。
+
+## **从代理式时代的“速度”转向“影响力”**
+
+多年来，业界一直将“速度”作为衡量生产力的主要指标。在一个[AI代理能在几秒内生成上千行代码](https://thenewstack.io/top-vibe-coding-countries/)的世界里，速度已成为一种商品——而且是危险的商品。如果这些代码引入安全漏洞或架构问题，生产力非但没有提高，反而倒退了。
+
+> 速度已成为一种商品——而且是危险的商品。
+
+在AI时代，生产力必须通过代码的影响力和摩擦的减少来衡量。当组织自动化验证过程时，开发者可以从“审计者”回归到“协调者”的角色，保持流畅的工作状态，而不是被不断调试AI幻觉的需求所打断。
+
+## **AI规模化运营之路**
+
+许多组织目前仍停留在“AI试点”阶段。个人开发者使用助手，团队也尝试使用代理，但大多数缺乏一种安全、可扩展的方式将这些AI草稿投入生产。
+
+挑战不在于AI工具本身；而在于其周围的框架。为了实现规模化，需要一个“[将自主代码视为](https://thenewstack.io/ai-generated-code-needs-refactoring-say-76-of-developers/)与人工编写代码同等（或更高）审查级别的蓝图。这要求转向确定性、可重复的验证。
+
+开发团队不能依赖一个AI在一个非确定性结果的循环中“检查”另一个AI的工作。例如，开发者可能会要求LLM审查一个拉取请求，结果LLM却错过了微妙的SQL注入，因为它“幻觉”了一个净化函数存在而实际上并没有。
+
+相反，团队需要一个一致、客观的验证层——例如使用硬编码规则的静态分析工具——以确保每一行代码在进入主分支之前都是安全和可维护的。
+
+## **管理技术债务风险**
+
+代理式时代最大的风险之一是技术债务可能迅速累积。如果生产加速而质量检查没有跟上，那么[开发团队本质上是在流沙上建造](https://thenewstack.io/building-high-performance-software-development-teams-7-tips/)。如果一个代理生成了一个能工作但却不安全或难以维护的服务，那么“速度”的增益只不过是一种高利息的债务。
+
+我观察到一个常见的场景是，AI代理将传统单体应用重构为微服务。虽然代理可能成功地拆分了代码，但它经常引入“代码异味”或忽略公司特定的命名约定或不明显的耦合，这可能使未来的维护成为一场噩梦。
+
+进化后的软件开发生命周期（SDLC）的目标应该是从源头解决问题。通过自动化识别和修复漏洞及代码问题，团队可以消除花时间修复AI错误的“苦差事互换”，从而专注于高级架构和创新。
+
+## **前行之路：信任与验证**
+
+软件行业正处于十字路口。工程卓越性要么被AI生成的噪音淹没，要么组织可以建立必要的基础设施来验证和信任这种新的工作方式。
+
+要超越炒作，需要定义可靠的AI驱动SDLC究竟是什么样子。这种从“速度”到“信任”的转变将是[即将于2026年3月3日举行的Sonar峰会](https://events.sonarsource.com/the-sonar-summit/schedule/?utm_source=press&utm_medium=referral&utm_campaign=ss-summit26&utm_content=media---&utm_term=&s_category=Organic&s_source=External%20Referral&s_origin=thenewstack#register)的核心焦点。这个免费的线上活动将邀请思想领袖分享见解，包括[*The Pragmatic Engineer*](https://www.pragmaticengineer.com/)的主持人Gergely Orosz和执行顾问Laura Tacho。
+
+软件的未来不仅仅在于能创建多少代码，而在于这些代码有多少是可以被信任的。
