@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<!--
+    Design by:
+    ——————————
+        GODO FREDO
+        ✉ https://godofredo.ninja
+        ✎ @GodoFredoNinja
+        ✈ Lima - Perú
+-->
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+        if (localStorage.theme === 'dark') {
+            document.querySelector('html').classList.add('dark');
+        } else if (localStorage.theme === 'light') {
+            document.querySelector('html').classList.remove('dark');
+        }
+    </script>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"></noscript>
+
+    <link rel="stylesheet" type="text/css" href="https://oberbean.com/assets/styles/main.css?v=ab09b2cd03"/>
+
+    <link rel="icon" href="https://oberbean.com/content/images/size/w256h256/2026/02/monkey-sit.png" type="image/png">
+    <link rel="canonical" href="https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Oberbean">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old">
+    <meta property="og:description" content="It was a normal day working from home. I was sitting at my desk, typing away, when I heard my son&#x27;s little voice &quot;Daddy...what are you doing?&quot; I looked at him and said &quot;I&#x27;m in the middle of a change.&quot; He stared at me, clearly not understanding a word.">
+    <meta property="og:url" content="https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/">
+    <meta property="og:image" content="https://oberbean.com/content/images/size/w1200/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png">
+    <meta property="article:published_time" content="2026-02-20T04:54:49.000Z">
+    <meta property="article:modified_time" content="2026-02-21T04:16:16.000Z">
+    <meta property="article:tag" content="DevOps">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old">
+    <meta name="twitter:description" content="It was a normal day working from home. I was sitting at my desk, typing away, when I heard my son&#x27;s little voice &quot;Daddy...what are you doing?&quot; I looked at him and said &quot;I&#x27;m in the middle of a change.&quot; He stared at me, clearly not understanding a word.">
+    <meta name="twitter:url" content="https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/">
+    <meta name="twitter:image" content="https://oberbean.com/content/images/size/w1200/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Lucas Borza">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="DevOps">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Oberbean",
+        "url": "https://oberbean.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://oberbean.com/content/images/size/w256h256/2026/02/monkey-sit.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Lucas Borza",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://oberbean.com/content/images/size/w1200/2026/02/selfie-with-background-square.jpg",
+            "width": 1200,
+            "height": 1200
+        },
+        "url": "https://oberbean.com/author/lucas/",
+        "sameAs": []
+    },
+    "headline": "Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old",
+    "url": "https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/",
+    "datePublished": "2026-02-20T04:54:49.000Z",
+    "dateModified": "2026-02-21T04:16:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://oberbean.com/content/images/size/w1200/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "DevOps",
+    "description": "It was a normal day working from home. I was sitting at my desk, typing away, when I heard my son&#x27;s little voice &quot;Daddy...what are you doing?&quot; I looked at him and said &quot;I&#x27;m in the middle of a change.&quot; He stared at me, clearly not understanding a word. &quot;I&#x27;m making computers trust each other so they can talk safely.&quot; Silence. Staring intensifies...\n\nI&#x27;m starting to wonder how the heck do I explain Kubernetes Ingress TLS Certificates to a 4-year-old? Buckle up.\n\n&quot;Imagine you&#x27;re going to an aquarium",
+    "mainEntityOfPage": "https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.19">
+    <link rel="alternate" type="application/rss+xml" title="Oberbean" href="https://oberbean.com/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.64/umd/portal.min.js" data-i18n="true" data-ghost="https://oberbean.com/" data-key="114792b94a19301e0d757aeb5e" data-api="https://admin.oberbean.com/ghost/api/content/" data-locale="en" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="114792b94a19301e0d757aeb5e" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://admin.oberbean.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://oberbean.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=ab09b2cd03"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=ab09b2cd03">
+    <script defer src="/public/comment-counts.min.js?v=ab09b2cd03" data-ghost-comments-counts-api="https://oberbean.com/members/api/comments/counts/"></script>
+    <script defer src="/public/member-attribution.min.js?v=ab09b2cd03"></script>
+    <script defer src="/public/ghost-stats.min.js?v=ab09b2cd03" data-stringify-payload="false" data-datasource="analytics_events" data-storage="localStorage" data-host="https://oberbean.com/api/v1/page_hit"  tb_site_uuid="eb1ae680-522b-401e-a308-175647ba3d7d" tb_post_uuid="32a5496f-1147-468d-aa94-cb5b8d8d5ee6" tb_post_type="post" tb_member_uuid="undefined" tb_member_status="undefined"></script><style>:root {--ghost-accent-color: #6d20eb;}</style>
+
+    
+</head>
+<body class="is-article">
+    <div class="simply-viewport flex flex-col justify-start">
+        <header class="header js-header h-16 w-full text-sm flex items-center sticky top-0 z-20">
+    <div class="header-wrap mx-auto flex items-center flex-auto px-4 w-full max-w-extreme">
+        <div class="header-left mr-5 flex flex-none items-center">
+            <a href="https://oberbean.com"
+                class="header-logo inline-block leading-none godo-tracking"
+                data-event-category="Header"
+                data-event-action="Logo"
+                data-event-label="Click"
+                data-event-non-interaction="true">
+                    <span class="text-3xl font-bold text-logo">Oberbean</span>
+            </a>
+        </div>
+
+                
+
+<nav class="header-center mainMenu relative flex items-center pr-5 grow overflow-auto lg:overflow-visible">
+    <ul itemscope
+        itemtype="http://www.schema.org/SiteNavigationElement"
+        class="nav hidden lg:flex whitespace-nowrap">
+
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="Home"
+                data-event-non-interaction="true">
+                Home
+            </a>
+        </li>
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/tag/networking/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="Networking"
+                data-event-non-interaction="true">
+                Networking
+            </a>
+        </li>
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/tag/devops/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="DevOps"
+                data-event-non-interaction="true">
+                DevOps
+            </a>
+        </li>
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/tag/home-lab/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="Home Lab"
+                data-event-non-interaction="true">
+                Home Lab
+            </a>
+        </li>
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/tag/development/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="Development"
+                data-event-non-interaction="true">
+                Development
+            </a>
+        </li>
+        <li itemprop="name">
+            <a itemprop="url"
+                href="https://oberbean.com/about/"
+                class="mainMenu-link godo-tracking h-16 flex items-center p-3 text-base text-header-link hover:text-primary"
+                data-event-category="Header"
+                data-event-action="Menu"
+                data-event-label="About Me"
+                data-event-non-interaction="true">
+                About Me
+            </a>
+        </li>
+
+
+    </ul>
+</nav>
+
+
+
+        <div class="header-right flex-none flex justify-end items-center">
+            <a role="button" class="js-dark-mode button is-white items-center mr-2" aria-label="Dark and Light Mode">
+                <svg class="icon icon--moon m-0" style="margin-right:calc(-0.5em - 1px)"><use xlink:href="#icon-moon"></use></svg>
+                <svg class="icon icon--sunny m-0 hidden" style="margin-left:calc(-0.5em - 1px)"><use xlink:href="#icon-sunny"></use></svg>
+            </a>
+
+            <a href="#/search"
+                role="button"
+                aria-label="Toggle Search"
+                class="godo-tracking button is-white mr-2"
+                aria-haspopup="true"
+                data-event-category="Header"
+                data-event-action="Search"
+                data-event-label="Click"
+                data-event-non-interaction="true"
+                data-ghost-search>
+                <svg class="icon icon--search"><use xlink:href="#icon-search"></use></svg>
+            </a>
+
+            
+<a data-portal="signin" class="button is-white mr-2 text-sm font-medium hidden md:flex" href="#/portal/signin">Log in</a>
+<a data-portal="signup" class="button is-primary text-sm font-medium hidden md:flex" href="#/portal/signup">Subscribe</a>
+
+
+
+            <a href="javascript:;" role="button" aria-label="Show Navigation Menu" class="js-menu-toggle menu-burger button is-white relative lg:hidden"><span></span><span></span><span></span></a>
+        </div>
+    </div>
+</header>
+
+<div class="nav-mob fixed inset-0 pt-16 header-bg h-screen z-10 w-full text-center overflow-y-auto lg:hidden">
+    <div class="nav-mob-wrap absolute inset-0 top-16 pt-5 flex flex-col">
+
+        
+        <div class="py-4 flex justify-center md:hidden">
+            <a data-portal="signin" class="button mr-2 is-black text-sm font-medium" href="#">Log in</a>
+            <a data-portal="account/plans" class="button is-primary text-sm font-medium" href="#">Subscribe</a>
+        </div>
+        
+
+
+        <div class="py-4 flex-auto">
+
+<ul>
+    <li>
+        <a href="https://oberbean.com/" class="block px-5 py-2 font-medium text-22 leading-tight">Home</a>
+    </li>
+    <li>
+        <a href="https://oberbean.com/tag/networking/" class="block px-5 py-2 font-medium text-22 leading-tight">Networking</a>
+    </li>
+    <li>
+        <a href="https://oberbean.com/tag/devops/" class="block px-5 py-2 font-medium text-22 leading-tight">DevOps</a>
+    </li>
+    <li>
+        <a href="https://oberbean.com/tag/home-lab/" class="block px-5 py-2 font-medium text-22 leading-tight">Home Lab</a>
+    </li>
+    <li>
+        <a href="https://oberbean.com/tag/development/" class="block px-5 py-2 font-medium text-22 leading-tight">Development</a>
+    </li>
+    <li>
+        <a href="https://oberbean.com/about/" class="block px-5 py-2 font-medium text-22 leading-tight">About Me</a>
+    </li>
+</ul>
+
+</div>
+
+        <div class="js-social-media social-media nav-mob-social-media social-media is-inline py-4">
+    <a class="godo-tracking p-2 inline-block hover:opacity-70"
+        data-event-category="Header"
+        data-event-action="Social"
+        data-event-label="Facebook"
+        data-event-non-interaction="true"
+        title="Facebook ghost"
+        aria-label="Facebook ghost"
+        href="https://www.facebook.com/ghost"
+        target="_blank"
+        rel="noopener noreferrer">
+        <svg class="icon icon--facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+
+    <a class="godo-tracking p-2 inline-block hover:opacity-70"
+        data-event-category="Header"
+        data-event-action="Social"
+        data-event-label="Twitter"
+        data-event-non-interaction="true"
+        title="Twitter @ghost"
+        aria-label="Twitter @ghost"
+        href="https://x.com/ghost"
+        target="_blank"
+        rel="noopener noreferrer">
+        <svg class="icon icon--twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+</div>    </div>
+</div>
+
+        
+
+        <main class="simply-main relative min-h-lg">
+
+
+
+<article class="post py-vmin8 relative">
+    <header class="post-header godo-canvas">
+        <div class="mb-3 text-gray-500 tracking-wider text-sm font-medium">
+    <a class="uppercase hover:underline" href="/tag/devops/">DevOps</a>
+</div>
+
+<h1 class="post-title text-32 md:text-4xl lg:text-44 text-title leading-tight">Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old</h1>
+
+
+<div class="flex flex-col md:flex-row mt-8">
+    <div class="hh flex items-center flex-auto relative leading-snug z-4">
+
+    <ul class="flex flex-wrap flex-none mr-3 -space-x-2">
+        <li>
+            <a href="/author/lucas/" title="Go to the profile of Lucas Borza">
+                <img class="object-cover rounded-full h-10 w-10"
+                    src="/content/images/size/w100/2026/02/selfie-with-background-square.jpg"
+                    alt="Go to the profile of  Lucas Borza"
+                    width="36"
+                    height="36"
+                />
+            </a>
+        </li>
+    </ul>
+
+    <div class="flex-auto overflow-hidden">
+        <div class="hh-author-name text-sm truncate">
+        <a href="/author/lucas/">Lucas Borza</a>
+        </div>
+
+        <div class="hh-date flex items-center text-gray-500 text-sm">
+    <time class="datetime capitalize" datetime="2026-02-19" title="Updated 20 Feb 2026">19 Feb 2026</time>
+    <span class="bull mx-1">·</span>
+    <span class="readingTime cursor-default" title="2 min read">2 min read</span>
+    
+</div>    </div>
+</div>
+    <aside class="text-title flex items-center flex-none order-first mb-6 md:mb-0 md:order-none">
+    <span class="share-label text-gray-500 text-sm mr-2">Share:</span>
+    <a href="https://twitter.com/share?text=Explaining%20Kubernetes%20Ingress%20TLS%20Certificates%20to%20a%204-Year-Old&amp;url=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Twitter"
+        aria-label="Share on Twitter"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Header - Twitter"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 27a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm4.95-16.17a2.67 2.67 0 0 0-4.6 1.84c0 .2.03.41.05.62a7.6 7.6 0 0 1-5.49-2.82 3 3 0 0 0-.38 1.34c.02.94.49 1.76 1.2 2.23a2.53 2.53 0 0 1-1.2-.33v.04c0 1.28.92 2.36 2.14 2.62-.23.05-.46.08-.71.1l-.21-.02-.27-.03a2.68 2.68 0 0 0 2.48 1.86A5.64 5.64 0 0 1 9 19.38a7.62 7.62 0 0 0 4.1 1.19c4.9 0 7.58-4.07 7.57-7.58v-.39c.52-.36.97-.83 1.33-1.38-.48.23-1 .37-1.53.43.56-.33.96-.86 1.15-1.48-.5.31-1.07.53-1.67.66z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Facebook"
+        aria-label="Share on Facebook"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Header - Facebook"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" viewBox="0 0 30 30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 27a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm-1.23-6.03V15.6H12v-2.15h1.77v-1.6C13.77 10 14.85 9 16.42 9c.75 0 1.4.06 1.58.08v1.93h-1.09c-.85 0-1.02.43-1.02 1.05v1.38h2.04l-.27 2.15H15.9V21l-2.13-.03z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/&amp;title=Explaining%20Kubernetes%20Ingress%20TLS%20Certificates%20to%20a%204-Year-Old"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Linkedin"
+        aria-label="Share on Linkedin"
+        data-event-category="Article"
+        data-event-action="Linkedin"
+        data-event-label="Header - Linkedin"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 15a12 12 0 1 1-24 0 12 12 0 0 1 24 0zm-14.61 5v-7.42h-2.26V20h2.26zm-1.13-8.44c.79 0 1.28-.57 1.28-1.28-.02-.73-.5-1.28-1.26-1.28-.78 0-1.28.55-1.28 1.28 0 .71.49 1.28 1.25 1.28h.01zM15.88 20h-2.5s.04-6.5 0-7.17h2.5v1.02l-.02.02h.02v-.02a2.5 2.5 0 0 1 2.25-1.18c1.64 0 2.87 1.02 2.87 3.22V20h-2.5v-3.83c0-.97-.36-1.62-1.26-1.62-.69 0-1.1.44-1.28.87-.06.15-.08.36-.08.58v4z"/></svg>
+    </a>
+
+    <a href="whatsapp://send?text=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking md:hidden"
+        aria-label="Share on WhatSapp"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Header - Whatsapp"
+        data-event-non-interaction="true">
+        <svg width="24" height="24" class="fill-current" viewBox="0 0 24 24"><path d="M19.077,4.928C17.191,3.041,14.683,2.001,12.011,2c-5.506,0-9.987,4.479-9.989,9.985 c-0.001,1.76,0.459,3.478,1.333,4.992L2,22l5.233-1.237c1.459,0.796,3.101,1.215,4.773,1.216h0.004 c5.505,0,9.986-4.48,9.989-9.985C22.001,9.325,20.963,6.816,19.077,4.928z M16.898,15.554c-0.208,0.583-1.227,1.145-1.685,1.186 c-0.458,0.042-0.887,0.207-2.995-0.624c-2.537-1-4.139-3.601-4.263-3.767c-0.125-0.167-1.019-1.353-1.019-2.581 S7.581,7.936,7.81,7.687c0.229-0.25,0.499-0.312,0.666-0.312c0.166,0,0.333,0,0.478,0.006c0.178,0.007,0.375,0.016,0.562,0.431 c0.222,0.494,0.707,1.728,0.769,1.853s0.104,0.271,0.021,0.437s-0.125,0.27-0.249,0.416c-0.125,0.146-0.262,0.325-0.374,0.437 c-0.125,0.124-0.255,0.26-0.11,0.509c0.146,0.25,0.646,1.067,1.388,1.728c0.954,0.85,1.757,1.113,2.007,1.239 c0.25,0.125,0.395,0.104,0.541-0.063c0.146-0.166,0.624-0.728,0.79-0.978s0.333-0.208,0.562-0.125s1.456,0.687,1.705,0.812 c0.25,0.125,0.416,0.187,0.478,0.291C17.106,14.471,17.106,14.971,16.898,15.554z"/></svg>
+    </a>
+</aside>
+</div>
+
+        <figure class="post-image block mt-12">
+    <img class="mx-auto simply-zoom"
+        srcset="/content/images/size/w300/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png 300w,
+                /content/images/size/w600/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png 600w,
+                /content/images/size/w1000/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png 1000w,
+                /content/images/size/w2000/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png 2000w"
+        sizes="(max-width: 400px) 300px,(max-width: 730px) 600px, (max-width: 1600px) 100vw"
+        src="/content/images/size/w2000/2026/02/Explaining-Kubernetes-Ingress-TLS-Certificates-to-a-4-year-old-monkey.png"
+        alt="Explaining Kubernetes Ingress TLS Certificates to a 4-Year-Old"
+        width="1200"
+        height="628"
+    />
+    
+</figure>
+    </header>
+
+    <section id="post-body" class="post-body godo-canvas mx-auto relative font-serif"><p>It was a normal day working from home. I was sitting at my desk, typing away, when I heard my son's little voice <em>"Daddy...what are you doing?"</em> I looked at him and said <em>"I'm in the middle of a change." </em>He stared at me, clearly not understanding a word. <em>"I'm making computers trust each other so they can talk safely." </em>Silence. Staring intensifies...</p><p>I'm starting to wonder how the heck do I explain Kubernetes Ingress TLS Certificates to a 4-year-old? Buckle up. </p><p><em>"Imagine you're going to an aquarium, there are fish, sharks and turtles waiting for you. Before you can go inside, you need a special wristband. One day, that wrist band is going to get old and the door man that checks them will say 'Sorry, you </em>can't<em> come in...this wristband is too old.' Wristbands don't last forever. You will need to get a new wristband so you can go inside."</em></p><p>Kubernetes is big and complicated, and I can’t cover it all here, but I&nbsp;can teach you how to give your Ingress a TLS certificate&nbsp;so your apps are trusted and secure.</p><h2 id="break-it-down">Break it down</h2><ul><li>Kubernetes - The platform that runs your apps / the aquarium</li><li>Secret - A safe place to store important things your apps need / the staff’s box of wristbands</li><li>Ingress - The gateway that lets external traffic reach your apps / the main lobby</li><li>TLS - The system that encrypts traffic and ensures its secure / the door man</li><li>Certificates - Digital keys that proves identity / the wristband</li></ul><h3 id="step-1get-yourself-a-fresh-wristband-erri-mean-certificate">Step 1 - Get yourself a fresh wristband, err...I mean certificate.</h3><p>Before anyone can enter the aquarium, you'll need a new wristband. That means a new TLS certificate. I usually take the full PEM file so you have the full certificate chain and separate out the key.</p><h3 id="step-2add-the-certificate-in-kubernetes">Step 2 - Add the Certificate in Kubernetes</h3><p>Now it's time to notify the aquarium staff that there will be new wristbands. In Kubernetes, this means creating a Secret to store your certificate and key. Think of it as a box where all the new wristbands are stored until the doorman needs to know what color they are for the day. </p><pre><code>apiVersion: v1
+kind: Secret
+metadata:
+  name: aquarium-tls
+  namespace: aquarium
+type: kubernetes.io/tls
+data:
+  tls.crt: &lt;new-aquarium-certificate&gt;
+  tls.key: &lt;new-aquarium-key&gt;</code></pre>
+<h3 id="step-3apply-the-certificate-to-the-ingress">Step 3 - Apply the Certificate to the Ingress</h3><p>Finally, we get to tell the doorman to check for the new colored wristbands. In Kubernetes, this is pointing the Ingress to the Secret we created. Once it knows about the new certificate, all visitors can enter the aquarium!</p><pre><code>spec:
+  tls:
+  - hosts:
+    - aquarium.com
+    secretName: aquarium-tls</code></pre>
+<p><br>Without a trusted wristband, visitors were turned away, browsers shouted warnings, and the fish looked sad and lonely. But once we gave out fresh wristbands, the doors opened, visitors roamed happily through the aquarium, and everyone enjoyed a safe and secure visit.</p><h2 id="want-some-advice">Want some advice?</h2><ol><li>Check your certificates before they expire and setup monitoring to notify you when the time comes.</li><li>Automation helps. Use cert-manager to issue and renew certificates automatically.</li><li>Secrets matter. Double-check names, namespaces, and encoding.</li><li>Test everything. Make sure the Ingress points to the right Secret and apps or service show as trusted. </li><li>TLS isn’t optional. Don't be lazy and apply it to everything!</li></ol></section>
+
+
+<footer class="post-footer godo-canvas pt-10">
+    <div class="post-tags mb-8">
+    <div class="buttons">
+        <a href="https://oberbean.com/tag/devops/"
+            title="DevOps"
+            class="button is-light font-medium text-sm capitalize godo-tracking"
+            data-event-category="Article"
+            data-event-action="Tags"
+            data-event-label="DevOps"
+            data-event-non-interaction="true">DevOps</a>
+    </div>
+</div>
+
+    <aside class="text-title flex items-center flex-none md:justify-end ">
+    <span class="share-label text-gray-500 text-sm mr-2">Share:</span>
+    <a href="https://twitter.com/share?text=Explaining%20Kubernetes%20Ingress%20TLS%20Certificates%20to%20a%204-Year-Old&amp;url=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Twitter"
+        aria-label="Share on Twitter"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Footer - Twitter"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 27a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm4.95-16.17a2.67 2.67 0 0 0-4.6 1.84c0 .2.03.41.05.62a7.6 7.6 0 0 1-5.49-2.82 3 3 0 0 0-.38 1.34c.02.94.49 1.76 1.2 2.23a2.53 2.53 0 0 1-1.2-.33v.04c0 1.28.92 2.36 2.14 2.62-.23.05-.46.08-.71.1l-.21-.02-.27-.03a2.68 2.68 0 0 0 2.48 1.86A5.64 5.64 0 0 1 9 19.38a7.62 7.62 0 0 0 4.1 1.19c4.9 0 7.58-4.07 7.57-7.58v-.39c.52-.36.97-.83 1.33-1.38-.48.23-1 .37-1.53.43.56-.33.96-.86 1.15-1.48-.5.31-1.07.53-1.67.66z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Facebook"
+        aria-label="Share on Facebook"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Footer - Facebook"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" viewBox="0 0 30 30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 27a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm-1.23-6.03V15.6H12v-2.15h1.77v-1.6C13.77 10 14.85 9 16.42 9c.75 0 1.4.06 1.58.08v1.93h-1.09c-.85 0-1.02.43-1.02 1.05v1.38h2.04l-.27 2.15H15.9V21l-2.13-.03z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/&amp;title=Explaining%20Kubernetes%20Ingress%20TLS%20Certificates%20to%20a%204-Year-Old"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking"
+        title="Share on Linkedin"
+        aria-label="Share on Linkedin"
+        data-event-category="Article"
+        data-event-action="Linkedin"
+        data-event-label="Footer - Linkedin"
+        data-event-non-interaction="true">
+        <svg width="30" height="30" class="fill-current"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 15a12 12 0 1 1-24 0 12 12 0 0 1 24 0zm-14.61 5v-7.42h-2.26V20h2.26zm-1.13-8.44c.79 0 1.28-.57 1.28-1.28-.02-.73-.5-1.28-1.26-1.28-.78 0-1.28.55-1.28 1.28 0 .71.49 1.28 1.25 1.28h.01zM15.88 20h-2.5s.04-6.5 0-7.17h2.5v1.02l-.02.02h.02v-.02a2.5 2.5 0 0 1 2.25-1.18c1.64 0 2.87 1.02 2.87 3.22V20h-2.5v-3.83c0-.97-.36-1.62-1.26-1.62-.69 0-1.1.44-1.28.87-.06.15-.08.36-.08.58v4z"/></svg>
+    </a>
+
+    <a href="whatsapp://send?text=https://oberbean.com/explaining-kubernetes-ingress-tls-certificates-to-a-4-year-old/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="godo-tracking md:hidden"
+        aria-label="Share on WhatSapp"
+        data-event-category="Article"
+        data-event-action="Share"
+        data-event-label="Footer - Whatsapp"
+        data-event-non-interaction="true">
+        <svg width="24" height="24" class="fill-current" viewBox="0 0 24 24"><path d="M19.077,4.928C17.191,3.041,14.683,2.001,12.011,2c-5.506,0-9.987,4.479-9.989,9.985 c-0.001,1.76,0.459,3.478,1.333,4.992L2,22l5.233-1.237c1.459,0.796,3.101,1.215,4.773,1.216h0.004 c5.505,0,9.986-4.48,9.989-9.985C22.001,9.325,20.963,6.816,19.077,4.928z M16.898,15.554c-0.208,0.583-1.227,1.145-1.685,1.186 c-0.458,0.042-0.887,0.207-2.995-0.624c-2.537-1-4.139-3.601-4.263-3.767c-0.125-0.167-1.019-1.353-1.019-2.581 S7.581,7.936,7.81,7.687c0.229-0.25,0.499-0.312,0.666-0.312c0.166,0,0.333,0,0.478,0.006c0.178,0.007,0.375,0.016,0.562,0.431 c0.222,0.494,0.707,1.728,0.769,1.853s0.104,0.271,0.021,0.437s-0.125,0.27-0.249,0.416c-0.125,0.146-0.262,0.325-0.374,0.437 c-0.125,0.124-0.255,0.26-0.11,0.509c0.146,0.25,0.646,1.067,1.388,1.728c0.954,0.85,1.757,1.113,2.007,1.239 c0.25,0.125,0.395,0.104,0.541-0.063c0.146-0.166,0.624-0.728,0.79-0.978s0.333-0.208,0.562-0.125s1.456,0.687,1.705,0.812 c0.25,0.125,0.416,0.187,0.478,0.291C17.106,14.471,17.106,14.971,16.898,15.554z"/></svg>
+    </a>
+</aside>
+
+    
+    <div class="prev-next pb-8">
+        <hr class="my-10">
+            <div class="flex relative godo-tracking mb-8"
+    data-event-category="Article"
+    data-event-action="Previous article"
+    data-event-label="https://oberbean.com/when-nexus-downgrades-upgrade-your-fex-a-hard-lesson/"
+    data-event-non-interaction="true">
+
+    <a href="/when-nexus-downgrades-upgrade-your-fex-a-hard-lesson/" class="prev-next-image-link relative w-4/12 bg-gray-200 flex-none border border-gray-100" aria-label="When Nexus Downgrades Upgrade Your FEX: A Hard Lesson">
+        <img class="rounded inset-image blur-up lazyload"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-src="/content/images/size/w300/2026/02/When-Nexus-Downgrades-Upgrade-Your-Fex-A-Hard-Lesson.png" alt="When Nexus Downgrades Upgrade Your FEX: A Hard Lesson"/>
+    </a>
+
+    <a href="/when-nexus-downgrades-upgrade-your-fex-a-hard-lesson/" class="prev-next-body pl-6 flex-auto">
+        <div class="text-sm leading-none text-gray-500 mb-3 font-medium">Previous article</div>
+        <h2 class="prev-next-title text-title mb-3 text-xl md:text-22 line-clamp-2">When Nexus Downgrades Upgrade Your FEX: A Hard Lesson</h2>
+        <p class="prev-next-excerpt text-base text-gray-500 line-clamp-2 leading-snug">Recently, I had one of those moments that every networking guy eventually runs into...a failed Cisco Nexus switch. Nothing exotic. Nothing exciting. Just the</p>
+    </a>
+</div>
+            <div class="flex relative godo-tracking "
+    data-event-category="Article"
+    data-event-action="Next article"
+    data-event-label="https://oberbean.com/cisco-ise-and-nac-the-art-of-breaking-everything-at-once/"
+    data-event-non-interaction="true">
+
+    <a href="/cisco-ise-and-nac-the-art-of-breaking-everything-at-once/" class="prev-next-image-link relative w-4/12 bg-gray-200 flex-none border border-gray-100" aria-label="Cisco ISE and NAC: The Art of Breaking Everything at Once">
+        <img class="rounded inset-image blur-up lazyload"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-src="/content/images/size/w300/2026/02/Cisco-ISE-The-Art-of-Breaking-Everything-at-Once.png" alt="Cisco ISE and NAC: The Art of Breaking Everything at Once"/>
+    </a>
+
+    <a href="/cisco-ise-and-nac-the-art-of-breaking-everything-at-once/" class="prev-next-body pl-6 flex-auto">
+        <div class="text-sm leading-none text-gray-500 mb-3 font-medium">Next article</div>
+        <h2 class="prev-next-title text-title mb-3 text-xl md:text-22 line-clamp-2">Cisco ISE and NAC: The Art of Breaking Everything at Once</h2>
+        <p class="prev-next-excerpt text-base text-gray-500 line-clamp-2 leading-snug">There&#39;s a moment in many infrastructure teams where someone says: &quot;We should really implement NAC.&quot; No one argues that Network Access</p>
+    </a>
+</div>    </div>
+</footer>
+
+</article>
+
+
+
+<div class="post-comments bg-gray-150 py-8">
+    <div class="mx-auto px-4 max-w-3xl">
+        
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~1.3/umd/comments-ui.min.js" data-locale="en" data-ghost-comments="https://oberbean.com/" data-api="https://admin.oberbean.com/ghost/api/content/" data-admin="https://admin.oberbean.com/ghost/" data-key="114792b94a19301e0d757aeb5e" data-title="Discussion" data-count="true" data-post-id="6997cda0c8f3d30001e9322f" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#6d20eb" data-comments-enabled="all" data-publication="Oberbean" crossorigin="anonymous"></script>
+    
+    </div>
+</div>
+</main>
+
+        
+
+        <footer class="footer pt-10">
+    <section class="mx-auto container">
+        <div class="row grid gap-16 lg:grid-cols-3 lg:gap-6">
+            <div class="footer-items">
+                <h3 class="text-white mb-5 text-xl">About Us</h3>
+                <p class="mb-4">Architect. Automate. Accelerate.</p>
+
+                <div class="js-social-media social-media footer-social-media">
+    <a class="godo-tracking p-2 inline-block hover:opacity-70"
+        data-event-category="Header"
+        data-event-action="Social"
+        data-event-label="Facebook"
+        data-event-non-interaction="true"
+        title="Facebook ghost"
+        aria-label="Facebook ghost"
+        href="https://www.facebook.com/ghost"
+        target="_blank"
+        rel="noopener noreferrer">
+        <svg class="icon icon--facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+
+    <a class="godo-tracking p-2 inline-block hover:opacity-70"
+        data-event-category="Header"
+        data-event-action="Social"
+        data-event-label="Twitter"
+        data-event-non-interaction="true"
+        title="Twitter @ghost"
+        aria-label="Twitter @ghost"
+        href="https://x.com/ghost"
+        target="_blank"
+        rel="noopener noreferrer">
+        <svg class="icon icon--twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+</div>            </div>
+
+            <div class="footer-items footer-tags leading-tight px-4">
+                <h3 class="text-white mb-5 text-xl">Tags</h3>
+                
+                <div class="mb-3 flex items-center justify-between">
+                    <a href="https://oberbean.com/tag/networking/"
+                        title="Networking"
+                        class="capitalize pl-3 border-l-3 border-primary"
+                        style="border-color:#5e30eb">
+                        Networking
+                    </a>
+                    <div class="footer-arrow"></div>
+                </div>
+                
+                <div class="mb-3 flex items-center justify-between">
+                    <a href="https://oberbean.com/tag/home-lab/"
+                        title="Home Lab"
+                        class="capitalize pl-3 border-l-3 border-primary"
+                        >
+                        Home Lab
+                    </a>
+                    <div class="footer-arrow"></div>
+                </div>
+                
+                <div class="mb-3 flex items-center justify-between">
+                    <a href="https://oberbean.com/tag/devops/"
+                        title="DevOps"
+                        class="capitalize pl-3 border-l-3 border-primary"
+                        >
+                        DevOps
+                    </a>
+                    <div class="footer-arrow"></div>
+                </div>
+                
+                <div class="mb-3 flex items-center justify-between">
+                    <a href="https://oberbean.com/tag/development/"
+                        title="Development"
+                        class="capitalize pl-3 border-l-3 border-primary"
+                        >
+                        Development
+                    </a>
+                    <div class="footer-arrow"></div>
+                </div>
+                
+            </div>
+
+            <div class="footer-items">
+                <h3 class="text-white mb-5 text-xl">Subscribe</h3>
+                <p class="mb-4">Get the best viral stories straight into your inbox!</p>
+
+                <form class="simply-form" data-members-form="subscribe">
+                    <input
+                        class="footer-form-input"
+                        data-members-email
+                        type="email"
+                        placeholder="youremail@example.com"
+                        aria-label="youremail@example.com"
+                        autocomplete="off"
+                        required
+                    />
+
+                    <button class="button is-primary w-full mt-4" type="submit">
+                        <span class="button-content">Continue</span>
+                        <svg class="button-loader icon is-stroke animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+</svg>                    </button>
+
+                    <div class="message-success p-2 rounded-md mt-4 hidden text-sm">
+                        <span class="bg-success w-3 h-3 rounded-full inline-block"></span>
+                        <strong>Great!</strong> Check your inbox and click the link to confirm your subscription
+                    </div>
+
+                    <div class="message-error p-2 rounded-md mt-4 hidden text-sm">
+                        <span class="bg-danger w-3 h-3 rounded-full inline-block"></span>
+                        Please enter a valid email address!
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="footer-bottom text-center text-sm py-8 mt-8">
+            
+
+            <div>
+                &copy; 2026 Oberbean. All rights reserved.
+            </div>
+        </div>
+    </section>
+</footer>
+
+
+        
+    </div>
+
+    <div class="loadingBar top-0 fixed right-0 left-0 hidden"></div>
+
+    <svg aria-hidden="true" style="position:absolute;width:0;height:0" xmlns="http://www.w3.org/2000/svg" overflow="hidden"><defs><symbol id="icon-link" viewBox="0 0 32 32"><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.25" d="M13 22H9a6 6 0 110-12h4m6 0h4a6 6 0 110 12h-4m-8.794-6H21.92"/></symbol><symbol id="icon-map" viewBox="0 0 32 32"><path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" d="M28 4L4 15.009h12.5a.5.5 0 01.5.5V28z"/></symbol><symbol id="icon-checkmark" viewBox="0 0 27 32"><path d="M13.333 27.111c6.136 0 11.111-4.974 11.111-11.111S19.47 4.889 13.333 4.889C7.197 4.889 2.222 9.863 2.222 16s4.974 11.111 11.111 11.111zm0 2.222C5.969 29.333 0 23.364 0 16S5.969 2.667 13.333 2.667 26.666 8.636 26.666 16s-5.969 13.333-13.333 13.333zm-1.592-10.398l-4.289-4.287-1.571 1.573 5.861 5.857 9.421-9.443-1.573-1.569-7.849 7.868z"/></symbol><symbol id="icon-sunny" viewBox="0 0 32 32"><path d="M16 24.188a.963.963 0 00-.963.962v2.887a.963.963 0 001.925 0V25.15a.963.963 0 00-.963-.962zM16 3a.963.963 0 00-.963.962v2.887a.963.963 0 001.925 0V3.961a.963.963 0 00-.963-.962zM7.813 16a.963.963 0 00-.963-.963H3.962a.963.963 0 000 1.925H6.85a.963.963 0 00.963-.963zm20.225-.963h-2.887a.963.963 0 000 1.925h2.887a.963.963 0 000-1.926zM9.531 21.506c-.256 0-.5.1-.681.281l-2.044 2.044c-.181.181-.281.425-.281.681a.96.96 0 00.962.962c.256 0 .5-.1.681-.281l2.044-2.044a.966.966 0 000-1.363.96.96 0 00-.681-.281zm12.938-11.012c.256 0 .5-.1.681-.281l2.044-2.044c.181-.181.281-.425.281-.681a.96.96 0 00-.962-.962c-.256 0-.5.1-.681.281l-2.044 2.044c-.181.181-.281.425-.281.681a.96.96 0 00.962.962zm-14.3-3.688c-.181-.181-.425-.281-.681-.281a.96.96 0 00-.962.962c0 .256.1.5.281.681l2.044 2.044c.181.181.425.281.681.281a.96.96 0 00.962-.962c0-.256-.1-.5-.281-.681L8.169 6.806zM23.15 21.788c-.181-.181-.425-.281-.681-.281s-.5.1-.681.281a.966.966 0 000 1.363l2.044 2.044c.181.181.425.281.681.281a.96.96 0 00.962-.962c0-.256-.1-.5-.281-.681l-2.044-2.044zM16 10c-3.306 0-6 2.694-6 6s2.694 6 6 6 6-2.694 6-6-2.694-6-6-6z"/></symbol><symbol id="icon-moon" viewBox="0 0 32 32"><path d="M12.188 7.813c0-1.644.331-3.206.931-4.631-5.7 1.381-9.931 6.513-9.931 12.631 0 7.175 5.825 13 13 13 6.119 0 11.25-4.231 12.631-9.931-1.425.6-2.994.931-4.631.931-6.625 0-12-5.375-12-12z"/></symbol><symbol id="icon-arrow" viewBox="0 0 32 32"><path d="M5.313 17.336h16.232l-7.481 7.481 1.937 1.87 10.688-10.688L16.001 5.311l-1.87 1.87 7.414 7.481H5.313v2.672z"/></symbol><symbol id="icon-close" viewBox="0 0 32 32"><path d="M25.313 8.55l-1.862-1.862-7.45 7.45-7.45-7.45L6.689 8.55l7.45 7.45-7.45 7.45 1.862 1.862 7.45-7.45 7.45 7.45 1.862-1.862-7.45-7.45z"/></symbol><symbol id="icon-comments" viewBox="0 0 32 32"><path d="M26.938 20.038c0-.275.075-.538.206-.762.038-.069.087-.131.131-.194A10.132 10.132 0 0029 13.438C29.019 7.675 24.156 3 18.144 3 12.9 3 8.525 6.569 7.5 11.306c-.15.694-.231 1.4-.231 2.138 0 5.769 4.675 10.569 10.688 10.569.956 0 2.244-.288 2.95-.481s1.406-.45 1.587-.519a1.644 1.644 0 011.212.019l3.544 1.256s.15.063.244.063c.275 0 .5-.219.5-.5a.805.805 0 00-.031-.169l-1.025-3.644z"/><path d="M19.906 24.531c-.225.063-.512.131-.825.2-.656.137-1.494.281-2.125.281-6.012 0-10.688-4.8-10.688-10.569 0-.412.044-.938.094-1.338.037-.269.081-.537.144-.8.063-.281.138-.563.219-.838l-.5.444C4.175 13.698 3 16.249 3 18.905c0 1.831.531 3.594 1.55 5.125.144.219.225.387.2.5s-.744 3.875-.744 3.875a.499.499 0 00.169.481.51.51 0 00.319.113.43.43 0 00.181-.038l3.506-1.381a.972.972 0 01.356-.069s.15-.012.394.081c1.181.462 2.487.75 3.794.75 2.912 0 5.65-1.256 7.506-3.444 0 0 .2-.275.431-.6a9.69 9.69 0 01-.756.231z"/></symbol><symbol id="icon-star" viewBox="0 0 32 32"><path d="M28.938 12h-9.194L16.95 3.662c-.137-.406-.519-.663-.95-.663s-.813.256-.95.663L12.256 12H3c-.55 0-1 .45-1 1 0 .056.006.119.019.169.013.219.112.463.419.706L9.994 19.2l-2.9 8.431c-.144.406 0 .863.344 1.125.181.131.35.244.563.244.206 0 .45-.106.625-.225l7.375-5.256 7.375 5.256c.175.125.419.225.625.225.212 0 .381-.106.556-.244a.99.99 0 00.344-1.125l-2.9-8.431 7.494-5.375.181-.156c.163-.175.325-.412.325-.669 0-.55-.512-1-1.063-1z"/></symbol><symbol id="icon-search" viewBox="0 0 32 32"><path d="M27.719 26.262l-6.675-6.738a9.547 9.547 0 002.094-5.969c0-5.281-4.281-9.563-9.569-9.563S4 8.279 4 13.561s4.281 9.563 9.569 9.563c2.287 0 4.381-.8 6.031-2.137l6.631 6.694a1.025 1.025 0 001.45.038 1.034 1.034 0 00.038-1.456zm-14.15-5.193c-2.006 0-3.894-.781-5.313-2.2s-2.2-3.306-2.2-5.306c0-2.006.781-3.894 2.2-5.306 1.419-1.419 3.306-2.2 5.313-2.2s3.894.781 5.313 2.2a7.46 7.46 0 012.2 5.306 7.438 7.438 0 01-2.2 5.306 7.464 7.464 0 01-5.313 2.2z"/></symbol><symbol id="icon-send" viewBox="0 0 32 32"><path d="M27.244 4.056l-22.944 10a.526.526 0 00.019.956l6.206 3.506a1 1 0 001.144-.113l12.238-10.55c.081-.069.275-.2.35-.125.081.081-.044.269-.113.35L13.556 20.005a.997.997 0 00-.1 1.194l4.056 6.506c.2.394.769.387.95-.012L27.95 4.749a.526.526 0 00-.706-.694z"/></symbol><symbol id="icon-heart" viewBox="0 0 32 32"><path d="M22 3.5h-.063c-2.481 0-4.675 1.313-5.938 3.25-1.262-1.938-3.456-3.25-5.938-3.25h-.063c-3.869.038-7 3.181-7 7.063 0 2.313 1.013 5.594 2.987 8.294 3.763 5.144 10.012 9.644 10.012 9.644s6.25-4.5 10.012-9.644c1.975-2.7 2.988-5.981 2.988-8.294 0-3.881-3.131-7.025-7-7.063z"/></symbol><symbol id="icon-rss" viewBox="0 0 32 32"><path d="M7.494 21.006A3.499 3.499 0 004 24.494c0 1.925 1.569 3.475 3.494 3.475 1.931 0 3.494-1.556 3.494-3.475s-1.563-3.488-3.494-3.488z"/><path d="M4 12v4.994c3 0 5.881.887 8 3.006s3 4.994 3 8h5c0-8.744-7.25-16-16-16z"/><path d="M4 4v4.994c10.688 0 18.994 8.312 18.994 19.006H28C28 14.769 17.25 4 4 4z"/></symbol><symbol id="icon-arrow-forward" viewBox="0 0 32 32"><path d="M18.381 16l-7.944-7.938c-.588-.588-.588-1.537 0-2.119s1.537-.581 2.125 0l9 8.994c.569.569.581 1.481.044 2.069l-9.037 9.056c-.294.294-.681.438-1.063.438s-.769-.144-1.063-.438a1.493 1.493 0 010-2.119l7.938-7.944z"/></symbol><symbol id="icon-twitter" viewBox="0 0 32 32"><path d="M30.75 6.844c-1.087.481-2.25.806-3.475.956a6.079 6.079 0 002.663-3.35 12.02 12.02 0 01-3.844 1.469A6.044 6.044 0 0021.675 4a6.052 6.052 0 00-6.05 6.056c0 .475.05.938.156 1.381A17.147 17.147 0 013.306 5.106a6.068 6.068 0 001.881 8.088c-1-.025-1.938-.3-2.75-.756v.075a6.056 6.056 0 004.856 5.937 6.113 6.113 0 01-1.594.212c-.388 0-.769-.038-1.138-.113a6.06 6.06 0 005.656 4.206 12.132 12.132 0 01-8.963 2.507A16.91 16.91 0 0010.516 28c11.144 0 17.231-9.231 17.231-17.238 0-.262-.006-.525-.019-.781a12.325 12.325 0 003.019-3.138z"/></symbol><symbol id="icon-linkedin" viewBox="0 0 32 32"><path d="M26.075 4H6.05C4.956 4 4 4.787 4 5.869v20.069c0 1.087.956 2.056 2.05 2.056h20.019c1.1 0 1.925-.975 1.925-2.056V5.869C28 4.788 27.169 4 26.075 4zM11.438 24H8V13.312h3.438V24zm-1.6-12.312h-.025c-1.1 0-1.813-.819-1.813-1.844C8 8.8 8.731 8 9.856 8s1.813.794 1.838 1.844c0 1.025-.713 1.844-1.856 1.844zM24 24h-3.438v-5.844c0-1.4-.5-2.356-1.744-2.356-.95 0-1.512.644-1.762 1.269-.094.225-.119.531-.119.844V24h-3.438V13.312h3.438V14.8c.5-.713 1.281-1.738 3.1-1.738 2.256 0 3.962 1.488 3.962 4.694V24z"/></symbol><symbol id="icon-facebook" viewBox="0 0 32 32"><path d="M26.675 4H5.325C4.594 4 4 4.594 4 5.325v21.35C4 27.406 4.594 28 5.325 28H16v-9.5h-2.869V15H16v-2.588c0-3.1 2.15-4.787 4.919-4.787 1.325 0 2.75.1 3.081.144v3.237h-2.206c-1.506 0-1.794.713-1.794 1.762v2.231h3.587l-.469 3.5h-3.119v9.5h6.675c.731 0 1.325-.594 1.325-1.325V5.324c0-.731-.594-1.325-1.325-1.325z"/></symbol><symbol id="icon-github" viewBox="0 0 32 32"><path d="M16 2C8.269 2 2 8.431 2 16.356c0 6.344 4.013 11.719 9.575 13.619.088.019.162.025.238.025.519 0 .719-.381.719-.712 0-.344-.012-1.244-.019-2.444a6.387 6.387 0 01-1.412.169c-2.694 0-3.306-2.094-3.306-2.094-.638-1.656-1.556-2.1-1.556-2.1-1.219-.856-.006-.881.088-.881h.006c1.406.125 2.144 1.488 2.144 1.488.7 1.225 1.637 1.569 2.475 1.569.656 0 1.25-.212 1.6-.375.125-.925.488-1.556.887-1.919-3.106-.363-6.375-1.594-6.375-7.094 0-1.569.544-2.85 1.438-3.85-.144-.363-.625-1.825.137-3.8 0 0 .1-.031.313-.031.506 0 1.65.194 3.537 1.506a13.098 13.098 0 013.506-.481c1.188.006 2.387.162 3.506.481 1.887-1.313 3.031-1.506 3.538-1.506.212 0 .313.031.313.031.762 1.975.281 3.438.137 3.8.894 1.006 1.438 2.287 1.438 3.85 0 5.513-3.275 6.725-6.394 7.081.5.444.95 1.319.95 2.656 0 1.919-.019 3.469-.019 3.938 0 .337.194.719.712.719.075 0 .163-.006.25-.025 5.569-1.9 9.575-7.281 9.575-13.619 0-7.925-6.269-14.356-14-14.356z"/></symbol><symbol id="icon-instagram" viewBox="0 0 32 32"><path d="M21 6c1.325 0 2.581.525 3.531 1.469S26 9.675 26 11v10c0 1.325-.525 2.581-1.469 3.531S22.325 26 21 26H11c-1.325 0-2.581-.525-3.531-1.469S6 22.325 6 21V11c0-1.325.525-2.581 1.469-3.531S9.675 6 11 6h10zm0-2H11c-3.85 0-7 3.15-7 7v10c0 3.85 3.15 7 7 7h10c3.85 0 7-3.15 7-7V11c0-3.85-3.15-7-7-7z"/><path d="M22.5 11c-.831 0-1.5-.669-1.5-1.5S21.669 8 22.5 8a1.5 1.5 0 010 3zM16 12c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4zm0-2c-3.313 0-6 2.688-6 6s2.688 6 6 6 6-2.688 6-6-2.688-6-6-6z"/></symbol><symbol id="icon-youtube" viewBox="0 0 32 32"><path d="M31.788 9.3c0-2.813-2.069-5.075-4.625-5.075A227.074 227.074 0 0016.563 4h-1.125c-3.6 0-7.137.063-10.6.225C2.288 4.225.219 6.5.219 9.312A91.857 91.857 0 000 15.987c-.006 2.225.063 4.45.212 6.681 0 2.813 2.069 5.094 4.619 5.094 3.637.169 7.369.244 11.162.238 3.8.012 7.519-.063 11.162-.238 2.556 0 4.625-2.281 4.625-5.094a95.12 95.12 0 00.212-6.688 91.544 91.544 0 00-.206-6.681zm-18.85 12.819V9.838l9.063 6.137-9.063 6.144z"/></symbol><symbol id="icon-whatsapp" viewBox="0 0 32 32"><path d="M16.254 2C8.663 2 2.509 8.106 2.509 15.639c0 2.577.721 4.987 1.972 7.043L2 30l7.61-2.418a13.777 13.777 0 006.644 1.697C23.846 29.279 30 23.172 30 15.64S23.846 2.001 16.254 2.001zm6.835 18.819c-.323.802-1.786 1.533-2.431 1.567s-.663.5-4.178-1.027c-3.514-1.527-5.628-5.24-5.795-5.479s-1.361-1.94-1.297-3.653c.065-1.713 1.003-2.522 1.338-2.858s.718-.397.952-.401c.277-.005.456-.008.661-.001s.512-.043.778.665c.266.708.903 2.447.984 2.624s.132.383.006.611c-.126.228-.19.371-.373.568s-.386.44-.55.591c-.182.167-.373.348-.181.704s.853 1.522 1.861 2.484c1.295 1.236 2.412 1.646 2.756 1.832.345.188.55.167.764-.058.213-.225.915-.984 1.162-1.323s.479-.273.796-.146c.317.128 2.01 1.035 2.355 1.222s.575.283.657.431c.082.149.056.846-.267 1.647z"/></symbol><symbol id="icon-reddit" viewBox="0 0 28 28"><path d="M28 13.219A3.105 3.105 0 0126.297 16c.125.484.187.984.187 1.5 0 4.937-5.578 8.937-12.453 8.937-6.859 0-12.437-4-12.437-8.937 0-.5.063-1 .172-1.469A3.135 3.135 0 010 13.219a3.107 3.107 0 015.375-2.125c2.109-1.469 4.922-2.422 8.047-2.531L15.235.422a.547.547 0 01.641-.406l5.766 1.266a2.337 2.337 0 014.422 1.047 2.34 2.34 0 01-2.344 2.344 2.334 2.334 0 01-2.328-2.328l-5.219-1.156-1.625 7.375c3.141.094 5.984 1.031 8.109 2.5a3.063 3.063 0 012.234-.953A3.107 3.107 0 0128 13.22zM6.531 16.328a2.338 2.338 0 002.328 2.344 2.34 2.34 0 002.344-2.344A2.338 2.338 0 008.859 14a2.334 2.334 0 00-2.328 2.328zm12.656 5.547a.557.557 0 000-.812.566.566 0 00-.797 0c-.938.953-2.953 1.281-4.391 1.281s-3.453-.328-4.391-1.281a.566.566 0 00-.797 0 .557.557 0 000 .812c1.484 1.484 4.344 1.594 5.187 1.594s3.703-.109 5.187-1.594zm-.046-3.203a2.338 2.338 0 002.328-2.344A2.334 2.334 0 0019.141 14a2.338 2.338 0 00-2.344 2.328 2.34 2.34 0 002.344 2.344z"/></symbol></defs></svg>
+    <script>
+        var prismJs = 'https://oberbean.com/assets/scripts/prismjs.js?v=ab09b2cd03';
+        var prismJsComponents = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/';
+    </script>
+
+    
+
+    
+
+    <script src="https://oberbean.com/assets/scripts/post.js?v=ab09b2cd03"></script>
+
+    
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d458d3f9b68c5bc',t:'MTc3MjE3Mjk2OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
