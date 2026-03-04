@@ -1,4 +1,3 @@
-
 <!--
 title: 为什么83%的组织敢将最敏感资产托付给开源？
 cover: https://cdn.thenewstack.io/media/2026/03/6c5c4773-serena-viola-zqkideynzpy-unsplash-1.jpg
