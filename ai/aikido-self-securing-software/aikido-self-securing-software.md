@@ -1,0 +1,81 @@
+<!--
+title: Aikido安全押注AI，让软件实现自我保护
+cover: https://cdn.thenewstack.io/media/2026/03/ea88aa78-tri-wiranto-1rjx7n6gic0-unsplash-1.jpg
+summary: Aikido推出AI驱动的Infinite，提供持续渗透测试，旨在实现软件自我保护，自动化发现、验证和修复漏洞，革新传统安全模式。
+-->
+
+Aikido推出AI驱动的Infinite，提供持续渗透测试，旨在实现软件自我保护，自动化发现、验证和修复漏洞，革新传统安全模式。
+
+> 译自：[Aikido Security bets on AI to make software secure itself](https://thenewstack.io/aikido-self-securing-software/)
+> 
+> 作者：Darryl K. Taft
+
+传统的[渗透测试](https://thenewstack.io/use-pen-testing-to-gauge-software-development-life-cycle-health/)依赖手动或即时评估，通常在软件发布数周后才提供，而软件安全解决方案提供商[Aikido](https://www.aikido.dev/)推出了[Infinite](https://www.aikido.dev/blog/introducing-aikido-infinite)，提供持续的AI渗透测试。
+
+这家总部位于布鲁塞尔的公司称Infinite为业界首个持续[AI渗透测试](https://thenewstack.io/evil-models-and-exploits-when-ai-becomes-the-attacker/)解决方案。它不仅能发现漏洞，还能验证漏洞是否真的可被利用，并生成补丁，所有这些都在同一个自动化工作流程中完成。
+
+## 自我保护软件
+
+根据Aikido联合创始人兼首席执行官Willem Delbare的说法，目标是让软件本质上实现自我保护。
+
+“多年来，组织一直在努力克服传统测试和[DAST](https://thenewstack.io/devsecops-tools-that-offer-security-efficiency-and-quality/) [动态应用安全测试]的局限性，因为没有更好的选择，”Aikido的联合创始人兼首席执行官Willem Delbare在一份声明中说。“软件交付现在是持续的，但安全测试却不是。Infinite彻底改变了这一点。这是自我保护软件的开端。”
+
+在最近对500名安全和工程领导者进行的调查中，Aikido发现76%的受访者每周或更快地部署重要的生产变更——但只有21%的受访者在每次发布时验证安全性。与此同时，85%的受访者表示，当最终报告出炉时，安全发现已经过时了。
+
+传统的渗透测试通常是每年或每两年进行一次的活动，每次参与可能花费高达15,000美元，Delbare告诉《The New Stack》，它根本不适用于代码每天发布的世界。
+
+> “开发者无法再手动审查所有这些AI生成的代码，”他说，“所以，它也必须由AI来审查。”
+
+Delbare表示，现代软件开发中的瓶颈正在迅速从团队编写代码的速度——AI已在很大程度上解决了这个问题——转向他们验证代码安全性的速度。他说，AI渗透测试现在比人工渗透测试的效果好两到三倍。
+
+“开发者无法再手动审查所有这些AI生成的代码，”他说，“所以，它也必须由AI来审查。”
+
+Infinite通过在每次发布时触发代理式渗透测试来解决这个问题。代理会探索完整的攻击面——包括手动测试人员通常没有时间去追查的未文档化端点、隐藏逻辑路径和跨层架构交互——确认漏洞是否真的可被利用，然后发起包含修复方案的拉取请求。团队可以审查并合并，或者让循环继续运行。系统从每次部署中学习，建立一个持续的反馈循环，而不是周期性的快照。
+
+根据Aikido的说法，安全团队可以通过专门用于24/7全天候查找每一段推送代码中安全漏洞的精英黑客代理来扩展其能力。
+
+## 近期目标
+
+Delbare承认，完全自主的安全仍然是一个近期目标，而不是今天的现实。“Infinite唯一能做的就是安排自动渗透测试，”他在最近的一次简报中说，“它更像一个调度工具，”但他表示，它以现有工具无法做到的方式，弥合了检测、验证和修复之间的差距。
+
+“随着软件交付周期的缩短和变更的持续，即时安全模型不再反映现代系统的运行方式，”[IDC](https://my.idc.com/getdoc.jsp?containerId=PRF005561)的DevSecOps和软件供应链安全研究经理Katie Norton在一份声明中说，“我们开始看到更自主的安全方法早期迹象，其中漏洞可利用性验证和修复直接嵌入到软件生命周期中。Aikido Infinite通过将持续测试与统一平台内的修复功能相结合来反映这一转变。”
+
+那么，我们何时才能看到自主的自我保护软件呢？
+
+“我认为我们很快就会走向这个方向，因为代码审查的数量实在太大了，”Delbare告诉《The New Stack》，“所以，它需要变得自主，否则就无法运行。”
+
+> “我不确定我们现在是否需要或想要那样的完全自主软件操作。”
+
+Futurum Group的分析师Brad Shimmin告诉《The New Stack》，他认为我们距离看到完全自主的自我保护软件还很遥远。
+
+他说：“我不确定我们现在是否需要或想要那样的完全自主软件操作，尤其是在我们越来越快地进入代理式软件开发实践的情况下。我认为我们目前能做的最好是，建立对我们软件的理解以及如何保护这些软件。”
+
+“我们越是依赖概率主导的自动化，就越不可能知道何时出现了需要解决的安全问题。如果你不相信我，可以问问数十万[OpenClaw](https://thenewstack.io/openclaw-github-stars-security/)用户，他们曾惊讶地发现自己的安全密钥公开暴露。”
+
+## Aikido的实践
+
+Aikido并非纸上谈兵。该公司的人工智能渗透测试系统最近发现并负责任地[披露了一个高严重性缓存欺骗漏洞](https://www.aikido.dev/blog/sveltespill-cache-deception-sveltekit-vercel)，该漏洞影响了部署在[Vercel](https://vercel.com/)上的默认[SvelteKit](https://thenewstack.io/rich-harris-talks-sveltekit-and-whats-next-for-svelte/)应用程序，Vercel是该框架最常见的托管平台。
+
+默认情况下，使用基于cookie认证的应用程序暴露在外——一个恶意链接可能导致认证响应（包括会话数据和私有API输出）被公开缓存并被攻击者检索。
+
+该缺陷源于SvelteKit的重写逻辑与Vercel的缓存行为之间的交互，涉及超过150,000行框架和适配器代码。Vercel此后已在整个平台上修补了该问题。
+
+“攻击者只需要对一次，”Delbare告诉《The New Stack》， “然而在防守方，你每次都必须是对的。AI再次给了攻击者上风。我们本质上是在努力拉平这个竞争环境。”
+
+## 代理式渗透测试
+
+每次软件变更都会触发代理式渗透测试代理，这些代理会发现风险、验证可利用性、在安全的情况下应用修复，并重新测试以确认风险降低。该公司表示，团队不再依赖周期性任务，而是获得一个与部署同时运行而非之后运行的持续反馈循环。
+
+Aikido表示，该公司的代理会自动探索应用程序整个攻击面的所有可能攻击路径，识别出当前测试人员通常未知或手动测试人员处理起来过于耗时的未文档化端点、隐藏逻辑路径、复杂的多步骤边缘案例以及架构异常。
+
+此外，Aikido Infinite从每次部署的每个发现中学习，提供一个持续的反馈循环，开发者甚至可以在提交代码之前利用它来改进代码安全性。
+
+Infinite基于该公司现有的按需AI渗透测试产品[Aikido Attack](https://www.aikido.dev/attack/aipentest)构建，并运行在模型无关的架构上。它还连接到一个更广泛的平台，涵盖代码、云和运行时，Aikido表示这使其代理比那些只从外部测试的工具更具优势。
+
+与此同时，Futurum Group的Shimmin指出：“我想说，我们距离那种[自我保护软件]还有很长的路要走，即使在安全这样定义明确的领域也是如此。”
+
+他补充说，目前，我们拥有支持智能监控和人工参与自动化特定任务的工具，例如应用安全补丁，所有这些都限定在数据库管理系统等边界清晰的静态软件产品中。
+
+“但这距离零或几乎零的人工干预和控制还很遥远。老实说，这只是通向自主操作的最初两步，”Shimmin告诉《The New Stack》。
+
+Delbare声称Aikido是欧洲最快达到独角兽地位的网络安全初创公司。它已发展到200名员工，并计划在18个月内实现2亿美元的年收入目标。

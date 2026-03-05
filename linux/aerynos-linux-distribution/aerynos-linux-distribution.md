@@ -1,0 +1,101 @@
+<!--
+title: AerynOS：性能卓越，更新“防弹”的Linux发行版
+cover: https://cdn.thenewstack.io/media/2026/03/1227bef0-getty-images-gqt9thjodyc-unsplash-1.jpg
+summary: AerynOS是一款独立的Linux发行版，旨在提供卓越性能和“防弹级”更新。它采用新一代包管理器Moss和快速构建系统Boulder，支持自动EFI配置和原子升级。虽处于早期开发阶段，但已展现出极佳性能，并提供多种桌面环境选择。AerynOS承诺未来将成为一个快速、稳定且升级有保障的操作系统，适合追求可靠性的用户。
+-->
+
+AerynOS是一款独立的Linux发行版，旨在提供卓越性能和“防弹级”更新。它采用新一代包管理器Moss和快速构建系统Boulder，支持自动EFI配置和原子升级。虽处于早期开发阶段，但已展现出极佳性能，并提供多种桌面环境选择。AerynOS承诺未来将成为一个快速、稳定且升级有保障的操作系统，适合追求可靠性的用户。
+
+> 译自：[AerynOS is a Linux distribution geared toward performance and bulletproof updates](https://thenewstack.io/aerynos-linux-distribution/)
+> 
+> 作者：Jack Wallen
+
+有成千上万的[Linux发行版](https://thenewstack.io/choosing-a-linux-distribution/)，所以当一个新的版本出现时，我首先要检查的是它与众不同之处。
+
+随着时间的推移，这变得越来越难。
+
+尽管如此，开发人员从未停止用他们的想法、能力和承诺给我带来惊喜。
+
+[AerynOS](https://aerynos.com/)就是这样的一个例子。这个独立的[Linux](https://thenewstack.io/introduction-to-linux-operating-system/)发行版（意味着它不基于其他发行版）旨在实现极速、轻松强大，并提供永不失败的更新。
+
+这对几乎任何Linux发行版来说都是一个艰巨的任务。
+
+AerynOS能否实现目标？
+
+让我们一探究竟。
+
+## AerynOS是什么？
+让我们首先讨论AerynOS是什么。
+
+AerynOS不基于任何其他发行版。正因为如此，AerynOS可以自由创建和发布开发人员想要的任何东西。为此，团队选择使用下一代包管理器Moss（稍后会详细介绍）。
+
+该发行版还具有一个名为Boulder的快速构建系统，它允许开发人员创建简单的[YAML](https://thenewstack.io/kubernetes-is-getting-a-better-yaml/)配方，从而减少打包应用程序的时间，将更多时间用于创建它们。
+
+AerynOS发行版还在自动处理复杂的EFI配置方面做得很好，以缓解可能出现的启动问题。
+
+AerynOS是一个新的发行版，仍处于早期开发阶段。不建议将其用作日常操作系统。相反，现在是查看、测试该发行版并报告您发现的任何可能错误的良好时机。如果抓虫不是您的兴趣，您可以简单地了解AerynOS的全部内容。
+
+AerynOS默认使用[GNOME桌面](https://thenewstack.io/what-makes-gnome-so-appealing/)，但在安装过程中允许您选择多种选项，例如KDE Plasma和COSMIC。在我的测试中，我选择了COSMIC，因为它是我的最爱之一Linux桌面环境。
+
+我一开始就知道AerynOS还没有完全准备好投入使用，所以我知道不要因为它不稳定就将其否定。我无法告诉您我测试过多少个Linux发行版的早期版本，并发现它们非常稳定。
+
+让我们看看AerynOS表现如何。
+
+## 安装
+与大多数现代Linux发行版不同，AerynOS没有漂亮的图形用户界面安装程序。相反，它有一个基于文本的安装程序，实际上非常易于使用。然而，在您启动安装程序之前，您首先要做的是格式化您的驱动器。
+
+驱动器的格式化通过GParted处理，它是一个适用于Linux的图形用户界面分区管理器（**图1**）。
+
+![](https://cdn.thenewstack.io/media/2026/03/fbea04f9-aerynospartition.jpg)
+
+**图1：** GParted使分区驱动器变得异常简单。
+
+您不能只创建一个挂载在/的单个分区，然后就完事。相反，您必须执行以下操作：
+
+1. 创建一个新的GPT分区表。
+2. 创建一个至少2GB的启动分区，并启用ESP标志（右键单击该分区，然后单击与GPT相关的复选框）。
+3. 应用更改。
+4. 关闭GParted。
+
+此时，您已准备好安装。单击显示屏左上角的概览按钮，然后单击收藏夹栏右边缘的点状方块。在应用程序概览中，单击“安装AerynOS”，一个终端窗口将打开。
+
+您只需回答一些简单的问题（选择安装驱动器、创建用户、添加密码并选择您想要的桌面环境）。安装大约需要2分钟。安装完成后，重新启动并登录到您的新AerynOS桌面。
+
+## 初印象
+AerynOS的默认COSMIC布局（在我从深色模式切换到浅色模式后）很简单：底部有一个带快速启动器的dock（**图2**），您可以在其中打开各种应用程序。
+
+![](https://cdn.thenewstack.io/media/2026/03/3da798c8-aerynosdesktop.jpg)
+
+**图2：** 默认的COSMIC桌面时尚而优雅。
+
+我喜欢AerynOS开发人员布局COSMIC的方式。如果您不喜欢Dock模式，您可以在首次登录时选择面板模式。
+
+如果您点击dock上的点状方块（或按下键盘上的Super键），您将打开COSMIC搜索工具，您可以在其中搜索文件、应用程序等。
+
+除了经典的COSMIC布局外，这里没有太多可看的东西。当您打开搜索工具时，您会发现最少的应用程序。幸运的是，有COSMIC商店，您可以在其中尽情安装应用程序（**图3**）。
+
+![](https://cdn.thenewstack.io/media/2026/03/b11d4808-aerynsospopshop.jpg)
+
+**图3：** COSMIC商店像任何应用商店一样易于使用。
+
+您通过COSMIC商店安装的应用程序都是Flatpak格式，这意味着您将获得开源和专有软件的混合。您也可以从这里轻松安装Spotify和Slack。
+
+## 性能
+开发人员致力于创建一个极速的Linux发行版。我不得不说，将AerynOS作为虚拟机运行会使其略处于劣势（主要是由于图形方面）。即便如此，AerynOS表现出色。应用程序安装和打开迅速，操作系统启动快，似乎没有任何东西能拖慢它。
+
+对于一个在新发行版作为虚拟机运行来说，这非常令人印象深刻。
+
+## AerynOS适合谁？
+这个问题有点难以回答，因为AerynOS最独特之处在于其底层机制。话虽如此，AerynOS恰好也是一个原子级发行版，这意味着升级是保证成功的。
+
+原子级升级的基本工作原理如下：
+
+* 当有可用升级时，它将作为与当前运行映像分离的单独映像进行应用。
+* 如果升级成功，它将在下次启动时应用。
+* 如果升级失败，则放弃并稍后重试。
+
+如果您将此与开发人员的目标结合起来，当AerynOS全面发布时，它将成为任何寻求使用极速、启动和升级有保障的发行版的人的理想选择。这些保障将大大确保用户不会再遇到他们在使用其他操作系统（暗示……Windows）时不得不忍受的挫折。而且有三种出色的桌面环境可供选择，您怎么会出错呢？
+
+给AerynOS一些时间达到v1.0，您会发现这个Linux发行版将迅速攀升到Distrowatch页面点击排名追踪器的顶部（或接近顶部）。
+
+如果您感兴趣，[现在就下载AerynOS的ISO](https://aerynos.com/download/)。
