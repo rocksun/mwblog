@@ -1,0 +1,48 @@
+<!--
+title: 亚马逊紧急“深潜”GenAI故障：多起服务中断，工程师被召集开会
+cover: https://cdn.thenewstack.io/media/2026/03/163b9a82-robot-and-human-hands-typing-unsplash-scaled.jpg
+summary: 亚马逊召开紧急会议，讨论近期由GenAI辅助代码变更导致的多次服务宕机问题。高管承认存在不安全做法，将加强保障措施。
+-->
+
+亚马逊召开紧急会议，讨论近期由GenAI辅助代码变更导致的多次服务宕机问题。高管承认存在不安全做法，将加强保障措施。
+
+> 译自：[Amazon calls engineers for a “deep dive” internal meeting to discuss "GenAI"-related outages](https://thenewstack.io/amazon-ai-assisted-errors/)
+> 
+> 作者：Meredith Shubel
+
+亚马逊一场通常可选的例行会议变得严肃起来，该品牌最高零售主管召集工程师讨论一系列与AI相关的宕机事件。
+
+虽然零售技术会议备忘录（最初由[*英国《金融时报》*](https://www.ft.com/content/7cab4ec7-4712-4137-b602-119a44f771de)报道）没有具体说明将讨论哪些事件，但亚马逊的工程师们有很多问题需要解决。在短短一周内，这家电商巨头经历了四起事件——每起事件都具有备忘录中描述的“高影响半径”。
+
+亚马逊发言人表示，公司每周都会举行“本周门店技术”（或称TWiST）会议，这是“业务的正常组成部分”，在该会议上“一个特定的零售技术领导者和团队小组……审查我们团队门店的运营绩效。”
+
+周二，这一例行会议被推翻，转而对近期宕机背后的原因进行深入探讨。
+
+似乎，人工智能辅助的生产变更应承担责任。
+
+## 深入探讨令人深感不安的AI辅助编码
+
+亚马逊电商服务高级副总裁David Treadwell在致员工的一份备忘录中写道：“网站及相关基础设施的可用性最近一直不佳。”[CNBC](https://www.cnbc.com/2026/03/10/amazon-plans-deep-dive-internal-meeting-address-ai-related-outages.html)对此进行了报道。
+
+从证据来看，Treadwell可能说得比较委婉。上周，[亚马逊的网站和应用程序都遭遇了严重宕机](https://www.cnbc.com/2026/03/05/amazon-online-store-suffers-outage-for-some-users.html)；长达六小时，客户既无法结账，也无法访问账户信息，更无法查看商品价格。当时，亚马逊发布声明称，问题与“软件代码部署”有关。
+
+现在，该品牌的内部备忘录显示，最近的事件与“GenAI辅助的变更”有关。
+另一份来自Treadwell的备忘录显示，这些人工智能辅助的编码错误早在2025年第三季度就开始为亚马逊制造麻烦。
+
+他指出，用于补充或加速生产变更的GenAI工具“导致了不安全的做法”，并提到生成式AI的使用“最佳实践和保障措施”尚未具体化。
+
+亚马逊计划“强化”现有的保障措施。具体来说，将要求高级工程师审查由初级员工准备的GenAI辅助生产变更。
+
+Treadwell还声明：“我们正在实施临时安全措施，这将对零售体验最重要部分的变更引入受控摩擦，同时我们将投资于更持久的解决方案，包括确定性和代理性保障措施。”
+
+## 在近期AWS宕机事件之后，更多事故接踵而至
+
+亚马逊的人工智能辅助失误发生之际，资金似乎正大量涌入基础设施——而远离员工。
+
+像其他超大规模公司一样，亚马逊正在大力投资基础设施，其[2026年2月财报](https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/)宣布，预计今年资本支出将达到2000亿美元。与此同时，亚马逊仍在收紧人员编制。自2022年以来，该公司已裁员数万人，[2026年1月的最后一轮裁员](https://www.cnbc.com/2026/01/28/amazon-layoffs-anti-bureaucracy-ai.html)影响了16,000名公司员工。
+
+在网站和应用程序问题缠身之际，亚马逊的云计算部门也面临着动荡。
+
+2025年底，亚马逊网络服务（Amazon Web Services）发生多起宕机事件。其中一起事件，据[*英国《金融时报》*](https://www.ft.com/content/00c282de-ed14-4acd-a948-bc8d6bdb39d)报道，导致一个成本管理功能中断了13小时——这是Kiro主导的变更所带来的严重副作用——[一个代理IDE](https://thenewstack.io/aws-kiro-brings-automated-reasoning-to-agentic-development/)，旨在帮助工程师自动化或加速代码变更。
+
+亚马逊发言人表示，AWS宕机事件与本月的网站和应用程序事故无关，但这延续了人工智能辅助错误令人担忧的趋势。
