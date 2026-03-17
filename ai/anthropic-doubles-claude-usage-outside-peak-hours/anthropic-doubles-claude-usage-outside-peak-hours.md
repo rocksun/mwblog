@@ -1,0 +1,47 @@
+<!--
+title: Anthropic：Claude非高峰使用量翻倍，限时福利不容错过！
+cover: https://cdn.thenewstack.io/media/2026/03/0df7d83b-allison-saeng-ewlb9ghso2y-unsplash-scaled.jpg
+summary: Anthropic限时两周提高Claude非高峰时段使用上限，旨在吸引开发者、平衡服务器负载并培养用户习惯，是AI实验室竞争开发者生态系统的一部分。
+-->
+
+Anthropic限时两周提高Claude非高峰时段使用上限，旨在吸引开发者、平衡服务器负载并培养用户习惯，是AI实验室竞争开发者生态系统的一部分。
+
+> 译自：[Anthropic doubles Claude usage outside peak hours — but it won't last forever](https://thenewstack.io/anthropic-doubles-claude-usage-outside-peak-hours/)
+> 
+> 作者：Paul Sawers
+
+AI 实验室一直在寻找方法将开发者更深入地吸引到他们的生态系统中。最新举措来自 [Anthropic](https://www.anthropic.com/)，该公司[表示将把其 Claude 助手](https://x.com/claudeai/status/2032911276226257206)[在非高峰时段的使用限制提高一倍](https://x.com/claudeai/status/2032911276226257206)——这项短期福利或许更多地说明了对开发者关注度的竞争，而非慷慨。
+
+Anthropic 表示，此次促销活动为期两周，适用于所有公司计划，包括免费版、专业版、Max 版和团队版。使用限制在整个周末和工作日非高峰时段翻倍，这意味着在工作日上午 8 点（美国东部时间）之前和下午 2 点（美国东部时间）之后（太平洋时间上午 5-11 点），以及周六和周日全天，都适用更高的额度。额外容量将自动应用。
+
+此次增加适用于 Claude 的滚动五小时使用窗口——这是 Anthropic 用来限制用户在暂时达到限制之前可以运行的提示数量的系统。这意味着与 Claude 合作的开发者——包括通过 [Claude Code 等工具](https://thenewstack.io/claude-code-and-the-art-of-test-driven-development/)——现在可以在这些窗口中运行更多的提示和更长的会话，而不会触及他们的正常限制。
+
+然而，额外的容量仅适用于 Anthropic 自己的 Claude 界面，包括 Claude 应用（网页版、桌面版和移动版）、[Cowork](https://thenewstack.io/anthropic-accelerates-its-cowork-enterprise-play/)、Claude Code、Claude for Excel 和 Claude for PowerPoint。此促销活动似乎不适用于 Claude API——这清楚地表明，其目标是鼓励开发者在其自己的产品而非基于该模型构建的外部应用程序中花费更多时间。
+
+虽然该公司将此变化描述为对用户的“感谢”，但其推出时机正值 AI 模型提供商之间日益激烈的竞争，旨在吸引开发者并围绕其工具建立新的软件生态系统。
+
+## 额外容量爆发
+
+此次促销活动暗示了 AI 公司如何管理对其基础设施日益增长的需求。由于这一变化是自动应用的，用户无需切换任何设置或升级计划。额外的使用量在那些时间窗口内即可使用。
+
+但允许在较安静的时段使用更多提示可能有助于平滑 Anthropic 基础设施的需求。AI 模型需要大量的计算资源，工作时间内的使用高峰可能会给这些系统带来沉重负担。
+
+鼓励开发者在这些窗口*之外*运行任务可以更均匀地分散流量，这是一种在云计算和数据中心运营中都有先例的[负载均衡激励措施](https://thenewstack.io/improve-microservices-with-these-new-load-balancing-strategies/)。
+
+此举背后也有容量计算的考量。虽然将活动从高峰时段转移可以缓解基础设施在一天中最繁忙时段的压力，但相同的动态也以相反的方向运作：运行现代 AI 系统的大型 GPU 集群持续运行，无论它们是否被充分利用。因此，鼓励在较安静时期更大量使用的激励措施可以帮助填补原本闲置的计算资源，从而从现有硬件中提取更多工作。
+
+尽管如此，此次促销还有一个次要但关键的目的：为开发者提供更多机会来培养围绕 Claude 的使用习惯。一旦项目通过提示、集成或微调系统与特定模型紧密关联，后期切换可能需要大量的工程工作。
+
+因此，虽然 Anthropic 将此举定位为简单的“感谢”，但它也可能起到“胡萝卜加大棒”的作用——对一些开发者来说，甚至可能感觉像是一种“诱骗”。在两周内，用户习惯于运行更多提示并使用更宽松的限制。当促销结束，正常额度恢复时，这种对比可能会让标准上限显得更严格——从而推动更大量的使用或鼓励升级到更高付费的套餐。
+
+## 开发者之争
+
+Anthropic 的此举正值主要 AI 实验室更广泛地推动招募开发者之际，特别是那些构建开源工具的开发者。
+
+Anthropic 和 OpenAI 最近的举措都[向广泛使用的开源项目的维护者提供了对其模型的免费或折扣访问](https://thenewstack.io/openai-anthropic-open-source/)。这个想法很简单：如果影响力大的工具和库能够早期采用某个特定模型，那么整个开发者社区都可能随之而来。
+
+Anthropic 还在调整 Claude 的定价，使其更易于大量使用。该公司[最近取消了](https://thenewstack.io/claude-million-token-pricing/) Claude Opus 4.6 和 Sonnet 4.6 对于超过 20 万 tokens 请求的附加费，这意味着现在在完整的百万 tokens 上下文窗口中，定价保持不变。
+
+然而，大型语言模型的经济性使得长期的“慷慨”不太可能。运行前沿 AI 系统需要大量的计算能力、专用硬件和能源。
+
+目前，Anthropic 的优惠让用户有更多空间在较安静的时段使用 Claude。促销可能是暂时的，但信息很明确：AI 实验室正在激烈竞争，以吸引开发者在其生态系统内花费更多时间并完成更多工作。
