@@ -1,0 +1,51 @@
+<!--
+title: 英伟达NemoClaw三层代理安全，治标不治本
+cover: https://cdn.thenewstack.io/media/2026/03/a3aa24db-amanda-regh-ry2psnpzy9u-unsplash-scaled.jpg
+summary: 大型语言模型和代理计算迅速发展，OpenClaw广受欢迎。英伟达NemoClaw虽增加了三层安全防护，但未能从根本上解决问题，仅是治标不治本。文章强调代理项目激增，未来主要挑战在于招聘经验丰富的专业人员来管理复杂系统。
+-->
+
+大型语言模型和代理计算迅速发展，OpenClaw广受欢迎。英伟达NemoClaw虽增加了三层安全防护，但未能从根本上解决问题，仅是治标不治本。文章强调代理项目激增，未来主要挑战在于招聘经验丰富的专业人员来管理复杂系统。
+
+> 译自：[Nvidia's NemoClaw has three layers of agent security. None of them solve the real problem.](https://thenewstack.io/nvidia-nemoclaw-openclaw-security/)
+> 
+> 作者：David Eastman
+
+大型语言模型（LLM）的采用速度要求我们不时审视其发展轨迹。首席执行官 Jensen Huang 在 [英伟达 GPU 技术大会](https://thenewstack.io/nvidia-tier2-nemotron-coalition/) 上谈到了智能代理计算的增长。在两年内，每用户的计算需求增长了10,000倍，总体使用量增加了100倍。这消耗了大量的tokens，这也是人工智能仍需大量投资的原因。
+
+正如我们上周所见，就个人用户普及度而言，智能代理领域的当前明星无疑是 [OpenClaw](https://thenewstack.io/claude-dispatch-versus-openclaw/)，它似乎实现了许多科幻小说中关于有用对话型计算机的梦想。
+
+因此，英伟达为何 [全力支持OpenClaw](https://thenewstack.io/nemoclaw-openclaw-with-guardrails/) 就不难理解了。它是目前最不受限制的token使用形式。Jensen Huang 先生当然也会鼓励公司采用“OpenClaw策略”。但就像 Anthropic 一样，他们知道只有穿戴好充足的盔甲，才能拥抱开源现象。
+
+因此，英伟达推出了 [NemoClaw](https://www.nvidia.com/en-eu/ai/nemoclaw/)，它搭乘了 OpenClaw 的浪潮，并在此基础上增加了足够的护栏使其略微更安全。但不幸的是，NemoClaw 并没有取代 OpenClaw；它只是在其之上运行。
+
+## 拥抱螃蟹
+
+正如我们从 [最近的文章](https://thenewstack.io/openclaw-is-a-security-mess-jentic-wants-to-fix-it/) 中看到的，将会有许多机会使 OpenClaw 更安全。就像 Anthropic 一样，英伟达认为解决 OpenClaw 问题的办法是让英伟达保护你免受其害。为此，他们增加了三个安全架构组件。
+
+第一个组件是策略执行——一个在过去几十年中被大量使用的系统。这是一个设定边界的治理层，希望确保青少年在晚上回家前回来。
+
+通过限制文件系统和网络访问，希望代理会思考为什么被阻止，并提出一个人类用户可以批准的策略更新。但是，如果它通过卧室窗户离开，它就能完全绕过你，而你对此一无所知。对于多代理系统来说，这种情况会成倍增加。
+
+让自我进化的代理安装软件包、学习技能并生成子代理，却仅仅因为你不喜欢它们“穿”的什么而把它们拦在门口，这本身就存在效率低下。
+
+> “让自我进化的代理安装软件包、学习技能并生成子代理，却仅仅因为你不喜欢它们‘穿’的什么而把它们拦在门口，这本身就存在效率低下。”
+
+总的来说，系统知道的技能越多，策略执行的效率就越低，因为它实际上只在事后学习。你要么频繁地停止任务以至于它们不再自主，要么希望你能胜过一个你花钱雇来24/7解决问题的主谋。实际上，任何系统的成功都将取决于管理它的工程师的经验（和批判性思维）。
+
+第二个组件是隐私路由。这是一个很好的方法，既可以控制开支，又可以避免向云提供商泄露过多的知识产权。（但这并不能阻止代理因为第三方友好请求而通过电子邮件发送你的密码。）
+
+如果设置得当，你可以决定哪些数据保留在本地，哪些查询发送到更大的云模型。路由器可以根据成本和高级隐私策略做出模型选择决策。与云提供商不同，如果你尝试在自己的机器上运行繁重的推理，英伟达可以通过销售更多芯片赚取丰厚利润。但为任务选择正确的模型始终是明智之举。
+
+第三个组件是沙盒执行。这对于防止恶意进程轻易访问相邻的代理进程至关重要，但它也通过跟踪和检查预期网络流量提供了一种以低得多的风险测试系统的方法。这对于否则无法轻易测试的长时间运行任务也很重要。如果你只想在容器中运行代理，可以尝试 [NanoClaw](https://thenewstack.io/nanoclaw-containerized-ai-agents/)。
+
+但事实上，[“相对于 OpenClaw 的重大进步”](https://www.cnet.com/tech/services-and-software/nvidia-wants-to-make-it-easier-to-create-an-openclaw-ai-agent/) 门槛很低。我期望有更多从零开始构建安全产品的尝试，但在那之前，公司会等待时机，在安全失败的深渊底部观望，然后才敢贸然行动。
+
+## 爪子太多
+
+到2026年底，许多小型机构和全球组织可能会拥有一个代理策略。因此，“爪子”的数量也越来越多。[DefenseClaw](https://blogs.cisco.com/ai/cisco-announces-defenseclaw)。[PicoClaw。](https://github.com/sipeed/picoclaw) [ZeroClaw](https://zeroclaw.org/)。可能还有 Sanity Claws。
+
+随着企业市场对智能代理计算的需求增加，下一个真正的障碍将是雇佣合适的人员来控制它。虽然人们警告我们可能有多少开发人员工作会流失（并看到股价上涨，希望降低开销），但很少讨论的是雇佣合适的人员来“照看”新系统的困难。正如我所提到的，这不再是雇佣热情的年轻编码员的问题——更多的是经验丰富的老兵在整个工作流程中发现潜在陷阱，并制定风险概况。
+
+> “这不再是雇佣热情的年轻编码员的问题——更多的是经验丰富的老兵在整个工作流程中发现潜在陷阱，并制定风险概况。”
+
+Apple、Google、Microsoft 等公司未能兑现早期对数字助理的承诺，至今仍未实现，正是因为他们看到了问题所在。事实上，自从 HAL 拒绝打开太空舱门以来，大公司一直非常谨慎地公开宣传人工智能，深知足够多的尴尬失败会导致公众的强烈抵制。像 OpenClaw 这样的开源项目打开了潘多拉魔盒，但这绝不是负责任的组织在低估风险的同时寄希望于美好的理由。

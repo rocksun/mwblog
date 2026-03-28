@@ -1,0 +1,13 @@
+﻿{
+  "browser": {
+    "cdp_port": 9224,
+    "start_url": "about:blank",
+    "launch_args": [
+      "--window-size=1400,900",
+      "--ignore-certificate-errors"
+    ]
+  },
+  "wechat": {
+    "author": "岱军"
+  }
+}
