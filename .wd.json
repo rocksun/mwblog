@@ -9,5 +9,10 @@
   },
   "wechat": {
     "author": "岱军"
-  }
+  },
+  "platforms": [
+    "wechat",
+    "juejin",
+    "toutiao"
+  ]
 }
