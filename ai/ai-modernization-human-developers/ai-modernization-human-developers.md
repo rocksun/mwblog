@@ -1,0 +1,67 @@
+<!--
+title: AI驱动现代化加速，但别落下人类开发者
+cover: https://cdn.thenewstack.io/media/2026/03/e7972fb4-ghariza-mahavira-grbi208ders-unsplash-scaled.jpg
+summary: AI加速应用现代化，处理重复任务，但人类领域专家在准确性、风险管理和战略决策中不可或缺。AI应作为伙伴，而非替代品，以实现可预测的持续现代化。
+-->
+
+AI加速应用现代化，处理重复任务，但人类领域专家在准确性、风险管理和战略决策中不可或缺。AI应作为伙伴，而非替代品，以实现可预测的持续现代化。
+
+> 译自：[AI accelerates modernization, but don’t leave human devs behind](https://thenewstack.io/ai-modernization-human-developers/)
+> 
+> 作者：Matthew Weier O’Phinney
+
+现代化传统上是两种艰难选择：要么持续修补遗留系统直到其在技术债务下崩溃，要么尝试冒险的重写，用已知问题换取未知问题。现在，随着AI工具的普及，团队应用现代化方法正在迅速改变：代码以任何纯人工团队都无法匹敌的速度被扫描、总结和更新。
+
+对于许多深陷技术债务的组织而言，这感觉像是得到了救生圈，他们渴望将AI现代化工具融入工作流程。我们最近看到了证据，在 [Anthropic 宣布其 Claude Code AI 工具可用于现代化 COBOL](https://www.reuters.com/business/ibm-posts-steepest-daily-drop-since-2000-after-anthropic-says-ai-can-modernize-2026-02-24/) 后，IBM 股价大幅下跌。
+
+但速度不等于成功，尽管 [AI 工具可以缩短现代化时间](https://thenewstack.io/how-ai-can-speed-up-modernization-of-your-legacy-it-systems/)，但你仍然需要领域专业知识来确保准确性。
+
+## AI 在现代化工作中的闪光点
+
+应用程序现代化的大部分工作由重复的机械任务构成，遗留系统包含过时的模式、废弃的函数和复制粘贴的代码。这正是AI现代化工具超越大多数替代方案的地方：[扫描大型代码库](https://thenewstack.io/open-source-coding-agents-like-opencode-cline-and-aider-are-solving-a-huge-headache-for-developers/)、发现常见问题并提出更新建议。
+
+AI 总结不熟悉的代码，突出高风险依赖项，并草拟初次重构，使现代化更快、更易实现。这些任务的卸载是基于代理的现代化平台（例如 [新的 MongoDB AMP](https://thenewstack.io/agent-infused-mongodb-tackles-application-modernization/)）变得如此受欢迎的原因。
+
+AI 也有助于你的团队摆脱困境。作为 [Perforce Zend](http://www.zend.com/) 和 [Perforce OpenLogic](http://www.openlogic.com/) 的首席产品经理，我见过许多现代化工作在起跑线上停滞不前，都因为代码感觉过于庞大或复杂而难以理解。AI 降低了这一障碍，帮助团队探索其应用程序的当前状态，并规划高效的 [Web 应用程序迁移](https://www.zend.com/resources/events/webinars/managing-php-application-migrations)。
+
+我不能过分强调这种势头的重要性。AI 工具为你的团队提供了一种更快地深入代码的方式，迅速回答基本问题，并减少了处理旧系统时产生的恐惧。当然，这前提是 AI 工具与领域专业知识相结合，因为 [缺乏监督地使用 AI](https://thenewstack.io/shadow-ai-the-growing-risk-it-leaders-must-address/) 可能导致昂贵的后果。
+
+尽管有诸多好处，AI 现代化工具也有一个关键限制：它们无法理解你的整个系统。你的应用程序越大，这一点就越真实。AI 可以更新代码，但它无法完全了解或预测代码在生产环境中的行为。它不知道为什么存在某些变通方法，客户如何依赖边缘情况，或者哪些故障会产生真正的业务风险。
+
+毕竟，遗留系统很少是干净的，AI 依赖模式工作而非实际经验。业务规则常常隐藏在意想不到的地方，一次小的代码更改可能会影响计费、合规性和客户信任。
+
+> “遗留系统很少是干净的，AI 依赖模式工作而非实际经验。”
+
+这正是专家主导的监督发挥作用的地方。
+
+领域知识对于驾驭遗留系统的复杂性、隐藏的依赖关系等至关重要。经验丰富的开发人员、工程师和架构师知道系统的哪些部分是脆弱的，哪些更改是安全的，以及哪里需要额外的测试——这种判断力无法自动化。
+
+毕竟，你组织中的 [领域和主题专家](https://thenewstack.io/future-ai-driven-devsecops/) 了解某些应用程序行为存在的原因以及它们解决了什么问题。正是这些人能够识别应用程序真正关键的部分并完整地捕捉需求。没有这种专业知识，AI 代理和流程将难以成功。
+
+## 将 AI 视为伙伴，而非替代品
+
+最好的前进方式是将 AI 视为团队成员，并精确设计其运行的上下文。通过上下文工程，你可以为你的 AI 工具设定正确的边界、系统知识和目标，以便它们能发挥最大作用：扫描代码、识别模式、提出更新建议并加速日常工作。然后，开发人员处理 AI 无法完成的工作：设定方向、管理风险，并确保所有更改都符合你的业务需求。
+
+> “最好的前进方式是将 AI 视为团队成员，并精确设计其运行的上下文。”
+
+将 AI 视为合作伙伴会改变你现代化项目的范围。你的团队可以采取更安全、更小的步骤，而不是冒险的“大爆炸式”重写。AI 提出更改，专家决定接受、调整、延迟或拒绝哪些更改。
+
+以 [Perforce Zend](http://www.zend.com/) 的 [专业服务](http://www.zend.com/services) 团队为例，我们使用 AI 工具帮助团队现代化关键的 PHP 应用程序。在一个案例中，我们协助客户将 [CodeIgniter 现代化迁移到 Symfony](https://www.zend.com/services/migration/codeigniter-migration)。我们应用 AI 工具进行事实核查、自动化头脑风暴，并显著减少了时间要求。然而，这种速度是在不影响稳定性的前提下实现的。我们的 PHP 工程师审查了所有输出和结果，确保我们的客户能够更快、更自信地达到目标——这都归功于专家主导的 AI 现代化策略。
+
+另一个例子来自 MongoDB，它最近发现 [使用 LLMs 和 AI 工具可以帮助全面现代化遗留应用程序](https://thenewstack.io/mongodb-finds-ai-can-help-with-legacy-system-migration/) 并辅助迁移。通过应用 AI，使用或迁移到 MongoDB 的组织现在可以自动化大量通常会延迟云和平台过渡的手动工作。这极大地减少了迁移时间和成本，[瑞士银行 Lombard Odier 能够将代码迁移](https://www.mongodb.com/press/mongodb-collaborates-with-lombard-odier-to-modernize-core-banking-technology) 速度提高 50 到 60 倍。
+
+结论很明确：当 AI 与人类知识相结合时，现代化变得可预测。团队可以在系统、版本和项目之间重复这一过程，将现代化从一次性事件转变为持续实践。
+
+## 如何开始专家主导的 AI 现代化
+
+如果你正在寻找有效实施专家主导的 AI 策略的方法，请使用此清单作为前进的实用步骤：
+
+1. **首先定义目标状态** — 在应用 AI 之前，设定明确的目标、限制和“不容失败”的领域。
+2. **将 AI 用于提速，而非决策** — 让 AI 加速分析和草稿，而专家拥有最终决定权。
+3. **将决策锚定在领域专业知识上** — 将业务、法规和运营背景应用于每一次更改。
+4. **标准化有效的方法** — 将已验证的现代化转变为可重复、低风险的行动指南。
+5. **生产前验证更改** — 验证功能、性能、安全性和操作影响，由专家为关键部分编写测试，并确保 AI 编写的代码不引入新风险。
+6. **使现代化持续进行** — 使用 AI 保持系统最新，而不仅仅是解决危机。
+7. **诚实评估内部开发人员能力** — AI 工具不能取代专业知识，因此与第三方支持合作以填补知识或技能空白。
+
+请记住：AI 工具为现代化带来速度，领域专业知识带来准确性。两者结合是一种强大的组合，可以从根本上改变我们处理遗留系统现代化工作的方式——在不牺牲稳定性或信任的情况下，提供最佳结果。
