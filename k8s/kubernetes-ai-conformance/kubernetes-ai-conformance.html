@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+<title>Google launches Kubernetes AI Conformance program to prepare clusters for machine learning</title>
+<link data-rocket-preload as="style" data-wpr-hosted-gf-parameters="family=Inter:wght@400;500;700&display=swap" href="https://nerds.xyz/wp-content/cache/fonts/1/google-fonts/css/4/6/1/66876c53c70a1a4d057e59a704438.css" rel="preload">
+<link data-rocket-preload as="style" data-wpr-hosted-gf-parameters="family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900&display=swap" href="https://nerds.xyz/wp-content/cache/fonts/1/google-fonts/css/d/c/c/d1c54042f1ad264f2e885349cda1a.css" rel="preload">
+<link data-wpr-hosted-gf-parameters="family=Inter:wght@400;500;700&display=swap" href="https://nerds.xyz/wp-content/cache/fonts/1/google-fonts/css/4/6/1/66876c53c70a1a4d057e59a704438.css" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&#038;display=swap"></noscript>
+<link data-wpr-hosted-gf-parameters="family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900&display=swap" href="https://nerds.xyz/wp-content/cache/fonts/1/google-fonts/css/d/c/c/d1c54042f1ad264f2e885349cda1a.css" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900&#038;display=swap"></noscript>
+<meta name="description" content="Google and the Kubernetes community have launched a new AI Conformance program designed to ensure Kubernetes clusters can properly support machine learning workloads, GPUs, and large scale inference."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://nerds.xyz/2026/04/kubernetes-ai-conformance/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Google launches Kubernetes AI Conformance program to prepare clusters for machine learning" />
+<meta property="og:description" content="Google and the Kubernetes community have launched a new AI Conformance program designed to ensure Kubernetes clusters can properly support machine learning workloads, GPUs, and large scale inference." />
+<meta property="og:url" content="https://nerds.xyz/2026/04/kubernetes-ai-conformance/" />
+<meta property="og:site_name" content="NERDS.xyz" />
+<meta property="article:tag" content="AI infrastructure" />
+<meta property="article:tag" content="cloud computing" />
+<meta property="article:tag" content="container orchestration" />
+<meta property="article:tag" content="DevOps" />
+<meta property="article:tag" content="Google" />
+<meta property="article:tag" content="Google Kubernetes Engine" />
+<meta property="article:tag" content="Kubernetes" />
+<meta property="article:tag" content="Kubernetes AI Conformance" />
+<meta property="article:tag" content="machine learning infrastructure" />
+<meta property="article:tag" content="open source AI" />
+<meta property="article:section" content="Artificial Intelligence" />
+<meta property="og:updated_time" content="2026-04-06T20:16:39-04:00" />
+<meta property="og:image" content="https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png" />
+<meta property="og:image:secure_url" content="https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="525" />
+<meta property="og:image:alt" content="Google launches Kubernetes AI Conformance program to prepare clusters for machine learning" />
+<meta property="og:image:type" content="image/png" />
+<meta property="article:published_time" content="2026-04-06T20:16:37-04:00" />
+<meta property="article:modified_time" content="2026-04-06T20:16:39-04:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Google launches Kubernetes AI Conformance program to prepare clusters for machine learning" />
+<meta name="twitter:description" content="Google and the Kubernetes community have launched a new AI Conformance program designed to ensure Kubernetes clusters can properly support machine learning workloads, GPUs, and large scale inference." />
+<meta name="twitter:site" content="@nerds_xyz" />
+<meta name="twitter:creator" content="@brianfagioli" />
+<meta name="twitter:image" content="https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png" />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="Brian Fagioli" />
+<meta name="twitter:label2" content="Time to read" />
+<meta name="twitter:data2" content="2 minutes" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":["NewsMediaOrganization","Organization"],"@id":"https://nerds.xyz/#organization","name":"NERDS.xyz","url":"https://nerds.xyz/","sameAs":["https://twitter.com/nerds_xyz"],"logo":{"@type":"ImageObject","@id":"https://nerds.xyz/#logo","url":"https://nerds.xyz/wp-content/uploads/2025/08/Nerds-main.jpg","contentUrl":"https://nerds.xyz/wp-content/uploads/2025/08/Nerds-main.jpg","caption":"NERDS.xyz","inLanguage":"en-US","width":"1224","height":"457"}},{"@type":"WebSite","@id":"https://nerds.xyz/#website","url":"https://nerds.xyz","name":"NERDS.xyz","publisher":{"@id":"https://nerds.xyz/#organization"},"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png","url":"https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png","width":"1000","height":"525","inLanguage":"en-US"},{"@type":"BreadcrumbList","@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#breadcrumb","itemListElement":[{"@type":"ListItem","position":"1","item":{"@id":"https://nerds.xyz","name":"Home"}},{"@type":"ListItem","position":"2","item":{"@id":"https://nerds.xyz/category/artificial-intelligence/","name":"Artificial Intelligence"}},{"@type":"ListItem","position":"3","item":{"@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/","name":"Google launches Kubernetes AI Conformance program to prepare clusters for machine learning"}}]},{"@type":"WebPage","@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#webpage","url":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/","name":"Google launches Kubernetes AI Conformance program to prepare clusters for machine learning","datePublished":"2026-04-06T20:16:37-04:00","dateModified":"2026-04-06T20:16:39-04:00","isPartOf":{"@id":"https://nerds.xyz/#website"},"primaryImageOfPage":{"@id":"https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png"},"inLanguage":"en-US","breadcrumb":{"@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#breadcrumb"}},{"@type":"Person","@id":"https://nerds.xyz/author/brian-fagioli/","name":"Brian Fagioli","description":"Brian Fagioli is a technology journalist and founder of NERDS.xyz. Known for covering Linux, open source software, AI, and cybersecurity, he delivers no-nonsense tech news for real nerds.","url":"https://nerds.xyz/author/brian-fagioli/","image":{"@type":"ImageObject","@id":"https://nerds.xyz/wp-content/uploads/2025/07/brian-fagioli-author-photo.png","url":"https://nerds.xyz/wp-content/uploads/2025/07/brian-fagioli-author-photo.png","caption":"Brian Fagioli","inLanguage":"en-US"},"jobTitle":"Journalist"},{"@type":"NewsArticle","headline":"Google launches Kubernetes AI Conformance program to prepare clusters for machine learning","datePublished":"2026-04-06T20:16:37-04:00","dateModified":"2026-04-06T20:16:39-04:00","articleSection":"Artificial Intelligence, Google, Kubernetes","author":{"@id":"https://nerds.xyz/author/brian-fagioli/","name":"Brian Fagioli"},"publisher":{"@id":"https://nerds.xyz/#organization"},"description":"Google and the Kubernetes community have launched a new AI Conformance program designed to ensure Kubernetes clusters can properly support machine learning workloads, GPUs, and large scale inference.","copyrightYear":"2026","copyrightHolder":{"@id":"https://nerds.xyz/#organization"},"name":"Google launches Kubernetes AI Conformance program to prepare clusters for machine learning","@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#richSnippet","isPartOf":{"@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#webpage"},"image":{"@id":"https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://nerds.xyz/2026/04/kubernetes-ai-conformance/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//static.addtoany.com' />
+<link rel='dns-prefetch' href='//news.google.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link href='https://fonts.googleapis.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="NERDS.xyz &raquo; Feed" href="https://nerds.xyz/feed/" />
+<link rel="alternate" type="application/rss+xml" title="NERDS.xyz &raquo; Comments Feed" href="https://nerds.xyz/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="NERDS.xyz &raquo; Google launches Kubernetes AI Conformance program to prepare clusters for machine learning Comments Feed" href="https://nerds.xyz/2026/04/kubernetes-ai-conformance/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://nerds.xyz/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://nerds.xyz/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='wp-block-image-inline-css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://nerds.xyz/wp-includes/blocks/image/style.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://nerds.xyz/wp-includes/blocks/paragraph/style.min.css */
+</style>
+
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<link data-minify="1" rel='stylesheet' id='coblocks-extensions-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/coblocks/dist/style-coblocks-extensions.css?ver=1774896889' media='all' />
+<link data-minify="1" rel='stylesheet' id='coblocks-animation-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/coblocks/dist/style-coblocks-animation.css?ver=1774896889' media='all' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link data-minify="1" rel='stylesheet' id='widgetopts-styles-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/widget-options/assets/css/widget-options.css?ver=1774896889' media='all' />
+<link rel='stylesheet' id='wp-components-css' href='https://nerds.xyz/wp-includes/css/dist/components/style.min.css?ver=6.9.4' media='all' />
+<link data-minify="1" rel='stylesheet' id='godaddy-styles-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/coblocks/includes/Dependencies/GoDaddy/Styles/build/latest.css?ver=1774896889' media='all' />
+<link rel='stylesheet' id='generate-comments-css' href='https://nerds.xyz/wp-content/themes/generatepress/assets/css/components/comments.min.css?ver=3.6.1' media='all' />
+<link rel='stylesheet' id='generate-widget-areas-css' href='https://nerds.xyz/wp-content/themes/generatepress/assets/css/components/widget-areas.min.css?ver=3.6.1' media='all' />
+<link rel='stylesheet' id='generate-style-css' href='https://nerds.xyz/wp-content/themes/generatepress/assets/css/main.min.css?ver=3.6.1' media='all' />
+<style id='generate-style-inline-css'>
+body{background-color:var(--base-2);color:var(--contrast);}a{color:#6e3dca;}a{text-decoration:underline;}.entry-title a, .site-branding a, a.button, .wp-block-button__link, .main-navigation a{text-decoration:none;}a:hover, a:focus, a:active{color:var(--contrast);}.wp-block-group__inner-container{max-width:1200px;margin-left:auto;margin-right:auto;}@media (max-width: 2000px) and (min-width: 769px){.inside-header{display:flex;flex-direction:column;align-items:center;}.site-logo, .site-branding{margin-bottom:1.5em;}#site-navigation{margin:0 auto;}.header-widget{margin-top:1.5em;}}.site-header .header-image{width:790px;}:root{--contrast:#222222;--contrast-2:#6e3dca;--contrast-3:#aeaee2;--base:#f0f0f0;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#1e73be;}:root .has-contrast-color{color:var(--contrast);}:root .has-contrast-background-color{background-color:var(--contrast);}:root .has-contrast-2-color{color:var(--contrast-2);}:root .has-contrast-2-background-color{background-color:var(--contrast-2);}:root .has-contrast-3-color{color:var(--contrast-3);}:root .has-contrast-3-background-color{background-color:var(--contrast-3);}:root .has-base-color{color:var(--base);}:root .has-base-background-color{background-color:var(--base);}:root .has-base-2-color{color:var(--base-2);}:root .has-base-2-background-color{background-color:var(--base-2);}:root .has-base-3-color{color:var(--base-3);}:root .has-base-3-background-color{background-color:var(--base-3);}:root .has-accent-color{color:var(--accent);}:root .has-accent-background-color{background-color:var(--accent);}.gp-modal:not(.gp-modal--open):not(.gp-modal--transition){display:none;}.gp-modal--transition:not(.gp-modal--open){pointer-events:none;}.gp-modal-overlay:not(.gp-modal-overlay--open):not(.gp-modal--transition){display:none;}.gp-modal__overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.2);display:flex;justify-content:center;align-items:center;z-index:10000;backdrop-filter:blur(3px);transition:opacity 500ms ease;opacity:0;}.gp-modal--open:not(.gp-modal--transition) .gp-modal__overlay{opacity:1;}.gp-modal__container{max-width:100%;max-height:100vh;transform:scale(0.9);transition:transform 500ms ease;padding:0 10px;}.gp-modal--open:not(.gp-modal--transition) .gp-modal__container{transform:scale(1);}.search-modal-fields{display:flex;}.gp-search-modal .gp-modal__overlay{align-items:flex-start;padding-top:25vh;background:var(--gp-search-modal-overlay-bg-color);}.search-modal-form{width:500px;max-width:100%;background-color:var(--gp-search-modal-bg-color);color:var(--gp-search-modal-text-color);}.search-modal-form .search-field, .search-modal-form .search-field:focus{width:100%;height:60px;background-color:transparent;border:0;appearance:none;color:currentColor;}.search-modal-fields button, .search-modal-fields button:active, .search-modal-fields button:focus, .search-modal-fields button:hover{background-color:transparent;border:0;color:currentColor;width:60px;}.top-bar{background-color:#6e3dca;color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:var(--base-3);}.main-title a,.main-title a:hover{color:var(--contrast);}.site-description{color:#3e3ece;}.mobile-menu-control-wrapper .menu-toggle,.mobile-menu-control-wrapper .menu-toggle:hover,.mobile-menu-control-wrapper .menu-toggle:focus,.has-inline-mobile-toggle #site-navigation.toggled{background-color:rgba(0, 0, 0, 0.02);}.main-navigation,.main-navigation ul ul{background-color:var(--base-3);}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:var(--contrast);}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:var(--accent);}button.menu-toggle:hover,button.menu-toggle:focus{color:var(--contrast);}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:var(--accent);}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:var(--accent);}.main-navigation ul ul{background-color:var(--base);}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{background-color:var(--base-3);}.entry-title a{color:var(--contrast);}.entry-title a:hover{color:var(--contrast-2);}.entry-meta{color:var(--contrast-2);}.sidebar .widget{background-color:var(--base-3);}.footer-widgets{background-color:var(--base-3);}.site-info{background-color:var(--base-3);}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:var(--contrast);background-color:var(--base-2);border-color:var(--base);}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:var(--contrast);background-color:var(--base-2);border-color:var(--contrast-3);}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:#55555e;}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:#3f4047;}a.generate-back-to-top{background-color:rgba( 0,0,0,0.4 );color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:rgba( 0,0,0,0.6 );color:#ffffff;}:root{--gp-search-modal-bg-color:var(--base-3);--gp-search-modal-text-color:var(--contrast);--gp-search-modal-overlay-bg-color:rgba(0,0,0,0.2);}@media (max-width:768px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:var(--contrast);}}.inside-top-bar.grid-container{max-width:1280px;}.inside-header.grid-container{max-width:1280px;}.site-main .wp-block-group__inner-container{padding:40px;}.separate-containers .paging-navigation{padding-top:20px;padding-bottom:20px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-40px;width:calc(100% + 80px);max-width:calc(100% + 80px);}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:20px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:20px;}.footer-widgets-container.grid-container{max-width:1280px;}.inside-site-info.grid-container{max-width:1280px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:30px;}.site-main .wp-block-group__inner-container{padding:30px;}.inside-top-bar{padding-right:30px;padding-left:30px;}.inside-header{padding-right:30px;padding-left:30px;}.widget-area .widget{padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}.footer-widgets-container{padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}.inside-site-info{padding-right:30px;padding-left:30px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-30px;width:calc(100% + 60px);max-width:calc(100% + 60px);}.one-container .site-main .paging-navigation{margin-bottom:20px;}}/* End cached CSS */.is-right-sidebar{width:30%;}.is-left-sidebar{width:30%;}.site-content .content-area{width:70%;}@media (max-width:768px){.main-navigation .menu-toggle,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav,.main-navigation:not(.slideout-navigation):not(.toggled) .main-nav > ul,.has-inline-mobile-toggle #site-navigation .inside-navigation > *:not(.navigation-search):not(.main-nav){display:none;}.nav-align-right .inside-navigation,.nav-align-center .inside-navigation{justify-content:space-between;}.has-inline-mobile-toggle .mobile-menu-control-wrapper{display:flex;flex-wrap:wrap;}.has-inline-mobile-toggle .inside-header{flex-direction:row;text-align:left;flex-wrap:wrap;}.has-inline-mobile-toggle .header-widget,.has-inline-mobile-toggle #site-navigation{flex-basis:100%;}.nav-float-left .has-inline-mobile-toggle #site-navigation{order:10;}}
+/*# sourceURL=generate-style-inline-css */
+</style>
+
+<link rel='stylesheet' id='addtoany-css' href='https://nerds.xyz/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.16' media='all' />
+<style id='generateblocks-inline-css'>
+:root{--gb-container-width:1200px;}.gb-container .wp-block-image img{vertical-align:middle;}.gb-grid-wrapper .wp-block-image{margin-bottom:0;}.gb-highlight{background:none;}.gb-shape{line-height:0;}
+/*# sourceURL=generateblocks-inline-css */
+</style>
+<script id="addtoany-core-js-before">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+a2a_config.callbacks.push({ready:function(){document.querySelectorAll(".a2a_s_undefined").forEach(function(emptyIcon){emptyIcon.parentElement.style.display="none";})}});
+
+//# sourceURL=addtoany-core-js-before
+</script>
+<script defer src="https://static.addtoany.com/menu/page.js" id="addtoany-core-js"></script>
+<script src="https://nerds.xyz/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" data-rocket-defer defer></script>
+<script src="https://nerds.xyz/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" data-rocket-defer defer></script>
+<script defer src="https://nerds.xyz/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.1" id="addtoany-jquery-js"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-NSKCGWCK" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["nerds.xyz"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-NSKCGWCK", {"googlesitekit_post_type":"post"});
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); }; 
+//# sourceURL=google_gtagjs-js-after
+</script>
+<link rel="https://api.w.org/" href="https://nerds.xyz/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://nerds.xyz/wp-json/wp/v2/posts/1011923" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nerds.xyz/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel='shortlink' href='https://nerds.xyz/?p=1011923' />
+<meta name="generator" content="Site Kit by Google 1.176.0" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="pingback" href="https://nerds.xyz/xmlrpc.php">
+
+<!-- Google AdSense meta tags added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense meta tags added by Site Kit -->
+
+<!-- Google AdSense snippet added by Site Kit -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8181778684701392&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+<link rel="icon" href="https://nerds.xyz/wp-content/uploads/2025/07/cropped-nerdsxyz-logo-512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://nerds.xyz/wp-content/uploads/2025/07/cropped-nerdsxyz-logo-512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://nerds.xyz/wp-content/uploads/2025/07/cropped-nerdsxyz-logo-512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://nerds.xyz/wp-content/uploads/2025/07/cropped-nerdsxyz-logo-512-270x270.png" />
+		<style id="wp-custom-css">
+			/* === Base & Typography === */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #111;
+  background: #fff;
+  margin: 0;
+}
+p { font-size: 1rem; line-height: 1.6; margin: 0 0 1.2em; max-width: 700px; }
+
+/* Headings */
+h1 { font-size: 2rem; font-weight: 700; line-height: 1.25; margin: 0 0 .75em; }
+h2 { font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 .75em; }
+h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.3; margin: 0 0 .75em; }
+
+/* Images */
+img { max-width: 100%; height: auto; display: block; margin: 1em auto; }
+img[width][height] { height: auto; } /* reduces CLS */
+
+/* Links & Buttons */
+a { color: #6b21a8; text-decoration: none; transition: color .2s ease; }
+a:hover { color: #4c1d95; text-decoration: underline; }
+.button, .wp-block-button__link {
+  background: #6b21a8; color: #fff; border-radius: 4px; padding: 10px 20px; text-decoration: none; transition: background .2s ease;
+}
+.button:hover, .wp-block-button__link:hover { background: #4c1d95; color: #fff; }
+
+/* Icons intact */
+.dashicons, [class*="fa-"], svg, i, .wp-menu-image:before, .menu-icon-post div.wp-menu-image:before {
+  font-family: "Dashicons","Font Awesome 6 Free","Font Awesome 6 Brands",inherit !important;
+  font-style: normal; font-weight: 400; line-height: 1;
+}
+
+/* RSS link + popup */
+.rss-subscribe { display: flex; align-items: center; font-size: 16px; color: #4b0082; margin: 10px 0; }
+.rss-subscribe svg { margin-right: 8px; flex-shrink: 0; }
+.rss-subscribe:hover { text-decoration: underline; color: #000; }
+#rss-popup { display: none !important; }
+
+/* === Header & Branding === */
+.site-header, .inside-header { padding: 15px 0; margin-top: 0 !important; }
+@media (max-width: 768px){ .site-header, .inside-header { padding: 5px 0; } }
+
+.site-logo img, .header-image img, .custom-logo, .logo img {
+  width: 100% !important; max-width: 300px !important; height: auto; display: block; margin: 0 auto;
+}
+@media (min-width: 768px){ .site-logo img, .header-image img, .custom-logo, .logo img { max-width: 600px !important; } }
+
+.site-description {
+  font-size: 18px; font-style: italic; font-weight: 400; letter-spacing: .3px; color: #444; margin-top: 4px; margin-left: 6px; display: block;
+}
+@media (max-width: 480px){ .site-description { font-size: 16px; text-align: left; margin-top: 6px; margin-left: 0; } }
+
+/* Navigation & search */
+.main-navigation .inside-navigation { padding: 12px 0; }
+.main-navigation .menu-item-has-children > a { pointer-events: auto; }
+.site-header .widget_search { display: block; width: 100%; text-align: center; margin: 20px 0 30px; clear: both; }
+
+/* Post dividers */
+.gb-container:not(:last-child){ border-bottom: 1px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 20px; }
+
+/* Social share */
+.nerds-social-share { display: flex; align-items: center; gap: 10px; margin: 20px 0; font-size: 14px; color: #444; }
+.nerds-social-share svg { width: 20px; height: 20px; fill: #6b21a8; transition: fill .2s ease, transform .2s ease; }
+.nerds-social-share .share-link:hover svg { fill: #8e24aa; transform: translateY(-2px) scale(1.05); }
+
+/* === SEO helpers === */
+.single .entry-header { margin-bottom: 1rem; }
+.single h1.entry-title { margin-bottom: .75rem; }
+
+/* Tags (visible, subtle) */
+.post-tags, .tags-links { display: block !important; font-size: .9rem; color: #444; margin-top: .75rem; }
+.post-tags a, .tags-links a { color: #5e2ca5; text-decoration: none; }
+.post-tags a:hover, .tags-links a:hover { color: #8e24aa; text-decoration: underline; }
+
+/* Hide only noisy bits */
+.comments-link, .entry-meta .comments, .entry-footer .comments { display: none !important; }
+
+/* === Footer === */
+.site-footer { text-align: center; padding: 20px 0; width: 100%; display: flex; justify-content: center; }
+.site-footer .footer-bar, .site-footer .inside-footer { display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
+.site-footer .footer-links { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 10px; }
+.site-info { display: none !important; }
+
+/* Sidebar */
+#right-sidebar .widget { margin-bottom: 0; padding-bottom: 0; }
+
+/* Featured articles widget */
+.featured-articles-widget { background: #f9f9f9; border: 1px solid #ddd; padding: 18px; border-radius: 6px; margin-bottom: 30px; }
+.featured-articles-widget h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; padding-bottom: 4px; border-bottom: 2px solid #e67e22; }
+.featured-articles-list { list-style: disc; margin-left: 20px; }
+.featured-articles-list li { margin-bottom: 14px; }
+.featured-articles-list a { font-size: .88rem; color: #5e2ca5; font-weight: 500; text-decoration: none; transition: color .2s ease; }
+.featured-articles-list a:hover { color: #a558ff; text-decoration: underline; }
+
+/* Mobile tweaks */
+@media (max-width: 600px){
+  body { font-size: 16px; }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+}
+
+/* Ensure featured/hero image scales cleanly */
+.single .post-image img,
+.single .wp-block-post-featured-image img,
+.single .featured-image img,
+.single figure.post-thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Hide duplicate hero only if a featured image exists,
+   and only if that duplicate sits in the first 1–2 blocks of content */
+.single:has(.post-image, .wp-block-post-featured-image, .featured-image, figure.post-thumbnail)
+  .entry-content > :is(.wp-block-image, figure.wp-block-image):nth-child(-n+2),
+.single:has(.post-image, .wp-block-post-featured-image, .featured-image, figure.post-thumbnail)
+  .entry-content > p:nth-child(-n+2) > img:first-child,
+/* common container wrappers as first or second block */
+.single:has(.post-image, .wp-block-post-featured-image, .featured-image, figure.post-thumbnail)
+  .entry-content > :is(.wp-block-group, .wp-block-columns, .wp-block-media-text, .wp-block-cover, .gb-container, .gb-grid-wrapper, .gb-grid-column):nth-child(-n+2)
+  :is(.wp-block-image, figure.wp-block-image, picture, img, p > img, a > img):first-of-type {
+  display: none !important;
+}
+
+/* Accessibility: clearer keyboard focus */
+a:focus-visible,
+.button:focus-visible,
+.wp-block-button__link:focus-visible {
+  outline: 2px solid #6b21a8;
+  outline-offset: 2px;
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nerds-social-share .share-link:hover svg { transform: none; }
+}
+		</style>
+		<link data-minify="1" rel='stylesheet' id='dashicons-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1774896889' media='all' />
+<link data-minify="1" rel='stylesheet' id='multiple-authors-widget-css-css' href='https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/publishpress-authors/src/assets/css/multiple-authors-widget.css?ver=1774896889' media='all' />
+<style id='multiple-authors-widget-css-inline-css'>
+:root { --ppa-color-scheme: #655997; --ppa-color-scheme-active: #514779; }
+/*# sourceURL=multiple-authors-widget-css-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='multiple-authors-fontawesome-css' href='https://nerds.xyz/wp-content/cache/min/1/ajax/libs/font-awesome/6.7.1/css/all.min.css?ver=1774896890' media='all' />
+
+<meta name="generator" content="WP Rocket 3.21.0.1" data-wpr-features="wpr_defer_js wpr_minify_js wpr_minify_css wpr_host_fonts_locally wpr_desktop" /></head>
+
+<body class="wp-singular post-template-default single single-post postid-1011923 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-generatepress right-sidebar nav-float-right one-container header-aligned-left dropdown-hover featured-image-active" itemtype="https://schema.org/Blog" itemscope>
+	<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<header class="site-header has-inline-mobile-toggle" id="masthead" aria-label="Site"  itemtype="https://schema.org/WPHeader" itemscope>
+			<div data-rocket-location-hash="7b1905bee9485bd69f7f18cb93e136b2" class="inside-header grid-container">
+				<div data-rocket-location-hash="7fc2137eb3c5f5924a68bbb540616a2a" class="site-logo">
+					<a href="https://nerds.xyz/" rel="home">
+						<img  class="header-image is-logo-image" alt="NERDS.xyz" src="https://nerds.xyz/wp-content/uploads/2025/08/Nerds-main.jpg" width="1224" height="457" />
+					</a>
+				</div>	<nav class="main-navigation mobile-menu-control-wrapper" id="mobile-menu-control-wrapper" aria-label="Mobile Toggle">
+		<div class="menu-bar-items">	<span class="menu-bar-item">
+		<a href="#" role="button" aria-label="Open search" aria-haspopup="dialog" aria-controls="gp-search" data-gpmodal-trigger="gp-search"><span class="gp-icon icon-search"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span></a>
+	</span>
+	</div>		<button data-nav="site-navigation" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+			<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span><span class="screen-reader-text">Menu</span>		</button>
+	</nav>
+			<nav class="main-navigation has-menu-bar-items sub-menu-right" id="site-navigation" aria-label="Primary"  itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container">
+								<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+					<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span><span class="mobile-menu">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-menu" class=" menu sf-menu"><li id="menu-item-1000762" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1000762"><a href="https://nerds.xyz/">Home</a></li>
+<li id="menu-item-1000754" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1000754"><a href="https://nerds.xyz/category/artificial-intelligence/">AI</a></li>
+<li id="menu-item-1000752" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1000752"><a href="https://nerds.xyz/category/linux/">Linux</a></li>
+<li id="menu-item-1003600" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1003600"><a href="https://nerds.xyz/category/open-source/">Open source</a></li>
+<li id="menu-item-1000753" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1000753"><a href="https://nerds.xyz/category/hardware/">Hardware</a></li>
+<li id="menu-item-1003601" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1003601"><a href="https://nerds.xyz/category/security/">Security</a></li>
+<li id="menu-item-1006296" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-1006296"><a href="https://nerds.xyz/blog/">All Articles</a></li>
+</ul></div><div class="menu-bar-items">	<span class="menu-bar-item">
+		<a href="#" role="button" aria-label="Open search" aria-haspopup="dialog" aria-controls="gp-search" data-gpmodal-trigger="gp-search"><span class="gp-icon icon-search"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span></a>
+	</span>
+	</div>			</div>
+		</nav>
+					</div>
+		</header>
+		
+	<div data-rocket-location-hash="5ab50cf487e2c225ca702e143dc395df" class="site grid-container container hfeed" id="page">
+				<div data-rocket-location-hash="81d953142d21eae6d4f639a4248f89e1" class="site-content" id="content">
+			
+	<div data-rocket-location-hash="0473109c5c32c4e7176a109b3dc396b1" class="content-area" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-1011923" class="post-1011923 post type-post status-publish format-standard has-post-thumbnail hentry category-artificial-intelligence category-google category-kubernetes tag-ai-infrastructure tag-cloud-computing tag-container-orchestration tag-devops tag-google tag-google-kubernetes-engine tag-kubernetes tag-kubernetes-ai-conformance tag-machine-learning-infrastructure tag-open-source-ai" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+				<div class="featured-image page-header-image-single grid-container grid-parent">
+			<img width="1000" height="525" src="https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png" class="attachment-full size-full wp-post-image" alt="kubernetes ai conformance google ai kubernetes" itemprop="image" decoding="async" fetchpriority="high" srcset="https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes.png 1000w, https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes-300x158.png 300w, https://nerds.xyz/wp-content/uploads/2026/04/kubernetes-ai-conformance-google-ai-kubernetes-768x403.png 768w" sizes="(max-width: 1000px) 100vw, 1000px">		</div>
+					<header class="entry-header">
+				<h1 class="entry-title" itemprop="headline">Google launches Kubernetes AI Conformance program to prepare clusters for machine learning</h1>		<div class="entry-meta">
+			<span class="posted-on"><time class="entry-date published" datetime="2026-04-06T20:16:37-04:00" itemprop="datePublished">April 6, 2026</time></span> 
+                
+                    <!--begin code -->
+
+                    
+                    <span class="pp-multiple-authors-boxes-wrapper pp-multiple-authors-wrapper pp-multiple-authors-layout-inline multiple-authors-target-action box-post-id-93 box-instance-id-1 ppma_boxes_93"
+                    data-post_id="93"
+                    data-instance_id="1"
+                    data-additional_class="pp-multiple-authors-layout-inline.multiple-authors-target-action"
+                    data-original_class="pp-multiple-authors-boxes-wrapper pp-multiple-authors-wrapper box-post-id-93 box-instance-id-1">
+                                                <span class="ppma-layout-prefix"></span>
+                        <span class="ppma-author-category-wrap">
+                                                                                                                                    <span class="ppma-category-group ppma-category-group-1 category-index-0">
+                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                    
+                                                            <span class="pp-author-boxes-avatar-details">
+                                                                <span class="pp-author-boxes-name multiple-authors-name"><a href="https://nerds.xyz/author/brian-fagioli/" rel="author" title="Brian Fagioli" class="author url fn">Brian Fagioli</a></span>                                                                                                                                                                                                
+                                                                                                                                
+                                                                                                                            </span>
+                                                                                                                                                                                                                                                                                                                                                                                            </span>
+                                                                                                                        </span>
+                        <span class="ppma-layout-suffix"></span>
+                                            </span>
+                    <!--end code -->
+                    
+                
+                            
+        		</div>
+					</header>
+			
+		<div class="entry-content" itemprop="text">
+			<div class="addtoany_share_save_container addtoany_content addtoany_content_top"><div class="a2a_kit a2a_kit_size_32 addtoany_list" data-a2a-url="https://nerds.xyz/2026/04/kubernetes-ai-conformance/" data-a2a-title="Google launches Kubernetes AI Conformance program to prepare clusters for machine learning"><a class="a2a_button_x" href="https://www.addtoany.com/add_to/x?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="X" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_reddit" href="https://www.addtoany.com/add_to/reddit?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Reddit" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Email" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div>
+<p>Artificial intelligence workloads are <em>exploding</em> right now, and the infrastructure powering them is starting to feel the pressure. That reality appears to be driving a new move from Google and the broader Kubernetes community, which just <a href="https://opensource.googleblog.com/2026/04/kubernetes-goes-ai-first-unpacking-the-new-ai-conformance-program.html" target="_blank" rel="noopener">unveiled</a> something called the Certified Kubernetes AI Conformance program.</p>
+
+
+
+<p>The idea is pretty straightforward. Kubernetes already has a certification system that ensures platforms behave the same way across vendors. The new AI Conformance layer adds extra requirements aimed specifically at machine learning and AI workloads. In other words, if companies are going to run massive models and inference pipelines on Kubernetes clusters, the ecosystem wants a common standard to make sure things actually work the way developers expect.</p>
+
+
+
+<p>Traditional Kubernetes environments were originally built with cloud apps in mind. Think stateless web services, microservices, and scalable backend systems. AI workloads are a different beast entirely. Training models or serving inference often involves specialized hardware, heavy networking demands, and data pipelines that don’t behave like typical applications.</p>
+
+
+
+<p>That’s where this new certification effort comes in.</p>
+
+
+
+<p>The AI Conformance program essentially sits on top of the existing Kubernetes certification tests. Any platform that wants the AI-ready badge first has to pass the regular Kubernetes checks and then meet additional requirements tailored to AI workloads.</p>
+
+
+
+<p>This effort is being built out in the open source community with participation from multiple companies. Engineers from Google are involved alongside contributors tied to Microsoft and Red Hat. The goal is to create something that works across the industry rather than locking AI infrastructure into one particular cloud provider.</p>
+
+
+
+<p>One of the biggest changes revolves around Dynamic Resource Allocation, or DRA. Instead of asking for a generic GPU, developers can request accelerators based on specific attributes. That might include things like memory size or hardware capabilities. For data scientists deploying models, that extra level of control can make a real difference.</p>
+
+
+
+<p>Scheduling is another pain point the program tries to address. Large distributed training jobs often run into a frustrating scenario where some containers launch while others sit around waiting for resources. That wastes expensive GPU time. The AI Conformance guidelines promote an “all or nothing” scheduling model so jobs only start once the full set of resources is ready.</p>
+
+
+
+<p>Autoscaling also gets a tweak. Normally Kubernetes scales based on CPU or memory usage. AI workloads care much more about accelerator activity. Under the new program, clusters need to support scaling based on metrics such as GPU or TPU utilization.</p>
+
+
+
+<p>Observability is another piece of the puzzle. Running AI at scale requires visibility into performance metrics tied to accelerators. The new conformance rules push platforms to expose standardized metrics so teams can track inference latency, throughput, and hardware health more easily.</p>
+
+
+
+<p>Major managed Kubernetes platforms are already aligning with the effort. Services such as Google Kubernetes Engine and Azure Kubernetes Service are expected to support the capabilities required for certification.</p>
+
+
+
+<p>For folks building AI infrastructure today, this may sound like a lot of plumbing work. But the reality is simple. AI workloads are becoming a normal part of modern infrastructure. If Kubernetes wants to remain the default platform for cloud-native computing, it has to handle those workloads smoothly.</p>
+
+
+
+<p>The Kubernetes community plans to expand the AI Conformance program throughout 2026 with automated certification testing and additional requirements for inference patterns and security.</p>
+
+
+
+<p>In the long run, the hope is that AI readiness simply becomes part of Kubernetes itself rather than something organizations have to engineer on their own.</p>
+
+                
+                    <!--begin code -->
+
+                    
+                    <div class="pp-multiple-authors-boxes-wrapper pp-multiple-authors-wrapper pp-multiple-authors-layout-boxed multiple-authors-target-the-content box-post-id-96 box-instance-id-1 ppma_boxes_96"
+                    data-post_id="96"
+                    data-instance_id="1"
+                    data-additional_class="pp-multiple-authors-layout-boxed.multiple-authors-target-the-content"
+                    data-original_class="pp-multiple-authors-boxes-wrapper pp-multiple-authors-wrapper box-post-id-96 box-instance-id-1">
+                                                                                    <h2 class="widget-title box-header-title">Author</h2>
+                                                                            <span class="ppma-layout-prefix"></span>
+                        <div class="ppma-author-category-wrap">
+                                                                                                                                    <span class="ppma-category-group ppma-category-group-1 category-index-0">
+                                                                                                                        <ul class="pp-multiple-authors-boxes-ul author-ul-0">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                    <li class="pp-multiple-authors-boxes-li author_index_0 author_brian-fagioli has-avatar">
+                                                                                                                                                                                    <div class="pp-author-boxes-avatar">
+                                                                    <div class="avatar-image">
+                                                                                                                                                                                                                <img alt='Brian Fagioli, journalist at NERDS.xyz' src='https://nerds.xyz/wp-content/uploads/2025/07/brian-fagioli-author-photo.png' srcset='https://nerds.xyz/wp-content/uploads/2025/07/brian-fagioli-author-photo.png' class='multiple_authors_guest_author_avatar avatar' height='80' width='80'/>                                                                                                                                                                                                            </div>
+                                                                                                                                    </div>
+                                                            
+                                                            <div class="pp-author-boxes-avatar-details">
+                                                                <div class="pp-author-boxes-name multiple-authors-name"><a href="https://nerds.xyz/author/brian-fagioli/" rel="author" title="Brian Fagioli" class="author url fn">Brian Fagioli</a></div>                                                                                                                                                                                                    
+                                                                                                                                            <div class="pp-author-boxes-description multiple-authors-description author-description-0">
+                                                                                                                                                    <p>Brian Fagioli is a technology journalist and founder of NERDS.xyz. Known for covering Linux, open source software, AI, and cybersecurity, he delivers no-nonsense tech news for real nerds.</p>
+                                                                                                                                                </div>
+                                                                                                                                                                                                    
+                                                                                                                                <a class="ppma-author-user_email-profile-data ppma-author-field-meta ppma-author-field-type-email" aria-label="Email" href="mailto:brian@nerds.xyz"  target="_self"><span class="dashicons dashicons-email-alt"></span> </a>
+                                                                                                                            </div>
+                                                                                                                                                                                                                        </li>
+                                                                                                                                                                                                                                                                                        </ul>
+                                                                            </span>
+                                                                                                                        </div>
+                        <span class="ppma-layout-suffix"></span>
+                                            </div>
+                    <!--end code -->
+                    
+                
+                            
+        <div class="addtoany_share_save_container addtoany_content addtoany_content_bottom"><div class="a2a_kit a2a_kit_size_32 addtoany_list" data-a2a-url="https://nerds.xyz/2026/04/kubernetes-ai-conformance/" data-a2a-title="Google launches Kubernetes AI Conformance program to prepare clusters for machine learning"><a class="a2a_button_x" href="https://www.addtoany.com/add_to/x?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="X" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_threads" href="https://www.addtoany.com/add_to/threads?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Threads" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_reddit" href="https://www.addtoany.com/add_to/reddit?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Reddit" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_email" href="https://www.addtoany.com/add_to/email?linkurl=https%3A%2F%2Fnerds.xyz%2F2026%2F04%2Fkubernetes-ai-conformance%2F&amp;linkname=Google%20launches%20Kubernetes%20AI%20Conformance%20program%20to%20prepare%20clusters%20for%20machine%20learning" title="Email" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div>		</div>
+
+				<footer class="entry-meta" aria-label="Entry meta">
+			<span class="cat-links"><span class="gp-icon icon-categories"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 112c0-26.51 21.49-48 48-48h110.014a48 48 0 0143.592 27.907l12.349 26.791A16 16 0 00228.486 128H464c26.51 0 48 21.49 48 48v224c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112z" /></svg></span><span class="screen-reader-text">Categories </span><a href="https://nerds.xyz/category/artificial-intelligence/" rel="category tag">Artificial Intelligence</a>, <a href="https://nerds.xyz/category/google/" rel="category tag">Google</a>, <a href="https://nerds.xyz/category/kubernetes/" rel="category tag">Kubernetes</a></span> <span class="tags-links"><span class="gp-icon icon-tags"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M20 39.5c-8.836 0-16 7.163-16 16v176c0 4.243 1.686 8.313 4.687 11.314l224 224c6.248 6.248 16.378 6.248 22.626 0l176-176c6.244-6.244 6.25-16.364.013-22.615l-223.5-224A15.999 15.999 0 00196.5 39.5H20zm56 96c0-13.255 10.745-24 24-24s24 10.745 24 24-10.745 24-24 24-24-10.745-24-24z"/><path d="M259.515 43.015c4.686-4.687 12.284-4.687 16.97 0l228 228c4.686 4.686 4.686 12.284 0 16.97l-180 180c-4.686 4.687-12.284 4.687-16.97 0-4.686-4.686-4.686-12.284 0-16.97L479.029 279.5 259.515 59.985c-4.686-4.686-4.686-12.284 0-16.97z" /></svg></span><span class="screen-reader-text">Tags </span><a href="https://nerds.xyz/tag/ai-infrastructure/" rel="tag">AI infrastructure</a>, <a href="https://nerds.xyz/tag/cloud-computing/" rel="tag">cloud computing</a>, <a href="https://nerds.xyz/tag/container-orchestration/" rel="tag">container orchestration</a>, <a href="https://nerds.xyz/tag/devops/" rel="tag">DevOps</a>, <a href="https://nerds.xyz/tag/google/" rel="tag">Google</a>, <a href="https://nerds.xyz/tag/google-kubernetes-engine/" rel="tag">Google Kubernetes Engine</a>, <a href="https://nerds.xyz/tag/kubernetes/" rel="tag">Kubernetes</a>, <a href="https://nerds.xyz/tag/kubernetes-ai-conformance/" rel="tag">Kubernetes AI Conformance</a>, <a href="https://nerds.xyz/tag/machine-learning-infrastructure/" rel="tag">machine learning infrastructure</a>, <a href="https://nerds.xyz/tag/open-source-ai/" rel="tag">open source AI</a></span> 		<nav id="nav-below" class="post-navigation" aria-label="Posts">
+			<div class="nav-previous"><span class="gp-icon icon-arrow-left"><svg viewBox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 138.212c0 2.265-1.133 4.813-2.832 6.512L64.276 256.001l111.317 111.277c1.7 1.7 2.832 4.247 2.832 6.513 0 2.265-1.133 4.813-2.832 6.512L161.43 394.46c-1.7 1.7-4.249 2.832-6.514 2.832-2.266 0-4.816-1.133-6.515-2.832L16.407 262.514c-1.699-1.7-2.832-4.248-2.832-6.513 0-2.265 1.133-4.813 2.832-6.512l131.994-131.947c1.7-1.699 4.249-2.831 6.515-2.831 2.265 0 4.815 1.132 6.514 2.831l14.163 14.157c1.7 1.7 2.832 3.965 2.832 6.513z" fill-rule="nonzero" /></svg></span><span class="prev"><a href="https://nerds.xyz/2026/04/anthropic-google-cloud-tpu-expansion/" rel="prev">Anthropic doubles down on Google Cloud TPUs as AI arms race heats up</a></span></div>		</nav>
+				</footer>
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2026/04/kubernetes-ai-conformance/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://nerds.xyz/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-form-comment"><label for="comment" class="screen-reader-text">Comment</label><textarea autocomplete="new-password"  id="b34b7cb31f"  name="b34b7cb31f"   cols="45" rows="8" required></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script data-noptimize>document.getElementById("comment").setAttribute( "id", "ad324033978df4a3da6f7178c63adc51" );document.getElementById("b34b7cb31f").setAttribute( "id", "comment" );</script></p><label for="author" class="screen-reader-text">Name</label><input placeholder="Name *" id="author" name="author" type="text" value="" size="30" required />
+<label for="email" class="screen-reader-text">Email</label><input placeholder="Email *" id="email" name="email" type="email" value="" size="30" required />
+<label for="url" class="screen-reader-text">Website</label><input placeholder="Website" id="url" name="url" type="url" value="" size="30" />
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='1011923' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	<div data-rocket-location-hash="8b87cb5e38ead5348af87779c1e5fdcc" class="widget-area sidebar is-right-sidebar" id="right-sidebar">
+	<div class="inside-right-sidebar">
+		<aside id="custom_html-30" class="widget_text widget inner-padding widget_custom_html"><div class="textwidget custom-html-widget"><div style="background: #f3f0fb; border: 1px solid #b39ddb; padding: 20px; border-radius: 8px; font-family: Inter, sans-serif;">
+  <p style="margin: 0 0 12px; font-size: 17px; font-weight: 700; color: #5e35b1; text-align: center;">
+   Join our newsletter!
+  </p>
+  <p style="font-size: 14px; color: #333; margin: 0 0 18px; text-align: center;">
+    Real tech news for real nerds
+  </p>
+  <div style="display: flex; justify-content: center;">
+    <a href="https://nerds.beehiiv.com/subscribe" 
+       target="_blank" 
+       style="display: inline-block; padding: 11px 20px; background-color: #7e5bef; color: white; text-decoration: none; font-weight: 600; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Join
+    </a>
+  </div>
+</div></div></aside><aside id="block-24" class="widget inner-padding widget_block"><a class="rss-subscribe" href="https://nerds.xyz/feed/ " target="_blank" rel="noopener">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4b0082">
+    <path d="M6.18 17.82a2 2 0 1 1 0-2.83 2 2 0 0 1 0 2.83zM4 10v2a8 8 0 0 1 8 8h2c0-5.52-4.48-10-10-10zm0-4v2c8.84 0 16 7.16 16 16h2c0-9.94-8.06-18-18-18z"/>
+  </svg>
+  <span>Subscribe via RSS</span>
+</a></aside><aside id="text-3" class="widget inner-padding widget_text">			<div class="textwidget"><div class="featured-articles-widget"><h2>Featured Articles</h2><ul class="featured-articles-list"><li><a href="https://nerds.xyz/2026/02/joanna-stern-wsj-exit/">Joanna Stern’s exit from The Wall Street Journal is a shock, and a sign of the times</a></li><li><a href="https://nerds.xyz/2026/01/irs-free-file-2026/">Stop paying TurboTax when IRS Free File covers most taxpayers for FREE</a></li><li><a href="https://nerds.xyz/2025/10/steve-jobs-coin-2026-us-mint/">Steve Jobs honored on new 2026 U.S. coin celebrating innovation</a></li><li><a href="https://nerds.xyz/2025/10/sora-2-ai-martin-luther-king-jr/">Sora 2 AI is making disturbing Martin Luther King Jr. videos and it needs to stop</a></li><li><a href="https://nerds.xyz/2025/09/chatgpt-5-helped-me-buy-car/">I used ChatGPT 5 to help me buy a car and here’s what happened</a></li></ul></div>
+</div>
+		</aside><aside id="block-26" class="widget inner-padding widget_block widget_media_image">
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="929" height="697" src="https://nerds.xyz/wp-content/uploads/2025/06/D52E4201-BE04-4EEC-8722-57723E3DCDD6.jpeg" alt="" class="wp-image-1000298" srcset="https://nerds.xyz/wp-content/uploads/2025/06/D52E4201-BE04-4EEC-8722-57723E3DCDD6.jpeg 929w, https://nerds.xyz/wp-content/uploads/2025/06/D52E4201-BE04-4EEC-8722-57723E3DCDD6-300x225.jpeg 300w, https://nerds.xyz/wp-content/uploads/2025/06/D52E4201-BE04-4EEC-8722-57723E3DCDD6-768x576.jpeg 768w" sizes="auto, (max-width: 929px) 100vw, 929px" /></figure>
+</aside>	</div>
+</div>
+
+	</div>
+</div>
+
+
+<div class="no-wpr-lazyrender site-footer">
+				<div id="footer-widgets" class="site footer-widgets">
+				<div class="footer-widgets-container grid-container">
+					<div class="inside-footer-widgets">
+							<div class="footer-widget-1">
+		<aside id="block-6" class="widget inner-padding widget_block"><style>
+.nerds-footer {
+  text-align: center;
+  padding: 20px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #000;
+  line-height: 1.6;
+}
+
+.nerds-footer .footer-links {
+  margin-top: 10px;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nerds-footer .footer-links a {
+  color: #6a1b9a;
+  text-decoration: underline;
+  margin: 0 10px;
+  display: inline-block;
+}
+</style>
+
+<div class="nerds-footer">
+  <div>© 2026<br>NERDS.xyz<br>All rights reserved</div>
+  <div class="footer-links">
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/editorial-policy">Editorial Policy</a>
+  </div>
+</div></aside>	</div>
+		<div class="footer-widget-2">
+			</div>
+		<div class="footer-widget-3">
+			</div>
+						</div>
+				</div>
+			</div>
+					<footer class="site-info" aria-label="Site"  itemtype="https://schema.org/WPFooter" itemscope>
+			<div class="inside-site-info grid-container">
+								<div class="copyright-bar">
+					<span class="copyright">&copy; 2026 NERDS.xyz</span> &bull; Built with <a href="https://generatepress.com" itemprop="url">GeneratePress</a>				</div>
+			</div>
+		</footer>
+		</div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/generatepress/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="generate-a11y">
+!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("pointerdown",(function(){e.classList.add("using-mouse")}),{passive:!0}),e.addEventListener("keydown",(function(){e.classList.remove("using-mouse")}),{passive:!0})}}();
+</script>
+	<div data-rocket-location-hash="974c0fdf780773fd0a28ada0e18f9f90" class="gp-modal gp-search-modal" id="gp-search" role="dialog" aria-modal="true" aria-label="Search">
+		<div data-rocket-location-hash="16617bc5e7bf51a2c383e1c1f389c43a" class="gp-modal__overlay" tabindex="-1" data-gpmodal-close>
+			<div data-rocket-location-hash="4b7f0602568b3e218ac2ca21f5b35983" class="gp-modal__container">
+					<form role="search" method="get" class="search-modal-form" action="https://nerds.xyz/">
+		<label for="search-modal-input" class="screen-reader-text">Search for:</label>
+		<div class="search-modal-fields">
+			<input id="search-modal-input" type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+			<button aria-label="Search"><span class="gp-icon icon-search"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path fill-rule="evenodd" clip-rule="evenodd" d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z" /></svg></span></button>
+		</div>
+			</form>
+				</div>
+		</div>
+	</div>
+	<style id="mutliple-author-box-inline-style">.pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-avatar img { 
+        width: 80px !important; 
+        height: 80px !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-avatar img {
+        border-radius: 50% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-meta a {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-meta a {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-meta a:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_email-profile-data {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_email-profile-data {
+        border-radius: 100% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_email-profile-data {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_email-profile-data:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_url-profile-data {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_url-profile-data {
+        border-radius: 100% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_url-profile-data {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .ppma-author-user_url-profile-data:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-recent-posts-title {
+        border-bottom-style: dotted !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-author-boxes-recent-posts-item {
+        text-align: left !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-multiple-authors-boxes-li {
+        border-style: none !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action .pp-multiple-authors-boxes-li {
+        color: #3c434a !important; 
+    }
+
+.pp-multiple-authors-layout-inline ul.pp-multiple-authors-boxes-ul {
+            display: flex;
+        }
+
+        .pp-multiple-authors-layout-inline ul.pp-multiple-authors-boxes-ul li {
+            margin-right: 10px
+        }.pp-multiple-authors-boxes-wrapper.pp-multiple-authors-wrapper.pp-multiple-authors-layout-inline.multiple-authors-target-action.box-post-id-93.box-instance-id-1.ppma_boxes_93 ul li > div:nth-child(1) {flex: 1 !important;}.pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-avatar img { 
+        width: 80px !important; 
+        height: 80px !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-avatar img {
+        border-radius: 50% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-meta a {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-meta a {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-meta a:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_email-profile-data {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_email-profile-data {
+        border-radius: 100% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_email-profile-data {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_email-profile-data:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_url-profile-data {
+        background-color: #655997 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_url-profile-data {
+        border-radius: 100% !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_url-profile-data {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .ppma-author-user_url-profile-data:hover {
+        color: #ffffff !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-author-boxes-recent-posts-title {
+        border-bottom-style: dotted !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-multiple-authors-boxes-li {
+        border-style: solid !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-multiple-authors-boxes-li {
+        border-width: 1px !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-multiple-authors-boxes-li {
+        border-color: #999 !important; 
+    }
+
+    .pp-multiple-authors-boxes-wrapper.pp-multiple-authors-layout-boxed.multiple-authors-target-the-content .pp-multiple-authors-boxes-li {
+        color: #3c434a !important; 
+    }
+
+</style><script data-minify="1" src="https://nerds.xyz/wp-content/cache/min/1/wp-content/plugins/coblocks/dist/js/coblocks-animation.js?ver=1774896890" id="coblocks-animation-js" data-rocket-defer defer></script>
+<script id="wpil-frontend-script-js-extra">
+var wpilFrontend = {"ajaxUrl":"/wp-admin/admin-ajax.php","postId":"1011923","postType":"post","openInternalInNewTab":"0","openExternalInNewTab":"0","disableClicks":"0","openLinksWithJS":"0","trackAllElementClicks":"0","clicksI18n":{"imageNoText":"Image in link: No Text","imageText":"Image Title: ","noText":"No Anchor Text Found"}};
+//# sourceURL=wpil-frontend-script-js-extra
+</script>
+<script src="https://nerds.xyz/wp-content/plugins/link-whisper/js/frontend.min.js?ver=1772794144" id="wpil-frontend-script-js" data-rocket-defer defer></script>
+<script id="generate-menu-js-before">
+var generatepressMenu = {"toggleOpenedSubMenus":true,"openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};
+//# sourceURL=generate-menu-js-before
+</script>
+<script src="https://nerds.xyz/wp-content/themes/generatepress/assets/js/menu.min.js?ver=3.6.1" id="generate-menu-js" data-rocket-defer defer></script>
+<script data-minify="1" src="https://nerds.xyz/wp-content/cache/min/1/wp-content/themes/generatepress/assets/dist/modal.js?ver=1774896890" id="generate-modal-js" data-rocket-defer defer></script>
+<script src="https://nerds.xyz/wp-includes/js/comment-reply.min.js?ver=6.9.4" id="comment-reply-js" async data-wp-strategy="async" fetchpriority="low"></script>
+
+<!-- Google Reader Revenue Manager snippet added by Site Kit -->
+<script id="google_swgjs-js-before">
+(self.SWG_BASIC=self.SWG_BASIC||[]).push(basicSubscriptions=>{basicSubscriptions.init({"type":"NewsArticle","isPartOfType":["Product"],"isPartOfProductId":"CAowho3cCw:openaccess","clientOptions":{"theme":"light","lang":"en-US"}});});
+//# sourceURL=google_swgjs-js-before
+</script>
+<script src="https://news.google.com/swg/js/v1/swg-basic.js" id="google_swgjs-js" async data-wp-strategy="async"></script>
+
+<!-- End Google Reader Revenue Manager snippet added by Site Kit -->
+<script src="https://nerds.xyz/wp-content/plugins/wp-rocket/assets/js/heartbeat.js?ver=3.21.0.1" id="heartbeat-js" data-rocket-defer defer></script>
+
+<script>var rocket_beacon_data = {"ajax_url":"https:\/\/nerds.xyz\/wp-admin\/admin-ajax.php","nonce":"5f4ad8b0b7","url":"https:\/\/nerds.xyz\/2026\/04\/kubernetes-ai-conformance","is_mobile":false,"width_threshold":1600,"height_threshold":700,"delay":500,"debug":null,"status":{"atf":true,"lrc":true,"preload_fonts":true,"preconnect_external_domain":true},"elements":"img, video, picture, p, main, div, li, svg, section, header, span","lrc_threshold":1800,"preload_fonts_exclusions":["api.fontshare.com","cdn.fontshare.com"],"processed_extensions":["woff2","woff","ttf"],"external_font_exclusions":[],"preconnect_external_domain_elements":["link","script","iframe"],"preconnect_external_domain_exclusions":["static.cloudflareinsights.com","rel=\"profile\"","rel=\"preconnect\"","rel=\"dns-prefetch\"","rel=\"icon\""]}</script><script data-name="wpr-wpr-beacon" src='https://nerds.xyz/wp-content/plugins/wp-rocket/assets/js/wpr-beacon.min.js' async></script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1775521007 -->

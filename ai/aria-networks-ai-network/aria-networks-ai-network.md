@@ -1,0 +1,59 @@
+<!--
+title: Aria Networks：模型浮点运算利用率（MFU）将定义AI基础设施时代
+cover: https://cdn.thenewstack.io/media/2026/04/2d08ea2b-summertime-flag-2uvqdetr5ai-unsplash-scaled.jpg
+summary: Aria Networks推出“会思考的网络”倡议，以模型浮点运算利用率（MFU）定义AI基础设施时代。该方案结合SONiC、精细遥测和智能代理，优化网络性能与token效率，减少手动工作流，实现人机协作，提升AI集群投资回报。
+-->
+
+Aria Networks推出“会思考的网络”倡议，以模型浮点运算利用率（MFU）定义AI基础设施时代。该方案结合SONiC、精细遥测和智能代理，优化网络性能与token效率，减少手动工作流，实现人机协作，提升AI集群投资回报。
+
+> 译自：[Model Flop Utilization is the metric Aria Networks says will define the AI infrastructure era](https://thenewstack.io/aria-networks-ai-network/)
+> 
+> 作者：Adrian Bridgwater
+
+随着全球提供AI基础设施服务的竞争加速，[Aria Networks](https://arianetworks.com/)声称其已设计出一种“根本不同的方法”来管理网络运作，以及在智能代理时代如何最大化token效率。
+
+这项名为“会思考的网络”的倡议于周二公布，总部位于Palo Alto的Aria Networks表示，其中融合了多种技术和方法，包括用于优化[模型浮点运算利用率](https://lmms-engine.readthedocs.io/en/latest/reference/mfu.html)（MFU）的工具、该公司最新强化的Aria SONiC（一个用于分布式优化数据中心的开源网络操作系统）、端到端超精细[遥测](https://thenewstack.io/data-telemetry-is-the-lifeline-of-modern-analytics-and-ai/)，以及跨网络堆栈运行的智能代理。
+
+## 什么是模型浮点运算利用率？
+
+Aria Networks将其描述为AI工厂时代的“决定性指标”，MFU衡量数据中心硬件性能效率与理论峰值吞吐量之间的关系。它可作为评估AI集群是否物有所值的代理指标。
+
+MFU直接决定了token效率和每token成本。随着token成为Aria所称的“智能货币”，网络基础设施效率影响着[梯度](https://www.grokmountain.com/p/understanding-gradients-in-ai-model)（更新模型权重的数学信号）的同步速度、[键值缓存](https://huggingface.co/blog/not-lain/kv-caching)的有效传输（以避免模型重复处理之前的token），以及作业如何无缝地调度到数千个GPU、TPU和NPU等。
+
+> “如果网络未能发挥最佳性能，其他所有优化投资的收益都将无法实现。”——Mansour Karam，Aria Networks创始人兼首席执行官
+
+## 集群内部的网络
+
+[Mansour Karam](https://www.linkedin.com/in/mansourkaram/)，Aria Networks的创始人兼首席执行官，表示网络运营团队和软件工程师需要意识到，为什么他们的网络开支（他估计仅占集群总成本的10-15%）也是“最高杠杆”的投资，即决定成败界限最明显的区域。
+
+他之所以这样断言，是因为网络团队可以优化作业调度器、存储层或KV缓存传输算法，但这些优化中的每一项都依赖于一个优化的网络才能达到预期效果。
+
+Karam对《The New Stack》表示：“如果网络未能发挥最佳性能，其他所有投资的收益都将无法实现。”“Aria解决方案区分了影响数据平面、控制平面和管理平面的更新。影响数据平面的更新与仅影响管理平面的升级的处理方式截然不同。”
+
+## 精心设计的混合架构
+
+他解释说，他的公司采用了混合架构，并且是经过深思熟虑的。Aria代理层跨越堆栈的多个层面——从交换ASIC层（一种专门用于特定方式路由数据包的专用集成电路）到控制器（配置和编排网络流量的地方），再到云端。
+
+在这种混合架构中，不同层以不同的分辨率、不同的方法和智能需求运行。Karam解释说，在最底层、靠近硬件的地方，代理“更简单、更快速”，因为它们可能需要在微秒或毫秒内对链接事件或异常做出反应。
+
+因此，自动化基础设施的时代持续发展。技术堆栈的这一层现在提供了从无服务器功能到自动化配置以及具有自主负载均衡的自愈实例的一切。这是否意味着开发人员应该认为他们获得云计算与网络理学硕士的那些年有些多余了？也许Aria强化的SONiC实现可以为那些希望构建自定义工具或将自己的网络构造集成到现有基础设施即代码管道中的开发人员公开API，对吗？
+
+Karam表示：“虽然Aria Networks引入了一种旨在最大化AI集群利用率的变革性运营模型，但它被设计为开放的，可以轻松融入现有环境和工具集。”
+
+他进一步解释说，Aria的SONiC发行版保留了开发人员已经依赖的标准接口，因此现有工具无需修改即可继续工作。Aria平台还公开了[REST API](https://thenewstack.io/rest-still-outshines-graphql-for-many-api-use-cases/)、CLI和[MCP](https://thenewstack.io/when-is-mcp-actually-worth-it/)接口，开发人员可以使用它们与Aria服务器交互，将“深度网络技术”（Aria大写的品牌术语，表示其在超精细遥测和深度网络可见性方面的工作）集成到现有基础设施中。
+
+精细遥测有多精细？在Aria的案例中，它比传统工具精细10到10,000倍的分辨率，通过交换机、收发器和主机在一个统一视图中收集。
+
+## 代理与网络工程师协作
+
+在面向操作员的层（Aria控制台），代理包括领先的LLM模型。操作员主要通过自然语言进行交互：他们可以询问网络状态、请求警报解释，并与系统协作做出修复决策。
+
+LLM可以访问完整的遥测数据和系统状态。它使用专门的网络上下文，这意味着其响应和行动都基于网络操作员所需的准确性、安全性和可靠性标准。代理与操作员合作，实现持续的网络优化。
+
+Karam说：“我们倡导一种自动化测试文化，即在推出任何新更新之前，系统会24/7不间断地进行持续而彻底的测试。更新会在暂存环境中通过自动化验证，然后逐步推广到整个网络。”
+
+> 使用网络代理来制定解决问题或优化性能的策略，其核心承诺很简单——这不是一个黑匣子；而是一种伙伴关系。
+
+与每一次AI进步一样，这项技术并非旨在取代网络工程师和操作员的工作；相反，它旨在实现诸如意图驱动配置等功能。网络操作员指定其需求，平台会相应地配置网络以实现路由、负载均衡、拥塞管理和故障转移。这旨在减少（Aria会说消除）传统部署中导致速度减慢的手动、易出错的工作流程。
+
+Karam承诺透明和可控；他的公司在使用网络代理制定解决问题或优化性能策略方面的核心承诺很简单。这不是一个黑匣子；而是一种伙伴关系。
