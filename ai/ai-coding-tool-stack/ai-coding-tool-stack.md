@@ -1,0 +1,91 @@
+<!--
+title: Cursor、Claude Code 与 Codex 正在合流为一套“意外”成形的 AI 编程技术栈
+cover: https://cdn.thenewstack.io/media/2026/04/c5fcabf3-arturo-portillo-a2jhunkdkh8-unsplash-scaled.jpg
+summary: 文章分析了AI编程工具正从整合走向分层协作，Cursor、Claude Code与Codex共同构成了一套非预期的技术栈。这种分层架构预示着互操作性将取代封闭生态，成为AI开发新趋势。
+-->
+
+文章分析了AI编程工具正从整合走向分层协作，Cursor、Claude Code与Codex共同构成了一套非预期的技术栈。这种分层架构预示着互操作性将取代封闭生态，成为AI开发新趋势。
+
+> 译自：[Cursor, Claude Code, and Codex are merging into one AI coding stack nobody planned](https://thenewstack.io/ai-coding-tool-stack/)
+> 
+> 作者：Janakiram MSV
+
+AI 编程工具市场原本被认为会走向整合。最终会产生一个赢家，开发者将围绕它进行标准化，行业随之向前发展。然而，事实却截然相反。在 2026 年 4 月的第一周，[Cursor 发布了重建的界面](https://thenewstack.io/cursor-3-demotes-ide/)用于编排并行智能体（agents），OpenAI 发布了一个运行在 Anthropic 的 Claude Code 内部的官方插件，早期采用者开始将这三者一起运行。它们不再是竞争对手，而是作为一个无人设计却在自我组建的技术栈中的不同层级。
+
+这种模式镜像了开发者从基础设施中早已了解的情况。没有人只运行一个可观测性工具。你运行 Prometheus 用于指标，Grafana 用于仪表板，PagerDuty 用于告警。每个工具都做好一件事，而价值来自于它们的组合方式。AI 编程工具正遵循同样的路径，分裂成专门的层级，而不是坍缩成单一产品。
+
+## 一周内三次发布，同一种模式
+
+4 月 2 日，Cursor 发布了版本 3，代号为 Glass。该版本将 Cursor 的 Composer 窗格替换为专门的“智能体窗口”（Agents Window），这是一个完全从零构建的独立界面，旨在同时管理多个 AI 智能体。开发者现在可以从一个侧边栏在本地机器、工作树（worktrees）和云沙箱中运行并行智能体。根据 Cursor 的 [更新日志](https://cursor.com/changelog/3-0)，该版本还增加了用于并排查看多个对话的智能体标签页（Agent Tabs）、一个 `/best-of-n` 命令（可将同一提示词发送到隔离工作树中的多个模型进行对比），以及用于在内置浏览器中标注 UI 元素的“设计模式”。会话可以从本地移交给云端过夜运行，然后在早上拉回本地进行迭代。
+
+就在三天前，OpenAI 在 GitHub 上 [发布](https://github.com/openai/codex-plugin-cc) 了 `codex-plugin-cc`。该插件直接安装在 Anthropic 基于终端的编程智能体 Claude Code 内部。它提供了六个斜杠命令：`/codex:review` 运行标准代码审查；`/codex:adversarial-review` 对认证、数据丢失和竞态条件等实现决策进行压力测试；`/codex:rescue` 将任务完全交给 Codex，将其作为子智能体启动以调查漏洞或对问题进行二次处理。一个可选的“审查关卡”功能可以让 Codex 在 Claude 完成之前自动审查其输出，如果发现问题则拦截完成操作。
+
+这是 OpenAI 在向直接竞争对手的产品发布官方集成。这个采用 Apache 2.0 许可的插件通过本地 Codex CLI 进行委托，因此它使用开发者现有的身份验证和配置。没有新的运行时，没有封闭花园。只有从 Claude Code 内部调用的 Codex。
+
+结构性的洞察并不在于这些工具在同一周发布，而在于它们的发布方式使它们具备了可组合性。Cursor 编排可以使用任何模型的智能体。Claude Code 接受来自竞争对手供应商的插件。Codex 作为子智能体在另一家公司的终端内运行。工具并没有趋同，而是在分层。
+
+## 正在成形的技术栈
+
+一些早期采用者正在组建的东西，看起来不像是产品选择，更像是一个工具链。三个层级正在形成，每个层级负责不同的工作。
+
+![](https://cdn.thenewstack.io/media/2026/04/bb268e25-coding-agent-stack-1-1024x697.png)
+
+### 编排层
+
+Cursor 3 就位于这一层。它的智能体窗口（Agents Window）不是一个增加了 AI 功能的编辑器，而是一个用于管理编程智能体集群的控制平面。界面在侧边栏显示所有活跃的智能体，无论它们是从桌面、移动端、Slack、GitHub 还是 Linear 发起的。智能体标签页允许开发者在网格中并排查看多个对话。设计模式让开发者能够在内置浏览器中标注 UI 元素，并将智能体指向特定的界面问题。
+
+摆脱 VS Code 是刻意为之。Cursor 在 2023 年分叉（fork）了 VS Code 以获得分发渠道。现在它正在脱离 VS Code 以获得差异化。如果编排层获胜，文本编辑器将变得次要。Cursor 押注于管理智能体比编辑文件更重要。
+
+Google 也得出了类似的结论。2025 年 11 月发布的 [Antigravity](https://developers.googleblog.com/build-with-google-antigravity-our-new-agentic-development-platform/) 源于 Google 与 Windsurf 达成的 24 亿美元许可协议。据路透社 [报道](https://www.cnbc.com/2025/07/11/google-windsurf-ceo-varun-mohan-latest-ai-talent-deal-.html)，Google 支付了许可费并聘请了核心员工，而不是直接收购该公司。结果将其界面拆分为用于动手编程的“编辑器视图”和用于跨工作区生成及观察多个智能体的“管理表面”。两家公司，两种架构，一个结论：开发者需要一个管理智能体的表面，而不仅仅是编写代码。
+
+### 执行层
+
+Claude Code 和 OpenAI Codex 存在于此。这些是真正编写、审查和调试代码的智能体。它们在终端、云沙箱或两者中运行。它们阅读整个代码库、运行测试、提交更改并管理拉取请求（PR）。
+
+Claude Code 已成为这一层最强大的竞争者，至少在开发者热情方面是如此。Pragmatic Engineer 在 2026 年 2 月对 906 名软件工程师进行的 [调查](https://newsletter.pragmaticengineer.com/p/ai-tooling-2026) 发现，它是使用最多的 AI 编程工具，获得了 46% 的“最喜爱”评分。SemiAnalysis [估计](https://newsletter.semianalysis.com/p/claude-code-is-the-inflection-point) 它约占 GitHub 所有公共提交的 4%（截至 2026 年 3 月），预计到年底将达到 20%。根据二次报告的分析师估计，截至 2026 年 3 月，Claude Code 的年化收入超过 25 亿美元，尽管 Anthropic 尚未在官方文件中确认这一数字。Codex 最近周活跃用户 [突破](https://openai.com/index/accelerating-the-next-phase-ai/) 了 300 万，高于一个月前的 200 万。其云沙箱模型专为异步、长期运行的任务而设计，无需开发者关注即可进行。
+
+> 当你要求编写代码的同一个模型对其进行审查时，就像是在让学生给自己改作业。
+
+执行层是模型差异最重要的地方。从业者普遍反映，Claude 在长上下文窗口的细微推理方面表现更好，而 Codex 在处理可并行的吞吐量任务时效率更高。目前还没有中立的基准测试清晰地确认这种划分，但这种认知已广泛到足以推动多工具的采用。没有任何一方能在所有场景中占据统治地位，这正是开发者两者兼用的原因。
+
+### 审查层
+
+这是最新的层级，也是 Codex 插件专门启用的层级。当 Claude 编写代码而 Codex 进行审查时，审查者并未参与编写过程。它不共享相同的内部假设，能捕获不同类别的错误。对抗性审查命令更进一步，针对认证、数据丢失、回滚和竞态条件进行压力测试。
+
+跨供应商审查解决了单一模型工作流无法解决的问题。当你要求编写代码的同一个模型对其进行审查时，就像是在让学生给自己改作业。结构性偏差是不可避免的。来自不同供应商、在不同数据上训练并具有不同优化目标的第二个模型，能够应用真正独立的审查。
+
+“审查关卡”功能使这一过程自动化。启用后，Codex 会在 Claude 完成输出前对其进行审查。如果出现问题，Claude 会在继续之前解决这些问题。OpenAI 的文档警告说，这可能会产生长时间运行的循环并迅速耗尽使用限额，这强调了该公司预见开发者会非常认真地使用它。
+
+## 为什么是互操作性而非锁定
+
+OpenAI 为 Anthropic 的产品构建插件是这里最具揭示性的战略信号。传统的剧本是锁定用户，建立封闭花园，增加切换成本。OpenAI 正在反其道而行之，而经济学解释了原因。
+
+> OpenAI 为 Anthropic 的产品构建插件是这里最具揭示性的战略信号。传统的剧本是锁定用户，建立封闭花园，增加切换成本。OpenAI 正在反其道而行之。
+
+Claude Code 在专业开发者中建立了庞大且充满热情的装机基础。OpenAI 没有等待这些开发者切换，而是将 Codex [嵌入](https://techstrong.ai/features/openai-challenges-claude-code-with-cross-platform-codex-plugin-push/) 到了他们已经工作的环境中。每一次由插件发起的审查都会产生计入开发者 ChatGPT 订阅或 API 密钥的使用量。零获取成本，增量计费。
+
+Anthropic 开放的插件架构使这成为可能。Claude Code 基于 MCP 的插件系统旨在支持第三方集成，包括来自竞争对手的集成。通常导致公司之间紧张的“平台对应用”动态，正被一种双方获益的组合性动态所取代。Anthropic 得到了更丰富的插件生态系统。OpenAI 在竞争对手的装机群内部获得了分发渠道。
+
+这并非出于利他主义，而是务实主义。两家公司都意识到，开发者无论如何都会使用多种工具。问题在于你的工具是在技术栈之内还是在技术栈之外。
+
+## 这对开发者意味着什么
+
+如果这种组合模式持续下去，它将改变开发者工作的三个方面。
+
+### 模型选择变成基础设施
+
+Cursor 3 的 `/best-of-n` 命令将同一任务发送到隔离工作树中的多个模型并比较结果。这对待模型选择的方式，就像开发者对待数据库选择或云提供商选择的方式一样。这是一种由工作负载特性驱动的基础设施决策，而非品牌忠诚度。需要复杂重构的精确性时选 Claude；需要并行任务的吞吐量时选 Codex；对于成本敏感的批量工作，则选择基于开源 Kimi K2.5 构建的 Cursor 自有模型 Composer 2。
+
+### 编辑器开始退居二线
+
+40 年来，代码编辑器一直是软件开发的引力中心。从 Emacs 到 VS Code，假设总是一样的：开发者编写代码，工具提供帮助。Cursor 3 的智能体窗口（Agents Window）和 Antigravity 的管理表面（Manager Surface）都直接挑战了这一假设。编排层开始与编辑器竞争主要界面。编辑器依然存在且有用，但它不再保证是默认视图。
+
+### 审查向量向对抗性演进
+
+单一模型审查在结构上始终存在局限性。跨供应商审查（一个模型编写，另一个模型挑战）是目前缓解 AI 辅助开发中谄媚问题（sycophancy problem）最有希望的策略。随着这种模式的成熟，它可能成为 CI/CD 流水线中的标准步骤，而不仅仅是开发者的工作流选择。
+
+## 下一步
+
+AI 编程智能体技术栈的成形速度超出了大多数人的预期。Cursor 正在占领编排层。Claude Code 和 Codex 在执行层既竞争又协作。跨供应商审查正在开启一个六个月前还不存在的验证层。对于紧跟工具趋势的开发者来说，熟悉的设施模式同样适用。正如你学会了组合使用 Terraform、Docker 和 Kubernetes，而不是为所有事情选择一个工具一样，AI 编程中新兴的模式是组合胜过整合。
+
+悬而未决的问题是，这个技术栈会趋于稳定还是继续分裂。GitHub Copilot 正在进化其自身的智能体能力。AWS Kiro 发布了一个智能体优先的 IDE。每个主要云提供商现在都在这个市场上占有一席之地。下一阶段将取决于哪些层级会变成商品，而哪些会成为新的控制点。请保持关注。
