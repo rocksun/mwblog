@@ -1,0 +1,55 @@
+<!--
+title: Warp 的豪赌：通过开源挑战闭源竞争对手
+cover: https://cdn.thenewstack.io/media/2026/04/e89f8e2b-eva-corbisier-vqy4gzmrkyg-unsplash-scaled.jpg
+summary: Warp 宣布将其基于 Rust 的代理开发环境（ADE）客户端开源。通过 OpenAI 的支持以及对 Kimi 等多模型的兼容，Warp 试图利用社区力量和 AI 代理加速创新，挑战资金雄厚的闭源竞争对手。
+-->
+
+Warp 宣布将其基于 Rust 的代理开发环境（ADE）客户端开源。通过 OpenAI 的支持以及对 Kimi 等多模型的兼容，Warp 试图利用社区力量和 AI 代理加速创新，挑战资金雄厚的闭源竞争对手。
+
+> 译自：[Warp's gamble: Going open source to take on closed-source rivals](https://thenewstack.io/warp-open-source-client/)
+> 
+> 作者：Steven J. Vaughan-Nichols
+
+Warp，这款流行的基于 Rust 的代理开发环境（agentic development environment），已将其客户端开源。
+
+Warp 始于 2022 年，不管你信不信，它最初是作为 [Mac 端的终端程序](https://thenewstack.io/a-review-of-warp-another-rust-based-terminal/)。此外，你还可以将 [Warp](https://www.warp.dev/) 用作 IDE。随后，它[演变](https://thenewstack.io/warp-goes-agentic-a-developer-walk-through-of-warp-2-0/)为公司所称的代理开发环境（ADE），并推出了 Linux 和 Windows 版本。在短时间内发生了巨大的变化，现在 Warp 客户端根据 AGPL 协议正式[开源](https://www.warp.dev/blog/warp-is-now-open-source)。
+
+在周二宣布这一转变的博文中，首席执行官兼创始人 [Zach Lloyd](https://www.linkedin.com/in/zachlloyd/) 写道：“Warp 客户端现已开源，社区可以通过 [Oz](https://www.warp.dev/oz)（我们的云代理编排平台）管理代理优先的工作流来参与构建。”
+
+OpenAI 是“新的开源 Warp 仓库的创始赞助商”，驱动它的代理工作流基于 GPT 模型。Warp 将此描述为“我们对未来软件构建方式的愿景”，即人类监督处理大部分实现工作的“代理集群”。
+
+该公司认为，开发中长期存在的瓶颈不再是输入代码，而是围绕代码的所有“人工参与活动：规格定义和行为验证”。
+
+此外，代理已经能够“非常好地处理繁重的实现工作”，那么为什么不让贡献者专注于更高层次的设计和验证呢？他们的论点是有道理的。
+
+那么，这与开源有什么关系？Warp 的领导层解释说，开源的决定是出于对产品实际问题的考量，以及对 AI 辅助开发走向的押注。该公司表示，他们相信如果“开源并与社区合作来帮助监督代理集群”，就能更快速地交付更好的 Warp。
+
+确实，这一直是无数其他公司拥抱开源的重要原因。不过，通常情况下，公司是从开源项目开始，然后将其转化为产品或服务。我们将拭目以待这种“先产品后开源”的反向路径是否对 Warp 有效。
+
+第二个动机是让开发者对“代理开发”的形态有更多的话语权。Warp 声称“市场上还没有功能齐全的开源代理开发环境”。
+
+该公司将开源客户端作为大型老牌企业闭源工具的替代方案。该公司还将其定位为希望在 Warp 和 Oz 之上构建自己工具的其他人的起点。
+
+作为转变的一部分，Warp 表示正在“从封闭的产品开发流程转向开放的流程”。公开的 GitHub issue 现在将成为功能追踪的“事实来源”，该公司承诺将公布其 ADE 路线图，并在公开场合进行技术和产品讨论。
+
+目前，[Warp 开源仓库](https://github.com/warpdotdev/warp)与 Warp 的商业化 Oz 编排平台紧密耦合。该公司强调，“Warp 新的开源代理工作流由 OpenAI 模型驱动，OpenAI 支持下一代协作软件开发。”
+
+在博文中，OpenAI 工程负责人 [Thibault Sottiaux](https://www.linkedin.com/in/thibault-sottiaux-27195366/) 补充道：“长期以来，开源一直是开发者学习、构建和推动领域发展的核心。我们很高兴能支持探索 AI 如何帮助维护者和贡献者在大规模协作中更有效地进行实验。”尽管如此，Warp 指出，贡献者“也可以自由使用其他编码代理”，但表示其首选是 Oz，并声称 Oz 具有“内置的正确技能和验证循环”。
+
+这不仅仅是一个许可协议的变化。该公司正在推出多项产品更新，并将其描述为使工具“更加开放和可定制”。其中包括：
+
+* 支持“更广泛的开源模型”，包括 Kimi、MiniMax 和 Qwen（通义千问），以及一个“自动（开源）”路由选项，可为特定任务选择 Warp 认为的最佳开源模型。
+* 更灵活的 UI 配置，用户可以将 Warp 作为“单纯的终端”运行，添加差异视图和文件树等轻量级功能，或将其转变为“具有内置代理的功能完备的 ADE”。
+* 一个“迟到已久”的配置文件，旨在让用户和代理都能通过编程方式控制配置，并在不同机器间更轻松地迁移。
+
+Warp 希望，通过改进程序并开放客户端，能帮助公司在充满“资金雄厚的闭源对手”的市场中“建立成功的业务”。
+
+> 在无法比对手投入更多资金的情况下，该公司正在其创新能力上进行一场小小的豪赌。
+
+该公司的[博文](https://www.warp.dev/blog/warp-is-now-open-source)指出，“Warp 是我们加速产品开发的一种明智方式。”
+
+“我们需要通过向最热情的社区提供最好的产品来建立我们的业务，”博文中写道，并承认了未来的挑战——以及内在风险。
+
+Warp 还将此举描述为实现其早期“Show HN”发布时的最初计划，称“原本计划就是将客户端开源”，但关于权衡的内部辩论“每年”都在继续。Zach Lloyd 写道，AI 代理的兴起最终改变了考量：“我们可以继续采用目前的模式，私下推测路线图并在内部扩展越来越多的代理，但这感觉像是一次错失的良机。”
+
+这会成为 Warp 的黄金机会吗？我们将拭目以待。
