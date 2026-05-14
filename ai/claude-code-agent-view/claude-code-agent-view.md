@@ -1,0 +1,73 @@
+<!--
+title: Anthropic 推出 Claude Code 代理视图：仪表盘虽好，为何开发者并不买账？
+cover: https://cdn.thenewstack.io/media/2026/05/ee2600c0-monitor-dashboard-scaled.jpg
+summary: Anthropic推出Claude Code代理视图，旨在通过集中化界面简化多代理会话管理。尽管提升了操作效率，但开发者对其可靠性和信任度仍有疑虑。专家认为，AI代理要真正进入生产环境，除了UI改进，更需解决速率限制、审计与责任归属等核心挑战。
+-->
+
+Anthropic推出Claude Code代理视图，旨在通过集中化界面简化多代理会话管理。尽管提升了操作效率，但开发者对其可靠性和信任度仍有疑虑。专家认为，AI代理要真正进入生产环境，除了UI改进，更需解决速率限制、审计与责任归属等核心挑战。
+
+> 译自：[Anthropic's Claude Code agent view is a better dashboard. So why aren't developers convinced?](https://thenewstack.io/claude-code-agent-view/)
+> 
+> 作者：Meredith Shubel
+
+本周，Anthropic [发布](https://claude.com/blog/agent-view-in-claude-code)了 Claude Code 中的“代理视图”（agent view），这是一个 CLI 仪表盘，允许开发者在单个屏幕上管理多个 Claude Code 会话。
+
+过去运行并行代理需要管理多个终端标签页和 tmux 窗口（更不用说追踪所有这些任务所带来的沉重心理负担），而 Anthropic 的新产品旨在为开发者提供 Claude Code 会话管理的一站式商店。
+
+通过代理视图，开发者可以启动新代理、将其发送到后台，并轻松在不同会话之间切换以进行行内回复或附加完整对话。状态指示器会显示哪些会话正在运行、哪些正在等待输入，以及哪些已经生成了拉取请求（PR）。
+
+但是，虽然一个简洁的界面是件好事，它仍然没有解决开发者许多更紧迫的担忧。
+
+## 这真的能为开发者带来有意义的改变吗？
+
+有人说能，有人说不能。
+
+“对于那些更喜欢在终端工作的工程师来说，代理视图在集中运行代理线程的状态方面做得很好，”[Outline](https://www.getoutline.com/) 的创始人 [Tom Moor](https://www.linkedin.com/in/tom-moor-b6213b1ba/) 告诉 *The New Stack*。对他来说，这比追逐散布在多个终端窗口中的信息进步了一大步。
+
+但当被问及代理视图是否真的会改变开发者的日常工作方式时，[Neurometric AI](https://www.neurometric.ai/) 的首席执行官兼联合创始人 [Rob May](https://www.linkedin.com/in/robmay/) 告诉 *The New Stack*，他对此还不完全信服： “它减少了一些摩擦，但并没有改变底层问题。”
+
+> “一个更好的仪表盘并不能让代理变得更可靠。难点不在于可见性，而在于信任。”
+
+他承认统一界面带来的好处（他称之为“真正的进步”），但肯定地表示 Anthropic 的新产品并没有真正解决更深层次的开发者问题：“一个更好的仪表盘并不能让代理变得更可靠。难点不在于可见性，而在于信任。”
+
+如果 Anthropic 希望引导开发者转向更多的监督性工作，May 表示，要实现这一目标需要的不仅仅是界面的改变；也就是说，开发者仍然需要策略即代码（policy-as-code）、异常规程和真实的审计追踪。
+
+## 代理视图可以在哪些方面提供帮助
+
+如果代理视图看起来没有立即令人惊艳，那么开发者可以期望从这款新产品中得到什么样的帮助？
+
+Anthropic 表示，代理视图可以帮助开发者管理长时间运行的代理，并将“PR 监控员”和“仪表盘更新员”列为可行的用例。
+
+当被问及开发者是否真的准备好让代理在无人值守或半值守状态下运行时，Moor 和 May 都持乐观但谨慎的态度。May 表示，这是“AI 优先型公司的下一个逻辑步骤”，但指出团队仍需关注过程和结果——理想情况下，不要让它触碰任何生产系统。
+
+总的来说，开发者似乎已经准备好将缰绳交给代理（甚至是无人值守的代理）来处理低风险任务；但对于可能导致代价昂贵、难以梳理的错误的高风险任务，仍需要人类参与其中。
+
+“长时间运行任务中的错误，其发现和修复成本都很高，”May 说，“单是调试负担就应该让开发者保持谨慎。”
+
+## 速率限制怎么办？
+
+最近，每当 Anthropic 参与讨论时，这总是大家关注的问题。
+
+这家 AI 公司近几个月面临着一系列投诉，Claude Code 用户[报告](https://thenewstack.io/claude-code-usage-limits/)其使用限制比平时达到得更快。但得益于最近的一系列计算支出，Anthropic 与 [SpaceX](https://thenewstack.io/anthropic-spacex-claude-limits/)、[Amazon](https://thenewstack.io/anthropic-amazon-aws-investment/)、[Google 和 Broadcom](https://www.anthropic.com/news/google-broadcom-partnership-compute) 以及 [Microsoft 和 Nvidia](https://www.anthropic.com/news/google-broadcom-partnership-compute) 达成了协议，这家 AI 公司似乎正在积极致力于快速提高计算能力。
+
+Claude Code 用户不得不寄希望于这些协议能奏效，因为 Anthropic 宣布代理视图“适用常规速率限制”。
+
+May 认为开发者不应该对此视而不见。
+
+“这是目前代理化开发中最被低估的问题之一，”他说。随着开发者运行并行会话，Token 成本和速率限制只会更快地成为问题。
+
+Moor 指出，代理视图还有可能过快耗尽另一种资源：人类的心理带宽：“在多个正在进行的代理之间进行上下文切换，你很快就会超负荷。”
+
+这是一个有趣的思考点。代理视图最终会增加开发者的工作量，最终让他们负责同时处理更多事情吗？
+
+最后值得注意的是，Anthropic 确实允许组织关闭代理视图，这可能使团队更容易控制成本（运行多个代理时成本很容易失控），并有助于合规性和可审计性。
+
+## Anthropic 正在推动开发者进入监督角色，但代理视图可能还不够
+
+Anthropic 将代理视图称为“管理所有 Claude Code 会话的唯一场所”，看来它热衷于引导开发者转向监督角色，即信任代理在后台运行，仅在必要时进行检查——但开发者似乎还没有被完全说服。
+
+> “这是一个有用的组件，但它不是开发者一直在等待的控制平面。”
+
+在更广泛的代理开发技术栈中，仍然缺失的是能够驱动生产环境信任的治理和可审计性。
+
+May 总结得很到位：“大多数[企业]都陷入了试点炼狱，不是因为他们对代理缺乏可见性，而是因为他们还没有在大规模上解决可靠性和问责制问题。” 如果情况确实如此，那么代理视图可能只是“一个有用的组件，但它不是开发者一直在等待的控制平面”。
