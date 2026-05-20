@@ -1,0 +1,41 @@
+<!--
+title: 谷歌推出100美元AI Ultra计划，并将顶级方案降价至200美元
+cover: https://cdn.thenewstack.io/media/2026/05/516ae022-screenshot-2026-05-19-at-13.47.46.png
+summary: 谷歌推出每月100美元的AI Ultra计划，并将顶级方案降至200美元。新模式引入了基于计算量消耗的限制逻辑，提供20TB存储及YouTube会员等权益。
+-->
+
+谷歌推出每月100美元的AI Ultra计划，并将顶级方案降至200美元。新模式引入了基于计算量消耗的限制逻辑，提供20TB存储及YouTube会员等权益。
+
+> 译自：[Google launches $100 AI Ultra plan and cuts top tier to $200](https://thenewstack.io/google-ai-ultra-pricing/)
+> 
+> 作者：Frederic Lardinois
+
+谷歌周二推出了全新的每月100美元的 AI Ultra 计划，该计划恰好填补了现有200美元和20美元方案之间的空白。同时，谷歌宣布正从提示词限制转向“计算量消耗”模式，以衡量对其AI工具的使用。
+
+谷歌还将其250美元的 AI Ultra 计划价格削减至200美元——这使其成为近期少数降价的AI产品之一。
+
+## 现在每个人都有100美元计划了
+
+有时，大型前沿AI实验室似乎在互相模仿，而在订阅计划方面，情况确实如此。目前所有主要提供商（谷歌、OpenAI和Anthropic）都提供20美元/月、100美元/月和200美元/月的计划。与OpenAI类似，谷歌还提供更基础的8美元/月计划（Google AI Plus）。
+
+尽管这些计划的许多核心功能相同，但与竞争对手相比，谷歌确实在其价格昂贵的计划中提供了一些独家产品。
+
+与 [OpenAI](https://thenewstack.io/openais-new-100-tier-targets-developers-hitting-codex-and-claude-code-limits/) 和 Anthropic 一样，谷歌新的100美元/月计划将在其 Antigravity 开发平台和 Gemini 消费者应用中提供5倍的使用限额。用户还将获得谷歌所谓的“优先访问 Google Antigravity 权限以及20TB的云存储空间”。
+
+为了让交易更具吸引力，该计划还包括 YouTube Premium 个人计划，让用户可以无广告访问所有那些氛围编程教程，以及 YouTube Music。
+
+AI Ultra 订阅者（包括100美元和200美元档位）也将率先获得 Gemini Spark（谷歌新的24/7 AI智能体）和 Gemini Omni（谷歌新的多模态模型）的访问权限。
+
+![](https://cdn.thenewstack.io/media/2026/05/2fe77710-i_o-26-google-ai-subscription-comparison-chart-1024x576.png)
+
+图片来源：Google。
+
+## 计算量消耗限制
+
+与其竞争对手一样，谷歌也在转向基于用户消耗 Token 数量的使用限制。此前，许多谷歌产品是基于每日提示词限制的。谷歌称之为“计算量消耗”模式，基于提示词的复杂性、使用的功能以及对话的长度。
+
+“这是一种更好的分配限制的方式，因为简单的文本提示词比复杂的视频或代码提示词消耗的计算量少得多，”谷歌解释道。
+
+这些限制将每五小时重置一次，直到用户达到每周限制。
+
+谷歌指出，一旦用户达到其旗舰模型的上限，它将自动将他们转到较小的模型，而不是完全切断服务。与其竞争对手一样（你可以在这里发现相似之处），Pro 和 Ultra 订阅者可以选择支付基于 Token 的 API 费用，以便在订阅福利耗尽后继续使用最大的模型。

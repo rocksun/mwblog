@@ -1,0 +1,69 @@
+<!--
+title: Pulumi 押注：基础设施的下一个十年属于 AI 智能体
+cover: https://cdn.thenewstack.io/media/2026/05/6354dfd2-reesmada-nrjzwmjnrsc-unsplash-scaled.jpg
+summary: Pulumi 推出一系列面向“智能体基础设施”时代的新功能，通过优化 CLI、支持通用语言及 Neo 智能体，实现云资源部署与运维的 AI 自动化，助力企业高效合规。
+-->
+
+Pulumi 推出一系列面向“智能体基础设施”时代的新功能，通过优化 CLI、支持通用语言及 Neo 智能体，实现云资源部署与运维的 AI 自动化，助力企业高效合规。
+
+> 译自：[Pulumi bets infrastructure's next decade belongs to AI agents](https://thenewstack.io/pulumi-infrastructure-agent-era/)
+> 
+> 作者：Frederic Lardinois
+
+一年前，[Pulumi](https://www.pulumi.com) CEO Joe Duffy 表示，基础设施副总裁们还不认为“代理式 AI”和“基础设施”可以放在同一个句子中。如今，AI 智能体已经驱动了 Pulumi 平台上 20% 的操作，而一年前这一比例几乎为零。Duffy 认为，未来这一比例可能会达到 100%。
+
+周二，该公司发布了一系列专门为 Pulumi 所描述的“智能体基础设施时代”打造的功能。
+
+![](https://cdn.thenewstack.io/media/2026/05/3c6865e8-pulumineocli_static1-1024x554.png)
+
+CLI 中的 Pulumi Neo。图片来源：Pulumi。
+
+## 专为智能体工作流设计的产品
+
+为了确保智能体能够使用 Pulumi 进行工作，它们需要无缝访问其工具和平台。因此，Pulumi 正在推出免费的、临时性的 Pulumi Cloud 账户，智能体可以自行创建这些账户，而无需通过传统的注册流程。智能体注册的账户在 72 小时后过期，但人类用户稍后可以领取该账户使其永久化。
+
+该公司还发布了一个 npm 软件包，将 Pulumi CLI 转换为单次调用：`npx pulumi <anything>` 跳过了二进制文件通常需要的安装步骤。
+
+CLI 中一个新的祈使动词 `pulumi do` 允许智能体在没有脚手架的情况下配置单个云资源。在 Pulumi 的示例中，`pulumi do create eks:Cluster` 会创建一个 Amazon EKS 集群。这些操作是有状态的，并且受到与常规 Pulumi 部署相同的策略框架约束，但它们跳过了原本需要智能体推断文件、目录和工具版本的项目结构。
+
+该公司还将 30 多个功能从其 Pulumi Cloud Web 控制台迁移到了 CLI。该列表包括变更历史、漂移检测、审计日志、机密管理、策略执行以及 Pulumi 在过去三年中推出的其他功能。
+
+Duffy 将其结果与 GitHub 的 `gh` CLI 进行了比较，他表示智能体往往会自然地使用这种工具。现在，CLI 还可以输出 JSON 格式和结构化错误，以便智能体解析响应。
+
+这里的核心理念是为智能体提供所有工具，使其能够在没有人工干预的情况下完成其工作流。
+
+![](https://cdn.thenewstack.io/media/2026/05/5f4f2d62-pulumineocli_static2-1024x553.png)
+
+## 适用于 IaC 的正确语言
+
+在接受 *The New Stack* 采访时，Duffy 指出，大型语言模型精通 Python、TypeScript 和 Go，因为它们在这些语言的大量生产代码上进行了训练。但它们不太精通 HashiCorp 配置语言（HCL），即 Terraform 使用的领域特定语言，因为公开可用的 HCL 示例往往来自教程而非真实的生产系统（因为大多数公司没有理由分享其 IaC 文件）。
+
+Duffy 认为，这就是 Pulumi 押注使用通用编程语言获得回报的地方。事实证明，提供一个专注于人类需求的物理设施工具，巧合的是，也是对 Pulumi 首次发布近十年后智能体所需功能的押注。
+
+## HITRUST 审计与 400,000 项违规
+
+Duffy 表示，在 Pulumi 于 2025 年 9 月推出其内部基础设施智能体 Neo 约一个月后，一家大型医疗保健客户根据公司的策略框架运行了审计，以准备 HITRUST 合规认证。审计发现了 400,000 项违规。该客户的董事会给出的截止日期不到一年，要求清理这些违规。
+
+“他们当时感觉没什么希望了。然后我们说，好吧，我们有 Neo。如果没有 AI，他们可能真的没希望了，”Duffy 说道。
+
+该公司还提到了一位客户，该客户使用 Neo 在一小时内将 500 个 Terraform 工作区迁移到了 Pulumi。自从 IBM 收购以来，许多 HashiCorp 的客户一直在重新评估他们的技术栈。
+
+## 还有“第二天”运维
+
+Pulumi 还在利用这次发布将 Neo 的应用从资源配置推进到日常运营。一个新的 Neo 集成目录（Neo Integration Catalog）通过远程 MCP 服务器将智能体连接到 Atlassian、Datadog、Honeycomb、Linear、PagerDuty 和 Supabase（更多合作伙伴正在加入中）。
+
+该目录还添加了 kubectl CLI 集成，让 Neo 可以直接对运行中的 Kubernetes 集群采取行动。现在，预定的 Neo 任务可以定期运行漂移检测、依赖项更新和合规性审计，并将结果以拉取请求（PR）的形式发送。
+
+Duffy 表示，最有趣的智能体基础设施工作其实是那些“无聊”的工作。“除了依赖项管理，我很少会说：在我的所有应用程序中，我想进行一些巨大的重构，”他说道。“但对于基础设施来说，这种情况一直在发生。你会想到升级版本、更改 IAM 策略，或者我需要在全球范围内进行的某些合规性修复。”
+
+在这种情况下，他提到了与一家大型金融机构的对话，该机构需要更换其 AWS 账户中的身份和访问管理（IAM）策略。“成千上万，甚至数百万个 IAM 策略需要更改，”他说道。Duffy 表示，这种周期长、影响范围大的工作是下一个前沿领域。
+
+## 更多功能
+
+Pulumi 还在将 Neo 从其自身的云控制台移出，进入开发人员已经工作的界面。一个新的 `pulumi neo` 命令可以从本地终端运行智能体，共享与云版本相同的智能体循环，但可以直接访问开发人员的源树和本地工具。
+
+一个 Neo GitHub App 允许团队在拉取请求中 @neo，以调查失败的部署、提出修复建议，并与人类评审员一起审查更改。Neo Slack App 将同样的 @neo 调用带入到发生事件线程和基础设施对话的频道中。
+
+只读 Neo 会话也是新功能，允许团队将智能体限制在仅限检查的工作中，用于低风险的报告和合规性检查。
+
+另外，Pulumi 正在发布其首批针对 NVIDIA AI 集群运行时和 CoreWeave GPU 平台的基础设施即代码提供程序，旨在服务于运行大型训练和推理工作负载的 AI 实验室和其他团队。
