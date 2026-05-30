@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preload" href="https://dt-cdn.net/images/newshub-header-background-light-grey-opt-1200-b01bb8da90.webp" as="image">
+
+<script data-cfasync="false" id="marvel" data-customerid="f00000000236551" src="https://marvel-b2-cdn.bc0a.com/marvel.js"></script>
+
+<title>OpenTelemetry graduates from Cloud Native Computing Foundation</title>
+
+<link rel="preconnect" href="https://news.cdn.dm.dynatrace.com" crossorigin>
+<link rel="preconnect" href="https://cdn.b0e8.com/" crossorigin>
+<link rel="preconnect" href="https://cdn.cookielaw.org" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+
+<link rel="preload" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/main.js?ver=1.0.0" as="script">
+<link rel="preload" href="https://www.dynatrace.com/news/wp-content/plugins/dynatrace-newshub/public/js/main.js?ver=1.0.0" as="script">
+<link rel="preload" href="https://marvel-b2-cdn.bc0a.com/marvel.js" as="script">
+<link rel="preload" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/photoswipe.css?v=1.0.0" as="style">
+<link rel="preload" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/style.css?v=1.0.0" as="style">
+
+<link rel="stylesheet" type="text/css" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/style.css?v=1.0.0">
+
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": {
+      "href_matches": "/*"
+    },
+    "eagerness": "moderate"
+  }]
+}
+</script>
+
+<script id="ga-datalayer">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+    window.dataLayer.push ({
+    'Author': 'Omer Dayan',   
+    'Topic': 'Product news',   
+    'Category': 'Blog',   
+    'Publish Date': '2026-05-29',   
+    'Primary Category': 'Product news'   
+    });
+    gtag('consent', 'default', {
+    'ad_storage': 'granted', 'analytics_storage': 'granted',
+    'wait_for_update': 500
+    });
+  gtag('consent', 'default', {
+    'ad_storage': 'denied', 'analytics_storage': 'denied',
+    'region': [
+      'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
+      'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
+      'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'BR'
+        ],    
+    'wait_for_update': 500
+  });
+
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PMMFLL');</script>
+<!-- End Google Tag Manager -->
+
+<script async="" data-id="bec" org-id="f00000000236551" domain=".dynatrace.com" session-timeout="86400000" src="https://cdn.b0e8.com/conv_v3.js"></script>
+<script>
+  var onetrust_guids = {"www.dynatrace.com": "933013ef-2764-426e-8fc7-0c9f91a46b52", "www.dynatrace.fr": "3caff47f-8e3a-4c74-ac50-99791d544160", "www.dynatrace.de": "667ffe2c-1fac-4705-89d9-ba5e125f56b1", "www.dynatrace.es": "aaedbe14-1cb4-4aaf-a59e-4c12d36e2eed", "www.dynatrace.it": "1a1690f2-f063-43b4-8177-5510a42e7479", "www.dynatrace.cn": "0"}
+  if (location.host in onetrust_guids) {
+    var onetrust_guid = onetrust_guids[location.host];
+  } else {
+    var onetrust_guid = "933013ef-2764-426e-8fc7-0c9f91a46b52-test";
+  }
+
+  (function() {
+    if (onetrust_guid != "0") {
+      var el = document.createElement('script');
+      el.setAttribute('src', 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js');
+      el.setAttribute('charset', 'UTF-8');
+      el.setAttribute('data-ignore-ga', 'true');
+      el.setAttribute('data-domain-script', onetrust_guid);
+      document.head.appendChild(el);
+    }
+  })();
+  </script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://t.dynatrace.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="bzbvRrB9RABVPe79rvJErOf58RuOHJ4w";;analytics.SNIPPET_VERSION="4.15.3";
+    var useragent = navigator.userAgent.toLowerCase();
+    var regex = /(gomezagent|apm synthetic agent|ruxitsynthetic|krt16m|ktxn|khte|ktht|kmwm|dynatrace|rigor|archivebox|datadogsynthetics|chrome\/38.0.2125.111)/g;
+    var prod_hosts = ["www.dynatrace.com", "www.dynatrace.fr", "www.dynatrace.de", "www.dynatrace.es", "www.dynatrace.it", "www.dynatrace.cn"];
+    if (prod_hosts.includes(location.host)) { key = "15mnBRiTBpJAtC1Bkl4nS7LDpWAmVyUt" } else { key = "bzbvRrB9RABVPe79rvJErOf58RuOHJ4w" };
+    if (!useragent.match(regex)) {
+        analytics.load(key);
+        analytics.page();
+    }}}();
+</script>
+<!-- Usersnap Script -->
+  <script type="text/javascript">
+    var s = document.createElement('script')
+    s.async = true;
+        s.src = 'https://www.dynat' + 'race.com/customscripts/usersnap.js';
+    document.head.appendChild(s);
+  </script>
+
+<script>
+  function loadScript(url, callback) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+
+    script.onload = function() {
+      callback();
+    };
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  var highlight = document.querySelectorAll('pre code');
+  
+  if (highlight) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark-reasonable.min.css';
+    document.head.appendChild(link);
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      loadScript('//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js', function() {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    });
+  }
+</script>
+
+<link rel="icon" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="https://dt-cdn.net/images/apple-touch-icon-180x180-180-80738a22c0.png">
+
+
+
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v27.0 (Yoast SEO v27.1.1) - https://yoast.com/product/yoast-seo-premium-wordpress/ -->
+	<meta name="description" content="This milestone marks the cloud native ecosystem&#039;s achievement of production readiness and maturity, thanks to the efforts of hundreds of companies and thousands of developers." />
+	<link rel="canonical" href="https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="OpenTelemetry graduates: A milestone for the observability Open Source community" />
+	<meta property="og:description" content="This milestone marks the cloud native ecosystem&#039;s achievement of production readiness and maturity, thanks to the efforts of hundreds of companies and thousands of developers." />
+	<meta property="og:url" content="https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/" />
+	<meta property="og:site_name" content="Dynatrace news" />
+	<meta property="article:publisher" content="https://www.facebook.com/Dynatrace/" />
+	<meta property="og:image" content="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png" />
+	<meta property="og:image:width" content="1536" />
+	<meta property="og:image:height" content="864" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="author" content="Omer Dayan, Mikko Viitanen" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@Dynatrace" />
+	<meta name="twitter:site" content="@Dynatrace" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Omer Dayan, Mikko Viitanen" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="3 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"NewsArticle","@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#article","isPartOf":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/"},"author":[{"@id":"https://www.dynatrace.com/news/#/schema/person/69f5185fe761882842eeda452a2e1c68"},{"@id":"https://www.dynatrace.com/news/#/schema/person/06aa4e8bf602de9fca45b9b8c5e380f2"}],"headline":"OpenTelemetry graduates: A milestone for the observability Open Source community","datePublished":"2026-05-29T17:13:57+00:00","mainEntityOfPage":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/"},"wordCount":492,"commentCount":0,"publisher":{"@id":"https://www.dynatrace.com/news/#organization"},"image":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#primaryimage"},"thumbnailUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png","keywords":["AI","observability","open source","opentelemetry"],"articleSection":["Product news"],"inLanguage":"en","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#respond"]}]},{"@type":"WebPage","@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/","url":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/","name":"OpenTelemetry graduates from Cloud Native Computing Foundation","isPartOf":{"@id":"https://www.dynatrace.com/news/#website"},"primaryImageOfPage":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#primaryimage"},"image":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#primaryimage"},"thumbnailUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png","datePublished":"2026-05-29T17:13:57+00:00","description":"This milestone marks the cloud native ecosystem's achievement of production readiness and maturity, thanks to the efforts of hundreds of companies and thousands of developers.","breadcrumb":{"@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#breadcrumb"},"inLanguage":"en","potentialAction":[{"@type":"ReadAction","target":["https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/"]}]},{"@type":"ImageObject","inLanguage":"en","@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#primaryimage","url":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png","contentUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png","width":1536,"height":864},{"@type":"BreadcrumbList","@id":"https://www.dynatrace.com/news/blog/opentelemetry-graduates-a-milestone-for-the-observability-open-source-community/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.dynatrace.com/news/"},{"@type":"ListItem","position":2,"name":"Dynatrace Blog","item":"https://www.dynatrace.com/news/blog/"},{"@type":"ListItem","position":3,"name":"OpenTelemetry graduates: A milestone for the observability Open Source community"}]},{"@type":"WebSite","@id":"https://www.dynatrace.com/news/#website","url":"https://www.dynatrace.com/news/","name":"Dynatrace news","description":"The tech industry is moving fast and our customers are as well. Stay up-to-date with the latest trends, best practices, thought leadership, and our solution&#039;s biweekly feature releases.","publisher":{"@id":"https://www.dynatrace.com/news/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.dynatrace.com/news/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en"},{"@type":"Organization","@id":"https://www.dynatrace.com/news/#organization","name":"Dynatrace","url":"https://www.dynatrace.com/news/","logo":{"@type":"ImageObject","inLanguage":"en","@id":"https://www.dynatrace.com/news/#/schema/logo/image/","url":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/07/dynatrace_web.png","contentUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/07/dynatrace_web.png","width":717,"height":201,"caption":"Dynatrace"},"image":{"@id":"https://www.dynatrace.com/news/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/Dynatrace/","https://x.com/Dynatrace","https://www.instagram.com/dynatrace/","https://www.linkedin.com/company/dynatrace","https://www.youtube.com/c/dynatrace","https://en.wikipedia.org/wiki/Dynatrace","https://www.glassdoor.com/Overview/Working-at-Dynatrace-EI_IE309684.1120.htm"],"description":"Dynatrace is advancing observability for today’s digital businesses, helping to transform the complexity of modern digital ecosystems into powerful business assets. By leveraging AI-powered insights, Dynatrace enables organizations to analyze, automate, and innovate faster to drive their business forward."},{"@type":"Person","@id":"https://www.dynatrace.com/news/#/schema/person/69f5185fe761882842eeda452a2e1c68","name":"Omer Dayan","image":{"@type":"ImageObject","inLanguage":"en","@id":"https://www.dynatrace.com/news/#/schema/person/image/5ee8f294f5d370bcb849de5f4c198dd8","url":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2024/03/Blog-Omer-Dayan-120x120.jpeg","contentUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2024/03/Blog-Omer-Dayan-120x120.jpeg","caption":"Omer Dayan"},"description":"Omer Dayan is a Marketing Manager working on the Application Observability solution at Dynatrace. Omer is passionate about crafting messaging and collaborating with partners and teams to leverage the market reach-out to developers and partitioners. She holds an M.A. from the Sammy Ofer School of Communications at Reichman University. In her free time, you’ll find Omer enjoying fine arts, traveling, and staying active.","url":"https://www.dynatrace.com/news/blog/author/omer-dayan/"},{"@type":"Person","@id":"https://www.dynatrace.com/news/#/schema/person/06aa4e8bf602de9fca45b9b8c5e380f2","name":"Mikko Viitanen","image":{"@type":"ImageObject","inLanguage":"en","@id":"https://www.dynatrace.com/news/#/schema/person/image/c5609b97776a2760f4477f3230b8d2a4","url":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2022/10/Viitanen_Mikko_picture-120x120.jpg","contentUrl":"https://news.cdn.dm.dynatrace.com/wp-content/uploads/2022/10/Viitanen_Mikko_picture-120x120.jpg","caption":"Mikko Viitanen"},"description":"Mikko is a Principal Product Manager, focusing on open source and OpenTelemetry at Dynatrace. He has 15+ years of experience in product development in telecom, SaaS, and IoT areas and is passionate about different cloud technologies and observability. He is based in Espoo, Finland, and enjoys boat trips with his family in the Finnish archipelago.","sameAs":["mikko-viitanen-810b4129/"],"url":"https://www.dynatrace.com/news/blog/author/mikko-viitanen/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel="alternate" type="application/rss+xml" title="Dynatrace news &raquo; Feed" href="https://www.dynatrace.com/news/feed/" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='shortlink' href='https://www.dynatrace.com/news/?p=74222' />
+<style>.post-thumbnail img[src$='.svg'] { width: 100%; height: auto; }</style><meta name="twitter:partner" content="tfwp" />
+<meta name="twitter:card" content="summary" /><meta name="twitter:title" content="OpenTelemetry graduates: A milestone for the observability Open Source community" /><meta name="twitter:description" content="In May 2026, OpenTelemetry (OTel) officially graduated from Cloud Native Computing Foundation (CNCF). This milestone marks the cloud native ecosystem&#039;s achievement of production readiness and maturity, thanks to the efforts of hundreds of companies and thousands of developers who believed in an open standard for observability and built it together. OpenTelemetry was already the standard.&hellip;" /><meta name="twitter:image" content="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/05/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864-1.png" />
+
+
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-74222 single-format-standard wp-theme-dynatrace-newshub ">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PMMFLL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager -->
+<dt-common-navigation
+  variant="light-transparent"
+  endpoint="live-en"
+  
+  
+>
+</dt-common-navigation>
+<svg xmlns="https://www.w3.org/2000/svg" style="width:0; height:0; display: none;" aria-hidden="true" hidden>
+  <defs>
+		<symbol id="mail" viewBox="0 0 512 512">
+      <path d="m76.41,96c-27.19,0-48.98,22.49-48.98,49.17v221.5c0,26.68,21.79,49.34,48.98,49.34h359.19c27.19,0,48.98-22.66,48.98-49.34v-221.5c0-26.68-21.79-49.17-48.98-49.17H76.41Zm2.38,32h354.6l-167.69,156c-6.1,5.68-12.93,5.68-19.05,0L78.79,128Zm-18.71,26.67l111.23,103.34-111.23,108.67v-212Zm391.84,0v212l-110.89-108.84,110.89-103.16Zm-134.35,125.17l105.95,104.17H88.65l106.3-104,29.25,27.16c17.73,16.47,46.22,16.49,63.95,0l29.42-27.34Z"/>
+    </symbol>
+
+    <symbol id="x" viewBox="0 0 512 512">
+      <path d="M289.1,221.2l129.5-150.6h-30.7l-112.5,130.7-89.8-130.7h-103.6l135.8,197.7-135.8,157.9h30.7l118.8-138.1,94.9,138.1h103.6l-140.9-205h0ZM247.1,270.1l-13.8-19.7L123.8,93.8h47.1l88.4,126.4,13.8,19.7,114.9,164.3h-47.1l-93.7-134.1h0Z"/>
+    </symbol>
+
+    <symbol id="linkedin" viewBox="0 0 512 512">
+			<path d="M151.9,434.3V192.2H71.2v244.7h80.7V434.3z M112.8,158.4c28.6,0,46.8-18.2,46.8-41.6
+				c-2.6-23.4-18.2-41.6-46.8-41.6S66,93.3,66,116.8S84.2,158.4,112.8,158.4L112.8,158.4L112.8,158.4z"/>
+			<path d="M198.7,434.3h80.7V298.9c0-7.8,0-15.6,2.6-20.8c5.2-15.6,18.2-28.6,41.6-28.6c28.6,0,41.6,23.4,41.6,54.7
+				v130.1H446V293.7c0-75.5-39-109.3-93.7-109.3c-44.2,0-62.5,23.4-72.9,41.6l0,0v-33.8h-80.7C198.7,215.7,198.7,434.3,198.7,434.3
+				L198.7,434.3z"/>
+	  </symbol>
+
+    <symbol id="slideshare" viewBox="0 0 512 512">
+      <g>
+      	<ellipse cx="200" cy="219.3" rx="50.4" ry="47.4"/>
+      	<ellipse cx="318.3" cy="219.3" rx="50.4" ry="47.4"/>
+      	<g>
+      		<path d="M453.3,242.7c-1.9-0.2-5.9,2.2-11.4,5.7v-164c0-21.2-17.2-38.4-38.4-38.4H109.8
+      			c-21.2,0-38.4,17.2-38.4,38.4v164.8c-6.1-4-10.6-6.8-12.7-6.6c-5.3,0.6-10.3,3.6-8.1,12.8c2.2,9.1,36.7,42.8,89.9,64
+      			c-5.7,13.6-9.2,30.9-9.2,49.8c0,10.7,1.7,39.9,15,61.3c7.7,12.4,28.2,33.4,52.9,35.1c11.9,0.8,25.3,0.8,36.6-8.6
+      			c10.4-8.7,14.9-22.1,14.8-29.7c0-1,0-50.7,0-86.1l10.9,3.8c0,35.1,0,81.4,0,82.3c-0.1,7.5,4.4,21,14.8,29.7
+      			c11.3,9.4,24.7,9.4,36.6,8.6c24.6-1.7,45.1-22.7,52.9-35.1c13.3-21.4,15-50.6,15-61.3c0-18.9-3.4-36.2-9.2-49.8
+      			c53.3-21.2,87.7-54.9,89.9-64C463.7,246.3,458.6,243.3,453.3,242.7z M342.8,285.9c-9.5,1.4-45.7,1.1-60.2,0.3
+      			c-14.5-0.8-20.9,12.3-21.2,20c0,0,0,0.1,0,0.2c-5.6-4.6-11-9.8-15.4-13.6c-3.4-4.1-9.5-7-16.6-6.6c-14.5,0.8-50.7,1.1-60.2-0.3
+      			c-9.5-1.4-36.8-5.3-60.4-15c-5.6-2.3-11-5.1-16.2-8.1V94c0-14.3,11.6-25.9,25.9-25.9h276.2c14.3,0,25.9,11.6,25.9,25.9v168.1
+      			c-5.5,3.2-11.4,6.3-17.4,8.8C379.5,280.6,352.2,284.5,342.8,285.9z"/>
+      	</g>
+      </g>
+    </symbol>
+
+    <symbol id="facebook" viewBox="0 0 512 512">
+			<path d="M205.8,463.4V270.5h-63.4V186h63.4v-31.7c0-58.1,42.3-108.3,95.1-108.3h68.7v84.5h-68.7
+				c-7.9,0-15.8,7.9-15.8,23.8v34.3h84.5v84.5h-84.5V466h-79.2V463.4z"/>
+		</symbol>
+
+    <symbol id="website" viewBox="0 0 512 512">
+    	<path d="M445.583,251.194c-2.542-97.573-80.791-178.516-177.91-184.326c-7.401-1.138-15.24-1.134-21.959-0.124
+    		C144.935,72.049,65.992,155.287,65.992,256.241C65.992,360.874,151.155,446,255.835,446c102.589,0,187.631-83.31,189.753-185.796
+    		c0.28-1.443,0.42-2.905,0.42-4.456C446.008,254.176,445.864,252.646,445.583,251.194z M271.545,281.161V230.33
+    		c25.918,0.46,49.648,2.157,72.305,5.179c0.435,6.981,0.478,14.04,0.478,20.24v0.835c0,6.699,0,13.078-0.385,19.386
+    		C321.328,278.995,297.564,280.693,271.545,281.161z M371.844,271.271c0.229-4.822,0.338-9.946,0.338-15.523
+    		c0-5.134-0.128-10.327-0.379-15.512c0.755,0.159,1.505,0.311,2.251,0.47c29.184,6.208,39.781,12.789,43.09,15.461
+    		c-3.439,2.585-15.158,8.682-42.929,14.611C373.439,270.948,372.648,271.11,371.844,271.271z M383.596,214.062
+    		c-4.566-1.037-9.368-2.008-14.603-2.956c-4.69-32.553-14.552-62.464-28.588-86.659c-1.874-3.247-3.829-6.389-5.855-9.418
+    		c40.548,22.749,70.022,62.528,79.599,108.059C405.757,219.761,395.673,216.784,383.596,214.062z M340.361,304.694
+    		c-4.571,26.006-12.667,49.512-23.541,68.27c-12.152,20.951-28.765,36.282-45.275,42.049V309.219
+    		C296.104,308.809,318.214,307.355,340.361,304.694z M333.467,398.036c2.402-3.501,4.718-7.173,6.934-10.997
+    		c14.045-24.223,23.906-54.135,28.592-86.671c5.039-0.915,9.935-1.907,14.599-2.952c12.181-2.75,22.343-5.754,30.81-9.123
+    		C404.955,334.778,374.97,375.198,333.467,398.036z M271.545,202.255V96.47c16.358,5.744,32.884,21.067,45.048,42.051
+    		c11.249,19.368,19.502,42.863,24.001,68.253C318.474,204.121,296.292,202.667,271.545,202.255z M173.943,206.764
+    		c4.435-24.67,12.855-48.162,24.489-68.245c14.558-25.105,28.839-38.154,46.999-42.638v106.354
+    		C214.413,202.626,194.794,204.206,173.943,206.764z M245.432,230.301v50.875c-33.017-0.466-54.359-2.414-75.067-5.214
+    		c-0.227-2.013-0.499-4.035-0.773-6.062c-0.627-4.666-1.276-9.49-1.276-14.152c0-4.676,0.649-9.504,1.276-14.17
+    		c0.274-2.028,0.55-4.051,0.773-6.063C191.143,232.707,212.504,230.754,245.432,230.301z M140.622,240.236
+    		c-0.26,5.305-0.39,10.502-0.39,15.512c0,5.006,0.13,10.199,0.39,15.502c-0.761-0.154-1.518-0.313-2.266-0.476
+    		c-26.384-5.631-38.494-11.917-42.572-14.984c4.202-3.241,16.316-9.492,42.572-15.084
+    		C139.104,240.543,139.857,240.387,140.622,240.236z M171.985,124.439c-14.038,24.207-23.901,54.118-28.594,86.669
+    		c-5.229,0.95-10.022,1.925-14.58,2.952c-12.479,2.818-22.832,5.898-31.386,9.356c9.612-46.181,39.571-86.349,80.869-109.051
+    		C176.106,117.601,173.999,120.964,171.985,124.439z M128.816,297.416c4.658,1.041,9.546,2.033,14.574,2.952
+    		c4.69,32.53,14.552,62.441,28.594,86.671c2.348,4.055,4.814,7.939,7.385,11.646c-42.266-22.782-72.725-63.583-82.176-110.731
+    		C105.831,291.449,116.424,294.622,128.816,297.416z M245.432,309.234v106.368c-18.496-4.554-33.375-17.917-47.719-42.638
+    		c-10.62-18.309-18.37-41.245-23.07-68.258C195.839,307.32,214.766,308.844,245.432,309.234z"/>
+  	</symbol>
+
+    <symbol id="rss" viewBox="0 0 512 512">
+      <circle cx="129.4" cy="382.5" r="63.2"/>
+      <path d="M109.1,179.7c-14.7,0-29.1,1.4-43.1,4.2v61c13.7-3.7,28.2-5.7,43.1-5.7c90.4,0,163.7,73.3,163.7,163.7
+       c0,14.9-2,29.4-5.8,43.2h61.1c2.7-14,4.2-28.4,4.2-43.2C332.3,279.6,232.4,179.7,109.1,179.7z"/>
+      <path d="M119.3,66c-18.1,0-35.9,1.5-53.3,4.4v60.4c17.2-3.5,35-5.3,53.3-5.3c147.6,0,267.3,119.7,267.3,267.3
+       c0,18.3-1.9,36.1-5.4,53.3h60.5c2.9-17.4,4.4-35.2,4.4-53.3C446,212.2,299.7,66,119.3,66z"/>
+    </symbol>
+
+    <g id="search_magnifyingglass">
+      <path d="M200.759,104.318c25.76,0,49.979,10.032,68.194,28.248c37.6,37.604,37.6,98.785,0,136.385
+      c-18.216,18.216-42.434,28.248-68.194,28.248c-25.76,0-49.978-10.032-68.194-28.248c-18.216-18.212-28.245-42.431-28.245-68.19
+      s10.029-49.979,28.245-68.194C150.781,114.351,174.999,104.318,200.759,104.318 M200.759,66
+      c-34.486,0-68.973,13.157-95.286,39.475c-52.628,52.623-52.628,137.948,0,190.572c26.31,26.314,60.796,39.471,95.286,39.471
+      c34.486,0,68.973-13.156,95.287-39.471c52.627-52.627,52.627-137.949,0-190.572C269.731,79.157,235.245,66,200.759,66L200.759,66z"></path>
+      <path d="M443.765,411.84c2.979,2.979,2.979,7.858,0,10.837l-21.083,21.09c-2.979,2.979-7.854,2.979-10.837,0
+      l-106.699-106.7c-2.979-2.979-2.979-7.857,0-10.836l21.086-21.087c2.982-2.979,7.854-2.979,10.837,0L443.765,411.84z"></path>
+    </g>
+
+		<symbol id="external_link" viewBox="0 0 512 512">
+			<path d="M400 253.588V400H112V112h146.412l-48-48H80c-8.837 0-16 7.164-16 16v352c0 8.837 7.163 16 16 16h352c8.837 0 16-7.163 16-16V301.588l-48-48z"/>
+			<path d="M278.294 64l62.226 62.225L210.745 256 256 301.255 385.775 171.48 448 233.706V64z"/>
+		</symbol>
+
+		<symbol id="dropdown_open" viewBox="0 0 512 512">
+			<path d="M403.078 142.412L256 289.49 108.922 142.412l-45.255 45.255L256 380l192.333-192.333z"/>
+		</symbol>
+
+		<symbol id="support_help" viewBox="0 0 512 512">
+			<path d="M256 64C149.961 64 64 149.961 64 256s85.961 192 192 192 192-85.961 192-192S362.039 64 256 64zm0 24.008c28.875 0 55.612 7.942 79.334 20.775l-35.692 35.708c-13.545-5.31-28.192-8.483-43.642-8.483-15.444 0-30.09 3.173-43.636 8.483l-35.695-35.708C200.384 95.95 227.128 88.008 256 88.008zM144.482 299.643l-35.715 35.7C95.953 311.62 88 284.875 88 256s7.953-55.604 20.767-79.334l35.715 35.7C139.172 225.933 136 240.558 136 256c0 15.45 3.172 30.098 8.482 43.643zM256 424c-28.872 0-55.616-7.95-79.331-20.76l35.695-35.715c13.545 5.31 28.192 8.483 43.636 8.483 15.45 0 30.097-3.173 43.642-8.483l35.692 35.716C311.612 416.05 284.875 424 256 424zm0-71.996c-53.022 0-96.004-42.982-96.004-96.004s42.982-96.004 96.004-96.004 96.004 42.982 96.004 96.004-42.982 96.004-96.004 96.004zm111.51-52.36C372.833 286.097 376 271.45 376 256c0-15.442-3.166-30.067-8.49-43.634l35.722-35.7C416.052 200.396 424 227.126 424 256c0 28.875-7.948 55.62-20.768 79.343l-35.723-35.7z"/>
+		</symbol>
+
+		<symbol id="filter" viewBox="0 0 512 512">
+			<path d="M437.974 80H74.031c-6.39 0-10.845 5.166-9.906 11.478l4.317 28.937c.946 6.313 5.34 15.238 9.763 19.837l127.396 132.38c4.424 4.6 8.727 13.54 9.559 19.86L231.494 420.5c.832 6.328 6.737 11.501 13.128 11.501h22.754c6.39 0 12.303-5.173 13.135-11.5l16.326-128.008c.84-6.32 5.142-15.26 9.567-19.86l127.389-132.38c4.431-4.6 8.825-13.524 9.763-19.837l4.317-28.937C448.82 85.166 444.365 80 437.974 80zm-65.524 54.774l-36.132 37.547a12 12 0 0 1-8.646 3.68H184.33a12 12 0 0 1-8.647-3.68l-36.133-37.547c-2.446-2.541-.645-6.774 2.882-6.774h227.135c3.527 0 5.328 4.232 2.883 6.774z"/>
+		</symbol>
+
+		<symbol id="info" viewBox="0 0 16 32">
+			<path d="M2.29335 32H3.31557V30.9778H2.29335V32ZM10.4711 32H11.4933V30.9778H10.4711V32ZM6.38224 32H7.40446V30.9778H6.38224V32ZM0.248901 32H1.27112V30.9778H0.248901V32ZM4.33779 32H5.36001V30.9778H4.33779V32ZM8.42668 32H9.4489V30.9778H8.42668V32ZM14.56 32H15.5822V30.9778H14.56V32ZM12.5156 32H13.5378V30.9778H12.5156V32ZM6.38224 1.02222H7.40446V0H6.38224V1.02222ZM10.4711 1.02222H11.4933V0H10.4711V1.02222ZM4.33779 1.02222H5.36001V0H4.33779V1.02222ZM8.42668 1.02222H9.4489V0H8.42668V1.02222ZM10.4711 2.74222H11.4933V1.72H10.4711V2.74222ZM4.33779 2.74222H5.36001V1.72H4.33779V2.74222ZM8.42668 2.74222H9.4489V1.72H8.42668V2.74222ZM6.38224 2.74222H7.40446V1.72H6.38224V2.74222ZM8.42668 4.46222H9.4489V3.44H8.42668V4.46222ZM4.33779 4.46222H5.36001V3.44H4.33779V4.46222ZM10.4711 4.46222H11.4933V3.44H10.4711V4.46222ZM6.38224 4.46222H7.40446V3.44H6.38224V4.46222ZM8.42668 6.18222H9.4489V5.16H8.42668V6.18222ZM6.38224 6.18222H7.40446V5.16H6.38224V6.18222ZM4.33779 6.18222H5.36001V5.16H4.33779V6.18222ZM10.4711 6.18222H11.4933V5.16H10.4711V6.18222ZM4.33779 11.3467H5.36001V10.3244H4.33779V11.3467ZM2.29335 11.3467H3.31557V10.3244H2.29335V11.3467ZM10.4711 11.3467H11.4933V10.3244H10.4711V11.3467ZM6.38224 11.3467H7.40446V10.3244H6.38224V11.3467ZM0.248901 11.3467H1.27112V10.3244H0.248901V11.3467ZM8.42668 11.3467H9.4489V10.3244H8.42668V11.3467ZM10.4711 13.0667H11.4933V12.0444H10.4711V13.0667ZM2.29335 13.0667H3.31557V12.0444H2.29335V13.0667ZM6.38224 13.0667H7.40446V12.0444H6.38224V13.0667ZM4.33779 13.0667H5.36001V12.0444H4.33779V13.0667ZM8.42668 13.0667H9.4489V12.0444H8.42668V13.0667ZM0.248901 13.0667H1.27112V12.0444H0.248901V13.0667ZM2.29335 14.7867H3.31557V13.7644H2.29335V14.7867ZM8.42668 14.7867H9.4489V13.7644H8.42668V14.7867ZM4.33779 14.7867H5.36001V13.7644H4.33779V14.7867ZM0.248901 14.7867H1.27112V13.7644H0.248901V14.7867ZM6.38224 14.7867H7.40446V13.7644H6.38224V14.7867ZM10.4711 14.7867H11.4933V13.7644H10.4711V14.7867ZM6.38224 16.5067H7.40446V15.4844H6.38224V16.5067ZM4.33779 16.5067H5.36001V15.4844H4.33779V16.5067ZM8.42668 16.5067H9.4489V15.4844H8.42668V16.5067ZM10.4711 16.5067H11.4933V15.4844H10.4711V16.5067ZM10.4711 18.2267H11.4933V17.2044H10.4711V18.2267ZM4.33779 18.2267H5.36001V17.2044H4.33779V18.2267ZM8.42668 18.2267H9.4489V17.2044H8.42668V18.2267ZM6.38224 18.2267H7.40446V17.2044H6.38224V18.2267ZM10.4711 19.9467H11.4933V18.9244H10.4711V19.9467ZM6.38224 19.9467H7.40446V18.9244H6.38224V19.9467ZM4.33779 19.9467H5.36001V18.9244H4.33779V19.9467ZM8.42668 19.9467H9.4489V18.9244H8.42668V19.9467ZM4.33779 21.6667H5.36001V20.6444H4.33779V21.6667ZM6.38224 21.6667H7.40446V20.6444H6.38224V21.6667ZM8.42668 21.6667H9.4489V20.6444H8.42668V21.6667ZM10.4711 21.6667H11.4933V20.6444H10.4711V21.6667ZM4.33779 23.3867H5.36001V22.3644H4.33779V23.3867ZM8.42668 23.3867H9.4489V22.3644H8.42668V23.3867ZM10.4711 23.3867H11.4933V22.3644H10.4711V23.3867ZM6.38224 23.3867H7.40446V22.3644H6.38224V23.3867ZM4.33779 25.1067H5.36001V24.0844H4.33779V25.1067ZM8.42668 25.1067H9.4489V24.0844H8.42668V25.1067ZM6.38224 25.1067H7.40446V24.0844H6.38224V25.1067ZM10.4711 25.1067H11.4933V24.0844H10.4711V25.1067ZM4.33779 26.8267H5.36001V25.8044H4.33779V26.8267ZM8.42668 26.8267H9.4489V25.8044H8.42668V26.8267ZM10.4711 26.8267H11.4933V25.8044H10.4711V26.8267ZM6.38224 26.8267H7.40446V25.8044H6.38224V26.8267ZM10.4711 28.5467H11.4933V27.5244H10.4711V28.5467ZM8.42668 28.5467H9.4489V27.5244H8.42668V28.5467ZM6.38224 28.5467H7.40446V27.5244H6.38224V28.5467ZM4.33779 28.5467H5.36001V27.5244H4.33779V28.5467ZM14.56 29.2444V30.2667H15.5822V29.2444H14.56ZM12.5156 30.2667H13.5378V29.2444H12.5156V30.2667ZM0.248901 30.2667H1.27112V29.2444H0.248901V30.2667ZM10.4711 30.2667H11.4933V29.2444H10.4711V30.2667ZM2.29335 30.2667H3.31557V29.2444H2.29335V30.2667ZM8.42668 30.2667H9.4489V29.2444H8.42668V30.2667ZM4.33779 30.2667H5.36001V29.2444H4.33779V30.2667ZM6.38224 30.2667H7.40446V29.2444H6.38224V30.2667Z" fill="black"/>
+		</symbol>
+
+  </defs>
+</svg>
+
+<main class="single-template layout is-flex">
+  <div class="container container--post">
+
+    <article id="post-74222" class="post-74222 post type-post status-publish format-standard has-post-thumbnail hentry category-product-news tag-ai tag-observability tag-open-source tag-opentelemetry h-entry">
+
+      <header class="post__header">
+        <img src="https://dt-cdn.net/images/half-wave-1920-53e1c04e4a.jpg" class="post__header--background" alt="Header background" />
+                  <div class="title-wrapper">
+            <h1 class="post__title entry-title p-name">OpenTelemetry graduates: A milestone for the observability Open Source community</h1>
+          </div>
+                <div class="post__meta">
+          <div class="post__meta--info">
+            <span class="post__meta--item">Published <time class="published post__date updated dt-published" datetime="2026-05-29T17:13:57+00:00">
+  May 29, 2026
+</time>
+</span>
+                        <span class="post__meta--item">3 min read</span>          </div>
+          <div class="post__meta--author">
+                                          <div itemprop="image" class="author__avatar">
+    <a href="https://www.dynatrace.com/news/blog/author/omer-dayan/">
+          <img src="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2024/03/Blog-Omer-Dayan-120x120.jpeg" width="48" height="48" srcset="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2024/03/Blog-Omer-Dayan-120x120.jpeg 2x" alt="Omer Dayan" class="avatar avatar-48 wp-user-avatar wp-user-avatar-48 alignnone photo" />
+        </a>
+  </div>
+                <span class="author__name byline vcard h-card p-author" itemprop="name">
+  <span class="fn p-name">
+    <a href="https://www.dynatrace.com/news/blog/author/omer-dayan/">Omer Dayan</a>
+  </span>
+</span>
+                              <div itemprop="image" class="author__avatar">
+    <a href="https://www.dynatrace.com/news/blog/author/mikko-viitanen/">
+          <img src="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2022/10/Viitanen_Mikko_picture-120x120.jpg" width="48" height="48" srcset="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2022/10/Viitanen_Mikko_picture-120x120.jpg 2x" alt="Mikko Viitanen" class="avatar avatar-48 wp-user-avatar wp-user-avatar-48 alignnone photo" />
+        </a>
+  </div>
+                <span class="author__name byline vcard h-card p-author" itemprop="name">
+  <span class="fn p-name">
+    <a href="https://www.dynatrace.com/news/blog/author/mikko-viitanen/">Mikko Viitanen</a>
+  </span>
+</span>
+                                    </div>
+          <div class="post__categories">
+      <span class="post__categories--primary"><a href="https://www.dynatrace.com/news/category/product-news/" class="btn btn--pill">Product news</a></span>  </div>
+        </div>
+      </header>
+
+      <div class="post__content-wrapper  post__content-wrapper--toc">
+                <aside class="post__content-sidebar">
+          <div class="table-of-contents">
+  <h3 class="t-p-small t-p-bold">
+    In this blog post
+  </h3>
+  <ol class="table-of-contents__list list">
+          <li class="table-of-contents__list-item"><a href="#opentelemetry-was-already-the-standard-now-its-official" class="js-smoothScroll"><span class="table-of-contents__list-item-number">1.</span><span>OpenTelemetry was already the standard. Now it&#8217;s official.</span></a></li>
+          <li class="table-of-contents__list-item"><a href="#why-a-shared-standard-changes-everything" class="js-smoothScroll"><span class="table-of-contents__list-item-number">2.</span><span>Why a shared standard changes everything</span></a></li>
+          <li class="table-of-contents__list-item"><a href="#dynatrace-loves-opentelemetry-and-open-source" class="js-smoothScroll"><span class="table-of-contents__list-item-number">3.</span><span>Dynatrace loves OpenTelemetry and open source</span></a></li>
+          <li class="table-of-contents__list-item"><a href="#frequently-asked-questions" class="js-smoothScroll"><span class="table-of-contents__list-item-number">4.</span><span>Frequently asked questions</span></a></li>
+          <li class="table-of-contents__list-item"><a href="#want-to-see-opentelemetry-in-action" class="js-smoothScroll"><span class="table-of-contents__list-item-number">5.</span><span>Want to see OpenTelemetry in action?</span></a></li>
+      </ol>
+</div>
+        </aside>
+        
+        <div itemprop="articleBody" class="js-post__content post__content e-content">
+                    <p>In May 2026, OpenTelemetry (OTel) officially graduated from <a href="https://www.cncf.io/projects/opentelemetry/">Cloud Native Computing Foundation (CNCF)</a>. This milestone marks the cloud native ecosystem&#8217;s achievement of production readiness and maturity, thanks to the efforts of hundreds of companies and thousands of developers who believed in an open standard for observability and built it together.</p>
+<h2 id="opentelemetry-was-already-the-standard-now-its-official">OpenTelemetry was already the standard. Now it&#8217;s official.</h2>
+<p>If you&#8217;ve been shipping production code over the last few years, OpenTelemetry has almost certainly touched your tech stack, whether through its SDKs and collectors, or traces, metrics, and logs. For many teams, OTel has quietly become part of the default toolbox for building and operating modern applications. It solves a real problem: the industry needed a common language for telemetry data, and OpenTelemetry became that language.</p>
+<p>CNCF graduation reflects the strength of the ecosystem: a diverse contributor base, widespread vendor support with proven production readiness, comprehensive security audits and a governance model built by the community, for the community and for future sustainability.</p>
+<h2 id="why-a-shared-standard-changes-everything">Why a shared standard changes everything</h2>
+<p>Graduation formalizes OpenTelemetry as the common protocol and shared language for observability:</p>
+<ol>
+<li>A standard protocol allows different tools, open source and commercial, to work together.</li>
+<li>Semantic conventions define how telemetry is named and structured. When all systems speak the same language, correlation becomes possible at scale.</li>
+<li>OpenTelemetry decouples instrumentation from backend analytics, enabling teams to export telemetry data to any backend system and switch analytics platforms without rewriting code.</li>
+<li>Standardized, high-quality telemetry data allows automation, anomaly detection, and AI-driven insights. A consistent protocol becomes critical as systems grow more complex and autonomous.</li>
+</ol>
+<h2 id="dynatrace-loves-opentelemetry-and-open-source">Dynatrace loves OpenTelemetry and open source</h2>
+<p>Dynatrace has been involved in shaping OpenTelemetry from its early days, contributing to the specification, semantic conventions, Collector, and many other areas, ensuring the standard works at enterprise scale. With over 46,000 contributions and 54,000 commits, Dynatrace is one of the top contributors to the project.</p>
+<p>Our focus has always been clear: make OpenTelemetry production-ready without compromising its open, vendor-neutral model.</p>
+<p>Beyond OpenTelemetry, Dynatrace actively contributes to over 30 open source projects, including W3C Trace Context, and integrations with <a href="https://www.dynatrace.com/platform/open-standards/">Kubernetes, JMeter, and more.</a></p>
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<h3 id="is-opentelemetry-stable-after-cncf-graduation"><strong>Is OpenTelemetry stable after CNCF graduation?</strong></h3>
+<p>Yes. Graduation confirms that the core specifications, APIs, and data model are stable and suitable for long-term production use. Teams can adopt OpenTelemetry with confidence across environments and use cases.</p>
+<h3 id="does-opentelemetry-lock-teams-into-a-specific-vendor-or-backend"><strong>Does OpenTelemetry lock teams into a specific vendor or backend?</strong></h3>
+<p>No. OpenTelemetry decouples instrumentation from backend analytics. Teams can export telemetry data to any backend and switch platforms without rewriting instrumentation code.</p>
+<h3 id="how-does-dynatrace-support-opentelemetry"><strong>How does Dynatrace support OpenTelemetry?</strong></h3>
+<p><a href="https://www.dynatrace.com/info/whitepapers/streamline-dev-workflows-with-dynatrace-otel/">Dynatrace supports you wherever you are</a>. You can ingest pure OpenTelemetry data natively; no proprietary agents are required. From there, you can query billions of spans in seconds, correlate metrics, logs, and traces automatically across petabytes of data, and get the <a href="https://www.dynatrace.com/news/blog/data-in-context-how-dynatrace-solves-the-opentelemetry-analytics-challenge/">full observability context.</a></p>
+<h2 id="want-to-see-opentelemetry-in-action">Want to see OpenTelemetry in action?</h2>
+<p>Learn more about OpenTelemetry at <a href="https://www.dynatrace.com/hub/detail/opentelemetry/">Dynatrace Hub</a>.</p>
+
+        </div>
+
+        <aside class="post__content-sidebar post__content-sidebar--left">
+          <div class="infoBox social-share__wrapper">
+            <h3 class="t-p-small t-p-bold">Share blog post</h3>
+            <div class="social-share">
+   <a href="mailto:?body=https%3A%2F%2Fwww.dynatrace.com%2Fnews%2Fblog%2Fopentelemetry-graduates-a-milestone-for-the-observability-open-source-community%2F" target="_blank" class="btn btn--secondary btn--icon--big" title="Email">
+    <svg role="img" class="icon" viewBox="0 0 512 512">
+      <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="#mail"></use>
+    </svg>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.dynatrace.com%2Fnews%2Fblog%2Fopentelemetry-graduates-a-milestone-for-the-observability-open-source-community%2F" target="_blank" class="btn btn--secondary btn--icon--big" title="Facebook">
+    <svg role="img" class="icon" viewBox="0 0 512 512">
+      <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="#facebook"></use>
+    </svg>
+  </a>
+  <a href="https://x.com/intent/post?text=https%3A%2F%2Fwww.dynatrace.com%2Fnews%2Fblog%2Fopentelemetry-graduates-a-milestone-for-the-observability-open-source-community%2F" target="_blank" class="btn btn--secondary btn--icon--big" title="X">
+    <svg role="img" class="icon" viewBox="0 0 512 512">
+      <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="#x"></use>
+    </svg>
+  </a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.dynatrace.com%2Fnews%2Fblog%2Fopentelemetry-graduates-a-milestone-for-the-observability-open-source-community%2F" target="_blank" class="btn btn--secondary btn--icon--big" title="LinkedIn">
+    <svg role="img" class="icon" viewBox="0 0 512 512">
+      <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="#linkedin"></use>
+    </svg>
+  </a>
+</div>
+          </div>
+          <div class="subscribe subscribe--sidebar">
+  <div class="subscribe-heading">
+    <h3 class="t-p-small t-p-bold">Stay Updated</h3>
+    <a target="_blank" rel="nofollow" href="https://www.dynatrace.com/news/feed/">
+      <svg role="img" class="icon icon--small" viewBox="0 0 512 512">
+        <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="#rss"></use>
+      </svg>
+    </a>
+  </div>
+  <form class="js-subscribe-form subscribe-form">
+    <div class="subscribe-form-field js-subscribe-form-field-email">
+      <label>
+        <div class="subscribe-form-field__label">Enter your email</div>        <input type="email" id="email" name="email" class="subscribe-form-field__text"">
+        <div class="subscribe-form-field__error js-subscribe-form-field-error-email"></div>
+      </label>
+    </div>
+    <ul class="subscribe-form-field-group">
+      <li class="subscribe-form-field">
+        <label class="subscribe-form-field__radio-container">
+          <input type="radio" name="subscriptionBlog" value="All updates" checked>
+          <span class="subscribe-form-field__label">All updates</span>
+          <span class="checkmark"></span>
+        </label>
+      </li>
+      <li class="subscribe-form-field">
+        <label class="subscribe-form-field__radio-container">
+          <input type="radio" name="subscriptionBlog" value="Blog posts">
+          <span class="subscribe-form-field__label">Blog posts</span>
+          <span class="checkmark"></span>
+        </label>
+      </li>
+      <li class="subscribe-form-field">
+        <label class="subscribe-form-field__radio-container">
+          <input type="radio" name="subscriptionBlog" value="Product news">
+          <span class="subscribe-form-field__label">Product news</span>
+          <span class="checkmark"></span>
+        </label>
+      </li>
+    </ul>
+    <div class="subscribe-form-field">
+      <button class="btn btn--tertiary js-subscribe-form-field-button">
+        <span>Subscribe now</span>
+          <span class="subscribe-form-field__button-spinner">
+            <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="circle-notch" role="img" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-circle-notch fa-w-16 fa-5x"><path fill="#fff" d="M288 28.977v16.391c0 7.477 5.182 13.945 12.474 15.598C389.568 81.162 456 160.742 456 256c0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-95.244 66.422-174.837 155.526-195.034C218.818 59.313 224 52.845 224 45.368V28.981c0-10.141-9.322-17.76-19.246-15.675C91.959 37.004 7.373 137.345 8.004 257.332c.72 137.052 111.477 246.956 248.531 246.667C393.255 503.711 504 392.788 504 256c0-119.349-84.308-219.003-196.617-242.665C297.403 11.232 288 18.779 288 28.977z" class=""></path></svg>
+          </span>
+        </button>
+    </div>
+  </form>
+</div>
+        </aside>
+      </div>
+
+      <footer class="post__footer">
+                        <div itemprop="keywords" class="tags">
+          <strong>Tags: </strong>
+                      <a href="https://www.dynatrace.com/news/tag/ai/" class="tag tag--interactive">AI</a>,                       <a href="https://www.dynatrace.com/news/tag/observability/" class="tag tag--interactive">observability</a>,                       <a href="https://www.dynatrace.com/news/tag/open-source/" class="tag tag--interactive">open source</a>,                       <a href="https://www.dynatrace.com/news/tag/opentelemetry/" class="tag tag--interactive">opentelemetry</a>                  </div>
+              </footer>
+    </article>
+  </div>   <footer class="single-footer">
+            <div class="legal-notice">Disclaimer: The views expressed on this blog are my own and do not reflect the views of Dynatrace LLC or its affiliates.</div>
+      </footer>
+     <div class="js-container container container--feed  container--related"
+     >
+       <span class="container__header js-container-header" >
+  You may also like
+</span>    <div class="feed--grid feed--grid--3cols js-feed"
+          >
+   <a href="https://www.dynatrace.com/news/blog/introducing-opentelemetry-collector-self-monitoring-dashboards/"
+id="69510" class="feeditem js-feeditem hentry h-entry post-69510 post type-post status-publish format-standard has-post-thumbnail category-observability category-product-news tag-dashboards tag-developer-experience tag-dynatrace-api tag-dynatrace-version-1-316 tag-internal-telemetry tag-observability tag-open-source tag-opentelemetry-collector tag-self-monitoring">
+
+        
+      <div class="feeditem__image feeditem__image--custom featured-image">
+  <img src="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-300x169.png"
+       srcset="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-300x169.png 300w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-1024x576.png 1024w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-768x432.png 768w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-1536x864.png 1536w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-200x113.png 200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-400x225.png 400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-600x338.png 600w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-800x450.png 800w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-1000x563.png 1000w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-1200x675.png 1200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version-1400x788.png 1400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/06/OTP-Blog_0256_high-res-version.png 1600w"
+       sizes="(min-width: 768px) 50vw, (min-width: 992px) 25vw, 100vw"
+       alt="OpenTelemetry"
+       loading="lazy"
+       width="800"
+       height="450">
+</div>
+
+
+    <article class="feeditem__content feeditem__content--">
+      <div class="feeditem__content__header">
+                        <div class="feeditem__meta">
+                  </div>
+      </div>
+
+      <div class="feeditem__content__main">
+        <h2 class="feeditem__title entry-title p-name">
+          Introducing OpenTelemetry collector self-monitoring dashboards
+        </h2>
+                </div>
+
+      <div class="feeditem__content__footer">
+          <div class="author">
+  <span class="author__name byline vcard h-card p-author">
+    <span class="fn p-name">
+      By Mikko Viitanen -
+    </span>
+  </span>
+</div>
+                        <time class="feeditem__date published updated dt-published" datetime="2025-06-17T16:15:08+00:00">
+              June 17, 2025
+            </time>
+                  
+      </div>
+      <div class="feeditem__content__button">
+        <span class="btn btn--link">
+          Read now <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="https://www.w3.org/2000/svg" class="btn__arrow">
+            <path d="M-3.68138e-08 6L15.1 6L11.5 10L14 10L18.5 5L14 -6.37458e-08L11.5 -5.23626e-08L15.1 4L-2.45425e-08 4L-3.68138e-08 6Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </div>
+  </article>
+
+</a>
+   <a href="https://www.dynatrace.com/news/blog/opentelemetry-and-dynatrace-the-complete-analytics-platform-for-modern-observability/"
+id="70856" class="feeditem js-feeditem hentry h-entry post-70856 post type-post status-publish format-standard has-post-thumbnail category-observability category-product-news tag-distributed-tracing tag-dynatrace tag-dynatrace-managed tag-kubernetes tag-logs tag-observability tag-opentelemetry tag-services">
+
+        
+      <div class="feeditem__image feeditem__image--custom featured-image">
+  <img src="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-300x169.png"
+       srcset="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-300x169.png 300w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-1024x576.png 1024w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-768x432.png 768w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-1536x864.png 1536w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-200x113.png 200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-400x225.png 400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-600x338.png 600w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-800x450.png 800w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-1000x563.png 1000w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-1200x675.png 1200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver-1400x788.png 1400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2025/08/OpenTelemetry-Dynatrace_high_res_ver.png 1601w"
+       sizes="(min-width: 768px) 50vw, (min-width: 992px) 25vw, 100vw"
+       alt="Dynatrace and OpenTelemetry"
+       loading="lazy"
+       width="800"
+       height="450">
+</div>
+
+
+    <article class="feeditem__content feeditem__content--">
+      <div class="feeditem__content__header">
+                        <div class="feeditem__meta">
+                  </div>
+      </div>
+
+      <div class="feeditem__content__main">
+        <h2 class="feeditem__title entry-title p-name">
+          OpenTelemetry and Dynatrace: Complete unified observability analytics for modern applications
+        </h2>
+                </div>
+
+      <div class="feeditem__content__footer">
+          <div class="author">
+  <span class="author__name byline vcard h-card p-author">
+    <span class="fn p-name">
+      By Omer Dayan -
+    </span>
+  </span>
+</div>
+                        <time class="feeditem__date published updated dt-published" datetime="2025-08-21T15:58:26+00:00">
+              August 21, 2025
+            </time>
+                  
+      </div>
+      <div class="feeditem__content__button">
+        <span class="btn btn--link">
+          Read now <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="https://www.w3.org/2000/svg" class="btn__arrow">
+            <path d="M-3.68138e-08 6L15.1 6L11.5 10L14 10L18.5 5L14 -6.37458e-08L11.5 -5.23626e-08L15.1 4L-2.45425e-08 4L-3.68138e-08 6Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </div>
+  </article>
+
+</a>
+   <a href="https://www.dynatrace.com/news/blog/data-in-context-how-dynatrace-solves-the-opentelemetry-analytics-challenge/"
+id="72469" class="feeditem js-feeditem hentry h-entry post-72469 post type-post status-publish format-standard has-post-thumbnail category-observability category-product-news tag-distributed-tracing tag-kubernetes tag-logs tag-observability tag-opentelemetry tag-services">
+
+        
+      <div class="feeditem__image feeditem__image--custom featured-image">
+  <img src="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-300x169.png"
+       srcset="https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-300x169.png 300w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1024x576.png 1024w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-768x432.png 768w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1536x864.png 1536w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-200x113.png 200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-400x225.png 400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-600x338.png 600w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-800x450.png 800w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1000x563.png 1000w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1200x675.png 1200w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x-1400x788.png 1400w, https://news.cdn.dm.dynatrace.com/wp-content/uploads/2026/01/Blog-OTP-0311_OpenTelemetry_At_Enterprise_Scale_2x.png 1600w"
+       sizes="(min-width: 768px) 50vw, (min-width: 992px) 25vw, 100vw"
+       alt="OpenTelemetry logo"
+       loading="lazy"
+       width="800"
+       height="450">
+</div>
+
+
+    <article class="feeditem__content feeditem__content--">
+      <div class="feeditem__content__header">
+                        <div class="feeditem__meta">
+                  </div>
+      </div>
+
+      <div class="feeditem__content__main">
+        <h2 class="feeditem__title entry-title p-name">
+          Data in context: How Dynatrace solves the OpenTelemetry analytics challenge
+        </h2>
+                </div>
+
+      <div class="feeditem__content__footer">
+          <div class="author">
+  <span class="author__name byline vcard h-card p-author">
+    <span class="fn p-name">
+      By Omer Dayan -
+    </span>
+  </span>
+</div>
+                        <time class="feeditem__date published updated dt-published" datetime="2026-01-15T18:45:02+00:00">
+              January 15, 2026
+            </time>
+                  
+      </div>
+      <div class="feeditem__content__button">
+        <span class="btn btn--link">
+          Read now <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="https://www.w3.org/2000/svg" class="btn__arrow">
+            <path d="M-3.68138e-08 6L15.1 6L11.5 10L14 10L18.5 5L14 -6.37458e-08L11.5 -5.23626e-08L15.1 4L-2.45425e-08 4L-3.68138e-08 6Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </div>
+  </article>
+
+</a>
+</div>
+           </div>
+        <div class="container">
+      <div class="container--subscribe">
+        <img src="https://dt-cdn.net/images/full-wave-cta-1500-c11df5539d.jpg" class="container--subscribe__background" alt="Section background"/>
+        <div class="post-comments">
+          <article class="post__answers">
+  <h2>Looking for answers?</h2>
+  <p>Start a new discussion or ask for help in our Q&A forum.</p>
+  <a href="https://community.dynatrace.com/t5/Ask/ct-p/UsingDynatrace" class="btn btn--primary btn--primary--light">Go to forum</a>
+</article>
+        </div>
+      </div>
+    </div>
+  </main>
+<div class="popup popup--hide" data-time="1770024876">
+  <div class="popup__close">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.06121 8.06096L12.5009 13.5007L13.5616 12.44L8.12187 7.0003L13.5831 1.53911L12.5224 0.478453L7.06121 5.93964L1.54076 0.419189L0.480103 1.47985L6.00055 7.0003L0.501587 12.4993L1.56225 13.5599L7.06121 8.06096Z" fill="white"/>
+    </svg>
+  </div>
+  <div class="popup__content">
+    <div style="font-weight:800;font-size:1.2rem;">Perform 2026</div><div>Watch every boundary-breaking session and product announcement on-demand.</div>
+  </div>
+  <a href="/perform/on-demand/perform-2026/" id="popup__cta" class="popup__cta btn--link" >
+    Watch On-demand <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="https://www.w3.org/2000/svg" class="btn__arrow">
+      <path d="M-3.68138e-08 6L15.1 6L11.5 10L14 10L18.5 5L14 -6.37458e-08L11.5 -5.23626e-08L15.1 4L-2.45425e-08 4L-3.68138e-08 6Z" fill="currentColor"/>
+    </svg>
+  </a>
+</div>
+
+<div class="dt-common-footer-spacer"></div>
+<dt-common-footer
+    endpoint="live-en"
+    variant="gradient"
+></dt-common-footer>
+
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/news/*"},{"not":{"href_matches":["/news/wp-*.php","/news/wp-admin/*","/news/wp-content/uploads/*","/news/wp-content/*","/news/wp-content/plugins/*","/news/wp-content/themes/dynatrace-newshub/*","/news/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/javascript" src="https://www.dynatrace.com/news/wp-content/plugins/dynatrace-newshub/public/js/main.js?ver=1.0.0" id="newshub_scripts-js"></script>
+<script type="text/javascript" id="subscribe_scripts-js-extra">
+/* <![CDATA[ */
+var WPURLS = {"siteurl":"https://www.dynatrace.com/news"};
+//# sourceURL=subscribe_scripts-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.dynatrace.com/news/wp-content/plugins/dynatrace-subscribe/public/js/main.js" id="subscribe_scripts-js"></script>
+<script type="text/javascript" src="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/main.js?ver=1.0.0" id="main-js"></script>
+
+
+<link rel="stylesheet" type="text/css" property="stylesheet" href="https://www.dynatrace.com/news/wp-content/themes/dynatrace-newshub/photoswipe.css?v=1.0.0">
+<script src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf25977vwq/cd189c7cef1ad0a4_complete.js" type="text/plain" class="optanon-category-C0002" crossorigin="anonymous" async=""></script>
+
+</body>
+</html>
