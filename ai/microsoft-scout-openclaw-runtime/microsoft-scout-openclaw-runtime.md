@@ -1,0 +1,94 @@
+<!--
+title: 微软宣布智能体运行时免费，但牢牢掌控了其生态周边
+cover: https://cdn.thenewstack.io/media/2026/06/49040680-maxim-berg-ke8-rukjtqu-unsplash-scaled.jpg
+summary: 微软在Build 2026上将其智能体运行时（OpenClaw）免费化，转而通过掌控上层的身份、治理、安全隔离等控制面以及底层硬件容器来实现商业变现，重演了安卓模式。
+-->
+
+微软在Build 2026上将其智能体运行时（OpenClaw）免费化，转而通过掌控上层的身份、治理、安全隔离等控制面以及底层硬件容器来实现商业变现，重演了安卓模式。
+
+> 译自：[Microsoft just made the agent runtime free -- and kept everything around it](https://thenewstack.io/microsoft-scout-openclaw-runtime/)
+> 
+> 作者：Janakiram MSV
+
+微软拥有构建自己智能体运行时的工程师团队。但在上周的 Build 2026 大会上，它选择不这样做，而是将其首款全天候工作智能体 [Scout](https://thenewstack.io/microsoft-build-scout/) [发布](https://thenewstack.io/microsoft-build-scout/)在 [OpenClaw](https://github.com/openclaw/openclaw) 之上，这是奥地利开发者在 2025 年底利用一个周末仓促折腾出来的开源项目。微软还将其企业策略控制功能贡献回了该开源项目的上游。
+
+只有当你仍认为运行时是智能体中最具价值的部分时，这一决定才会被解读为一种妥协。
+
+[智能体运行时](https://thenewstack.io/managed-ai-agent-runtimes/)的表现开始像 Android 问世后的移动操作系统。谷歌将 Android 开源项目作为一个免费的通用底层发布，而资金则转移到了它周围的各个层级：Play 服务、托管身份、企业付费的设备管理控制台以及底层的芯片。Android 让手机制造商无处不在，却从未让系统底层本身成为一项业务。OpenClaw 正处于相同的道路上，而 Build 大会展示了微软在除其刚刚免费开放的那个层级之外的每一个层级上的布局。
+
+> OpenClaw 正在走与 Android 相同的道路，而在 Build 大会上，微软占领了除其刚刚免费开放的运行时之外的每一个层级。
+
+## 微软在 Build 大会上发布了什么
+
+Autopilots（自动驾驶仪）是微软对全天候智能体的称呼，这类智能体拥有自己受监管的身份，代表用户采取行动，而不是等待指令提示。Scout 是该类别中的首款产品。它连接到 Microsoft 365 数据，在后台持续运行，并能通过模型上下文协议（Model Context Protocol）触及用户的浏览器和外部应用。在底层，它运行在 OpenClaw 运行时上。
+
+OpenClaw 扮演的角色就像手机里的 Android 底层。手机制造商直接采用这个底层并出货设备，而无需重新构建内核；微软同样采用了 OpenClaw 运行时，并在没有重新构建智能体循环（agent loop）的情况下发布了受监管的企业级智能体。一个周末项目成了这家市值超过三万亿美元公司旗下产品的通用底层。
+
+Build 大会使这种分层变得清晰明了。OpenClaw 现在原生运行在 Windows 内的 Microsoft Execution Containers（微软执行容器）中，这是微软为智能体构建的内核级沙箱。Nvidia 正在将自己的 [OpenShell](https://thenewstack.io/nvidia-openshell-agent-runtime/) 运行时引入 Windows 上的相同容器层，Nous Research 也表示其 Hermes Agent 将集成这两者。在发布大约五个月后，OpenClaw 已成为微软、Nvidia 以及一众智能体初创公司同时构建其应用的底层。
+
+## 控制面才是产品
+
+如果运行时是免费的通用底层，那么商业模式就是其上的控制面，而这正是微软在 Build 大会上投入几乎全部工程力量的地方。
+
+假设一个财务团队希望智能体在一夜之间完成发票对账。读取发票并更新账簿的循环是简单的部分，OpenClaw 已经能做到这一点。在允许该智能体接触账目之前，公司需要的是：为该智能体指定一个具名身份、一项阻止其接触应付账款之外任何内容的策略，以及审计人员在早上可以阅读的日志。而这些都不存在于运行时中。
+
+在手机上，企业付费的层级位于开源底层之上：托管身份、策略引擎、设备管理控制台。微软构建了智能体的等效层，将 Scout 包裹其中，然后将相同的包装器提供给非微软构建的智能体。
+
+### 身份
+
+每个 Scout 智能体都在其自身的 [受监管 Entra 身份](https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/02/introducing-microsoft-scout-your-always-on-personal-agent/)下运行，而不是使用共享的服务账户，因此每项操作都可以追溯到公司目录中已有的主体。这是该领域几个月来一直在兜圈子解决的问题：智能体身份危机——自主智能体使用借来的或匿名的凭证来执行操作，导致无人可以审计。微软的解决方案是像对待新员工一样，为智能体发放一个目录条目。
+
+### 治理与策略
+
+Scout 附带了一个策略合规系统，该系统会持续检查智能体是否在设定的准则范围内运行，且每次检查都会留下审计线索。微软正在将该合规工作贡献回 OpenClaw 的上游，以便运行该开源项目的组织可以验证他们自己的部署。Agent 365 位于控制面之上，用于发现和管理托管设备上的本地智能体，从 OpenClaw 开始，并扩展到 GitHub Copilot CLI 和 Claude Code，因此即使是微软未构建的智能体也会显示在其控制台中。
+
+### 知识锚定（Grounding）
+
+Scout 运行在 Work IQ 上，这是一个专有层，它能从 Microsoft 365 内部已有的信号中学习你与谁共事、哪些项目处于活跃状态，以及决策何时陷入停滞。运行时执行循环，而 Work IQ 和 Microsoft 365 则使该循环在特定公司内部发挥作用，并将智能体置于工作已经发生的地方。
+
+在身份、治理、锚定和分发方面，微软保留了受监管买家付费的层级，同时让运行时保持开源。
+
+## 微软如何驯服 OpenClaw
+
+明显的质疑在于，OpenClaw 作为一个企业级产品的基石显得有些奇怪。它呈爆发式增长，带有任何快速演进的开源生态系统都无法避免的供应链风险，并且在安全性上曾令人担忧，以至于微软曾[建议](https://thenewstack.io/persistent-ai-agents-compared/)不要在标准工作机上运行它。这段历史恰恰是这一举措如此重要的原因。
+
+微软并没有将原始的 OpenClaw 直接交给企业用户，而是用企业已经信任的内容将该运行时包裹起来：目录身份、设备策略、合规性日志、安全审查和 Microsoft 365 上下文。OpenClaw 使 Scout 能够采取行动。而让它能够在银行或医院内运行的，是首席信息官（CIO）可以签字批准的身份、策略和隔离技术，这个包裹层是微软的，而不是运行时的。运行时可以赋予智能体能力，但只有身份、策略、可审计性和隔离技术才能使其被接受，而这些正是微软的业务所在。
+
+## 容器隔离与芯片成为新的底层
+
+价值汇聚的另一个地方是在运行时之下——即容器隔离与芯片。在手机上，操作系统之下的层级是芯片组和安全领地（secure enclave），也就是决定软件到底被允许做什么的硬件。现在的智能体技术栈也拥有相同的底层。
+
+### 作为操作系统原语的容器隔离
+
+[Microsoft Execution Containers](https://blogs.windows.com/windowsdeveloper/2026/06/02/build-2026-furthering-windows-as-the-trusted-platform-for-development/)（微软执行容器）将智能体沙箱推入了 Windows 内核，允许 IT 部门声明智能体可以跨文件、网络和应用程序接触的内容，并在运行时进行强制执行，而不是指望提示词来规范行为。我认为这比 Scout 本手更为重要，因为它使 Windows 成为强制执行任何智能体权限（不仅是微软的，也包括其他的）的场所。OpenClaw、OpenShell、Manus 和 Hermes 都接入了相同的边界。
+
+### 芯片与设备端底层
+
+Nvidia 的 [OpenShell](https://developer.nvidia.com/blog/build-personal-ai-agents-on-windows-pcs-with-new-tools-from-microsoft-and-nvidia/) 在相同的容器内运行，并使用 MXC 进行策略管理和推理路由，旨在针对 Windows 硬件上的全天候智能体。微软还在推出一款围绕 Nvidia RTX Spark 芯片构建的 Surface 开发者机。芯片和沙箱共同决定了全天候智能体在笔记本电脑上运行的安全性，而这个问题是运行时本身无法回答的。
+
+容器隔离已作为运行时原语移入操作系统，这使得操作系统和芯片成为每个智能体的强制执行底层，无论其上层搭载的是何种运行时。
+
+## 哪些地方不适合创办公司
+
+对于一个决定将精力投向何处的团队来说，手机时代就是一个前车之鉴。你不会为了发布一个应用而去分叉（fork）Android 系统，你也不会试图去构建一个超越 Play 商店的东西。你应该在底层的基础之上进行构建，并在你可以实现差异化或合规性要求迫使你采取行动的地方进行投资。同样的版图现在也适用于智能体运行时。
+
+| 场景 | 建议关注点 | 理由 |
+| --- | --- | --- |
+| 构建/发布企业级智能体 | 采用开源运行时，在身份和策略上进行投资 | 买家付费购买的是可审计性，而非智能体循环本身 |
+| 构建消费级或本地智能体 | 采用运行时，专注于锚定与体验 | 差异化通常存在于上下文（context）中，而非循环中 |
+| 销往受监管行业 | 优先考虑容器隔离与证明（attestation） | 操作系统级别的强制执行正在成为基本门槛 |
+| 试图占领运行时层本身 | 重新考虑，或者转而向上游贡献代码 | 利润和锁定效应已大体离开了这一层级 |
+
+现实中的团队会结合这些策略，初创公司可能为了获得真正的技术优势仍会保留一个轻量级的运行时分叉（fork），就像 [NanoClaw](https://thenewstack.io/nanoclaw-minimalist-ai-agents/) 将 OpenClaw 精简到大约 2000 行以实现可审计性一样。即便如此，一家以智能体循环作为全部产品的公司，现在看起来就像是没有 Play 商店的 Android——虽然被广泛采用，但很难靠自身进行收费。
+
+## 为什么一个周末项目会成为共享底层
+
+OpenClaw 成为通用底层的原因，说明了当前市场是如何对待任何一个层级的赢家的。Steinberger 构建了当年增长最快的开源智能体项目之一，于 2 月[加入](https://decrypt.co/369781/microsoft-scout-openclaw-enterprise-ai-agent)了 OpenAI，并将该项目移交给一个独立的基金会以保持其开源，由 OpenAI 资助这项工作。因此，微软现在将其旗舰智能体运行在 OpenAI 势力范围内的运行时上，而与此同时，微软正在训练其内部的 MAI 模型以减少对 OpenAI 的依赖。Nvidia、Manus 和 Nous Research 也都在使用相同的底层。
+
+开源许可证让这一切成为了可能。OpenClaw 采用 MIT 许可证发布，这允许微软嵌入它、监管它并围绕它进行销售，而无需请求许可。Steinberger 曾坦言自己想改变世界，而不是建立一家大公司。他实现了前半句，而平台方则将计费器、目录和策略引擎包裹在他的运行时周围，拿走了后半句。
+
+## 下一步
+
+对于追踪智能体技术栈的开发者来说，其格局现在与手机时代非常相似：底层是作为开源通用底层的 OpenClaw，就像 Android 存在于每部手机中一样；其上是包含身份、治理、锚定和分发的付费控制面；其下则是容器隔离和芯片组成的强制执行层。Scout 是第一个让这四个层级同时显现的大型产品。
+
+更难回答的问题是，赢得运行时是否足以支撑起一家企业，而 Build 大会暗示事实并非如此。微软尚未说明 Scout 是包含在 Copilot 订阅中还是单独计费，而转向针对智能体工作的消耗性定价——也就是开发者整年都在抱怨的[代币税](https://thenewstack.io/managed-openclaw-serverless-agents/)（token tax）——将决定控制面的价值。开源基础设施的经济学效应正在以超出大多数厂商预期的速度拉低运行时的价值。能带来收益的层级正是微软在 Build 大会上面向未来构建的层级，我将密切关注一旦 Autopilots 达到正式发布阶段（general release），是否还有人能对运行时收费。
