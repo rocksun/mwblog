@@ -1,0 +1,77 @@
+<!--
+title: Anthropic 发布 Claude Fable 5：性能巅峰但限时试用
+cover: https://cdn.thenewstack.io/media/2026/06/d9497e93-b7055119423427c40a0e4d84054aed17682b50a2-2880x1620-1-scaled.webp
+summary: Anthropic发布Mythos级模型Fable 5，在多项基准测试中超越GPT 5.5。该模型支持超长上下文自主任务，但订阅用户仅可限时免费体验，且需遵守强制性的30天数据保留政策。
+-->
+
+Anthropic发布Mythos级模型Fable 5，在多项基准测试中超越GPT 5.5。该模型支持超长上下文自主任务，但订阅用户仅可限时免费体验，且需遵守强制性的30天数据保留政策。
+
+> 译自：[Anthropic launches Claude Mythos/Fable 5, but you better try it soon](https://thenewstack.io/anthropic-claude-mythos-fable-5/)
+> 
+> 作者：Frederic Lardinois
+
+周二，Anthropic 发布了 Fable 5，这是其首个正式发布的 Mythos 级模型。
+
+Fable 5 实际上是该公司过去几周一直在讨论的高性能 Mythos 模型，但增加了一些护栏，以确保它不会被滥用，例如用于构建恶意软件或生物武器。
+
+为了增加复杂性，该公司还发布了 Mythos 5，这是 Mythos 的更新版本，没有其中的一些护栏，但最初仅提供给 [Project Glasswing 的成员](https://thenewstack.io/anthropic-glasswing-mythos-cybersecurity/)。
+
+## Fable 5 可用性：第一次总是免费的
+
+不过，与 Mythos 不同，你今天就可以使用 Fable 5。[Anthropic 表示](https://www.anthropic.com/news/claude-fable-5-mythos-5)它现在已在 API 中提供（以及 Microsoft Foundry、Amazon Bedrock 和 [AWS 上的 Claude 平台](https://thenewstack.io/anthropics-claude-platform-comes-to-aws/)），价格为每百万输入 token 10 美元，每百万输出 token 50 美元。这是 Anthropic 目前 Opus 模型价格的两倍。
+
+> Anthropic 表示 Fable 5 在概念推理、处理文档以及解读图表和表格方面表现更好。
+
+目前，Fable 5 也提供给拥有 Claude Pro、Max、Team 以及按席位付费的企业订阅用户，但有一个条件：它将在 6 月 22 日之后撤出。从 6 月 23 日开始，使用 Fable 5 将需要使用积分。
+
+与 Anthropic 目前所做的许多事情一样，这样做的原因是容量问题。“在此之后——当充足的容量允许我们这样做时——我们的目标是将 Fable 5 恢复为订阅计划的标准组成部分。我们打算尽快实现这一目标，”Anthropic 解释道。
+
+## 基准测试
+
+然而，你得到的是一个在几乎所有基准测试中都表现出色的模型——而且通常领先幅度非常大。
+
+在 SWE-Bench Pro（一套要求模型在精选代码仓库中解决问题的测试）上，Fable 得分为 80%（而没有护栏的 Mythos 5 得分为 80.4%）。这远领先于 Anthropic 自己的 Opus 4.8（69.2%），以及 OpenAI 的 GPT 5.5（58.6%）和 Google 的 Gemini 3.1 Pro（54.2%）。
+
+![](https://cdn.thenewstack.io/media/2026/06/de807b3d-1e65982497d7d4891219ed0e83141625a291b860-2600x2870-2-928x1024.webp)
+
+几乎所有其他类型的基准测试也是如此，无论其重点是编程、工具使用、计算机使用还是知识工作。
+
+不过，基准测试只能说明部分情况，并不总能反映模型在现实世界使用中的表现。Anthropic 认为 Fable 5 和 Mythos 5 可以比其其他模型更长时间地自主工作，并处理更复杂的任务。例如，Stripe 让 Fable 5 在一天内完成了一个 5000 万行 Ruby 代码库的现代化改造——该公司表示，否则这需要一个开发团队耗时两个月。
+
+它之所以能做到这一点，部分原因是正如 Anthropic 所指出的，新模型可以在长运行任务中保持“专注于数百万个 token，并利用其自身的笔记改进输出”。
+
+![](https://cdn.thenewstack.io/media/2026/06/0587ccfa-d3c3efe0e8ab310856368cee2b2161439db6676a-1920x1080-1-1024x576.webp)
+
+GitHub 的首席产品官 Mario Rodriguez 也认为，这种更持久的专注能力让 Fable 5 能够承担更复杂的编程任务。
+
+“Fable 5 对于 GitHub 服务的人群来说是真正的进步，”他在 Anthropic 公告博客文章的一段引言中表示。“在我们早期的测试中，它以超出以往基准的自主性和可靠性承担了复杂、长周期的编码任务。但最让我们兴奋的是它指明的方法：在未来，开发者可以将日益雄心勃勃的工作交给智能体，并在整个软件生命周期中信任其结果。”
+
+对于这种增强的记忆能力也能发挥作用的知识工作，Anthropic 表示 Fable 5 在概念推理、处理文档以及解读图表和表格方面表现更好。
+
+## 安全措施与拒绝
+
+安全措施显然是 Fable 5 的核心功能。这里的一个风险是，如果 Anthropic 将模型调校得过于保守，它会拒绝过多的回答。毕竟，据 Anthropic 称，最初的 [Mythos 模型由于过于危险而无法发布](https://thenewstack.io/anthropic-claude-mythos-cybersecurity/)，该公司认为所有 Mythos 级模型“都需要强大的安全措施来防止滥用，且覆盖范围需要广泛。安全措施本身必须经受住持续且复杂的绕过尝试。”
+
+当模型检测到潜在的滥用时，它不会直接回答这些问题。相反，当它检测到与“网络安全、生物和化学或蒸馏”相关的请求时，它会将任务移交给 Opus 4.8。
+
+> 在我自己的测试中，Fable 5 拒绝对其自身的模型卡（model card）进行推理，可能是因为其中包含了不少模型本应避免的话题。
+
+Anthropic 表示，到目前为止，这种情况仅在不到 5% 的 Fable 会话中发生，但很有可能那些获得早期访问权限的人并不一定代表 Claude 用户的绝大多数。
+
+在我自己的测试中，Fable 5 拒绝对其自身的模型卡进行推理，可能是因为其中包含了不少模型本应避免的话题。
+
+## 30 天数据保留
+
+用户在使用 Mythos 级模型时*不能*做的一件事是选择退出任何数据保留。从现在开始，使用这些模型意味着选择加入 30 天数据保留——否则就根本不使用它们。
+
+Anthropic 表示，它不会根据这些数据训练新模型，并且正在记录所有人类对这些数据的访问。但该公司辩称，它需要这些数据来帮助其“防御复杂且新颖的攻击（包括新的越狱和跨多个请求运行的攻击），并帮助我们识别和减少误报。”
+
+然而，一些企业仍然不希望选择让 Anthropic 存储他们的数据。
+
+## 下一步
+
+Fable 5 显然是目前市场上最强大的模型。这几乎是所有人的预期，任何稍逊一筹的表现都会是一个巨大的失望。
+
+这意味着[对发布的早期反应](https://news.ycombinator.com/item?id=48463808)较少关注能力，更多地关注发布方式，包括订阅用户的短时试用窗口和数据保留政策。
+
+现在仍有待观察该模型在现实场景中是否能名副其实。而这通常需要几天的观察时间。
