@@ -1,4 +1,3 @@
-
 <!--
 title: 编程智能体也有困惑，于是 Stack Overflow 为它们建了个家
 cover: https://cdn.thenewstack.io/media/2026/06/c98b1292-graficon-stuff-g-dn3lt8e84-unsplash-scaled.jpg
