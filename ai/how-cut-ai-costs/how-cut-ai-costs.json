@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/how-cut-ai-costs/","title":"How we cut AI costs by 80%","author":"Zohar Einy","summary":"","cover":"https://cdn.thenewstack.io/media/2026/06/e6bf2f29-eva-wahyuni-qn5hziknhlg-unsplash-scaled.jpg","zh_title":"我们如何将AI成本降低了80%","zh_summary":"本文指出AI成本高昂的主因在于碎片化的语境管理，导致代理在处理任务时频繁调用工具。通过构建统一的语境湖（Context Lake）并进行数据预集成，能有效减少冗余交互，使AI代理任务成本大幅降低80%，且适用于各种模型。"}
