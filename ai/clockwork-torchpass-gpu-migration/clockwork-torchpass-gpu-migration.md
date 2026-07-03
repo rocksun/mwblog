@@ -1,0 +1,95 @@
+<!--
+title: “仅计算一次”：Clockwork如何终结AI训练频繁重启的噩梦
+cover: https://cdn.thenewstack.io/media/2026/07/ffc0a1c7-getty-images-kct0zld_ufo-unsplash-scaled.jpg
+summary: Clockwork推出YOCO保障计划，通过TorchPass技术实现AI训练作业的实时热迁移。该方案能在GPU发生故障时，将作业无缝转移至备用节点，避免回滚检查点导致的计算资源浪费，大幅提升大规模AI训练集群的容错能力与效率。
+-->
+
+Clockwork推出YOCO保障计划，通过TorchPass技术实现AI训练作业的实时热迁移。该方案能在GPU发生故障时，将作业无缝转移至备用节点，避免回滚检查点导致的计算资源浪费，大幅提升大规模AI训练集群的容错能力与效率。
+
+> 译自：["You Only Compute Once": How Clockwork wants to put an end to AI training restarts](https://thenewstack.io/clockwork-torchpass-gpu-migration/)
+> 
+> 作者：Frederic Lardinois
+
+在规模足够大的 GPU 集群上，总会发生故障。这是不可避免的现实。标准的修复方法是回滚到上一个检查点并重新计算自那时以来的所有工作，这既缓慢又昂贵。<https://clockwork.io/> 希望让这种修复方式成为历史——并且愿意为此提供担保。
+
+Clockwork 能够防止故障导致训练中断的基础是 TorchPass，这是 [Clockwork 的容错产品](https://thenewstack.io/clockworks-fleetiq-aims-to-fix-ais-costly-network-bottleneck/)，已于 3 月份正式发布。当某个 GPU 或整个节点发生故障时，TorchPass 可以将训练作业的内存状态（包括模型权重、梯度和优化器状态）移动到健康的备用 GPU 上（或运行较低优先级作业的 GPU 上），并保持作业持续运行，通常只需几分钟即可恢复。
+
+周三，该公司推出了 YOCO 保证计划，即“You Only Compute Once”（仅计算一次）。该公司保证，受支持的训练运行中 90% 的故障将得到解决，且不会丢失进度、无需回滚检查点，也无需重新计算。如果 Clockwork 在给定的合同年度内未达标，客户将获得相当于续订或扩容费用 25% 的抵免额。
+
+> “AI 团队需要的是模型训练完成，而不是节点保持在线。”——Suresh Vasudevan，Clockwork 首席执行官。
+
+Clockwork 首席执行官 [Suresh Vasudevan](https://thenewstack.io/keeping-gpus-ticking-like-clockwork/) 表示：“AI 团队需要的是模型训练完成，而不是节点保持在线。业内一直以节点正常运行时间作为可靠性的衡量标准。YOCO 将我们对唯一重要的事情负责——即确保你的模型顺利完成。”
+
+![](https://cdn.thenewstack.io/media/2026/07/416b318b-screenshot-2026-07-01-at-9.40.11-am-1024x567.png)
+
+TorchPass 与 TorchFT 对比。图片来源：Clockwork。
+
+## 实时迁移代替回滚
+
+Clockwork 首席业务官兼联合创始人 Dan Zheng 向 *The New Stack* 介绍了当前的现状：“如果你定期创建检查点，而此时出现故障，你必须回到之前的检查点，那可能是一个小时或两个小时前。你必须重新计算。”
+
+当然，所有这些重新计算的工作都不是免费的。团队必须为昂贵的 GPU 时间买单，以重做已经完成的工作。
+
+TorchPass 通过在作业运行时将其移动来规避这些回滚。“从宏观层面来看，我喜欢将其视为类似于 vMotion，但这适用于 GPU，所以有点像 gMotion，”Zheng 说道，他指的是 VMware 将[运行中的虚拟机](https://blogs.vmware.com/cloud-foundation/2019/07/09/the-vmotion-process-under-the-hood/)在物理主机之间进行迁移而不产生停机时间的术语。
+
+当然，这种替换必须有来源。“如果其中一个 GPU 发生故障，而你有可用的备用节点，这可以是待机节点，也可以是正在运行低优先级任务的节点，”Zheng 说。
+
+团队可以将空闲节点留作专用备用节点，或者为了避免为空闲 GPU 付费，让 TorchPass 从低优先级的作业中抽取一个，关闭该作业，将该节点引入训练集群，并重建 GPU 之间的连接，从而使运行从下一步开始，而不是从上一个检查点开始。
+
+TorchPass 也不必等到故障发生。它可以在故障发生前，当出现警告迹象时就迁移作业。“如果温度超过了某个阈值，你就知道 GPU 早晚会出故障，”Zheng 说。“为什么不在我还能访问 GPU 内存时就采取行动呢？”
+
+![](https://cdn.thenewstack.io/media/2026/07/3f700120-screenshot-2026-07-01-at-9.40.43-am-1024x567.png)
+
+图片来源：Clockwork。
+
+## 如何启用 TorchPass
+
+TorchPass 有两种模式，主要区别在于各自需要移动的状态量以及由此带来的恢复速度。
+
+快速选项是“模型感知”的，正如 Zheng 所描述的那样，只需额外几行代码。这使得 TorchPass 能够准确知道要获取什么，因此可以移动更少的数据并在几十秒内恢复。
+
+另一种是团队所描述的“模型透明”。要使用它，训练团队无需更改训练代码中的任何内容。“我们能够进行系统级的快照，”Zheng 说。这是使用 TorchPass 的更简单方法，但作为交换，它移动的数据更多，恢复需要几分钟。
+
+不过，突发性崩溃仍然是个问题。毕竟，TorchPass 无法对已经死机的节点进行快照。对于这种情况，Clockwork 表示它会从作业已经运行的健康数据并行副本中重建丢失工作节点的状态，这些副本本身就是为了并行性而存在的。
+
+TorchPass 也有其局限性，Zheng 对此表示认可。“如果整个网络瘫痪，你对此无能为力，”他说。“这就像电源完全切断了——谁也无能为力。”
+
+![](https://cdn.thenewstack.io/media/2026/07/852d9fe9-screenshot-2026-07-01-at-9.41.35-am-1024x567.png)
+
+## 失败的运行到底代价几何
+
+在大规模集群中，故障并非罕见事件。Clockwork 在公告中引用的 Meta FAIR 团队的研究表明，在 1,024 个 GPU 的集群上，平均故障间隔时间为 7.9 小时；而在 16,384 个 GPU 的集群上，这一时间缩短至 1.8 小时。Clockwork 表示，结果就是 GPU 集群的实际运行效率仅为其理论性能的 30% 到 50%。但该团队认为，瓶颈不在硬件，而在围绕它的可靠性模型，该模型假设故障比这些集群实际经历的情况要罕见得多。
+
+Clockwork 估计，在一个典型的 2,048 个 GPU H200 部署中，由故障驱动的重启每年浪费超过 600 万美元的计算资源。
+
+## “不是为 Anthropic 和 OpenAI 准备的”
+
+“这个解决方案不适合 Anthropic 和 OpenAI，因为他们拥有强大的工程实力，”Zheng 说。“它也不适合 Google。它真正适合的是其他所有人。”他指的是那些想要他所说的“前沿 AI 实验室级别的弹性”却又不想自己构建的 AI 原生初创公司、企业以及量化和生物技术公司。
+
+随着越来越多的工作从预训练转向后训练和强化学习，这个市场正在增长，这使得比一年前有更多的团队面临大型训练任务。Clockwork 表示，其客户已经包括新云服务商 Nebius、Nscale 和 WhiteFiber，以及 DCAI 和 Uber、富国银行等企业。
+
+不过，认知度还在提升中。“我们交谈过的很多人都已经习惯了检查点重启，他们甚至不知道还有其他选择，”Zheng 说。
+
+## 测试显示了什么
+
+Clockwork 表示，最常见的替代方案只是现状。团队经常设置检查点，并在发生故障时忍受重新计算的成本。
+
+另一种是 [TorchFT](https://github.com/meta-pytorch/torchft)，即 Meta 在 2024 年底发布的开源框架，它通过在 GPU 故障时丢弃整个副本组并继续运行直到它被替换来保持作业运行。Clockwork 表示，这种方法即使在没有故障时也会产生每步的开销，该公司将 TorchPass 定位为更轻量级的选项，适用于在数百或数千个 GPU 上运行的、故障不会每几分钟就发生一次的中等规模任务。
+
+SemiAnalysis 对 TorchPass 进行了一些独立的基准测试。
+
+“供应商制作一张幻灯片声称他们的产品有效，与将其实际写入合同之间有很大区别，”SemiAnalysis 的技术人员、ClusterMAX 基准测试的主要作者 Jordan Nanos 说。“在我们的测试中，与检查点重启相比，TorchPass 在 GPT-OSS-120B 训练运行（基于 64x H200 集群）中提供了最快且最高效的容错性能。TorchPass 在该任务中的表现也优于 TorchFT（在 MFU 和 tokens/sec/GPU 方面），同时匹配了其恢复时间。YOCO 保证计划只是反映了我们在测试中看到的结果，并使其具有合同约束力。”
+
+## 作为软件层的可靠性
+
+“我喜欢回想我在 Google 早期的日子，比如 Google File System，”Zheng 说。“你有普通的旋转硬盘，但从开发者的角度来看，你希望只写一次并确保数据被持久化。你不在乎是否有人需要在数据中心更换硬盘。”
+
+“我们也需要在软件层面拥有这种弹性层，”他说，“这样作为开发者或 AI 研究人员，你会有更高水平的信心。你只需要专注于训练，而不必担心基础设施。”
+
+## 可观测性
+
+Clockwork 源于一个使命与公司现在截然不同的项目：同步服务器时钟。但由于这也涉及对服务器之间延迟的极精确测量，团队意识到仅通过这样做就能学到很多关于集群的知识。此后，该公司一直在扩展这一领域，值得注意的是，可观测性仍然是 Clockwork 核心工作的一部分。
+
+Zheng 表示，TorchPass 和 Clockwork 的监控工具是互补的。“它与 TorchPass 相辅相成，如果你识别出问题，你就可以进行迁移，”他说。
+
+该公司许多较新的工作实际上都投入到了可观测性中。Zheng 说，其车队监控工具现在可以追踪到特定链路或交换机的结构问题，Clockwork 正在与几家大型云运营商试点该功能。他说，尽早捕捉到性能下降的 GPU 或拥塞的链路，TorchPass 就能在故障发生前迁移作业。
