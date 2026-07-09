@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/killing-the-code-review/","title":"How to kill the code review","author":"Ankit Jain","summary":"","cover":"https://cdn.thenewstack.io/media/2026/07/5fb580c6-a-c-0biutmdyrc4-unsplash.jpg","zh_title":"如何终结代码审查","zh_summary":"本文指出传统代码审查已无法应对 AI 生成代码的高产出。作者建议将代码审查拆分为“意图对齐”与“标准检查”两部分，通过捕获意图与建立不变量（Invariants）替代人工读码，从而实现代码审查的转型。"}

@@ -1,0 +1,63 @@
+<!--
+title: “自然界是我们所知计算效率最高的系统”：Refiant如何利用群体优化构建千万级Token AI模型
+cover: https://cdn.thenewstack.io/media/2026/07/00b22e22-iryna-trigubova-xtdde9ft37k-unsplash-scaled.jpg
+summary: Refiant公司推出了拥有1000万token上下文窗口的模型Protea。该团队受蚂蚁、蜜蜂等自然界群体行为启发，采用群体优化算法提升计算效率，旨在解决模型幻觉、RAG局限及“丢失中间信息”等长上下文问题。
+-->
+
+Refiant公司推出了拥有1000万token上下文窗口的模型Protea。该团队受蚂蚁、蜜蜂等自然界群体行为启发，采用群体优化算法提升计算效率，旨在解决模型幻觉、RAG局限及“丢失中间信息”等长上下文问题。
+
+> 译自：[“Nature is the most computationally efficient system we know”: How Refiant used swarm optimization to build a 10-million-token AI model](https://thenewstack.io/refiant-protea-swarm-optimization/)
+> 
+> 作者：Adrian Bridgwater
+
+虽然家喻户晓的[前沿模型](https://thenewstack.io/googles-gemini-3-5-flash-beats-the-frontier-models/)正竞相提高版本号和至少百万级的token上下文窗口，但新一代初创数据科学专家正将上下文窗口推向千万级别。
+
+[Subquadratic于](https://thenewstack.io/subquadratic-12-million-context-window/)今年5月首次推出了1200万token的窗口，而总部位于硅谷和南非的[Refiant](https://refiant.ai/)则在周三发布了其拥有1000万token上下文窗口的模型——Protea。这一举动可能预示着长上下文AI竞赛已经打响。
+
+## 模型效率低下与常见的权宜之计
+
+然而，[仅有更大的上下文窗口](https://thenewstack.io/do-enormous-llm-context-windows-spell-the-end-of-rag/)是不够的。这是因为即使是最强大的模型，其工作内存中也只有几十万个token，这可能导致必须采取权宜之计来弥补模型无法访问的内容。
+
+Refiant联合创始人[Dr. Viroshan Naicker](https://www.linkedin.com/in/viroshan-naicker/)向*The New Stack*表示，他认为现代大语言模型（LLM）“在基础层面上未能实现有机的高效”，而他所在机构的方法模仿了自然界系统（从蚁群到蜂巢）寻找复杂问题高效解决方案的方式。
+
+“这绝非伪科学的吹嘘；自然界是我们所知计算效率最高的系统，科学中使用的许多算法都是受到自然界启发的，” Naicker说道。“这是科学界一条走通的路。全球有多个团队正致力于这个特定的（仿生）方向，试图弥合我们所知的AI推理与自然系统能源效率之间的差距。”
+
+> “鱼类和鸟类协调它们的动作，以汇聚到数学上最短、最高效的路径上——蜜蜂、萤火虫和细菌也经过编程，可以使用一定程度的群体式优化。”
+
+## 鸟类和蜜蜂能教给我们关于AI的什么？
+
+Naicker刚才提到了蚁群和蜜蜂吗？
+
+是的，因为Refiant使用了群体式优化（swarm-style optimization）。这种现象在蚁群中可见，它们最初随机移动，直到发现食物来源，之后会留下信息素踪迹供其他蚂蚁优化行程。鱼类和鸟类也协调它们的动作，以汇聚到数学上最短、最高效的路径上。蜜蜂、萤火虫和细菌也经过编程，可以使用一定程度的群体式优化。
+
+Naicker与他的联合创始人Siddharth Gutta和Mathew Haswell组成了一个团队，其经验涵盖量子数学、传统金融和商业规模化。将群体式优化应用于Protea中的数据，意味着推理是通过压缩和上下文管理的结合来执行的。
+
+“从我们的角度来看，我们还在推进一种技术，提供以数据为基础的特定于上下文的推理模型，” Naicker澄清道。“我们认为这对于减少模型幻觉、替代RAG（检索增强生成）以及构建更好、更可靠的智能体工作流具有价值。这在敏感的应用场景中增加了一层信任，更像是增加了一份保险，而不是剥夺信任。”
+
+## 1000万token到底有多少？
+
+Refiant团队将1000万token描述为相当于单次对话中750万个单词（我们从Anthropic今年的基准测试中得知[Claude拥有100万上下文窗口](https://www.claudecodecamp.com/p/claude-code-1m-context-window)），或者是用户五年的电子邮件、83部小说，或830集播客，所有这些都同时保存在活动内存中。
+
+该团队声称，Protea有能力处理整个企业代码库或数十年的临床试验数据——这些数据集以前必须拆分并以碎片形式输入模型——因此它们可以在单次传递中以完全保真度进行处理。Protea的工程师们还表示，他们可以成功解决“[丢失中间信息](https://arxiv.org/html/2311.09198v2#:~:text=To%20overcome%20this%20crucial%20issue,step%20QA%20(PAM%20QA).)”问题——这是百万级token窗口的一个局限性，即模型在上下文的开头和结尾保持准确，但会丢失隐藏在中间的所有内容线索。
+
+Refiant首次将这些技术应用于模型压缩，缩小了OpenAI的GPT-OSS-120B，使其能够在拥有18GB内存的MacBook Pro上运行。
+
+> “与其发布基准测试，我们更邀请用户运行这些模型并亲自试用。”
+
+Protea系列是开放且实时的，Refiant正在邀请团队在不同行业和用例中对上下文窗口进行压力测试。但是，我们应该信任将敏感的企业数据档案交给一家仅成立一年且完全未经证实的初创公司吗？
+
+## 自带云服务（BYOC），一种可能的演进
+
+“我们遵守数据管理的最佳实践、流程和合规性要求，” Naiker确认道。“对于我们这个特定阶段的初创公司来说，这是合理的。隐私和数据主权对我们来说是重要的价值观，我们正在积极探索边缘、自托管和自带云服务（Bring-your-own-cloud）的数据模型。”
+
+但是1000万token的上下文窗口非常大。当Protea在处理完整数据集时开始出现巨大的延迟峰值时，这不会显得力不从心吗？Naiker同意“延迟是长上下文推理模型的一个核心问题”，但在该公司运行的测试中，即使在较大的token窗口下，它也以合理的延迟提供了推理。
+
+“我们有内部报告和测试来验证这项技术，包括[Ruler](https://arxiv.org/abs/2404.06654)、[MRCR](https://llm-stats.com/benchmarks/mrcr)和[Babilong](https://arxiv.org/abs/2406.10149)，但我们并没有要求任何人盲目相信我们。与其发布基准测试，我们更邀请用户运行这些模型并亲自试用，” Naiker补充道。
+
+## 接下来是什么，1亿token的上下文窗口？
+
+尽管科技行业充斥着伪托的陈述，且比尔·盖茨几乎肯定从未在现实生活中说过“64K对任何人来说都足够了”，但我们今天必须问问自己，到本世纪末，我们是否会嘲笑那些“愚蠢的小”1000万token上下文窗口。
+
+可能不需要那么久。在内部，Refiant坚称已经展示了一个拥有1亿上下文窗口的工作原型，并正在探索如何在未来以该规模最好地进行基准测试和产品化。
+
+那么接下来，正如《王牌大贱谍》（Austin Powers）中的[Dr. Evil](https://www.youtube.com/watch?v=EJR1H5tf5wE)所说，是1000亿的上下文窗口，对吧？
