@@ -1,0 +1,53 @@
+<!--
+title: OpenAI的Codex用户达到800万——开发者须知事项
+cover: https://cdn.thenewstack.io/media/2026/03/f7a6563d-screenshot-2026-03-04-at-14.29.48.png
+summary: OpenAI整合Codex与ChatGPT桌面端后用户激增至800万，引发了规模化挑战与运营策略调整。OpenAI通过优化推理容量与调整上下文窗口应对，而竞争对手如Anthropic也在积极应对。当前，AI代理的开发重点在于任务执行成本与工作流整合，开发者仍需密切关注使用配额限制。
+-->
+
+OpenAI整合Codex与ChatGPT桌面端后用户激增至800万，引发了规模化挑战与运营策略调整。OpenAI通过优化推理容量与调整上下文窗口应对，而竞争对手如Anthropic也在积极应对。当前，AI代理的开发重点在于任务执行成本与工作流整合，开发者仍需密切关注使用配额限制。
+
+> 译自：[OpenAI hits 8 million Codex users — what developers need to know](https://thenewstack.io/gpt-5-6-codex-user-surge/)
+> 
+> 作者：Amanda Caswell
+
+OpenAI 上周推出了 [GPT-5.6](https://thenewstack.io/openai-gpt-56-live/)，并将 Codex 合并到了统一的 ChatGPT 桌面应用程序中。从那时起，该公司一直处于全力以赴的状态。
+
+周二早些时候，OpenAI 的 Codex 工程负责人 [Tibo Sottiaux](https://www.linkedin.com/in/thibault-sottiaux-27195366/) 在 X 上表示，Codex 和 ChatGPT Work 的合并活跃用户数可能达到了 800 万。这一增长轨迹令人印象深刻，特别是在 Anthropic Claude 的使用率在 2026 年大幅增长的情况下。Codex 在 2 月份的每周活跃用户不到 100 万，但到 6 月初就达到了 500 万。随后，GPT-5.6 于 7 月 9 日发布，数字急剧加速——7 月 12 日达到 600 万，约 24 小时后达到 700 万，到周日达到 800 万。
+
+这是大多数企业级 SaaS 产品一生中都难以见到的增长曲线，更不用说在五个月内了。
+
+## 发布时的故障
+
+OpenAI [将独立的 Codex 应用程序合并到 ChatGPT 桌面应用程序中](https://thenewstack.io/openai-codex-work-atlas/)，为知识工作者推出了作为新代理模式的 ChatGPT Work，并开始淘汰 Atlas 浏览器——这一切都在一天之内完成。
+
+据该公司称，需求几乎立即激增，流量在 48 小时内翻了一番，超过了 OpenAI 此前的峰值。这次突如其来的涌入暴露了几个扩展性问题。在 7 月 12 日发布的一篇[详细推文](https://x.com/thsottiaux/status/2076495156757577895?)中，Sottiaux 概述了团队的应对措施，包括优化推理以使每个订阅者的容量增加约 10%，在更大的限制导致意外计费问题后将上下文窗口从 372,000 个 token 减少到 272,000 个，回滚实验性的推理工作设置（内部称为“果汁”值），并修补了在最高推理级别下过于激进的多智能体行为。
+
+OpenAI 还暂时取消了 Plus、Business 和 Pro 订阅者的五小时使用上限——此举是该产品自发布以来提供的最慷慨的访问权限。
+
+社区反应不一，有人将上下文窗口的回滚解读为秘密降级，而另一些人则称赞 Sottiaux 公开解释了运营权衡。 [OpenAI 首席执行官 Sam Altman 发表了评论](https://x.com/sama/status/2076780425280954658)，其核心内容是针对那些他认为视用户为草芥的竞争对手进行定位。
+
+## 竞争对手对激增的回应
+
+在 OpenAI 宣布其 700 万用户里程碑后的几小时内，Anthropic [将 Claude Fable 5 的促销定价延长至 7 月 19 日](https://thenewstack.io/fable-5-honeycomb-opus/)，并将 Claude Code 的每周使用限制提高了 50%。两者之间是否存在因果关系不得而知，但这种重叠足以引发我们的猜测。
+
+自周四以来，GPT-5.6 Sol 在经历了 7,800 次真实世界的代理会话后，已上升至 Arena 代理排行榜的第二位，许多开发者现在再次将 OpenAI 视为 AI 编程的领导者。
+
+## 任务成本至关重要
+
+开发者通过完成任务的成本来评判系统。例如，Cognition [报告称](https://x.com/cognition/status/2076714965344342382)，其由 Fable 5 驱动的 Devin Fusion 产品在每个完成任务的成本上可能比 Anthropic 更昂贵的 Opus 4.8 更便宜，因为更好的委派减少了不必要的工作。在 81% 的由 Fable 主导的运行中，主模型从不编辑代码。结论是，如果一个更昂贵的模型能避免浪费工作，它仍然可以降低总体成本。
+
+> 在 81% 的由 Fable 主导的运行中，主模型从不编辑代码。
+
+## 工具框架正在成为产品本身
+
+OpenAI 决定将 Codex、ChatGPT Work 和其内置浏览器合并为一个桌面应用程序，反映了这种转变。其插件架构也是如此，该架构将应用程序连接到 Slack、Google Drive、SharePoint、CRM 和日历。OpenAI 正在将其转变为一个叠加在人们已经使用的工具之上的工作空间。
+
+Anthropic 在 Claude Cowork 方面也采取了类似的方向，该产品是在该公司发现用户已经将 Claude Code 用于除软件开发之外的更多用途后开发的。
+
+## 使用上限仍然是瓶颈
+
+目前，问题仍然是使用上限。即使五小时限制被取消，Codex 和 ChatGPT Work 也被迫共享一个每周的配额池。如果你运行一个带有高性能 Sol Ultra 的多智能体编排会话，你会非常快地耗尽该额度。（Sottiaux 注意到了这个令人头疼的问题，并表示正在进行修复）。
+
+在更广泛的竞争中，OpenAI 拥有 9 亿周活跃用户的巨大规模和出色的基准测试分数。Anthropic 凭借优质的代码质量和对企业友好的定价，依然赢得了开发者的大量好感。对于 DIY 人群来说，如果你想以牺牲一点速度来换取数据控制权，运行 GLM 5.2 或 Kimi K2.7 的开源栈看起来比以往任何时候都要好。编码代理和知识工作正在迅速增加，而我们甚至还没有到周末。
+
+> 用于编码和知识工作的编码代理正在迅速增加，而我们甚至还没有到周末。
