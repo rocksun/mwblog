@@ -1,0 +1,55 @@
+<!--
+title: 800 次修正如何重塑 Meta 的 AI 编程战略
+cover: https://cdn.thenewstack.io/media/2026/05/612c2996-ubaid-e-alyafizi-rirrvhm-7ea-unsplash-scaled.jpg
+summary: Meta 要求工程师每周提交 MetaCode 的修正记录，旨在通过真实开发场景中的 AI 错误数据进行模型后训练，以提升编程能力、降低成本并缩小与 OpenAI 和 Anthropic 的模型性能差距。
+-->
+
+Meta 要求工程师每周提交 MetaCode 的修正记录，旨在通过真实开发场景中的 AI 错误数据进行模型后训练，以提升编程能力、降低成本并缩小与 OpenAI 和 Anthropic 的模型性能差距。
+
+> 译自：[The 800 mistakes that could reshape Meta's AI coding strategy](https://thenewstack.io/meta-metacode-engineer-training/)
+> 
+> 作者：Amanda Caswell
+
+**Meta 正在要求数千名软件工程师**通过简单地修复代码来帮助训练其内部的 AI 编程工具，这正是他们日常工作的一部分。
+
+上个月，据《[The Information](https://www.theinformation.com/newsletters/ai-agenda/meta-plans-close-gap-anthropic-openai-coding)》获得的一份内部备忘录显示，Meta 应用 AI 工程组织副总裁 [Maher Saba](https://www.linkedin.com/in/maher-saba-5363705/) 要求全公司的工程师每周至少提交一次使用 MetaCode（公司内部 AI 编程代理）生成的代码“差异（diff）”。
+
+Saba 表示，工程师修复 MetaCode 错误批次所产生的修正，已经有助于改进 Muse Spark 1.1，并将被用于对内部代号为 Watermelon 的即将推出的模型进行后期训练。根据备忘录，目前已有 7,000 名每周活跃用户提交了超过 800 次修复。Meta 甚至根据员工贡献的修改数量，在他们的内部个人资料中添加了彩色徽章，以鼓励他们发现更多问题。
+
+> MetaCode 让 Meta 能够访问整个流程，使公司能够看到原始任务和 MetaCode 的响应，以及随后的工程师修正，以及批准它所需的任何测试或审查。
+
+## 工程师修复 AI 留下的烂摊子
+
+公共代码库包含大量可运行的软件，但它们很少捕捉到诸如模型初次尝试、出错点，以及经验丰富的工程师在代码准备合并前所做的修改等信息。但 MetaCode 让 Meta 能够访问整个流程，使公司能够看到原始任务和 MetaCode 的响应，以及随后的工程师修正，以及批准它所需的任何测试或审查。
+
+在提交足够多的数据后，Meta 或许能够发现反复出现的问题。这些错误正是公司可以在日常开发中收集到的数据，而无需为模型创造人工编码练习。
+
+值得注意的是，Meta 并未说明在后期训练中如何准备或权衡这些修正。它也没有说每一个补丁和代码审查都会自动成为训练数据。备忘录描述了一个审慎的过程，即工程师在 MetaCode 出错后提交修正。
+
+## 追赶不断变化的排行榜
+
+Meta 于 2026 年 7 月 9 日推出了 Muse Spark 1.1。该公司表示，Meta 内部的开发人员和研究人员已经每天都在使用它，并且新版本在编程方面比最初的 Muse Spark 好得多。然而，它在公开测试中仍落后于最强的模型。Muse Spark 1.1 在 DeepSWE 1.1 排行榜上得分为 53%，该排行榜测试了编码代理在 113 项长期软件工程任务中的表现。
+
+发布时，Meta 将该结果与 GPT-5.5 的 67% 和 Claude Opus 4.8 的 59% 进行了对比。自那时起，OpenAI 和 Anthropic 再次领先。7 月中旬发布的 GPT-5.6 Sol 得分为 73%，而 Claude Opus 5 在 7 月 24 日发布后达到了 74%。
+
+这些数字需要背景说明。DeepSWE 使用相同的 mini-swe-agent 框架来测试模型，但它并未测试 MetaCode（Meta 的内部编码产品）。除非 Meta 直接报告该联系，否则不应将对 MetaCode 的改进视为 Muse Spark 公开 DeepSWE 分数的提升。话虽如此，排行榜使 Meta 面临的问题变得更加清晰，突显出其模型正在追赶不断进步的竞争对手。
+
+## 规模化带来的代币成本叠加
+
+成本是 Meta 必须成功的另一个原因。编码代理在搜索代码库、测试解决方案和修改代码时会消耗大量代币。将此乘以数千名工程师（其中一些还在运行耗时任务的代理），账单将非常可观。
+
+通过 Meta 的 API，Muse Spark 1.1 每百万输入代币收费 1.25 美元，每百万输出代币收费 4.25 美元。这比 Anthropic 和 OpenAI 对其前沿模型收取的费用要低得多。如果 Meta 能缩小性能差距，它就可以在全公司范围内运行编码代理，而不必每次工程师分配任务时都向竞争对手付费。
+
+在 OpenAI 于 7 月下旬[将 GPT-5.6 Luna 的成本削减了 80%](https://thenewstack.io/gpt-5-6-api-price-cuts/) 后，这种定价看起来更具吸引力，输入代币价格降至每百万 0.20 美元——此举部分是由高效的中国开源权重模型带来的压力所推动的。价格战使 Meta 的处境更加复杂：其模型比前沿选择更便宜，但前沿选择的价格也在迅速下降。
+
+> 价格战使 Meta 的处境更加复杂：其模型比前沿选择更便宜，但前沿选择的价格也在迅速下降。
+
+## 竞争对手并未停滞不前
+
+Meta 并不是唯一一家试图打通 AI 生成代码与现实工程闭环的公司。阿里巴巴最近让其 Qwen 模型进行了[为期 16 天的自主编码测试](https://thenewstack.io/qwen-autonomous-coding-audit/)，并将每次提交发布到 GitHub。这与认为生产编码是比合成基准更好的训练信号的底层赌注采用了不同的方法。
+
+在该公司的第二季度财报电话会议上，首席执行官 Mark Zuckerberg 表示，Meta 的路线图中还有更多的编码和生产力工具。
+
+MetaCode 最终可能会成为其中之一，或者它可能继续作为内部工具。目前，它的价值在于它每次犯错时所产生的结果。
+
+> 目前，它的价值在于它每次犯错时所产生的结果。
