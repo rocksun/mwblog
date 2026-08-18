@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How AI text watermarking works: a visual guide</title>
+<meta name="description" content="A gentle visual guide to how statistical watermarks hide inside AI-generated text, and what erases them.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://declaude.org/watermarking/">
+<meta name="theme-color" content="#faf9f6">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="declaude">
+<meta property="og:title" content="How AI text watermarking works">
+<meta property="og:description" content="A gentle visual guide to how a statistical mark hides inside generated text, and what erases it.">
+<meta property="og:url" content="https://declaude.org/watermarking/">
+<meta property="og:image" content="https://declaude.org/watermarking/og.png?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How AI text watermarking works">
+<meta name="twitter:description" content="A gentle visual guide to how a statistical mark hides inside generated text, and what erases it.">
+<meta name="twitter:image" content="https://declaude.org/watermarking/og.png?v=2">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  :root {
+    --ink: #1a1a18; --paper: #faf9f6; --line: #e3e0d8; --accent: #b3541e;
+    --good: #2e7d32; --muted: #6b6862; --red: #a3241c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.2rem 5rem; }
+  .back { font-size: .85rem; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.1rem; letter-spacing: -0.02em; line-height: 1.15; margin: 1.2rem 0 .6rem; }
+  h1 .slash { color: var(--accent); }
+  .sub { color: var(--muted); font-size: 1.05rem; margin-bottom: .4rem; }
+  .byline { color: var(--muted); font-size: .82rem; margin-bottom: 2.2rem; }
+  .byline a { color: var(--muted); }
+  h2 { font-size: 1.3rem; margin: 3rem 0 .3rem; letter-spacing: -0.01em; }
+  h2 .stepno { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .goal { font-size: .92rem; color: var(--muted); font-style: italic;
+    border-left: 3px solid var(--accent); padding: .1rem 0 .1rem .8rem; margin: .5rem 0 1rem; }
+  p { margin: .7rem 0; }
+  .steps { font-size: .95rem; color: var(--muted); padding-left: 1.4rem; margin: 1rem 0 0; }
+  .steps li { margin: .2rem 0; }
+  .fig { border: 1px solid var(--line); border-radius: 12px; background: #fff;
+    padding: 1.2rem 1.3rem; margin: 1.1rem 0; }
+  .fig .cap { font-size: .85rem; color: var(--muted); margin-top: .7rem; line-height: 1.5; }
+  .draft { background: #faf8f1; border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 8px; padding: .65rem .95rem .6rem; margin: 0 0 1.1rem; }
+  .draftlbl { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: .3rem; }
+  .sent { font-family: Georgia, 'Times New Roman', serif; font-size: 1.15rem; margin: 0; }
+  .sent b { border-bottom: 2px solid var(--accent); font-weight: 600; display: inline-block; }
+  .sent b.empty { min-width: 6.2rem; border-bottom: 2px dashed #b7b3aa; }
+  .caret { display: inline-block; width: 2px; height: 1.05em; background: var(--accent);
+    vertical-align: -.18em; margin-left: 2px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .sent b.flash { animation: wordpop .5s ease; }
+  @keyframes wordpop {
+    0% { transform: scale(1.22); background: #f6ead9; }
+    100% { transform: scale(1); background: transparent; }
+  }
+  .wordrow { display: grid; grid-template-columns: 8.2rem 1fr 4.6rem; gap: .6rem;
+    align-items: center; margin: .3rem -.35rem; padding: .14rem .35rem; font-size: .92rem;
+    border-radius: 6px; transition: background .12s; }
+  .wordrow .w { text-align: right; white-space: nowrap; overflow: hidden; }
+  .wordrow.active { background: #f5f1e6; }
+  .wordrow.win { background: #f6ead9; }
+  .wordrow.win .w { font-weight: 700; }
+  .tdot { display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: .7; margin: 0 1.5px 1px 0; }
+  button.pulse { animation: btnpulse 2.2s ease infinite; }
+  @keyframes btnpulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(179, 84, 30, .45); }
+    50% { box-shadow: 0 0 0 7px rgba(179, 84, 30, 0); }
+  }
+  .wbar { position: relative; height: 20px; background: #f1efe9; border-radius: 6px; }
+  .wbar .ghost { position: absolute; inset: 0 auto 0 0; border: 1px dashed #b7b3aa;
+    border-radius: 6px; display: none; }
+  .wbar .fill { position: absolute; inset: 0 auto 0 0; background: #9a968e;
+    border-radius: 6px; transition: width .6s ease, background .6s ease; }
+  .wbar .pct { position: absolute; right: .45rem; top: 0; line-height: 20px;
+    font-size: .72rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .wordrow .tally { font-size: .72rem; color: var(--muted); font-variant-numeric: tabular-nums;
+    line-height: 1.15; }
+  .tag { font-size: .68rem; padding: .05rem .35rem; border-radius: 3px; margin-left: .4rem;
+    vertical-align: 1px; }
+  .tag.g { background: #dfe9e1; color: #245c28; box-shadow: inset 0 -2px 0 #7fa886; }
+  .tag.r { background: #fff; color: #7c2c22; border: 1px dashed #c98a7d; }
+  .fill.g { background: #7fa886 !important; }
+  .fill.r { background: #c98a7d !important; }
+  button.demo { background: var(--ink); color: var(--paper); border: 0; border-radius: 8px;
+    padding: .5rem 1.1rem; font-size: .9rem; cursor: pointer; margin: .2rem .5rem .2rem 0; }
+  button.ghostbtn { background: none; border: 1px solid var(--line); border-radius: 8px;
+    padding: .5rem 1rem; font-size: .9rem; color: var(--muted); cursor: pointer;
+    margin: .2rem .5rem .2rem 0; }
+  .dots { display: flex; gap: 1.1rem; flex-wrap: wrap; margin: .4rem 0 .2rem; }
+  .pos { text-align: center; }
+  .pos .lbl { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+  .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin: 0 1.5px; }
+  .dot.g { background: #7fa886; }
+  .dot.r { background: #fff; border: 1.5px dashed #c98a7d; }
+  /* token chips: green = filled + solid underline, red = outlined + dashed — not colour alone */
+  .passage { line-height: 2.05; margin: .2rem 0 .6rem; }
+  .tok { display: inline-block; padding: 0 .3rem; border-radius: 4px;
+    font-size: .88rem; margin: 0 .1rem .25rem 0; background: #f4f2ec; }
+  .tok.gg { background: #dfe9e1; box-shadow: inset 0 -2.5px 0 #5c8a64; }
+  .tok.rr { background: #fff; border: 1px dashed #c98a7d; padding: 0 .24rem; }
+  /* step 4 span encoding: highlighted run = still matches the original */
+  .passage .w { transition: background .45s ease, color .45s ease, box-shadow .45s ease;
+    border-radius: 3px; padding: 0 .1rem; }
+  .passage .w.hit { background: #f0ddd2; box-shadow: inset 0 -2.5px 0 var(--accent); }
+  .passage .w:not(.hit) { color: #a5a19a; }
+  .tok { transition: background .45s ease, color .45s ease, box-shadow .45s ease; }
+  @keyframes pop { 0% { transform: translateY(-5px); opacity: .2; }
+    100% { transform: none; opacity: 1; } }
+  .tok.pop { animation: pop .32s ease; }
+  .meter { position: relative; height: 14px; background: #f1efe9; border-radius: 7px;
+    margin: .8rem 0 1.4rem; }
+  .meter .fillm { position: absolute; inset: 0 auto 0 0; width: 0%; background: var(--accent);
+    border-radius: 7px; transition: width .12s linear; }
+  .meter .tick { position: absolute; top: -4px; width: 2px; height: 22px; background: var(--ink);
+    transition: left .8s ease; }
+  .meter .ticklbl { position: absolute; top: 22px; font-size: .7rem; color: var(--muted);
+    transform: translateX(-50%); white-space: nowrap; transition: left .8s ease; }
+  .count { font-variant-numeric: tabular-nums; font-size: 1rem; margin: .5rem 0 0; }
+  .verdictline { font-size: .9rem; margin: .3rem 0 0; min-height: 1.4em; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .stops { position: relative; height: 3.1em; font-size: .72rem; color: var(--muted); }
+  .stops span { position: absolute; transform: translateX(-50%); top: 0; text-align: center;
+    line-height: 1.25; }
+  button.stop { position: absolute; transform: translateX(-50%); top: 0; text-align: center;
+    line-height: 1.25; background: none; border: 0; padding: .15rem .2rem; cursor: pointer;
+    font-size: .72rem; color: var(--muted); font-family: inherit; }
+  button.stop:hover { color: var(--ink); text-decoration: underline; }
+  button.stop:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px;
+    border-radius: 4px; }
+  button.stop.on { color: var(--ink); font-weight: 600; }
+  button.demo:focus-visible, button.ghostbtn:focus-visible,
+  input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .val { font-variant-numeric: tabular-nums; font-weight: 600; }
+  code { background: #f1efe9; border-radius: 4px; padding: .05rem .3rem; font-size: .88em; }
+  ul.limits { padding-left: 1.2rem; }
+  ul.limits li { margin: .55rem 0; }
+  .note { color: var(--muted); font-size: .85rem; margin-top: 2.4rem;
+    border-top: 1px solid var(--line); padding-top: 1.2rem; }
+  @media (max-width: 480px) {
+    .wordrow { grid-template-columns: 6.4rem 1fr 3.6rem; font-size: .85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tok, .passage .w, .fill, .fillm, .sent b.flash, .caret, button.pulse,
+    .meter .tick, .meter .ticklbl { transition: none !important;
+      animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← declaude</a>
+  <h1>How AI text watermarking works<span class="slash">.</span></h1>
+
+  <p>A watermark in plain text sounds impossible. Text has no pixels to hide data in, and
+  no metadata survives copy-and-paste; every character is right there in front of you.
+  Where could a mark possibly go?</p>
+  <p>And yet the marks are real. Google has watermarked text from the Gemini app and
+  web experience since 2024 (its API is, at the time of writing, a
+  <a href="https://discuss.ai.google.dev/t/does-gemini-api-text-output-carry-synthid-watermarking-gemini-2-5-flash-lite-gemini-3-1-flash-lite-eu-ai-act-art-50-2/177241">documented
+  exception</a>), and as of August 2026, new Claude models mark text at the model
+  level, with earlier models to follow. They're
+  invisible, they survive copying, and they
+  work because they don't live in the characters at all. They live in the
+  <em>choices between words</em>.</p>
+
+  <h2 id="s1"><span class="stepno">1.</span> Writing is a series of small choices</h2>
+  <p class="goal">The one idea in this step: a model writes by rolling weighted dice
+  between several words that would each be fine.</p>
+  <p>When a model is mid-sentence, it doesn't know "the next word." It has a shortlist,
+  like autocomplete, with preferences. Here's a real kind of moment, one word from the
+  end of a sentence:</p>
+  <div class="fig">
+    <div class="draft">
+      <div class="draftlbl">the sentence being written</div>
+      <p class="sent">The results of the study were quite <b id="pick1" class="empty">&nbsp;</b><span class="caret"></span></p>
+    </div>
+    <div id="rows1"></div>
+    <button class="demo pulse" id="roll1">🎲 roll the dice</button>
+    <button class="ghostbtn" id="roll1x">🎲 roll ×20</button>
+    <div class="cap">Each roll sweeps the shortlist, lands on one word (odds matching the
+    bars) and drops it into the sentence above. The dots tally where the rolls land: try
+    ×20 and watch the pile take the shape of the odds. Notice what <em>never</em> changes:
+    every landing makes a perfectly good sentence.</div>
+  </div>
+  <p>A page of text contains hundreds of these little forks, one per word, and at many of
+  them several options are equally fine. That slack is the raw material. Whoever gets to
+  lean on how the dice land can hide a pattern in the text without changing what it says.</p>
+
+  <h2 id="s2"><span class="stepno">2.</span> A secret key leans on those choices</h2>
+  <p class="goal">The one idea in this step: the key secretly colours the shortlist and
+  gives one colour a gentle nudge. The text still reads normally.</p>
+  <p>Here is the classic recipe (Kirchenbauer et al.&nbsp;2023; Google's SynthID reaches the
+  same end by a subtler, tournament-style route). At each fork, secret-keyed maths splits
+  the candidate words into
+  <span style="color:var(--good)"><b>green</b></span> and
+  <span style="color:var(--red)"><b>red</b></span>, an arbitrary colouring only the
+  key-holder can reproduce. Then the dice get tilted a little toward green.</p>
+  <div class="fig">
+    <div class="draft">
+      <div class="draftlbl">the sentence being written</div>
+      <p class="sent">The results of the study were quite <b id="pick2" class="empty">&nbsp;</b><span class="caret"></span></p>
+    </div>
+    <div id="rows2"></div>
+    <button class="demo" id="keybtn">apply the secret key</button>
+    <button class="ghostbtn" id="roll2">🎲 roll the dice</button>
+    <button class="ghostbtn" id="roll2x">🎲 roll ×20</button>
+    <div class="cap" id="keycap">No key applied: these are the model's own preferences.
+    Dashed outlines will show the old odds once the key is on.</div>
+  </div>
+  <p>Two things make this sneaky. The nudge is mild: a red word can still win — it's just
+  a little less likely. And the colouring is not a fixed property of the word: the key
+  computes it from a short run of the words just before, so the same candidate is green
+  after one prefix and red after another:</p>
+  <div class="fig">
+    <div class="dots" id="reshuffle"></div>
+    <div class="cap">The same four candidate words, coloured by the key after six different
+    prefixes. The key sees the words just before it; the position in the wider text is invisible to it. Only the
+    <em>overall lean</em> toward green accumulates, and only the key-holder knows which
+    words were green where.</div>
+  </div>
+  <p style="font-size:.92rem;color:var(--muted)">(Two siblings, same principle.
+  Google's SynthID — the one in production — replaces the nudge with a tiny secret
+  <em>tournament</em>: a few candidates are drawn from the model's own odds, the key scores them,
+  and the bracket is arranged so that, averaged over the key's draws, every word's odds
+  stay exactly what the model intended. Aaronson's scheme, built at OpenAI, skips
+  even that and derives the dice-rolls themselves from the key. Different maths, same
+  principle: the mark lives in the choices.)</p>
+
+  <h2 id="s3"><span class="stepno">3.</span> Whoever holds the key can count</h2>
+  <p class="goal">The one idea in this step: with the key, you can re-colour any text and
+  simply count. Marked text lands green too often to be luck.</p>
+  <p>Detection doesn't read the text or judge its style. The detector replays the
+  key-holder's colouring over the words and counts how many came up green. Without a mark
+  (or without the right key), green should win about half the time. A coin flip. Here's
+  an ordinary-looking paragraph; try both keys on it:</p>
+  <div class="fig">
+    <div class="passage" id="passage"></div>
+    <button class="demo" id="sweepRight">count with the right key</button>
+    <button class="ghostbtn" id="sweepWrong">count with the wrong key</button>
+    <button class="ghostbtn" id="extend">📖 keep reading: same mark, ×4 the text</button>
+    <div class="count">greens: <span class="val" id="gcount">–</span> of
+      <span class="val" id="gtotal">55</span>
+      <span id="gshare" style="color:var(--muted)"></span></div>
+    <div class="meter">
+      <div class="fillm" id="gfill"></div>
+      <div class="tick" style="left:50%"></div><div class="ticklbl" style="left:50%">coin flip</div>
+      <div class="tick" id="bartick"></div><div class="ticklbl" id="barticklbl">flag bar (this length)</div>
+    </div>
+    <div class="verdictline" id="gverdict" aria-live="polite" aria-atomic="true"></div>
+    <div class="cap">Filled-and-underlined chips are green, dashed outlines are red. The
+    words read identically either way; the colouring exists only in the key-holder's
+    maths. With the wrong key the split is meaningless, and the count sits at chance.</div>
+  </div>
+  <p>(This demo's tilt is drawn strong so you can see it; a production mark leans far
+  more gently and needs correspondingly more text. In this demo's 50/50 model, a
+  1,500-word document would flag at only ~55% green: small leans become persuasive
+  only through length, which is why short texts are genuinely hard to call.)</p>
+
+  <h2 id="s4"><span class="stepno">4.</span> What editing does to the mark</h2>
+  <p class="goal">The one idea in this step: the mark lives in runs of untouched wording.
+  Editing erases it exactly where the runs break, and nowhere else.</p>
+  <p>Each word's colouring is derived from a short run of the words just before it (one
+  to a handful, depending on the scheme). So a position only counts as evidence if a short
+  window of the original wording (the word plus its neighbours) survives intact.</p>
+  <p>Here is the same paragraph from step 3, at five edit depths. <b>Drag the slider and
+  watch the highlighted runs shrink.</b> A highlight means that run of wording still
+  matches the original exactly, so the detector can count there. Everything faded is new
+  wording, where there is nothing but coin-flip noise left to count.</p>
+  <div class="fig">
+    <div class="passage" id="morph"></div>
+    <input type="range" id="depth" min="0" max="4" step="1" value="0" aria-label="edit depth">
+    <div class="stops">
+      <button type="button" class="stop" data-v="0" style="left:2%;transform:none;text-align:left">fix<br>typos</button>
+      <button type="button" class="stop" data-v="1" style="left:25%">light<br>touch</button>
+      <button type="button" class="stop" data-v="2" style="left:50%">tighten<br>sentences</button>
+      <button type="button" class="stop" data-v="3" style="left:75%">heavy<br>edit</button>
+      <button type="button" class="stop" data-v="4" style="left:98%;transform:translateX(-100%);text-align:right">full<br>rewrite</button>
+    </div>
+    <p class="count" style="margin-top:.6rem" aria-live="polite" aria-atomic="true"><span id="depthname">fix typos</span> ·
+    surviving windows: <span class="val" id="fv">–</span>%
+    <span id="rverdict" style="color:var(--muted)"></span></p>
+    <div class="cap">The verdict reads the surviving fraction measured <em>from the
+    highlights above</em>, projected to a 1,500-word document. Two things to notice:
+    how much a "heavy edit" leaves standing, and how far toward a full rewrite you
+    have to drag before the evidence actually dies.</div>
+  </div>
+  <p>On real implementations (MarkLLM's KGW and EXP schemes on an open model, washed by
+  declaude's full-rewrite route): about 0.5% of windows survive, and detector accuracy
+  falls from essentially certain to a coin flip. The published literature agrees on the
+  shape of this. Light or one-pass paraphrase <em>dilutes</em> the mark rather than
+  deleting it; in Kirchenbauer et al.'s experiments, the detector recovers given enough
+  text, with even human paraphrase becoming detectable again after roughly 800 tokens
+  (about 600 words). What removes
+  the mark is re-composition that shares no runs of wording with the original.</p>
+  <p>That is why a tool that rewrites from the meaning (like <a href="/">declaude</a>'s
+  full-rewrite route) is what actually erases this family of marks, and why a light
+  pass that keeps most of the phrasing does not.</p>
+  <p>One boundary stated plainly: those numbers come from open implementations we can
+  measure. Anthropic's production scheme is undisclosed, so no one outside Anthropic
+  can yet run this test against Claude's own mark.</p>
+
+  <h2 id="s5"><span class="stepno">5.</span> What this means in practice</h2>
+  <p class="goal">The one idea in this step: detection is private, probabilistic, and
+  about <em>processing</em>, not authorship.</p>
+  <ul class="limits">
+    <li><b>Only the key-holder can check.</b> Your teacher, editor, or favourite "AI
+    detector" website cannot run this test; a genuine check needs the provider's
+    secret key, or a checking service the provider runs. Google runs an early-access
+    detector portal for SynthID; Anthropic says detection tooling is forthcoming.</li>
+    <li><b>A watermark check is not an "AI detector."</b> Tools like GPTZero guess from
+    style and are famously unreliable. A watermark is the opposite: a deliberate,
+    key-gated statistical test. Don't let the two blur.</li>
+    <li><b>A found mark means "processed by", not "written by".</b> Anthropic's own
+    documentation notes that human text merely proofread or translated by Claude picks up
+    the mark. And absence proves even less: old models or heavy editing
+    yield clean results on genuine AI text.</li>
+    <li><b>Short and low-choice text carries little mark.</b> Evidence grows with length,
+    and text with only one right continuation (code, quotations, lists of facts) offers
+    the dice too little slack to hide anything in.</li>
+    <li><b>Certain marks outlive a rewrite.</b> Schemes keyed on the word itself
+    rather than its neighbours hold up far better: a same-meaning rewrite keeps
+    enough of the words that much of the mark survives.
+    (Their weakness is different: a colouring reused everywhere can be reverse-engineered
+    from enough output.) Others hide in the meaning, and a same-meaning rewrite partly
+    preserves them; the only answer we know there is outline-level regeneration.</li>
+  </ul>
+
+  <p class="note">Written by <a href="https://j11y.io">James Padolsey</a> at
+  <a href="https://nope.net">NOPE</a> as an
+  accompaniment to <a href="/">declaude</a>. The interactive figures are a teaching model
+  with illustrative parameters, not any provider's actual scheme.</p>
+
+  <p class="note"><b>Sources &amp; further reading.</b>
+  Kirchenbauer et al., <em>A Watermark for Large Language Models</em> (ICML 2023) ·
+  Dathathri et al., <em>Scalable watermarking for identifying LLM outputs</em>
+  (SynthID-Text, Nature 2024) ·
+  Aaronson &amp; Kirchner, <em>Watermarking GPT outputs</em> (2022) ·
+  Kirchenbauer et al., <em>On the Reliability of Watermarks for Large Language Models</em>
+  (ICLR 2024) ·
+  Sadasivan et al., <em>Can AI-Generated Text be Reliably Detected?</em> (2023) ·
+  Zhao et al., <em>The Mark Fades: Adaptive Evolutionary Paraphrase-based Attack</em>
+  (ACL Findings 2026) ·
+  Anthropic, <a href="https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"><em>How
+  Claude marks AI-generated content</em></a> (Help Center, Aug 2026) ·
+  Our own known-key experiments: re-composition collapses KGW/EXP detection to chance
+  (AUC 0.99 → ≈0.5), context-free unigram marks survive (0.73–0.84); outline-level
+  regeneration is the only answer we know for meaning-space marks.</p>
+  <p class="note">For the specialist: the residual-evidence model behind the step-4
+  verdict is z ≈ f·√N·z₁ (surviving fraction f, document length N, per-token strength
+  z₁). The figures count words; real detectors count tokens in the model's own
+  tokenizer. Same shape.</p>
+</div>
+
+<script>
+// ---------- shared: the four candidate words ----------
+const WORDS = ['important', 'significant', 'substantial', 'notable'];
+const BASE  = [40, 30, 20, 10];
+const KEYED = [53, 14, 28, 5];            // after the green nudge (illustrative)
+const COLOR = ['g', 'r', 'g', 'r'];       // this key's colouring at this position
+
+function buildRows(mount, withTags) {
+  const host = document.getElementById(mount);
+  host.innerHTML = WORDS.map((w, i) => `
+    <div class="wordrow" id="${mount}-row${i}">
+      <div class="w">${w}${withTags ? `<span class="tag" id="${mount}-tag${i}" hidden></span>` : ''}</div>
+      <div class="wbar">
+        <div class="ghost" id="${mount}-ghost${i}"></div>
+        <div class="fill" id="${mount}-fill${i}" style="width:${BASE[i]}%"></div>
+        <div class="pct" id="${mount}-pct${i}">${BASE[i]}%</div>
+      </div>
+      <div class="tally" id="${mount}-tally${i}"></div>
+    </div>`).join('');
+}
+
+function makeRoller(mount, pickEl, getWeights) {
+  const tallies = [0, 0, 0, 0];
+  let busy = false;
+  const row = i => document.getElementById(`${mount}-row${i}`);
+  const clearRows = () => WORDS.forEach((_, i) => row(i).classList.remove('active', 'win'));
+  function drawIdx() {
+    const w = getWeights(), tot = w.reduce((a, b) => a + b, 0);
+    let r = Math.random() * tot;
+    for (let i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i; }
+    return w.length - 1;
+  }
+  function paintTally(i) {
+    const n = tallies[i];
+    document.getElementById(`${mount}-tally${i}`).innerHTML =
+      '<span class="tdot"></span>'.repeat(Math.min(n, 30)) +
+      (n > 30 ? `<span style="margin-left:2px">×${n}</span>` : '');
+  }
+  function land(idx, flash) {
+    tallies[idx]++;
+    clearRows();
+    row(idx).classList.add('win');
+    paintTally(idx);
+    const p = document.getElementById(pickEl);
+    p.textContent = WORDS[idx];
+    p.classList.remove('empty');
+    if (flash) { p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash'); }
+  }
+  return {
+    roll() {
+      if (busy) return; busy = true;
+      const idx = drawIdx();
+      // raffle sweep: two quick laps, then decelerate and finish on the winner
+      const seq = [];
+      for (let k = 0; k < 8; k++) seq.push(k % 4);
+      for (let k = 0; k <= idx; k++) seq.push(k);
+      let s = 0;
+      const hop = () => {
+        clearRows();
+        row(seq[s]).classList.add('active');
+        s++;
+        if (s < seq.length) setTimeout(hop, 45 + s * s * 1.15);
+        else setTimeout(() => { land(idx, true); busy = false; }, 90);
+      };
+      hop();
+    },
+    rollMany(n) {
+      if (busy) return; busy = true;
+      let k = 0;
+      const tick = () => {
+        land(drawIdx(), k === n - 1);
+        k++;
+        if (k < n) setTimeout(tick, 75);
+        else busy = false;
+      };
+      tick();
+    },
+    reset() {
+      tallies.fill(0); busy = false;
+      const p = document.getElementById(pickEl);
+      p.innerHTML = '&nbsp;'; p.classList.add('empty');
+      clearRows();
+      WORDS.forEach((_, i) => document.getElementById(`${mount}-tally${i}`).innerHTML = '');
+    }
+  };
+}
+
+// ---------- step 1 ----------
+buildRows('rows1', false);
+const roller1 = makeRoller('rows1', 'pick1', () => BASE);
+const roll1btn = document.getElementById('roll1');
+roll1btn.onclick = () => { roll1btn.classList.remove('pulse'); roller1.roll(); };
+document.getElementById('roll1x').onclick = () => {
+  roll1btn.classList.remove('pulse'); roller1.rollMany(20);
+};
+
+// ---------- step 2: apply the key ----------
+buildRows('rows2', true);
+let keyed = false;
+const roller2 = makeRoller('rows2', 'pick2', () => keyed ? KEYED : BASE);
+document.getElementById('roll2').onclick = () => roller2.roll();
+document.getElementById('roll2x').onclick = () => roller2.rollMany(20);
+document.getElementById('keybtn').onclick = function () {
+  keyed = !keyed;
+  roller2.reset();
+  WORDS.forEach((_, i) => {
+    const fill = document.getElementById(`rows2-fill${i}`),
+          ghost = document.getElementById(`rows2-ghost${i}`),
+          pct = document.getElementById(`rows2-pct${i}`),
+          tag = document.getElementById(`rows2-tag${i}`);
+    if (keyed) {
+      ghost.style.display = 'block'; ghost.style.width = BASE[i] + '%';
+      fill.style.width = KEYED[i] + '%';
+      fill.classList.add(COLOR[i]);
+      pct.textContent = BASE[i] + ' → ' + KEYED[i] + '%';
+      tag.hidden = false; tag.className = 'tag ' + COLOR[i];
+      tag.textContent = COLOR[i] === 'g' ? 'green' : 'red';
+    } else {
+      ghost.style.display = 'none';
+      fill.style.width = BASE[i] + '%';
+      fill.classList.remove('g', 'r');
+      pct.textContent = BASE[i] + '%';
+      tag.hidden = true;
+    }
+  });
+  this.textContent = keyed ? 'remove the key' : 'apply the secret key';
+  document.getElementById('keycap').innerHTML = keyed
+    ? 'For <em>this</em> key at <em>this</em> position, "significant" and "notable" happened ' +
+      'to come up red, so their odds shrink (dashed outline = before). Roll a few times; ' +
+      'red words still win sometimes, just less often. Nothing about the sentence changes.'
+    : 'No key applied: these are the model\'s own preferences. Dashed outlines will show ' +
+      'the old odds once the key is on.';
+};
+
+// ---------- step 2b: the colouring follows the prefix, not the position ----------
+(function () {
+  const patterns = ['grrg', 'ggrr', 'rgrg', 'rrgg', 'grgr', 'rggr'];
+  const prefixes = ['…were quite', '…looked quite', '…seemed quite',
+                    '…felt so', '…proved rather', '…remained'];
+  document.getElementById('reshuffle').innerHTML = patterns.map((p, i) => `
+    <div class="pos">
+      ${[...p].map(c => `<span class="dot ${c}"></span>`).join('')}
+      <div class="lbl">${prefixes[i]}</div>
+    </div>`).join('');
+})();
+
+// ---------- step 3: sweep a real paragraph ----------
+const PASSAGE = ("The harbour changed slowly, then all at once. For years the fishing " +
+  "boats went out before dawn and came back by noon, and the town set its clocks by " +
+  "them. When the ferry line opened, the rhythm shifted: new faces, new money, and a " +
+  "working waterfront turned into a promenade almost nobody remembers voting for.").split(' ');
+// Illustrative colourings (teaching model): right key ≈ 69% green, wrong key ≈ chance.
+const FLAGS_RIGHT = '11011' + '10110' + '11101' + '01110' + '11011' + '10101' +
+                    '11011' + '01110' + '10110' + '11101' + '10110';
+const FLAGS_WRONG = '10110' + '01010' + '11001' + '00110' + '10101' + '11001' +
+                    '01001' + '10110' + '01010' + '10011' + '01010';
+
+(function () {
+  const host = document.getElementById('passage');
+  const EXT = ("Nobody planned the change, exactly. The council minutes from those " +
+    "years record arguments about mooring fees and a broken crane, not a vision. But " +
+    "each season the balance tipped a little further: one more boat sold, one more " +
+    "cottage let to visitors, one more shopfront selling postcards where nets had " +
+    "been mended. The old men who still went out said the water felt different, " +
+    "though what they meant was the town behind them. By the time anyone thought to " +
+    "object, the objection had no address to send itself to. The harbour still fills " +
+    "twice a day, the gulls still argue over the slipway, and on a winter morning " +
+    "you can squint and see the place as it was. But the working day has moved " +
+    "indoors, to screens and season bookings, and the tide tables on the quay are " +
+    "printed for tourists now. What the town gained is easy to list. What it lost " +
+    "keeps no ledger.").split(' ');
+  // continuation colourings, same teaching model: right key keeps the ~69% lean
+  const EXT_RIGHT = '110111011010' + '101101110110' + '111011011101' + '011011101101' +
+                    '110111101011' + '101110101101' + '110101101011' + '011101110111' +
+                    '110110110101' + '101011011011' + '110110111011' + '011011010111' +
+                    '110101110011';
+  const WA = '101001101010', WB = '010110010101', WC = '110010101001';
+  const EXT_WRONG = WA + WB + WC + WA + WB + WC + WA + WB + WC + WA + WB + WC + WA;
+
+  let words = PASSAGE.slice(), fR = FLAGS_RIGHT, fW = FLAGS_WRONG, extended = false;
+
+  function addChips(from) {
+    host.insertAdjacentHTML('beforeend', words.slice(from).map((w, k) =>
+      `<span class="tok" id="pw${from + k}">${w}</span>`).join(''));
+  }
+  host.innerHTML = '';
+  addChips(0);
+
+  const gc = document.getElementById('gcount'), gs = document.getElementById('gshare'),
+        gf = document.getElementById('gfill'), gv = document.getElementById('gverdict'),
+        gtotal = document.getElementById('gtotal'),
+        bartick = document.getElementById('bartick'),
+        barlbl = document.getElementById('barticklbl');
+
+  function setBar() {
+    const n = words.length;
+    const barShare = 0.5 + 4 * Math.sqrt(0.25 / n);       // green share at z = 4
+    bartick.style.left = barlbl.style.left = (barShare * 100).toFixed(1) + '%';
+    gtotal.textContent = n;
+  }
+  setBar();
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null, cur = null, done = false;
+
+  const paint = (k, green) =>
+    document.getElementById('pw' + k).className = 'tok ' + (green ? 'gg' : 'rr');
+  function stats(g, i) {
+    gc.textContent = g;
+    gs.textContent = '(' + Math.round(100 * g / i) + '% green)';
+    gf.style.width = (100 * g / i) + '%';
+  }
+  function verdict(g, n, right) {
+    const z = (g - 0.5 * n) / Math.sqrt(n * 0.25);
+    gv.innerHTML = !right
+      ? 'A coin flip. The wrong key sees nothing, and this is exactly what unmarked ' +
+        'text looks like under the <em>right</em> key, too.'
+      : z > 4
+      ? `<b>Flagged.</b> ${Math.round(100 * g / n)}% green across ${n} words is past ` +
+        `the bar; the same lean as before, with enough text to prove it.`
+      : `Clearly tilted, but detectors are tuned to nearly never accuse falsely, and ${n} ` +
+        `words of this lean isn't enough evidence. Try "keep reading".`;
+  }
+  function finish(flags, right) {
+    let g = 0;
+    for (let k = 0; k < words.length; k++) {
+      const green = flags[k] === '1';
+      if (green) g++;
+      paint(k, green);
+    }
+    stats(g, words.length);
+    verdict(g, words.length, right);
+    timer = null; done = true; cur = { flags, right };
+  }
+  function animate(flags, right, from, gStart, speed) {
+    cur = { flags, right };
+    let i = from, g = gStart;
+    timer = setInterval(() => {
+      const green = flags[i] === '1';
+      paint(i, green);
+      if (green) g++;
+      i++;
+      stats(g, i);
+      if (i >= words.length) {
+        clearInterval(timer); timer = null; done = true;
+        verdict(g, i, right);
+      }
+    }, speed);
+  }
+  function sweep(flags, right) {
+    // a click while a sweep is running jumps straight to the clicked end state
+    const jump = !!timer;
+    if (timer) { clearInterval(timer); timer = null; }
+    gv.textContent = '';
+    for (let k = 0; k < words.length; k++)
+      document.getElementById('pw' + k).className = 'tok';
+    if (reduced || jump) { finish(flags, right); return; }
+    animate(flags, right, 0, 0, extended ? 22 : 55);
+  }
+  document.getElementById('sweepRight').onclick = () => sweep(fR, true);
+  document.getElementById('sweepWrong').onclick = () => sweep(fW, false);
+
+  document.getElementById('extend').onclick = function () {
+    if (extended) return;
+    if (timer) { clearInterval(timer); timer = null; finish(cur.flags, cur.right); }
+    extended = true;
+    this.hidden = true;
+    const from = words.length;
+    words = words.concat(EXT);
+    fR = FLAGS_RIGHT + EXT_RIGHT;
+    fW = FLAGS_WRONG + EXT_WRONG;
+    addChips(from);
+    setBar();
+    if (!done) return;              // no sweep yet: the new words wait, uncounted
+    const flags = cur.right ? fR : fW;
+    let g = 0;
+    for (let k = 0; k < from; k++) if (flags[k] === '1') g++;
+    if (reduced) { finish(flags, cur.right); return; }
+    animate(flags, cur.right, from, g, 20);
+  };
+})();
+
+// ---------- step 4: one passage, five edit depths, measured live ----------
+(function () {
+  const reco = ("Change came to the harbour gradually and then suddenly. The dawn " +
+    "departures of the fishing fleet had long set the town's schedule, but once the " +
+    "ferry service arrived everything quickened, and a shoreline where people once " +
+    "worked became a strolling place no one quite chose.").split(' ');
+  const heavy = ("The harbour changed slowly, then all at once. The boats had always " +
+    "gone out before dawn and come back by midday, and the town lived by that clock. " +
+    "Then the ferry line opened, and with the new faces and money a working " +
+    "waterfront turned into a promenade almost nobody remembers voting for.").split(' ');
+  const tight = PASSAGE.map(w => (
+    { 'slowly,': 'gradually,', 'all': 'in', 'at': 'a', 'once.': 'stroke.',
+      'set': 'timed', 'clocks': 'days', 'noon,': 'midday,' }[w] || w));
+  const light = PASSAGE.map(w => (
+    { 'noon,': 'midday,', 'voting': 'choosing' }[w] || w));
+  const typos = PASSAGE.map(w => w === 'harbour' ? 'harbor' : w);
+  const VARIANTS = [
+    ['fix typos', typos],
+    ['light touch', light],
+    ['tighten sentences', tight],
+    ['heavy edit', heavy],
+    ['full rewrite', reco],
+  ];
+  const H = 4;
+  const wins = t => { const s = new Set();
+    for (let i = 0; i + H + 1 <= t.length; i++) s.add(t.slice(i, i + H + 1).join(' '));
+    return s; };
+  const OW = wins(PASSAGE);
+  const host = document.getElementById('morph');
+  const N = 1500, Z1 = 0.38;
+  let chips = [];
+
+  function render(idx, animate) {
+    const [, t] = VARIANTS[idx];
+    while (chips.length < t.length) {
+      const s = document.createElement('span');
+      s.className = 'w';
+      host.appendChild(s); chips.push(s);
+      host.appendChild(document.createTextNode(' '));
+    }
+    while (chips.length > t.length) {
+      host.removeChild(chips.pop());
+      host.removeChild(host.lastChild);  // trailing space node
+    }
+    // a word is highlighted if ANY surviving 5-window covers it; the highlight
+    // literally traces the runs the detector can still count
+    const covered = new Array(t.length).fill(false);
+    let live = 0;
+    for (let j = 0; j + H + 1 <= t.length; j++) {
+      if (OW.has(t.slice(j, j + H + 1).join(' '))) {
+        live++;
+        for (let k = j; k <= j + H; k++) covered[k] = true;
+      }
+    }
+    t.forEach((w, i) => {
+      const c = chips[i];
+      if (c.textContent !== w) {
+        c.textContent = w;
+        if (animate) { c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); }
+      }
+      c.className = 'w' + (covered[i] ? ' hit' : '') + (c.classList.contains('pop') ? ' pop' : '');
+    });
+    const f = live / Math.max(1, t.length - H);
+    const z = f * Math.sqrt(N) * Z1;
+    document.getElementById('depthname').textContent = VARIANTS[idx][0];
+    document.getElementById('fv').textContent = Math.round(f * 100);
+    document.getElementById('rverdict').textContent =
+      z > 4 ? '· still plainly detectable'
+      : z > 2 ? '· borderline: an unlucky coin could do this'
+      : '· gone: indistinguishable from unmarked text';
+  }
+  document.getElementById('depth').addEventListener('input', e => render(+e.target.value, true));
+  const slider = document.getElementById('depth');
+  const stops = [...document.querySelectorAll('button.stop')];
+  stops.forEach(b => b.addEventListener('click', () => {
+    slider.value = b.dataset.v;
+    render(+b.dataset.v, true);
+  }));
+  const _render = render;
+  render = (idx, animate) => {
+    _render(idx, animate);
+    slider.setAttribute('aria-valuetext', VARIANTS[idx][0]);
+    stops.forEach(b => b.classList.toggle('on', +b.dataset.v === idx));
+  };
+  render(0, false);
+})();
+</script>
+</body>
+</html>

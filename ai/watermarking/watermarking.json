@@ -1,0 +1,1 @@
+{"url":"https://declaude.org/watermarking/","title":"How AI text watermarking works","author":"[no-author]","summary":"","cover":"https://declaude.org/watermarking/og.png?v=2","zh_title":"AI文本水印的技术原理：它是如何工作的？","zh_summary":"本文详细解释了AI文本水印的运作原理。AI模型通过在生成文本时微调词语选择的概率，植入只有特定密钥才能识别的统计模式。这种水印对人类阅读不可见，能抵抗轻度编辑，但无法检测作者身份，且仅由持有密钥的机构验证。"}

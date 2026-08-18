@@ -1,0 +1,49 @@
+<!--
+title: Rubrik 使用 Mythos 预览版一个月的经验教训
+cover: https://cdn.thenewstack.io/media/2026/08/5159af73-ruliff-andrean-nms_4j4fyr8-unsplash-scaled.jpg
+summary: Rubrik 在使用 Mythos 预览版后发现，AI 超高的漏洞发现速度导致传统人工修复流程陷入瓶颈。公司通过构建自动化层对漏洞进行分类与过滤，并谨慎界定自动化修复边界，旨在平衡安全修复的效率与人工判断的必要性，以应对 AI 驱动的新安全环境。
+-->
+
+Rubrik 在使用 Mythos 预览版后发现，AI 超高的漏洞发现速度导致传统人工修复流程陷入瓶颈。公司通过构建自动化层对漏洞进行分类与过滤，并谨慎界定自动化修复边界，旨在平衡安全修复的效率与人工判断的必要性，以应对 AI 驱动的新安全环境。
+
+> 译自：[Rubrik’s lessons from one month with Mythos Preview](https://thenewstack.io/rubrik-mythos-learnings/)
+> 
+> 作者：Meredith Shubel
+
+在加入 Project Glasswing 并获得 Mythos 预览版的实验权限后，安全与 AI 公司 [Rubrik](https://www.rubrik.com/) 发现，其工程能力已无法跟上[该模型在漏洞挖掘方面的能力](https://thenewstack.io/will-it-mythos-benchmark)。
+
+Rubrik 的首席技术官兼联合创始人 [Arvind Nithrakashyap](https://www.linkedin.com/in/arvind-nithrakashyap-752280/) 表示，Mythos 能够瞬间发现那些逃过 Rubrik 常规安全工具和方法论的复杂漏洞链，包括识别跨大型代码库的组件关联，而这些是传统扫描或单个人工审查无法捕捉到的。这种发现数量的激增导致了优先级的瓶颈，而 Rubrik 现有的工程团队对此并无准备：
+
+“当我们第一次看到潜在问题的报告时，我们的直觉是将其视为一个容量问题，”Nithrakashyap 告诉 *The New Stack*，并补充说 Rubrik 甚至考虑过雇佣更多的人工审查员来应对更大的工作量。
+
+但放弃这个想法的决定非常迅速。“我们很快放弃了这个计划，”他继续说道，“因为我们意识到，人类驱动的修复方式根本无法跟上 AI 的发现速度。”
+
+## 旧工作流无法适应 AI 主导的发现
+
+只有受邀加入 Project Glasswing 的资深合作伙伴才能获得 Mythos 预览版的访问权限。Anthropic 在 6 月份将该项目[扩展](https://thenewstack.io/anthropic-glasswing-mythos-cybersecurity/)到 15 个国家的约 150 个组织时，Rubrik 加入了该名单。
+
+> “我们很快放弃了这个计划……因为我们意识到，人类驱动的修复方式根本无法跟上 AI 的发现速度。”
+
+加入后，Rubrik 组建了一个多功能的工程和信息安全团队，以实现高精度的威胁发现与消除，并尽可能依赖自动化，而不是扩大其人工审查员的规模。
+
+“重点是构建一个有效的配套工具，”Nithrakashyap 说，“它负责管理工具调用和检查点，增加业务背景、安全背景和信任边界。”具体来说，他告诉 *The New Stack*，目标是在 Mythos 周围构建一个软件层，以减少最终提交给工程师进行审查和修复的问题数量。
+
+正如 Nithrakashyap 所解释的那样，Rubrik 的团队首先使用 Mythos 对整个存储库进行扫描，利用这些初步发现来指导后续更具针对性的扫描。这些后续扫描剔除了噪音，确保只有高质量的发现被分发给相关团队并据此确定优先级。
+
+据 Nithrakashyap 称，只有在引入这些针对性扫描后，Rubrik 的工程团队才能够建立起一个能够从 Mythos 转发高优先级、可操作发现并使工程师的修复工作更易于管理的工作流。
+
+## 更难的问题：什么不该自动化
+
+随着 Mythos 以 Nithrakashyap 所称的“人工无法完成”的速度标记漏洞，他说构建能够匹配这一发现速度的自动化是前进的唯一途径。但这样做涉及到关于在何处让机器处理修复、在何处仅依靠人工判断的决策。
+
+> “Mythos 向我们表明，AI 实际上增加了对周边系统工程严谨性的需求。”
+
+“令人惊讶的是，我们经常遇到关于‘什么不该自动化’的问题，”Nithrakashyap 说，他指出了“可信自动化”与“最大化自动化”之间固有的冲突。正如他向 *The New Stack* 解释的那样：
+
+“为了保持信任，我们选择将自动修复限制在经过深思熟虑、严格界定的漏洞类别子集中，即那些机器驱动的修复高度可靠且定义明确的领域。”通过这种方式，只有属于这些预定义类别的漏洞才能进入自动化路径。而 Mythos 浮现出的所有其他不属于这些类别的漏洞，都会被分发给工程团队，由人工判断来负责最终修复。
+
+## 更多发现，新的瓶颈
+
+Rubrik 在使用 Anthropic [称为](https://thenewstack.io/claude-mythos-preview-simulation/)其“最强模型”一个月后的经验教训表明，现有的大多数工程工作流可能还没有准备好跟上该模型的发现速度。正如 Nithrakashyap 告诉 *The New Stack* 的那样：“Mythos 向我们表明，AI 实际上增加了对周边系统工程严谨性的需求。”
+
+适应这种变化需要将结构性背景直接整合到配套工具中，并建立系统来对 Mythos 的发现进行分类和过滤，转化为可操作的见解以供修复。
