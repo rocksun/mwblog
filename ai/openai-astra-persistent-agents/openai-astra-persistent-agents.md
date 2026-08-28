@@ -1,4 +1,3 @@
-
 <!--
 title: OpenAI的Astra能完成研究员一周的工作，但这恰恰是问题所在
 cover: https://cdn.thenewstack.io/media/2026/08/71974e72-nigel-hoare-bxymrpflnfu-unsplash-scaled.jpg
