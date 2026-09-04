@@ -1,0 +1,59 @@
+<!--
+title: Claude Fable 5.1 水印：开发者无法忽视的技术盲点
+cover: https://cdn.thenewstack.io/media/2026/09/0af57a1f-robert-anderson-alzb2gv20ty-unsplash-scaled.jpg
+summary: Anthropic推出的Claude Fable 5.1引入了基于SynthID-Text的水印技术，但在代码生成中表现受限。同时，新版本通过限制Thinking blocks的迁移，旨在防止模型被滥用于规模化蒸馏，这要求开发者调整现有的上下文管理逻辑。
+-->
+
+Anthropic推出的Claude Fable 5.1引入了基于SynthID-Text的水印技术，但在代码生成中表现受限。同时，新版本通过限制Thinking blocks的迁移，旨在防止模型被滥用于规模化蒸馏，这要求开发者调整现有的上下文管理逻辑。
+
+> 译自：[Claude Fable 5.1 watermark: It has a blind spot developers can’t ignore](https://thenewstack.io/fable-5-1-watermark/)
+> 
+> 作者：Amanda Caswell
+
+**Anthropic 于周二[推出了 Claude Fable 5.1](https://thenewstack.io/anthropic-fable-5-1-launch/)**，其生成的文本中嵌入了统计特征签名，但开发者不应指望该签名在模型输出的所有内容中都具有相同的强度。
+
+代码是 [Anthropic 水印系统](https://thenewstack.io/anthropic-claude-text-watermark/)局限性显而易见的地方之一。该系统并非添加元数据或隐藏字符，而是改变了 Claude 在选择下一个可能的 token 时所使用的随机性，Anthropic 表示这不会影响其输出的质量或内容。
+
+在足够长的响应中，这些 token 的选择会形成一种统计模式，从而提供证据证明 Claude 很可能参与了文本的编写或处理。相比代码，这在自然语言中效果更好，因为模型通常有多种方式表达相同的意思；而在代码中，选择不同的变量、运算符或函数可能会改变程序的行为甚至使其完全崩溃。因此，当为了准确性必须使用特定的 token 时，Anthropic 不会应用水印。
+
+开发者还必须适应 Claude 处理“保留思维（preserved thinking）”方式的改变。在 Fable 5.1 中，Anthropic 限制了新 API 账户在修改后的对话中携带这些思维块（thinking blocks）的时间，该公司表示，这种做法也被用于[大规模蒸馏其模型](https://thenewstack.io/glm-5-3-anthropic-distillation/)。
+
+> 在足够长的响应中，这些 token 的选择会形成一种统计模式，从而提供证据证明 Claude 很可能参与了文本的编写或处理。
+
+## 水印的工作原理
+
+Anthropic 在签署了《欧盟人工智能生成内容透明度行为准则》（共有约 190 个签署方）后，于 8 月 14 日详细说明了其满足这些要求的计划。该公司正在全球范围内应用该水印，因为它表示没有可靠的方法按区域限制它，并计划在未来几个月内将其添加到旧的 Claude 模型中。
+
+该技术基于 Google DeepMind 的 SynthID-Text。它不会改变 Claude 分配给下一个 token 的概率，而是改变了在可能选项中进行选择时涉及的随机性。在足够长的响应中，这些选择会留下一个统计模式，随后可以用正确的密钥检测到。
+
+> 由于水印是文本本身的一部分，而不是作为元数据附加的，因此简单地将响应复制到其他地方并不能将其删除。
+
+由于水印是文本本身的一部分，而不是作为元数据附加的，因此简单地将响应复制到其他地方并不能将其删除。Anthropic 表示，它甚至可以在一定程度的编辑后存活，尽管重写足够多的文本最终会消除该信号。
+
+## 代码的低熵问题
+
+代码是水印局限性变得更明显的地方。如果选择不同的 token 可能导致答案不正确或破坏代码，Anthropic 就不会应用水印。水印仍然可以出现在输出中约束较少的部分（例如注释），而简短的响应可能不包含足够的信号来被可靠地检测到。
+
+Anthropic 开始通过私有预览版的 API 提供这种检测功能。目前，访问权限仅限于符合条件的群体，包括监管机构、执法部门、媒体机构、事实核查人员和研究人员，以及需要将其用于自身 AI 法案合规性的企业。Anthropic 表示计划在稍后扩大该 API 的可用范围。
+
+## 思维块与蒸馏
+
+Fable 5.1 的另一个变化旨在针对模型蒸馏。Claude 的 Messages API 可以返回加密的思维块，开发者可以在后续轮次中将其传回，从而允许模型在对话中继续其推理。
+
+据 Anthropic 称，问题在于，在保留这些块的同时更改对话的早期部分，可能会导致 Claude 解密并打印其推理过程。然后，该推理过程可能会被用来训练另一个模型。
+
+通过 Fable 5.1，Anthropic 通过将保留的思维与产生它的上下文绑定来关闭了这条路径。此限制适用于 8 月 31 日或之后在 Claude Platform、Amazon Bedrock、Google Cloud Vertex AI 和 Microsoft Azure Foundry 上创建的新账户。
+
+现有账户目前可以继续使用 Fable 5.1 而不受此限制，但 Anthropic 表示，该限制将适用于未来模型发布后的所有人。
+
+## 代理控制框架面临权衡
+
+这一限制为构建自己的代理控制框架（agent harnesses）的开发者带来了一个不太明显的问题。代理系统并不一定在每次模型调用之间保持其上下文静态。当代理执行任务时，控制框架可能会删除旧的交互、总结早期历史或重新组织对话。这些是正常的[上下文管理技术](https://thenewstack.io/claude-code-token-reduction/)，但它们也会更改与思维块关联的上下文。
+
+Anthropic 表示，开发者应保持思维块不变，并保持之前的系统提示词、工具定义和消息逐字节不变。修改该上下文的应用程序将需要改变它们管理 Claude 推理状态的方式，而不是将相同的思维块向前传递。
+
+预计只有少数具有自定义集成的客户会受到影响，现有的 Fable 5.1 API 客户在未来模型中将此限制变为标准之前，有时间进行更改。
+
+这两个变化解决了不同的问题，但都增加了保护措施，而没有完全[限制开发者](https://thenewstack.io/shopify-claude-code-agentsmd/)在使用 Claude 进行构建时的灵活性。
+
+> 这两个变化解决了不同的问题，但都增加了保护措施，而没有完全限制开发者在使用 Claude 进行构建时的灵活性。
