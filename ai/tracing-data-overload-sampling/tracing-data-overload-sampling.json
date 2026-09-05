@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/tracing-data-overload-sampling/","title":"How to find failures without drowning in tracing data","author":"Alex Wilhelm","summary":"","cover":"https://cdn.thenewstack.io/media/2026/09/3c51583f-for-thumbnail-15.png","zh_title":"如何在大规模追踪数据中精准定位故障","zh_summary":"本文探讨了如何通过智能采样策略（如头采样、尾采样和动态采样）应对追踪数据过载问题，帮助开发者从海量信息中精准发现系统故障，提高可观测性并降低存储成本。"}
