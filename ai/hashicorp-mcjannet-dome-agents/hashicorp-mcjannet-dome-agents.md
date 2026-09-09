@@ -1,0 +1,121 @@
+<!--
+title: 在HashiCorp深耕九年后，Dave McJannet如今想“解锁”企业级AI代理
+cover: https://cdn.thenewstack.io/media/2026/09/519132e1-ubaid-e-alyafizi-60funxgxe14-unsplash-scaled.jpg
+summary: 前HashiCorp CEO David McJannet创立Dome Systems，旨在通过构建一体化平台管理AI代理。正如云时代需要标准化治理，Dome通过代理注册、工具网关和模型路由，帮助企业在确保安全、合规与成本控制的前提下，推动AI代理的规模化落地。
+-->
+
+前HashiCorp CEO David McJannet创立Dome Systems，旨在通过构建一体化平台管理AI代理。正如云时代需要标准化治理，Dome通过代理注册、工具网关和模型路由，帮助企业在确保安全、合规与成本控制的前提下，推动AI代理的规模化落地。
+
+> 译自：[After nine years as HashiCorp CEO, Dave McJannet now wants to "unblock" enterprise AI agents](https://thenewstack.io/hashicorp-mcjannet-dome-agents/)
+> 
+> 作者：Paul Sawers
+
+询问传统的企业应用程序客户地址或当天的收入数据时，它通常会沿着开发人员已经规划好的可预测路径运行：验证用户身份、查询正确系统、返回结果。在底层数据相同的情况下，你每次得到的结果都是一样的。
+
+询问AI代理同样的问题，其过程就难以预测得多。它可能会咨询一个系统，决定需要从另一个系统获取更多上下文，进行十几次工具调用，将信息通过语言模型处理，然后才会产生一个答案。再次运行相同的请求，它可能完全走另一条路径。
+
+在企业中，沿途发生的事情与答案本身同样重要：代理访问了哪些系统、看到了什么数据、采取了什么行动以及消耗了多少资源。
+
+这种区别——预设软件与实时做出概率性决策的应用程序之间的差异——正是一家新公司的核心理念，其创始人非常了解如何为新一代基础设施带来秩序。
+
+## AI代理难以治理
+
+![Dome Systems联合创始人David McJannet于2025年8月离开HashiCorp](https://cdn.thenewstack.io/media/2026/09/af2f352f-davemcj.png)
+
+*Dome Systems联合创始人David McJannet于2025年8月离开HashiCorp*
+
+[Dome Systems](https://www.domesystems.ai/) 由 [David McJannet](https://www.linkedin.com/in/davemcj/) 在年初共同创立。他在 [Terraform](https://thenewstack.io/terraform-state-infrastructure-drift/) 的创造者 HashiCorp 担任领导者近十年，带领公司 [度过了云时代](https://thenewstack.io/hashicorp-is-standardizing-and-industrializing-the-cloud/)，并在 [2021年成功IPO](https://www.cnbc.com/2021/12/09/cloud-software-maker-hashicorp-hcp-starts-trading-on-nasdaq.html) 以及随后在 [2025年以64亿美元的价格出售给IBM](https://techcrunch.com/2025/02/27/ibm-closes-6-4b-hashicorp-acquisition/)。与McJannet一同掌舵的还有 [Marc Holmes](https://www.linkedin.com/in/marcholmes/)，他在HashiCorp担任首席营销官超过六年。
+
+在接受 *The New Stack* 采访时，McJannet阐述了他对AI代理治理的公司愿景，他认为企业现在面临的问题与云基础设施时期如出一辙：采用先行，随后才是在安全、运营和财务方面实施适当控制的真正苦差事。
+
+> “这实际上是一种截然不同的架构，而这正是解锁这些新型 [代理式] 应用程序力量的关键。”
+
+他说，部分挑战在于，代理的构建方式与往常的企业应用程序非常不同，而后者是公司花费多年时间学习如何控制的对象。
+
+“这实际上是一种截然不同的架构，而这正是解锁这些新型 [代理式] 应用程序力量的关键，” McJannet解释道。
+
+他以自动驾驶汽车为例：模型获取实时输入，并随着情况变化与车辆系统交互，因为没有开发人员能够合理地预先编程汽车在路上可能遇到的每一种情况。
+
+“它是在过程中做出判断，而不是试图查找世界的历史地图并做出实时决策，” McJannet继续说道。
+
+企业代理的行为方式大致相同：调用一个工具，评估结果，决定是否需要另一个工具，并持续进行直到任务完成。这种灵活性使代理能够处理那些难以提前进行详尽脚本化的工作，但也使得企业的治理难度加大。
+
+这触及了McJannet在Dome努力实现的目标的核心。
+
+## 代理时代的“入场费”
+
+该公司于去年4月 [结束隐身状态](https://www.linkedin.com/posts/were-thrilled-to-be-co-leading-dome-systems-share-7450591862123298817-BdIT/)，获得了1400万美元的种子轮融资。McJannet在IBM收购过渡完成后，于前一年8月 [离开了HashiCorp](https://www.linkedin.com/posts/davemcj_after-9-years-as-ceo-today-marks-the-end-ugcPost-7366453413066244097-Rtzy/)。
+
+Dome的出发点是，代理结合了三件事：代码、模型以及它交互的后端系统或工具。McJannet表示，将这些部分整合在一个平台下，是为代理的行为施加有意义约束的“入场费”。
+
+“如果你没有一个集成平台，你就无法对代理正在做的所有事情实施控制，” McJannet说。
+
+> “如果你没有一个集成平台，你就无法对代理正在做的所有事情实施控制。”
+
+因此，Dome的平台围绕这三个要素构建。[代理注册中心](https://www.domesystems.ai/platform/registry) 跟踪代理本身；[MCP网关](https://www.domesystems.ai/mcp-gateway) 控制它们可以调用的工具；而 [模型代理/路由](https://www.domesystems.ai/model-router) 则管理它们可以使用哪些模型以及请求如何路由。
+
+设置过程从注册代理并为其分配身份开始，确定谁被允许调用它，并连接它可以访问的后端工具（例如本例中的Zendesk）。
+
+![Dome注册一个代理，验证其调用者并连接其可以使用的工具。](https://cdn.thenewstack.io/media/2026/09/ba436e43-gif2.gif)
+
+*Dome注册一个代理，验证其调用者并连接其可以使用的工具。*
+
+接下来，Dome连接一个模型提供商，将可用模型分组到一个池中，并设置路由和故障转移规则，然后将代理、其工具和模型组合在一个单一网关之后。该网关成为Dome可以应用治理代理行为策略的接入点。
+
+![Dome连接模型提供商，创建模型池并将代理置于网关之后。](https://cdn.thenewstack.io/media/2026/09/3061c5f1-gif3.gif)
+
+*Dome连接模型提供商，创建模型池并将代理置于网关之后。*
+
+一旦这些组件连接起来，团队就可以对每个调用设置权限，使用防护措施检查响应，应用配额限制支出，并保持跨代理活动的通用审计跟踪。
+
+McJannet表示，如今，企业通常不得不自己拼凑这一切。可能会引入一个独立的模型代理来控制支出，而另一个工具网关处理安全和运营问题。一些公司随后开始构建自己的代理注册中心来将这些系统关联起来。
+
+此外，单独购买这些功能会给企业留下另一个需要解决的集成问题。模型路由器可能管理代理活动的一部分，而工具网关管理另一部分，同时代理本身在两者之间持续移动。
+
+“如果你只提供工具网关或只提供模型路由器，就不可能拥有这种控制系统，” 他说。
+
+这也是Dome最新举措的切入点。在经过最初几个月的抢先体验后，该公司首次向自助服务用户开放平台，允许团队只需通过信用卡即可注册，避开了通常繁琐的企业销售流程。
+
+## Dome推出自助服务
+
+自助服务对于这种企业基础设施产品来说是一种相对不同寻常的路线。Dome正在 [发布其价格](https://www.domesystems.ai/pricing)，提供免费层级，让从业者无需经过销售流程即可开始使用，同时为大型客户保留传统的企业销售路径。
+
+这种考量的部分原因在于McJannet对产品使用者的预期。与仅限已经深入采购流程的买家不同，自助服务使个人从业者能够自己发现、尝试和使用平台。
+
+“我们希望尽可能降低门槛，让人们加入进来，” McJannet说，并补充道Dome在发布前已经看到了一些自助服务注册。
+
+另外，其定价反映了对市场价值最终归属的判断。McJannet认为 [模型路由](https://thenewstack.io/cursor-ramp-meta-model-router/) 和工具连接是基础能力，更有价值的部分是跨整个代理的 *控制权* ——例如权限、数据脱敏和支出配额。
+
+同样值得注意的是，虽然Dome的主要目标用户是大型企业内部的平台工程团队（通常与运营和安全团队并肩工作），但自助服务也为另一种用户创造了机会：小型公司，甚至可能只有一两个人，他们正在构建代理并试图向企业销售。这种情况与许多 [AI领域](https://x.com/alexisohanian/status/1752753792058294725) 人士承诺的传奇式的 [一人独角兽](https://techcrunch.com/2025/02/01/ai-agents-could-birth-the-first-one-person-unicorn-but-at-what-societal-cost/) 相吻合。
+
+确实，McJannet表示开发人员在构建应用程序本身时可以走得很远，但当潜在的企业客户开始其安全和运营审查时，就会碰壁。身份是如何强制执行的？谁可以看到代理访问的数据？当它调用其他代理时会发生什么？事后可以重建其活动吗？
+
+他说，一些构建者问他们是否可以在Dome上“认证”他们的代理，因为“*在满足这些基础设施要素之前，我的代理无法部署*。” McJannet谨慎地补充说，Dome目前没有运行这样的认证计划，但这显然是公司可以尝试的一条路径。
+
+“如果你在Dome上注册了该代理，所有的基础设施要素都会得到处理，” McJannet说。
+
+## “解锁AI代理”：来自云时代的经验教训
+
+渴望发布产品的开发人员与担心发布后后果的企业团队之间的这种分歧，也是McJannet认为与他在HashiCorp工作期间最强烈的相似之处。
+
+在McJannet任职期间，HashiCorp越来越明确其定位：帮助大型组织标准化云基础设施的配置、安全和连接方式。这包括 [2020年推出](https://www.globenewswire.com/news-release/2020/06/22/2051130/0/en/hashicorp-launches-multi-cloud-infrastructure-automation-as-a-service-with-hashicorp-cloud-platform.html) 的 HashiCorp Cloud Platform (HCP)，该平台将其基础设施工具作为托管云服务提供。
+
+更广泛地说，McJannet对早期云采用的描述始于开发人员刷信用卡并直接部署到Amazon，因为云基础设施允许他们构建以前不切实际的应用程序。这些应用程序非常引人注目，以至于尽管运营和安全团队抵制，企业仍采用了云，随之而来的是第二阶段：在云成为整个组织内常规之前，公司需要通用的配置、凭证、网络和其他控制服务。
+
+平台工程团队成为了负责协调这两个需求的人：允许开发人员进行构建，同时给予安全、运营和财务部门足够的控制权以允许这些应用程序投入生产。McJannet认为代理现在正在制造同样的紧张局势。
+
+> “你有一堆开发人员构建的很酷的应用程序，而运营和安全团队根本不适应让它们在自己的环境中蓬勃发展。”
+
+“你有一堆开发人员构建的很酷的应用程序，而运营和安全团队根本不适应让它们在自己的环境中蓬勃发展，” 他说。“所以，不可避免地，它必须朝着同样的方向发展，即平台工程团队必须找到 [一种方法] 来给出肯定的答复。”
+
+Dome的赌注是，企业最终会偏向于一个覆盖整个代理的单一系统，而不是拼凑网关、路由器和安全产品。在McJannet看来，正是这种通用的控制层让企业能够在代理保持自主行动的同时，限制其活动的范围。
+
+“你必须拥有这个控制层，提供一个走廊，让我们能够约束这种新型应用程序架构的行为，” 他说。“因为没有它，你就无法解锁AI应用程序的部署。”
+
+> “这就是我们试图回答的部分——我们如何大规模解锁代理？”
+
+Dome还有很多东西需要证明。该公司目前没有公布客户名称；McJannet表示，与其合作的企业中还没有一家愿意公开身份，尽管他说过去八个月Dome已经与几十家企业进行了交流。
+
+最终，McJannet认为云时代表明，只有当企业拥有放行的控制权时，新的应用程序才会变得普遍。Dome是他为代理解决该问题的尝试。
+
+“我认为这就是我们试图回答的部分——我们如何大规模解锁代理？”
