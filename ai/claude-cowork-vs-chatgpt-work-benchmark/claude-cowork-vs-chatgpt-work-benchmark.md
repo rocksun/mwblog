@@ -1,4 +1,3 @@
-
 <!--
 title: Claude与ChatGPT对决：ChatGPT速度更快，Claude更全面
 cover: https://cdn.thenewstack.io/media/2026/09/0a8662c5-nikita-pishchugin-igy5eu9od_c-unsplash-scaled.jpg
