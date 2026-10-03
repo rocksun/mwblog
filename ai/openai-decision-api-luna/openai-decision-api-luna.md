@@ -1,0 +1,45 @@
+<!--
+title: OpenAI推出基于Luna模型的Decision API回应TypeSafe的Jev
+cover: https://cdn.thenewstack.io/media/2026/09/8bc9597f-screenshot-2026-09-29-at-13.59.37.png
+summary: OpenAI在DevDay上发布了基于Luna模型的全新Decision API，旨在对标TypeSafe的Jev。该API不生成对话文本，而是快速返回预定义答案及真实置信度评分，非常适合内容分类和智能体动作选择。
+-->
+
+OpenAI在DevDay上发布了基于Luna模型的全新Decision API，旨在对标TypeSafe的Jev。该API不生成对话文本，而是快速返回预定义答案及真实置信度评分，非常适合内容分类和智能体动作选择。
+
+> 译自：[OpenAI answers TypeSafe's Jev with a Decision API built on Luna](https://thenewstack.io/openai-decision-api-luna/)
+> 
+> 作者：Frederic Lardinois
+
+**随着 [TypeSafe 的 Jev](https://thenewstack.io/typesafe-jev-system-one/) 的突然崛起**，决策模型变得异常受欢迎，因此 OpenAI 在周二的年度 DevDay 大会上宣布推出其对这种模型类型的看法也就不足为奇了。
+
+该公司全新的 Decisions API 基于其 Luna 模型——这是其当前产品线中最小、最实惠的模型。
+
+## 有限预览
+
+Decisions API 很可能是对 TypeSafe 和 Jev 的一种反应，OpenAI 可能在 DevDay 之前匆忙宣布了这一消息，因此目前这就是 OpenAI 关于 Decisions API 所分享的全部内容。
+
+一位 OpenAI 发言人告诉 *The New Stack*，该公司计划在“全面推出时”分享更多信息。
+
+目前，新的 API 处于有限预览阶段，全面发布计划在未来几天内进行。
+
+## 预定义的答案，真实的置信度评分
+
+这些决策模型背后的核心理念是，它们明确不是聊天模型；相反，它们返回一组带有置信度评分的预定义答案. 毕竟，常规的大语言模型在这方面往往表现不佳。它们的置信度评分通常只是一个粗略的猜测——而且它们会消耗相当多的 Token 来达到这个目的。
+
+这使得这种类型的模型非常适合对内容进行分类、路由请求，或者从有限的选项中选择智能体的下一步行动。
+
+然而，决策模型可以提供更现实的置信度评分，并且它们往往能极其快速地返回结果。OpenAI 表示，其模型可在 150 毫秒内返回结果，而 GPT-6 Luna 则需要 1.6 秒。
+
+开发者需要做的只是提供问题、答案和上下文。
+
+## 提示词与小型分类器
+
+如今，大多数团队使用常规的聊天模型和精心措辞的提示词来处理这个问题，要求它从列表中进行选择，如果他们幸运的话，还可以读取 Token 概率以获得类似于置信度评分的结果。
+
+另一种选择是训练一个小型分类器。这既快速又便宜，但需要带标签的数据，并且每当标签集改变时都需要重新训练。
+
+决策模型基本上介于这两种选择之间。它在提示词中接收新的标签，但返回一个开发者可以使用的评分。
+
+对 OpenAI 来说，这并不是一个全新的概念。其 Moderation API 长期以来也返回每个类别的评分而不是散文，尽管在这个 API 中，类别是由 OpenAI 预先设定的，而不是由开发者设定的。
+
+目前仍不清楚的是，Decision API 每次调用的成本是多少，单个请求可以处理多少个候选答案，以及开发者是否可以使用他们自己的数据对其进行微调。这些细节将决定它是否会成为智能体框架中的标准构建块，还是继续作为聊天模型旁边的利基工具。
