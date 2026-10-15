@@ -1,0 +1,36 @@
+<!--
+title: 智能体干了活，审计日志却不知道是谁发的指令
+cover: https://cdn.thenewstack.io/media/2026/10/e897bd6c-planet-volumes-aevtbplzfo4-unsplash-scaled.jpg
+summary: 文章指出多数MCP相关访问策略存在破损或缺失，智能体常使用个人Token或共享服务账号运行，导致安全事件发生时审计日志无法追溯到真实的幕后操作者，CloudBolt团队将举办网络研讨会演示如何解决该可观测性难题。
+-->
+
+文章指出多数MCP相关访问策略存在破损或缺失，智能体常使用个人Token或共享服务账号运行，导致安全事件发生时审计日志无法追溯到真实的幕后操作者，CloudBolt团队将举办网络研讨会演示如何解决该可观测性难题。
+
+> 译自：[The agent did the work. The audit log couldn’t say who asked.](https://thenewstack.io/ai-agent-credentials-identity-provider/)
+> 
+> 作者：TNS Staff
+
+**根据《The New Stack》最近发表的一篇报道**，Shawn Petty 的团队在客户和潜在客户环境中审查的 **MCP 相关访问策略中，有超过 20%** 存在损坏或缺失的情况。在大多数情况下，MCP 服务器运行在某人的个人 Token 上，而不是服务账号上。
+
+**10 月 27 日星期二东部时间中午 12 点/太平洋时间上午 9 点**，CloudBolt 首席客户官 [Petty](https://www.linkedin.com/in/shawn-petty/) 和 CloudBolt 全球售前工程总监 [Mike Bombard](https://www.linkedin.com/in/michaelbombard/) 将与 *The New Stack* 主持人 Viktor Farcic 一起进行现场演示，展示如何将智能体的行为追溯到对其负责的人。
+
+立即注册本次网络研讨会
+
+您已成功注册网络研讨会。
+
+然而，问题通常出现在事件发生*之后*：该个人 Token 将某位工程师的名字写入了智能体所做一切事情的审计追踪中。同时，共享服务账号则将该账号的名字写入其中。在这两种情况下，审计追踪都无法准确识别是谁要求智能体完成这项工作，或者是谁批准了它所使用的访问权限。
+
+通过身份提供商中的请求、批准和授权进行的访问是已配置的，并且身份提供商会对其进行记录。智能体在运行过程中获取的访问权限是突发的：继承自启动它的服务的角色，或者为了完成任务而借出的开发人员自己的 Token。身份提供商没有这些授权的记录，因此当智能体触碰了它不该触碰的东西时，你无法将其追溯回去。
+
+在这场现场对话中，CloudBolt 团队将解释智能体最终如何获得无人批准的访问权限，然后展示如何使用 CloudBolt 将该访问权限追溯到个人：将智能体活动与您现有的身份提供商联系起来，对智能体可以触碰的内容设置限制，并读取由此产生的审计追踪。
+
+现场参与者可以实时向这些专家提问。[立即注册加入我们！](https://thenewstack.io/webinar/provisioned-access-vs-emergent-access-tracing-ai-agents-back-to-the-humans-behind-them/)
+
+### 您将学到：
+
+* 如何将智能体活动与您现有的身份提供商绑定，而不是构建一个并行系统
+* 智能体在没有人类签字批准的情况下可以采取哪些基础设施操作
+* 针对智能体行为的可用审计追踪包含什么，以及如何在不拖慢团队速度的情况下保持这一状态
+* 对一个智能体的凭证和操作进行实时追踪，从它运行的任务到负责的人
+
+*无法参加直播？无论如何都可以注册，我们在会后会向您发送录像。注册即表示您同意接收来自* The New Stack *和 CloudBolt 的电子邮件通讯。*
