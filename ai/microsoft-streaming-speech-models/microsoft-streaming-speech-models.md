@@ -1,0 +1,65 @@
+<!--
+title: 微软全新语音AI能在你说完话之前就预测你的需求
+cover: https://cdn.thenewstack.io/media/2026/10/da376638-yugudesign-fhlhdmrz3wi-unsplash-scaled.jpg
+summary: 微软在Microsoft Foundry平台发布了三款全新的MAI语音模型，通过实时语音转文本和极低延迟的技术突破，使语音智能体能够在用户说话的同时理解意图并做出响应，标志着语音AI正迈向实用化新阶段。
+-->
+
+微软在Microsoft Foundry平台发布了三款全新的MAI语音模型，通过实时语音转文本和极低延迟的技术突破，使语音智能体能够在用户说话的同时理解意图并做出响应，标志着语音AI正迈向实用化新阶段。
+
+> 译自：[Microsoft’s new voice AI can start working out what you want before you finish speaking](https://thenewstack.io/microsoft-streaming-speech-models/)
+> 
+> 作者：Adrian Bridgwater
+
+“我想你刚才说的是，‘人工客服’。”这是绕过自动化[语音识别](https://thenewstack.io/meta-muse-voice-transcribe/)聊天机器人的最快方法，这些机器人往往无法将人类来电者引导至他们需要的服务。实现将通话转交给一个活生生的、会呼吸的人工客服，至今仍有一种“荣誉勋章”的感觉。
+
+微软希望改变这种动态。
+
+微软 Foundry 模型部门产品开发高级总监[Naomi Moneypenny](https://www.linkedin.com/in/moneypenny/)，于 10 月 1 日在[博客](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/build-expressive-voice-experiences-with-new-mai-models-in-microsoft-foundry/4524637)中介绍了在雷德蒙德的应用与智能体模型目录及平台[Microsoft Foundry](https://azure.microsoft.com/en-us/products/ai-foundry) 中的三个全新微软人工智能 (MAI) 模型。
+
+Moneypenny 写道：“一个语音智能体必须做的不仅仅是听到请求并生成回复。它必须在聆听、推理、使用工具和说话的同时，保持交互的持续进行。任何一端的延迟都可能将对话变成一系列尴尬的停顿。”
+
+最新以语音为中心的模型现已在 Microsoft Foundry 中提供，包括 MAI-Transcribe-2-Streaming（可在实时语音说出的同时将其转换为文本）、MAI-Voice-2.1（一种富有表现力的多语言文本转语音模型）以及针对高吞吐量、响应式语音应用进行优化的 MAI-Voice-2.1-Flash。
+
+## 片段预测（Partials）推动增量语音识别
+
+这项技术（具有自动语言检测功能）无需等待人们说完话才返回文本，而是在接收到音频的“几百毫秒内”产生其第一个假设（被称为[partials](https://microsoft.ai/news/our-first-streaming-transcription-model/)，与[增量语音识别](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/selfridge2011sigdial.pdf)领域相关）。随着更多上下文的到来，模型会不断优化这些片段，直到话语结束时才最终确定一个稳定的转录文本。
+
+> “实时转录体验几乎可以像单词被说出来一样快地呈现它们。”
+
+Moneypenny 写道：“当应用程序需要在有人说话时采取行动时，这种区别就很重要。客户服务智能体可以在句子完成之前开始识别来电者的请求。语音助手可以更快地开始推理或准备工具调用。实时转录体验几乎可以像单词被说出来一样快地呈现它们。”
+
+MAI-Voice-2.1-Flash 被认为是实时支持智能体、语音助手以及其他生成口头回复的应用的“天作之合”。Moneypenny 建议，当“表达保真度”是首要任务时，开发者可以选择 MAI-Voice-2.1；而当他们需要在规模化应用中平衡自然语音与响应能力和成本时，则可以选择 Flash。
+
+Moneypenny 对目前的基准测试结果非常乐观。她的文章指出，MAI-Transcribe-2-Streaming 在基于基准测试的 Artificial Analysis 排行榜上的部分转录和最终转录的“准确率均首次排名第一”。
+
+![](https://cdn.thenewstack.io/media/2026/10/1f74cd66-clipboard_image-1-1790785965152-1024x771.png)
+
+## 是时候让语音发声了吗？
+
+话说回来（双关语），在人机输入方法的光谱中，这是否意味着语音现在已经准备好实现更广泛的使用和普及？语音智能体平台公司[Phonely](https://www.phonely.ai/)的首席执行官[Will Bodewes](https://www.linkedin.com/in/william-bodewes/)告诉 *The New Stack*，他对这些发展持积极态度。
+
+Bodewes 表示：“如果微软进入该市场有什么迹象的话，那就是语音AI已经准备好迎接黄金时期了。”
+
+不过，微软对语音技术并不陌生：Azure 语音服务已经在市场上存在多年，并且它搭载了新的 MAI 模型。“对于AI开发者来说，这是一个借势发展的机会，因此预计会有更多玩家效仿。但模型只是开始。语音智能体需要从每一次通话中学习，并随着时间的推移取得可衡量的进步。对于企业来说，要看到真正的成果，其语音AI必须在理论和实践上都为黄金时期做好准备。”
+
+> “在早期，对托管模型的语音请求可能会排在其他一千个请求后面长达 30 秒，这在电话里就意味着挂断。”
+
+从基础设施运营的角度来看，这里有一个明显的进步。Bodewes 的公司构建了自己的语音智能体大语言模型（LLM），他指出，在早期（他指的是2010年代中期及以后最初的云语音API时代，例如 Google Cloud Speech-to-Text API、Azure Speech Services、Amazon Transcribe 等），对托管模型的语音请求可能会排在其他一千个请求后面长达 30 秒，这在电话里就意味着挂断。
+
+Bodewes 解释说：“我们构建路由基础设施只是为了找到负载最小的端点。拥有模型意味着拥有队列，这就是我们实现 120 毫秒响应的方式。你在提示词中添加的每一个句子都增加了另一次失败的机会。因此，我们在代码中强制执行关键步骤。如果智能体在发放退款之前需要姓名、电子邮件和出生日期，代码库会确保这一点。把这交由LLM处理，就是你会遭遇事故的原因。”
+
+## 前端（语音）并不是最难的部分
+
+Phonely 机器学习研究员[Amit Kiran Rege](https://amitrege.github.io/)告诉 *The New Stack*，他同意这些发展是积极的，但警告说在更广泛的推广中存在更深层次的细微差别（再次使用语音双关语）。
+
+Rege 解释说：“微软发布了语音智能体管道的两端——语音输入和语音输出，这表明它和我们一样，在押注呼叫中心的级联效应。但在我们的工作中，我们发现两端并不是最难的部分。最难的是中间的沉默，即模型在判断来电者是已经说完话了，还是在下一个词之前吸了一口气。”
+
+当 Phonely 将这种类型的服务扩展到数百万次通话时，令他们惊讶的是，加快数据管道的速度会使智能体更多地打断来电者。
+
+> “微软发布了语音智能体管道的两端，语音输入和语音输出……但在我们的工作中，我们发现两端并不是最难的部分。”
+
+Rege 警告说：“在我们三分之二的案例中，我们的智能体决定过早介入，而没有人听到它，因为来电者在第一个音节之前就恢复了说话，我们取消了回复。将延迟减少一半，这些就会变成可听见的打断。因此，得到的教训是延迟和轮流对话必须同时改进。”
+
+## 用对话走进未来的界面
+
+微软对这些技术的立场表明，开发者可以采用这些相同的模型和工具集来构建客户服务智能体、能够识别口语并以一致的声音回复的多语言助手，即微软所定义的“在语言、发言者和对话练习之间切换的互动学习体验”，以及实时字幕和语音驱动的界面。
