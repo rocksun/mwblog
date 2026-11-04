@@ -1,0 +1,1 @@
+{"url":"https://thenewstack.io/openai-pando-git-backend/","title":"OpenAI built itself a new Git backend, too","author":"Frederic Lardinois","summary":"","cover":"https://cdn.thenewstack.io/media/2026/02/33c02ff1-img_2596-scaled.jpg","zh_title":"OpenAI也为自己打造了一个全新的Git后端","zh_summary":"OpenAI开发了全新的Git后端Pando以应对海量智能体提交带来的代码库压力。该后端将推送延迟降低近5倍，日均处理近PB级数据，在保留Git兼容性的同时彻底革新了传统服务架构。"}
