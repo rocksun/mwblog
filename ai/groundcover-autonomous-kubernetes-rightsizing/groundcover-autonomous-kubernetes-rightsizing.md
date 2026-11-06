@@ -1,0 +1,113 @@
+<!--
+title: groundcover实现Kubernetes资源配置自动化，工程师把控边界
+cover: https://cdn.thenewstack.io/media/2026/11/f135ffba-sebastian-schuster-gszfho-fg6c-unsplash-1-scaled.jpg
+summary: groundcover推出自主基础设施测试版，利用生产环境的eBPF遥测数据和Wand技术，持续自动调整Kubernetes的CPU和内存请求。该工具在工程师设置的边界内运行，旨在平衡应用稳定性和成本效率，避免过度配置或配置不足。
+-->
+
+groundcover推出自主基础设施测试版，利用生产环境的eBPF遥测数据和Wand技术，持续自动调整Kubernetes的CPU和内存请求。该工具在工程师设置的边界内运行，旨在平衡应用稳定性和成本效率，避免过度配置或配置不足。
+
+> 译自：[Groundcover automates Kubernetes sizing. Engineers set the bounds.](https://thenewstack.io/groundcover-autonomous-kubernetes-rightsizing/)
+> 
+> 作者：Meredith Shubel
+
+**周二，[groundcover](https://www.groundcover.com/)推出了[自主基础设施](https://www.groundcover.com/product/autonomous-infra)测试版**，旨在根据生产数据持续调整Kubernetes (K8s) 部署的CPU和内存请求。
+
+该测试版构建于Wand的技术之上（这是groundcover在[9月收购](https://www.groundcover.com/news/groundcover-aquires-wand-to-build-toward-autonomous-infrastructure)的K8s资源优化平台），利用groundcover的eBPF传感器已经收集的数据来为资源分配决策提供信息，同时让工程师能够直观了解这些决策将如何影响基础设施成本和工作负载性能。
+
+groundcover的首席执行官兼联合创始人[Shahar Azulay](https://www.linkedin.com/in/shahar-azulay-54156bb4?originalSubdomain=il)向 *The New Stack* 讲述了公司试图把握的平衡：“我们的目标不仅仅是尽可能地减少资源请求。而是在整个环境中找到效率和稳定性之间的正确平衡。”
+
+这可能意味着减少那些消耗远低于其分配额的工作负载的请求，但也可能意味着在工作负载需要额外资源以稳定运行时增加请求。其目标不仅仅是减小基础设施占用空间。而是打造一个能够持续获得所需资源的环境，同时无需为不需要的容量付费。
+
+如何实现这一点？Azulay表示，团队需要“一个持续的反馈循环，利用真实的生产遥测数据来识别工作负载是过度配置还是配置不足，并安全地进行调整。”
+
+## 难道没有人知道正确调整K8s工作负载的好方法吗？
+
+这并不是因为没有尝试过。目前已经有很多不同的方法来应对正确调整K8s工作负载的负担。
+
+例如，计划性调整大小会在选定的时间间隔应用更改，因此可能无法在计划的更新之间做出响应。[原地调整大小](https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/)可以更改运行中Pod上的资源，尽管某些更改需要重启容器。自动化工具还可以在工程师设置的策略范围内生成并应用推荐。
+
+当被问及为什么他认为K8s大小调整继续让人头疼时，Azulay告诉 *The New Stack*，挑战在于在成本效率和应用程序稳定性之间取得正确的平衡：
+
+“资源 requests 通常是在部署时设置的，当时团队在工作负载经历真实生产流量之前做出最佳估计，”他解释道。“面临的挑战是工作负载在不断变化，但资源配置往往没有变。”
+
+> “面临的挑战是工作负载在不断变化，但资源配置往往没有变。”
+
+在初始部署之后，团队可能只是让休眠的工作负载保持原状，即他们不会重新访问最初的资源请求来进行重新配置。虽然工作负载可能继续正常运转，但这种方法意味着团队冒着在不知情的情况下使它们过度配置或配置不足的风险——并带来高昂的代价。
+
+对于运行数百或数千个工作负载的组织来说，保持这些配置准确变成了一项持续的工程任务。团队必须分析利用率、识别机会、测试新设置，并随着流量和应用程序行为的变化重新访问它们。即使拥有专业知识，他们也可能没有时间持续这样做。
+
+Azulay将过度配置描述为“更安全的的选择，因为没有人愿意冒性能问题或中断的风险。”但这种额外的安心可能会带来不必要的基础设施成本；在2025年发表在 *Applied Sciences* 上的[研究](https://www.mdpi.com/2076-3417/15/18/10098)中，研究人员发现，与传统的最大资源分配方法相比，优化K8s资源分配将综合性能和成本得分提高了大约50%。
+
+资源配置不足带来不同的风险。[请求](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)帮助Kubernetes调度Pod，而CPU请求会影响在争用下如何共享CPU时间；将它们设置得太低会使工作负载缺乏CPU时间。限制（Limits）的工作方式不同：CPU限制会导致节流，而超出内存限制则会触发内存不足 (OOM) 杀死。当节点处于内存压力下时，较低的内存请求也会增加驱逐风险。
+
+工作负载请求与集群本身的成本之间也存在关系。Karpenter等节点自动扩缩容工具可以根据工作负载请求的资源配置或删除节点，但它们不能确定这些请求是否准确反映了每个应用程序的需求。如果工作负载持续请求过多，自动扩缩容工具可能会维持比实际需要更多的容量。正确调整这些请求可以为节点自动扩缩容工具分配基础设施提供更准确的基础。
+
+## 如果完美调整大小的答案就坐在你的生产数据中呢？
+
+groundcover是这么认为的。这就是为什么其新的自主基础设施利用了groundcover的[eBPF传感器](https://www.groundcover.com/ebpf-sensor)，该传感器已经在应用程序和基础设施中收集遥测数据。该测试版利用这些生产历史记录来推荐Kubernetes部署的CPU和内存请求。全新的部署将保持在学习状态，直到有足够的数据可用。
+
+但这种方法不仅仅是观察资源消耗的激增并在之后增加请求。等到响应式系统做出反应时，性能影响可能已经发生。相反，groundcover的优化引擎会随着时间推移分析工作负载行为，包括使用模式和资源争用，以预测容量需求并为预期的需求变化做好准备。
+
+这种区别对于具有循环流量峰值的工作负载非常重要。其目标是在需求到来时有足够的可用资源，而无需永久为峰值消耗分配资源。
+
+当工程师打开测试版时，他们可以直观地了解每个工作负载请求的CPU和内存与实际使用情况的对比，以及配置不足的工作负载数量和应用更改后估计的每月节省额。groundcover的[产品页面](https://www.groundcover.com/product/autonomous-infra)指出，美元估计值使用管理员可以根据自己的价格和折扣进行调整的默认标价。这些估计并不意味着云账单会下降相同的金额；实现节省还取决于释放的容量是否让团队能够[减少计费基础设施](https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-compute.html)。
+
+体验的一个重要部分是，客户可以在启用自主优化之前看到这些机会。由于groundcover已经收集了必要的遥测数据，现有客户无需部署单独的监控代理或进行另一次数据收集练习，就可以评估潜在的节省。他们可以检查建议，了解其预期影响，并决定优化哪些工作负载（如果有的话）。
+
+工程师无需在部署时设置资源请求并让它们处于自动驾驶状态，而是可以使用自主基础设施来发挥实时遥测的作用，并根据生产行为持续调整资源。而且由于groundcover已经收集了必要的遥测数据，运行受支持传感器版本的团队不需要为具有足够历史记录的现有部署配备单独的代理或新的数据收集期。
+
+## 为什么答案在于上下文
+
+当被问及实时生产数据如何改善K8s大小调整时，Azulay告诉 *The New Stack*，这归结为理解工作负载在生产中如何相互影响。
+
+虽然一些资源优化工具会单独调整每个工作负载的大小，但他声称这种方法并未说明全部情况。
+
+> “Kubernetes工作负载并非孤立运行。它们共享节点，争夺可用资源，并且会直接影响彼此的性能。”
+
+相反，为了在效率和稳定性之间找到最佳平衡，Azulay表示工程师需要考虑整个环境的工具：
+
+“Kubernetes工作负载并非孤立运行。它们共享节点，争夺可用资源，并且会直接影响彼此的性能。”
+
+例如，[降低CPU请求](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)会改变工作负载在争用下共享CPU的方式，并允许调度程序将更多工作负载打包到一个节点上。因此，仅基于一个工作负载使用情况的建议可能会错过整个节点的争用水、
+
+这是主要依赖每个工作负载历史利用率的方法的一个局限性。CPU消耗相似的两个应用程序可能需要不同的资源分配，具体取决于它们的流量模式、邻近的工作负载以及它们经历的争用。将相同的调整大小公式应用于两者，可能会导致一个过度配置，而另一个容易出现性能问题。
+
+为了在不损害其他工作负载的情况下正确调整每个工作负载的大小，Azulay告诉 *The New Stack*，资源 optimization 工具不仅必须评估实时资源消耗与所请求内容的对比，还必须考虑整个节点的流量模式、工作负载行为和可用资源：
+
+“真正的优化需要理解单个工作负载行为以及这些工作负载运行的更广泛环境。”
+
+Azulay表示，自主基础设施利用了更广泛的上下文。依托Wand的优化引擎，该测试版利用节点级争用来为大小调整建议提供信息，并做出考虑整个环境的调整。
+
+“它还超越了应用程序容器，考虑了注入的边车（sidecar），例如Istio、Linkerd和Vault代理，这些可能是被忽视的资源浪费来源，”Azulay说。
+
+与groundcover的集成还把资源优化与工程师已经使用的可观测性工作流连接起来。工程师无需从单独的优化工具接收孤立的建议，而是可以使用同一平台中可用的日志、追踪、指标和基础设施上下文来调查工作负载行为。这有助于他们理解为什么推荐更改并评估其对环境的影响。
+
+结果是观察基础设施与根据数据揭示的内容采取行动之间建立了联系。生产遥测为优化决策提供信息，工程师可以使用相同的可观测性上下文来了解之后发生了什么。
+
+## 但工程师准备好将大小调整自动化了吗？
+
+让像自主基础设施这样的工具接管K8s大小调整听起来是一个方便的解决方案。正如Azulay告诉 *The New Stack* 的那样，许多团队由于时间和资源限制而根本没有时间重新配置资源请求——而且工程师并不总是确信这些更改会在不影响稳定性的情况下提高效率。
+
+但这并不一定意味着工程师已经准备好全力投入自动化大小调整，至少目前是这样。在 [Kube.today 的 2025 年社区民意调查](https://kube.today/kubernetes-resource-management-2025) 关于 Kubernetes 资源管理的调查中，56.5% 的受访者选择诸如 kubectl 和仪表盘等手动工具作为其主要方法。该结果反映的是民意调查的受访者，而不是整个 Kubernetes 从业者。
+
+groundcover 由 Atomik Research 管理的自身研究强调了工程师对完全自主化的不确定性。在对 500 名美国技术专业人员的[调查](https://www.groundcover.com/third-party-reports/the-observability-imperative?utm_source=groundcover&utm_medium=media-coverage&utm_campaign=press_wand_announcement_q326-1601&utm_content=landingpage)中，87% 的人表示AI或自动化已经集成到可观测性工作流中，但只有三分之一 (34%) 称其“完全可操作且受信任”。
+
+对于那些对交出资源优化控制权感到犹豫不决的人来说，groundcover 的测试版可能会提供一些缓解。
+
+根据 groundcover 的说法，自主基础设施是“各级皆可选择加入的（opt-in）”。默认情况下，自动化是关闭的；groundcover 的[发布博客](https://www.groundcover.com/blog/introducing-autonomous-infra)描述了选择加入集群然后启用单个部署的过程。
+
+虽然测试版可能会使用生产遥测来自主调整资源请求，但工程师仍然设置参数，定义CPU和内存请求的最小和最大边界。测试版仅更改请求，保持限制不变。[声明的限制](https://www.groundcover.com/product/autonomous-infra)设定了建议的上限；受该限制约束的工作负载显示为“受边界限制（Bounded）”。groundcover 表示，每个策略更改都是带版本的，并且审计日志记录了谁将每个工作负载分配给策略以及何时分配。HPA 或 KEDA 基于利用率的自动扩缩容工具使用的资源保持不变。测试版在可能时使用[原地调整大小](https://www.groundcover.com/blog/introducing-autonomous-infra)，并在必要时回退到滚动更新。
+
+对于可能警惕给予资源优化工具完全访问权限来决定和执行 K8s 大小调整的工程师来说，这些限制可以简化过渡。此外，他们可以轻松掌握测试版正在做什么，groundcover 的视图显示了每个集群和命名空间中有多少工作负载是自主管理的。
+
+> “…工程师不需要信任黑盒。”
+
+更重要的是，工程师不需要信任黑盒。他们可以审查建议背后的推理，检查预期效果，并精确选择在哪里启用自主更改。该自动化旨在保持可理解性和可逆性。
+
+## 谁将正确调整大小？
+
+groundcover 表示，[自主基础设施测试版](https://www.groundcover.com/news/groundcover-launches-autonomous-infrastructure-beta)面向在 Kubernetes 上运行 groundcover 传感器的客户免费提供，前提是需要受支持的传感器版本。该测试版涵盖[部署及其边车](https://www.groundcover.com/blog/introducing-autonomous-infra)；对其他工作负载种类的支持已在路线图上。该公司正在邀请设计合作伙伴，并计划在 2026 年 11 月 9 日至 12 日在盐湖城举行的 [KubeCon + CloudNativeCon 北美峰会](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)期间的 111 号展位进行演示。
+
+下一代 Kubernetes 优化工具面临的问题可能与其能多大程度上积极减少资源 requests 无关，而更多地与它们能多聪明地管理它们有关。这意味着预测需求、考虑整个环境中的争用，并进行工程师能够理解和信任的更改。
+
+对于 groundcover 来说，将优化引入收集和分析生产技术的同一平台是迈向该模型的一步：基础设施不仅报告正在发生的事情，而且利用这种理解来不断改进其运行方式。

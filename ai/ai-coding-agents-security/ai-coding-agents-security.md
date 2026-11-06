@@ -1,4 +1,3 @@
-
 <!--
 title: 高盛对银行家限制Claude Code使用，却留下了一个惊人例外
 cover: https://cdn.thenewstack.io/media/2026/11/17533fd2-supradoc-s5m88l_ts_0-unsplash-scaled.jpg

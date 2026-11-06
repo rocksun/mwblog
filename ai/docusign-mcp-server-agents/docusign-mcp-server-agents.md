@@ -1,0 +1,117 @@
+<!--
+title: 从公开测试到全球GA：Docusign将合同AI工作流引入智能体的经验与启示
+cover: https://cdn.thenewstack.io/media/2026/11/5754f980-veer-mickey-shah-bkc-x5jojw-unsplash-scaled.jpg
+summary: 本文介绍了Docusign如何通过Model Context Protocol（MCP）服务器将合同管理功能引入AI智能体。从公开测试走向全球商用（GA）的过程中，Docusign解决了工具可靠性、权限控制和多客户端兼容等挑战，确保智能体在严格遵循用户权限的前提下安全高效地处理合同工作流。
+-->
+
+本文介绍了Docusign如何通过Model Context Protocol（MCP）服务器将合同管理功能引入AI智能体。从公开测试走向全球商用（GA）的过程中，Docusign解决了工具可靠性、权限控制和多客户端兼容等挑战，确保智能体在严格遵循用户权限的前提下安全高效地处理合同工作流。
+
+> 译自：[From open beta to global GA: What Docusign learned by bringing contract AI workflows to agents](https://thenewstack.io/docusign-mcp-server-agents/)
+> 
+> 作者：Carly Page
+
+**将AI智能体连接到企业软件相对容易。** 确保它能够找到正确的信息、执行预期的任务并保持在用户的权限之内，这才是复杂的地方。
+
+这就是 Docusign 在开发其模型上下文协议 (MCP) 服务器时发现的情况，该服务器于 [2026 年 5 月进入公开测试阶段](https://support.docusign.com/s/document-item?bundleId=mapc0a3127f-be83-4596-81a0-037932669a9a&language=en_US&topicId=con78724664-54e8-49b4-b03c-99123c9e09f7.html)，并于 2026 年 9 月 30 日实现全球通用 (GA)。
+
+> “构建工具与解决实际客户问题之间存在很大差异。”
+
+![Sagnik Nandy, Chief Technology Officer, Docusign](https://cdn.thenewstack.io/media/2026/10/5e11eb07-docusign-cto.jpeg)
+
+Docusign 首席技术官 Sagnik Nandy
+
+Docusign MCP 服务器允许兼容的 AI 助手和智能体访问选定的 Docusign 功能，以创建、签署和管理合同，而无需用户切换应用程序。有人可以要求助手查找合同、检查其状态或准备要签署的协议，而 Docusign 则负责处理底层工作。人类最终仍然负责审查和批准交易及其结果。
+
+Docusign 首席技术官 [Sagnik Nandy](https://linkedin.com/in/sagnik-nandy) 告诉 *The New Stack*：“构建工具与解决实际客户问题之间存在很大差异。”
+
+## **从 API 到 AI 智能体**
+
+传统的 REST API 允许开发人员连接应用程序并通过预定义的请求自动执行任务。AI 智能体的工作方式则不同。用户用自然语言描述他们想要的内容，然后智能体计算出要使用的工具。
+
+MCP 是一个开放标准，允许 AI 应用程序连接到外部数据和工具。服务器公开了连接的 AI 应用程序可以发现和调用的功能。
+
+Docusign 希望在其客户使用的 AI 工具中提供其[智能协议管理 (IAM)](https://thenewstack.io/docusign-contract-ai-agents/) 平台，帮助组织创建、承诺和管理协议。通过 MCP，可以从客户已经在使用的 AI 环境中访问选定的 Docusign 功能。
+
+Docusign 在 2026 年 5 月于纽约举行的 Momentum 会议上宣布了公开测试版。为其更广泛的使用做准备暴露出早期演示之外的挑战。
+
+## **测试版揭示了什么**
+
+Nandy 表示，与客户密切合作的工程师通常可以预测他们将提交的提示词以及他们期望的响应。当更广泛的受众可以使用相同的工具时，这就变得更加困难了。
+
+他说道：“一旦你把它推向市场，你就必须真正把它做好。会有各种各样进来的提示词。不同的工具必须协同工作，既包括它们之间，也包括跨越我们的工具边界以及客户引入的其他工具。”
+
+用户的反馈促使 Docusign 扩展了通过 MCP 提供合同数据、工作流操作和管理控制。
+
+“我们增加了对本地文件的支持，因此很多人希望上传本地数据并在此基础上进行交互，”Nandy 说道。
+
+这扩大了对 Docusign 合同生命周期管理 (CLM) 软件内部信息的访问，该软件是该公司基于 IAM 平台构建的最先进的合同相关功能集，适用于具有最复杂协议生命周期需求的客户，并通过受支持客户端中的 MCP Apps 界面增加了对本地文档上传的支持。这使用户能够使用 Docusign 中尚未存储的文档，具体取决于可用的客户端和工作流支持。
+
+“我们还添加了帐户级设置和选项，”Nandy 解释道。“增加对人们在该级别执行某些操作或关闭某些操作的支持，这也很有用。”
+
+2026 年 9 月 4 日，Docusign [宣布](https://www.docusign.com/blog/agreement-layer-modern-agentic-enterprise)了全球通用计划，其发行说明证实该计划于 9 月 30 日开始。到 GA 时，服务器支持更广泛的协议工作流和 AI 客户端连接，以及帐户级管理；本地上传在支持的地方使用 MCP Apps 界面。
+
+Docusign 还报告了不断增长的使用率。在 2027 财年第二季度财报电话会议上，该公司表示，使用 MCP 的累计活跃账户在该季度增长了两倍多，尽管它承认采用仍处于早期阶段。
+
+可靠性是另一个担忧。在 [10 月的工程总结](https://www.docusign.com/blog/developers/making-mcp-reliable-and-safe-in-production)中，Docusign 描述了如何使用引导式界面、自动化评估和安全测试来检查智能体如何选择和使用其工具。对 AI 模型或客户端的更改可能会影响这些交互，即使底层集成保持不变。
+
+## **保持权限完整**
+
+允许外部 AI 工具访问合同数据会引发安全担忧，特别是当文档包含敏感业务信息时。
+
+Nandy 表示，Docusign 使用 OAuth 2.0 进行身份验证。每次工具调用必须具有[所需的 OAuth 范围](https://support.docusign.com/s/document-item?bundleId=ug3906200f-95c6-4a6b-90b1-f928c85961c6&language=en_US&topicId=ref1a2e4d33-36be-49d5-89d2-5566741be566.html)并保持在用户的 Docusign 权限之内。
+
+他解释说：“这里有一个基本原则，即 MCP 服务器严格在用户的 Docusign 权限和授权范围内运行。因此，你不应该能够做你在产品中无法做到的事情。”
+
+当智能体采取行动时，同样的限制也适用，而底层 API 调用仍然受 Docusign 现有日志记录和监控策略的约束。这些控制不支配第三方 AI 提供商如何存储或使用它接收的数据；客户还必须评估该提供商的数据策略。
+
+> “尽管智能体在执行，但这并不意味着智能体应该拥有任何额外的特权。”
+
+“尽管智能体在执行，但这并不意味着智能体应该拥有任何额外的特权，”Nandy 说道。
+
+帐户管理员可以为帐户启用或禁用 MCP access。其他连接器设置可能因 AI 客户端而异。但仅靠权限并不能阻止智能体误解请求，因此它如何处理模棱两可的指令同样重要。
+
+## **一个服务器，多个 AI 客户端**
+
+Docusign 支持的 AI 环境包括 Anthropic Claude、OpenAI ChatGPT、Google Gemini Enterprise、Microsoft Copilot Studio、Slackbot、Salesforce Agentforce 和 Perplexity。
+
+该公司在其客户端连接器后面维护一个共享的 MCP 服务器，为这些集成提供连接 Docusign 合同数据和协议工作流的公共接口。
+
+“我们做出的设计选择之一是我们拥有一个单一的 MCP 服务器，并且我们内部系统与 MCP 之间的层非常薄，”Nandy 说道。
+
+“我们还拥有一个单一的 MCP 解决方案服务器，而不是针对每个客户端多个服务器，这使我们能够保持一致性。”
+
+不同的 AI 客户端可能会以不同的方式解释请求或呈现信息，并且连接器可能会在不同的时间公开新工具。共享服务器为 Docusign 提供了维护其功能的公共场所，还支持自定义智能体集成。[Docusign 推荐将官方连接器用于生产帐户](https://support.docusign.com/s/document-item?bundleId=ug3906200f-95c6-4a6b-90b1-f928c85961c6&language=en_US&topicId=cond8e12198-79cf-4eae-93d9-24046c907dc3.html)，将自定义连接器用于开发人员帐户测试。
+
+## **当智能体需要提问时**
+
+有人可能会要求智能体准备一份协议，而没有指定要使用哪个模板，或者请求一份文档而没有说他们想要文件还是链接。
+
+Nandy 表示，Docusign 一直致力于支持允许智能体寻求澄清的对话，而不是让 AI 客户端进行猜测。
+
+他说道：“我们尝试做的事情之一是增加对用户引导反馈的支持。它可以向你提出诸如以下问题：是否应该为此使用模板？或者，如果你想取回信息，你是想要整个文件还是 URL？”
+
+这种来回互动是基于智能体的交互优于传统 API 调用的一个优势，在传统 API 调用中，应用程序通常必须提供所需的参数。
+
+“你可以进行这些来回的对话。你可以拥有这种引导式流程，我们对此进行了大力利用，”Nandy 说道。
+
+对于合同工作流，在采取行动之前进行澄清可以防止智能体选择错误的文件或使用不完整的说明进行操作。引导式 MCP Apps 在支持的合同工作流中提供结构化步骤，但体验取决于宿主的功能。
+
+## **MCP 不能替代 API**
+
+尽管 Docusign 在 MCP 进行了投资，但 Nandy 并不认为它会取代传统的 API。该公司长期以来一直采取 API 优先的方法，他认为选择取决于开发人员正在构建的内容。
+
+他说道：“API 通常提供一定水平的确定性。”
+
+对于具有明确定义的输入和输出的进程，直接 API 调用可能更有意义。当智能体需要作为更广泛请求的一部分在工具之间进行选择时，MCP 会有所帮助，尽管团队可以同时使用这两种方法。
+
+“我们还看到了同时使用这两种解决方案，”Nandy 在描述能够识别单个 API 端点何时更好地处理任务的智能体时说道。
+
+> “API 通常提供一定水平的确定性。”
+
+对于工程团队来说，决定归结为 AI 智能体在哪里增加有用的上下文或灵活性，以及传统自动化已经在哪里完成工作。
+
+Docusign 迈向全球通用的步伐表明，企业合同工作流的企业 MCP 集成背后有多少工作。支持不同的 AI 客户端是一个挑战；确保 AI 合同工作流可靠运行、尊重权限并将歧义路由以进行澄清是另一个挑战。
+
+开发人员可以在 Docusign 的 [MCP 服务器文档](https://developers.docusign.com/platform/mcp-server/)中探索支持的客户端、身份验证要求和可用工具。
+
+### 更多来自 *The New Stack* 的 Docusign 内容
