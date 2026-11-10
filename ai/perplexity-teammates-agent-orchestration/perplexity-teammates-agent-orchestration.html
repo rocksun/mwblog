@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>Perplexity’s AI agents keep working after you close the tab</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/eb49a6c7-allison-saeng-p41rhm6ivjo-unsplash-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/perplexity-teammates-agent-orchestration/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/eb49a6c7-allison-saeng-p41rhm6ivjo-unsplash-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Glowing laptop with eyes" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/eb49a6c7-allison-saeng-p41rhm6ivjo-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">Perplexity&rsquo;s new Teammates can coordinate multiple agents, remember where previous sessions left off, and keep working without another prompt. The challenge is keeping everything in sync, especially when agents are working at the same time, sharing project state, and operating with different permissions.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.perplexity.ai/en-GB/hub/blog/teammates-are-agents-for-complex-ongoing-work" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Announced Wednesday</a>, Teammates builds on infrastructure Perplexity has spent much of the year developing. The launch puts that earlier work to use in workflows where agents can delegate tasks and continue operating across sessions.</p>
+
+
+
+<h2 id="h-the-challenge-of-keeping-agents-stateful" class="wp-block-heading">The challenge of keeping agents stateful</h2>
+
+
+
+<p class="wp-block-paragraph">When <a href="https://www.linkedin.com/in/natekupp/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Nate Kupp</a>, Perplexity&rsquo;s vice president of infrastructure, took <em>The New Stack</em> <a href="https://thenewstack.io/perplexity-space-agent-sandboxes/" class="local-link">inside the company&rsquo;s agent sandboxes</a>, he described the difficulty of maintaining reliable systems at that scale.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Stateful systems are incredibly hard to build,&rdquo; Kupp said, pointing to the durability and uptime requirements of operating millions of sandboxes.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Stateful systems are incredibly hard to build&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Teammates relies on Perplexity Computer&rsquo;s existing infrastructure, which separates persistent project state from individual execution environments. That allows agents to continue working on the same project without depending on a single uninterrupted session.</p>
+
+
+
+<h2 id="h-shared-state-lives-in-git" class="wp-block-heading">Shared state lives in Git</h2>
+
+
+
+<p class="wp-block-paragraph">In a <a href="https://www.perplexity.ai/en-GB/hub/blog/building-shared-workspaces-for-people-and-agents" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">technical breakdown of its shared workspaces</a>, the company described how it uses Git-backed repositories to keep project state intact across sessions. Each Computer project has its own repository, while agents work in separate sandboxes and submit their changes back to the shared project.</p>
+
+
+
+<p class="wp-block-paragraph">That gets more complicated when agents are working on the same code at once since if one agent commits its changes first, another may have to reapply its work against the latest version.</p>
+
+
+
+<p class="wp-block-paragraph">Perplexity says fewer than 2% of submissions are rejected because they&#8217;re based on outdated repository state. Median submission latency is under 1.7 seconds, while p99 stays below eight seconds.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Median submission latency is under 1.7 seconds, while p99 stays below eight seconds.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Memory is handled separately through Perplexity&#8217;s Brain system, which keeps what agents have learned in dedicated repositories. That lets background agents update shared knowledge without interfering with changes to the project&#8217;s files.</p>
+
+
+
+<h2 id="h-pausing-and-forking-agents" class="wp-block-heading">Pausing and forking agents</h2>
+
+
+
+<p class="wp-block-paragraph">Perplexity built SPACE around Firecracker microVMs and Btrfs snapshots, making it possible to pause, resume, or fork agent sessions without losing their saved state.</p>
+
+
+
+<p class="wp-block-paragraph">With Teammates, developers can connect tools like Slack and GitHub and set up triggers that tell agents when to act. Perplexity hasn&#8217;t said much about what happens when that work gets stuck, particularly when one agent is waiting on another or acting on information that&#8217;s already out of date.</p>
+
+
+
+<h2 id="h-the-open-permission-questions" class="wp-block-heading">The open permission questions</h2>
+
+
+
+<p class="wp-block-paragraph">Each teammate runs in its own isolated environment and browser session, with access managed through Computer&rsquo;s existing permissions and credentials handled securely through encryption. Users can also monitor progress and take control when needed.</p>
+
+
+
+<p class="wp-block-paragraph">It&#8217;s unclear how it prevents agents from accessing resources beyond their permissions when tasks are handed off. For enterprises, that uncertainty could influence how much autonomy they&#8217;re willing to give agents without requiring human approval.</p>
+
+
+
+<p class="wp-block-paragraph" id="h-teammates-is-initially-available-on-the-web-for-perplexity-max-subscribers-with-ios-support-planned">Teammates is initially available on the web for Perplexity Max subscribers, with iOS support planned. </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph" id="h-teammates-is-initially-available-on-the-web-for-perplexity-max-subscribers-with-ios-support-planned">Teammates is initially available on the web for Perplexity Max subscribers, with iOS support planned. </p>
+</blockquote>
+<p>The post <a href="https://thenewstack.io/perplexity-teammates-agent-orchestration/">Perplexity’s AI agents keep working after you close the tab</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

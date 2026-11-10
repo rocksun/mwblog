@@ -1,0 +1,207 @@
+<!DOCTYPE html><html><head><title>Real-time state has a cost your memory bill won’t show</title>
+<meta name="author" content="Granville Barnett"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/8df20e8c-anna-magenta-vfd7njx03ss-unsplash-1024x683.png">
+<link rel="canonical" href="https://thenewstack.io/duplicated-streaming-state-costs/"></head><body><article><img width="1024" height="683" src="https://cdn.thenewstack.io/media/2026/11/8df20e8c-anna-magenta-vfd7njx03ss-unsplash-1024x683.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Colorful pixel grids dissolving into scattered squares on navy, evoking real-time state data moving between systems" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/8df20e8c-anna-magenta-vfd7njx03ss-unsplash-scaled.png" />
+<p class="wp-block-paragraph"><strong>Real-time applications often combine</strong> tools with distinct roles. A typical setup might use Kafka to handle events, Flink to process them, Redis to serve the latest state, and a database to maintain the system of record. Applications that use vector search may add a vector store, too.</p>
+
+
+
+<p class="wp-block-paragraph">This division of responsibilities offers flexibility and independent scaling. It also creates costs when data moves between components or when overlapping state is maintained in more than one place.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;The copies to question are those maintained largely because processing happens in one system and applications read the results from another.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Some of those copies are necessary. Replicas protect against failures, checkpoints help systems recover, and durable event logs preserve history. They&#8217;re worth paying for. The copies to question are those maintained largely because processing happens in one system and applications read the results from another.</p>
+
+
+
+<p class="wp-block-paragraph">Take a velocity counter tracking a payment card&#8217;s transactions over the past five minutes. Flink calculates the count and maintains keyed state to support that computation.</p>
+
+
+
+<p class="wp-block-paragraph">But a fraud-scoring service also needs to retrieve the result. Flink&#8217;s internal state isn&#8217;t designed for general-purpose serving, and Flink deprecated its <a href="https://flink.apache.org/2023/10/24/announcing-the-release-of-apache-flink-1.18/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Queryable State</a> feature in 1.18. A common solution is to publish the count to Redis.</p>
+
+
+
+<p class="wp-block-paragraph">That gives applications a dedicated serving layer, with its own scaling and operational requirements. Flink&#8217;s working state and the Redis value may overlap but not be identical, and each published update involves serialization, network traffic, and processing before consumers see it.</p>
+
+
+
+<h2 id="h-where-consistency-gets-complicated" class="wp-block-heading">Where consistency gets complicated</h2>
+
+
+
+<p class="wp-block-paragraph">Keeping state synchronized gets more complicated when applications span availability zones.</p>
+
+
+
+<p class="wp-block-paragraph">Consider a hypothetical payment system that serves reads from asynchronous replicas in several availability zones to reduce cross-zone traffic. A refund goes through, but the update is still making its way to one of those replicas.</p>
+
+
+
+<p class="wp-block-paragraph">A service reading from it could see the transaction as not yet refunded and issue another refund, even though the first has already been processed. Without coordination between the refund paths, the customer could be paid twice.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Without coordination between the refund paths, the customer could be paid twice.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">This is an application-design concern wherever decisions depend on asynchronously replicated state. Putting processing and storage on the same platform wouldn&#8217;t necessarily prevent it.</p>
+
+
+
+<p class="wp-block-paragraph">The immediate issue is replica lag, combined with an application that decides without atomically checking and updating the state that authorizes the refund. If the refund calls an external payment service, that service also needs an idempotent request mechanism so retries cannot issue the same refund twice.</p>
+
+
+
+<p class="wp-block-paragraph">A separate processing-and-serving design also introduces a publication delay: the processor may calculate an updated value before the serving store receives it. That&#8217;s export lag, distinct from replica lag within the serving store. During that lag, a burst of fraudulent transactions can be scored against an out-of-date count. Export lag and replica lag can leave applications reading stale data, but neither should be confused with the check-then-act race that could cause the duplicate refund.</p>
+
+
+
+<p class="wp-block-paragraph">Hazelcast can avoid the separate publication step for workloads where computation runs directly against stored state. Its <a href="https://docs.hazelcast.com/hazelcast/5.7/data-structures/entry-processor" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">entry processors</a> can atomically update individual map entries on the member holding the relevant key. That doesn&#8217;t make the system automatically strongly consistent during network partitions, though.</p>
+
+
+
+<p class="wp-block-paragraph">Applications needing stronger coordination can use appropriately configured data structures in Hazelcast&#8217;s Raft-based <a href="https://docs.hazelcast.com/hazelcast/5.7/cp-subsystem/cp-subsystem" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CP subsystem</a>. Using it does not turn an ordinary IMap into a strongly consistent map, or make a map update atomic with an external payment. Separate processing and storage systems can also use strongly consistent coordination.</p>
+
+
+
+<h2 id="h-the-cost-of-moving-state" class="wp-block-heading">The cost of moving state</h2>
+
+
+
+<p class="wp-block-paragraph">Memory tends to dominate discussions of in-memory architectures, but CPU and networking costs can matter just as much.</p>
+
+
+
+<p class="wp-block-paragraph">A <a href="https://conferences.sigcomm.org/hotnets/2025/papers/hotnets25-final80.pdf" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">2025 paper</a> from UC Berkeley and Databricks, <em>Rethinking the Cost of Distributed Caches for Datacenter Services</em>, examined caching economics using synthetic workloads, Meta traces, and production data from Databricks&#8217; Unity Catalog.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Memory tends to dominate discussions of in-memory architectures, but CPU and networking costs can matter just as much.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Using the paper&#8217;s Google Cloud pricing assumptions of roughly $17 per vCPU-month and $2 per gigabyte-month of memory, the researchers found that adding in-memory caching cut operating costs by a factor of three to four. The CPU savings outweighed the cost of the additional RAM.</p>
+
+
+
+<p class="wp-block-paragraph">That isn&#8217;t a comparison of Hazelcast against Flink and Redis; the study compares caching with no caching. Its remote-versus-linked-cache comparison supports the narrower argument that communication and serialization consume CPU.</p>
+
+
+
+<p class="wp-block-paragraph">The paper also found that per-read version checks for stronger consistency could erase much of the cost benefit, so comparisons need equivalent consistency requirements.</p>
+
+
+
+<p class="wp-block-paragraph">A <a href="https://research.google/pubs/fast-key-value-stores-an-idea-whose-time-has-come-and-gone/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">2019 paper</a> by Google researchers, &#8220;Fast Key-Value Stores: An Idea Whose Time Has Come and Gone,&#8221; reported a 40% reduction in p99.9 latency for ProtoCache, a component of a Google application, after moving from a remote key-value store to an architecture that <a href="https://docs.hazelcast.com/hazelcast/5.7/getting-started/get-started-java" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">keeps application logic and in-memory state together</a>.</p>
+
+
+
+<p class="wp-block-paragraph">A separate, illustrative calculation shows the memory cost of maintaining two equivalent working sets. At the paper&#8217;s assumed memory price, 400 GB would represent about $800 a month in memory alone, before backups, checkpoints, and other infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">Maintaining an equivalent amount in both processing and serving tiers would double that figure, although Flink&#8217;s intermediate state and the results published to Redis can differ substantially.</p>
+
+
+
+<p class="wp-block-paragraph">Then there&#8217;s the work involved in keeping the systems synchronized. Each update must be serialized, transmitted, and processed, and both platforms require monitoring, scaling, and maintenance.</p>
+
+
+
+<p class="wp-block-paragraph">One way to get a sense of this overhead is to count the steps involved in a single read-modify-write operation. With separate processing and serving systems, an event might be ingested, keyed state updated, the result serialized and published, then written to the serving store before an application reads it. That&#8217;s potentially four or five serialization or network steps for one update. Running the computation where the state is stored can reduce that to a single step. It&#8217;s not a precise measure of cost, but tracing the path of an update can help identify where CPU time and network resources are being spent.</p>
+
+
+
+<p class="wp-block-paragraph">A fair total-cost comparison also needs node counts, instance types, licensing, discounts, and equivalent managed-versus-self-managed deployments. The $800 figure is memory arithmetic, not a total-cost estimate or measured Hazelcast saving.</p>
+
+
+
+<h2 id="h-bringing-computation-closer-to-the-data" class="wp-block-heading">Bringing computation closer to the data</h2>
+
+
+
+<p class="wp-block-paragraph"><a href="https://docs.hazelcast.com/hazelcast/5.7/getting-started/get-started-java" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Hazelcast provides one way to bring processing closer to stored data</a>. Rather than sending information back and forth between separate systems, it distributes data across cluster members according to key and can run computations on the member that holds it. It keeps backup copies in case a member fails.</p>
+
+
+
+<p class="wp-block-paragraph">Hazelcast offers two approaches, depending on the kind of processing involved. Hazelcast&#8217;s <a href="https://docs.hazelcast.com/hazelcast/5.7/pipelines/overview" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jet engine</a> can maintain internal state for windowed stream calculations and publish results to a distributed map that applications can read.</p>
+
+
+
+<p class="wp-block-paragraph">That intermediate state and the result-publication step still exist on the same platform; processing, map writes, and backups may also involve traffic between members. Kafka can remain the durable event log in either design, and the database of record can remain in place.</p>
+
+
+
+<p class="wp-block-paragraph">For applications that need to update stored values directly, Hazelcast also has <a href="https://docs.hazelcast.com/hazelcast/5.7/data-structures/entry-processor" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">entry processors</a>. These run code against the map entry itself, rather than calculating a result elsewhere and then copying it across.</p>
+
+
+
+<p class="wp-block-paragraph">Take the transaction counter discussed earlier. An entry processor could maintain per-minute transaction counts in a distributed map, and the application could sum the most recent five buckets to calculate the total. This avoids the need for a timer to remove expired transactions, though the result would be accurate to the minute rather than the second. The application would still need to account for late or duplicate events.</p>
+
+
+
+<p class="wp-block-paragraph">Keep entry processors lightweight, since a long-running operation can block other work on the same partition. Network traffic still occurs between clients and the cluster, and Hazelcast still maintains backup copies.</p>
+
+
+
+<p class="wp-block-paragraph">Serialization costs also depend on the <a href="https://docs.hazelcast.com/hazelcast/5.7/data-structures/setting-data-format" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">map&#8217;s in-memory format</a>: the default BINARY format stores serialized values, while OBJECT can reduce conversion work for entry processing. The difference is that, for workloads suited to this approach, there&#8217;s no separate processing tier that needs to keep publishing updates to the serving store.</p>
+
+
+
+<h2 id="h-when-separate-systems-make-sense" class="wp-block-heading">When separate systems make sense</h2>
+
+
+
+<p class="wp-block-paragraph">Keeping processing and storage apart has one significant advantage: each can scale independently.</p>
+
+
+
+<p class="wp-block-paragraph">Consider an application running complex decision rules that produce little more than a yes-or-no answer. It might need substantial CPU capacity but very little storage. A separate processing tier allows teams to add compute resources without expanding the serving infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">Other applications hold large amounts of state but do relatively little processing. Putting both workloads on one cluster may offer limited savings, particularly if CPU-intensive tasks compete with latency-sensitive reads.</p>
+
+
+
+<p class="wp-block-paragraph">Separate platforms also allow independent deployments, workload isolation, and access to specialized processing features. Hazelcast can offer some of that flexibility within a single cluster, too. Its <a href="https://docs.hazelcast.com/hazelcast/5.7/maintain-cluster/lite-members" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">lite members</a> handle compute tasks without storing data, allowing teams to dedicate regular members to storage and add compute capacity separately.</p>
+
+
+
+<p class="wp-block-paragraph">For some workloads, keeping processing and storage on entirely separate platforms will still make sense. But when applications frequently read and update the same state, Hazelcast can reduce data movement between systems.</p>
+
+
+
+<h2 id="h-what-to-measure-before-making-the-switch" class="wp-block-heading">What to measure before making the switch</h2>
+
+
+
+<p class="wp-block-paragraph">The starting point should be a profile of the existing deployment. How much CPU time goes into application logic, and how much is spent serializing data or communicating across the network? How much state is actually duplicated between processing and serving?</p>
+
+
+
+<p class="wp-block-paragraph">Average response times won&#8217;t tell the whole story, either. A system might perform well most of the time but slow down considerably on certain requests. That&#8217;s why it&#8217;s worth checking p99 and p99.9 request latency, along with throughput and end-to-end latency: the time from an event arriving to its result being readable, including any export lag.</p>
+
+
+
+<p class="wp-block-paragraph">Run the comparison with the same workload, the same end-to-end latency target, and the same durability guarantees. Failure testing matters as well: check recovery time, replay behavior, duplicate handling, and correctness during node failures and network partitions. Backup copies and recovery mechanisms add to the infrastructure bill.</p>
+
+
+
+<p class="wp-block-paragraph">For some applications, independently scaling processing and storage will remain the better choice. Others may find they&#8217;re paying to move data between systems when they could do the same work directly against application-accessible state.</p>
+
+
+
+<p class="wp-block-paragraph">Not every copy is unnecessary. Replicas protect against failures, checkpoints support recovery, and stream processors need intermediate state. The copies worth questioning are those maintained largely because processing and serving happen in different systems.</p>
+<p>The post <a href="https://thenewstack.io/duplicated-streaming-state-costs/">Real-time state has a cost your memory bill won’t show</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

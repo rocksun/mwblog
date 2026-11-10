@@ -1,0 +1,261 @@
+<!DOCTYPE html><html><head><title>Moving from AI adoption to an AI operating model: How Docusign engineering went beyond tool rollout</title>
+<meta name="author" content="Carly Page"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/83c51965-ghariza-mahavira-5biac69ve_g-unsplash-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/docusign-ai-engineering-adoption/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/11/83c51965-ghariza-mahavira-5biac69ve_g-unsplash-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Several hands guide an oversized pen, paintbrush and pencil to draw a heart on an easel, illustrating team collaboration" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/83c51965-ghariza-mahavira-5biac69ve_g-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph"><strong>Docusign rolled out AI coding tools across its engineering teams, expecting them to help developers write code faster and do more. Initial enthusiasm was high, but early gains plateaued.</strong></p>
+
+
+
+<p class="wp-block-paragraph">By June 2025, Docusign had reached a sticking point. According to its <a href="https://www.docusign.com/blog/how-we-drove-ai-adoption-across-docusign-engineering-without-mandating-it" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">engineering team&#8217;s account</a>, 49% of engineers were actively using AI coding tools, while a reported 18% improvement in developer productivity had leveled off. Engineers still needed time to experiment, guidance tailored to Docusign&#8217;s codebase, and help fitting the tools into their day-to-day work.</p>
+
+
+
+<p class="wp-block-paragraph">Docusign now reports that all of its more than 1,100 engineers are onboarded to and actively using AI coding tools</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-full is-resized"><img loading="lazy" decoding="async" width="800" height="800" src="https://cdn.thenewstack.io/media/2026/10/5e11eb07-docusign-cto.jpeg" alt="Sagnik Nandy, Chief Technology Officer, Docusign" class="wp-image-22842471" style="width:206px;height:auto"/><figcaption class="wp-element-caption">Docusign CTO Sagnik Nandy</figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">CTO <a href="https://www.docusign.com/blog/author/sagnik-nandy" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Sagnik Nandy</a> believes getting people to use the technology is only the beginning.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;There&#8217;s a big difference between trying to get a few wins versus doing it consistently and doing it right,&#8221; Nandy tells <em>The New Stack</em>.</p>
+
+
+
+<p class="wp-block-paragraph">Docusign responded by changing how it introduced and measured AI across engineering, moving beyond coding assistants toward reusable agents and automated workflows.</p>
+
+
+
+<h2 id="h-why-docusign-turned-to-its-engineers" class="wp-block-heading"><strong>Why Docusign turned to its engineers</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Instead of making AI adoption mandatory, Docusign established a six-person Eng AI Champions team to develop guardrails, share engineering practices, and run workshops. Docusign reports that adoption reached 65% by October 2025. The company then extended that work through AI Multipliers embedded in individual development teams. Nandy says around 75 Multipliers helped teammates put the shared practices into use and fed problems back to the central team.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;They were tasked with two things,&#8221; Nandy explains. &#8220;The decisions, the solutions we built, they had to deploy it within their team, and also get feedback in terms of what&#8217;s working, what&#8217;s not working, and what&#8217;s missing.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Docusign&rsquo;s <a href="https://www.docusign.com/blog/how-we-drove-ai-adoption-across-docusign-engineering-without-mandating-it" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">account of the initiative</a> showed that <a href="https://www.docusign.com/blog/how-we-drove-ai-adoption-across-docusign-engineering-without-mandating-it" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">active usage reached 93%</a> within two months of introducing the Multipliers, while lines of code updated per developer increased by approximately 52% from the company&#8217;s starting point. That code-volume measure does not, by itself, establish a matching improvement in delivery speed or software quality.</p>
+
+
+
+<p class="wp-block-paragraph">Nandy believes the combination of central coordination and feedback from individual teams has helped sustain the program, an approach he has also discussed in an <a href="https://sfelc.com/podcasts/best-practices-for-scaling-ai-adoption-across-a-large-org-and-the-trade-offs-you-will-have-to-make-sagnik-nandy-docusign" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">engineering leadership podcast</a>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;When I speak to many of my peers, a lot of AI programs start well, and then fizzle out.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;When I speak to many of my peers, a lot of AI programs start well, and then fizzle out,&#8221; he says. &#8220;I think the reason that hasn&#8217;t happened for us &#8230; is because we already have such a rich body of information and feedback flowing in, and people acting on it and then redeploying things.&#8221;</p>
+
+
+
+<h2 id="h-teaching-ai-to-speak-docusign" class="wp-block-heading"><strong>Teaching AI to &#8216;speak Docusign&#8217;</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Once engineers were comfortable using AI for coding, Docusign began looking at entire development workflows. That required tools with access to its repositories, architecture, telemetry, and internal practices, so assistants could work with the company&#8217;s own context.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;Our solutions and agents, we joke, they speak Docusign,&#8221; Nandy says. &#8220;They know which internal tools to go look into, what our internal coding guardrails are, guidelines are, what system choices we make, where information resides for disambiguating between different pieces of information.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Nandy describes several internal tools for different engineering tasks: Kody for Docusign-specific coding work, Chronicle for observability and incident investigation, and DocuWiki for code-aware internal documentation. Docusign&#8217;s <a href="https://www.docusign.com/blog/how-we-drove-ai-adoption-across-docusign-engineering-without-mandating-it" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">engineering blog</a> also describes an AI-assisted code review tool for identifying potential architectural and security issues during review.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.docusign.com/blog/every-team-deserves-a-krew-the-platform-behind-docusigns-220-ai-teammates" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Krew brings these capabilities together</a>, allowing teams to build agents called Krewmates for recurring tasks and more complex workflows.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;One of the things that the Eng AI Champions and Multipliers did is they identified end-to-end flows, and we wanted to improve the entire flow,&#8221; Nandy says.</p>
+
+
+
+<p class="wp-block-paragraph">He describes an internal agent that runs overnight, searches error logs for problems, and prepares proposed fixes.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;Come morning, the engineer is greeted with, &#8216;Hey, here&#8217;s a PR. This was an issue we found, and this is the fix.&#8217; It&#8217;s magical.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">In Nandy&#8217;s example, Krew coordinates the workflow, drawing on telemetry from Chronicle and Kody&#8217;s coding capabilities. The engineer then reviews the proposed pull request.</p>
+
+
+
+<p class="wp-block-paragraph">Docusign <a href="https://www.docusign.com/blog/how-we-built-an-autonomous-coding-agent-for-repetitive-engineering-tasks" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">gives another example</a>. For a task involving infrastructure configuration files, the agent correctly modified 10 of 12 files on its first pass in about 15 minutes, using a sample commit as guidance. The company says the process previously took roughly a week of engineer time. The first pass still left two files to correct; it was not a finished, approved change in 15 minutes.</p>
+
+
+
+<h2 id="h-making-successful-workflows-reusable" class="wp-block-heading"><strong>Making successful workflows reusable</strong></h2>
+
+
+
+<p class="wp-block-paragraph">An agent built for one team has limited value if everyone else has to recreate it.</p>
+
+
+
+<p class="wp-block-paragraph">Docusign&#8217;s <a href="https://www.docusign.com/blog/every-team-deserves-a-krew-the-platform-behind-docusigns-220-ai-teammates" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Krew orchestration platform</a> allows engineers to discover, copy, and extend Krewmates connected to internal systems. These agents can handle recurring tasks, respond to triggers, and involve people when needed.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;We&#8217;ve taken a very open approach,&#8221; Nandy says. &#8220;All the Krewmates are visible to everyone. You can see how much they are getting used. It&#8217;s extremely easy to copy and extend them.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Frequently used Krewmates become more visible, helping teams find existing solutions rather than building their own from scratch.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;If something is good, you can try to teach 1,000 other people to do it, or you can make it easy for 1,000 other people to inherit it.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;If something is good, you can try to teach 1,000 other people to do it, or you can make it easy for 1,000 other people to inherit it. And we went for the latter.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">The approach also depends on maintaining those shared tools, documenting changes, and feeding problems back to the teams responsible for improving them. Docusign&#8217;s <a href="https://www.docusign.com/blog/every-team-deserves-a-krew-the-platform-behind-docusigns-220-ai-teammates" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Krew team reports</a> that apparently successful runs sometimes left duplicate posts or partial outputs, prompting improvements to run tracking and observability. For leaders adopting this model, a durable workflow needs a named owner, a way to report failures, and periodic checks on quality and running costs.</p>
+
+
+
+<h2 id="h-measuring-what-matters" class="wp-block-heading"><strong>Measuring what matters</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Docusign&#8217;s adoption figures show how widely AI has spread, but Nandy is wary of treating usage as the ultimate measure of success.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;We&#8217;ve been very focused on value as opposed to anecdotes or gimmicks,&#8221; he says. &#8220;The way to do that is you keep moving up the value chain.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Initially, Docusign measured how many engineers were using AI, followed by how much code they were generating. Nandy says the next questions concern whether teams are actually delivering better results.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;Adoption, so what? &#8230; Are you doing more?&#8221; he says. &#8220;Then you look at feature velocity. Are you shipping things sooner?&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Docusign also considers customer satisfaction and reliability, particularly whether faster development introduces problems elsewhere.</p>
+
+
+
+<p class="wp-block-paragraph">For engineering leaders, that means examining delivery times, review latency, testing, rework, and incident investigation rather than relying solely on adoption percentages or lines of AI-generated code.</p>
+
+
+
+<h2 id="h-guardrails-before-speed" class="wp-block-heading"><strong>Guardrails before speed</strong></h2>
+
+
+
+<p class="wp-block-paragraph">Giving agents more responsibility doesn&#8217;t mean removing human accountability.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;Any PR, it&#8217;s the responsibility of the individual signing off on it,&#8221; Nandy says. &#8220;No code goes unreviewed into the system.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Docusign says its autonomous coding agent runs tests before submitting pull requests, with human review, AI-generated-code labels, and quality gates required before merging. Its <a href="https://www.docusign.com/products/platform/ai/innovation-principles" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">AI Innovation Principles</a> emphasize human oversight and safeguards. <a href="https://www.docusign.com/blog/every-team-deserves-a-krew-the-platform-behind-docusigns-220-ai-teammates" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Krew&#8217;s documentation</a> makes the boundary explicit: an agent cannot merge a pull request or take an irreversible action without a person&#8217;s approval.</p>
+
+
+
+<p class="wp-block-paragraph">Nandy compares AI to a chainsaw: a powerful tool that can accomplish more than traditional alternatives, but requires appropriate safeguards.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;You need very different gear when you have a chainsaw, otherwise you can hurt yourself.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;You need very different gear when you have a chainsaw, otherwise you can hurt yourself,&#8221; he says. &#8220;It&#8217;s important to get that right.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">He also warns against introducing AI where conventional software would work better. Some of Docusign&#8217;s internal solutions were developed using AI but run as deterministic processes without continually invoking a model.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;I often see people throwing AI at problems that probably don&#8217;t need AI,&#8221; Nandy says.</p>
+
+
+
+<h2 id="h-beyond-the-rollout" class="wp-block-heading"><strong>Beyond the rollout</strong></h2>
+
+
+
+<p class="wp-block-paragraph">For Nandy, Docusign&#8217;s approach rests on five principles: measure value, make successful solutions reusable, keep costs and governance sustainable, establish guardrails and build in the organization&#8217;s own context.</p>
+
+
+
+<p class="wp-block-paragraph">Together, these principles support a shift from encouraging engineers to try AI to workflows that teams can maintain, measure, and improve across teams. The practical next step for an engineering leader is to choose a well-defined workflow, agree on the outcome to measure, assign an owner, and specify where human approval is required before expanding it.</p>
+
+
+
+<p class="wp-block-paragraph">The lesson for engineering leaders is that adoption alone won&#8217;t deliver lasting results. Teams also need shared tools, clear ownership, engineer feedback, and measures that show whether the work is actually getting better.</p>
+
+
+
+<p class="wp-block-paragraph">More details are available on Docusign&#8217;s <a href="https://www.docusign.com/blog/topics/engineering" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Engineering blog</a>, alongside its current <a href="https://careers.docusign.com/careers-home/jobs/categories/Engineering" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">engineering opportunities</a>.</p>
+
+
+
+<h3 id="h-more-docusign-in-the-new-stack" class="wp-block-heading">More Docusign in <em>The New Stack</em></h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://thenewstack.io/docusign-mcp-server-agents/" class="local-link">From open beta to global GA: What Docusign learned by bringing contract AI workflows to agents</a> (November 5, 2026)</li>
+
+
+
+<li><a href="https://thenewstack.io/docusign-contract-ai-agents/" class="local-link">The context problem: How Docusign built agents that understand the business behind contracts</a> (October 31, 2026)</li>
+
+
+
+<li><a href="https://thenewstack.io/docusign-mcp-agentic-agreements/" class="local-link">Building the agentic agreement enterprise: How developers are unlocking agentic experiences with Docusign&rsquo;s MCP server and platform</a> (May 21, 2026)</li>
+
+
+
+<li><a href="https://thenewstack.io/building-integrations-with-ai-assistance-that-go-beyond-vibes/" class="local-link">Building integrations with AI assistance that go beyond vibes</a> (July 31, 2025)</li>
+
+
+
+<li><a href="https://thenewstack.io/auto-read-data-into-agreement-workflows-with-docusign-extension-apps/" class="local-link">Auto-read data into agreement workflows with Docusign extension apps</a> (June 25, 2025)</li>
+
+
+
+<li><a href="https://thenewstack.io/how-to-use-docusign-apis-to-embed-custom-document-signing-in-an-app/" class="local-link">How to use Docusign APIs to embed custom document signing in an app</a> (May 28, 2025)</li>
+
+
+
+<li><a href="https://thenewstack.io/build-api-driven-custom-agreement-workflows-with-docusign-maestro/" class="local-link">Build API-driven custom agreement workflows with Docusign Maestro</a> (May 15, 2025)</li>
+
+
+
+<li><a href="https://thenewstack.io/inside-docusigns-ai-powered-agreement-management-platform/" class="local-link">Inside Docusign&rsquo;s AI-powered agreement management platform</a> (January 6, 2025)</li>
+
+
+
+<li><a href="https://thenewstack.io/docusign-expands-its-developer-community-with-new-platform/" class="local-link">Docusign expands its developer community with new platform</a> (November 20, 2024)</li>
+</ul>
+<p>The post <a href="https://thenewstack.io/docusign-ai-engineering-adoption/">Moving from AI adoption to an AI operating model: How Docusign engineering went beyond tool rollout</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

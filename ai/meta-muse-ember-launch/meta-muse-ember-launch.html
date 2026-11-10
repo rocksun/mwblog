@@ -1,0 +1,128 @@
+<!DOCTYPE html><html><head><title>Meta launches Muse Ember to take on Claude Haiku and GPT-6 Luna</title>
+<meta name="author" content="Frederic Lardinois"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/5d1eee3e-blog-header-visual-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/meta-muse-ember-launch/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/5d1eee3e-blog-header-visual-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/5d1eee3e-blog-header-visual-scaled.png" />
+<p class="wp-block-paragraph">Meta on Monday debuted <a href="https://research.meta.ai/blog/muse-ember" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Muse Ember</a>, a smaller, more efficient multimodal member of its Muse model family.</p>
+
+
+
+<p class="wp-block-paragraph">The company is clearly taking a similar approach to the other frontier labs, with a family of models that cover everything from focused, high-volume tasks (think OpenAI&#8217;s GPT-6 Luna and Anthropic&#8217;s&nbsp;<a href="https://thenewstack.io/anthropic-claude-haiku-5-5/" class="local-link">Claude Haiku 5.5</a>) to frontier intelligence like OpenAI&#8217;s GPT-6 Astra, Anthropic&#8217;s Claude Fable 5.1, and, most recently, Meta&#8217;s&nbsp;<a href="https://thenewstack.io/muse-wonder-claude-fable/" class="local-link">Muse Wonder Full</a>. And just like its competitors, Meta is pitching the smaller model for agentic subtasks like reading files, running tests, and making targeted fixes, with a larger model like Muse Wonder doing the planning.</p>
+
+
+
+<p class="wp-block-paragraph">Muse Ember is available in Muse Code and through the Meta Model API under the model ID&nbsp;<code>muse-ember-1.0</code>. It will likely soon be available on services like OpenRouter and on the neoclouds, too, given that Meta has done the same for its other Muse models in the past. </p>
+
+
+
+<p class="wp-block-paragraph">Like with previous Muse model releases, Meta is keeping Ember&rsquo;s model weights private.</p>
+
+
+
+<p class="wp-block-paragraph">Ember is Meta&#8217;s take on a small, price-efficient model, and at least when it comes to the benchmarks, it&#8217;s a strong entry. </p>
+
+
+
+<figure data-wp-context="{&quot;imageId&quot;:&quot;6af31fab31300&quot;}" data-wp-interactive="core/image" data-wp-key="6af31fab31300" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="576" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on--click="actions.showLightbox" data-wp-on--load="callbacks.setButtonStyles" data-wp-on--pointerdown="actions.preloadImage" data-wp-on--pointerenter="actions.preloadImageWithDelay" data-wp-on--pointerleave="actions.cancelPreload" data-wp-on-window--resize="callbacks.setButtonStyles" src="https://cdn.thenewstack.io/media/2026/11/7ce96132-intelligence-vs.-cost-per-task-lm-1024x576.png" alt="" class="wp-image-22843173"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			data-wp-bind--aria-label="state.thisImage.triggerButtonAriaLabel"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on--click="actions.showLightbox"
+			data-wp-style--right="state.thisImage.buttonRight"
+			data-wp-style--top="state.thisImage.buttonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Credit: Meta.</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">At max reasoning, Meta puts Ember at about $0.14 per task on the&nbsp;<a href="https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Artificial Analysis Intelligence Index</a>, compared with $0.41 for Haiku and $0.15 for Luna. Ember matches Haiku&#8217;s rounded score at about a third of the cost and scores higher than Luna for about a cent less per task.</p>
+
+
+
+<p class="wp-block-paragraph">At xhigh, the other Ember setting shown in Meta&#8217;s chart, the model scores about 34 at roughly $0.12 per task.</p>
+
+
+
+<h2 id="h-muse-ember-pricing" class="wp-block-heading">Muse Ember pricing</h2>
+
+
+
+<p class="wp-block-paragraph">Ember, which has a 1M-token context window and supports up to 512K output tokens, is priced at $0.10 per million input tokens, $0.004 per million cached input tokens, and $0.50 per million output tokens. Those input and output rates match&nbsp;<a href="https://thenewstack.io/openai-gpt-6-sol-luna-release/" class="local-link">GPT-6 Luna</a>&nbsp;and Claude Haiku 5.5 at their standard short-context prices. Both charge $0.01 per million cached input tokens at those rates, with higher prices for longer prompts. Ember is available in Muse Code and through the Meta Model API as&nbsp;<code>muse-ember-1.0</code>, with support for the Responses API.</p>
+
+
+
+<h2 id="h-how-chinese-rivals-compare" class="wp-block-heading">How Chinese rivals compare</h2>
+
+
+
+<p class="wp-block-paragraph">And while Meta doesn&#8217;t directly compare the new model to Chinese competitors like&nbsp;<a href="https://thenewstack.io/deepseek-flash-haiku-test/" class="local-link">DeepSeek V4.1 Flash 1017</a>, Z.ai&#8217;s GLM-5.3 Flash, and MiniMax M3.1 Flash in the chart, Ember undercuts the listed uncached input rates for all three. It also undercuts DeepSeek&#8217;s direct off-peak and MiniMax&#8217;s listed output prices and matches GLM&#8217;s. DeepSeek has a slightly lower off-peak cache-hit rate of $0.003 per million tokens.</p>
+
+
+
+<p class="wp-block-paragraph">On Artificial Analysis&#8217; Intelligence Index, for example, Ember scores 36 at max reasoning, while DeepSeek V4.1 Flash 1017 is at 33, MiniMax at 29, and GLM at 28. OpenAI&#8217;s GPT-6 Luna, meanwhile, scores 28 on this same benchmark, while Haiku gets to 36, both at max reasoning.</p>
+
+
+
+<h2 id="h-muse-ember-vs-muse-spark" class="wp-block-heading">Muse Ember vs. Muse Spark</h2>
+
+
+
+<p class="wp-block-paragraph">Meta&#8217;s own&nbsp;<a href="https://thenewstack.io/muse-spark-1-3-gemini/" class="local-link">Muse Spark 1.3</a>&nbsp;scores 37 at max reasoning and costs $2.39 per task at the standard API rates used in the comparison. Meta also offers a Spark Contributor tier, where it uses requests to improve its products. That tier matches Ember&#8217;s uncached input price and charges $0.20 per million output tokens.</p>
+
+
+
+<figure data-wp-context="{&quot;imageId&quot;:&quot;6af31fab319f0&quot;}" data-wp-interactive="core/image" data-wp-key="6af31fab319f0" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="409" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on--click="actions.showLightbox" data-wp-on--load="callbacks.setButtonStyles" data-wp-on--pointerdown="actions.preloadImage" data-wp-on--pointerenter="actions.preloadImageWithDelay" data-wp-on--pointerleave="actions.cancelPreload" data-wp-on-window--resize="callbacks.setButtonStyles" src="https://cdn.thenewstack.io/media/2026/11/8b1b16ed-muse-ember-and-muse-spark-1.3-comparison-lm-1024x409.png" alt="" class="wp-image-22843170"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			data-wp-bind--aria-label="state.thisImage.triggerButtonAriaLabel"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on--click="actions.showLightbox"
+			data-wp-style--right="state.thisImage.buttonRight"
+			data-wp-style--top="state.thisImage.buttonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Credit: Meta.</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">Meta reports a lead over Haiku and Luna on its own Personal Superintelligence Index, a measure of personal and knowledge work. One benchmark where Ember doesn&#8217;t fare as well is FrontierCode 2.0, which evaluates whether a repository maintainer would merge an agent&#8217;s changes. Ember scores 27.2 percent, compared with 34.9 percent for Haiku and 28.5 percent for DeepSeek. Spark 1.3 scores 23.1 percent.</p>
+
+
+
+<figure data-wp-context="{&quot;imageId&quot;:&quot;6af31fab31e79&quot;}" data-wp-interactive="core/image" data-wp-key="6af31fab31e79" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="921" height="1024" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on--click="actions.showLightbox" data-wp-on--load="callbacks.setButtonStyles" data-wp-on--pointerdown="actions.preloadImage" data-wp-on--pointerenter="actions.preloadImageWithDelay" data-wp-on--pointerleave="actions.cancelPreload" data-wp-on-window--resize="callbacks.setButtonStyles" src="https://cdn.thenewstack.io/media/2026/11/77e246a3-muse-ember-evaluation-results-lm-921x1024.png" alt="" class="wp-image-22843169"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			data-wp-bind--aria-label="state.thisImage.triggerButtonAriaLabel"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on--click="actions.showLightbox"
+			data-wp-style--right="state.thisImage.buttonRight"
+			data-wp-style--top="state.thisImage.buttonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption">Meta Muse Ember benchmarks. Credit: Meta.</figcaption></figure>
+
+
+
+<h2 id="h-computer-use-on-osworld" class="wp-block-heading">Computer use on OSWorld</h2>
+
+
+
+<p class="wp-block-paragraph">Ember can take text, images, audio, and video as inputs, and Meta says it can operate desktop apps from screenshots. </p>
+
+
+
+<p class="wp-block-paragraph">On&nbsp;<a href="https://osworld-v2.xlang.ai/#leaderboard" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">OSWorld 2.1</a>, it got nearly the same partial-credit score as Haiku, 69.5 percent versus 68.9 percent, but finished more tasks outright, 33.8 percent versus 27.8 percent for Haiku and 17 percent for Luna. In a separate OSWorld 2.1 run, Spark 1.3 earned nearly identical partial credit to Ember and completed 39.25 percent of tasks.</p>
+
+
+
+<p class="wp-block-paragraph">Meta says the new model is the first it trained using the larger Muse Wonder Full model. That&#8217;s similar to what the company did with Muse Wonder to train the specialized models it began rolling out to&nbsp;<a href="https://thenewstack.io/meta-muse-specialized-models/" class="local-link">its Muse personal agent and Meta AI</a>.</p>
+<p>The post <a href="https://thenewstack.io/meta-muse-ember-launch/">Meta launches Muse Ember to take on Claude Haiku and GPT-6 Luna</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
