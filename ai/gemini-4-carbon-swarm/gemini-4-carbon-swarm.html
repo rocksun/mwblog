@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><title>Google says Gemini 4 Carbon proved Signal’s encryption in weeks</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/94b532e0-getty-images-ngci-nquuq-unsplash-1024x677.jpg">
+<link rel="canonical" href="https://thenewstack.io/gemini-4-carbon-swarm/"></head><body><article><img width="1024" height="677" src="https://cdn.thenewstack.io/media/2026/11/94b532e0-getty-images-ngci-nquuq-unsplash-1024x677.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Chat bubble" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/94b532e0-getty-images-ngci-nquuq-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph"><strong>Google released Gemini 4 Carbon to paying developers Tuesday</strong>, positioning its newest frontier model above Gemini 4 Argon for complex software engineering, cybersecurity, and scientific reasoning.</p>
+
+
+
+<p class="wp-block-paragraph">Argon remains Google&rsquo;s recommended model for everyday engineering and knowledge work. while Carbon is designed for more demanding tasks, including multi-package migrations, cross-subsystem debugging, and long-horizon agentic workflows.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/koray-kavukcuoglu-0439a720/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Koray Kavukcuoglu</a>, SVP of Google DeepMind and Google&rsquo;s chief AI architect, described Carbon in the <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">launch announcement</a> as the company&rsquo;s strongest model for complex, multi-step work.</p>
+
+
+
+<p class="wp-block-paragraph">The release also introduces <code>/swarm</code>, a preview feature in Google Antigravity that coordinates multiple coding agents from a single prompt.</p>
+
+
+
+<h2 id="h-multi-agent-coding-arrives" class="wp-block-heading">Multi-agent coding arrives</h2>
+
+
+
+<p class="wp-block-paragraph">Carbon can build, test, and debug full-stack applications, checking both the code and rendered UI. Google says it performs particularly well on multi-package migrations and debugging across subsystems.</p>
+
+
+
+<p class="wp-block-paragraph">What Google hasn&#8217;t explained is how <code>/swarm </code>shares context between agents, handles conflicting changes, or decides which tasks need Carbon instead of a lighter model.</p>
+
+
+
+<p class="wp-block-paragraph">Google claims Carbon ranks first on CursorBench 4.0, Perplexity&rsquo;s WANDR and Zapier&rsquo;s AutomationBench, completing tasks at less than half the cost of the next-best model.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">What Google hasn&rsquo;t explained is how /swarm shares context between agents, handles conflicting changes, or decides which tasks need Carbon instead of a lighter model.</p>
+</blockquote>
+
+
+
+<h2 id="h-pricing-doubles-november-30" class="wp-block-heading">Pricing doubles November 30</h2>
+
+
+
+<p class="wp-block-paragraph">The company hasn&#8217;t provided enough detail to independently verify those cost comparisons. Carbon launches at $2 per million input tokens and $10 per million output tokens, matching Argon, before doubling to $4 and $20 after November 30.</p>
+
+
+
+<p class="wp-block-paragraph">Whether Carbon&#8217;s performance offsets those higher costs, including the overhead of multi-agent orchestration and verification, remains to be seen in production.</p>
+
+
+
+<h2 id="h-proving-signal-s-code" class="wp-block-heading">Proving Signal&rsquo;s code</h2>
+
+
+
+<p class="wp-block-paragraph">One of the more technically ambitious examples in Google&rsquo;s announcement involves AlphaProof Code, a new agentic framework for formal verification.</p>
+
+
+
+<p class="wp-block-paragraph">Google researchers used Carbon alongside other models to mathematically prove key security properties of the code underlying Signal&rsquo;s cryptographic protocol.</p>
+
+
+
+<p class="wp-block-paragraph">The researchers translated security requirements into mathematical theorems and used AlphaProof Code agents to generate millions of lines of <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Lean</a>, a language used to express and check mathematical proofs.</p>
+
+
+
+<p class="wp-block-paragraph">Google says the work took weeks, compared with the years that similar verification efforts have historically required from expert teams.</p>
+
+
+
+<p class="wp-block-paragraph">The announcement doesn&rsquo;t specify the full scope of the verified properties, how much human intervention it required, or whether Google will make the proof artifacts publicly available.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Google says the work took weeks, compared with the years that similar verification efforts have historically required from expert teams.</p>
+</blockquote>
+
+
+
+<h2 id="h-security-that-cuts-both-ways" class="wp-block-heading">Security that cuts both ways</h2>
+
+
+
+<p class="wp-block-paragraph">Google initially made Carbon&rsquo;s cybersecurity capabilities available to selected defenders through its <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Fairwind Program</a> in late October.</p>
+
+
+
+<p class="wp-block-paragraph">The company says Carbon leads on SEC-bench Pro, ExploitGym and CWE-bench v1, benchmarks covering vulnerability discovery, exploitation and patching.</p>
+
+
+
+<p class="wp-block-paragraph">In Project Fortify, Google&rsquo;s autonomous scanning, triage and remediation system, Carbon achieved 100% scanning recall and 95% triage precision on an internal benchmark. Google also reports a relative improvement of more than 25% over Argon&rsquo;s recall rate when testing open-source repositories.</p>
+
+
+
+<p class="wp-block-paragraph">Google&#8217;s Cloud Vulnerability Research team used Carbon to confirm that two bugs in a popular open-source project could be exploited, prompting maintainers to classify them as critical and release patches. Google says the vulnerabilities were comparable in severity to the recent <a href="https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">PHP2Shell exploit</a>, but hasn&#8217;t named the affected project while the disclosure process is still underway.</p>
+
+
+
+<p class="wp-block-paragraph">Separately, Wiz used Carbon through its Scan for Good program to uncover zero-day vulnerabilities in two major SaaS providers in under two hours. The affected organizations worked with the researchers on remediation.</p>
+
+
+
+<h2 id="h-cybersecurity-s-double-edge" class="wp-block-heading">Cybersecurity&rsquo;s double edge</h2>
+
+
+
+<p class="wp-block-paragraph">The stronger exploitation capabilities also raise misuse concerns. Google says Carbon&rsquo;s safeguards blocked 99% of attack trajectories attempted by an adaptive red-teaming agent in simulated environments, reducing the per-attempt breach rate to 0.8%, compared with 3.1% for Argon.</p>
+
+
+
+<p class="wp-block-paragraph">The company also reports a 0% attack success rate on Gray Swan&rsquo;s indirect prompt-injection benchmark, while acknowledging that more sophisticated attacks remain an area for improvement.</p>
+
+
+
+<p class="wp-block-paragraph">These results come from specific evaluation environments and don&rsquo;t establish that Carbon is resistant to all real-world attacks.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">These results come from specific evaluation environments and don&rsquo;t establish that Carbon is resistant to all real-world attacks.</p>
+</blockquote>
+
+
+
+<h2 id="h-getting-access-to-carbon" class="wp-block-heading">Getting access to Carbon</h2>
+
+
+
+<p class="wp-block-paragraph">Gemini 4 Carbon is available through the paid Gemini API tier in Google AI Studio and Android Studio, as well as Google&rsquo;s enterprise offerings.</p>
+
+
+
+<p class="wp-block-paragraph">Google AI Ultra subscribers can access Carbon through Antigravity, the Gemini app, and AI Mode in Search. The /swarm orchestration feature remains in preview.</p>
+
+
+
+<p class="wp-block-paragraph">Access to Carbon&rsquo;s advanced cybersecurity tools still requires approval through Fairwind. Google is also giving selected scientists six months of free access to Carbon through Antigravity, with applications open and new researchers added each week.</p>
+
+
+
+<p class="wp-block-paragraph">Google has published an updated <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Gemini 4 developer guide</a> covering migration and implementation.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+<p>The post <a href="https://thenewstack.io/gemini-4-carbon-swarm/">Google says Gemini 4 Carbon proved Signal’s encryption in weeks</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
