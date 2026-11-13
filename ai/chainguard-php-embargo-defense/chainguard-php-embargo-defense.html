@@ -1,0 +1,249 @@
+<!DOCTYPE html><html><head><title>Chainguard defends its choice to break the PHP security embargo: “We own the decision.”</title>
+<meta name="author" content="Steven J. Vaughan-Nichols"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/f70453f4-chainguard-kube-con-booth-na-2026-1024x586.png">
+<link rel="canonical" href="https://thenewstack.io/chainguard-php-embargo-defense/"></head><body><article><img width="1024" height="586" src="https://cdn.thenewstack.io/media/2026/11/f70453f4-chainguard-kube-con-booth-na-2026-1024x586.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="The Chainguard booth at KubeCon + CloudNativeCon North America in Salt Lake City in November 2026. (Credit: The New Stack)" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/f70453f4-chainguard-kube-con-booth-na-2026.png" />
+<p class="wp-block-paragraph"><strong>At KubeCon + <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CloudNativeCon North America</a> 2026 this week</strong>, Chainguard co-founder and CTO Matt Moore defended the company&rsquo;s decision to release patched PHP images before an agreed-upon embargo with other partners had lifted.</p>
+
+
+
+<p class="wp-block-paragraph">When Chainguard shipped <a href="https://thenewstack.io/php2shell-chainguard-embargo-dispute/" class="local-link">patched PHP container images</a> more than six hours ahead of an October 21 coordinated security release, PHP&rsquo;s maintainers accused the company of giving attackers a head start. Chainguard argues attackers already had one.</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-full is-resized"><img loading="lazy" decoding="async" width="800" height="800" src="https://cdn.thenewstack.io/media/2026/11/0285dd07-chainguard-cto-matt-moore.jpeg" alt="" class="wp-image-22843495" style="width:198px;height:auto"/><figcaption class="wp-element-caption"><em>Chainguard founder and CTO Matt Moore</em></figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">In an interview with <em>The New Stack</em>, <a href="https://www.linkedin.com/in/mattmoor/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Moore</a> said, &ldquo;We own the decision that we chose to do it. Nobody could force us to do it &#8212; but we did not do it in a vacuum.&rdquo; He also described, in discussions with TNS, other participants in the embargo and security vendors&#8217; reports of activity targeting the vulnerabilities before Chainguard released its images.</p>
+
+
+
+<p class="wp-block-paragraph">Chainguard was not saying that they patched it faster so they shipped it first. According to Moore, Chainguard believed attackers could already exploit the bugs, or were at least close to figuring out how &mdash; or were trying to figure it out.</p>
+
+
+
+<p class="wp-block-paragraph">The two vulnerabilities, <a href="https://nvd.nist.gov/vuln/detail/cve-2026-109618" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CVE-2026-109618 (out-of-memory corruption)</a> and <a href="https://nvd.nist.gov/vuln/detail/cve-2026-109619" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CVE-2026-109619 (stale global state)</a>, collectively known as PHP2Shell, were serious memory-management and error-handling flaws. Under the right conditions, an unauthenticated attacker could execute code on a PHP server.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The two bugs involved PHP&rsquo;s handling of memory exhaustion and its failure to clear references to freed memory between requests. In the first, reaching a memory limit at the wrong moment could interrupt PHP before it finished setting up internal data. Later processing could mistake that unfinished data for valid information. In the second vulnerability, an error could leave PHP holding a reference to memory from an earlier request that had already been freed. A subsequent request could then access that invalid memory. Under exploitable conditions, these failures could let an attacker run code inside the server&rsquo;s PHP process.</p>
+
+
+
+<p class="wp-block-paragraph">Researchers demonstrated remote code execution through both Apache/mod_php and application-level PHP-FPM paths for the first vulnerability, and against a real-world Apache/mod_php application for the second.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">These were problems in PHP itself, not something an administrator could fix by simply updating a WordPress plugin. It was a fundamental and nasty security hole.</p>
+
+
+
+<h2 id="h-how-bad-were-the-flaws" class="wp-block-heading">How bad were the flaws?</h2>
+
+
+
+<p class="wp-block-paragraph">PHP&rsquo;s advisories rate both vulnerabilities 9.2, or critical, under the <a href="https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Common Vulnerability Scoring System</a> (CVSS) v4.0. Exploitability depends on the PHP build, server configuration, extensions, and application behavior. The advisories do <em>not</em> establish that every PHP installation can be compromised. PHP released fixes in versions 8.2.35, 8.3.36, 8.4.27, and 8.5.12. The potential exposure is substantial: As of November 11, W3Techs reported that PHP powered <a href="https://w3techs.com/technologies/comparison/pl-php" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">68.8% of websites</a> whose server-side programming language it could identify.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">According to the <a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">PHP Foundation&rsquo;s account</a>, a developer investigating issues from a 2024 security audit spotted the out-of-memory problem, but no concrete attack path was established then. Proposed fixes risked compatibility breaks, new denial-of-service problems, or changes across PHP extensions. </p>
+
+
+
+<p class="wp-block-paragraph">On August 11, <a href="https://calif.io/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Calif</a> researcher Ryan A. reported remote code execution from the same underlying problem. From that date, fixing it became the PHP Foundation security team&#8217;s top priority. OpenAI independently reported the same underlying flaw. Wiz supplied additional attack vectors on August 24, and OpenAI reported more on September 18.</p>
+
+
+
+<h2 id="h-how-the-php-security-patch-came-apart" class="wp-block-heading">How the PHP security patch came apart</h2>
+
+
+
+<p class="wp-block-paragraph">In response, PHP&rsquo;s maintainers coordinated fixes with researchers and distributors. Then details about the release process began leaking.</p>
+
+
+
+<p class="wp-block-paragraph">On October 20, the <a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CVE identifiers circulated publicly</a>, accompanied by an incorrect release time and severity score. PHP responded by issuing a warning and moving the release forward a day, to October 21 at 14:00 UTC. Calif, one of the reporting security companies, then mistakenly published a video demonstrating its proof of concept. Although the video was deleted, copies circulated. PHP also acknowledged that mitigation advice given to critical infrastructure providers might have leaked.</p>
+
+
+
+<p class="wp-block-paragraph">In short, the information environment was already a mess before Chainguard published anything.</p>
+
+
+
+<p class="wp-block-paragraph">But the PHP Foundation maintained that its remaining coordination window still served a purpose: specifically that distributors were packaging the fixes, and releasing immediately would leave many users without a straightforward update path. At 07:41 UTC on October 21, Chainguard published its patched images anyway &mdash; six hours and 19 minutes before the agreed-upon time.</p>
+
+
+
+<p class="wp-block-paragraph">The PHP Foundation <a href="https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/#:~:text=the%20coordinated%20release%2C-,Chainguard%20unilaterally%20broke%20the%20embargo%20and%20published%20built%20images%20containing%20the%20fix.,-Like%20other%20distributors" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">criticized</a> this move: &ldquo;Chainguard unilaterally broke the embargo and published built images containing the fix.&rdquo; That meant, it argued, that &ldquo;any attacker could now study the fix in binary form while every other PHP user was still waiting for the release.&rdquo;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">A patched binary protects the person who installs it. It can also tell an attacker where to look.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">That was the PHP Foundation&#8217;s central objection. A patched binary protects the person who installs it. It can also tell an attacker where to look.</p>
+
+
+
+<h2 id="h-moore-s-defense-the-advantage-had-already-shifted-to-the-attackers" class="wp-block-heading">Moore&rsquo;s defense: The advantage had already shifted to the attackers</h2>
+
+
+
+<p class="wp-block-paragraph">Moore doesn&#8217;t dispute that releasing patched binaries can help attackers. He argues that, by then, the advantage an embargo was supposed to preserve had already eroded.</p>
+
+
+
+<p class="wp-block-paragraph">While defenders alone know about a vulnerability, he told <em>The New Stack</em>, confidentiality gives them time to prepare. Once attackers have enough information to exploit it, withholding available fixes can reverse that advantage: attackers can act, while users outside the embargo cannot protect themselves.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;If we see exploitation in the wild, it&rsquo;s incumbent upon us to release it,&rdquo; Moore said. In his account, reports from other security vendors were what pushed Chainguard toward that conclusion.</p>
+
+
+
+<p class="wp-block-paragraph">Moore said Chainguard learned on the Friday before the release that PHP had a vulnerability, pointed its vulnerability-hunting harness at the software, and found the vulnerability or produced a proof of concept within hours. That is Chainguard&rsquo;s account of its own research. But it helps explain the company&rsquo;s thinking in breaking the embargo: If your tools can find the bug quickly, you have to consider whether attackers&rsquo; tools can too.</p>
+
+
+
+<p class="wp-block-paragraph">He also disputed the implication that Chainguard simply went off on its own. According to Moore, other embargo participants woke <a href="https://www.linkedin.com/in/danlorenc" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Chainguard CEO Dan Lorenc</a> to discuss the situation while PHP maintainers in Europe were asleep. Moore declined to identify those participants.</p>
+
+
+
+<p class="wp-block-paragraph">Moore accepted that Chainguard made the final decision. It does, however, distinguish the company&rsquo;s account of a disputed emergency decision from an account in which it ignored everyone else without discussion.</p>
+
+
+
+<h2 id="h-the-evidence-supports-concern-not-certainty" class="wp-block-heading">The evidence supports concern, not certainty</h2>
+
+
+
+<p class="wp-block-paragraph">Public evidence supports Chainguard&rsquo;s concern that attackers were already targeting the flaws. For example, Amazon Threat Intelligence reported a <a href="https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">PHP2Shell exploitation attempt</a> against its MadPot honeypot network on October 17, four days before public disclosure. It also reported proof-of-concept exploits beginning around 02:00 UTC on October 21, followed by additional attempts from anonymized infrastructure over the next six hours. Some of that activity clearly preceded Chainguard&rsquo;s 07:41 release.</p>
+
+
+
+<p class="wp-block-paragraph">Cloudflare likewise reported observing attack traffic targeting its customers before the official release. It said its free and paid <a href="https://blog.cloudflare.com/php-vulnerabilities-waf-protection" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">web application firewall protections</a> were enabled by default starting at 03:02 UTC on October 21.</p>
+
+
+
+<p class="wp-block-paragraph">So, no, Chainguard was not imagining hostile interest in these bugs.</p>
+
+
+
+<p class="wp-block-paragraph">But Amazon included an important qualification: &ldquo;Technical analysis is ongoing, and it&rsquo;s unclear if any of these attempts would have succeeded in real-world systems.&rdquo; The PHP security team, meanwhile, said it examined the circulating proofs of concept and &ldquo;did not identify any functional exploits at the time of release/public disclosure.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Those statements are not necessarily contradictory. A honeypot can record a request intended to exploit a vulnerability without establishing that it can achieve remote code execution against a real application. Likewise, PHP&rsquo;s failure to find a functional public exploit does not prove that no attacker privately possessed one.</p>
+
+
+
+<p class="wp-block-paragraph">Subsequent evidence should not be confused with what was known that morning. On October 26, CISA added both vulnerabilities to its <a href="https://content.govdelivery.com/accounts/USDHSCISA/bulletins/4309083" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Known Exploited Vulnerabilities catalog</a>. That confirms exploitation was known by then; it does not establish when the first successful compromise occurred or whether Chainguard&rsquo;s early release enabled it.</p>
+
+
+
+<p class="wp-block-paragraph">Welcome to security incident response. The evidence rarely arrives neatly labeled.</p>
+
+
+
+<h2 id="h-did-the-binaries-give-attackers-something-they-lacked" class="wp-block-heading">Did the binaries give attackers something they lacked?</h2>
+
+
+
+<p class="wp-block-paragraph">Moore&rsquo;s second argument is narrower. Attackers were already probing the relevant code, so publishing patched binaries might not have helped much.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;I don&rsquo;t see any evidence that what we did helped the attackers in ways that they didn&rsquo;t already have,&rdquo; he told TNS. He acknowledged that comparing patched and unpatched binaries can identify vulnerable code, including with AI-assisted disassembly. But identifying the code, he argued, isn&#8217;t necessarily the same as building a working exploit.</p>
+
+
+
+<p class="wp-block-paragraph">Fair enough. Locating a memory-corruption bug and reliably turning it into remote code execution are different engineering problems.</p>
+
+
+
+<p class="wp-block-paragraph">Still, this defense has limits. Evidence that some attackers knew where to look does not establish that every prospective attacker did. Nor does it establish that the patch contained no useful clues beyond the vulnerability&rsquo;s location. Chainguard&rsquo;s argument depends on how much actionable information was already available and how reliable it was.</p>
+
+
+
+<p class="wp-block-paragraph">The same restraint applies to the accusation against Chainguard. Publishing the binaries created an opportunity to study the changes. It does not, by itself, demonstrate that a particular compromise happened because Chainguard released early.</p>
+
+
+
+<p class="wp-block-paragraph">The two sides were assessing different risks. Chainguard emphasized the danger of withholding a ready patch from users while hostile activity was visible. PHP emphasized the danger of distributing new information before the wider ecosystem could update. Both risks were real.&nbsp;</p>
+
+
+
+<h2 id="h-ai-makes-the-timing-problem-worse" class="wp-block-heading">AI makes the timing problem worse</h2>
+
+
+
+<p class="wp-block-paragraph">The broader concern is that <a href="https://thenewstack.io/php2shell-ai-vulnerabilities-maintainers/" class="local-link">AI-assisted vulnerability research</a> could shorten the time defenders have to respond. The public reports cited here do not establish whether the pre-release PHP2Shell attempts used AI, or that this was the first incident of its kind.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">For Moore, the PHP dispute fits a larger problem: attackers&rsquo; ability to turn vulnerability information into an exploit may outrun defenders&rsquo; ability to build and distribute a fix.</p>
+
+
+
+<p class="wp-block-paragraph">He described a scenario in which a Chromium patch becomes public, and an attacker develops an exploit faster than it takes to compile the browser. That was a warning about where the industry is heading, not a claim that this exact scenario had occurred.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;You literally cannot produce builds fast enough,&rdquo; he said. And the build is only the beginning. Even if Chainguard produces an updated image quickly, customers still have to incorporate it, rebuild their applications, test them, and deploy.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Faster does not mean instantaneous, and a supplier&rsquo;s release time is not a customer&rsquo;s remediation time.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">That is the uncomfortable part of the &ldquo;patch faster&rdquo; answer. Faster is useful. Faster does not mean instantaneous, and a supplier&rsquo;s release time is not a customer&rsquo;s remediation time.</p>
+
+
+
+<p class="wp-block-paragraph">Moore&rsquo;s proposed longer-term response is to reduce the number of vulnerabilities that require this race in the first place. He discussed with TNS the work toward ABI-compatible replacements for foundational <a href="https://thenewstack.io/white-house-warns-against-using-memory-unsafe-languages/" class="local-link">software components in Rust</a>, along with formal verification techniques intended to rule out particular classes of defects. These remain engineering ambitions to evaluate.</p>
+
+
+
+<p class="wp-block-paragraph">They also do not settle, in the eyes of Chainguard&rsquo;s critics, what the company should have done on October 21. A future with fewer memory-corruption bugs would be welcome, but administrators dealing with the current bugs still need a workable disclosure process, they would argue.</p>
+
+
+
+<h2 id="h-the-lesson-is-bigger-than-chainguard" class="wp-block-heading">The lesson is bigger than Chainguard</h2>
+
+
+
+<p class="wp-block-paragraph">It would be easy to see this incident as only a story about one vendor breaking the rules. It would be equally easy to see it as a story about an agile security company rescuing users from a slow-moving upstream project. It&#8217;s not that simple.</p>
+
+
+
+<p class="wp-block-paragraph">PHP&rsquo;s own postmortem acknowledges a deeper failure. The foundation calls that delay &ldquo;a structural failure,&rdquo; involving both decision-making and insufficient resources.</p>
+
+
+
+<p class="wp-block-paragraph">Finding bugs faster doesn&#8217;t automatically provide the <a href="https://thenewstack.io/open-source-paid-maintainers-keep-code-safer-survey-says/" class="local-link">engineers needed to fix</a> them safely. And getting a patch ready at one company doesn&#8217;t mean an ecosystem of distributions, hosting providers, extensions, and applications is ready to deploy it.</p>
+
+
+
+<p class="wp-block-paragraph">Many people jumped to attack Chainguard for its call. For instance, <a href="http://linkedin.com/in/jay-gazlay-58535" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jay Gazlay</a>, CISA&rsquo;s acting associate director for vulnerability management, said at an October 28 Red Hat conference in Washington: &#8220;that type of behavior is dangerous, and we&rsquo;ve got to be <a href="https://federalnewsnetwork.com/cybersecurity/2026/10/dangerous-cisa-official-criticizes-companys-decision-to-release-php-bug-early/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">careful about holding embargoes</a>.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">There may still be room to repair the relationship. <a href="https://federalnewsnetwork.com/cybersecurity/2026/10/dangerous-cisa-official-criticizes-companys-decision-to-release-php-bug-early/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><em>Federal News Network</em></a>, citing <a href="https://www.politico.eu/article/the-cyber-flaw-scramble-that-brought-the-ai-threat-to-life/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><em>Politico</em></a>, reported that PHP Foundation Executive Director Elizabeth Barron expressed disappointment with Chainguard but hoped to restore trust and continue collaborating.</p>
+
+
+
+<p class="wp-block-paragraph">Moore called it &ldquo;a really tough call&rdquo; between &ldquo;two really, really bad choices.&rdquo; He&#8217;s right.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Maintainers and distributors need to agree in advance on when to lift an embargo early, who makes that decision, and how other distributors will get fixes to their users.</p>
+
+
+
+<p class="wp-block-paragraph">We need to do this as soon as possible. Otherwise, the next incident will end the same way, with vendors arguing about who broke the embargo. At the same time, administrators try to work out whether they can patch before somebody breaks their servers.</p>
+<p>The post <a href="https://thenewstack.io/chainguard-php-embargo-defense/">Chainguard defends its choice to break the PHP security embargo: &#8220;We own the decision.&#8221;</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

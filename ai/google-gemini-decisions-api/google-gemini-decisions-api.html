@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><title>Google built an AI model that can’t write a sentence — and that’s the point</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/74340249-graficon-stuff-zgtvz5tacc4-unsplash-1-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/google-gemini-decisions-api/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/11/74340249-graficon-stuff-zgtvz5tacc4-unsplash-1-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Pen on paper abstract" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/74340249-graficon-stuff-zgtvz5tacc4-unsplash-1-scaled.jpg" />
+<p class="wp-block-paragraph">Google&#8217;s new Gemini Decisions API, introduced Wednesday, is designed to handle the routine decisions that AI applications make thousands of times a day, with lower costs, and faster response times than traditional generative models.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&hellip;the routine decisions that AI applications make thousands of times a day, with lower costs and faster response times than traditional generative models.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Instead of using a generative model to work through each decision and produce a text response, <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">the API</a> uses a new model, Gemini Decision 1, to evaluate predefined options in a single pass. </p>
+
+
+
+<p class="wp-block-paragraph">According to Google, response times range from 150 to 250 milliseconds for tested workloads, while pricing starts at $0.10 per million input tokens with no output-token charges.</p>
+
+
+
+<p class="wp-block-paragraph">The release comes just weeks after <a href="https://thenewstack.io/openai-decision-models-deployment/" class="local-link">OpenAI launched its own Decisions API</a>, joining <a href="https://thenewstack.io/openai-decision-api-luna/" class="local-link">TypeSafe AI</a> and Microsoft in a growing market for models built to make specific decisions without generating text.</p>
+
+
+
+<h2 id="h-one-pass-no-generated-text" class="wp-block-heading">One pass, no generated text</h2>
+
+
+
+<p class="wp-block-paragraph">The API supports a 256,000-token context window and can evaluate up to 1,000 independent questions against a single input, including multimodal content. Its responses include probabilities and confidence scores that developers can use to select between predefined options, evaluate information against specific criteria and decide how an application should proceed.</p>
+
+
+
+<p class="wp-block-paragraph">Google CEO <a href="https://www.linkedin.com/in/sundarpichai/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Sundar Pichai</a> described the model in a <a href="https://x.com/sundarpichai/status/2120581155078729728" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">post on X</a> as &ldquo;built for closed-set choices,&rdquo; while Google DeepMind product manager <a href="https://www.linkedin.com/in/minschoi/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Min Choi</a> and principal scientist <a href="https://www.linkedin.com/in/yuxinnan/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Felix Yu</a> characterized the API as providing &ldquo;purpose-built primitives for bounded choices&rdquo; in the launch announcement.</p>
+
+
+
+<h2 id="h-where-google-already-uses-it" class="wp-block-heading">Where Google already uses it</h2>
+
+
+
+<p class="wp-block-paragraph">Google is already using the model internally, including in Gemini Notebook, where real-time model and reasoning-level routing has reportedly reduced latency by up to 40%. Google Search also uses it to detect potentially adversarial behavior involving MCP tools.</p>
+
+
+
+<h2 id="h-benchmarks-come-from-google" class="wp-block-heading">Benchmarks come from Google</h2>
+
+
+
+<p class="wp-block-paragraph">Google&rsquo;s benchmark results show Gemini Decision 1 outperforming OpenAI&rsquo;s GPT-6 Luna, although the competition with TypeSafe&rsquo;s Jev 1.14 is closer.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/logankilpatrick/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Logan Kilpatrick</a>, who leads product for Google AI Studio and the Gemini API, <a href="https://x.com/OfficialLoganK/status/2120581433639198885" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">described it on X</a> as &ldquo;our new frontier decision model in the Gemini API.&rdquo; On JevBench, Google&rsquo;s model scored 92.2%, compared with 90.9% for Luna and 90% for Jev.</p>
+
+
+
+<p class="wp-block-paragraph">But Jev came out ahead on two of the seven shared tests and was cheaper to run, costing $0.68 for the full benchmark suite compared with $0.88 for Gemini Decision 1. Google&#8217;s model also recorded the lowest calibration error among those tested.</p>
+
+
+
+<p class="wp-block-paragraph">All of the benchmark figures come from Google&rsquo;s own testing, and independent evaluations have yet to establish how the models compare in production. <a href="https://siliconangle.com/2026/11/11/google-enters-the-decision-model-market-with-gemini-decisions-api/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">SiliconANGLE also noted</a> that Jev is cheaper than Google&rsquo;s model on a per-token basis. </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">All of the benchmark figures come from Google&rsquo;s own testing, and independent evaluations have yet to establish how the models compare in production.</p>
+</blockquote>
+
+
+
+<h2 id="h-what-developers-actually-pay" class="wp-block-heading">What developers actually pay</h2>
+
+
+
+<p class="wp-block-paragraph">Developers only pay to send the shared context once, even when they&#8217;re asking multiple questions about it, although the questions themselves still count toward token usage. The API evaluates each question separately, so a workflow that needs to use one answer to decide what to ask next requires another call.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://aistudio.google.com/docs/decisions-api" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Gemini Decision 1 is available through Google AI Studio</a>, with a free prototyping tier and integrations through <a href="https://openrouter.ai/google/gemini-decision-1" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">OpenRouter</a>, LangChain, Vercel, and LiteLLM. Support for Gemini on Google Cloud is also planned, although Google has not announced a release date.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Developers only pay to send the shared context once, even when they&rsquo;re asking multiple questions about it&hellip;</p>
+</blockquote>
+<p>The post <a href="https://thenewstack.io/google-gemini-decisions-api/">Google built an AI model that can&#8217;t write a sentence — and that&#8217;s the point</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
