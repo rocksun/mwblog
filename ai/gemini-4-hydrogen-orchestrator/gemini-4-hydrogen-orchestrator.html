@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>Google’s Gemini 4 coding agent now switches models mid-task — and finishes 19% faster</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/ea0c233e-rizki-ardia-p-a6oda-mqu-unsplash-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/gemini-4-hydrogen-orchestrator/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/11/ea0c233e-rizki-ardia-p-a6oda-mqu-unsplash-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Robot and human race" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/ea0c233e-rizki-ardia-p-a6oda-mqu-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">Google launched Gemini 4 Hydrogen on Thursday alongside a new system that changes how coding agents use AI models. Rather than keeping its most capable model running across an entire session, Google is pairing Hydrogen with the more powerful Gemini 4 Carbon and switching between the two as the work progresses.</p>
+
+
+
+<p class="wp-block-paragraph">The company says the combination gets nearly the same results as running Carbon on its own while using 24% less quota and finishing tasks 19% faster.</p>
+
+
+
+<h2 id="h-how-orchestrator-handles-the-work" class="wp-block-heading">How Orchestrator handles the work</h2>
+
+
+
+<p class="wp-block-paragraph">The switching runs through <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Orchestrator</a>, a new feature in Google&rsquo;s <a href="https://thenewstack.io/antigravity-is-googles-new-agentic-development-platform/" class="local-link">Antigravity</a> development environment, where Carbon takes on the more demanding reasoning, including architecture and debugging, while <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Hydrogen</a> handles code changes and testing.</p>
+
+
+
+<p class="wp-block-paragraph">Carbon might work through a repository to figure out how to implement a feature and then hand the actual coding to Hydrogen, stepping back in when a failing test calls for rethinking the approach before passing execution back.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/clementfarabet/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Clement Farabet</a>, VP, AI engineering at Google DeepMind, calls the combination &ldquo;a huge unlock for agentic coding&rdquo; in a <a href="https://x.com/clmt/status/2120944361877713308" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">post on X</a>. <br><br><a href="https://www.linkedin.com/in/varunkmohan/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Varun Mohan</a>, who leads Google&rsquo;s Antigravity team, says in a <a href="https://x.com/_mohansolo/status/2120941094724874380" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">separate post</a> that pairing Hydrogen with Orchestrator and swarms has become &ldquo;very popular internally.&rdquo;</p>
+
+
+
+<h2 id="h-where-google-s-numbers-don-t-match" class="wp-block-heading">Where Google&rsquo;s numbers don&rsquo;t match</h2>
+
+
+
+<p class="wp-block-paragraph">Google&rsquo;s own benchmark reporting doesn&rsquo;t quite line up, since the main <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Gemini announcement</a> cites <a href="https://www.tbench.ai/news/terminal-bench-4-0" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Terminal-Bench 4.0</a> while the <a href="https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Antigravity announcement</a> references version 4.1.</p>
+
+
+
+<p class="wp-block-paragraph">The company also hasn&rsquo;t published Carbon&rsquo;s standalone success rate, a per-task breakdown or enough detail about Orchestrator&rsquo;s routing decisions to show where the reported efficiency gains actually come from.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&hellip;hasn&rsquo;t published Carbon&rsquo;s standalone success rate&hellip; or enough detail about Orchestrator&rsquo;s routing decisions to show where the reported efficiency gains actually come from.</p>
+</blockquote>
+
+
+
+<h2 id="h-hydrogen-outscores-a-pricier-model" class="wp-block-heading">Hydrogen outscores a pricier model</h2>
+
+
+
+<p class="wp-block-paragraph">Google describes Hydrogen as a &ldquo;daily driver for agentic workflows,&rdquo; and it costs $1.50 per million input tokens and $7.50 per million output tokens, with those rates holding across its full million-token context window. </p>
+
+
+
+<p class="wp-block-paragraph">The model is available through <a href="https://aistudio.google.com/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Google AI Studio</a> and the Gemini API, as well as the Gemini app and Google Search.</p>
+
+
+
+<p class="wp-block-paragraph">On the <a href="https://artificialanalysis.ai/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Artificial Analysis Intelligence Index</a>, Hydrogen scores 51 at its default high thinking level, just ahead of the more expensive <a href="https://thenewstack.io/google-gemini-4-argon/" class="local-link">Gemini 4 Argon</a> at 50. Turning the reasoning effort up to Google&rsquo;s new xhigh setting brings Hydrogen&rsquo;s score to 54, although the additional reasoning can increase token consumption and processing time.</p>
+
+
+
+<p class="wp-block-paragraph">Argon was Google&rsquo;s flagship when it launched on September 30, but <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Gemini 4 Carbon</a> surpassed it on most published benchmarks following its October 28 release. Hydrogen&rsquo;s one-point lead is modest, but it&rsquo;s another sign of how quickly Google&rsquo;s lower-cost models are catching up with what passed for frontier performance just weeks ago.</p>
+
+
+
+<p class="wp-block-paragraph">Google also claims Hydrogen completes tasks 2.5 times faster than Gemini 3.8 Flash at the default setting, with its Terminal-Bench 4.1 score reaching 57% against Flash&rsquo;s 18.2%. The company reports more than a fivefold reduction in fabricated claims.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Hydrogen&rsquo;s one-point lead is modest, but it&rsquo;s another sign of how quickly Google&rsquo;s lower-cost models are catching up&hellip;</p>
+</blockquote>
+
+
+
+<h2 id="h-the-cost-of-switching-models" class="wp-block-heading">The cost of switching models</h2>
+
+
+
+<p class="wp-block-paragraph">Google hasn&#8217;t disclosed how Orchestrator decides when to switch models or what those handoffs cost in additional tokens and latency.</p>
+
+
+
+<p class="wp-block-paragraph">For now, Orchestrator is limited to Google AI Ultra subscribers, with support for more models and subscription tiers planned. Hydrogen is rolling out to paid Antigravity users, with <a href="https://thenewstack.io/google-antigravity-ide-extensions/" class="local-link">broader availability</a> expected.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Google hasn&rsquo;t disclosed how Orchestrator decides when to switch models or what those handoffs cost in additional tokens and latency.</p>
+</blockquote>
+<p>The post <a href="https://thenewstack.io/gemini-4-hydrogen-orchestrator/">Google&#8217;s Gemini 4 coding agent now switches models mid-task — and finishes 19% faster</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

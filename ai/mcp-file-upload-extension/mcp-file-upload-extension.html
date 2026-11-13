@@ -1,0 +1,115 @@
+<!DOCTYPE html><html><head><title>Developers have been hacking around MCP’s file-upload problem for two years. A fix is taking shape.</title>
+<meta name="author" content="Paul Sawers"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/b857591d-alex-shuper-ehko-zsjnoi-unsplash-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/mcp-file-upload-extension/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/b857591d-alex-shuper-ehko-zsjnoi-unsplash-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Arrows pointing up and down, depicting the concept of file uploads and downloads." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/b857591d-alex-shuper-ehko-zsjnoi-unsplash.jpg" />
+<p class="wp-block-paragraph">The <a href="https://thenewstack.io/model-context-protocol-a-primer-for-the-developers/" class="local-link">Model Context Protocol</a> (MCP) has played an instrumental part in connecting AI assistants to external tools and data since <a href="https://www.anthropic.com/news/model-context-protocol" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Anthropic launched the project some two years ago</a>. Want to have a coding agent check the status of a bug? Give it access to your issue tracker through an MCP server. Or ask an assistant how many orders your company shipped last week? Connect it to a tool that can query your database.</p>
+
+
+
+<p class="wp-block-paragraph">Part of the Agentic AI Foundation <a href="https://thenewstack.io/anthropic-donates-the-mcp-protocol-to-the-agentic-ai-foundation/" class="local-link">since last December</a>, MCP <a href="https://thenewstack.io/model-context-protocol-roadmap-2026/" class="local-link">has a roadmap</a> that reflects the demands of running the protocol in production. For instance, maintainers have been working to make servers easier to deploy without keeping track of individual client sessions, and to let companies manage access through their existing identity systems.</p>
+
+
+
+<p class="wp-block-paragraph">But a perennial problem developers have faced is how to pass a file from an AI app to an MCP tool. For example, say you attach a PDF to a chat and ask the assistant to save it to cloud storage &#8212; the assistant can call a tool to save the file, but developers <em>still</em> have to work out how to get the PDF from the chat app to the tool. That can mean issuing a temporary upload link, or perhaps sending the user to a separate upload page. </p>
+
+
+
+<p class="wp-block-paragraph">To address this gap, the folks at the MCP project have outlined a <a href="https://github.com/modelcontextprotocol/experimental-ext-file-uploads/blob/main/specification/draft/file-uploads.md" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">draft extension</a> that gives clients and tools a common way to handle uploads and downloads.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="478" height="381" src="https://cdn.thenewstack.io/media/2026/11/688112ca-file-transfer-round-trip.gif" alt="MCP's finally tackling the file-upload problem" class="wp-image-22843341"/><figcaption class="wp-element-caption"><em>MCP&#8217;s finally tackling the file-upload problem</em></figcaption></figure>
+</div>
+
+
+<h2 id="h-why-mcp-needs-a-way-to-move-files" class="wp-block-heading">Why MCP needs a way to move files</h2>
+
+
+
+<p class="wp-block-paragraph">In a <a href="https://blog.modelcontextprotocol.io/posts/exploring-file-uploads-and-downloads-in-mcp/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">blog post</a> published on Tuesday, <a href="https://den.dev/about/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Den Del</a><a href="https://www.linkedin.com/in/dendeli/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">i</a><a href="https://den.dev/about/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">marsky</a>, lead maintainer of MCP and member of technical staff at Anthropic, and Google software engineer <a href="https://www.linkedin.com/in/wilstcharles/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Wil St. Charles</a>, lay out the rationale for the new extension, noting that developers&rsquo; needs have changed as they&rsquo;ve started asking agents to do more with the tools MCP connects them to.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Many of those MCP server projects now need to work with files &#8212; often driven by increasing agent capabilities and autonomy.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;Over the past two years, the things people build with the protocol have become more ambitious. <em>Much </em>more ambitious,&#8221; they write. &#8220;Many of those MCP server projects now need to work with files &#8212; often driven by increasing agent capabilities and autonomy.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">This demand has shown up in the community more or less since MCP&#8217;s inception. In <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/1197" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">December 2024</a>, a developer building a tool to process files asked on GitHub how to get a file from the client to the server. An Anthropic team member <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/1197#discussioncomment-11450043" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">acknowledged</a> the difficulty and said they were exploring how a tool could send a file back to an AI app. Other community members subsequently chipped in with advice, with <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/discussions/1197#discussioncomment-12708679" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">one noting that they had built</a> their own way to send files from the AI app to the MCP server. Their MCP client uploaded the file directly to the server before calling the tool, with the upload itself happening outside the protocol.</p>
+
+
+
+<p class="wp-block-paragraph">Developers <a href="https://www.reddit.com/r/Anthropic/comments/1o2982x/file_uploads_through_an_mcp_server_anyone_doing/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">have been looking for ways</a> to hack around the gap ever since. In one <a href="https://www.reddit.com/r/mcp/comments/1w1jtu9/file_uploads_with_mcp_what_are_people_doing/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Reddit thread</a> a few months back, one user said a temporary S3 upload link worked in Claude once outbound access was enabled, but they couldn&rsquo;t get the same approach working in ChatGPT, so they built a separate web app and upload page. Another developer <a href="https://www.reddit.com/r/mcp/comments/1w1jtu9/comment/p6ldrsd/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">said they had built</a> a drag-and-drop interface to an MCP App, which let users submit files themselves but still left the agent without a way to initiate the upload on its own.</p>
+
+
+
+<p class="wp-block-paragraph">There are packaged options, too. <a href="https://gofastmcp.com/docs/apps/providers/file-upload" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">FastMCP offers</a> a drag-and-drop upload component for developers building MCP Apps, while Box <a href="https://support.box.com/hc/en-us/articles/52446938146067-Upload-and-download-PDFs-PowerPoint-Word-and-Excel-files-via-Box-MCP-server" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">recently launched secure file upload and download</a> support for PDFs and Office documents through its own MCP server.</p>
+
+
+
+<p class="wp-block-paragraph">The folks at the MCP project, for their part, have been slowly working toward a common standard. Delimarsky <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1306" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">opened an exploratory upload proposal</a> in August 2025, and a File Uploads Working Group, initially made up of members from Anthropic and OpenAI, <a href="https://modelcontextprotocol.io/community/working-groups/file-uploads" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">followed in April</a>. In October, the group <a href="https://modelcontextprotocol.io/community/working-groups/file-uploads#changelog" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">added file downloads</a> to its remit.</p>
+
+
+
+<p class="wp-block-paragraph">Now, a <a href="https://github.com/modelcontextprotocol/experimental-ext-file-uploads/blob/main/specification/draft/file-uploads.md" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">draft specification</a> sets out how transfers in both directions could work. </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;While we have the shape outlined, we&rsquo;re not sure yet that what we started with is what we&rsquo;ll end up with.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;While we have the shape outlined, we&rsquo;re not sure yet that what we started with is what we&rsquo;ll end up with,&#8221; the authors write. &#8220;The best way to find out is, you guessed it &#8212; contact with reality.&#8221;</p>
+
+
+
+<h2 id="h-how-mcp-would-move-files" class="wp-block-heading">How MCP would move files</h2>
+
+
+
+<p class="wp-block-paragraph">The experimental file-transfer extension builds on the framework for extensions <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">MCP introduced in July</a> to let clients and servers opt into new features without changing the core protocol. The <a href="https://modelcontextprotocol.io/extensions/overview#experimental-extensions" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">experimental stage</a> gives developers a place to prototype and refine an idea before, or alongside, a formal Specification Enhancement Proposal (SEP).</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Either way, the file itself bypasses the model.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Under the extension, if you ask an assistant to save an attached PDF to cloud storage, for example, the model calls the tool and the MCP client handles the upload. The client can send a small file within the tool request, and for a larger file, the client uploads it separately and calls the tool again to finish the job. Either way, the file itself bypasses the model.</p>
+
+
+
+<p class="wp-block-paragraph">For downloads, a tool that exports a CSV, for example, can include a download URL once it&rsquo;s finished producing the file. The client can then fetch the CSV directly, and the model gets a message telling it what the tool produced.</p>
+
+
+
+<p class="wp-block-paragraph">One of the big <a href="https://github.com/modelcontextprotocol/experimental-ext-file-uploads/blob/main/specification/draft/file-uploads.md#security-implications" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">security implications</a> centres around <em>how much</em> control the host should have over where files go. As things stand, the proposed extension limits when a client can send its MCP credentials to an upload destination. The host asks the user to approve the upload before the MCP server supplies that destination, so the user may not know where the file will go when they approve it.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;These safeguards control where the client&rsquo;s MCP credential is sent, but they don&rsquo;t by themselves control where the file goes,&rdquo; the authors write.</p>
+
+
+
+<p class="wp-block-paragraph">So a user who thinks they&rsquo;re saving a confidential PDF to company storage could end up sending it to an endpoint controlled by a malicious server operator. The authors recommend limiting external uploads to approved destinations, and are asking whether hosts should be required to enforce that restriction.</p>
+
+
+
+<p class="wp-block-paragraph">It&#8217;s worth noting that developers can prototype against the draft today by implementing the proposed transfer on a test client and server. However, there&rsquo;s no formal reference implementation yet.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;That&rsquo;s because we expect that a lot of the inner workings will, in fact, be quite different once we start integrating our experiment with third-party file services, such as cloud storage, database import/export, and many others that require file input and output,&rdquo; the authors add.</p>
+
+
+
+<p class="wp-block-paragraph">The MCP maintainers say they are targeting a stable release by year-end, and support will remain optional &#8212; developers who choose to skip the extension won&rsquo;t need to change their existing MCP clients or servers.</p>
+<p>The post <a href="https://thenewstack.io/mcp-file-upload-extension/">Developers have been hacking around MCP’s file-upload problem for two years. A fix is taking shape.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html><html><head><title>Anthropic built a model that beats Opus. It recommends Opus anyway.</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/9c59d8b3-imhaf-maulana-4r2mctrudkm-unsplash-1024x745.jpg">
+<link rel="canonical" href="https://thenewstack.io/anthropic-fable-opus-cost/"></head><body><article><img width="1024" height="745" src="https://cdn.thenewstack.io/media/2026/11/9c59d8b3-imhaf-maulana-4r2mctrudkm-unsplash-1024x745.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="For in the road" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/9c59d8b3-imhaf-maulana-4r2mctrudkm-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">Anthropic just <a href="https://thenewstack.io/anthropic-fable-coding-upgrade/" class="local-link">released a coding model</a> that beats Opus 5.5 on two major benchmarks and can complete certain difficult tasks for half the cost.</p>
+
+
+
+<p class="wp-block-paragraph">Yet in its <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Fable 5.2 announcement</a> on Monday, the company recommended that most developers stick with Opus, calling it the &ldquo;strongest daily driver&rdquo; for coding and knowledge work.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Based on capabilities and pricing, Claude Opus 5.5 is still our recommended model for most everyday work, from coding to knowledge work,&rdquo; Anthropic tells <em>The New Stack.</em></p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Based on capabilities and pricing, Claude Opus 5.5 is still our recommended model for most everyday work, from coding to knowledge work.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Anthropic says Fable is intended for large software migrations, multi-agent builds and long-running research, but its performance data complicates the recommendation. The more expensive model can cost less to complete certain tasks, and the company&rsquo;s proposed multi-model architecture adds considerations around delegation, context management, and execution costs.</p>
+
+
+
+<h2 id="h-when-pricier-runs-cheaper" class="wp-block-heading">When pricier runs cheaper</h2>
+
+
+
+<p class="wp-block-paragraph">On FrontierCode 2.0, Fable 5.2 at High effort scored 45.3%, nearly matching Opus 5.5&#8217;s best result of 45.5%, while completing the benchmark tasks at roughly half the cost, according to Anthropic.</p>
+
+
+
+<p class="wp-block-paragraph">Fable costs twice as much per token, at $8 per million input tokens and $40 per million output tokens compared with Opus at $4 and $20, yet its reported task cost was lower, demonstrating that token pricing alone doesn&#8217;t determine which model is more economical.</p>
+
+
+
+<p class="wp-block-paragraph">Anthropic also cited an internal experiment in which 1,000 Fable 5.2 agents formalized Fermat&#8217;s Last Theorem in 30 hours. With the same agent configuration, Opus 5.5 completed only 26% after 18 hours and made little additional progress by the 30-hour mark, according to the company&#8217;s published results.</p>
+
+
+
+<p class="wp-block-paragraph">The experiment demonstrates the scale of work Anthropic is targeting with Fable, although it doesn&#8217;t establish how much of that advantage carries over to smaller deployments or conventional coding workloads.</p>
+
+
+
+<h2 id="h-model-manager-mode" class="wp-block-heading">Model manager mode</h2>
+
+
+
+<p class="wp-block-paragraph">The company is also positioning Fable as a coordinator for less expensive models, so developers can reserve reasoning capabilities for work that other models cannot reliably complete.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Fable 5.2 can act as an orchestrator that delegates simpler tasks to Opus 5.5 or Sonnet 5.5, or as an advisor those models consult on harder problems.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Developers also no longer have to choose just one model,&rdquo; Anthropic tells <em>The New Stack,</em> &ldquo;Fable 5.2 can act as an orchestrator that delegates simpler tasks to Opus 5.5 or Sonnet 5.5, or as an advisor those models consult on harder problems.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">For a large software migration, Fable could analyze dependencies, plan changes across services, and delegate individual implementation tasks to Opus or Sonnet. More difficult decisions could then be escalated back to Fable without requiring the more expensive model to perform every step.</p>
+
+
+
+<p class="wp-block-paragraph">Coinbase has already <a href="https://thenewstack.io/multi-model-ai-infrastructure/" class="local-link">built a multi-model infrastructure</a> that routes tasks based on requirements and cost, and the company says it cut internal AI spending by nearly half even as token usage increased.</p>
+
+
+
+<p class="wp-block-paragraph">Anthropic wants Fable to handle some of those routing decisions itself, although any savings will depend on how often cheaper models can finish the work they&rsquo;re assigned without needing help, since additional model calls, context transfers and failed attempts can <a href="https://thenewstack.io/agentic-ai-token-costs/" class="local-link">drive up costs</a> over the course of a long-running agent task.</p>
+
+
+
+<h2 id="h-the-context-switching-tax" class="wp-block-heading">The context-switching tax</h2>
+
+
+
+<p class="wp-block-paragraph">There&rsquo;s another complication when developers switch between models during a conversation. <a href="https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Fable 5.2 can read thinking blocks generated by Opus 5.5</a>, but Opus cannot read those generated by Fable.</p>
+
+
+
+<p class="wp-block-paragraph">This could mean finding another way to pass along relevant context when building systems that move work between models, something that can require additional tokens, not to mention eat into the savings from using cheaper models.</p>
+
+
+
+<h2 id="h-switch-sooner-save-more" class="wp-block-heading">Switch sooner, save more</h2>
+
+
+
+<p class="wp-block-paragraph">Anthropic recommends starting with Opus and moving to Fable when higher-effort Opus evaluations fail to meet a project&rsquo;s requirements, providing a capability-based switching rule that doesn&rsquo;t necessarily account for the lowest total execution cost.</p>
+
+
+
+<p class="wp-block-paragraph">Its FrontierCode results show Fable achieving comparable performance at roughly half the task cost, so it is probable developers could benefit from switching earlier than Anthropic recommends.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Its FrontierCode results show Fable achieving comparable performance at roughly half the task cost, so it is probable developers could benefit from switching earlier than Anthropic recommends.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph"></p>
+<p>The post <a href="https://thenewstack.io/anthropic-fable-opus-cost/">Anthropic built a model that beats Opus. It recommends Opus anyway.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

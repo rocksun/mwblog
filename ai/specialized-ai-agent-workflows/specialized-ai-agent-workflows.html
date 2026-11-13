@@ -1,0 +1,309 @@
+<!DOCTYPE html><html><head><title>Why Nitric stopped asking one AI agent to do everything</title>
+<meta name="author" content="Rak Siva"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/16ba7ed5-getty-images-8pwk-ctbm2y-unsplash-1024x670.jpg">
+<link rel="canonical" href="https://thenewstack.io/specialized-ai-agent-workflows/"></head><body><article><img width="1024" height="670" src="https://cdn.thenewstack.io/media/2026/11/16ba7ed5-getty-images-8pwk-ctbm2y-unsplash-1024x670.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Abstract 3D digital visualization of glowing red and cyan network nodes and telemetry waveforms representing AI incident triage." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/16ba7ed5-getty-images-8pwk-ctbm2y-unsplash.jpg" />
+<p class="wp-block-paragraph"><strong>We&#8217;re a team of five engineers, and we used to wake the on-call engineer</strong> three or four times a week over production incidents. Most were noise rather than serious outages, but at two in the morning, being overly cautious seemed preferable to letting a genuine problem slip through the cracks.</p>
+
+
+
+<p class="wp-block-paragraph">We&#8217;ve since reduced both unnecessary overnight interruptions and recurring issues by iterating on triage and following investigations through to fixes. <a href="https://thenewstack.io/durable-ai-agent-operations/" data-type="link" data-id="https://thenewstack.io/durable-ai-agent-operations/" class="local-link">Specialized AI agents</a> help us investigate incidents, organize follow-up work, and prepare changes, with engineers reviewing and correcting the work along the way.</p>
+
+
+
+<p class="wp-block-paragraph">What surprised us was how much more comfortable we became relying on the process. Engineers could inspect an assessment, challenge its assumptions, and use those corrections to improve how we handled later incidents. As follow-up fixes addressed recurring issues, we felt more confident about when to wake the on-call engineer.</p>
+
+
+
+<p class="wp-block-paragraph">That experience has made us question the shape of the work we give our agents. A <a href="https://thenewstack.io/ai-coding-tools-in-2025-welcome-to-the-agentic-cli-era/" data-type="link" data-id="https://thenewstack.io/ai-coding-tools-in-2025-welcome-to-the-agentic-cli-era/" class="local-link">capable coding agent</a> could potentially investigate an incident, raise a ticket, and prepare a fix, so why divide those responsibilities?</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;When an agent&#8217;s work needs correction, can you identify the responsibility involved and make a change you can evaluate independently?&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">For us, it&#8217;s about improving one part of the workflow and judging whether the change helped. When an agent&#8217;s work needs correction, can you identify the responsibility involved and make a change you can evaluate independently?</p>
+
+
+
+<h2 id="h-a-shared-workspace-for-people-and-agents" class="wp-block-heading">A shared workspace for people and agents</h2>
+
+
+
+<p class="wp-block-paragraph">We&#8217;re building <a href="https://sugabots.ai" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Sugabots</a> as an open-source, self-hosted workspace where a team can work with several agents on the same task. Engineers can ask questions, contribute evidence, review findings, and bring in another agent, with those exchanges available to other participants.</p>
+
+
+
+<p class="wp-block-paragraph">We organize that work into shared environments called pods, with connections to <a href="https://thenewstack.io/model-context-protocol-a-primer-for-the-developers/" data-type="link" data-id="https://thenewstack.io/model-context-protocol-a-primer-for-the-developers/" class="local-link">external systems through MCP</a>. Each agent can have its own model and instructions, while the pod&#8217;s connections and tool policies define the access its agents share. The team can configure agents for specific responsibilities and refine their instructions as engineers review the work. Our incident workflow has helped us explore which responsibilities benefit from that separation.</p>
+
+
+
+<h2 id="h-how-we-run-incident-triage-in-sugabots" class="wp-block-heading">How we run incident triage in Sugabots</h2>
+
+
+
+<p class="wp-block-paragraph">Our incident workflow depends on each engineer or agent being able to continue from the evidence, decisions, and corrections recorded during the investigation.</p>
+
+
+
+<p class="wp-block-paragraph">Our Sentry triage agent investigates new, regressed, or escalating issues and decides whether to <a href="https://thenewstack.io/ai-sre-agent-autonomy-phases/" data-type="link" data-id="https://thenewstack.io/ai-sre-agent-autonomy-phases/" class="local-link">alert the on-call engineer</a>, request an in-hours review, hand a small fix directly to an implementation agent, or keep the issue in Sentry for monitoring. It records follow-up work in Linear, where a backlog agent helps organize tickets, and the implementation agent can prepare a GitHub pull request for review.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="624" height="316" src="https://cdn.thenewstack.io/media/2026/11/a2056af1-image1.png" alt="Workflow diagram of incident triage in Sugabots" class="wp-image-22843314"/><figcaption class="wp-element-caption"><em>Our incident workflow: agents handle distinct responsibilities while engineers contribute to the shared investigation. Engineers can take on any of the contributions shown.</em></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph">Engineers participate throughout, reviewing findings, challenging urgency assessments, correcting assumptions, and deciding whether to ship a proposed change. The investigation remains available as work moves between people and agents.</p>
+
+
+
+<p class="wp-block-paragraph">Safeguards back that growing confidence. The instructions call for urgent escalation when an issue could plausibly be a production outage, and urgency is uncertain. Issues classified as noise are archived until escalating, and Sentry retains a direct spike-alert route to incident.io as a backup.</p>
+
+
+
+<p class="wp-block-paragraph">The follow-up matters as much as the initial assessment. Previously, the on-call engineer might investigate an alert, determine it could wait until office hours, and return to other work. Recording the underlying problem in the backlog and prioritizing it gave the team a chance to resolve it before the next on-call engineer encountered the same alert.</p>
+
+
+
+<p class="wp-block-paragraph">Having the backlog agent record follow-up work in Linear gives the team a consistent way to prioritize fixes for the recurring issues behind the interruptions.</p>
+
+
+
+<h2 class="wp-block-heading">Specialize around a decision</h2>
+
+
+
+<p class="wp-block-paragraph">We configure each agent for a particular responsibility, choosing its model and instructions to suit the work and defining what a useful result looks like.</p>
+
+
+
+<p class="wp-block-paragraph">We chose Opus 5.5 for Sentry triage, and its instructions cover evidence gathering, classification, escalation, handoffs, and recovery from tool failures. This abbreviated excerpt shows the decisions we ask it to make:</p>
+
+
+
+<p class="wp-block-paragraph">Inspect the full Sentry issue, including customer impact, affected users, release, and event trend, then check for existing tickets or incidents.</p>
+
+
+
+<p class="wp-block-paragraph">Choose an outcome:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Urgent:</strong> active customer harm requiring immediate attention; alert the on-call engineer through incident.io.</li>
+
+
+
+<li><strong>In-hours review:</strong> a defect requiring engineering judgment that can wait; notify the on-call engineer at low urgency.</li>
+
+
+
+<li><strong>Auto-fix:</strong> a small, non-urgent code change outside restricted areas such as authentication, billing, and migrations; brief the implementation agent to prepare a PR.</li>
+
+
+
+<li><strong>No action:</strong> expected or transient noise; archive until escalating so a spike brings it back.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">State the evidence and uncertainty behind the decision. Implementation briefs must stand alone and include the relevant findings and links.</p>
+
+
+
+<p class="wp-block-paragraph">The backlog manager&#8217;s instructions reflect the decisions involved in organizing follow-up work: checking for duplicates, looking up the current Linear cycle, and distinguishing actionable work from issues that need an engineer to clarify scope or make a design decision. Those rules provide defaults while preserving the team&#8217;s explicit choices about priority, assignment, and scheduling, and we can refine them independently of the criteria used to assess an incident&#8217;s urgency.</p>
+
+
+
+<p class="wp-block-paragraph">Triage and implementation make a useful comparison. Triage asks whether the available evidence justifies interrupting an engineer. Implementation asks what change would resolve the problem and how to verify it. Those decisions have different failure modes: a missed urgent incident, an unnecessary interruption, or a plausible fix that introduces another bug.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Triage asks whether the available evidence justifies interrupting an engineer. Implementation asks what change would resolve the problem and how to verify it. Those decisions have different failure modes.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">We&#8217;ve found it useful to maintain those responsibilities separately because we can refine how incidents are classified while keeping the implementation instructions stable. If an investigation leads to an ineffective fix, we can examine the assessment&#8217;s accuracy, the evidence preserved in the ticket, and how the implementation addressed the recorded problem. Each gives us a specific part of the workflow to improve.</p>
+
+
+
+<p class="wp-block-paragraph">Each responsibility also gives us concrete questions to evaluate:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Triage:</strong> Did it escalate genuinely urgent incidents? Did it unnecessarily interrupt an engineer?</li>
+
+
+
+<li><strong>Backlog management:</strong> Did it record the follow-up work, recognize existing tickets, and preserve enough evidence to act on it?</li>
+
+
+
+<li><strong>Implementation:</strong> Did the proposed change address the problem, and what did an engineer need to correct before accepting it?</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">We need to evaluate the reduction in wake-up calls alongside how we handle genuinely urgent incidents, including any that triage missed. Fewer interruptions could reflect both better classification and fixes that reduce the volume of incidents arriving. Those outcomes help us judge how the workflow is performing and where to improve it.</p>
+
+
+
+<p class="wp-block-paragraph">The same question applies to the agents already in your workflow: when their output improves, can you explain what improved and what evidence supports that judgment? Separating responsibilities gives you a narrower decision to examine and a clearer basis for evaluating changes.</p>
+
+
+
+<h2 class="wp-block-heading">Match permissions to responsibilities</h2>
+
+
+
+<p class="wp-block-paragraph">Separating responsibilities also helps us decide which tool actions each agent needs and when an engineer should approve them.</p>
+
+
+
+<p class="wp-block-paragraph">Our triage instructions include specific write actions: creating Linear issues, sending alerts through incident.io, and archiving Sentry issues until escalating. Tool access needs to reflect those responsibilities, including which actions require an engineer&#8217;s approval.</p>
+
+
+
+<p class="wp-block-paragraph">Agent-specific instructions define responsibilities within the access available to the pod; they do not enforce separate permissions for agents sharing that pod.</p>
+
+
+
+<p class="wp-block-paragraph">In Sugabots, the team configures tool-level Off, Ask, and Allow policies on a pod&#8217;s connections, and every agent in that pod inherits those policies. Configuring them once gives the team a consistent set of rules for automatic actions, engineer approvals, and disabled tools, including when another agent joins the work.</p>
+
+
+
+<p class="wp-block-paragraph">Triage needs access to evidence and a way to escalate, while implementation needs enough access to prepare a change. Genuinely different access boundaries require separate enforcement, potentially through different pods with different tool policies or appropriately scoped connections. Merge and deployment authority also need explicit policies and, where available, appropriately scoped credentials.</p>
+
+
+
+<h2 class="wp-block-heading">Separate the working context from the investigation</h2>
+
+
+
+<p class="wp-block-paragraph">There are three things here with different useful lifetimes:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Configuration:</strong> the maintained model, instructions, tools, and expectations for a responsibility.</li>
+
+
+
+<li><strong>Execution context:</strong> the messages and tool results available to the model while it works on a particular task.</li>
+
+
+
+<li><strong>Shared history:</strong> the record of evidence, hypotheses, corrections, and decisions that people and agents accumulate.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Consider an investigation where the agent rules out an outage and concludes that an issue can wait until office hours. After enough tool calls, its context may need to be compacted. A summary might preserve the conclusion while omitting the evidence that ruled out the outage.</p>
+
+
+
+<p class="wp-block-paragraph">That detail becomes important if an engineer challenges the assessment. Keeping the original history gives them a way to inspect the reasoning and evidence behind the summary. The agent can work with a compacted context while the fuller record remains available for inspection or retrieval.</p>
+
+
+
+<p class="wp-block-paragraph">To continue the investigation, the next agent needs the relevant evidence and corrections selected from that record and passed along in a brief, or retrieved as it works. Preserving the conversation gives us a source to draw from; selecting the working context remains an explicit part of the handover.</p>
+
+
+
+<h2 class="wp-block-heading">Keep people in the investigation</h2>
+
+
+
+<p class="wp-block-paragraph">The same distinction matters when work moves between engineers. An engineer may recognize a pattern the agent missed or explain why an apparently sensible fix would introduce a regression elsewhere in the codebase. That contribution needs to remain available to the engineer or agent continuing the investigation or preparing the fix.</p>
+
+
+
+<p class="wp-block-paragraph">In separate chats, people become responsible for carrying those corrections across. Even when both agents can inspect the same repository and tickets, each conversation contains a different account of what the team has learned.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="624" height="223" src="https://cdn.thenewstack.io/media/2026/11/b70aaf1b-image3.png" alt="Diagram showing the reviewer and author relaying findings between their separate chats." class="wp-image-22843315"/><figcaption class="wp-element-caption"><em>The reviewer and author relay findings and corrections between their separate chats.</em></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph">In Sugabots, engineers can contribute to the shared discussion, leaving their corrections alongside the findings that prompted them. The next engineer can see how the investigation changed direction, and an agent continuing the work can receive that correction with its brief.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="624" height="286" src="https://cdn.thenewstack.io/media/2026/11/b9bafbeb-image2.png" alt="Diagram showing engineers and agents contributing to a shared discussion." class="wp-image-22843316"/><figcaption class="wp-element-caption"><em>Engineers and agents contribute to a shared discussion that preserves their findings and corrections.</em></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph"><strong>MCP gives the agent access to evidence, while a shared workspace gives the team access to the investigation.</strong></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="640" src="https://cdn.thenewstack.io/media/2026/11/50be6f13-image4-1024x640.png" alt="Screenshot of a staged Sentry triage conversation in the Sugabots interface." class="wp-image-22843317"/><figcaption class="wp-element-caption"><em>A staged Sentry triage conversation rendered in the actual Sugabots interface. The messages, event counts, issue reference, and handoff are scripted demonstration data, showing how an engineer&#8217;s correction can remain alongside the assessment and implementation brief.</em></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<h2 class="wp-block-heading">When is another specialist worth it?</h2>
+
+
+
+<p class="wp-block-paragraph">Each additional specialist brings configuration to maintain and a handover whose context needs care. Splitting agents by language, service, or deployment environment is useful when that boundary helps the team maintain and evaluate the work.</p>
+
+
+
+<p class="wp-block-paragraph">Our current divisions follow responsibilities that already existed: the on-call engineer assessed urgency, the team organized follow-up work in the backlog, and engineers prepared and reviewed fixes. Giving agents distinct configurations for those responsibilities lets us improve each part of the workflow independently.</p>
+
+
+
+<p class="wp-block-paragraph">For a team trying this, I&#8217;d start with one recurring responsibility where you can describe a useful result and recognize a bad one. Write down the success criteria, including the errors that matter: for triage, that means examining missed urgent incidents as well as unnecessary escalations. Define the evidence the agent needs, choose a configuration that enforces the required tool access, and specify when an engineer should review its findings or approve an action.</p>
+
+
+
+<p class="wp-block-paragraph">Keep the investigation history, including the evidence behind decisions and the corrections engineers make, so the next engineer or agent can continue from it. Review those corrections to decide whether the instructions, available evidence, permissions, or handover need to change. Earlier investigations can then provide cases to revisit alongside new work, checking whether a change addresses the original mistake without introducing another.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Increasingly, I&#8217;m interested in whether we can define an engineering responsibility clearly enough that every investigation, correction, and reviewed fix helps us improve how we handle the next one.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">That may justify a dedicated agent, or it may be enough to load a reusable configuration when the job appears. The question is whether the separation makes the work easier to maintain and evaluate.</p>
+
+
+
+<p class="wp-block-paragraph">We started by wondering whether we should specialize our agents. Increasingly, I&#8217;m interested in whether we can define an engineering responsibility clearly enough that every investigation, correction, and reviewed fix helps us improve how we handle the next one.</p>
+
+
+
+<h2 class="wp-block-heading">Try Sugabots</h2>
+
+
+
+<p class="wp-block-paragraph">If you&#8217;d like to try this approach with your team, <a href="https://sugabots.ai" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Sugabots</a> is open source and self-hosted. Start with one recurring engineering task and a colleague who can review the agent&#8217;s work, then use the shared discussion and corrections to refine how it handles that responsibility.</p>
+
+
+
+<p class="wp-block-paragraph">If the project looks useful, <a href="https://github.com/nitrictech/sugabots" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">give Sugabots a star on GitHub</a> and share it with a team that might benefit. Stars and recommendations go a long way in helping an open-source project reach the engineers who could use it or contribute to it.</p>
+<p>The post <a href="https://thenewstack.io/specialized-ai-agent-workflows/">Why Nitric stopped asking one AI agent to do everything</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

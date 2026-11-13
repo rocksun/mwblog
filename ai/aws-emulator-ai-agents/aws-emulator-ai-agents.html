@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head><title>AWS had its agents build a free and open emulator for AWS. They now maintain it, too.</title>
+<meta name="author" content="Frederic Lardinois"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/ad6fe451-img_5814-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/aws-emulator-ai-agents/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/11/ad6fe451-img_5814-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="AWS logo" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/ad6fe451-img_5814-scaled.jpg" />
+<p class="wp-block-paragraph">AWS on Wednesday launched an emulator for AWS called AWS Emulator.</p>
+
+
+
+<p class="wp-block-paragraph">That, by itself, is interesting and may raise some questions about the <a href="https://www.localstack.cloud" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">future of LocalStack</a>. But what&rsquo;s maybe most interesting is that the emulator was entirely built by a team of agents and will also be maintained by them going forward.</p>
+
+
+
+<p class="wp-block-paragraph">Since AWS wasn&rsquo;t sure it could actually copyright the work of these agents &#8212; and didn&rsquo;t want to assert copyright where none may exist &#8212; the emulator is available under the <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Creative Commons Zero license</a>, which puts the code into the public domain.</p>
+
+
+
+<p class="wp-block-paragraph">Tom &lsquo;Spot&rsquo; Callaway, a principal open source software strategist at AWS, told The New Stack that there have obviously been other emulators in the past &#8212; and AWS itself has built some, too.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;The challenge is that they get out of date very quickly,&rdquo; he explains. &ldquo;They don&rsquo;t always reflect reality on the ground, and because of that, they&rsquo;re often not trusted. And we didn&rsquo;t even trust them internally.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">With the rise of <a href="https://thenewstack.io/claude-code-vs-cursor-vs-codex-vs-antigravity-2026/" class="local-link">agentic coding tools</a>, the team also saw a need for a better emulator that could help agents <a href="https://thenewstack.io/runtime-verification-coding-agents/" class="local-link">test code against AWS services</a> without having to hand over AWS credentials to the agents.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="556" src="https://cdn.thenewstack.io/media/2026/11/e05101e5-screenshot-2026-11-11-084900-1024x556.png" alt="" class="wp-image-22843384"/><figcaption class="wp-element-caption">The agent system building AWS Emulator. Credit: AWS. </figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">Meanwhile, the team was also looking at a test case for building a full project with agents, and the emulator proved to be a good testing ground, in large part because it provided a bounded problem with clear goals and the ability to test the results. </p>
+
+
+
+<p class="wp-block-paragraph">Since AWS already publishes a full set of API models as Smithy models and generates all its SDKs from those files, &ldquo;there&rsquo;s no reason that we can&rsquo;t also generate mock emulation around that same logic,&rdquo; Callaway says.</p>
+
+
+
+<h3 id="h-a-weekend-kiro-experiment" class="wp-block-heading">A weekend Kiro experiment</h3>
+
+
+
+<p class="wp-block-paragraph">The project goes back to an experiment by Matt Goldberg, a senior principal engineer on the AWS Developer Tools team. Callaway says the team was &ldquo;heavily inspired by the Anthropic work where they instantiated a compiler,&rdquo; referring to the C compiler that Anthropic researchers had <a href="https://thenewstack.io/anthropics-opus-4-6-is-a-step-change-for-the-enterprise/" class="local-link">a team of agents</a> build earlier this year.</p>
+
+
+
+<p class="wp-block-paragraph">Goldberg writes in a <a href="https://aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">blog post</a> that he first asked <a href="https://thenewstack.io/kiro-is-awss-specs-centric-answer-to-windsurf-and-cursor/" class="local-link">Kiro</a>, AWS&rsquo;s agentic coding tool, to build an emulator for Amazon Simple Queue Service (SQS). It came back with a first version 15 minutes later. He then had Kiro build out the rest of AWS over a weekend. That version unsurprisingly had gaps, he notes, but his team started testing its own software against it the following Monday.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;I got to admit, the first time I heard about this, I was like, &lsquo;Are we sure this is a good idea?&rsquo;&rdquo; Callaway says. </p>
+
+
+
+<p class="wp-block-paragraph">The more the team iterated on it, he adds, the more comfortable he became that this was a good problem for agents to take on.</p>
+
+
+
+<p class="wp-block-paragraph">In its current version, AWS Emulator supports 438 public AWS API models covering more than 200 services. As AWS updates them and releases new services, the agents will quickly update the emulator, too.</p>
+
+
+
+<p class="wp-block-paragraph">Callaway expects the gap between a new AWS service launching and the emulator supporting it to be &ldquo;days, not weeks, not months,&rdquo; though he notes the team hasn&rsquo;t yet seen how that plays out with the project in public.</p>
+
+
+
+<p class="wp-block-paragraph">The emulator itself is written in Rust and runs locally on Linux, macOS, and Windows, without a network connection or an AWS account.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;There&rsquo;s no AI inside of AWS Emulator,&rdquo; Callaway says. &ldquo;It does not do an LLM callout at all.&rdquo;</p>
+
+
+
+<h3 id="h-three-teams-of-agents" class="wp-block-heading">Three teams of agents</h3>
+
+
+
+<p class="wp-block-paragraph">AWS says it divides the work among three teams of agents. The first develops test scenarios from the public Smithy models and runs them against real AWS services to establish how the emulator should behave.</p>
+
+
+
+<p class="wp-block-paragraph">These scenarios can involve several services working together, rather than just individual API calls. As Callaway explains, &ldquo;if the docs don&rsquo;t tell the truth, then the cloud becomes the source of truth.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">The second team runs those scenarios against the emulator and investigates where its behavior differs from AWS. It groups failures that appear to have a common cause and files issues in the code repository.</p>
+
+
+
+<p class="wp-block-paragraph">Finally, the third team picks up those issues and changes the code to address them. Before those changes can merge, they have to pass build and test checks, as well as reviews by other agents for security problems, coding standards, and regressions in the emulator&rsquo;s behavior.</p>
+
+
+
+<p class="wp-block-paragraph">The human engineers, meanwhile, focus on improving the system that directs the agents.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;We don&rsquo;t edit it. We don&rsquo;t modify it,&rdquo; Callaway says of the emulator&rsquo;s code. &ldquo;If we find that the code has issues, we try and trace those issues back to the agent and fix the agent so that it doesn&rsquo;t make bad code.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">So when there is a problem in the code those agents generated, the team will change how the agents work, rather than patch the code by hand.</p>
+
+
+
+<p class="wp-block-paragraph">Goldberg writes that an earlier version of the agents at one point decided to write their own Python interpreter so the emulator could support Lambda functions. The team has since instructed them to reuse existing libraries.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;I think we&rsquo;ve learned a lot about sandboxing,&rdquo; Callaway says, &ldquo;haven&rsquo;t we all in the last few months?&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">The first iterations of the system &ldquo;did not have as aggressive a <a href="https://thenewstack.io/cloud-agent-code-sandboxes/" class="local-link">sandbox</a> as they needed to,&rdquo; he says, and there was some early concern about the agents looking at the source code of AWS&rsquo;s internal services to figure out how to implement something like Aurora. The team also spent a lot of time reassuring Amazon executives that the framework building the emulator wasn&rsquo;t going to &ldquo;go rogue.&rdquo;</p>
+
+
+
+<h3 id="h-no-pull-requests-accepted" class="wp-block-heading">No pull requests accepted</h3>
+
+
+
+<p class="wp-block-paragraph">That hands-off approach goes for outside contributors, too.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;We&rsquo;re not going to take pull requests on the project at all,&rdquo; Callaway says. &ldquo;The agents will be doing that. We will take issues from customers.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">He describes the agents as &ldquo;their own little pull request army.&rdquo; If they keep getting a particular API wrong, &ldquo;that&rsquo;s a bug in the agent,&rdquo; he says, and he expects customers to mostly contribute scenarios the emulator doesn&rsquo;t handle well yet.</p>
+
+
+
+<p class="wp-block-paragraph">AWS is also publishing the benchmark it uses to test the emulator &ldquo;so that you can not trust us,&rdquo; Callaway says. &ldquo;You can run that benchmark.&rdquo; Others could also use it to benchmark their own work, he notes.</p>
+
+
+
+<h3 id="h-what-the-emulator-can-t-do" class="wp-block-heading">What the emulator can&rsquo;t do</h3>
+
+
+
+<p class="wp-block-paragraph">Users shouldn&rsquo;t expect the emulator to do the things the actual services do, though.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;I run this SQL query, and I don&rsquo;t get the right results,&rdquo; Callaway says. &ldquo;Well, guess what? There&rsquo;s no database.&rdquo; The emulator, he says, &ldquo;really was built for the purposes of testing coverage.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">AWS says it will share more about the project at its re:Invent conference, which starts Nov. 30. The New Stack will be there &#8212; and <a href="https://thenewstack.io/event/aws-reinvent-reception-with-sourcegraph-and-opslevel/" class="local-link">we&#8217;re even throwing a party</a>.</p>
+<p>The post <a href="https://thenewstack.io/aws-emulator-ai-agents/">AWS had its agents build a free and open emulator for AWS. They now maintain it, too.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><title>Why Nvidia gave OpenShell to the CNCF</title>
+<meta name="author" content="Frederic Lardinois"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/07/45a2a83b-img_0484-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/nvidia-donates-openshell-cncf/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/07/45a2a83b-img_0484-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/07/45a2a83b-img_0484-scaled.jpg" />
+<p class="wp-block-paragraph"><strong>Nvidia this week donated OpenShell</strong>, its open-source runtime for securing and governing AI agents, to the Cloud Native Computing Foundation. The teams that run it in production already work with Kubernetes and the CNCF&#8217;s other projects, says Ali Golshan, Nvidia&#8217;s senior director of AI software, who leads the project.</p>
+
+
+
+<p class="wp-block-paragraph">The company <a href="https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/" target="_blank" rel="noopener external nofollow" class="ext-link" onclick="this.target=&#039;_blank&#039;;">announced</a> the move on Tuesday at KubeCon + CloudNativeCon North America in Salt Lake City. <a href="https://github.com/ai-openshell" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">OpenShell</a>, which Nvidia launched at its GTC conference in March, <a href="https://www.cncf.io/blog/2026/11/10/welcoming-openshell-to-the-cncf-open-governance-to-secure-agentic-ai/" target="_blank" rel="noopener external nofollow" class="ext-link" onclick="this.target=&#039;_blank&#039;;">joins the CNCF</a> as a Sandbox project, the foundation&rsquo;s entry-level tier for early-stage projects. The CNCF formally accepted the project in late September.</p>
+
+
+
+<p class="wp-block-paragraph">The CNCF currently hosts 262 projects, including 155 at the Sandbox level, but it wasn&#8217;t the only possible home for OpenShell. The CNCF&#8217;s parent organization, the Linux Foundation, also runs the Agentic AI Foundation (AAIF), which hosts agentgateway, the Model Context Protocol (MCP) and Agent2Agent (A2A) protocol. Last month, the AAIF also <a target="_blank" rel="noopener external nofollow" href="https://www.linuxfoundation.org/press/agentic-ai-foundation-announces-four-new-projects-agent-skills-open-responses-openenv-and-opensandbox" class="ext-link" onclick="this.target=&#039;_blank&#039;;">took in OpenSandbox</a>, a sandbox platform for AI agents that Alibaba contributed.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Securing and creating trust around AI is really infrastructure. That&#8217;s really where you need to start.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">But as <a href="https://www.linkedin.com/in/ali-golshan" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Golshan</a> tells <em>The New Stack</em>, &#8220;Securing and creating trust around AI is really infrastructure. That&#8217;s really where you need to start.&#8221; That, he says, is what made the CNCF the logical place for the project to land.</p>
+
+
+
+<h2 id="h-the-platform-team-is-the-user" class="wp-block-heading">The platform team is the user</h2>
+
+
+
+<p class="wp-block-paragraph">OpenShell runs an agent inside a sandbox and enforces policies on which files, networks, credentials, and model endpoints that agent can reach. That enforcement happens in the infrastructure around the agent, <a href="https://www.cncf.io/announcements/2026/11/10/cncf-hits-major-milestones-with-global-community-growth-record-industry-investment-and-a-new-generation-of-projects-to-build-ai-systems-in-production/" target="_blank" rel="noopener external nofollow" class="ext-link" onclick="this.target=&#039;_blank&#039;;">according to the CNCF</a>, and the project is adopting <a href="https://cedarpolicy.com/en" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Cedar</a>, another CNCF project, as its policy language.</p>
+
+
+
+<p class="wp-block-paragraph">Golshan says that securing agents takes a full stack solution and that Nvidia couldn&#8217;t build that stack one piece at a time.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;We can&#8217;t go build OpenShell and then go build the next pieces of it,&#8221; he says. &#8220;And a lot of those pieces, from an infrastructure standpoint, already existed in CNCF.&#8221; He cites Kubernetes itself, as well as the lightweight K3s distribution and service meshes, as examples of adjacent projects.</p>
+
+
+
+<p class="wp-block-paragraph">While building OpenShell, it also became clearer who would operate it, Golshan says. The profile matched the DevSecOps engineer who already stands up the rest of a company&#8217;s infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">He points to <a href="https://news.sap.com/2026/09/sap-nvidia-openshell-auditable-ai-agents-enterprise-systems/" target="_blank" rel="noopener external nofollow" class="ext-link" onclick="this.target=&#039;_blank&#039;;">SAP</a> as a company where DevOps and infrastructure teams stand up large agent environments.</p>
+
+
+
+<p class="wp-block-paragraph">The people who work with the agents may be engineers or researchers, he says, but the operators are &#8220;the same teams that are spinning up Kube and Linux and that whole stack.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Ideally, those end users never see OpenShell. &#8220;You don&#8217;t really see Kubernetes,&#8221; Golshan says. &#8220;You just get that environment.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">When <a href="https://www.linkedin.com/in/jbryce/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jonathan Bryce</a>, the CNCF&#8217;s executive director, thinks about where a technology should live, he tells <em>The New Stack</em>, the question to ask is &#8220;where are the people who are going to be making the decision about deploying, using, contributing to a specific technology?&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Agents started with people running OpenClaw on Mac Minis at home, Bryce says, but long-running, SaaS-style agents look more like other software run in a data center. Before OpenShell joined the CNCF, he adds, much of its early uptake came from neoclouds, GPU cloud providers that want to govern the workloads their customers run on their infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">Since OpenShell plugs into Kubernetes and other ecosystem projects, Bryce says, teams that already run that stack can easily add it to the workloads they want to contain.</p>
+
+
+
+<h2 id="h-where-agent-projects-live" class="wp-block-heading">Where agent projects live</h2>
+
+
+
+<p class="wp-block-paragraph">Agents will exist throughout the entire stack, Bryce says, and the open-source projects that support them will spread across several foundations, each with a different kind of contributor.</p>
+
+
+
+<p class="wp-block-paragraph">The <a href="https://pytorch.org/foundation/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">PyTorch Foundation</a>, home to PyTorch, vLLM, DeepSpeed, and Ray, is where the engineers with deep AI expertise work. Bryce likens them to &#8220;the people who write Postgres.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">The CNCF, he says, is &#8220;the very broad set of folks who understand how to take mature systems and deploy, scale, observe, secure them.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">The AAIF, with protocols like MCP and A2A, is oriented toward the front-end experience of agents, Bryce says. He compares those protocols to HTTP and JavaScript, the standards that made millions of web apps possible.</p>
+
+
+
+<p class="wp-block-paragraph">The foundations are &#8220;Venn diagrams&#8221; and not silos, Bryce says, &#8220;and I think that&#8217;s good.&#8221; He points to KubeRay, which runs Ray workloads on Kubernetes, and to llm-d, which pairs vLLM with Kubernetes. The AAIF&#8217;s agentgateway works with Kubernetes, too.</p>
+
+
+
+<p class="wp-block-paragraph">The CNCF also tends to be flexible about where a project lands and lets maintainers &#8220;choose their own adventure to some extent,&#8221; he notes.</p>
+
+
+
+<p class="wp-block-paragraph">Meanwhile, Bryce says Nvidia&#8217;s visibility into how people run AI workloads is &#8220;unparalleled,&#8221; and the company brings new projects built on that experience to each KubeCon. &#8220;Some of those end up in a foundation,&#8221; he says. &#8220;Some of them don&#8217;t.&#8221;</p>
+
+
+
+<h2 id="h-governance-and-a-security-committee" class="wp-block-heading">Governance and a security committee</h2>
+
+
+
+<p class="wp-block-paragraph">Golshan joined Nvidia in 2025, when the company acquired Gretel, the synthetic data startup he co-founded. Before that, he also co-founded StackRox, the Kubernetes security company&nbsp;Red Hat <a href="https://thenewstack.io/what-red-hats-purchase-of-stackrox-means-for-openshift-security-and-observability/" class="local-link">acquired</a>&nbsp;in 2021.</p>
+
+
+
+<p class="wp-block-paragraph">He says the people who started OpenShell had been contributors to CNCF projects and knew its governance model from the inside.</p>
+
+
+
+<p class="wp-block-paragraph">That model fit what the team wanted, he says: a single mission for OpenShell and a place within a larger ecosystem.</p>
+
+
+
+<p class="wp-block-paragraph">Security governance, he says, is still being worked out. OpenShell is a Sandbox project for now, and Golshan says the team is &#8220;spending a bunch of time thinking through&#8221; how to put an independent security committee around it.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;One of the things that I think becomes very important is how do you manage things like disclosures, vulnerabilities,&#8221; he says. If OpenShell is going to become a critical piece of infrastructure, he adds, it needs contributions from many participants, &#8220;not necessarily us.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Nvidia&#8217;s engineers will keep working on the project&#8217;s core, but Red Hat, Docker, and Canonical have been core contributors alongside Nvidia since the start.</p>
+
+
+
+<p class="wp-block-paragraph">When Nvidia opened OpenShell for early access in March, roughly 10 to 15 companies were contributing, Golshan says. The project dropped its alpha label with the 0.1.0 release in September, and the <a target="_blank" rel="noopener external nofollow" href="https://www.cncf.io/projects/openshell/" class="ext-link" onclick="this.target=&#039;_blank&#039;;">CNCF&#8217;s project page</a> now lists about 380 contributing organizations.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;There are a lot of people who will engage at a certain level without it being in neutral governance,&#8221; Bryce says. &#8220;But once it makes that move to fully neutral governance, then that engagement gets a lot deeper.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Adoption cycles that used to take two or three years now play out in six to 12 months, Bryce says, and he describes neutral governance as &#8220;rocket fuel&#8221; for integration and adoption.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;llm-d came into CNCF in March of this year, and they now have their 1.0 release,&#8221; Bryce says of the distributed inference framework, &#8220;and they have a whole set of companies that are actually running it in production, including some of the neoclouds.&#8221;</p>
+
+
+
+<h2 id="h-what-nvidia-wants-from-the-community" class="wp-block-heading">What Nvidia wants from the community</h2>
+
+
+
+<p class="wp-block-paragraph">Golshan says OpenShell needs an ecosystem of tools around it before it can run at scale in production. About 50 to 60 companies, from startups to large vendors, have built on it so far, he says. OpenShell now has defined extension points for compute, credential management, inference providers, and policy enforcement, and he hopes the CNCF community will use them as a blueprint for tying OpenShell into the rest of the cloud native stack.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;It would be amazing if within the next six months we could support everything from Istio to Envoy to K3s for edge,&#8221; Golshan says.</p>
+
+
+
+<p class="wp-block-paragraph">Since the 0.1.0 release, early adopters that are moving agents from research into production have asked for recommendations on security, privacy, and observability tooling that works natively with OpenShell, he says. They also want help optimizing the agents and harnesses that run inside it.</p>
+
+
+
+<p class="wp-block-paragraph">Golshan describes a recent conversation in Berlin with someone who already knew Datadog and distributed tracing well. &#8220;I don&#8217;t even know what to observe for an agent,&#8221; he recalls the person saying.</p>
+
+
+
+<p class="wp-block-paragraph">Golshan wants what the community learns from those edge cases to flow back into the OpenShell core, the way it did for Kubernetes. &#8220;It&#8217;s pretty easy these days to say I&#8217;m going to bet my company on Kube,&#8221; he says. &#8220;Nobody&#8217;s going to get fired for that.&#8221; He hopes OpenShell will get there too.</p>
+
+
+
+<h2 id="h-an-unsettled-agent-stack" class="wp-block-heading">An unsettled agent stack</h2>
+
+
+
+<p class="wp-block-paragraph">The stack for training models is clear, and the one for inference is pretty settled, Bryce says, but for agents it&#8217;s &#8220;not at all.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;If there&#8217;s not a clear stack, then the industry can&#8217;t come together on the most significant problems and actually make really fast, rapid progress,&#8221; he says.</p>
+
+
+
+<p class="wp-block-paragraph">Over the next six to 12 months, he expects experimentation to settle into answers on how OpenShell integrates with Kata Containers, gVisor, Agent Substrate, and existing OpenTelemetry projects. Once that happens, he expects agents to take off the way inference has over the last eight months.</p>
+
+
+
+<p class="wp-block-paragraph">Two of those projects are new to the CNCF. Google <a href="https://opensource.googleblog.com/2026/11/sandboxing-untrusted-ai-agents-at-scale.html" target="_blank" rel="noopener external nofollow" class="ext-link" onclick="this.target=&#039;_blank&#039;;">contributed</a> Agent Substrate, its framework for running long-lived agents on Kubernetes, and the gVisor sandbox runtime at this week&#8217;s KubeCon. Nvidia says it&#8217;s working with Google on an integration between OpenShell and Agent Substrate.</p>
+<p>The post <a href="https://thenewstack.io/nvidia-donates-openshell-cncf/">Why Nvidia gave OpenShell to the CNCF</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

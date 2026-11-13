@@ -1,0 +1,137 @@
+<!DOCTYPE html><html><head><title>CoreWeave tests AI integrations on its cloud before you migrate</title>
+<meta name="author" content="Seann Gardiner"><meta property="og:image" content="https://cdn.thenewstack.io/media/2025/12/8d3fb16d-network-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/coreweave-tests-ai-integrations/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2025/12/8d3fb16d-network-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Futuristic digital visualization of global trade data." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2025/12/8d3fb16d-network.jpg" />
+<p class="wp-block-paragraph"><strong>Moving an AI workload to another cloud</strong> means bringing more than a model and its data. Your serving layer, observability dashboards, security controls, and <a href="https://www.coreweave.com/products/storage?utm_source=coreweave.com&amp;utm_medium=site#object-storage" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">storage systems</a> have to work together on the new infrastructure. For platform teams, proving those connections under real traffic can become the slowest and riskiest part of the move.</p>
+
+
+
+<p class="wp-block-paragraph">As a stack grows across vendors and clouds, each project adds more integration questions. A compatible specification is a starting point. It doesn&#8217;t guarantee a tool will behave as expected in production, or that the runbooks and security workflows built around it will carry over.</p>
+
+
+
+<h2 id="h-make-production-validation-visible" class="wp-block-heading">Make production validation visible</h2>
+
+
+
+<p class="wp-block-paragraph">An integration needs to work on the infrastructure where you plan to run it, under production traffic. The tools should also be ones your team already uses or has asked for.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;A compatible specification is a starting point. It doesn&#8217;t guarantee a tool will behave as expected in production, or that the runbooks and security workflows built around it will carry over.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">We built the <a href="https://www.coreweave.com/coreweave-partner-network?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Partner Network</a> to make that validation visible. It brings relationships with CrowdStrike, VAST Data, Reflection, IBM, and other technology vendors into a curated network of integrations tested under real-world production conditions on <a href="https://www.coreweave.com/platform?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Cloud</a>.</p>
+
+
+
+<p class="wp-block-paragraph">The network covers four parts of the AI stack, from <a href="https://www.coreweave.com/solutions/ai-model-training?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">training</a> and inference to data movement, security, and the next iteration:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Infrastructure: compute, storage, networking, servers, and interconnects, with partners including VAST Data, Dell, AMD, IBM, BackBlaze, and Pulumi.</li>
+
+
+
+<li>Data services: storing, processing, moving, and accessing AI data throughout its lifecycle, with ClickHouse, Encord, LanceDB, and Datology.</li>
+
+
+
+<li>Independent software vendors (ISVs): orchestration, observability, and model development, including Grafana, Datadog, Union, SkyPilot, IBM, Pinecone, Redis, LlamaIndex, and Clockwork. A dedicated security segment includes CrowdStrike, Zscaler, and Cranium.</li>
+
+
+
+<li>Models, agents, and inference: foundational software and services for building, training, serving, and scaling applications, with Reflection, RadixArk, Inferact, OpenRouter, and Red Hat.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Together, these integrations support running and observing models, curating data, improving behavior, and evaluating the next release. Every partner must meet the same requirement: an integration that works on CoreWeave infrastructure under production conditions. Partners enter the network because customers run them or ask for them.</p>
+
+
+
+<h2 id="h-read-the-workload-evidence" class="wp-block-heading">Read the workload evidence</h2>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.coreweave.com/resources/case-studies/ibm?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">IBM trained its Granite models on CoreWeave</a> around one of the first deployments of Nvidia GB200 NVL72 clusters. <a href="https://www.coreweave.com/resources/case-studies/cohere-accelerates-training-of-north-agentic-ai-for-enterprise?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Cohere built North</a>, its <a href="https://thenewstack.io/agentic-ai-the-next-frontier-of-ai-power/" data-type="link" data-id="https://thenewstack.io/agentic-ai-the-next-frontier-of-ai-power/" class="local-link">agentic AI platform</a>, on one of the industry&rsquo;s first production GB200 NVL72 clusters and reported training three times faster than on Nvidia Hopper.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.coreweave.com/resources/case-studies/mistral-ai?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Mistral AI trains its models entirely on CoreWeave</a> and cites training 2.5 times faster on Nvidia GB200 NVL72 systems. <a href="https://www.coreweave.com/resources/videos/creating-realtime-ai-experiences?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Decart uses Nvidia HGX B200 at production scale</a> through its CoreWeave collaboration, on a platform that includes <a href="https://www.coreweave.com/companies/weights-and-biases?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Weights &amp; Biases</a>.</p>
+
+
+
+<p class="wp-block-paragraph">The underlying relationships predate the network announcement. CoreWeave and Weights &amp; Biases have run production integrations with Encord, Pinecone, and other partners since the early wave of open-source large language models (LLMs) and frontier-model training.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/jonjones1/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jon Jones</a>, CoreWeave&rsquo;s Chief Revenue Officer, describes the change as making existing partner work visible before customers build. The network also provides a repeatable way to pursue deeper integrations, joint go-to-market work, and shared innovation.</p>
+
+
+
+<p class="wp-block-paragraph">The partners emphasize different parts of that system. VAST Data co-founder and chief technology officer Alon Horev describes combining CoreWeave&rsquo;s AI cloud with the VAST AI Operating System across large-scale training, fine-tuning, production inference, and continuous <a href="https://thenewstack.io/ai-cloud-taxonomy-2026/" data-type="link" data-id="https://thenewstack.io/ai-cloud-taxonomy-2026/" class="local-link">agentic workloads</a>. CrowdStrike CEO and founder <a href="https://www.linkedin.com/in/georgekurtz/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">George Kurtz</a> emphasizes security built into the infrastructure running AI. <a href="https://www.linkedin.com/in/adamelawrence/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Adam Lawrence</a>, general manager of IBM Americas, points to IBM and Red Hat technologies as a way to expand choice and reduce integration work when deploying and scaling AI.</p>
+
+
+
+<h2 id="h-carry-over-the-operations-you-already-use" class="wp-block-heading">Carry over the operations you already use</h2>
+
+
+
+<p class="wp-block-paragraph">Your team has already built runbooks around its observability tools. Grafana and Datadog integrations let you carry that work over. CrowdStrike, Zscaler, and Cranium provide security integrations, bringing existing threat visibility and response tooling.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.coreweave.com/solutions/ai-inference?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Inference integrations</a> serve a similar purpose: keeping the models available as teams expand onto CoreWeave, without <a href="https://thenewstack.io/5-tech-predictions-for-2026-from-ai-inference-to-kubernetes/" data-type="link" data-id="https://thenewstack.io/5-tech-predictions-for-2026-from-ai-inference-to-kubernetes/" class="local-link">rebuilding the serving layer</a>. The goal is to add capacity while retaining the parts of the stack that already work.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;A marketplace listing still leaves your team to validate the integration. An LLM can suggest what&rsquo;s popular without telling you what works on your infrastructure.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">A marketplace listing still leaves your team to validate the integration. An LLM can suggest what&rsquo;s popular without telling you what works on your infrastructure. We select partners based on customer demand and test their integrations across all four segments.</p>
+
+
+
+<h2 id="h-include-the-tools-your-agents-call" class="wp-block-heading">Include the tools your agents call</h2>
+
+
+
+<p class="wp-block-paragraph">The integration problem also reaches inside agent execution. Most closed models include web search, while most open-weight models do not. Teams choosing open weights for cost, control, or customization have often had to connect a search provider separately.</p>
+
+
+
+<p class="wp-block-paragraph">CoreWeave is extending its partner approach to these tools, beginning with Exa, Parallel Web Systems, and You.com. The announced search layer provides access through one integration instead of a separate contract for each provider.</p>
+
+
+
+<p class="wp-block-paragraph">Teams can enable it through a single setting on a standard inference request or access it from inside a <a href="https://www.coreweave.com/products/coreweave-sandboxes?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Sandbox</a>, without setting up a separate software development kit (SDK) or account. The arrangement is nonexclusive, so using the integration does not restrict future provider choices.</p>
+
+
+
+<p class="wp-block-paragraph">We announced the search partnerships at Fully Connected, with the remaining integration work planned for the following weeks. As those integrations become available, they will meet the same production-validation standard as the rest of the network.</p>
+
+
+
+<h2 id="h-start-with-the-connections-your-workload-needs" class="wp-block-heading">Start with the connections your workload needs</h2>
+
+
+
+<p class="wp-block-paragraph">Before adding another cloud, check the serving, data, observability, and security connections your workload depends on. Ask which integrations have been tested under production conditions and what your team will still need to validate.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Before adding another cloud, check the serving, data, observability, and security connections your workload depends on.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The CoreWeave Partner Network lists validated partners. CoreWeave account teams can discuss a specific integration and workload, and partner sessions from <a href="https://www.coreweave.com/fully-connected-2026?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Fully Connected 2026</a> offer another way to see the integrations in use. Teams interested in new collaborations can explore the <a href="https://www.coreweave.com/coreweave-partner-network?utm_source=coreweave.com&amp;utm_medium=site#partner-with-coreweave" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">partner program</a>.</p>
+<p>The post <a href="https://thenewstack.io/coreweave-tests-ai-integrations/">CoreWeave tests AI integrations on its cloud before you migrate</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

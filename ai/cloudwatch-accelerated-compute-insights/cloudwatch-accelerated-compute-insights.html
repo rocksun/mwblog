@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><title>Expensive accelerators, no workload-level visibility: Introducing Amazon CloudWatch accelerated compute insights</title>
+<meta name="author" content="Sabari Sawant"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/c92a967e-flying-object-jzkpjxphomq-unsplash-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/cloudwatch-accelerated-compute-insights/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/c92a967e-flying-object-jzkpjxphomq-unsplash-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Abstract monochrome digital terrain with circuit-like fissures representing GPU cluster observability and workload blind spots." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/c92a967e-flying-object-jzkpjxphomq-unsplash.jpg" />
+<p class="wp-block-paragraph"><strong>Accelerator bills have become one of the largest lines in the infrastructure budget.</strong> GPUs have become the most expensive resource in modern computing, and yet most organizations operate them with little visibility. A single training cluster can run for days and cost millions of dollars. Most organizations pool these accelerators across teams on shared clusters to keep them busy. But in these shared environments, platform teams cannot answer basic questions: which team is using which accelerators? Is the inference workload generating tokens efficiently? What is wasting money?</p>
+
+
+
+<p class="wp-block-paragraph">When a workload degrades (a failing accelerator, a thermally throttled node), teams find out only after a run crashes or the bill arrives. The device-level signals needed to find the cause (request traces, kernel logs, memory metrics from the accelerator itself) are not collected or connected. Without a way to isolate the problem to a single accelerator, teams fall back on cycling the entire instance, surrendering seven healthy GPUs to address a fault on one, and often waiting on scarce capacity to get the instance back.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;GPUs have become the most expensive resource in modern computing, and yet most organizations operate them with little visibility.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Accelerator observability turns those blind spots into answers. It tells you who is using your accelerators, whether they are healthy, and what the waste is costing you, all the way down to a single device. That way, you fix one bad GPU instead of eight, and spend your accelerator budget on real work instead of idle capacity.</p>
+
+
+
+<p class="wp-block-paragraph">Amazon CloudWatch accelerated compute insights, a new capability launched at KubeCon North America 2026, gives you a single operational view of every accelerator in your fleet. It shows platform and AI teams who are using their GPU and AWS AI Accelerators capacity across Amazon Elastic Kubernetes Service (Amazon EKS). In this post, we walk through what accelerated compute insights does, how it works on Amazon EKS, and how to get started.</p>
+
+
+
+<h2 id="h-what-accelerated-compute-insights-does" class="wp-block-heading">What accelerated compute insights does</h2>
+
+
+
+<p class="wp-block-paragraph">Accelerated compute insights gives you a single operational view of every accelerator in your fleet. It shows how each accelerator is being used, detects failures and bottlenecks as they happen, estimates the cost impact of each problem, and connects those findings to the actions that resolve them.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Accelerated compute insights holds accelerator telemetry, workload boundaries, and pricing data together, a combination that monitoring tools that only see metrics cannot replicate.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">On Amazon EKS, it supports NVIDIA GPUs and NVIDIA GPUs, AWS Trainium and AWS Inferentia. Metrics from NVIDIA GPUs and Inferentia are normalized into a common schema and presented in a single Accelerator Health view, so teams running mixed fleets manage every accelerator type in one place.</p>
+
+
+
+<h2 id="h-fleet-visibility-with-kubernetes-context" class="wp-block-heading">Fleet visibility with Kubernetes context</h2>
+
+
+
+<p class="wp-block-paragraph">Every accelerator in your EKS cluster is enriched with Kubernetes metadata: pod, namespace, node, node group, and custom labels (team, application). You see utilization by team and workload across your entire fleet.</p>
+
+
+
+<p class="wp-block-paragraph">Accelerated Compute Insights auto-detects MIG (Multi-Instance GPU) partitioned GPUs and shows utilization and memory for each MIG instance, along with the pod using it. It also recognizes other partitioning schemes, including Kubernetes DRA (<a href="https://thenewstack.io/kubernetes-dra-gpu-scheduling/" data-type="link" data-id="https://thenewstack.io/kubernetes-dra-gpu-scheduling/" class="local-link">dynamic Resource allocation</a>) and time-slicing, by reading device labels. No configuration required.</p>
+
+
+
+<h2 id="h-cost-waste-identification" class="wp-block-heading">Cost waste identification</h2>
+
+
+
+<p class="wp-block-paragraph">Accelerated compute insights connects real-time accelerator telemetry to workload boundary events and AWS pricing data to surface recoverable waste in three categories:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Right-sizing opportunities: workloads running on more powerful instances than the task requires.</li>
+
+
+
+<li>Training efficiency gaps: low tensor core (MFU) utilization relative to the workload&#8217;s own historical baseline, indicating the job is not getting full value from the hardware.</li>
+
+
+
+<li>Inference below hardware capacity: endpoints serving fewer requests than the hardware supports, based on customer-emitted throughput correlated with device utilization.</li>
+</ol>
+
+
+
+<p class="wp-block-paragraph">For each finding, accelerated compute insights identifies the specific workload or node responsible, helping users troubleshoot and optimize. This works because accelerated compute insights holds accelerator telemetry, workload boundaries, and pricing data together, a combination that monitoring tools that only see metrics cannot replicate.</p>
+
+
+
+<p class="wp-block-paragraph">Note: CloudWatch accelerated compute insights is an operational tool, not a billing or chargeback tool. Cost figures are estimates intended to guide operational decisions. For authoritative cost and usage accounting, continue to use AWS Cost Explorer and the AWS Cost and Usage Report.</p>
+
+
+
+<h2 id="h-device-level-remediation" class="wp-block-heading">Device-level remediation</h2>
+
+
+
+<p class="wp-block-paragraph">When an inference workload experiences performance degradation or inefficient token generation, accelerated compute insights helps identify GPU bottlenecks, inefficient accelerator utilization, and potential resource waste. By automatically collecting and correlating inference performance metrics, request traces, logs, and accelerator telemetry, it provides end-to-end visibility into workload performance and GPU efficiency. With AI-powered insights and troubleshooting capabilities, customers can quickly identify root causes, optimize token throughput, reduce inference latency, and improve accelerator utilization without disrupting healthy workloads.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;It distinguishes between failure modes that call for different actions. By default, the agent presents a specific, evidence-backed action plan for you to approve.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">You can also route health events to the AWS DevOps Agent for deeper investigation. The agent reasons across accelerator telemetry, CloudWatch logs, recent infrastructure changes, job configuration, and any runbooks you have authored. It distinguishes between failure modes that call for different actions. For example, a node with an accelerating memory-error trend that needs replacement versus a driver issue that clears with a restart. By default, the agent presents a specific, evidence-backed action plan for you to approve. For a faster loop, you can opt in to let it carry out well-understood remediations through AWS APIs on its own.</p>
+
+
+
+<h2 id="h-how-it-works-on-eks" class="wp-block-heading">How it works on EKS</h2>
+
+
+
+<p class="wp-block-paragraph">Collection paths converge at the CloudWatch Metrics API. For NVIDIA GPUs, the CloudWatch agent and NVIDIA Exporter collect device-level metrics. The Unified Accelerator Health Layer normalizes GPU and Inferentia collection paths into a common schema and presents them in a single dashboard.</p>
+
+
+
+<p class="wp-block-paragraph">The diagram below illustrates how Amazon CloudWatch accelerated compute insights provides end-to-end observability for AI inference workloads and accelerator efficiency on Amazon EKS. Customers can install the CloudWatch Observability add-on from the CloudWatch console or CloudWatch Omni to collect NVIDIA GPU metrics and <a href="https://thenewstack.io/ai-inference-kubernetes-observability/" data-type="link" data-id="https://thenewstack.io/ai-inference-kubernetes-observability/" class="local-link">inference workload performance</a> metrics, logs, and traces. The telemetry data is ingested into CloudWatch&rsquo;s centralized storage through the CloudWatch OpenTelemetry (OTLP) endpoint. Customers can monitor inference workload performance and GPU utilization directly in the CloudWatch console or leverage CloudWatch Omni and its AI-powered investigation to troubleshoot performance issues, identify accelerator inefficiencies, and optimize resource utilization.</p>
+
+
+
+<figure data-wp-context="{&quot;imageId&quot;:&quot;6af5b1063541b&quot;}" data-wp-interactive="core/image" data-wp-key="6af5b1063541b" class="wp-block-image size-large wp-lightbox-container"><img loading="lazy" decoding="async" width="1024" height="317" data-wp-class--hide="state.isContentHidden" data-wp-class--show="state.isContentVisible" data-wp-init="callbacks.setButtonStyles" data-wp-on--click="actions.showLightbox" data-wp-on--load="callbacks.setButtonStyles" data-wp-on--pointerdown="actions.preloadImage" data-wp-on--pointerenter="actions.preloadImageWithDelay" data-wp-on--pointerleave="actions.cancelPreload" data-wp-on-window--resize="callbacks.setButtonStyles" src="https://cdn.thenewstack.io/media/2026/11/4ae1026f-image1-1024x317.png" alt="Diagram illustrating how Amazon CloudWatch accelerated compute insights provides end-to-end observability for AI inference workloads and accelerator efficiency on Amazon EKS." class="wp-image-22843327"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			data-wp-bind--aria-label="state.thisImage.triggerButtonAriaLabel"
+			data-wp-init="callbacks.initTriggerButton"
+			data-wp-on--click="actions.showLightbox"
+			data-wp-style--right="state.thisImage.buttonRight"
+			data-wp-style--top="state.thisImage.buttonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button><figcaption class="wp-element-caption"><em>Click to enlarge graphic.</em></figcaption></figure>
+
+
+
+<h2 id="h-getting-started-on-eks" class="wp-block-heading">Getting started on EKS</h2>
+
+
+
+<p class="wp-block-paragraph">Install the CloudWatch Observability add-on with OTel Container Insights enabled. The add-on discovers your accelerators and collects everything the dashboard needs. No per-node setup, no agents to manage, no collection pipelines to configure. Your fleet appears in the console within minutes and stays current as nodes join and leave the cluster.</p>
+
+
+
+<h2 id="h-step-1-get-your-data-flowing" class="wp-block-heading">Step 1: Get your data flowing</h2>
+
+
+
+<p class="wp-block-paragraph">If you run self-hosted inference on Amazon EKS, install or upgrade the Amazon CloudWatch Observability EKS add-on to v7.0.1 or above. The add-on discovers every NVIDIA GPU and AWS Inferentia device in your cluster and starts sending OpenTelemetry data, with no per-node setup and no collection pipelines to configure.</p>
+
+
+
+<p class="wp-block-paragraph">You can enable the add-on using eksctl, Helm, or Terraform. Check examples with eksctl and Helm below:</p>
+
+
+
+<h3 id="h-using-eksctl" class="wp-block-heading">Using eksctl</h3>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; gutter: false; title: ; notranslate">
+eksctl create addon \
+  --name amazon-cloudwatch-observability \
+  --cluster your-cluster-name \
+  --region your-region
+</pre></div>
+
+
+<h3 id="h-using-helm" class="wp-block-heading">Using Helm</h3>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; gutter: false; title: ; notranslate">
+helm repo add aws-observability https://aws-observability.github.io/helm-charts
+helm install amazon-cloudwatch-observability \
+  aws-observability/amazon-cloudwatch-observability \
+  --namespace amazon-cloudwatch --create-namespace
+</pre></div>
+
+
+<h2 id="h-step-2-use-your-data-in-cloudwatch-omni" class="wp-block-heading">Step 2: Use your data in CloudWatch Omni</h2>
+
+
+
+<p class="wp-block-paragraph">Once telemetry is flowing, open CloudWatch Omni. Omni is built for the teams that own the inference code and fix it. Instead of a wall of infrastructure metrics, you get an application-centric view: your <a href="https://thenewstack.io/ai-observability-through-interoperability/" data-type="link" data-id="https://thenewstack.io/ai-observability-through-interoperability/" class="local-link">inference workloads</a> appear next to the services and AI agents that call them, with accelerator health, utilization, and waste tied to each workload.</p>
+
+
+
+<p class="wp-block-paragraph">When an endpoint shows low throughput or a high time to first token, Omni helps you trace the problem to the workload, node, or single accelerator responsible and shows what to change, whether that&rsquo;s a configuration update or a code fix. You can go from detection to fix without switching tools.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Instead of a wall of infrastructure metrics, you get an application-centric view: your inference workloads appear next to the services and AI agents that call them, with accelerator health, utilization, and waste tied to each workload.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Platform and infrastructure teams who need a fleet-wide view, such as accelerator allocation across many teams, idle capacity, or a cross-account summary, can also see the same data on the accelerated compute insights page in the CloudWatch console.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Ready to see your own fleet? This <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Accelerated-Compute-Insights-Get-Started.html" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">documentation</a> walks you through getting started.</p>
+
+
+
+<h2 id="h-where-this-fits-in-the-amazon-eks-observability-stack" class="wp-block-heading">Where this fits in the Amazon EKS observability stack</h2>
+
+
+
+<p class="wp-block-paragraph">Amazon CloudWatch accelerated compute insights builds on the observability foundation we have been shipping for EKS throughout 2025 and 2026: OTel Container Insights for infrastructure metrics, Application Performance Monitoring for application telemetry, and Container Network Observability for the network layer. Accelerated compute insights adds the missing layer, the accelerators themselves. Teams get GPU and Inferentia utilization, cost waste, and device-level health, all enriched with Kubernetes metadata and connected to automated remediation, in the same place they already monitor everything else</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cloudwatch-otel-amazon-eks/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><strong>OTel Container Insights for EKS</strong></a> (GA, June 2026) collects infrastructure metrics from your cluster using OpenTelemetry, with up to 150 descriptive labels per metric and PromQL support in CloudWatch Query Studio.</li>
+
+
+
+<li><a href="https://aws.amazon.com/about-aws/whats-new/2026/02/application-performance-monitoring-cloudwatch-eks/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><strong>Application Performance Monitoring enabled by default</strong></a> (February 2026) in the CloudWatch Observability EKS add-on gives you application-level telemetry out of the box.</li>
+
+
+
+<li><a href="https://aws.amazon.com/about-aws/whats-new/2025/11/amazon-eks-enhanced-container-network-observability/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><strong>Container Network Observability</strong></a> (November 2025) provides service maps, flow tables, and network performance metrics for EKS traffic, powered by CloudWatch Network Flow Monitor.</li>
+
+
+
+<li><a href="https://aws.amazon.com/blogs/containers/observability-patterns-for-ai-agents-on-amazon-eks/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;"><strong>Observability patterns for AI agents on Amazon EKS</strong></a> (October 2026) documents observability patterns for agentic AI workloads running on EKS.</li>
+</ul>
+
+
+
+<h2 id="h-getting-started-today" class="wp-block-heading">Getting started today</h2>
+
+
+
+<p class="wp-block-paragraph">Amazon CloudWatch accelerated compute insights is available today in all <a href="https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-cloudwatch-omni-8-regions/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Regions</a> where CloudWatch Omni is available. To get started:</p>
+
+
+
+<ol class="wp-block-list">
+<li>Install or upgrade to the latest CloudWatch Observability EKS add-on on your cluster.</li>
+
+
+
+<li>Open CloudWatch Omni to see your inference workloads, with accelerator health and waste for each one.</li>
+
+
+
+<li>Troubleshoot and optimize from the workload view, from time to first token down to a single device.</li>
+</ol>
+
+
+
+<p class="wp-block-paragraph">Check out the <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Accelerated-Compute-Insights.html" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">documentation</a> for more.</p>
+<p>The post <a href="https://thenewstack.io/cloudwatch-accelerated-compute-insights/">Expensive accelerators, no workload-level visibility: Introducing Amazon CloudWatch accelerated compute insights</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

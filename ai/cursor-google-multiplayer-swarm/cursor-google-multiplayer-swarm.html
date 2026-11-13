@@ -1,0 +1,143 @@
+<!DOCTYPE html><html><head><title>Google’s coding agents now /swarm for one developer. Cursor’s go multiplayer so teammates’ agents can talk.</title>
+<meta name="author" content="Paul Sawers"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/45becf85-mariia-berezovsky-nz3wa499hnm-unsplash-1-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/cursor-google-multiplayer-swarm/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/45becf85-mariia-berezovsky-nz3wa499hnm-unsplash-1-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Illustration of a swarm of robots." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/45becf85-mariia-berezovsky-nz3wa499hnm-unsplash-1.jpg" />
+<p class="wp-block-paragraph">Coding agents are pretty good at <a href="https://blog.pragmaticengineer.com/new-trend-programming-by-kicking-off-parallel-ai-agents/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">working in parallel</a>: one writes a new API endpoint, another updates the tests, while a third fixes a bug elsewhere in the codebase. However, they&rsquo;re not quite so adept at knowing what their coding counterparts are doing &#8212; put several on one project and they duplicate work, trip over each other&rsquo;s changes, and leave the developer firefighting the fiasco that follows.</p>
+
+
+
+<p class="wp-block-paragraph">That&rsquo;s why the major AI labs and coding-tool makers have all been looking for ways to bring order to their agent fleets, albeit with slightly different approaches. </p>
+
+
+
+<p class="wp-block-paragraph">This week alone, Google and Cursor both debuted features designed to keep agents from tripping over each other, but at different scales. Google&rsquo;s <a href="https://antigravity.google/docs/swarm/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Swarm</a> organizes the agents working for a single developer, while Cursor&rsquo;s multiplayer <a href="https://cursor.com/docs/agent/projects" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Projects</a> lets agents working for different colleagues coordinate with each other.</p>
+
+
+
+<h2 id="h-cursor-gets-teammates-agents-talking" class="wp-block-heading">Cursor gets teammates&rsquo; agents talking</h2>
+
+
+
+<p class="wp-block-paragraph">Cursor <a href="https://thenewstack.io/openai-cursor-coordinator-agents/" class="local-link">first debuted Projects back in September</a>, giving developers a way to hand a larger job to a coordinator agent that breaks it into tasks and delegates them to worker agents.</p>
+
+
+
+<p class="wp-block-paragraph">Then on Tuesday, the company, which Elon Musk&rsquo;s SpaceX <a href="https://cursor.com/blog/joining-spacex" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">acquired</a> for $60 billion in August, <a href="https://cursor.com/blog/projects-multiplayer" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">unveiled multiplayer functionality</a> for Projects. Developers can now invite teammates into a project, where each person gets their own coordinator and workers.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="800" height="450" src="https://cdn.thenewstack.io/media/2026/11/7bbd71dd-gify.gif" alt="Multiplayer arrives in Cursor Projects" class="wp-image-22843519"/><figcaption class="wp-element-caption"><em>Cursor coordinators exchange messages across teammates&rsquo; tasks.</em></figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">Everyone&rsquo;s agents work from the same task board and project documents, and their coordinators can message each other directly to share plans, flag overlaps and more.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Ultimately, it&rsquo;s all about cutting down on the coordination developers have to do themselves.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Ultimately, it&rsquo;s all about cutting down on the coordination developers have to do themselves. If one teammate&rsquo;s agents are changing a database schema and another&rsquo;s are building a feature that depends on it, their coordinators can agree on which change needs to land first.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://antigravity.google/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Antigravity</a>, for its part, is Google&rsquo;s counterpart to Cursor. It&rsquo;s where Google has consolidated various other coding tools, having <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">moved individual Gemini CLI users</a> to Antigravity and begun <a href="https://x.com/julesagent/status/2115883717705261283" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">winding down Jules</a>, its background coding agent.</p>
+
+
+
+<p class="wp-block-paragraph">On the same day Cursor unveiled multiplayer Projects, <a href="https://thenewstack.io/gemini-4-carbon-swarm/" class="local-link">Google rolled out</a> Gemini 4 Carbon in Antigravity, alongside a preview of its own approach to coordinating coding agents. Dubbed Swarm (stylized as /swarm), it lets a developer hand one assignment to a coordinator that then splits it among worker agents and assigns a verifier to check their changes. The workers can message each other on a shared board, so they can coordinate their changes as they go.</p>
+
+
+
+<p class="wp-block-paragraph">For example, a company that wants to change how its online checkout system verifies authentication tokens could use Swarm to split the work. One agent updates the authentication middleware while another updates the token verifier. They can work in separate Git worktrees, use the board to agree on how their changes fit together, and hand them off to a verifier for testing.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="800" height="450" src="https://cdn.thenewstack.io/media/2026/11/131f3ae2-swarmgif2.gif" alt="Swarm agents split and verify a token migration." class="wp-image-22843520"/><figcaption class="wp-element-caption"><em>Swarm agents split and verify a token migration.</em></figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">Taking to X on Tuesday, <a href="https://www.linkedin.com/in/varunkmohan/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Varun Mohan</a>, director of software engineering at Google DeepMind, said Swarm gives developers a convenient way to put multiple agents on a complex task, adding that Google staff were already using Swarm to take on larger jobs internally.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;The alpha from using swarms is ridiculous,&#8221; Mohan <a href="https://x.com/_mohansolo/status/2120290178267074884?a=YCRGLGGQfIn70qM6izk&amp;s=20" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">writes</a>. &#8220;We have folks using swarms of 100s of agents to build large systems and products from scratch with a single prompt.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/logankilpatrick/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Logan Kilpatrick</a>, a member of technical staff at Google DeepMind, <a href="https://x.com/OfficialLoganK/status/2120190972495814893?a=oL4-x5gctabWoetNdBY&amp;s=20" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">said on X</a> that seeing swarm outputs had been &lsquo;really impressive,&rsquo; and that they offered &lsquo;a new scaling dimension for AI!&rdquo;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;A new scaling dimension for AI!&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">This, ultimately, gets to the crux of <em>how</em> each of these companies has tackled agent coordination.</p>
+
+
+
+<h2 id="h-when-agents-work-for-different-people" class="wp-block-heading">When agents work for different people</h2>
+
+
+
+<p class="wp-block-paragraph">Antigravity&rsquo;s Swarm takes one developer&rsquo;s assignment and gives the agents handling it a way to talk as they work. Cursor&rsquo;s multiplayer Projects, meanwhile, takes assignments from different teammates and lets their coordinators talk <em>across </em>those assignments</p>
+
+
+
+<p class="wp-block-paragraph">That&rsquo;s the distinction Cursor product manager <a href="https://www.linkedin.com/in/aryamank/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Aryaman Khandelwal</a> is keen to draw in <a href="https://cursor.com/blog/projects-multiplayer" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Tuesday&rsquo;s announcement</a>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Multi-agent systems have so far served one person. Projects is a multi-agent system built for a whole team.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;Multi-agent systems have so far served one person,&#8221; Khandelwal writes. &#8220;Projects is a multi-agent system built for a whole team.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">A quick peek across the AI coding landscape shows how others have approached agent coordination &#8212; including Anthropic. Its still-experimental <a href="https://code.claude.com/docs/en/agent-teams" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Claude Code Agent Teams</a> gives agents working on a common assignment a shared task list and a way to message each other. And recently, the company added <a href="https://code.claude.com/docs/en/cross-session-messaging" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">cross-session messaging to Claude Code</a>, so sessions started separately can exchange findings or warn each other about changes. But those sessions still belong to the same developer.</p>
+
+
+
+<p class="wp-block-paragraph">In October, <a href="https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">GitHub put Projects</a> in the Copilot app into public preview, giving developers a way to hand Copilot a goal that spans repositories and have it distribute the work across agents. AWS&rsquo;s Kiro Crew bots, meanwhile, which <a href="https://kiro.dev/blog/crew-bots/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">launched last week</a>, can start several sessions, steer them as they run and pull their results together. </p>
+
+
+
+<p class="wp-block-paragraph">Separately, Anthropic and OpenAI have also built agents that teammates can use together. Anthropic <a href="https://thenewstack.io/anthropic-claude-tag-slack/" class="local-link">introduced Claude Tag in June</a>, letting people in a Slack channel delegate to a shared Claude. OpenAI&rsquo;s ChatGPT workspace agents, <a href="https://thenewstack.io/openai-shared-workspace-agents/" class="local-link">announced in April</a>, can be used and maintained by multiple colleagues.</p>
+
+
+
+<h2 id="h-community-concerns-spreading-mistakes" class="wp-block-heading">Community concerns: Spreading mistakes</h2>
+
+
+
+<p class="wp-block-paragraph">However, <a href="https://x.com/geilt/status/2120329106881499296?a=39yIT4-bELHfydq1hRo&amp;s=20" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">some</a> in the community <a href="https://x.com/avisinghdotdev/status/2120297515379834999" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">raised concerns</a> that letting teammates&rsquo; agents talk could spread one agent&rsquo;s mistakes across the whole team, especially if each person&rsquo;s agents follow different rules, and that an agent could request information it shouldn&rsquo;t have access to. Khandelwal, though, <a href="https://x.com/aryamankhawow/status/2120309976052752842" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">responded</a> that multiplayer Projects lets teams define shared rules and skills for <em>everyone</em> in a project. On the access part, Cursor&rsquo;s <a href="https://cursor.com/docs/agent/projects" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">documentation</a> says agents treat messages from teammates&rsquo; agents as untrusted input and ask before sharing a person&rsquo;s private files or connector data. A teammate&rsquo;s message is handled in a separate chat, which Cursor says never shares secrets or credentials. The Projects documentation doesn&rsquo;t say whether admins can set different rules for those exchanges based on a teammate&rsquo;s role.</p>
+
+
+
+<p class="wp-block-paragraph">Separately, fresh research suggests that teams of per-user agents can struggle. In a <a href="https://alignment.anthropic.com/2026/worse-together/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">study published Wednesday</a>, researchers in Anthropic&rsquo;s Fellows Program tested what happens when multiple users each delegate to their own agent and those agents share a resource, in four simulated environments that included a code merge queue. In every environment, group outcomes were worse than when a single agent served everyone, by roughly 10 to 45 percentage points for Anthropic&rsquo;s Claude models, even when each user&rsquo;s agents could message each other. Agents stalled as teams grew, overrode other users&rsquo; requests, and made unsupported claims about what other people wanted. Some fixes helped, such as appointing a lead agent or blocking an agent from acting until it had read its messages, but which ones worked depended on the task. </p>
+
+
+
+<p class="wp-block-paragraph">All in all, these various launches this year show a push to make it easier for teams to delegate work and keep track of what their agents are doing. With multiplayer mode in Projects, Cursor is tackling a specific part of that problem.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/parkersm1th/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Parker Smith</a>, who works in engineering for Cursor&#8217;s parent company SpaceXSI, says the point is really just to keep agents moving without unnecessary delays.</p>
+
+
+
+<p class="wp-block-paragraph">&#8220;Agents move fast, having a blocker on peer context is too slow,&#8221; Smith <a href="https://x.com/parkersmith/status/2120300502260871295?s=20" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">writes on X</a>. &#8220;Multiplayer projects allow your agent to grab all the context it needs from your coworkers agents without needing to involve you.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Cursor&rsquo;s multiplayer Projects is in beta now for users on a team account, while Google&rsquo;s Swarm is in preview for Google AI Pro and Ultra subscribers.</p>
+<p>The post <a href="https://thenewstack.io/cursor-google-multiplayer-swarm/">Google’s coding agents now /swarm for one developer. Cursor’s go multiplayer so teammates’ agents can talk.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
