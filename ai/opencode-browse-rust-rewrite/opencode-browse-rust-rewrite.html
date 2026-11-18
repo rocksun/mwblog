@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><title>Dax Raad rebuilt his browser tool in Rust for $60. Then memory use fell 97%.</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/57fc2d31-rizki-ardia-i-aetokirtk-unsplash-1024x753.jpg">
+<link rel="canonical" href="https://thenewstack.io/opencode-browse-rust-rewrite/"></head><body><article><img width="1024" height="753" src="https://cdn.thenewstack.io/media/2026/11/57fc2d31-rizki-ardia-i-aetokirtk-unsplash-1024x753.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="developer with code on his screen" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/57fc2d31-rizki-ardia-i-aetokirtk-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">OpenCode developer Dax Raad says he rebuilt the project&#8217;s browser automation tool in Rust for $60, replacing the parts of Playwright and Patchright it actually used and dramatically reducing its memory footprint.</p>
+
+
+
+<h2 id="h-a-4-3-mb-binary" class="wp-block-heading">A 4.3 MB binary</h2>
+
+
+
+<p class="wp-block-paragraph">The figures <a href="https://thdxr.com/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">he</a> posted to <a href="https://x.com/thdxr/status/2121692397323350468" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">X on Saturday</a> are striking. The new Rust binary is just 4.3 MB, compared with 53 to 64 MB for the previous Node version. Memory use for each <a href="https://github.com/anomalyco/browse" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">OpenCode Browse</a> connector also fell from roughly 190 MB to 5.6 MB after a few calls, a reduction of about 97%.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">The new Rust binary is just 4.3 MB, compared with 53 to 64 MB for the previous Node version.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The relay that wires AI coding agents to the browser shows a similar gap, with Raad&rsquo;s comparison putting the Rust implementation at 6 MB idle, or 6.6 MB once it has served calls, against 353 MB for the old Node relay after six days of running.</p>
+
+
+
+<h2 id="h-replacing-playwright-and-patchright" class="wp-block-heading">Replacing Playwright and Patchright</h2>
+
+
+
+<p class="wp-block-paragraph">OpenCode Browse connects AI coding agents to a developer&rsquo;s existing browser through a Chromium extension and an <a href="https://thenewstack.io/model-context-protocol-bridges-llms-to-the-apps-they-need/" class="local-link">MCP server</a>. The previous Node implementation used Playwright for browser automation and Patchright to reduce detection, but Raad rebuilt the functionality Browse needed in Rust to cut runtime overhead.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Raad rebuilt the functionality Browse needed in Rust to cut runtime overhead.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The new Rust relay communicates with the Chromium extension over WebSockets and uses the Chrome DevTools Protocol to handle browser operations, agent sessions, recordings, and network captures. It also embeds QuickJS to execute agent-supplied JavaScript without requiring the previous Node runtime.</p>
+
+
+
+<h2 id="h-inside-the-pull-request" class="wp-block-heading">Inside the pull request</h2>
+
+
+
+<p class="wp-block-paragraph">The <a href="https://github.com/anomalyco/browse/pull/264" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">merged pull request</a> confirms that Raad replaced the Node-based CLI and relay while keeping the existing Chromium extension and using the Chrome DevTools Protocol for browser operations.</p>
+
+
+
+<p class="wp-block-paragraph">The team ran two rounds of testing with about 10 regression agents against a real Chrome browser. Browse scored 85% on Stealth Bench v2, compared with 90.5% for Browser Use Cloud, although the pull request doesn&#8217;t include a score for the old Node version.</p>
+
+
+
+<p class="wp-block-paragraph">Not everything made it into the rewrite; Raad dropped time zone and locale emulation along with the download tool, which Chrome blocks for extensions. The Rust version also retains a problem from the Node implementation where a busy-looping eval can&#8217;t be stopped through the extension.</p>
+
+
+
+<p class="wp-block-paragraph">Browse still includes relay authentication, extension pairing and origin restrictions, and agents are limited to tabs they open themselves or that users explicitly share with them.</p>
+
+
+
+<h2 id="h-the-real-60-cost" class="wp-block-heading">The real $60 cost</h2>
+
+
+
+<p class="wp-block-paragraph">Raad says the rewrite &ldquo;only cost $60&rdquo; and confirmed in a reply on X that he used Claude Opus as his main coding model and DeepSeek as a subagent. </p>
+
+
+
+<p class="wp-block-paragraph">The two models helped him replace the Playwright and Patchright functionality Browse needed, although the $60 figure doesn&#8217;t include the time he spent checking, testing, and fixing the code. The <a href="https://thenewstack.io/is-a-rust-rewrite-really-worth-it/" class="local-link">challenge with Rust rewrites</a> is finding a smaller replacement that matches the original&#8217;s functionality without creating more maintenance work.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">the $60 figure doesn&rsquo;t include the time he spent checking, testing, and fixing the code</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The memory savings are impressive, but Raad has also taken on responsibility for code that Playwright and Patchright previously maintained. His team will also have to deal with browser updates, authentication changes and security fixes that previously came through those libraries. That&#8217;s where <a href="https://thenewstack.io/ai-technical-debt-verification/" class="local-link">AI-generated technical debt</a> can become a problem, especially when code is cheap to produce but takes considerably more work to maintain.</p>
+<p>The post <a href="https://thenewstack.io/opencode-browse-rust-rewrite/">Dax Raad rebuilt his browser tool in Rust for $60. Then memory use fell 97%.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html><html><head><title>CoreWeave connects custom training loops to model serving</title>
+<meta name="author" content="Urvashi Chowdhary"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/7a22998e-paris-bilal-gld2k8ozalu-unsplash-1024x768.jpg">
+<link rel="canonical" href="https://thenewstack.io/coreweave-forge-training-loops/"></head><body><article><img width="1024" height="768" src="https://cdn.thenewstack.io/media/2026/11/7a22998e-paris-bilal-gld2k8ozalu-unsplash-1024x768.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Abstract glowing digital light threads and data particles sweeping across a black background, representing AI training loops." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/7a22998e-paris-bilal-gld2k8ozalu-unsplash.jpg" />
+<p class="wp-block-paragraph">Production traffic shows failures that benchmarks or pre-deployment evaluations can&#8217;t fully reveal. It tells you which edge cases matter and what users need. Turning that signal into the next model version requires an upfront decision: does the model need to change, or is the problem in retrieval, context, prompts, tools, or serving?</p>
+
+
+
+<p class="wp-block-paragraph">Changing weights won&#8217;t fix a failure elsewhere in the system. When the model is the right place to intervene, <a href="https://thenewstack.io/ai-agent-evaluation-loop/" data-type="link" data-id="https://thenewstack.io/ai-agent-evaluation-loop/" class="local-link">production evidence can improve</a> both quality and economics. A smaller model might reproduce a more expensive model&rsquo;s behavior; better examples might improve consistency; an outcome-based reward might suit the task. <a href="https://thenewstack.io/is-fine-tuning-or-prompt-engineering-the-right-approach-for-ai/" data-type="link" data-id="https://thenewstack.io/is-fine-tuning-or-prompt-engineering-the-right-approach-for-ai/" class="local-link">Refining a capable model</a> can also avoid another migration to a new model generation.</p>
+
+
+
+<h2 id="h-choose-a-technique-from-the-failure-mode" class="wp-block-heading">Choose a technique from the failure mode</h2>
+
+
+
+<p class="wp-block-paragraph">Model distillation fits when a stronger model already produces the desired behavior and you want a smaller, more economical model to reproduce it. <a href="https://www.coreweave.com/products/coreweave-forge/serverless-sft?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Supervised fine-tuning (SFT)</a> fits when high-quality examples can teach more consistent behavior. <a href="https://www.coreweave.com/products/coreweave-forge/serverless-rl?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Reinforcement learning (RL)</a> fits when you can reliably evaluate an outcome but cannot readily specify the ideal response in advance.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Changing weights won&#8217;t fix a failure elsewhere in the system. When the model is the right place to intervene, production evidence can improve both quality and economics.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">You may use all three approaches over a model&rsquo;s lifecycle. Choose from the evidence in your workload, even when that means using a technique that takes more setup.</p>
+
+
+
+<p class="wp-block-paragraph">Production traces have to become training data. <a href="https://docs.coreweave.com/products/post-training?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Post-training</a> needs <a href="https://www.coreweave.com/solutions/ai-model-training?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">compute and orchestration</a>, and the resulting model has to be evaluated and returned to <a href="https://www.coreweave.com/solutions/ai-inference?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">inference</a>. That is the work of closing <a href="https://www.coreweave.com/blog/the-ai-loop-launch-day-is-day-one?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">the loop</a>. In RL, inference generates rollouts during training, and new weights must return to serving throughout the run.</p>
+
+
+
+<p class="wp-block-paragraph">At <a href="https://www.coreweave.com/fully-connected-2026?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Fully Connected 2026</a>, we introduced <a href="https://www.coreweave.com/products/coreweave-forge/model-distillation?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Model Distillation</a>, <a href="https://docs.coreweave.com/products/inference/rl-rollouts?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave RL Rollouts</a> on CoreWeave Inference, and a programmable training API. These workflows connect in <a href="https://www.coreweave.com/products/coreweave-forge?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Forge</a>. The programmable API is in limited preview, with an official launch planned for later in 2026.</p>
+
+
+
+<h2 class="wp-block-heading">Keep the data fresh when the base model stays</h2>
+
+
+
+<p class="wp-block-paragraph">CoreWeave Model Distillation provides a managed workflow. <a href="https://www.coreweave.com/products/coreweave-forge/agent-lens?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Agent Lens</a> captures inference traffic as the application runs. The workflow turns it into training data, relabels weak outputs, tests base models and hyperparameters, deploys candidates to <a href="https://www.coreweave.com/products/coreweave-forge/serverless-inference?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Serverless Inference</a>, and compares them with the production model.</p>
+
+
+
+<p class="wp-block-paragraph">If the model already has the capabilities your task needs, fresh production data can improve its fit without changing the serving profile you know. Compare the new version against the model already running before you move traffic.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://methodfi.com/?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Method</a> used this workflow to revisit a model it had already deployed. In 2024, it used OpenPipe to train Llama 3.1 8B to navigate bank interactive voice response (IVR) systems, using GPT-4o outputs. In August 2026, Method brought in fresh production data, relabeled it with GPT-5.6 Sol, and trained another version. The candidate won 57.5% of head-to-head evaluations against the deployed version.</p>
+
+
+
+<p class="wp-block-paragraph">The base model had not changed. Fresh production data and Model Distillation in Forge made another iteration possible sooner. The 57.5% result is the share of head-to-head evaluations the new version won.</p>
+
+
+
+<h2 class="wp-block-heading">Control the training recipe in Python</h2>
+
+
+
+<p class="wp-block-paragraph">For teams that want to design their own learning process, the programmable training API for Serverless Training separates training logic from infrastructure operations. You write a Python loop; CoreWeave manages the compute and underlying training infrastructure.</p>
+
+
+
+<p class="wp-block-paragraph">Here&rsquo;s one way to combine RL updates with periodic supervised updates on verified demonstrations. The example creates a learner and serving adapter, uses an Adam optimizer with a learning rate of 1e-5, and publishes updated weights to the sampler after each step.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: python; gutter: false; title: ; notranslate">
+Python
+learner = await training.create_learner(model=model, lora=lora)
+sampler = await serving.create_adapter(name=&quot;sampler&quot;)
+optimizer = AdamConfig(learning_rate=1e-5)
+
+for step in range(num_steps):
+    trajectories = await run_agent(sampler, tasks)
+    update = learner.batch()
+    update.forward_backward(
+        build_rl_batch(trajectories), loss=&quot;importance_sampling&quot;
+    )
+    update.optim_step(optimizer=optimizer)
+
+    if (step + 1) % sft_interval == 0:
+        update.forward_backward(next_demo_batch(), loss=&quot;cross_entropy&quot;)
+        update.optim_step(optimizer=optimizer)
+
+    update.publish_weights(to=sampler)
+    await update.result()
+
+await (await learner.save_state(&quot;final&quot;)).result()
+await learner.close()
+</pre></div>
+
+
+<p class="wp-block-paragraph">The rollout and batch helpers are illustrative. Your agent logic, reward calculations, and data preparation belong in those helpers. The loop uses importance-sampling loss for RL and cross-entropy loss for demonstrations, then waits for the update result. It saves the final learner state and closes the learner.</p>
+
+
+
+<p class="wp-block-paragraph">You choose how often demonstrations enter the loop, how rewards are calculated, and how the recipe evolves. SFT, RL, and distillation share the training primitives, while the platform runs the distributed systems underneath.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://willowvoice.com/?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Willow</a> began with supervised learning, then added RL scorers to reduce filler words, improve readability, and remove self-corrected phrases. The scorers were combined into a reward function. Lawrence Liu, Willow&rsquo;s chief technology officer and co-founder, reported better text styling, emoji handling, and responsiveness to commands than in the deployed model.</p>
+
+
+
+<h2 class="wp-block-heading">Remove checkpoint reload delays from RL</h2>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.coreweave.com/solutions/reinforcement-learning?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">RL serving</a> needs enough rollout generation, alignment with the policy being trained, and timely weight updates. The trainer, reward logic, and environment can stay where they are while CoreWeave Inference handles this part of the loop.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://docs.coreweave.com/products/inference/rl-rollouts?_gl=1*130xxj6*_gcl_au*MTMzMTYxMjc2My4xNzg5NDkwMDE3Li0uLS4xNzkyMTU5MDIyLjMxMzA2MzQxMS4xNzkyMTU5MDIzLjE3OTIxNTkwMjI.*_ga*MTc4NDk5MDM5NC4xNzkwODc1MzU0*_ga_XKNHS53VYL*czE3OTI3MDQxOTAkbzM0JGcxJHQxNzkyNzA1NjE1JGozNyRsMCRoMjIzMzMxMQ.." class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave RL Rollouts</a> is built on <a href="https://www.nvidia.com/en-us/?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Nvidia</a> Dynamo with vLLM support. When the trainer writes a checkpoint, the service hot-loads it into a live deployment while preserving in-flight requests and endpoint availability. It returns training metadata: token log probabilities (logprobs), token IDs, and expert routing for mixture-of-experts (MoE) models.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;When the trainer writes a checkpoint, the service hot-loads it into a live deployment while preserving in-flight requests and endpoint availability. Serving uses the trainer&#8217;s current policy weights, removing staleness and redeployment delays that would otherwise hold up the next batch of rollouts.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Checkpoints can be full snapshots or incremental deltas, reducing synchronization after the first upload. Serving uses the trainer&#8217;s current policy weights, removing staleness and redeployment delays that would otherwise hold up the <a href="https://thenewstack.io/nebius-agentic-rl-training-bottlenecks/" data-type="link" data-id="https://thenewstack.io/nebius-agentic-rl-training-bottlenecks/" class="local-link">next batch of rollouts</a>.</p>
+
+
+
+<h2 class="wp-block-heading">Measure quality and infrastructure separately</h2>
+
+
+
+<p class="wp-block-paragraph">We validated the workflow with Nvidia and you.com by post-training Nvidia Nemotron 3.5 Lightning for web search. The run combined SFT and RL with <a href="https://you.com/?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">you.com&rsquo;s search tools</a> inside the training loop.</p>
+
+
+
+<p class="wp-block-paragraph">BrowseComp accuracy increased from a 36.97% baseline to 45.45%, a reported 22.94% relative improvement. Average tool calls fell 30.24%. Separately, hot-loading checkpoints into a live deployment was approximately 15 times faster than traditional redeployment cycles.</p>
+
+
+
+<p class="wp-block-paragraph">Better search tooling, post-training refinement, and harness improvements worked together to improve accuracy and reduce tool calls. Hot-loading cut the time spent waiting for checkpoint synchronization. If you&rsquo;re trying to make a smaller or more efficient model competitive with models an order of magnitude larger, that extra training time matters too.</p>
+
+
+
+<h2 class="wp-block-heading">Keep the model connected to its experiment</h2>
+
+
+
+<p class="wp-block-paragraph"><a href="https://forge.coreweave.com/?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Forge connects production inference</a>, training, and serving again. Model Distillation supplies a managed path. The programmable API lets researchers control the training loop without managing its infrastructure. RL Rollouts supports teams keeping their own trainer while using CoreWeave for rollout inference.</p>
+
+
+
+<p class="wp-block-paragraph">Models produced by serverless training return as tagged artifacts that can move into Serverless Inference without a separate registry handoff. Experiments remain logged beside them, keeping the run, model, and eventual deployment connected.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;Choose a failure you can reproduce, use it to guide the training method, and compare the candidate with the model serving users.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Choose a failure you can reproduce, use it to guide the training method, and compare the candidate with the model serving users. Keep the production examples, evaluation, and resulting artifact together so your team can use them again.</p>
+
+
+
+<p class="wp-block-paragraph">The <a href="https://www.coreweave.com/blog/coreweave-forge-turn-ai-iteration-into-compounding-improvement?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">CoreWeave Forge blog</a> and <a href="https://www.coreweave.com/news/coreweave-forge-launches-turning-the-ai-loop-production-run-into-a-better-model-and-agent?utm_source=coreweave.com&amp;utm_medium=site" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">announcement press release</a> provide context on the capabilities introduced at Fully Connected 2026. CoreWeave also plans further engineering explanations of Model Distillation, the programmable training API, and RL Rollouts.</p>
+<p>The post <a href="https://thenewstack.io/coreweave-forge-training-loops/">CoreWeave connects custom training loops to model serving</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

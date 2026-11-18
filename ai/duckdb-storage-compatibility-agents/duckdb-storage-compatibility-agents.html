@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><title>DuckDB 2.0 goes client-server and adds an Agent Mode for coding agents</title>
+<meta name="author" content="Jennifer Riggins"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/90305fd8-thumbnail-23-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/duckdb-storage-compatibility-agents/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/90305fd8-thumbnail-23-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="DuckDB is entering a new era following AWS’s acquisition of DuckLabs and the release of DuckDB 2.0.0, its biggest feature update to date. In this episode of The New Stack Podcast, Gábor Szárnyas, developer advocate at DuckLabs, discusses how the high-performance analytical database is evolving to support AI agents, faster queries, and more flexible data processing." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/90305fd8-thumbnail-23.png" />
+<p class="wp-block-paragraph">DuckDB has always been the database you don&#8217;t have to set up: Import it into your code and start querying. DuckDB 2.0 was released in October, and it can now run as a server that other machines can connect to. DuckLabs&#8217; <a href="https://www.linkedin.com/in/szarnyasg/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">G&aacute;bor Sz&aacute;rnyas</a> calls this the headline feature of the release.</p>
+
+
+
+<p class="wp-block-paragraph">The team decided to make this latest upgrade a major release since that feature, along with a new storage format and a new SQL parser, marks a big shift in how DuckDB works. On <em>The New Stack</em> podcast, <a href="https://www.linkedin.com/in/szarnyasg/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Sz&aacute;rnyas</a> explains what changed, what early users are teaching the team ahead of the 2.0.1 bug-fix release, and how to plan a production upgrade.</p>
+
+
+<p><div class="youtube-embed-wrapper"><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/Muzi-1c7v8E?si=vI87J6ZcRyNxK6Kb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></p>
+
+
+<p class="wp-block-paragraph">Codenamed Cinnamon Teal, DuckDB 2.0 is the analytical database&rsquo;s biggest feature release to date, more than two years after 1.0.0.</p>
+
+
+
+<p class="wp-block-paragraph">We met with Sz&aacute;rnyas, head of developer relations at DuckLabs, at the company&rsquo;s Amsterdam headquarters. DuckDB 2.0 can run as a server and query data faster.</p>
+
+
+<p><iframe loading="lazy" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/5823c0b6-157e-4df4-a683-71250be10ac1?dark=true"></iframe></p>
+
+
+<p class="wp-block-paragraph">&ldquo;The other features are an extensible SQL parser, which was experimental earlier this year, but now is something that we turn on by default. That ideally doesn&#8217;t break anything, but it might,&rdquo; Sz&aacute;rnyas says. &ldquo;We also wanted to signify this with the release and the whole approach to doing more of a networked operation, shipping the <a href="https://duckdb.org/quack/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Quack remote protocol</a> as a first-class citizen in DuckDB.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Database files created with DuckDB 2.0 can&rsquo;t be opened by earlier versions, though 2.0 can still read and write existing database files, which stay readable by older versions. For production systems, Sz&aacute;rnyas repeats a common rule of thumb in the database world: &ldquo;you should never migrate to a .0 release in production.&rdquo; Depending on a team&rsquo;s risk tolerance, he says, 2.0.1 or 2.0.2 is the version to move production to. The team is working on 2.0.1 now, focused on bug fixes, small performance tweaks and user feedback.</p>
+
+
+
+<p class="wp-block-paragraph">DuckDB 2.0.0 already includes dedicated <a href="https://duckdb.org/docs/2.0/clients/cli/agent_mode" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Agent Mode</a>, which makes it easier for AI coding agents to interpret errors and correct their own SQL queries, helping them get better results faster without wasting tokens.&nbsp;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;The AI doesn&rsquo;t really care. The large language models don&rsquo;t mind if a text is formatted badly or the punctuation isn&rsquo;t perfect.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&ldquo;For AI agents, we just print simple Markdown tables in compact mode with no spacing. The AI doesn&#8217;t really care. The large language models don&#8217;t mind if a text is formatted badly or the punctuation isn&#8217;t perfect,&rdquo; Sz&aacute;rnyas says, which lets DuckDB &ldquo;compress these tables down to maybe 60, 70% of their original size. It is just as legible for the agent.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Agent Mode comes with no hidden truncation, machine-readable errors structured in JSON, and guardrails against runaway queries, and it works with coding agents such as Claude Code, Codex, and Cursor.</p>
+
+
+
+<p class="wp-block-paragraph">Following Amazon&rsquo;s announcement to acquire DuckLabs in August, AWS <a href="https://aws.amazon.com/blogs/big-data/aws-and-ducklabs-building-the-future-of-analytics-together/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">shared how it uses the in-process analytical engine internally</a>, including to query in S3 Tables. Mai-Lan Tomsen Bukovec, AWS&#8217;s technology VP, says AWS has processed more than 2.5 billion queries using its custom Quick query engine with DuckDB integrations and optimizations. She writes that DuckDB has helped Amazon Quick reduce average query latency by 30%.</p>
+
+
+
+<p class="wp-block-paragraph">DuckDB is also set to become the universal SQL dialect of AWS Storage and Analytics. In its Q3 earnings call in October, Amazon CEO Andy Jassy remarked that this will simplify data processing with &ldquo;a modern analytics engine that is fast, simple to use and ubiquitous, and where customers will be able to write SQL queries once and then execute using any AWS analytics service.&rdquo; This includes zero migration or portability costs between query engines, which Jassy said will also help AI agents query data efficiently.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+<p>The post <a href="https://thenewstack.io/duckdb-storage-compatibility-agents/">DuckDB 2.0 goes client-server and adds an Agent Mode for coding agents</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

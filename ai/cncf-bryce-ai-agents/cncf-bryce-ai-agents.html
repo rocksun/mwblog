@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head><title>AI agents were all over KubeCon. Production is another story</title>
+<meta name="author" content="Frederic Lardinois"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/81c5d979-thumbnail-24-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/cncf-bryce-ai-agents/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/81c5d979-thumbnail-24-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="The New Stack’s Frederic Lardinois sat down with Jonathan Bryce, executive director of the Cloud Native Computing Foundation (CNCF), to discuss how AI is reshaping cloud native infrastructure, open source innovation, and the developer community." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/81c5d979-thumbnail-24.png" />
+<p class="wp-block-paragraph">AI agents are testing systems that were originally built for people, and Jonathan Bryce thinks the cloud-native community has a lot of work to do to help those systems keep up in this new era.</p>
+
+
+
+<p class="wp-block-paragraph">The New Stack sat down with Bryce, the executive director of the Cloud Native Computing Foundation (CNCF), at KubeCon + CloudNativeCon North America in Salt Lake City to talk about the projects joining the foundation and how AI is changing its work.</p>
+
+
+<div class="youtube-embed-wrapper"><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/lmfaWWd_894?si=AndMW5gkR340Ggh7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+
+<p class="wp-block-paragraph">Bryce tells <em>The New Stack</em>, &ldquo;A lot of the existing systems in our world were built for human speed, and agent speed is a completely different type of usage pattern and scenario, and so these systems are just not scalable and resilient enough to handle the kind of workloads that agents are generating.&rdquo;</p>
+
+
+<iframe loading="lazy" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/9f864b0f-49e7-40be-9835-765a3bab56f6?dark=true"></iframe>
+
+
+<p class="wp-block-paragraph">Running training and inference workloads on Kubernetes is already a familiar job for this community, and Bryce argues that the financial services, healthcare, and transportation systems that agents interact with will also need the elasticity and observability that cloud-native technologies provide.</p>
+
+
+
+<h3 id="h-openshell-and-agent-substrate" class="wp-block-heading">OpenShell and Agent Substrate</h3>
+
+
+
+<p class="wp-block-paragraph">At KubeCon, Nvidia announced that it was <a href="https://thenewstack.io/nvidia-donates-openshell-cncf/" class="local-link">contributing OpenShell to the CNCF</a>. Google had also <a href="https://cloud.google.com/blog/products/containers-kubernetes/open-infrastructure-for-autonomous-agents-comes-to-cncf/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">announced the donation of Agent Substrate</a> ahead of the show. Both joined the CNCF as Sandbox projects, the foundation&rsquo;s entry-level tier.</p>
+
+
+
+<p class="wp-block-paragraph">At its core, OpenShell enforces policies, including which files, networks, credentials, and model endpoints an agent can access. Agent Substrate tackles a related but different issue by providing isolated environments for agents on Kubernetes, with features like support for suspending idle sessions and resuming them when needed.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;We can make AI systems that have security and control architected into them from the infrastructure side,&rdquo; Bryce says.</p>
+
+
+
+<p class="wp-block-paragraph">He sees this as a responsibility for the community, given the questions AI has raised about security and resource consumption. Moving a project like OpenShell into neutral governance also lets more companies contribute to it, he says.</p>
+
+
+
+<h3 id="h-doing-more-with-existing-hardware" class="wp-block-heading">Doing more with existing hardware</h3>
+
+
+
+<p class="wp-block-paragraph">Agent workloads also aren&rsquo;t as evenly distributed as those of more traditional enterprise applications.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Your agent, even if it&rsquo;s always waiting around to be at your beck and call, it&rsquo;s not necessarily doing work 24/7,&rdquo; Bryce says. &ldquo;How do you spin it down and spin it up where it feels like it&rsquo;s ready for you at any time? That&rsquo;s going to be the user experience that people demand. How do you do that without just having it sit there and burn CPU cycles on nothing?&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://thenewstack.io/kubernetes-ai-agent-runtime/" class="local-link">Agent Substrate</a> saves the agent&rsquo;s state and frees up the compute it was using, then restores the session onto an available worker.</p>
+
+
+
+<p class="wp-block-paragraph">Bryce also highlighted <a href="https://thenewstack.io/llm-d-cncf-kubernetes-inference/" class="local-link">llm-d</a>, the distributed inference framework, as an example of software getting more out of existing hardware. While hardware is expensive, expensive to run, and (at least currently) in limited supply, software gives developers something they can work on now.</p>
+
+
+
+<h3 id="h-a-flood-of-vulnerability-reports" class="wp-block-heading">A flood of vulnerability reports</h3>
+
+
+
+<p class="wp-block-paragraph">Zero-days and security also came up more at this KubeCon than in previous years.</p>
+
+
+
+<p class="wp-block-paragraph">As more people use AI tools to find and report vulnerabilities, Bryce says, open source maintainers have been flooded with duplicate and unverified reports that they still have to take seriously. </p>
+
+
+
+<p class="wp-block-paragraph">He thinks the pace may no longer be accelerating the way it was early this year, but he isn&rsquo;t sure what 2027 will bring as the models keep getting better.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Y2K didn&rsquo;t end up being that big of a deal,&rdquo; he says. &ldquo;This is really a moment that could be a big deal if we don&rsquo;t actually just all get together and work as quickly as we can.&rdquo;</p>
+
+
+
+<h3 id="h-agent-adoption-is-still-early" class="wp-block-heading">Agent adoption is still early</h3>
+
+
+
+<p class="wp-block-paragraph">For all the talk about agents at the show, though, Bryce&rsquo;s assessment of adoption is measured.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Beyond software development, adoption is still quite low,&rdquo; he says.</p>
+
+
+
+<p class="wp-block-paragraph">He sees production use in customer service and other areas with a well-defined, historical base of knowledge.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;We&rsquo;re very, very, very early in the path to billions of agents that are taking action on our behalf on a constant basis,&rdquo; Bryce says.</p>
+
+
+
+<p class="wp-block-paragraph">Companies remain cautious about what happens when they give an agent access and something goes wrong, which won&rsquo;t come as a surprise if you&rsquo;ve recently spent any time talking to big enterprises and their customers.</p>
+
+
+
+<p class="wp-block-paragraph">For now, Bryce sees this as a positive, because it may just allow the community enough time to harden projects like OpenShell and Agent Substrate before enterprises put agents to work more broadly.</p>
+<p>The post <a href="https://thenewstack.io/cncf-bryce-ai-agents/">AI agents were all over KubeCon. Production is another story</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
