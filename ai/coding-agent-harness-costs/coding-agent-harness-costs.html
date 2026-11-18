@@ -1,0 +1,79 @@
+<!DOCTYPE html><html><head><title>Your AI coding agent could cost 5x more depending on the harness, benchmark finds</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/a00e13bc-wildan-kurniawan-kb5ndzxgzo8-unsplash-1024x712.jpg">
+<link rel="canonical" href="https://thenewstack.io/coding-agent-harness-costs/"></head><body><article><img width="1024" height="712" src="https://cdn.thenewstack.io/media/2026/11/a00e13bc-wildan-kurniawan-kb5ndzxgzo8-unsplash-1024x712.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Illustration of mmoney being sqeezed by human hands" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/a00e13bc-wildan-kurniawan-kb5ndzxgzo8-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">The same AI model can cost up to five times more to run depending on the coding agent harness it&rsquo;s paired with, according to a new benchmark that tested 22 configurations across five open-weight models.</p>
+
+
+
+<p class="wp-block-paragraph">Runta and <a href="https://www.baseten.co/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Baseten</a> ran those combinations 27,280 times for <a href="https://runta.com/blog/introducing-frontierharness-eval-v1-1/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">FrontierHarness Eval v1.1</a>, consuming roughly 83 billion tokens in the process.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Nearly 65% of estimated inference spending went to runs that failed verification or timed out.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The model itself accounted for 92.8% of the cost differences, but the harness still made a considerable difference. One configuration could be the cheapest option for one model and among the most expensive for another, adding another wrinkle for developers looking to <a href="https://thenewstack.io/agent-harness-token-costs/" class="local-link">cut coding-agent costs by changing harnesses</a> or swapping in a cheaper model. Nearly 65% of estimated inference spending went to runs that failed verification or timed out.</p>
+
+
+
+<h2 id="h-rankings-flip-with-the-model" class="wp-block-heading">Rankings flip with the model</h2>
+
+
+
+<p class="wp-block-paragraph">The benchmark covered 22 coding-agent harness configurations across five models served through Baseten, including GLM-5.3, GLM-5.3 Flash, DeepSeek V4.1 Flash, Muse Spark Open, and Kimi-K3. Each configuration ran 62 terminal-based tasks four times per model, with pass rates, inference costs and execution times recorded for comparison.</p>
+
+
+
+<p class="wp-block-paragraph">Codex CLI ranked first for lowest average cost per task with GLM-5.3 but dropped to 16th out of 22 configurations with Kimi-K3. DeepSeek Harness Creator showed an even larger change, ranking first with Muse before falling to 21st with GLM-5.3 Flash.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Across the five models, harnesses shifted a median of 11 ranking positions when the model changed, while costs varied by as much as fivefold even when the model stayed the same.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Across the five models, harnesses shifted a median of 11 ranking positions when the model changed, while costs varied by as much as fivefold even when the model stayed the same. The biggest difference came with DeepSeek, where Cline CLI cost five times as much as OpenCode v1 but delivered a pass rate only two percentage points higher.</p>
+
+
+
+<p class="wp-block-paragraph">The researchers also shuffled the trials within each model 300 times to see whether random variation could explain the cost differences. The gaps in the actual results were larger than those in the shuffled trials, with a reported p-value of 0.003.</p>
+
+
+
+<h2 id="h-failed-runs-eat-the-budget" class="wp-block-heading">Failed runs eat the budget</h2>
+
+
+
+<p class="wp-block-paragraph">Failed runs accounted for 52.7% of estimated inference spending, with timeouts adding another 11.8%. Just 35.5% went toward successful runs. Those costs are based on Baseten&#8217;s published rates, but they put a price on a familiar problem with <a href="https://thenewstack.io/real-swe-coding-benchmark/" class="local-link">coding agents struggling to complete difficult tasks</a>.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Among the five best-value harnesses, 68% to 82% of unsuccessful runs ended with the agent submitting a final answer that failed verification rather than timing out. </p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Among the five best-value harnesses, 68% to 82% of unsuccessful runs ended with the agent submitting a final answer that failed verification rather than timing out. The researchers also found 216 instances of reward hacking in the execution logs, including 163 involving online lookups. All received zero scores.</p>
+
+
+
+<h2 id="h-steps-not-prompts-drive-cost" class="wp-block-heading">Steps, not prompts, drive cost</h2>
+
+
+
+<p class="wp-block-paragraph">Runta looked at whether prompt size, tool count, cache hit rates, or agent steps had the biggest impact on cost. Step count was the only factor with a statistically significant correlation to cost per successful task, at 0.51.</p>
+
+
+
+<p class="wp-block-paragraph">Mini-SWE-agent showed how <a href="https://thenewstack.io/agentic-ai-token-costs/" class="local-link">multi-step agent execution can drive up token costs</a>, starting with the smallest prompt in the benchmark at 882 tokens but averaging 38 steps per successful task and ranking 17th out of 22 configurations for cost per pass.</p>
+
+
+
+<p class="wp-block-paragraph">The five best-value harnesses relied heavily on shell commands, which made up 61% to 93% of their tool calls, and rarely used subagents, or context summarization. Runta didn&#8217;t test those design choices separately, however, so the results don&#8217;t establish whether the simpler setups were responsible for the lower costs.</p>
+<p>The post <a href="https://thenewstack.io/coding-agent-harness-costs/">Your AI coding agent could cost 5x more depending on the harness, benchmark finds</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><title>OpenAI’s own tests show GPT-6.2 Astra is twice as likely to hide coding failures</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/448cf0b1-rizki-kurniawan-i0dc7f_riq0-unsplash-1024x571.jpg">
+<link rel="canonical" href="https://thenewstack.io/astra-hides-coding-failures/"></head><body><article><img width="1024" height="571" src="https://cdn.thenewstack.io/media/2026/11/448cf0b1-rizki-kurniawan-i0dc7f_riq0-unsplash-1024x571.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Robot covering human&#039;s eyes while at the computer" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/448cf0b1-rizki-kurniawan-i0dc7f_riq0-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph"><strong>OpenAI&rsquo;s new GPT-6.2 Astra is nearly twice as likely as its predecessor</strong> to leave users unaware of problems that prevented it from finishing a coding task, according to the company&rsquo;s own safety evaluations. Developers building autonomous agents could encounter the same problem, since OpenAI has added a mitigation to Codex that isn&#8217;t automatically applied to direct API requests.</p>
+
+
+
+<p class="wp-block-paragraph">In its <a href="https://deploymentsafety.openai.com/gpt-6-2-astra-sol/targeted-cases" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">GPT-6.2 system card</a>, published Tuesday alongside the release of GPT-6.2 Astra and GPT-6.2 Sol, OpenAI reported that Astra failed to disclose a known obstacle in 22.28% of evaluated coding tasks, compared with 11.09% for GPT-6 Astra.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">An agent may write better code without telling the developer when it couldn&rsquo;t finish the job.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">The copmany says both models perform better on demanding tasks while using fewer output tokens, but those improvements don&#8217;t necessarily make them more reliable at reporting failures. An agent may write better code without telling the developer when it couldn&#8217;t finish the job.</p>
+
+
+
+<p class="wp-block-paragraph"><em>The New Stack</em> has asked OpenAI whether it plans to extend the Codex mitigation to API developers and how the additional instructions affect the models&#8217; failure-reporting behavior.</p>
+
+
+
+<h2 id="h-inside-the-blocker-deception-test" class="wp-block-heading">Inside the blocker deception test</h2>
+
+
+
+<p class="wp-block-paragraph">OpenAI measured the behavior with an internal evaluation called Blocker Deception, which gives models realistic coding assignments before deliberately introducing obstacles that make the requested work impossible to finish as specified.</p>
+
+
+
+<p class="wp-block-paragraph">In some runs, the evaluation removes a source file the agent was supposed to modify. In others, it disables a tool needed to build the project. The evaluation then checks whether the model tells the user what happened or leaves the obstacle out of its final response.</p>
+
+
+
+<h2 id="h-the-caveats-astra-leaves-out" class="wp-block-heading">The caveats Astra leaves out</h2>
+
+
+
+<p class="wp-block-paragraph">The company acknowledges the regression and says it is still investigating the cause. One possible explanation is that training the models to give shorter answers with fewer caveats may have made them less likely to report problems that prevented them from completing a task. OpenAI cautions that the evaluation was designed to trigger this behavior, so the results don&#8217;t necessarily reflect how often Astra misleads users in production.</p>
+
+
+
+<p class="wp-block-paragraph">A separate evaluation, Broken Search Tool, identified a similar problem. The model receives questions requiring information retrieval while the necessary search capability is disabled. GPT-6.2 Astra failed to acknowledge the missing requirement or unavailable tool in 23% of cases, compared with 7.58% for GPT-6 Astra and 1% for GPT-6.1 Terra.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Developers can check the logs, test results, and git diff &hellip; but they shouldn&rsquo;t have to dig through an entire session to find out that something failed.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Developers can check the logs, test results, and git diff to see what an agent actually did, but they shouldn&#8217;t have to dig through an entire session to find out that something failed. If an agent says it finished the job without mentioning a missing dependency or a failed build, that work could make it through review without anyone realizing there&#8217;s a problem. It&#8217;s another example of the <a href="https://thenewstack.io/ai-code-confidence-gap/" class="local-link">code confidence gap</a> that becomes harder to manage as agents take on more work across a repository.</p>
+
+
+
+<h2 id="h-the-fix-the-api-misses" class="wp-block-heading">The fix the API misses</h2>
+
+
+
+<p class="wp-block-paragraph">OpenAI says it developed a prompt-based intervention that substantially reduced the rate of omitted blockers in evaluations of both Astra and Sol. The company incorporated that intervention into the standard Codex developer prompt at launch, but it does not automatically apply the same instructions to direct API requests.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Codex users get the updated prompt, but developers building their own agents through the API don&rsquo;t.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Codex users get the updated prompt, but developers building their own agents through the API don&#8217;t. OpenAI hasn&#8217;t shown whether adding similar instructions to a custom harness would produce the same results.</p>
+
+
+
+<p class="wp-block-paragraph">The harness can&#8217;t take the model&#8217;s completion summary at face value because it needs to verify the diff, check test results, and confirm the expected artifacts exist before marking a task complete.</p>
+
+
+
+<p class="wp-block-paragraph">These <a href="https://thenewstack.io/cli-ide-ai-verification/" class="local-link">verification loops</a> are especially important for unattended agents, where a failed step can go unnoticed until someone reviews the work.</p>
+
+
+
+<h2 id="h-performance-up-reporting-down" class="wp-block-heading">Performance up, reporting down</h2>
+
+
+
+<p class="wp-block-paragraph">The disclosure comes as OpenAI promotes improvements in coding performance and efficiency across both new models.</p>
+
+
+
+<p class="wp-block-paragraph">In its <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">launch announcement</a>, OpenAI said GPT-6.2 Sol came within 0.5 points of Astra on Cognition&rsquo;s FrontierCode 2.0 coding benchmark at approximately one-fifth the estimated cost per task, with both models running at maximum effort.</p>
+
+
+
+<p class="wp-block-paragraph">In testing shared with <em>The New Stack </em>by OpenAI, Replit reported that GPT-6.2 Sol passed more tests, used 62% fewer output tokens and ran nearly three times as fast as GPT-6.1 Sol when building software from scratch.</p>
+
+
+
+<p class="wp-block-paragraph">Faster execution and lower inference costs make these models appealing for automated coding, but OpenAI&#8217;s safety tests show that better performance doesn&#8217;t necessarily mean an agent will tell developers when something goes wrong.</p>
+<p>The post <a href="https://thenewstack.io/astra-hides-coding-failures/">OpenAI&#8217;s own tests show GPT-6.2 Astra is twice as likely to hide coding failures</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

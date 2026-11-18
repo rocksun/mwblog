@@ -1,0 +1,99 @@
+<!DOCTYPE html><html><head><title>DeepSeek’s coding agent is too tidy for its own good — and benchmarks are punishing it</title>
+<meta name="author" content="Amanda Caswell"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/ca5aed9f-handrush-supply-i8sfnhlttdo-unsplash-1024x724.jpg">
+<link rel="canonical" href="https://thenewstack.io/deepseek-harness-cleanup-benchmark/"></head><body><article><img width="1024" height="724" src="https://cdn.thenewstack.io/media/2026/11/ca5aed9f-handrush-supply-i8sfnhlttdo-unsplash-1024x724.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Cleaning up" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/ca5aed9f-handrush-supply-i8sfnhlttdo-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">DeepSeek&rsquo;s open-source coding agent is losing points on a major benchmark for a habit developers usually treat as good practice: cleaning up after itself.</p>
+
+
+
+<p class="wp-block-paragraph">The problem surfaced when Hugging Face harness optimization researcher <a href="https://www.linkedin.com/in/joelniklaus/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jo&euml;l Niklaus</a> added <a href="https://huggingface.co/spaces/joelniklaus/harness-leaderboard" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">DeepSeek Harness</a> to his coding-agent leaderboard, which compares ten harnesses running the same underlying models. </p>
+
+
+
+<p class="wp-block-paragraph">DeepSeek Harness is statistically tied for first across the board&rsquo;s five scored evaluations, yet on Terminal-Bench alone it drops to sixth, because one built-in behavior caused it to fail tasks that competing agents completed.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">DeepSeek Harness is statistically tied for first across the board&rsquo;s five scored evaluations, yet on Terminal-Bench alone it drops to sixth&hellip;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&ldquo;One habit explains much of that gap,&rdquo; <a href="https://x.com/joelniklaus/status/2120540528886603949" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Niklaus writes on X</a>, referring to the agent&rsquo;s weaker Terminal-Bench performance.</p>
+
+
+
+<h2 id="h-a-tidy-habit-backfires" class="wp-block-heading">A tidy habit backfires</h2>
+
+
+
+<p class="wp-block-paragraph">DeepSeek Harness shuts down background processes when a task finishes, which is a problem for three Terminal-Bench tasks that need those processes to keep running. </p>
+
+
+
+<p class="wp-block-paragraph">Niklaus found that DeepSeek Harness passed just two of 36 attempts using DeepSeek-V4.1-Flash and GLM-5.3-Flash, while OpenCode, Pi, and Nous Research&rsquo;s Hermes Agent passed all 36 on those same tasks.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">DeepSeek Harness passed just two of 36 attempts &hellip; while OpenCode, Pi and Nous Research&rsquo;s Hermes Agent passed all 36 on those same tasks.</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">That behavior knocked between 1.5 and 1.7 percentage points off DeepSeek Harness&rsquo;s scores. On DeepSeek-V4.1-Flash at high reasoning effort, it was enough to account for more than the entire 1.3-point gap between DeepSeek Harness and the leader.</p>
+
+
+
+<p class="wp-block-paragraph">The <a href="https://huggingface.co/spaces/joelniklaus/harness-leaderboard/blob/main/CHANGELOG.md" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">leaderboard&rsquo;s changelog</a> confirms that the shutdown behavior belongs to DeepSeek Harness itself and the results were left unchanged.</p>
+
+
+
+<p class="wp-block-paragraph">DeepSeek&rsquo;s <a href="https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/jobs/jobs-local/README.md" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">engineering documentation</a> describes its local job registry as a deliberately short-lived component. &ldquo;Choose it when jobs should live in the harness process and die with it,&rdquo; it states. Jobs that need to survive restarts or run across processes require a different backend.</p>
+
+
+
+<h2 id="h-same-model-different-results" class="wp-block-heading">Same model, different results</h2>
+
+
+
+<p class="wp-block-paragraph">Niklaus launched his <a href="https://huggingface.co/spaces/joelniklaus/harness-leaderboard" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Harness Leaderboard</a> on November 5 after running 28,849 trials across its original nine harnesses using three open models, DeepSeek-V4.1-Flash, GLM-5.3-Flash and Flint. </p>
+
+
+
+<p class="wp-block-paragraph">He kept the model, provider, and reasoning effort constant while swapping harnesses, and the differences were substantial. Mini-swe-agent, a relatively simple bash-based agent, completed 51.4% of tasks compared with 27.3% for OpenClaw, although several other harnesses were statistically tied with the leader.</p>
+
+
+
+<p class="wp-block-paragraph">Costs varied just as dramatically. Pi achieved a 49.4% solve rate at $0.29 per solved task, while OpenCode cost $3.35 per solved task in the initial evaluation. Hugging Face co-founder <a href="https://www.linkedin.com/in/thom-wolf/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Thomas Wolf </a>sums up the findings <a href="https://x.com/Thom_Wolf/status/2118863053001531676" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">on X</a> as &ldquo;same open model, different harness => very different results.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph"><em>The New Stack</em> contacted DeepSeek for comment on the findings but had not received a response by publication time.</p>
+
+
+
+<h2 id="h-orchestration-isn-t-a-guarantee" class="wp-block-heading">Orchestration isn&rsquo;t a guarantee</h2>
+
+
+
+<p class="wp-block-paragraph">Y Combinator President and CEO <a href="https://www.linkedin.com/in/garrytan/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Garry Tan</a> has been running <a href="https://github.com/garrytan/g-harness-evals" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">separate evaluations</a> using Claude Opus 5.5 and GPT-6.1 Sol.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;<a href="https://github.com/garrytan/g-harness-evals?tab=readme-ov-file#what-we-found" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Harnesses differed more on cost than on how often they solved tasks</a>,&rdquo; the researchers write. On multi-user tasks, OpenClaw running Opus 5.5 cost roughly twice as much per solved task as the other Opus harnesses, largely because it repeatedly sent context with each request.</p>
+
+
+
+<p class="wp-block-paragraph">The project also tested Tan&rsquo;s gstack workflow skills. In 46 sessions, Opus 5.5 read the instructions but never followed the prescribed steps, and the attempts cost roughly twice as much. </p>
+
+
+
+<p class="wp-block-paragraph">The researchers note that the tasks were relatively easy, so it&rsquo;s unclear whether following the instructions would have improved the results. The results make a case for testing the harness just as carefully as the model.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">The results make a case for testing the harness just as carefully as the model.</p>
+</blockquote>
+<p>The post <a href="https://thenewstack.io/deepseek-harness-cleanup-benchmark/">DeepSeek’s coding agent is too tidy for its own good — and benchmarks are punishing it</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

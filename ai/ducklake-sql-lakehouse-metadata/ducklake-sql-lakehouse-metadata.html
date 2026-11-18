@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><head><title>DuckLake 1.1 solves the absurd complexity of data lakes at AI scale</title>
+<meta name="author" content="Jennifer Riggins"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/b52163ee-for-thumbnail-25-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/ducklake-sql-lakehouse-metadata/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/b52163ee-for-thumbnail-25-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="In this episode of The New Stack Podcast, Pedro Holanda, lead DuckLake developer and principal engineer at DuckLake, discusses how the open-source table format reduces complexity, improves performance, and makes large-scale data management more accessible." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/b52163ee-for-thumbnail-25.png" />
+<p class="wp-block-paragraph">How much simpler could a data lakehouse get if an ordinary SQL database kept track of its files? That&rsquo;s the question in this episode of <em>The New Stack </em>podcast.</p>
+
+
+
+<p class="wp-block-paragraph">DuckLake is an open-source table lakehouse format created by Amsterdam-based <a href="https://duckdb.org" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">DuckLabs</a> that acts as a traffic cop for data management by storing table metadata inside a standard SQL database, rather than scattering manifest files across object storage. Unlike traditional table formats, DuckLake treats lakehouse metadata as a relational database problem. These advanced data lake features, served by Parquet files and SQL databases, reduce the traditional lakehouse complexity.&nbsp;</p>
+
+
+<div class="youtube-embed-wrapper"><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/udq3cBHj9k8?si=VfQfPutimg1A-1r0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+
+<p class="wp-block-paragraph">In October, DuckLake 1.1 launched alongside <a href="https://duckdb.org/2026/10/21/announcing-duckdb-200" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">DuckDB 2.0.0 LTS</a>. <em>The New Stack</em> sat down with <a href="https://www.linkedin.com/in/pdet/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Pedro Holanda</a>, lead DuckLake developer and principal engineer at DuckLabs at their Amsterdam headquarters, to talk about the launch. Holanda has contributed to the <a href="https://github.com/duckdb/duckdb" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">DuckDB open-source project</a> since it was an early research prototype, and shares the full evolution of DuckLake to our conversation.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;These lakehouse formats exist so people can exchange their database systems without having to do migrations,&rdquo; Holanda tells <em>The New Stack</em>. Because of the complexity, &ldquo;you need a database system to keep track of which table has its last version.&rdquo;</p>
+
+
+<iframe loading="lazy" height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/25d03905-a3d6-4f90-a86e-f663c7ac3ef1?dark=true"></iframe>
+
+
+<p class="wp-block-paragraph">DuckLake applies decades of research, Holanda says, in order to reduce files and therefore complexity at a time of rapid data growth, taking advantage of how everyone who uses database systems is familiar with SQL and how schemas work.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;The simplicity is the way you fetch your data,&rdquo; Holanda says of DuckLake. &ldquo;You&rsquo;re going to issue queries somewhere. The server is going to answer these questions back, and you know exactly which Parquet files you have to read. So the Parquet files don&rsquo;t change. Just the catalog.&rdquo;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Maintainers of your data lake often have many maintenance tasks to perform. If you end up with many files, he says, DuckLake lets you glue them into one file to reduce the number of requests. This can also be done across multiple snapshots, further reducing the number of files. It also solves the &ldquo;small files problem&rdquo; in streaming data lakes and lakehouses by using inlining and flushing.</p>
+
+
+
+<p class="wp-block-paragraph">Whereas for traditional data lakes, across multiple data sources being inserted at a time, &ldquo;you end up with so many files, so when you have to query it, you&rsquo;re going to have to traverse a bunch of metadata files just to figure out which Parquet files you need to read, and then you&rsquo;re going to have a bunch of Parquet files to read as well,&rdquo; Holanda says, slowing everything down and frustrating the developer.</p>
+
+
+
+<p class="wp-block-paragraph">DuckLake is known to be fast, simple to use, and not requiring massive server clusters to run. Part of that comes from Parquet being very similar to DuckDB storage: both are columnar and organized in row groups, which keeps the massaging step to a minimum.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;One thing that we realized when we were building DuckLake is that, &#8216;Hey, we have a database system now, we have a catalog; what if we do this radical idea of storing data on tables?'&#8221; he says. &ldquo;With DuckLake, you get your actual data representation as a table in a catalog, and we call this inlining.&rdquo;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;With DuckLake, you get your actual data representation as a table in a catalog, and we call this inlining.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">During Amazon&rsquo;s Q3 earnings call in late October, CEO Andy Jassy called out the complexity of moving data between data stores and analytics engines, especially as AWS customers&#8217; data generation continues to increase. Amazon is famous for dogfooding, and Jassy pointed to DuckDB&rsquo;s solution to this complexity as a reason for <a href="https://aws.amazon.com/blogs/big-data/aws-and-ducklabs-building-the-future-of-analytics-together/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">its DuckLabs acquisition</a>.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;With our acquisition of DuckLabs, DuckDB will become the universal SQL dialect of AWS storage and analytics, simplifying data processing with a modern analytics engine that is fast, simple to use and ubiquitous, and where customers will be able to write SQL queries once and then execute using any AWS analytics service,&rdquo; Jassy said. &ldquo;For the first time in analytics, customers will have zero migration or portability costs between query engines. This is a big deal, and you can imagine how it will also help agents do efficient querying as well.&rdquo; </p>
+
+
+
+<p class="wp-block-paragraph">DuckDB and DuckLake remain free and open source under the MIT license, overseen by the independent DuckDB Foundation.</p>
+
+
+
+<p class="wp-block-paragraph">Overall, this recent DuckLake release pairs new features with more than 200 bug fixes for quality and stability, and it runs natively in DuckDB.</p>
+<p>The post <a href="https://thenewstack.io/ducklake-sql-lakehouse-metadata/">DuckLake 1.1 solves the absurd complexity of data lakes at AI scale</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

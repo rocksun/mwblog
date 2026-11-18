@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><title>DuckDB has an answer to “bloated” database messages</title>
+<meta name="author" content="Jennifer Riggins"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/dcee749a-for-thumbnail-26-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/duckdb-quack-database-protocol/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/dcee749a-for-thumbnail-26-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="In this episode of The New Stack Podcast, Guillermo Sánchez Dionis, product lead at DuckLabs, explains how Quack addresses the limitations of traditional database protocols, which often introduce unnecessary overhead and inefficient data serialization." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/dcee749a-for-thumbnail-26.png" />
+<p class="wp-block-paragraph"><strong>Older database protocols were built before big data.</strong> Some still send results row by row, repeating details like column names and types with every row. The result, says <a href="https://ducklabs.com/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">DuckLabs</a> product team lead <a href="https://www.linkedin.com/in/guillermo-s%C3%A1nchez-dionis/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Guillermo S&aacute;nchez Dionis</a>, is &ldquo;quite a bloated message.&rdquo; That overhead adds up when you&rsquo;re moving large query results.</p>
+
+
+
+<p class="wp-block-paragraph">DuckDB&rsquo;s answer is <a href="https://duckdb.org/quack/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Quack</a>, an HTTP-based protocol that streams query results in batches of column data as DuckDB produces them. It was previewed in May and was released in October as part of DuckDB 2.0.0 LTS.</p>
+
+
+<div class="youtube-embed-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/qLPUsdsFjJs?si=KeIFhcIZ4hS6jfMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+
+<p class="wp-block-paragraph">On this latest episode of <em>The New Stack</em> podcast, recorded at DuckLabs headquarters in Amsterdam, S&aacute;nchez Dionis explains how that design lets developers start working with results while a query is still running.</p>
+
+
+<iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/7e949b2f-4e35-4b7c-9e0f-ba93f2d085af?dark=true"></iframe>
+
+
+<p class="wp-block-paragraph">A database protocol is a formal set of rules and message formats that dictates how a client application communicates with a database server. It acts as a specialized language that lets a software application securely send SQL queries, receive structured data tables, and manage transactions over a network. It handles connection and authentication, query packaging, data serialization, and error management.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">But according to S&aacute;nchez Dionis, most protocols were designed pre-big data for other types of systems, with serialized rows rather than columns. They also add a lot of unnecessary data, he says, like column types and column names per row.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;It becomes quite a bloated message. That already makes the protocol not only not good for analytical systems, but it&rsquo;s also quite heavy,&rdquo; he contends. As protocols evolved for analytical systems, they did start using columns, but &ldquo;they were still doing things like serializing one value at a time and other things that are really not efficient. Modern systems are trying to converge on using vectorized execution to be able to serialize more values at a time and trying to use more efficient representations of columnar data formats to send over the wire.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">All while the Quack protocol, he says, is aiming for a different, highly efficient approach.</p>
+
+
+
+<p class="wp-block-paragraph">Quack is DuckDB&#8217;s HTTP-based client/server protocol, with its first production release shipping in DuckDB 2.0.0 on Oct. 21. Not only does this signal Quack moving out of the preview stage, but the protocol now offers certain developer-friendly features:</p>
+
+
+
+<ul class="wp-block-list">
+<li>The CONNECT statement allows developers to attach to and query a remote Quack server via standard SQL commands.</li>
+
+
+
+<li>The new -serve CLI argument instantly starts a Quack server instance from the command line, and -connect connects to one.</li>
+
+
+
+<li>Multiple clients can write to the same database concurrently, with transactions handled under DuckDB&#8217;s multi-version concurrency control (MVCC) isolation.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Quack uses DuckDB&rsquo;s data chunks &mdash; which is our columnar representation of data. We also serialize in a very efficient manner because we are a vectorized engine. We also make sure that we send the results in a streaming fashion,&rdquo; S&aacute;nchez Dionis explains.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;One of the most important things is tightly coupling the engine. Once you start producing results, instead of waiting for the query execution to end and then serializing all of the results at once, you serialize and send results as they are emitted by the engine. Therefore, the client can keep consuming results without having to stop the engine.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">For developers, he says, that means they don&rsquo;t have to do anything.&nbsp;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;I think the biggest advantage that you will see is you will have a very small memory footprint&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;You run a query from the comfort of your laptop, and you just get streaming results back. I think the biggest advantage that you will see is you will have a very small memory footprint,&rdquo; he says. &ldquo;What&rsquo;s cool about Quack is that you install and load it wherever you are. You can also create another client on the [same] laptop with the Quack extension, and they will communicate with each other.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Then, the scale of how many DuckDB servers is up to you and your team. And the overhead of running it on that server is next to none, S&aacute;nchez Dionis continues, as it&#8217;s Quack&#8217;s biggest efficiency gain yet.</p>
+
+
+
+<p class="wp-block-paragraph">More Quack improvements are expected in upcoming DuckDB 2.0 patch releases, as the DuckLabs team looks to build stability on the server side.</p>
+<p>The post <a href="https://thenewstack.io/duckdb-quack-database-protocol/">DuckDB has an answer to “bloated” database messages</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html><html><head><title>Web search for agents is here: Why ranking still decides the answer</title>
+<meta name="author" content="Bonnie Chase"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/3302ce70-planet-volumes-gcebcjvfzcs-unsplash-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/ai-agent-search-ranking/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/3302ce70-planet-volumes-gcebcjvfzcs-unsplash-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Abstract digital spectrum of purple and orange vertical lines on black, symbolizing AI search relevance." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/3302ce70-planet-volumes-gcebcjvfzcs-unsplash.jpg" /><p class="wp-block-paragraph">AI agents have had a URL problem for a while. When an agent needs current information but has no search tool, it often makes up the web address it thinks the answer lives at. It might guess something like <code>docs.example.com/v4.2/auth</code>, try to load it, and get a “page not found” error because the page doesn’t exist. Then it either keeps guessing or falls back on outdated information from its training.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">“Live web search gives AI agents fresh pages. Deciding which ones to trust over your own data is still a ranking problem.”</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Infrastructure providers have noticed. In October, <a href="https://www.infoq.com/news/2026/10/cloudflare-web-search-api/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">InfoQ reported</a> that Cloudflare opened a <a href="https://thenewstack.io/deepseek-web-search-api/" data-type="link" data-id="https://thenewstack.io/deepseek-web-search-api/" class="local-link">beta Web Search API</a> in its AI Gateway. Agents can call several search providers through one interface and get live results back with source links, logging, and access controls attached. Cloudflare’s reasoning was refreshingly direct: Without search, agents tend to guess.</p>
+
+
+
+<p class="wp-block-paragraph">This is a welcome change, and live search will probably be a default agent tool within a year, but it solves only the finding part of the problem. Once fresh pages are in front of an agent, something still has to decide which of those pages, and which of your own documents, the agent should actually rely on. That decision lives in your retrieval layer.</p>
+
+
+
+<h2 id="h-the-problem-two-pools-of-evidence-one-context-window" class="wp-block-heading">The problem: two pools of evidence, one context window</h2>
+
+
+
+<p class="wp-block-paragraph">An agent working inside a company rarely answers from the web alone. It also has the data that makes it useful to that company: product catalogs, documentation, contracts, support history, account records,s and permissions. With web search wired in, every step of a task can now pull from two very different pools.</p>
+
+
+
+<figure class="wp-block-table"><div class="table-scroll-wrap"><table class="has-fixed-layout"><tbody><tr><td></td><td><strong>Web results</strong></td><td><strong>Internal data</strong></td></tr><tr><td><strong>Freshness</strong></td><td>Often hours or days old</td><td>Can be months out of date without anyone noticing</td></tr><tr><td><strong>Quality</strong></td><td>Uneven: official docs next to forum threads</td><td>Curated, but written for a past state of the product</td></tr><tr><td><strong>Structure</strong></td><td>Mostly unstructured text</td><td>Mix of text, metadata and structured records</td></tr><tr><td><strong>Authority</strong></td><td>Has to be inferred from the source</td><td>Known, but rarely stored as a field</td></tr><tr><td><strong>Access control</strong></td><td>Public</td><td>Per customer, region, contract or role</td></tr></tbody></table></div></figure>
+
+
+
+<p class="wp-block-paragraph">The agent has to reconcile these, often several times within one task. And the questions it needs answered are ones a search API was never built to handle. When yesterday’s vendor changelog contradicts an internal knowledge base article from last spring, which one wins? Does this result apply to this customer’s version and region? Is the agent even allowed to show it?</p>
+
+
+
+<p class="wp-block-paragraph">Those are ranking and filtering decisions. They depend on your data and business rules, so you have to make them where both are available.</p>
+
+
+
+<h2 id="h-why-concatenating-results-breaks-in-production" class="wp-block-heading">Why concatenating results breaks in production</h2>
+
+
+
+<p class="wp-block-paragraph">The simplest integration is to run a web search, run an internal search, append one list to the other, and let the model sort it out. It may work well at first, but once it’s running against growing data and traffic, it tends to fail in a few predictable ways:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Conflicts go unresolved.</strong> The model sees two confident sources that disagree and has no signal for which is newer or more authoritative, so it picks one or blends them into an answer that matches neither. </li>
+
+
+
+<li><strong>Staleness hides.</strong> A 3-month-old knowledge base article that matches the user’s wording almost exactly will beat a 4-day-old changelog on similarity alone. Nothing in the embedding says the article is out of date. </li>
+
+
+
+<li><strong>Permissions are applied too late.</strong> If access rules run after retrieval, restricted content may already be in the prompt. If they run crudely, useful results get dropped along with sensitive ones. </li>
+
+
+
+<li><strong>Cost and latency compound.</strong> A person runs one search and reads the results. An agent can trigger a dozen or more retrieval calls in a single task as it plans, checks, and refines. Sending every candidate to the model on every call adds up quickly, and more context doesn’t reliably produce better answers.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">A bigger context window doesn’t fix any of these. Sending the model fewer, better-chosen pieces of evidence does. </p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">“A bigger context window doesn’t fix any of these. Sending the model fewer, better-chosen pieces of evidence does.”</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Clarm, a Y Combinator company that builds sales and support agents for open-source software companies, <a href="https://blog.vespa.ai/agentic-ai-powered-sales-for-developers-with-vespa/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">hit this early</a>. Its founder, Marcus Storm-Mollard, said the team realized “search, not generation, was the real problem to solve.” Generating an answer was the easy part. Finding the right information to ground it in was the hard part, which is why Clarm runs text search, vector similarity, and structured filters through a single query instead of stitching separate stores together.</p>
+
+
+
+<h2 id="h-what-changes-when-agents-search-across-sources" class="wp-block-heading">What changes when agents search across sources</h2>
+
+
+
+<p class="wp-block-paragraph">When agents combine live web results with internal data, they need to account for different retrieval methods, metadata, permissions, and ranking signals. Four design considerations stand out.</p>
+
+
+
+<h3 id="h-1-retrieve-across-methods-in-one-query-nbsp" class="wp-block-heading">1. Retrieve across methods in one query </h3>
+
+
+
+<p class="wp-block-paragraph">Keyword matching catches exact product names, error codes, and version strings, which embeddings are notoriously bad at. Vector search catches paraphrases and intent. Structured filters enforce hard constraints like customer, version, and entitlement.  </p>
+
+
+
+<p class="wp-block-paragraph">Within a single indexed collection, hybrid retrieval can combine keyword matching, vector similarity, and structured filters. That does not, by itself, fuse results from an external web search API with results from an internal index. The two-source integration requires a separate design decision.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; gutter: false; title: ; notranslate">
+select * from evidence where
+  ({targetHits: 200}nearestNeighbor(embedding, q) or userQuery())
+  and visibility contains "customer"
+  and product_version contains "4.2"
+</pre></div>
+
+
+<p class="wp-block-paragraph">The broader lesson is that retrieval systems need to handle lexical matching, semantic similarity, and filtering together. These requirements matter regardless of the search platform chosen. Perplexity hit this wall when it set out to build search in-house for its answer engine. Its CEO, Aravind Srinivas, has summed up the company’s approach as “first solve search, then solve everything else.” But when the team <a href="https://vespa.ai/case-studies/why-perplexity-chose-vespa-for-ai-search/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">evaluated existing tools</a>, it found that vector databases couldn’t reliably support even simple Boolean filters, while traditional search backends offered only primitive semantic ranking. It needed lexical retrieval, semantic retrieval, and filtering in one engine, at consumer scale, and chose Vespa to build it.</p>
+
+
+
+<h3 id="h-2-rank-on-more-than-similarity" class="wp-block-heading">2. Rank on more than similarity</h3>
+
+
+
+<p class="wp-block-paragraph">Relevance to the query is only one signal. Agents also need to weigh freshness, source authority, and business rules together: official documentation over forum threads, last week’s changelog over last year’s wiki page, the customer’s contracted version over the latest release.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://docs.vespa.ai/en/ranking/phased-ranking.html" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Multiphase ranking</a> is a practical way to do this. A cheap first phase scores thousands of candidates on a blend of signals, and a more expensive learned model reorders the few that remain: </p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; gutter: false; title: ; notranslate">
+rank-profile agent_evidence {
+    inputs {
+        query(q) tensor&amp;lt;float&gt;(x[384])
+    }
+    rank-properties {
+        freshness(published_at).maxAge: 7776000
+    }
+    first-phase {
+        expression: bm25(body) + closeness(field, embedding) + 0.5 * freshness(published_at) + attribute(source_authority)
+    }
+    second-phase {
+        rerank-count: 100
+        expression: xgboost("evidence-ranker.json")
+    }
+}
+</pre></div>
+
+
+<p class="wp-block-paragraph">The important part isn’t the specific weights. It’s that freshness and authority are explicit, inspectable inputs to the score, not something you hope the model infers from the text. (The <code>maxAge</code> setting controls how quickly <a href="https://docs.vespa.ai/en/reference/ranking/rank-feature-configuration.html" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">freshness decays</a>; here it’s 90 days.)</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">“The important part isn’t the specific weights. It’s that freshness and authority are explicit, inspectable inputs to the score, not something you hope the model infers from the text.”</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph"><a href="https://blog.vespa.ai/agent-driven-intelligence-on-vespa-cloud/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Metal AI</a>, which builds an intelligence platform for private equity firms, runs into this with due diligence questionnaires. Firms answer thousands of them from investors, and a model can’t freely generate the answers. They have to come from a bank of responses that legal has already approved, and that bank changes over time and lives in documents and spreadsheets. Similarity alone could easily surface an approved answer that’s been replaced. So Metal indexes the answer bank with recency in mind and ranks freshness alongside semantic similarity, so the agent pulls the current approved answer, not just the closest match. </p>
+
+
+
+<h3 id="h-3-treat-web-results-as-candidates-not-answers" class="wp-block-heading">3. Treat web results as candidates, not answers</h3>
+
+
+
+<p class="wp-block-paragraph">Web search and internal retrieval often return separate result sets, each with its own relevance signals. Simply passing both sets to the model leaves it to reconcile differences in freshness, authority, and relevance. </p>
+
+
+
+<p class="wp-block-paragraph">A more deliberate approach is to evaluate <a href="https://thenewstack.io/building-trust-agentic-rag/" data-type="link" data-id="https://thenewstack.io/building-trust-agentic-rag/" class="local-link">evidence from both sources</a> against a consistent set of criteria before selecting what goes into the prompt. Vespa’s flexible ranking capabilities can support this approach, but the implementation depends on how the external results are integrated into the retrieval pipeline.</p>
+
+
+
+<p class="wp-block-paragraph">Depending on provider terms and system constraints, teams might index permitted external content into a shared search collection or retrieve from separate systems and apply a subsequent fusion or reranking step. There is no universal fusion method. Each option has trade-offs in latency, freshness, score comparability, and operational complexity.</p>
+
+
+
+<h3 id="h-4-hold-up-at-agent-call-volume" class="wp-block-heading">4. Hold up at agent call volume</h3>
+
+
+
+<p class="wp-block-paragraph">This isn’t a hypothetical load pattern. At Metal, AI agents handle <a href="https://blog.vespa.ai/agent-driven-intelligence-on-vespa-cloud/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">95% of retrieval</a>, not people. When someone asks for a portfolio company’s EBITDA, an agent decides which entity types to query (documents, companies, metrics, activities), applies recency and workflow filters, runs the query, and then keeps going, paginating or pulling related entities until it has enough context to answer. <a href="https://blog.vespa.ai/agentic-ai-powered-sales-for-developers-with-vespa/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Clarm sees something similar</a> from the other direction: developers working alongside its agents send thousands of queries a day, in sessions that have run as long as 22 hours.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">“They need the precision and controls of expert search, delivered with the low latency and high throughput of consumer search.”</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Every one of those calls sits on the critical path to the agent’s answer. Retrieval and ranking need to stay predictable under that load, which favors <a href="https://blog.vespa.ai/improving-llm-context-ranking-with-cross-encoders/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">running inference where the data already lives</a> instead of shipping large candidate sets across the network to a separate ranking service. Every network hop you remove is latency you get back on every call, multiplied by every step of the task. Jon Bratseth, Vespa’s CEO, <a href="https://vespa.ai/vespa-voice/#relevance-is-your-moat" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">describes this</a> as the central engineering challenge with agents: They need the precision and controls of expert search, delivered with the low latency and high throughput of consumer search.</p>
+
+
+
+<h2 id="h-a-worked-example-the-support-agent-and-the-changelog" class="wp-block-heading">A worked example: the support agent and the changelog</h2>
+
+
+
+<p class="wp-block-paragraph">Here’s a scenario most support teams will recognize. A customer upgrades a payments SDK from 4.1 to 4.2, their checkout integration stops working, and they open a ticket. </p>
+
+
+
+<p class="wp-block-paragraph">The agent does what you’d want and searches the web first. It finds the SDK’s changelog from four days ago, which deprecates the authentication call the integration relies on, and a forum thread where another developer posted a workaround. Then it searches internally, returning a March knowledge base article that still tells customers to use the old call, the customer’s account record showing they’re on 4.2, and a restricted engineering ticket about the same bug.</p>
+
+
+
+<p class="wp-block-paragraph">Handed to the model as one long list, this is a trap. The knowledge base article matches the customer’s wording almost exactly, so it ranks well on similarity. The forum workaround reads confidently. The engineering ticket contains notes the customer should never see. </p>
+
+
+
+<p class="wp-block-paragraph">When the retrieval layer is doing its job, both sets of evidence go through the same pipeline. In this example, the team uses a shared collection: web results are indexed into Vespa as short-lived documents alongside internal data, retrieved with one query and scored by rank profiles aligned with the same business rules:</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="843" src="https://cdn.thenewstack.io/media/2026/11/1ed4d624-image-1024x843.png" alt="Diagram showing how both web search API data and internal data go through the same pipeline." class="wp-image-22843716"></figure>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph">For this ticket, that means:</p>
+
+
+
+<ol class="wp-block-list">
+<li>The visibility filter excludes the internal ticket at query time, so it never reaches the prompt.</li>
+
+
+
+<li>The version filter keeps only material that applies to the library version on the customer’s account. </li>
+
+
+
+<li>Ranking boosts the changelog for authority and recency, demotes the older knowledge base article, and keeps the forum thread as supporting evidence.</li>
+
+
+
+<li>The model receives three or four well-ordered passages instead of twenty, each with its source.</li>
+</ol>
+
+
+
+<p class="wp-block-paragraph">In this illustrative outcome, the answer cites the changelog, explains the change, and points to the supported fix. The search API helps find fresh evidence, and the retrieval design determines which evidence the agent receives.</p>
+
+
+
+<h2 id="h-before-you-wire-web-search-into-an-agent" class="wp-block-heading">Before you wire web search into an agent</h2>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Store dates and source types on everything.</strong> Internal or external, every document needs a publication date and a source type you can rank on. </li>
+
+
+
+<li><strong>Write signals into the documents themselves.</strong> Keep freshness, authority, and source type on each document instead of in a separate feature store. That way they shape ranking from the first phase, not just when reranking the top results.</li>
+
+
+
+<li><strong>Always include lexical signals.</strong> Even when your embeddings are strong, keyword matching is what catches the exact version numbers, error codes, and product names agents depend on. </li>
+
+
+
+<li><strong>Filter in the query.</strong> Apply permissions at retrieval time, not in post-processing.</li>
+
+
+
+<li><strong>Send passages, not pages.</strong> Rank the chunks within each retrieved document and pass only the most relevant spans to the model, sized to what it actually needs per call.</li>
+
+
+
+<li><strong>Measure retrieval on its own.</strong> Build a test set of real agent questions and track whether the right evidence lands in the top results, separately from how the model phrases the answer. </li>
+
+
+
+<li><strong>Load-test at agent volume.</strong> Benchmark with the number of retrieval calls a typical task actually makes, not one query per request.</li>
+</ul>
+
+
+
+<h2 id="h-final-thoughts" class="wp-block-heading">Final thoughts</h2>
+
+
+
+<p class="wp-block-paragraph">Managed web search for agents removes a real, frustrating failure mode, and more teams will adopt it as it leaves beta. That makes the next question more pressing. When an agent can see the open web and your private data at the same time, the quality of its work depends on how well it chooses between them. </p>
+
+
+
+<p class="wp-block-paragraph">Bratseth puts it more simply: <a href="https://vespa.ai/vespa-voice/#relevance-is-your-moat" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Relevance is your moat</a>. As models get more capable and more widely available, most companies end up with access to roughly the same intelligence. What sets them apart is their own information and how well their systems use it. He breaks relevance into four parts: comprehensiveness, freshness, recall accuracy, and ranking quality. Live web search helps with the first two. The last two are still yours to build.</p>
+
+
+
+<p class="wp-block-paragraph">The model shouldn’t improvise that choice on every call. It belongs in a retrieval layer you can inspect, test, and tune, where you weigh freshness, authority, permissions, and relevance together. Web search helps agents find evidence. Ranking is how they decide what to believe.</p>
+
+
+
+<p class="wp-block-paragraph">For teams building agents, the practical next step is to <a href="https://thenewstack.io/retrieval-ai-agent-architecture/" data-type="link" data-id="https://thenewstack.io/retrieval-ai-agent-architecture/" class="local-link">evaluate retrieval quality</a> separately from answer generation: test whether the right evidence appears, whether permissions are enforced before context assembly, and whether fresh and authoritative sources are prioritized when documents conflict.</p>
+
+
+
+<p class="wp-block-paragraph">If you want to try this pattern, <a href="http://www.vespa.ai" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Vespa</a> combines lexical, vector, and structured retrieval with multi-phase ranking in one pipeline, and it’s available as open source or as a managed service on Vespa Cloud. The <a href="https://github.com/vespa-engine/sample-apps/blob/master/rag-blueprint/README.md" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">RAG Blueprint</a> walks through how to design the schema, retrieval strategy, and ranking phases step by step, and you can start a <a href="https://vespa.ai/free-trial/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">free trial</a> to build it yourself.</p>
+<p>The post <a href="https://thenewstack.io/ai-agent-search-ranking/">Web search for agents is here: Why ranking still decides the answer</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

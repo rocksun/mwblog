@@ -1,0 +1,637 @@
+<!DOCTYPE html><html><head><title>Here’s how to teach AI agents to search like human experts</title>
+<meta name="author" content="Alex Wilhelm"><meta property="og:image" content="https://cdn.thenewstack.io/media/2024/03/46b69bf3-untangle-vector-search-1024x576.jpg">
+<link rel="canonical" href="https://thenewstack.io/ai-agents-retrieval-agent-ready-schema/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2024/03/46b69bf3-untangle-vector-search-1024x576.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="Time lapse photo with tangled lights" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2024/03/46b69bf3-untangle-vector-search.jpg" />
+<p class="wp-block-paragraph"><strong>Agentic retrieval is a hot topic for a reason:</strong> Every company wants to automate work, but they often just are not ready. It&rsquo;s also extremely easy &#8212; and tempting &#8212; to spin up an agent, point it at a mountain of data, and spend heavily on tokens for a lackluster result.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">To unleash agents that can accomplish work, you&rsquo;ll need a different approach. You can&#8217;t throw a more intelligent AI model at a failing agentic workflow without first sorting out how to provide it with better data. It won&rsquo;t do much good.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">So how should companies prepare their information for quick, accurate agentic use? That&rsquo;s what <em>The New Stack</em> will be digging into live with <a href="https://vespa.ai/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Vespa.ai</a>&rsquo;s <a href="https://www.linkedin.com/in/jennyjmorris" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jenny Morris</a> on Wednesday, December 2.</p>
+
+
+
+
+
+    <div class="block--tns-airmeet-webinar">
+        <div
+	id="tns-webinar-frame-content-block-airmeet"
+	class="webinar-content-block"
+	data-section="airmeet"
+>
+	<div class="section-heading">
+		REGISTER NOW FOR THIS WEBINAR
+	</div>
+	<div class="airmeet-container" data-event-id="308b7d00-d323-11f1-88bb-45ffbe021e73">
+		<div class="airmeet-inner">
+
+			<!-- Registration Form: package this  -->
+			<form class="airmeet-webinar-form airmeet-registration-form">
+				<input type="hidden" name="event_id" value="308b7d00-d323-11f1-88bb-45ffbe021e73" />
+				<input type="hidden" name="utm_source" value="" />
+				<input type="hidden" name="utm_medium" value="" />
+				<input type="hidden" name="utm_campaign" value="" />
+				<input type="hidden" name="utm_term" value="" />
+				<input type="hidden" name="utm_content" value="" />
+				<div class="airmeet-questions">
+														<label class="airmeet-question--choices">
+										<p>
+											Which best describes where you are with AI agents that search your data?																							<span class="airmeet-required">*</span>
+																					</p>
+										<select data-question="Which best describes where you are with AI agents that search your data?" name="airmeet-question-0" required>
+											<option value="" selected disabled>Please select</option>
+																							<option value="Exploring the topic, no agent plans yet">Exploring the topic, no agent plans yet</option>
+																							<option value="Prototyping an agent that searches our own data">Prototyping an agent that searches our own data</option>
+																							<option value="Running an agent in production; retrieval quality, latency or cost is a challenge">Running an agent in production; retrieval quality, latency or cost is a challenge</option>
+																							<option value="Evaluating search or retrieval platforms for agent workloads">Evaluating search or retrieval platforms for agent workloads</option>
+																					</select>
+									</label>
+													</div>
+
+				<div class="airmeet-questions airmeet-profile-fields" hidden>
+					<label>
+						<p>Email <span class="airmeet-required">*</span></p>
+						<input type="email" name="email" required />
+					</label>
+					<label>
+						<p>First Name <span class="airmeet-required">*</span></p>
+						<input type="text" name="first-name" required />
+					</label>
+					<label>
+						<p>Last Name <span class="airmeet-required">*</span></p>
+						<input type="text" name="last-name" required />
+					</label>
+					<label>
+						<p>Job Role <span class="airmeet-required">*</span></p>
+						<select name="job-role" required>
+							<option value="" selected disabled>Please select</option>
+							<option value="ai-researcher">AI Researcher / Research Scientist</option>
+							<option value="architect">Architect</option>
+							<option value="business-development">Business Development/Marketing/Sales</option>
+							<option value="community-manager-devrel">Community Manager / Developer Advocate</option>
+							<option value="data-analyst">Data Analyst / Business Intelligence Analyst</option>
+							<option value="data-engineer">Data Engineer</option>
+							<option value="data-scientist">Data Scientist</option>
+							<option value="developer-engineer">Developer / Software Engineer</option>
+							<option value="devops-engineer">DevOps Engineer</option>
+							<option value="educator-instructor">Educator / Instructor</option>
+							<option value="enthusiast-hobbyist">Enthusiast/Hobbyist</option>
+							<option value="founder-investor-vc">Founder / Entrepreneur / Investor / VC</option>
+							<option value="it-management-cio-ciso-cto">IT management, including CIO/CISO/CTO/CDO</option>
+							<option value="machine-learning-engineer">Machine Learning Engineer</option>
+							<option value="ml-ops-engineer">MLOps Engineer / Infrastructure Engineer</option>
+							<option value="product-manager">Product Manager</option>
+							<option value="security-professional">Security / Privacy Professional</option>
+							<option value="statistician-quantitative-analyst">Statistician / Quantitative Analyst</option>
+							<option value="student">Student</option>
+							<option value="sysadmin-ops-sre">SysAdmin/Operations/SRE</option>
+							<option value="technical-writer">Technical Writer</option>
+							<option value="ui-ux-vis-designer">UX / UI Designer / Data Visualization Specialist</option>
+						</select>
+					</label>
+
+					<div class="airmeet-job-more-fields" hidden>
+						<label>
+							<p>Job Level <span class="airmeet-required">*</span></p>
+							<select name="job-level" required>
+								<option value="" selected disabled>Please select</option>
+								<option value="C-Level">C-Level</option>
+								<option value="Founder/Owner">Founder/Owner</option>
+								<option value="VP/Director">VP/Director</option>
+								<option value="Manager/Supervisor">Manager/Supervisor</option>
+								<option value="Mid Level or Senior Non-Managerial Staff">Mid Level or Senior Individual Contributor</option>
+								<option value="Entry Level/Junior Staff">Entry Level or Junior Individual Contributor</option>
+								<option value="Freelancer/Contractor">Freelancer/Contractor</option>
+								<option value="Educator (Teacher, Instructor, Professor)">Educator (Teacher, Instructor, Professor)</option>
+								<option value="Student/Intern">Student/Intern</option>
+								<option value="Other">Other</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</label>
+						<label>
+							<p>Industry <span class="airmeet-required">*</span></p>
+							<select name="industry" required>
+								<option value="" selected disabled>Please select</option>
+								<option value="advertising-marketing">Advertising/Marketing</option>
+								<option value="aerospace-aviation">Aerospace/Aviation</option>
+								<option value="agriculture">Agriculture</option>
+								<option value="automotive">Automotive</option>
+								<option value="biotech-pharma">Biotech/Pharmaceutical</option>
+								<option value="business-services">Business Services (accounting, consulting, etc.)</option>
+								<option value="computers-it">Computers/Information Technology</option>
+								<option value="construction">Construction</option>
+								<option value="education">Education</option>
+								<option value="facilities">Facilities/Service Industry</option>
+								<option value="fintech">Finance/Financial Services (banking, insurance, etc.)</option>
+								<option value="government">Government</option>
+								<option value="healthcare">Healthcare</option>
+								<option value="human-resources">Human Resources</option>
+								<option value="legal">Legal</option>
+								<option value="life-sciences">Life sciences (biotech, pharmaceuticals, etc.)</option>
+								<option value="manufacturing">Manufacturing</option>
+								<option value="media">Media</option>
+								<option value="non-profit">Non-profit</option>
+								<option value="real-estate">Real Estate</option>
+								<option value="retail-consumer-goods">Retail/Consumer Goods</option>
+								<option value="telecommunications">Telecommunications</option>
+								<option value="transportation-logistics">Transportation/Logistics</option>
+								<option value="travel-hospitality-entertainment">Travel/Hospitality/Entertainment</option>
+								<option value="utilitiy-energy">Utility/Energy</option>
+							</select>
+						</label>
+						<label>
+							<p>Organization <span class="airmeet-required">*</span></p>
+							<input type="text" name="organization" required />
+						</label>
+					</div>
+
+					<label>
+						<p>Country <span class="airmeet-required">*</span></p>
+						<select name="country" required>
+							<option value="" selected disabled>Please select</option>
+							<option value="US">United States</option>
+							<option value="CA">Canada</option>
+							<option value="GB">United Kingdom</option>
+							<option value="AF">Afghanistan</option>
+							<option value="AL">Albania</option>
+							<option value="DZ">Algeria</option>
+							<option value="AD">Andorra</option>
+							<option value="AO">Angola</option>
+							<option value="AG">Antigua and Barbuda</option>
+							<option value="AR">Argentina</option>
+							<option value="AM">Armenia</option>
+							<option value="AU">Australia</option>
+							<option value="AT">Austria</option>
+							<option value="AZ">Azerbaijan</option>
+							<option value="BS">Bahamas</option>
+							<option value="BH">Bahrain</option>
+							<option value="BD">Bangladesh</option>
+							<option value="BB">Barbados</option>
+							<option value="BY">Belarus</option>
+							<option value="BE">Belgium</option>
+							<option value="BZ">Belize</option>
+							<option value="BJ">Benin</option>
+							<option value="BT">Bhutan</option>
+							<option value="BO">Bolivia</option>
+							<option value="BA">Bosnia and Herzegovina</option>
+							<option value="BW">Botswana</option>
+							<option value="BR">Brazil</option>
+							<option value="BN">Brunei</option>
+							<option value="BG">Bulgaria</option>
+							<option value="BF">Burkina Faso</option>
+							<option value="BI">Burundi</option>
+							<option value="CV">Cabo Verde</option>
+							<option value="KH">Cambodia</option>
+							<option value="CM">Cameroon</option>
+							<option value="CF">Central African Republic</option>
+							<option value="TD">Chad</option>
+							<option value="CL">Chile</option>
+							<option value="CN">China</option>
+							<option value="CO">Colombia</option>
+							<option value="KM">Comoros</option>
+							<option value="CG">Congo</option>
+							<option value="CD">Congo (Democratic Republic)</option>
+							<option value="CR">Costa Rica</option>
+							<option value="CI">Cote d&#8217;Ivoire</option>
+							<option value="HR">Croatia</option>
+							<option value="CU">Cuba</option>
+							<option value="CY">Cyprus</option>
+							<option value="CZ">Czech Republic</option>
+							<option value="DK">Denmark</option>
+							<option value="DJ">Djibouti</option>
+							<option value="DM">Dominica</option>
+							<option value="DO">Dominican Republic</option>
+							<option value="EC">Ecuador</option>
+							<option value="EG">Egypt</option>
+							<option value="SV">El Salvador</option>
+							<option value="GQ">Equatorial Guinea</option>
+							<option value="ER">Eritrea</option>
+							<option value="EE">Estonia</option>
+							<option value="SZ">Eswatini</option>
+							<option value="ET">Ethiopia</option>
+							<option value="FJ">Fiji</option>
+							<option value="FI">Finland</option>
+							<option value="FR">France</option>
+							<option value="GA">Gabon</option>
+							<option value="GM">Gambia</option>
+							<option value="GE">Georgia</option>
+							<option value="DE">Germany</option>
+							<option value="GH">Ghana</option>
+							<option value="GR">Greece</option>
+							<option value="GD">Grenada</option>
+							<option value="GT">Guatemala</option>
+							<option value="GN">Guinea</option>
+							<option value="GW">Guinea-Bissau</option>
+							<option value="GY">Guyana</option>
+							<option value="HT">Haiti</option>
+							<option value="HN">Honduras</option>
+							<option value="HU">Hungary</option>
+							<option value="IS">Iceland</option>
+							<option value="IN">India</option>
+							<option value="ID">Indonesia</option>
+							<option value="IR">Iran</option>
+							<option value="IQ">Iraq</option>
+							<option value="IE">Ireland</option>
+							<option value="IL">Israel</option>
+							<option value="IT">Italy</option>
+							<option value="JM">Jamaica</option>
+							<option value="JP">Japan</option>
+							<option value="JO">Jordan</option>
+							<option value="KZ">Kazakhstan</option>
+							<option value="KE">Kenya</option>
+							<option value="KI">Kiribati</option>
+							<option value="KP">Korea (North)</option>
+							<option value="KR">Korea (South)</option>
+							<option value="KW">Kuwait</option>
+							<option value="KG">Kyrgyzstan</option>
+							<option value="LA">Laos</option>
+							<option value="LV">Latvia</option>
+							<option value="LB">Lebanon</option>
+							<option value="LS">Lesotho</option>
+							<option value="LR">Liberia</option>
+							<option value="LY">Libya</option>
+							<option value="LI">Liechtenstein</option>
+							<option value="LT">Lithuania</option>
+							<option value="LU">Luxembourg</option>
+							<option value="MG">Madagascar</option>
+							<option value="MW">Malawi</option>
+							<option value="MY">Malaysia</option>
+							<option value="MV">Maldives</option>
+							<option value="ML">Mali</option>
+							<option value="MT">Malta</option>
+							<option value="MH">Marshall Islands</option>
+							<option value="MR">Mauritania</option>
+							<option value="MU">Mauritius</option>
+							<option value="MX">Mexico</option>
+							<option value="FM">Micronesia</option>
+							<option value="MD">Moldova</option>
+							<option value="MC">Monaco</option>
+							<option value="MN">Mongolia</option>
+							<option value="ME">Montenegro</option>
+							<option value="MA">Morocco</option>
+							<option value="MZ">Mozambique</option>
+							<option value="MM">Myanmar</option>
+							<option value="NA">Namibia</option>
+							<option value="NR">Nauru</option>
+							<option value="NP">Nepal</option>
+							<option value="NL">Netherlands</option>
+							<option value="NZ">New Zealand</option>
+							<option value="NI">Nicaragua</option>
+							<option value="NE">Niger</option>
+							<option value="NG">Nigeria</option>
+							<option value="MK">North Macedonia</option>
+							<option value="NO">Norway</option>
+							<option value="OM">Oman</option>
+							<option value="PK">Pakistan</option>
+							<option value="PW">Palau</option>
+							<option value="PS">Palestine</option>
+							<option value="PA">Panama</option>
+							<option value="PG">Papua New Guinea</option>
+							<option value="PY">Paraguay</option>
+							<option value="PE">Peru</option>
+							<option value="PH">Philippines</option>
+							<option value="PL">Poland</option>
+							<option value="PT">Portugal</option>
+							<option value="QA">Qatar</option>
+							<option value="RO">Romania</option>
+							<option value="RU">Russia</option>
+							<option value="RW">Rwanda</option>
+							<option value="KN">Saint Kitts and Nevis</option>
+							<option value="LC">Saint Lucia</option>
+							<option value="VC">Saint Vincent and the Grenadines</option>
+							<option value="WS">Samoa</option>
+							<option value="SM">San Marino</option>
+							<option value="ST">Sao Tome and Principe</option>
+							<option value="SA">Saudi Arabia</option>
+							<option value="SN">Senegal</option>
+							<option value="RS">Serbia</option>
+							<option value="SC">Seychelles</option>
+							<option value="SL">Sierra Leone</option>
+							<option value="SG">Singapore</option>
+							<option value="SK">Slovakia</option>
+							<option value="SI">Slovenia</option>
+							<option value="SB">Solomon Islands</option>
+							<option value="SO">Somalia</option>
+							<option value="ZA">South Africa</option>
+							<option value="SS">South Sudan</option>
+							<option value="ES">Spain</option>
+							<option value="LK">Sri Lanka</option>
+							<option value="SD">Sudan</option>
+							<option value="SR">Suriname</option>
+							<option value="SE">Sweden</option>
+							<option value="CH">Switzerland</option>
+							<option value="SY">Syria</option>
+							<option value="TW">Taiwan</option>
+							<option value="TJ">Tajikistan</option>
+							<option value="TZ">Tanzania</option>
+							<option value="TH">Thailand</option>
+							<option value="TL">Timor-Leste</option>
+							<option value="TG">Togo</option>
+							<option value="TO">Tonga</option>
+							<option value="TT">Trinidad and Tobago</option>
+							<option value="TN">Tunisia</option>
+							<option value="TR">Turkey</option>
+							<option value="TM">Turkmenistan</option>
+							<option value="TV">Tuvalu</option>
+							<option value="UG">Uganda</option>
+							<option value="UA">Ukraine</option>
+							<option value="AE">United Arab Emirates</option>
+							<option value="UY">Uruguay</option>
+							<option value="UZ">Uzbekistan</option>
+							<option value="VU">Vanuatu</option>
+							<option value="VA">Vatican City</option>
+							<option value="VE">Venezuela</option>
+							<option value="VN">Vietnam</option>
+							<option value="YE">Yemen</option>
+							<option value="ZM">Zambia</option>
+							<option value="ZW">Zimbabwe</option>
+						</select>
+					</label>
+
+					<div class="airmeet-state-field" hidden>
+						<label>
+							<p>State <span class="airmeet-required">*</span></p>
+							<input type="text" name="state" required />
+						</label>
+					</div>
+
+					<label>
+							<p>Phone Number</p>
+							<input type="text" name="phone-number" />
+						</label>
+
+				</div>
+
+				<!-- Signup Button -->
+				<button type="submit"class="airmeet-register" disabled>Register</button>
+
+				<div class="airmeet-disclaimer">
+					By registering, you consent to The New Stack&#8217;s <a href="https://thenewstack.io/privacy-policy/" target="_blank" rel="noopener" class="local-link">Privacy Policy</a>, <a href="https://thenewstack.io/terms-of-use/" target="_blank" rel="noopener" class="local-link">Terms of Use</a>
+					and to receiving email communication from The New Stack and our event partner. You may opt out at any time.
+				</div>
+			</form>
+
+			<!-- Success -->
+			<div class="airmeet-success" hidden>
+				<svg class="success-tick" xmlns="http://www.w3.org/2000/svg" width="48" height="48" aria-hidden="true" focusable="false" viewBox="0 0 48 48" style="display:inline-block;vertical-align:middle;">
+					<circle cx="24" cy="24" r="24" fill="white"/>
+					<path d="M19.6 30.5l-6.1-6.1c-.6-.6-.6-1.5 0-2.1s1.5-.6 2.1 0l4.1 4.1 10.7-10.7c.6-.6 1.5-.6 2.1 0s.6 1.5 0 2.1l-11.7 11.7c-.6.5-1.5.5-2.1 0z" fill="#22b573"/>
+				</svg>
+				<p>You have successfully registered for the webinar.</p>
+			</div>
+
+			
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+
+	// Get UTM parameters.
+	var utm_source = window.tns.getUTMParameterValue('utm_source');
+	var utm_medium = window.tns.getUTMParameterValue('utm_medium');
+	var utm_campaign = window.tns.getUTMParameterValue('utm_campaign');
+	var utm_term = window.tns.getUTMParameterValue('utm_term');
+	var utm_content = window.tns.getUTMParameterValue('utm_content');
+
+	if (utm_source) { $('input[name="utm_source"]').val(utm_source) }
+	if (utm_medium) { $('input[name="utm_medium"]').val(utm_medium) }
+	if (utm_campaign) { $('input[name="utm_campaign"]').val(utm_campaign) }
+	if (utm_term) { $('input[name="utm_term"]').val(utm_term) }
+	if (utm_content) { $('input[name="utm_content"]').val(utm_content) }
+
+	if ( $('.airmeet-container[data-event-id]').length ) {
+		initAirmeetRegistrationForm();
+	}
+
+	/*
+	window.dataLayer.push({
+		'event' : 'webinar_registration_started',
+		'object_id' : '22842160',
+		'object_type' : 'webinar',
+		'post_title' : 'Teaching AI Agents to Search Like Experts',
+	});
+	*/
+
+	function showFormStage( stage ){
+		if ( stage == 1 ) {
+			$('.airmeet-profile-fields').attr('hidden', true).hide();
+			$('.airmeet-register').prop('disabled', true);
+		} else if ( stage == 2 ) {
+			$('.airmeet-profile-fields').removeAttr('hidden').show();
+			$('.airmeet-register').prop('disabled', false);
+		}
+	}
+
+	function initAirmeetRegistrationForm() {
+		window.webinar_registration_started = false;
+
+		var $form = $('.airmeet-registration-form');
+		var $questionFields = $form.find('.airmeet-questions [data-question]');
+
+		if ( $questionFields.length === 0 ) {
+			showFormStage(2);
+		}
+
+		// Listen for question field values.
+		$questionFields.on('change input', function() {
+			var allFilled = $questionFields.filter(function() {
+				return $.trim($(this).val()) !== '';
+			}).length === $questionFields.length;
+
+			if ( allFilled ) {
+				showFormStage(2);
+			}
+
+			if ( ! window.webinar_registration_started ) {
+				window.dataLayer.push({
+					'event' : 'webinar_registration_started',
+					'object_id' : '22842160',
+					'object_type' : 'webinar',
+					'post_title' : 'Teaching AI Agents to Search Like Experts',
+				});
+			}
+			window.webinar_registration_started = true;
+		});
+
+		// Listen for job-role field, show additional fields if necessary.
+		$form.find('select[name="job-role"]').on('change', function() {
+			var val = $(this).val();
+			if ( val && val !== 'student' && val !== 'enthusiast-hobbyist' ) {
+				$('.airmeet-job-more-fields').removeAttr('hidden').show();
+				$('.airmeet-job-more-fields').find('select, input').prop('disabled', false);
+			} else {
+				$('.airmeet-job-more-fields').find('select, input').val('').prop('disabled', true);
+				$('.airmeet-job-more-fields').attr('hidden', true).hide();
+			}
+		});
+
+		// Listen for country field, show state field for US/CA.
+		$form.find('select[name="country"]').on('change', function() {
+			var val = $(this).val();
+			if ( val === 'US' || val === 'CA' ) {
+				$('.airmeet-state-field').removeAttr('hidden').show();
+				$('.airmeet-state-field').find('input').prop('disabled', false);
+			} else {
+				$('.airmeet-state-field').find('input').val('').prop('disabled', true);
+				$('.airmeet-state-field').attr('hidden', true).hide();
+			}
+		});
+
+		// Listen for changes on all non-question fields.
+		$form.find('input, select').not('[data-question]').not('[type="hidden"]').on('change input', function() {
+			window.dataLayer.push({
+				'event' : 'webinar_registration_form_interaction',
+				'object_id' : '22842160',
+				'object_type' : 'webinar',
+				'post_title' : 'Teaching AI Agents to Search Like Experts',
+			});
+		});
+
+		$form.on('submit', function(e) {
+			e.preventDefault();
+			handleSubmit();
+		});
+	}
+
+	function handleSubmit() {
+		var $form = $('.airmeet-registration-form');
+		var $btn = $form.find('.airmeet-register');
+		$btn.prop('disabled', true).text('Registering...');
+
+		// Collect CMS-configured questions
+		var questions = [];
+		$form.find('[data-question]').each(function() {
+			questions.push({
+				question: $(this).data('question'),
+				answer: $(this).val()
+			});
+		});
+
+		var data = {
+			event_id:     $form.find('input[name="event_id"]').val(),
+			utm_source:   $form.find('input[name="utm_source"]').val(),
+			utm_medium:   $form.find('input[name="utm_medium"]').val(),
+			utm_campaign: $form.find('input[name="utm_campaign"]').val(),
+			utm_term:     $form.find('input[name="utm_term"]').val(),
+			utm_content:  $form.find('input[name="utm_content"]').val(),
+			questions:    questions,
+			'email':        $form.find('input[name="email"]').val(),
+			'first-name':   $form.find('input[name="first-name"]').val(),
+			'last-name':    $form.find('input[name="last-name"]').val(),
+			'job-role':     $form.find('select[name="job-role"]').val(),
+			'job-level':    $form.find('select[name="job-level"]').val(),
+			'industry':     $form.find('select[name="industry"]').val(),
+			'organization': $form.find('input[name="organization"]').val(),
+			'country':      $form.find('select[name="country"]').val(),
+			'state':        $form.find('input[name="state"]').val(),
+			'phone-number': $form.find('input[name="phone-number"]').val()
+		};
+
+		$.ajax({
+			url: '/wp-json/airmeet/register-webinar',
+			method: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+			success: function(response) {
+				var status = response && response.status;
+				var eventName = status === 'already_registered'
+					? 'webinar_registration_already_registered'
+					: 'webinar_registration_completed';
+
+				window.dataLayer.push({
+					'event' : eventName,
+					'object_id' : '22842160',
+					'object_type' : 'webinar',
+					'post_title' : 'Teaching AI Agents to Search Like Experts',
+				});
+
+				showSuccess();
+			},
+			error: function(xhr) {
+				var msg = 'Registration failed. Please try again.';
+				if ( xhr.responseJSON && xhr.responseJSON.error ) {
+					msg = xhr.responseJSON.error;
+				}
+				alert(msg);
+				$btn.prop('disabled', false).text('Register');
+			}
+		});
+	}
+
+	function showSuccess() {
+		var mastheadHeight = $('#tns-header-masthead').length ? $('#tns-header-masthead').outerHeight() : 0;
+		var adminBarHeight = $('#wpadminbar').length ? $('#wpadminbar').outerHeight() : 0;
+		var padding = $(window).width() > 1024 ? 120 : 50;
+		$('html, body').animate({ scrollTop: $('.airmeet-container').offset().top - mastheadHeight - adminBarHeight - padding }, 300, function() {
+			$('.airmeet-registration-form').attr('hidden', true).hide();
+			
+			if ( $('.airmeet-video').length ) {
+				// Video embed, prepare the iframe and show.
+				$('.airmeet-video iframe').attr('src', $('.airmeet-video iframe').attr('data-src'));
+				$('.airmeet-video').show().removeAttr('hidden');
+			} else {
+				// Thank you screen.
+				$('.airmeet-success').removeAttr('hidden').hide().fadeIn();
+			}
+		});
+	}
+
+});
+</script>
+
+
+    </div>
+    
+
+
+<p class="wp-block-paragraph">You might layer a tailored model into your agentic workflow to help translate between an agentic request and the dataset it&rsquo;s querying. While this idea has merit, it can increase latency by adding another entire step to a search; who wants to go slower, or consume <em>more</em> tokens?</p>
+
+
+<div class="wp-block-image">
+<figure class="alignright size-full is-resized"><img loading="lazy" decoding="async" width="799" height="800" src="https://cdn.thenewstack.io/media/2026/11/65b83cfe-jenny-morris-vespa-ai.jpeg" alt="" class="wp-image-22843616" style="aspect-ratio:0.9987671908388581;width:239px;height:auto"/><figcaption class="wp-element-caption">Jenny Morris, Senior Principal Solutions Architect at Vespa.ai</figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">Vespa reckons that the way forward is to help agents handle complex, and often multi-threaded contemporaneous searches themselves. How? By providing agents with a map (markdown file) that covers how search tools work; without clearly marked fields, ranking profiles, and other tools are not expressly explained to the agent, it may decide to rip a generic query, leading to slower response times and less pertinent information.</p>
+
+
+
+<p class="wp-block-paragraph">Surprised that a markdown file could be so powerful? Don&rsquo;t be. Vespa is following in Anthropic&#8217;s footsteps,&nbsp;donating <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">agent skills to the Linux Foundation</a>. Words are incredibly powerful.</p>
+
+
+
+<p class="wp-block-paragraph">In this webinar, we&#8217;ll aim to better understand how to move the corporate world from agent-curious to agentically enabled. So, we&#8217;re sitting down with Morris to learn more about what her company calls an &ldquo;<a href="https://thenewstack.io/agentic-ai-retrieval-problem/" class="local-link">agent-ready schema</a>.&rdquo; Most critically, we&#8217;ll explore how hard it is to fix at least part of the context gap.</p>
+
+
+
+<p class="wp-block-paragraph">Morris will dig into all of this live in &ldquo;Teaching AI Agents to Search Like Experts&rdquo; on Wednesday, December 2, 2026, at 9:30 a.m. Pacific, with time to answer your questions throughout. <strong><a href="https://thenewstack.io/webinar/teaching-ai-agents-to-search-like-experts/" class="local-link">Register now</a> to join us.</strong></p>
+
+
+
+<p class="wp-block-paragraph"><strong>What you&rsquo;ll learn:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Why model capability cannot fix retrieval errors, and how those errors compound across multi-step tasks</li>
+
+
+
+<li>Why you should check what an agent actually retrieves before changing the model</li>
+
+
+
+<li>Why human-facing search tooling is insufficient for agents</li>
+
+
+
+<li>How &lsquo;Agent-Ready Schema&rsquo; and &lsquo;Schema-to-Skill&rsquo; help agents construct queries using the right fields, filters, and ranking strategies</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"></p>
+<p>The post <a href="https://thenewstack.io/ai-agents-retrieval-agent-ready-schema/">Here&#8217;s how to teach AI agents to search like human experts</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

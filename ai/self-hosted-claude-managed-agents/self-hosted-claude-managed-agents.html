@@ -1,0 +1,151 @@
+<!DOCTYPE html><html><head><title>Anthropic now lets you self-host Claude Managed Agents. The catch? 8 hours to act if it flags a safety risk in the software</title>
+<meta name="author" content="Paul Sawers"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/2876cde1-public-domain-vectors-grxqbf6y-dq-unsplash-1024x646.jpg">
+<link rel="canonical" href="https://thenewstack.io/self-hosted-claude-managed-agents/"></head><body><article><img width="1024" height="646" src="https://cdn.thenewstack.io/media/2026/11/2876cde1-public-domain-vectors-grxqbf6y-dq-unsplash-1024x646.jpg" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="A finger on the button, depicting roll-backs and kill-switches." style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/2876cde1-public-domain-vectors-grxqbf6y-dq-unsplash-scaled.jpg" />
+<p class="wp-block-paragraph">Anthropic has unveiled a self-hosted version of its platform for building and running AI agents.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://platform.claude.com/docs/en/managed-agents/self-hosted" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Self-hosted Claude Managed Agents</a>, as it&#8217;s aptly called, is available now in private beta. Customers host both the server that coordinates the agents and the sandboxes where the agents run their tools, either in their own cloud account or in an on-premises data center. Credentials and session histories stay on their infrastructure, while requests to Claude go to the inference provider they configure.</p>
+
+
+
+<p class="wp-block-paragraph">While the benefits of self-hosting are evident, particularly for companies handling sensitive data, the <a href="https://www.anthropic.com/legal/self-hosted-managed-agents-license" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">accompanying license</a> comes with a number of notable caveats that may give some customers pause &#8212; this includes strict deadlines for responding to safety notices, limits on which models customers can use, and rules against preventing certain types of data from being sent to Anthropic.</p>
+
+
+
+<h2 id="h-claude-s-road-to-self-hosting" class="wp-block-heading">Claude&rsquo;s road to self-hosting</h2>
+
+
+
+<p class="wp-block-paragraph">Back in April, Anthropic <a href="https://thenewstack.io/with-claude-managed-agents-anthropic-wants-to-run-your-ai-agents-for-you/" class="local-link">debuted Claude Managed Agents</a>, a hosted service for building and running AI agents. The following month, the company <a href="https://thenewstack.io/anthropic-mcp-tunnels-sandboxes/" class="local-link">launched self-hosted sandboxes</a>, which let customers run agents&rsquo; tools on their own infrastructure while Anthropic continued to run the Claude Managed Agents server.</p>
+
+
+
+<p class="wp-block-paragraph">With self-hosted Claude Managed Agents now in the mix, customers can run that server themselves, too, and store session histories in their own database.</p>
+
+
+
+<p class="wp-block-paragraph">In a <a href="https://claude.com/resources/articles/self-hosted-claude-managed-agents" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">blog post</a> marking the launch, Anthropic says agents are taking on more consequential engineering tasks, including repairing failed builds, checking releases and deciding which alerts need attention. That work can require access to sensitive systems, such as private code repositories and internal build and release systems.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;For agents with that level of access, some teams want the whole service in their own environment, not just the sandbox.&#8221;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;They run unattended on your code and need access to your internal systems,&#8221; the company writes. &#8220;For agents with that level of access, some teams want the whole service in their own environment, not just the sandbox. Until now, that meant building the platform themselves.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Several companies have done exactly that. Spotify <a href="https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">developed Honk</a>, which runs Claude through the Agent SDK inside Spotify&rsquo;s own harness. The company deploys Honk in Kubernetes pods in its cloud environment, giving it access to its internal CI systems so it can run builds and verify its code changes.</p>
+
+
+
+<p class="wp-block-paragraph">Anthropic&rsquo;s new offering packages much of that work into a product. Customers run Anthropic&rsquo;s server and the sandbox workers in their own cloud or data centre, with PostgreSQL if they want to retain session histories across restarts, while their developers use the same core APIs as they do with the hosted service. The local server can send requests to Claude through Anthropic&rsquo;s API, a cloud provider such as Amazon Bedrock or Microsoft Foundry, or the company&rsquo;s own gateway.</p>
+
+
+
+<h2 id="h-the-devil-in-the-detail-8-hours-to-act" class="wp-block-heading">The devil in the detail: 8 hours to act</h2>
+
+
+
+<p class="wp-block-paragraph">While Anthropic&rsquo;s formal announcement emphasizes <em>why </em>companies might want to host the service themselves, digging into the details of the license reveals how much control Anthropic retains over the software once it&rsquo;s deployed.</p>
+
+
+
+<p class="wp-block-paragraph">For starters, Anthropic ships the server as a proprietary binary that customers can&rsquo;t modify, meaning that they can&rsquo;t patch or customize the server code themselves. They <em>can </em>route requests through their own gateway, but only to Claude models. The license also bars models from other developers unless Anthropic expressly permits them, and <a href="https://platform.claude.com/docs/en/managed-agents/self-hosted/inference-provider" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">the public inference docs</a> list only Claude models.</p>
+
+
+
+<p class="wp-block-paragraph">Among the most notable terms of the license is how little time customers have to act on Anthropic&rsquo;s safety notices. If the company flags a safety, security or misuse risk in writing, customers have just eight hours to disable the affected feature or roll back the version across every deployment. They also have one business day from delivery to install a designated safety update.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="172" src="https://cdn.thenewstack.io/media/2026/11/a589ff56-safety-rollback-screenshot-with-torn-edges-1024x172.png" alt="&sect;5.3 Eight hours to roll back or disable" class="wp-image-22843625"/><figcaption class="wp-element-caption">&sect;5.3 Eight hours to roll back or disable</figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/patmoorhead/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Patrick Moorhead</a>, founder and chief analyst at <a href="https://moorinsightsstrategy.com/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Moor Insights &amp; Strategy</a>, says the eight-hour deadline is tighter than the time most large enterprises typically allow to make production changes.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Self-hosted usually means the customer owns the change window,&rdquo; Moorhead tells <em>The New Stack</em>. &ldquo;This license flips that.&rdquo;</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&ldquo;Self-hosted usually means the customer owns the change window. This license flips that.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph">Even within the Claude model lineup itself, access can vary. The license says Anthropic can decide, on safety grounds, that some or all of a licensee&rsquo;s customers should access certain Claude models <em>only </em>through Anthropic&rsquo;s hosted service.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="289" src="https://cdn.thenewstack.io/media/2026/11/407f225c-5.6-access-path-original-screenshot-1024x289.png" alt="&sect;5.6 Anthropic can reserve models for hosted access" class="wp-image-22843623"/><figcaption class="wp-element-caption"><em>&sect;5.6 Anthropic can reserve models for hosted access</em></figcaption></figure>
+</div>
+
+
+<p class="wp-block-paragraph">Moreover, the license bars customers from blocking or altering what it calls &ldquo;usage signals,&rdquo; the observability data the software may send to Anthropic. The company can use this data to measure how much the software is used and to monitor compliance with the agreement.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">&#8220;The idea is that if you build an agent that is breaking the law or causing harm you cannot stop us [the model lab] from figuring that out and doing anything about it.&rdquo;</p>
+</blockquote>
+
+
+
+<p class="wp-block-paragraph"><a href="https://www.linkedin.com/in/jasontandersen/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">Jason Andersen</a>, also an analyst at Moor Insights &amp; Strategy, says the telemetry clause and the separate requirement to maintain safeguards Anthropic specifies are broadly in line with how cloud vendors would try to prevent misuse.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;The idea is that if you build an agent that is breaking the law or causing harm you cannot stop us [the model lab] from figuring that out and doing anything about it,&rdquo; Andersen tells <em>The New Stack</em>.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="270" src="https://cdn.thenewstack.io/media/2026/11/a8419896-5.9-usage-signals-screenshot-1024x270.png" alt="&sect;5.9 Customers can&rsquo;t block usage signals" class="wp-image-22843624"/><figcaption class="wp-element-caption"><em>&sect;5.9 Customers can&rsquo;t block usage signals</em></figcaption></figure>
+</div>
+
+
+<h2 id="h-the-security-backdrop" class="wp-block-heading">The security backdrop</h2>
+
+
+
+<p class="wp-block-paragraph">In July, <a href="https://thenewstack.io/anthropic-claude-containment-failure/" class="local-link">Anthropic disclosed</a> that Claude models had gained unauthorized access to real computer systems during cybersecurity evaluations. That same month, <a href="https://thenewstack.io/openai-huggingface-sandbox-breach/" class="local-link">OpenAI had disclosed</a> that models undergoing internal tests had bypassed isolation controls and breached systems at Hugging Face.</p>
+
+
+
+<p class="wp-block-paragraph">While a model provider can address a problem on its side, an agent running on a customer&rsquo;s servers may keep operating. And so the customer may also need to take action to contain the problem.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;I do think that this is Anthropic putting more teeth around safety to limit their exposure which is effectively what a license does,&rdquo; Andersen says. &#8220;It does not really change the risk of the technology it makes or those who use it to make agents.&#8221;</p>
+
+
+
+<h2 id="h-how-enterprise-buyers-might-respond" class="wp-block-heading">How enterprise buyers might respond</h2>
+
+
+
+<p class="wp-block-paragraph">The long and short of all this is that Managed Agents now comes in three forms: fully-hosted by Anthropic, hosted by Anthropic with customer-run sandboxes, and now fully self-hosted.</p>
+
+
+
+<p class="wp-block-paragraph">Whether that third option works for buyers depends on what they need from self-hosting in the first place. Moorhead expects regulated buyers to push back on both the rollback deadline and the telemetry terms.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;It&#8217;s workable for companies already comfortable running Claude as a cloud service, and they&#8217;ll treat this as a cloud service that happens to sit in their data center,&rdquo; he says. &ldquo;For banks, government and sovereign buyers, expect procurement and legal to push back on sections 5.3 [safety rollback] and 5.9 [usage signals].&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Andersen, for his part, says the terms are &ldquo;a reasonable ask&rdquo; for enterprises, and doubts they&rsquo;ll slow adoption overall, given that buyers who need full control over their agents would likely be looking elsewhere already.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;If you needed that level of control on your agents, you would likely consider a more independent, possibly open-weight solution,&rdquo; he says.</p>
+<p>The post <a href="https://thenewstack.io/self-hosted-claude-managed-agents/">Anthropic now lets you self-host Claude Managed Agents. The catch? 8 hours to act if it flags a safety risk in the software</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>

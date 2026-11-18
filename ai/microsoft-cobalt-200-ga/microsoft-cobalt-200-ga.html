@@ -1,0 +1,125 @@
+<!DOCTYPE html><html><head><title>Microsoft’s ARM-based Cobalt 200 chips go GA. Why it matters for AI agents.</title>
+<meta name="author" content="Frederic Lardinois"><meta property="og:image" content="https://cdn.thenewstack.io/media/2026/11/f01f76df-azure-cobalt-200-image-01-updated-1024x576.png">
+<link rel="canonical" href="https://thenewstack.io/microsoft-cobalt-200-ga/"></head><body><article><img width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/f01f76df-azure-cobalt-200-image-01-updated-1024x576.png" class="webfeedsFeaturedVisual wp-post-image wp-stateless-item" alt="" style="display: block; margin: auto; margin-bottom: 20px;max-width: 100%;" link_thumbnail="" decoding="async" loading="lazy" data-image-size="large" data-stateless-media-bucket="cdn.thenewstack.io" data-stateless-media-name="media/2026/11/f01f76df-azure-cobalt-200-image-01-updated.png" />
+<p class="wp-block-paragraph">Microsoft is making its Cobalt 200 virtual machines generally available, with CPU improvements aimed at the sandboxes, tools, and code execution that keep AI agents running.</p>
+
+
+
+<p class="wp-block-paragraph">At its Ignite conference in San Francisco on Tuesday, the company announced that the VMs, powered by its second-generation Arm-based CPUs, are available in 14 Azure regions, expanding to 23 by the end of the year. Microsoft says they offer up to 50% better performance compared with Cobalt 100.</p>
+
+
+
+<p class="wp-block-paragraph">It&rsquo;s been almost exactly a year since Microsoft first announced Cobalt 200 and about six months since the new VMs <a href="https://azure.microsoft.com/en-us/blog/new-azure-cobalt-200-vms-deliver-50-performance-improvement-fully-optimized-for-modern-agentic-ai-workloads/" class="ext-link" rel="external nofollow" onclick="this.target=&#039;_blank&#039;;">went into preview</a>. Microsoft&rsquo;s benchmarks show up to 1.5 times the performance for AI agent tool execution compared with Cobalt 100, for workloads like searching files, compiling code, and <a href="https://thenewstack.io/cloud-agent-code-sandboxes/" class="local-link">executing tasks in sandboxes</a>.</p>
+
+
+
+<p class="wp-block-paragraph">Pat Stemen, Microsoft&rsquo;s vice president for Azure Cobalt, tells <em>The New Stack</em> that the team spent part of the past year tuning the infrastructure for these operations. The chip&rsquo;s large caches, memory performance, and physical cores already suited workloads like starting sandboxes, he says. Microsoft then built &ldquo;a set of benchmarks inside the company for those common operations&rdquo; and tuned the product against them.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/4809ba9a-01-1024x576.jpg" alt="" class="wp-image-22843772"/></figure>
+
+
+
+<h2 id="h-predictable-performance-or-more-speed" class="wp-block-heading">Predictable performance or more speed</h2>
+
+
+
+<p class="wp-block-paragraph">Cobalt 200 lets developers choose between two processor modes. Deterministic mode runs cores at a consistent 3.2 GHz, while opportunistic mode lets them reach 3.6 GHz when power and thermal headroom allow.</p>
+
+
+
+<p class="wp-block-paragraph">Microsoft says opportunistic mode can deliver up to 12% more performance, but clock speeds will vary.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;Customers love fixed frequency, by the way,&rdquo; Stemen says. &ldquo;They love the predictability that comes with that.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Microsoft recommends deterministic mode for distributed data and analytics clusters, where the slowest node can set the pace, and services with tight performance targets. Web and API services, transaction processing, and media workloads may benefit more from the additional speed of opportunistic mode.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="970" height="533" src="https://cdn.thenewstack.io/media/2026/11/caf98dfa-image-4.png" alt="" class="wp-image-22843774"/></figure>
+
+
+
+<p class="wp-block-paragraph">Developers can select the mode for each VM when they create it or change it later through the Azure portal, command-line tools, or infrastructure templates.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;So if you buy four cores from us,&rdquo; Stemen says, &ldquo;you can choose all four of them to run flexibly or deterministically.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">He adds that the extra performance is typically available until the machine&rsquo;s cores are heavily loaded.</p>
+
+
+
+<h2 id="h-designing-around-azure-workloads" class="wp-block-heading">Designing around Azure workloads</h2>
+
+
+
+<p class="wp-block-paragraph">Cobalt 200 uses 132 <a href="https://thenewstack.io/arm-eyes-ai-with-its-latest-neoverse-cores-and-subsystems/" class="local-link">Arm Neoverse V3 cores</a>, manufactured on TSMC&rsquo;s 3nm process, while the VMs scale to 128 vCPUs. Each vCPU corresponds to a full physical core, with 3 MB of private L2 cache. The chip also includes 192 MB of system-level cache and 12 channels of DDR5 memory.</p>
+
+
+
+<p class="wp-block-paragraph">Stemen says the move from Cobalt 100 involved switching from a cost-optimized Arm core to a performance-optimized design, alongside larger caches and improved memory bandwidth.</p>
+
+
+
+<p class="wp-block-paragraph">Every Cobalt 200 VM also includes <a href="https://thenewstack.io/microsofts-rust-bet-from-blue-screens-to-safer-code/" class="local-link">Azure Boost</a>, which offloads networking and storage processing from the host. Microsoft reports up to 15% higher network bandwidth and 20% higher remote storage IOPS compared with Cobalt 100.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://cdn.thenewstack.io/media/2026/11/937a6751-04-1024x576.png" alt="" class="wp-image-22843775"/></figure>
+
+
+
+<p class="wp-block-paragraph">&ldquo;They need remote storage. They need high-performance networking. They need local SSD,&rdquo; Stemen says of the workloads customers bring to Azure.</p>
+
+
+
+<p class="wp-block-paragraph">Stemen says the team breaks Microsoft&rsquo;s own workloads into smaller components, models their behavior before the hardware exists, and uses those results to make decisions about cache sizes, memory, and even the fans in a server rack. Product teams participate in the earliest planning reviews.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;They&rsquo;re influencing the beginning of the product from when it&rsquo;s just in PowerPoint,&rdquo; Stemen says.</p>
+
+
+
+<p class="wp-block-paragraph">The Teams media-processing service, for example, reported 1.65 times the performance on Cobalt 200 compared with Cobalt 100. Microsoft says the service saw linear scaling across physical cores and could load vCPUs to 90% utilization while serving traffic. </p>
+
+
+
+<p class="wp-block-paragraph">Outside Microsoft, Amadeus reported more than 30% higher flight-search throughput in its benchmark lab compared with Cobalt 100.</p>
+
+
+
+<h2 id="h-a-wider-range-of-arm-workloads" class="wp-block-heading">A wider range of Arm workloads</h2>
+
+
+
+<p class="wp-block-paragraph">Indeed, quite a few Microsoft services like Azure Database for PostgreSQL, Azure DevOps, Azure SQL, Microsoft 365, Xbox, and others already run on Cobalt today.</p>
+
+
+
+<p class="wp-block-paragraph">A while ago, Stemen says, &ldquo;customers had real concern about the lift.&rdquo; Since then, &ldquo;there&rsquo;s more evidence of that working out, and the tools have improved, and the products have gotten better all at the same time.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Alongside its general-purpose and memory-optimized VMs, Cobalt 200 brings two additional families to general availability: the high-memory Mpsv4 family, with 16 GiB of memory per vCPU, and the storage-optimized Lpsv5 family, with up to 23 TB of local NVMe storage.</p>
+
+
+
+<p class="wp-block-paragraph">&ldquo;But now we&rsquo;re seeing interest and desire for large in-memory databases, large existing enterprise workloads,&rdquo; Stemen says, &ldquo;and the ability to port them now being easier has helped.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">And while Microsoft will continue to invest in x86 chips, the company says it expects Cobalt 200 to make up &ldquo;a significant portion of our new Azure Compute capacity in 2027 and moving forward.&rdquo;</p>
+
+
+
+<p class="wp-block-paragraph">Developers can deploy the VMs through the existing Azure tools and use them in Virtual Machine Scale Sets or as Azure Kubernetes Service node pools.</p>
+<p>The post <a href="https://thenewstack.io/microsoft-cobalt-200-ga/">Microsoft&#8217;s ARM-based Cobalt 200 chips go GA. Why it matters for AI agents.</a> appeared first on <a href="https://thenewstack.io">The New Stack</a>.</p></article></body></html>
